@@ -1,0 +1,98 @@
+{
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/standard"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {
+      "vue/attribute-hyphenation": "error",
+      "vue/html-closing-bracket-newline": ["error", {
+        "singleline": "never",
+        "multiline": "always"
+      }],
+      "vue/html-end-tags": "error",
+      "vue/html-indent": "error",
+      "vue/max-attributes-per-line": ["error", {
+        "singleline": 4,
+        "multiline": {
+          "max": 1,
+          "allowFirstLine": true
+        }
+      }],
+      "vue/mustache-interpolation-spacing": "error",
+      "vue/no-multi-spaces": ["error", {
+        "ignoreProperties": true
+      }],
+      "vue/no-spaces-around-equal-signs-in-attribute": "error",
+      "vue/prop-name-casing": "error",
+      "vue/v-bind-style": "error",
+      "vue/v-on-style": "error",
+      "vue/order-in-components": "error",
+      "vue/this-in-template": "error",
+      "vue/eqeqeq": "error",
+      "vue/max-len": ["error", {
+        "code": 100,
+        "template": 100,
+        "tabWidth": 2,
+        "comments": 100,
+        "ignorePattern": "",
+        "ignoreComments": false,
+        "ignoreTrailingComments": false,
+        "ignoreUrls": false,
+        "ignoreStrings": false,
+        "ignoreTemplateLiterals": false,
+        "ignoreRegExpLiterals": false,
+        "ignoreHTMLAttributeValues": false,
+        "ignoreHTMLTextContents": false
+      }],
+      "vue/no-reserved-component-names": "error",
+      "vue/padding-line-between-blocks": "error",
+      "array-bracket-spacing": [
+        2,
+        "never",
+        {
+          "singleValue": true
+        }
+      ],
+      "curly": ["error", "all"],
+      "indent": ["error", 2, {
+        "SwitchCase": 1,
+        "VariableDeclarator": "first",
+        "outerIIFEBody": 1,
+        "MemberExpression": 1,
+        "FunctionDeclaration": { "parameters": 1, "body": 1 },
+        "FunctionExpression": { "parameters": 1, "body": 1 },
+        "CallExpression": { "arguments": 1 },
+        "ArrayExpression": 1,
+        "ObjectExpression": 1,
+        "ImportDeclaration": 1,
+        "flatTernaryExpressions": false,
+        "ignoreComments": false,
+        "ignoredNodes": ["TemplateLiteral *"]
+      }],
+      "no-var": "error",
+      "no-return-assign": ["error", "always"],
+      "one-var": ["error", { "initialized": "always", "uninitialized": "never" }],
+      "operator-linebreak": ["error", "before"],
+      "semi": ["error", "always"],
+      "max-depth": ["error", 4],
+      "max-len": ["error", {
+        "code": 100,
+        "tabWidth": 2,
+        "comments": 100,
+        "ignorePattern": "",
+        "ignoreComments": false,
+        "ignoreTrailingComments": false,
+        "ignoreUrls": false,
+        "ignoreStrings": false,
+        "ignoreTemplateLiterals": false,
+        "ignoreRegExpLiterals": false
+      }]
+    }
+  }
