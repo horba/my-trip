@@ -1,6 +1,9 @@
 var path = require('path');
 
 module.exports = {
+  transpileDependencies: [
+    'vuetify'
+  ],
   chainWebpack: config => {
     config.resolve.alias
       .set('@components', path.resolve('src/components/'))
@@ -8,5 +11,5 @@ module.exports = {
       .set('@router', path.resolve('src/router/'))
       .set('@store', path.resolve('src/store/'))
       .set('@styles', path.resolve('src/styles/'));
-  },
+  }
 };
