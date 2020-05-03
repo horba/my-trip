@@ -48,8 +48,8 @@ namespace WebAPI
             services.AddDbContext<RepositoryContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("mssqlConnection")));
             services.AddSingleton(Configuration);
-            services.AddSingleton<UserRepository>();
-            services.AddSingleton<UserService>();
+            services.AddScoped<UserRepository>();
+            services.AddScoped<UserService>();
             services.AddSingleton<AuthService>();
             services.AddAuthentication(x =>
             {
