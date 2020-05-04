@@ -1,0 +1,17 @@
+.v-footer .link-wrapper {
+  margin-bottom: 10px;
+  text-align: start;
+}
+
+  .v-footer .link-wrapper a {
+    text-decoration: none;
+  }
+
+    .v-footer .link-wrapper a:hover {
+      text-decoration: none;
+    }
+
+    .v-footer .link-wrapper a.title {
+      font-size: 18px;
+      text-transform: uppercase;
+    }

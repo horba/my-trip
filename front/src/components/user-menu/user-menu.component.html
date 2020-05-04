@@ -1,0 +1,44 @@
+<v-navigation-drawer permanent overflow :mini-variant="$vuetify.breakpoint.smAndDown">
+  <v-list dense flat tile align="center" justify="center" class="overflow-hidden py-3">
+
+    <v-list-item-avatar :size="`${$vuetify.breakpoint.smAndDown ? 48 : 130}`" 
+                        :class="`${$vuetify.breakpoint.smAndDown ? 'mx-1' : ''}`">
+      <img :src="user.avatar" />
+    </v-list-item-avatar>
+
+    <v-list-item v-if="!$vuetify.breakpoint.smAndDown" two-line>
+      <v-list-item-content>
+        <v-list-item-title><strong>{{user.fullName}}</strong></v-list-item-title>
+        <v-list-item-subtitle class="pt-3">{{user.email}}</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-list-item v-if="!$vuetify.breakpoint.smAndDown">
+      <v-list-item-content>
+        <v-btn rounded outlined primary>Редактировать профиль</v-btn>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-list-item v-for="item in items"
+                 :key="item.title"
+                 :to="item.link"
+                 link
+                 :class="`link my-2 ${!$vuetify.breakpoint.smAndDown && item.isChild ? 'child' : ''}`"
+                 active-class="active">
+
+      <v-list-item-icon :class="!$vuetify.breakpoint.smAndDown && 'px-4'">
+        <v-icon>{{ item.icon }}</v-icon>
+      </v-list-item-icon>
+
+      <v-list-item-content>
+        <v-list-item-title v-text="item.title"></v-list-item-title>
+      </v-list-item-content>
+
+      <v-list-item-action v-if="item.switch !== undefined">
+        <v-switch v-model="item.switch" inset></v-switch>
+      </v-list-item-action>
+
+    </v-list-item>
+
+  </v-list>
+</v-navigation-drawer>

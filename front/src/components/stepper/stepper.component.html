@@ -1,0 +1,13 @@
+<v-card tile flat>
+  <div :class="`stepper progress-${getCurrentStep()}`">
+    <template v-for="(item, n) in items">
+      <div class="step" :key="`${n}-step`">
+        <div class="title">{{ item.title }}</div>
+        <router-link :to="item.link" :class="`icon ${getClass(item)}`">
+          <v-icon class="white--text">{{ item.icon }}</v-icon>
+        </router-link>
+        <div class="sub-title">{{ item.details }}</div>
+      </div>
+    </template>
+  </div>
+</v-card>
