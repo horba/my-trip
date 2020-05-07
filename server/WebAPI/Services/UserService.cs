@@ -1,21 +1,29 @@
 using Entities;
 using Entities.Models;
+using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace WebAPI.Services
 {
     public class UserService
     {
-        
-        private UserRepository _userRepository;
+
+        private readonly UserRepository _userRepository;
         
         public UserService(UserRepository userRepository)
         {
             _userRepository = userRepository;
         }
 
-        public User getUser(string email, string password)
+        public User GetUser(string email, string password)
         {
-            return _userRepository.findByEmailAndPassword(email, password);
+            var user = _userRepository.FindUserByEmail(email);
+            if (CryptoUtils.VerifyPassword(password, user.Password))
+            {
+                return user;
+            }
+            return null;
         }
     }
 }

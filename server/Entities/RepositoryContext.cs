@@ -20,11 +20,11 @@ namespace Entities
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(
-                new User{Id = -1, Email = "test1@users.com", Password = "test1"},
-                new User{Id = -2, Email = "test2@users.com", Password = "test2"},
-                new User{Id = -3, Email = "test3@users.com", Password = "test3"},
-                new User{Id = -4, Email = "test4@users.com", Password = "test4"},
-                new User{Id = -5, Email = "test5@users.com", Password = "test5"}
+                new User { Id = -1, Email = "test1@users.com", Password = CryptoUtils.HashPassword("test1") },
+                new User { Id = -2, Email = "test2@users.com", Password = CryptoUtils.HashPassword("test2") },
+                new User { Id = -3, Email = "test3@users.com", Password = CryptoUtils.HashPassword("test3") },
+                new User { Id = -4, Email = "test4@users.com", Password = CryptoUtils.HashPassword("test4") },
+                new User { Id = -5, Email = "test5@users.com", Password = CryptoUtils.HashPassword("test5") }
                 );
         }
     }

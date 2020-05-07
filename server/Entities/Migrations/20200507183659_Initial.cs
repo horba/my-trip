@@ -2,7 +2,7 @@
 
 namespace Entities.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -25,11 +25,11 @@ namespace Entities.Migrations
                 columns: new[] { "Id", "Email", "Password" },
                 values: new object[,]
                 {
-                    { -1, "test1@users.com", "test1" },
-                    { -2, "test2@users.com", "test2" },
-                    { -3, "test3@users.com", "test3" },
-                    { -4, "test4@users.com", "test4" },
-                    { -5, "test5@users.com", "test5" }
+                    { -1, "test1@users.com", "d53tbpepSAOL9x9Xo2ea/LLhaJSgmyO0CCXFrYcdk66s3icf5o3lPGejbtagCjdD" },
+                    { -2, "test2@users.com", "8IfxrRQwpbu+tUzLRNo3uXnyiNrDuJRcG1tLJimSeCnF2RqdGUO6w62PJJFD+IEV" },
+                    { -3, "test3@users.com", "skmRAX40jXIsx0doAOE1eDH9C48ZKbgBi9pAn0f1jUnJl7iJ91TI4/o1S+8hJxwF" },
+                    { -4, "test4@users.com", "AkcieaUZvile78XDpN8+XD3JKsmKKmrwuWPuRl5SEBJqqkwu/ZISVgxJZgRRH5RE" },
+                    { -5, "test5@users.com", "6f2BX2AFu7Me7zg5PLfPj/zZxndZYi05+btyZ1DPYiJcfvwYn+j4+LB29rqb4IYS" }
                 });
         }
 

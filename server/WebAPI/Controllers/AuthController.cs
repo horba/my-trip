@@ -25,12 +25,12 @@ namespace WebAPI.Controllers
         [HttpPost]
         public IActionResult Auth(AuthRequest authRequest)
         {
-            var user = _userService.getUser(authRequest.Email, authRequest.Password);
+            var user = _userService.GetUser(authRequest.Email, authRequest.Password);
             if (user == null)
                 return Unauthorized();
 
             var token = _authService.MakeToken(user);
-            return Ok(token);
+            return Ok(new AuthResponse { AccessToken = token });
         }
     }
 }

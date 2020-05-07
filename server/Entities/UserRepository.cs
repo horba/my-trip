@@ -12,9 +12,9 @@ namespace Entities
             this.RepositoryContext = repositoryContext;
         }
 
-        public User findByEmailAndPassword(string email, string password)
+        public User FindUserByEmail(string email)
         {
-            return RepositoryContext.Users.FirstOrDefault(u => u.Email.Equals(email) && u.Password.Equals(password));
+            return RepositoryContext.Users.FirstOrDefault(u => u.Email.Equals(email));
         }
     }
 }
