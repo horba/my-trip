@@ -1,7 +1,7 @@
 import { VAppBar, VNavigationDrawer, VBtn, VIcon } from 'vuetify/lib';
 
 export default {
-  name: 'header-main',
+  name: 'mmt-header',
   components: {
     VAppBar,
     VNavigationDrawer,
@@ -11,7 +11,7 @@ export default {
   data: () => ({
     drawer: false,
     links: [
-      { title: 'Жилье', route: '/housing' },
+      { title: 'Жилье', route: '/accommodation' },
       { title: 'Транспорт', route: '/transport' },
       { title: 'Досуг', route: '/leisure' },
       { title: 'Еда', route: '/food' },

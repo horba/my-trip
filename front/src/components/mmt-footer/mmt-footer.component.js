@@ -1,7 +1,7 @@
 import { VFooter, VRow, VCol, VTextField, VBtn, VIcon } from 'vuetify/lib';
 
 export default {
-  name: 'footer-main',
+  name: 'mmt-footer',
   components: {
     VFooter,
     VRow,
@@ -12,11 +12,11 @@ export default {
   },
   data: () => ({
     links1: [
-      { title: 'Жилье', route: '/housing' },
+      { title: 'Жилье', route: '/accommodation' },
       { title: 'Транспорт', route: '/transport' },
-      { title: 'Досуг', route: 'tleisure' },
+      { title: 'Досуг', route: 'leisure' },
       { title: 'Еда', route: '/food' },
-      { title: 'Горящие туры', route: '/tot-tours' },
+      { title: 'Горящие туры', route: '/hot-tours' },
       { title: 'Статьи', route: '/articles' }
     ],
     links2: [
@@ -24,8 +24,8 @@ export default {
       { title: 'Политика использования Cookie', route: '/cookie-policy' },
       { title: 'Пользовательское соглашение', route: '/terms-of-use' },
       { title: 'Туроператорам', route: '/for-tour-operators' },
-      { title: 'Контакты', route: '/vontacts' },
-      { title: 'Оставить отзыв о сайте', route: '/leave-review' }
+      { title: 'Контакты', route: '/contacts' },
+      { title: 'Оставить отзыв о сайте', route: '/review/new' }
     ]
   })
 };

@@ -1,5 +1,5 @@
 <template>
-  <h2>Hot Tours</h2>
+  <h2>Privacy Policy</h2>
 </template>
 
 <script>

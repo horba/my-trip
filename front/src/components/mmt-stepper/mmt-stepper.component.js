@@ -1,7 +1,7 @@
 import { VDivider, VIcon } from 'vuetify/lib';
 
 export default {
-  name: 'stepper',
+  name: 'mmt-stepper',
   components: {
     VDivider,
     VIcon
@@ -15,9 +15,9 @@ export default {
         details: 'Kiev-Krakov 4-9 may $ 44'
       },
       {
-        title: 'Housing',
+        title: 'Accommodation',
         icon: 'mdi-home',
-        link: '/my/housing'
+        link: '/my/accommodation'
       },
       {
         title: 'Food',
@@ -37,10 +37,22 @@ export default {
     ]
   }),
   methods: {
-    getClass (item) {
+    getIconClass (item) {
       return this.getStep(item.link) <= this.getCurrentStep()
         ? 'primary'
         : 'accent lighten-2';
+    },
+    getPverClass (item, n) {
+      return n === 0 ? 'white'
+        : this.getStep(item.link) <= this.getCurrentStep() + 1
+          ? 'primary'
+          : 'accent lighten-2';
+    },
+    getNextClass (item, n) {
+      return n === this.items.length - 1 ? 'white'
+        : this.getStep(item.link) <= this.getCurrentStep()
+          ? 'primary'
+          : 'accent lighten-2';
     },
     getCurrentStep () {
       return this.getStep(this.$route.path);

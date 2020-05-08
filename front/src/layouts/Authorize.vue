@@ -3,7 +3,7 @@
     <v-container fluid primary lighten-5>
       <div class="d-flex flex-row align-stretch">
         <div class="align-self-start">
-          <user-menu></user-menu>
+          <mmt-user-menu></mmt-user-menu>
         </div>
         <div class="align-self-stretch flex-grow-1 pa-5">
           <slot />
@@ -15,11 +15,11 @@
 
 <script>
 // @ is an alias to /src
-import { UserMenu } from '@components';
+import { MmtUserMenu } from '@components';
 
 export default {
   components: {
-    UserMenu
+    MmtUserMenu
   }
 };
 </script>

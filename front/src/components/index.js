@@ -1,6 +1,6 @@
 export { default as HelloWorldOneFile } from './HelloWorldOneFile.vue';
 export { default as HelloWorld } from './hello-world/hello-world.component.vue';
-export { default as FooterMain } from './footer-main/footer-main.component.vue';
-export { default as HeaderMain } from './header-main/header-main.component.vue';
-export { default as UserMenu } from './user-menu/user-menu.component.vue';
-export { default as Stepper } from './stepper/stepper.component.vue';
+export { default as MmtFooter } from './mmt-footer/mmt-footer.component.vue';
+export { default as MmtHeader } from './mmt-header/mmt-header.component.vue';
+export { default as MmtUserMenu } from './mmt-user-menu/mmt-user-menu.component.vue';
+export { default as MmtStepper } from './mmt-stepper/mmt-stepper.component.vue';

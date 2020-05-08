@@ -1,5 +1,5 @@
 <template>
-  <h2>Hot Tours</h2>
+  <h2>Contacts</h2>
 </template>
 
 <script>

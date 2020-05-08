@@ -1,21 +1,21 @@
 <template>
   <v-content>
-    <header-main></header-main>
+    <mmt-header></mmt-header>
     <v-container fluid>
       <slot />
     </v-container>
-    <footer-main></footer-main>
+    <mmt-footer></mmt-footer>
   </v-content>
 </template>
 
 <script>
 // @ is an alias to /src
-import { FooterMain, HeaderMain } from '@components';
+import { MmtFooter, MmtHeader } from '@components';
 
 export default {
   components: {
-    FooterMain,
-    HeaderMain
+    MmtFooter,
+    MmtHeader
   }
 };
 </script>

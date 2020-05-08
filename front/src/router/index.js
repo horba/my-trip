@@ -1,17 +1,26 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '@views/Home.vue';
-import Housing from '@views/Housing.vue';
-import Transport from '@views/Transport.vue';
-import Leisure from '@views/Leisure.vue';
-import Food from '@views/Food.vue';
-import HotTours from '@views/HotTours.vue';
-import Articles from '@views/Articles.vue';
-import MyTickets from '@views/user/Tickets.vue';
-import MyHousing from '@views/user/Housing.vue';
-import MyFood from '@views/user/Food.vue';
-import MyTransport from '@views/user/Transport.vue';
-import MyLeisure from '@views/user/Leisure.vue';
+import {
+  Home,
+  Accommodation,
+  Transport,
+  Leisure,
+  Food,
+  HotTours,
+  Articles,
+  AboutUs,
+  PrivacyPolicy,
+  CookiePolicy,
+  TermsOfUse,
+  ForTourOperators,
+  Contacts,
+  ReviewNew,
+  MyTickets,
+  MyAccommodation,
+  MyFood,
+  MyTransport,
+  MyLeisure
+} from '@views';
 
 Vue.use(VueRouter);
 
@@ -22,9 +31,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/housing',
-    name: 'Housing',
-    component: Housing
+    path: '/accommodation',
+    name: 'Accommodation',
+    component: Accommodation
   },
   {
     path: '/transport',
@@ -52,82 +61,124 @@ const routes = [
     component: Articles
   },
   {
-    path: '/my/tickets',
-    name: 'MyTickets',
+    path: '/about-us',
+    name: 'AboutUs',
+    component: AboutUs
+  },
+  {
+    path: '/privacy-policy',
+    name: 'PrivacyPolicy',
+    component: PrivacyPolicy
+  },
+  {
+    path: '/cookie-policy',
+    name: 'CookiePolicy',
+    component: CookiePolicy
+  },
+  {
+    path: '/terms-of-use',
+    name: 'TermsOfUse',
+    component: TermsOfUse
+  },
+  {
+    path: '/for-tour-operators',
+    name: 'ForTourOperators',
+    component: ForTourOperators
+  },
+  {
+    path: '/contacts',
+    name: 'Contacts',
+    component: Contacts
+  },
+  {
+    path: '/review/new',
+    name: 'ReviewNew',
+    component: ReviewNew
+  },
+  {
+    path: '/my',
+    name: 'My',
     component: MyTickets,
-    meta: { layout: 'authorize' }
-  },
-  {
-    path: '/my/housing',
-    name: 'MyHousing',
-    component: MyHousing,
-    meta: { layout: 'authorize' }
-  },
-  {
-    path: '/my/food',
-    name: 'MyFood',
-    component: MyFood,
-    meta: { layout: 'authorize' }
-  },
-  {
-    path: '/my/transport',
-    name: 'MyTransport',
-    component: MyTransport,
-    meta: { layout: 'authorize' }
-  },
-  {
-    path: '/my/leisure',
-    name: 'MyLeisure',
-    component: MyLeisure,
-    meta: { layout: 'authorize' }
-  },
-  {
-    path: '/my/travel-route',
-    name: 'MyTravelRoute',
-    component: Home,
-    meta: { layout: 'authorize' }
-  },
-  {
-    path: '/my/bookmarks',
-    name: 'MyBookmarks',
-    component: Home,
-    meta: { layout: 'authorize' }
-  },
-  {
-    path: '/my/scheduler',
-    name: 'MyScheduler',
-    component: Home,
-    meta: { layout: 'authorize' }
-  },
-  {
-    path: '/my/history',
-    name: 'MyHistory',
-    component: Home,
-    meta: { layout: 'authorize' }
-  },
-  {
-    path: '/my/history-prev',
-    name: 'MyHistory',
-    component: Home,
-    meta: { layout: 'authorize' }
-  },
-  {
-    path: '/my/history-next',
-    name: 'MyHistory',
-    component: Home,
-    meta: { layout: 'authorize' }
-  },
-  {
-    path: '/my/settings',
-    name: 'MySettings',
-    component: Home,
-    meta: { layout: 'authorize' }
-  },
-  {
-    path: '/my/notifications',
-    name: 'MyNotifications',
-    component: Home,
-    meta: { layout: 'authorize' }
+    children: [
+      {
+        path: 'tickets',
+        name: 'MyTickets',
+        component: MyTickets,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'accommodation',
+        name: 'MyAccommodation',
+        component: MyAccommodation,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'food',
+        name: 'MyFood',
+        component: MyFood,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'transport',
+        name: 'MyTransport',
+        component: MyTransport,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'leisure',
+        name: 'MyLeisure',
+        component: MyLeisure,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'travel-route',
+        name: 'MyTravelRoute',
+        component: MyTickets,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'bookmarks',
+        name: 'MyBookmarks',
+        component: MyTickets,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'scheduler',
+        name: 'MyScheduler',
+        component: MyTickets,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'history',
+        name: 'MyHistory',
+        component: MyTickets,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'history/prev',
+        name: 'MyHistoryPrev',
+        component: MyTickets,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'history/next',
+        name: 'MyHistoryNext',
+        component: MyTickets,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'settings',
+        name: 'MySettings',
+        component: MyTickets,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'notifications',
+        name: 'MyNotifications',
+        component: MyTickets,
+        meta: { layout: 'authorize' }
+      }
+    ]
   }
 ],
 
