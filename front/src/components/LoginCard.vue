@@ -1,43 +1,52 @@
 <template>
-  <v-card class="mx-auto mt-10" width="560" height="623" color="blue lighten-5">
-    <v-card-title class="justify-center headline pt-6">
-      Добро пожаловать!
+  <v-card class="auth-card">
+    <v-card-title class="auth-card-title">
+      <div>
+        Добро пожаловать!
+      </div>
     </v-card-title>
-    <v-spacer/>
     <v-card-text>
-      <v-form style="width: 248px;" class="mx-auto" v-model="formValidity">
-        <v-text-field
+      <v-form style="width: 248px;" class="mx-auto">
+        <div class="input-group">
+          <label for="email-input" :class="{'label-error': isEmailEmpty}">E-mail</label>
+          <v-text-field
+            id="email-input"
+            class="input"
+            rounded
+            filled
+            single-line
+            dense
+            placeholder="Введите Ваш e-mail"
+            @input="isEmailEmpty = false"
+            :error-messages="isEmailEmpty ? 'E-mail не должен быть пустым' : ''"
+            v-model="email"
+          />
+        </div>
+        <div class="input-group">
+          <label for="password-input"  :class="{'label-error': isPasswordEmpty}">Password</label>
+          <label for="password-input"/>
+          <v-text-field
+            id="password-input"
+            class="input"
+            rounded
+            filled
+            single-line
+            dense
+            placeholder="Введите Ваш пароль"
+            type="password"
+            @input="isPasswordEmpty = false"
+            :error-messages="isPasswordEmpty ? 'Пароль не должен быть пустым' : ''"
+            v-model="password"
+          />
+        </div>
+        <v-btn
+          class="continue-button"
           rounded
-          filled
-          flat
-          dense
-          label="E-mail"
-          placeholder="Введите Ваш e-mail"
-          :rules="emailRules"
-          @input="errorMessage = ''"
-          v-model="email"
-        />
-        <v-text-field
-          rounded
-          filled
-          flat
-          dense
-          label="Password"
-          placeholder="Введите Ваш пароль"
-          type="password"
-          :rules="passwordRules"
-          :error-messages="errorMessage"
-          @input="errorMessage = ''"
-          v-model="password"
-        />
-        <v-btn rounded
-               depressed
-               large
-               class="mb-3"
-               :disabled="!formValidity"
-               @click="login"
+          depressed
+          large
+          @click="login"
         >Продолжить</v-btn>
-        <v-btn text>Забыли пароль?</v-btn>
+        <div class="forget-password">Забыли пароль?</div>
       </v-form>
     </v-card-text>
   </v-card>
@@ -49,18 +58,15 @@ export default {
     return {
       email: '',
       password: '',
-      emailRules: [
-        value => !!value || 'Fill this field!'
-      ],
-      passwordRules: [
-        value => !!value || 'Fill this field!'
-      ],
-      formValidity: false,
-      errorMessage: ''
+      isEmailEmpty: false,
+      isPasswordEmpty: false
     };
   },
   methods: {
     login () {
+      if (!this.validateFields()) {
+        return;
+      }
       this.$store.dispatch('login', {
         email: this.email,
         password: this.password
@@ -70,7 +76,14 @@ export default {
         }).catch((error) => {
           this.errorMessage = error.response.data;
         });
+    },
+    validateFields () {
+      this.isEmailEmpty = !this.email;
+      this.isPasswordEmpty = !this.password;
+      return !this.isPasswordEmpty && !this.isEmailEmpty;
     }
   }
 };
 </script>
+
+<style scoped src="@styles/common.css" />
