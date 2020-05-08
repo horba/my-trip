@@ -8,7 +8,10 @@
     <v-card-text>
       <v-form style="width: 248px;" class="mx-auto">
         <div class="input-group">
-          <label for="email-input" :class="{'label-error': isEmailEmpty}">E-mail</label>
+          <label
+            for="email-input"
+            :class="{'label-error': isEmailEmpty || serverError}"
+          >E-mail</label>
           <v-text-field
             id="email-input"
             class="input"
@@ -17,13 +20,16 @@
             single-line
             dense
             placeholder="Введите Ваш e-mail"
-            @input="isEmailEmpty = false"
+            @input="isEmailEmpty = false; serverError = '';"
             :error-messages="isEmailEmpty ? 'E-mail не должен быть пустым' : ''"
             v-model="email"
           />
         </div>
         <div class="input-group">
-          <label for="password-input"  :class="{'label-error': isPasswordEmpty}">Password</label>
+          <label
+            for="password-input"
+            :class="{'label-error': isPasswordEmpty || serverError}"
+          >Password</label>
           <label for="password-input"/>
           <v-text-field
             id="password-input"
@@ -34,8 +40,9 @@
             dense
             placeholder="Введите Ваш пароль"
             type="password"
-            @input="isPasswordEmpty = false"
-            :error-messages="isPasswordEmpty ? 'Пароль не должен быть пустым' : ''"
+            @input="isPasswordEmpty = false; serverError = '';"
+            :error-messages="serverError ? serverError :
+              isPasswordEmpty ? 'Пароль не должен быть пустым' : ''"
             v-model="password"
           />
         </div>
@@ -59,7 +66,8 @@ export default {
       email: '',
       password: '',
       isEmailEmpty: false,
-      isPasswordEmpty: false
+      isPasswordEmpty: false,
+      serverError: ''
     };
   },
   methods: {
@@ -74,7 +82,7 @@ export default {
         .then(() => {
           this.$router.push('/');
         }).catch((error) => {
-          this.errorMessage = error.response.data;
+          this.serverError = error.response.data || 'Invalid password';
         });
     },
     validateFields () {
