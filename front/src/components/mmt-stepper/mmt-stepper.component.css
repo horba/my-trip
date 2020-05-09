@@ -1,0 +1,44 @@
+.stepper {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 24px;
+}
+
+  .stepper .step {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-basis: 200px;
+  }
+
+    .stepper .step .title {
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .stepper .step .sub-title {
+      font-size: 14px;
+    }
+
+    .stepper .step .icon-wrapper {
+      display: flex;
+      align-items: center;
+      margin: 25px 0;
+    }
+
+      .stepper .step .icon-wrapper .line {
+        height: 3px;
+        flex-grow: 1;
+      }
+
+      .stepper .step .icon-wrapper .icon {
+        text-decoration: none;
+        border-radius: 50%;
+        height: 45px;
+        width: 45px;
+        line-height: 45px;
+        text-align: center;
+        z-index: 999;
+      }

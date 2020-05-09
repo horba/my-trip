@@ -1,0 +1,14 @@
+header {
+  font-size: 18px;
+}
+
+  header .v-toolbar__title a {
+    font-size: 18px;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  header .v-btn {
+    text-transform: capitalize;
+  }

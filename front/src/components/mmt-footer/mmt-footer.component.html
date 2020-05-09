@@ -1,0 +1,61 @@
+<v-footer color="primary lighten-6 black--text">
+  <v-container>
+    <v-row>
+      <v-col md="3" sm="12">
+        <div class="link-wrapper">
+          <router-link to="/" class="title">MakeMeTrip</router-link>
+        </div>
+        <div class="link-wrapper">
+          <router-link to="/about-us" class="black--text">О нас</router-link>
+        </div>
+        <div>
+          <span>Присоедениться:</span>
+          <div>
+            <v-btn icon>
+              <v-icon>mdi-facebook</v-icon>
+            </v-btn>
+            <v-btn icon>
+              <v-icon>mdi-google</v-icon>
+            </v-btn>
+            <v-btn icon>
+              <v-icon>mdi-instagram</v-icon>
+            </v-btn>
+          </div>
+        </div>
+      </v-col>
+
+      <v-col md="6" sm="12">
+        <v-row justify="space-between">
+          <v-col md="6" sm="12">
+            <div v-for="link in links1" :key="link.title" class="link-wrapper">
+              <router-link :to="link.route" class="black--text">
+                {{ link.title }}
+              </router-link>
+            </div>
+          </v-col>
+
+          <v-col md="6" sm="12">
+            <div v-for="link in links2" :key="link.title" class="link-wrapper">
+              <router-link :to="link.route" class="black--text">
+                {{ link.title }}
+              </router-link>
+            </div>
+          </v-col>
+        </v-row>
+      </v-col>
+
+      <v-col md="3" sm="12">
+        <v-col md="12">Подписаться на новости MakeMeTrip:</v-col>
+        <v-row>
+          <v-col md="6" sm="12">
+            <v-text-field placeholder="Введите Ваш e-mail" type="e-mail" solo flat rounded dense></v-text-field>
+          </v-col>
+          <v-col md="6" sm="12">
+            <v-btn text rounded dense class="primary">Подписаться</v-btn>
+          </v-col>
+        </v-row>
+      </v-col>
+
+    </v-row>
+  </v-container>
+</v-footer>
