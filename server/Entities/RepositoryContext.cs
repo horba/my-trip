@@ -14,7 +14,7 @@ namespace Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlServer(
-                "Server=192.168.1.128,51528\\SQLEXPRESS;Database=master;User Id=sa;Password=server;"
+                "Server=DELLVOSTRO3560;Database=master;Integrated Security=True;"
                 );
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
