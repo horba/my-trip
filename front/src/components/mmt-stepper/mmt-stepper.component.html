@@ -1,0 +1,17 @@
+<v-card tile flat>
+  <div class="stepper">
+    <template v-for="(item, n) in items">
+      <div class="step" :key="`${n}-step`">
+        <div class="title">{{ item.title }}</div>
+        <div class="icon-wrapper">
+          <div :class="`line ${getPverClass(item, n)}`"></div>
+          <router-link :to="item.link" :class="`icon ${getIconClass(item)}`">
+            <v-icon class="white--text">{{ item.icon }}</v-icon>
+          </router-link>
+          <div :class="`line ${getNextClass(item, n)}`"></div>
+        </div>
+        <div class="sub-title">{{ item.details }}</div>
+      </div>
+    </template>
+  </div>
+</v-card>

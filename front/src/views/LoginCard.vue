@@ -1,12 +1,12 @@
 <template>
   <v-card class="auth-card">
     <v-card-title class="auth-card-title">
-      <div>
+      <h4>
         Добро пожаловать!
-      </div>
+      </h4>
     </v-card-title>
     <v-card-text>
-      <v-form style="width: 248px;" class="mx-auto">
+      <v-form class="auth-form">
         <div class="input-group">
           <label
             for="email-input"

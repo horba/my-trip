@@ -1,5 +1,5 @@
 <template>
-  <h2>Home</h2>
+  <h2>For Tour Operators</h2>
 </template>
 
 <script>

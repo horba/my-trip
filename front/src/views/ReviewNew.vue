@@ -1,5 +1,5 @@
 <template>
-  <h2>Home</h2>
+  <h2>Leave Review</h2>
 </template>
 
 <script>
