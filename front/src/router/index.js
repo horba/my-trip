@@ -1,26 +1,13 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import {
-  Home,
-  Accommodation,
-  Transport,
-  Leisure,
-  Food,
-  HotTours,
-  Articles,
-  AboutUs,
-  PrivacyPolicy,
-  CookiePolicy,
-  TermsOfUse,
-  ForTourOperators,
-  Contacts,
-  ReviewNew,
-  MyTickets,
-  MyAccommodation,
-  MyFood,
-  MyTransport,
-  MyLeisure,
-  LoginCard
+  Home, Accommodation, Transport,
+  Leisure, Food, HotTours,
+  Articles, AboutUs, PrivacyPolicy,
+  CookiePolicy, TermsOfUse, ForTourOperators,
+  Contacts, ReviewNew, MyTickets,
+  MyAccommodation, MyFood, MyTransport,
+  MyLeisure, SignIn
 } from '@views';
 
 Vue.use(VueRouter);
@@ -34,7 +21,7 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: LoginCard,
+    component: SignIn,
     meta: {
       allowUnknownUsers: true, // default is true
       allowLoggedUsers: false // default is true

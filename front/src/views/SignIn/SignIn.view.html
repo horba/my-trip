@@ -1,0 +1,47 @@
+<v-card class="auth-card" color="primary lighten-3">
+  <v-card-title class="auth-card-title">
+    <h4>
+      Добро пожаловать!
+    </h4>
+  </v-card-title>
+  <v-card-text>
+    <v-form class="auth-form" ref="form" v-model="formValidity">
+      <MmtTextInput
+        class="input-field"
+        mmt-label="E-mail"
+        rounded
+        filled
+        single-line
+        dense
+        placeholder="Введите Ваш e-mail"
+        v-model="email"
+        :rules="rules"
+        :error-messages="serverError"
+        @input="onInput"
+      />
+      <MmtTextInput
+        class="input-field"
+        mmt-label="Password"
+        rounded
+        filled
+        single-line
+        dense
+        placeholder="Введите Ваш пароль"
+        type="password"
+        v-model="password"
+        :rules="rules"
+        :error-messages="serverError"
+        @input="onInput"
+      />
+      <v-btn
+        class="continue-button"
+        rounded
+        depressed
+        large
+        :disabled="!formValidity"
+        @click="login"
+      >Продолжить</v-btn>
+      <div class="forget-password">Забыли пароль?</div>
+    </v-form>
+  </v-card-text>
+</v-card>

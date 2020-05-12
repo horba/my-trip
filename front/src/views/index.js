@@ -17,4 +17,4 @@ export { default as MyAccommodation } from '@views/user/Accommodation.vue';
 export { default as MyFood } from '@views/user/Food.vue';
 export { default as MyTransport } from '@views/user/Transport.vue';
 export { default as MyLeisure } from '@views/user/Leisure.vue';
-export { default as LoginCard } from './LoginCard.vue';
+export { default as SignIn } from './SignIn/SignIn.view.vue';
