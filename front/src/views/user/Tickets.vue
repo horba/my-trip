@@ -1,16 +1,18 @@
 <template>
   <div>
     <mmt-stepper></mmt-stepper>
+    <MmtTicketsList></MmtTicketsList>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import { MmtStepper } from '@components';
+import { MmtStepper, MmtTicketsList } from '@components';
 
 export default {
   components: {
-    MmtStepper
+    MmtStepper,
+    MmtTicketsList
   }
 };
 </script>
