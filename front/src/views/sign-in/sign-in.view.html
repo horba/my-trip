@@ -6,7 +6,7 @@
   </v-card-title>
   <v-card-text>
     <v-form class="auth-form" ref="form" v-model="formValidity">
-      <MmtTextInput
+      <mmt-text-input
         class="input-field"
         mmt-label="E-mail"
         rounded
@@ -19,7 +19,7 @@
         :error-messages="serverError"
         @input="onInput"
       />
-      <MmtTextInput
+      <mmt-text-input
         class="input-field"
         mmt-label="Password"
         rounded
