@@ -19,7 +19,8 @@ import {
   MyAccommodation,
   MyFood,
   MyTransport,
-  MyLeisure
+  MyLeisure,
+  RecoveryPassword
 } from '@views';
 
 Vue.use(VueRouter);
@@ -179,6 +180,12 @@ const routes = [
         meta: { layout: 'authorize' }
       }
     ]
+  },
+  {
+    path: '/recovery-password',
+    name: 'RecoveryPassword',
+    component: RecoveryPassword,
+    meta: { layout: 'default' }
   }
 ],
 

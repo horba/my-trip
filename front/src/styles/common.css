@@ -2,30 +2,42 @@
   font-weight: 600;
   font-size: 14px;
   font-family: Open Sans;
+  font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1 {
   font-size: 54px;
+  line-height: 170%;
 }
 
 h2 {
   font-size: 38px;
+  line-height: 165%;
 }
 
 h3 {
   font-size: 33px;
+  line-height: 160%;
 }
 
 h4 {
   font-size: 23px;
+  line-height: 150%;
 }
 
 h5 {
   font-size: 18px;
+  line-height: 150%;
 }
 
 h6 {
   font-size: 15px;
+  line-height: 150%;
+}
+
+.mmt-btn{
+  text-transform: none;
+  letter-spacing: 0;
 }

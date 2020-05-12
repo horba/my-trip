@@ -1,0 +1,102 @@
+<template>
+  <v-card
+    color="primary lighten-3"
+    width="560px"
+    height="441px"
+    class="mx-auto"
+    elevation="0"
+  >
+    <v-row>
+      <v-col>
+        <v-row justify="center" align="center">
+          <v-card-title
+            primary-title
+            class="primary--text text--lighten-1"
+            color="primary lighten-1"
+          >
+            <h4>Восстановление пароля</h4>
+          </v-card-title>
+        </v-row>
+        <v-card-text>
+          <v-stepper
+            non-linear
+            alt-labels
+            elevation="0"
+          >
+            <v-stepper-header>
+              <v-stepper-step step="1">
+                <div class="text-center">Проверка почты</div>
+              </v-stepper-step>
+              <v-divider></v-divider>
+              <v-stepper-step step="2">
+                <div class="text-center">Восстановление пароля</div>
+              </v-stepper-step>
+              <v-divider></v-divider>
+              <v-stepper-step step="3">
+                <div class="text-center">Подтверждение</div>
+              </v-stepper-step>
+            </v-stepper-header>
+          </v-stepper>
+          <div class="text-center">
+            Введите электронную почту Вашего аккаунта, после чего Вам будет
+            отправлена ссылка для восстановления пароля.
+          </div>
+          <label for="email" class="black--text text-left">E-mail</label>
+          <v-text-field
+            name="email"
+            placeholder="Введите ваш E-mail"
+            id="email"
+            class="email"
+            type="e-mail"
+            :error="error"
+            :outlined="error"
+            :hint="error ? 'Почта написана не правильно' : ''"
+            :color="error ? 'error' : 'primary'"
+            rounded
+            solo
+            flat
+            height="35px"
+            dense
+          ></v-text-field>
+        </v-card-text>
+        <v-row cols="2" justify="center" align="center">
+          <v-card-actions>
+            <v-col>
+              <v-btn
+                class="mmt-btn"
+                rounded
+                color="primary"
+                :disabled="!success"
+                height="39px"
+              >Восстановить</v-btn>
+            </v-col>
+            <v-col>
+              <v-btn
+                rounded
+                outlined
+                color="accent lighten-1"
+                class="mmt-btn"
+                large
+                dense
+                height="39px"
+              >Назад</v-btn>
+            </v-col>
+          </v-card-actions>
+        </v-row>
+      </v-col>
+    </v-row>
+  </v-card>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      error: false,
+      success: false
+    };
+  }
+};
+</script>
+
+<style src="@styles/common.css" scoped></style>
