@@ -1,0 +1,14 @@
+<div class="input-wrapper">
+  <label
+    v-if="mmtLabel"
+    :class="{'error--text': isLabelError || $attrs['error-messages'] || $attrs.error != undefined}"
+  >{{mmtLabel}}
+    <v-text-field
+      class="mmt-text-input"
+      v-bind="$attrs"
+      v-on="$listeners"
+      @input = "validateLabel($event)"
+      @blur = "validateLabel($event.target.value)"
+    />
+  </label>
+</div>

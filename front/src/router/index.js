@@ -1,25 +1,13 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import {
-  Home,
-  Accommodation,
-  Transport,
-  Leisure,
-  Food,
-  HotTours,
-  Articles,
-  AboutUs,
-  PrivacyPolicy,
-  CookiePolicy,
-  TermsOfUse,
-  ForTourOperators,
-  Contacts,
-  ReviewNew,
-  MyTickets,
-  MyAccommodation,
-  MyFood,
-  MyTransport,
-  MyLeisure
+  Home, Accommodation, Transport,
+  Leisure, Food, HotTours,
+  Articles, AboutUs, PrivacyPolicy,
+  CookiePolicy, TermsOfUse, ForTourOperators,
+  Contacts, ReviewNew, MyTickets,
+  MyAccommodation, MyFood, MyTransport,
+  MyLeisure, SignIn
 } from '@views';
 
 Vue.use(VueRouter);
@@ -29,6 +17,15 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: SignIn,
+    meta: {
+      allowUnknownUsers: true, // default is true
+      allowLoggedUsers: false // default is true
+    }
   },
   {
     path: '/accommodation',
@@ -187,5 +184,21 @@ const routes = [
         base: process.env.BASE_URL,
         routes
       });
+
+router.beforeEach((to, from, next) => { // Auth Guards
+  const isLoggedIn = localStorage.getItem('user');
+
+  if (isLoggedIn
+    && to.matched.some(record => record.meta.allowLoggedUsers == null
+      || record.meta.allowLoggedUsers)) {
+    next();
+  } else if (!isLoggedIn
+    && to.matched.some(record => record.meta.allowUnknownUsers == null
+      || record.meta.allowUnknownUsers)) {
+    next();
+  } else {
+    next('/');
+  }
+});
 
 export default router;
