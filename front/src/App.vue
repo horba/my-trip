@@ -25,6 +25,4 @@ export default {
 };
 </script>
 
-<style>
-  @import '/src/styles/common.css';
-</style>
+<style src="@styles/variables.css"/>

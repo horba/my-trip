@@ -18,11 +18,7 @@
           </v-card-title>
         </v-row>
         <v-card-text>
-          <v-stepper
-            non-linear
-            alt-labels
-            elevation="0"
-          >
+          <v-stepper non-linear alt-labels elevation="0">
             <v-stepper-header>
               <v-stepper-step step="1">
                 <div class="text-center">Проверка почты</div>
@@ -41,23 +37,21 @@
             Введите электронную почту Вашего аккаунта, после чего Вам будет
             отправлена ссылка для восстановления пароля.
           </div>
-          <label for="email" class="black--text text-left">E-mail</label>
-          <v-text-field
-            name="email"
-            placeholder="Введите ваш E-mail"
-            id="email"
-            class="email"
-            type="e-mail"
-            :error="error"
-            :outlined="error"
-            :hint="error ? 'Почта написана не правильно' : ''"
-            :color="error ? 'error' : 'primary'"
-            rounded
-            solo
-            flat
-            height="35px"
-            dense
-          ></v-text-field>
+          <div class="MyInput" width="248px">
+            <mmt-text-input
+              class="input-field"
+              mmt-label="E-mail"
+              rounded
+              filled
+              single-line
+              dense
+              placeholder="Введите Ваш e-mail"
+              v-model="email"
+              :rules="rules"
+              :error-messages="serverError"
+              @input="onInput"
+            />
+          </div>
         </v-card-text>
         <v-row cols="2" justify="center" align="center">
           <v-card-actions>
@@ -68,7 +62,8 @@
                 color="primary"
                 :disabled="!success"
                 height="39px"
-              >Восстановить</v-btn>
+              >Восстановить
+              </v-btn>
             </v-col>
             <v-col>
               <v-btn
@@ -79,9 +74,16 @@
                 large
                 dense
                 height="39px"
-              >Назад</v-btn>
+              >Назад
+              </v-btn>
             </v-col>
           </v-card-actions>
+        </v-row>
+        <v-row>
+          <div class="text-center">
+            * Получив ссылку, перейтиде по ней и продолжите процедуру
+            восстановления. Это займет всего пару минут
+          </div>
         </v-row>
       </v-col>
     </v-row>
@@ -89,14 +91,27 @@
 </template>
 
 <script>
+import { MmtTextInput } from '@components';
 export default {
+  components: {
+    MmtTextInput
+  },
   data () {
     return {
       error: false,
-      success: false
+      success: false,
+      email: '',
+      serverError: '',
+      formValidity: true,
+      rules: [ value => !!value || 'Поле не должно быть пустым' ]
     };
   }
 };
 </script>
 
-<style src="@styles/common.css" scoped></style>
+<style scoped>
+@import url("./src/styles/common.css");
+.MyInput{
+  display: flex
+}
+</style>
