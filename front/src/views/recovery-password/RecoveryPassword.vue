@@ -2,7 +2,6 @@
   <v-card
     color="primary lighten-3"
     width="560px"
-    height="441px"
     class="mx-auto"
     elevation="0"
   >
@@ -105,13 +104,19 @@ export default {
       formValidity: true,
       rules: [ value => !!value || 'Поле не должно быть пустым' ]
     };
+  },
+  methods: {
+    onInput () {
+      this.serverError = '';
+    }
   }
 };
 </script>
 
 <style scoped>
-@import url("./src/styles/common.css");
+/* @import url("./src/styles/common.css"); */
 .MyInput{
-  display: flex
+  display: flex;
+  justify-content: center;
 }
 </style>
