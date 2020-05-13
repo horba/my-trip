@@ -4,25 +4,26 @@
 }
 
 label {
-  margin: 0 0 5px 18px;
+  margin-left: 18px;
   user-select: none;
   color: var(--mmt-label-color);
   line-height: 1.25em;
 }
 
-.input-wrapper {
+label .input-wrapper {
   display: flex;
   flex-wrap: wrap;
 }
 
-.mmt-text-input{
+label .mmt-text-input{
+  margin-top: 6px;
   flex-basis: 100%;
 }
 
-.mmt-text-input.v-input--dense >>> .v-input__control > .v-input__slot {
+label .mmt-text-input.v-input--dense >>> .v-input__control > .v-input__slot {
   min-height: var(--dense-input-min-height);
 }
 
-.mmt-text-input.v-text-field--filled >>> .v-input__control > .v-input__slot {
+label .mmt-text-input.v-text-field--filled >>> .v-input__control > .v-input__slot {
   background-color: var(--filled-input-fill-color);
 }
