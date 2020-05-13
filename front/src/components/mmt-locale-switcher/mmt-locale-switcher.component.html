@@ -1,0 +1,13 @@
+<div class="locale-switcher">
+  <v-select :items="locales"
+            v-on:change="switchLocale"
+            :label="$t('footer.language')"
+            v-model="this.$root.$i18n.locale">
+    <template slot="selection" slot-scope="data">
+      {{ $t(data.item.text) }}
+    </template>
+    <template slot="item" slot-scope="data">
+      {{ $t(data.item.text) }}
+    </template>
+  </v-select>
+</div>

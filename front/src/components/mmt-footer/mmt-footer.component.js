@@ -8,24 +8,25 @@ export default {
     VCol,
     VTextField,
     VBtn,
-    VIcon
+    VIcon,
+    MmtLocaleSwitcher: () => import('../mmt-locale-switcher/mmt-locale-switcher.component.vue')
   },
   data: () => ({
     links1: [
-      { title: 'Жилье', route: '/accommodation' },
-      { title: 'Транспорт', route: '/transport' },
-      { title: 'Досуг', route: 'leisure' },
-      { title: 'Еда', route: '/food' },
-      { title: 'Горящие туры', route: '/hot-tours' },
-      { title: 'Статьи', route: '/articles' }
+      { title: 'menu.accommodation', route: '/accommodation' },
+      { title: 'menu.transport', route: '/transport' },
+      { title: 'menu.leisure', route: 'leisure' },
+      { title: 'menu.food', route: '/food' },
+      { title: 'menu.hotTours', route: '/hot-tours' },
+      { title: 'menu.articles', route: '/articles' }
     ],
     links2: [
-      { title: 'Политика конфиденциальности', route: '/privacy-policy' },
-      { title: 'Политика использования Cookie', route: '/cookie-policy' },
-      { title: 'Пользовательское соглашение', route: '/terms-of-use' },
-      { title: 'Туроператорам', route: '/for-tour-operators' },
-      { title: 'Контакты', route: '/contacts' },
-      { title: 'Оставить отзыв о сайте', route: '/review/new' }
+      { title: 'menu.privacyPolicy', route: '/privacy-policy' },
+      { title: 'menu.cookiePolicy', route: '/cookie-policy' },
+      { title: 'menu.termsOfUse', route: '/terms-of-use' },
+      { title: 'menu.forTourOperators', route: '/for-tour-operators' },
+      { title: 'menu.contacts', route: '/contacts' },
+      { title: 'menu.reviewNew', route: '/review/new' }
     ]
   })
 };

@@ -2,7 +2,7 @@
   <div class="stepper">
     <template v-for="(item, n) in items">
       <div class="step" :key="`${n}-step`">
-        <div class="title">{{ item.title }}</div>
+        <div class="title">{{ $t(item.title) }}</div>
         <div class="icon-wrapper">
           <div :class="`line ${getPverClass(item, n)}`"></div>
           <router-link :to="item.link" :class="`icon ${getIconClass(item)}`">
