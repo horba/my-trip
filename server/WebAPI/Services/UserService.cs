@@ -25,5 +25,11 @@ namespace WebAPI.Services
             }
             return null;
         }
+
+        public User IsUser(string email)
+        {
+            var user = _userRepository.FindUserByEmail(email);
+            return user;
+        }
     }
 }
