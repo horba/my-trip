@@ -38,13 +38,13 @@ namespace WebAPI.Controllers
         [Route("SignUp")]
         public IActionResult Registration(AuthRequest authRequest)
         {
-            if (_userService.FindUser(authRequest.Email))
+            if (_userService.IsUserExist(authRequest.Email))
             {
                 return UnprocessableEntity();
             }
             else
             {
-                _userService.NewUser(authRequest.Email, authRequest.Password);
+                _userService.CreateUser(authRequest.Email, authRequest.Password);
                 return Ok();
             }
         }

@@ -26,12 +26,12 @@ namespace WebAPI.Services
             return null;
         }
 
-        public bool FindUser(string email)
+        public bool IsUserExist(string email)
         {
             return _userRepository.FindUserByEmail(email) == null ? false : true;
         }
 
-        public void NewUser(string email, string password)
+        public void CreateUser(string email, string password)
         {
             var user = new User
             {
@@ -39,7 +39,7 @@ namespace WebAPI.Services
                 Password = CryptoUtils.HashPassword(password)
             };
             
-            _userRepository.NewUser(user);
+            _userRepository.CreateUser(user);
         }
     }
 }
