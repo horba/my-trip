@@ -1,0 +1,81 @@
+<v-card
+  class="sign-up-card mx-auto"
+  elevation="0"
+  color="#F6F8FB"
+  >
+  <v-card-title>
+    <h4>Добро пожаловать!</h4>
+  </v-card-title>
+  <v-card-text>
+    <v-form
+      class="sign-up-form"
+      ref="signUpForm"
+      v-model="valid"
+    >
+      <mmt-text-input
+        class="sign-up-text-field"
+        placeholder="Введите Ваш e-mail"
+        mmt-label="E-mail"
+        rounded
+        filled
+        dense
+        :rules="[rules.isEmpty, rules.validEmail, rules.existingEmail]"
+        v-model="email"
+      />
+      <mmt-text-input
+        class="sign-up-text-field"
+        placeholder="Придумайте пароль"
+        mmt-label="Password"
+        rounded
+        filled
+        dense
+        counter
+        :type="showPass ? 'text' : 'password'"
+        :append-icon="showPass ? 'mdi-eye' : 'mdi-eye-off'"
+        @click:append="showPass = !showPass"
+        :rules="[rules.isEmpty, rules.minPassLen]"
+        v-model="firstPass"  
+      />
+      <mmt-text-input
+        class="sign-up-text-field"
+        placeholder="Повторите пароль"
+        mmt-label="Password"
+        rounded
+        filled
+        dense
+        counter
+        :type="showPass ? 'text' : 'password'"
+        :rules="[rules.isEmpty, rules.minPassLen, rules.samePass]"
+        v-model="secondPass" 
+      />
+    </v-form>
+  </v-card-text>
+  <v-card-actions class="sign-up-card-actions">
+    <v-btn
+      class="continue-btn"
+      rounded
+      elevation="0"
+      color="#03A9F4"
+      @click="signUp"
+    >Продолжить</v-btn>
+    <span>Или</span>
+    <v-btn
+      class="google-btn social-btn"
+      rounded
+      outlined
+      color="#2962FF"
+    >Продолжить через Google<v-icon right>mdi-google</v-icon></v-btn>
+    <v-btn
+      class="facebook-btn social-btn"
+      rounded
+      outlined
+      color="#2962FF"
+    >Продолжить через Facebook<v-icon right>mdi-facebook</v-icon></v-btn>
+  </v-card-actions>
+  <span>
+    Продолжая, Вы соглашаетесь с
+    <a>условиями пользования</a>
+    сервисом и
+    <a>политикой конфиденциальности MakeMeTrip.</a>
+  </span>
+</v-card>
