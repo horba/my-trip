@@ -20,6 +20,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    signUp ({ commit }, body) {
+      return axios.post('https://localhost:5001/api/auth/signup', body);
+    },
     login ({ commit }, credentials) {
       return axios.post('//localhost:3000/login', credentials)
         .then(({ data }) => {

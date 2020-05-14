@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import { MmtTextInput } from '@components';
 export default {
   components: {
@@ -31,7 +29,7 @@ export default {
           password: this.firstPass
         };
 
-        axios.post('https://localhost:5001/api/auth/signup', body)
+        this.$store.dispatch('signUp', body)
           .then(() => this.$router.push('/login'))
           .catch(e => {
             if (e && e.response.status === 422) {
