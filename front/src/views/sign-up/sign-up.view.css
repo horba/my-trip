@@ -13,6 +13,19 @@
   align-items: center;
 }
 
+.continue-button.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+  background-color: var(--continue-button-background-color);
+}
+
+.continue-button.v-btn:not(.v-btn--disabled):not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) >>> .v-btn__content {
+  color: var(--continue-button-active-color);
+}
+
+.social-btn {
+  border-color: var(--social-network-button-background-color);
+  color: var(--social-network-button-background-color);
+}
+
 .sign-up-form .sign-up-text-field{
   width: 248px;
 }
@@ -22,7 +35,7 @@
   flex-direction: column;
 }
 
-.sign-up-card-actions > .continue-btn{
+.sign-up-card-actions > .continue-button{
   padding:10px 48px;
   color: white;
 }
