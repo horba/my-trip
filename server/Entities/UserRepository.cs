@@ -16,5 +16,11 @@ namespace Entities
         {
             return RepositoryContext.Users.FirstOrDefault(u => u.Email.Equals(email));
         }
+
+        public void NewUser(User user)
+        {
+            RepositoryContext.Users.Add(user);
+            RepositoryContext.SaveChanges();
+        }
     }
 }
