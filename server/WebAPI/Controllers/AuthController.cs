@@ -32,5 +32,21 @@ namespace WebAPI.Controllers
             var token = _authService.MakeToken(user);
             return Ok(new AuthResponse { AccessToken = token });
         }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("SignUp")]
+        public IActionResult Registration(AuthRequest authRequest)
+        {
+            if (_userService.IsUserExist(authRequest.Email))
+            {
+                return UnprocessableEntity();
+            }
+            else
+            {
+                _userService.CreateUser(authRequest.Email, authRequest.Password);
+                return Ok();
+            }
+        }
     }
 }

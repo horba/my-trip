@@ -25,5 +25,21 @@ namespace WebAPI.Services
             }
             return null;
         }
+
+        public bool IsUserExist(string email)
+        {
+            return _userRepository.FindUserByEmail(email) == null ? false : true;
+        }
+
+        public void CreateUser(string email, string password)
+        {
+            var user = new User
+            {
+                Email = email,
+                Password = CryptoUtils.HashPassword(password)
+            };
+            
+            _userRepository.CreateUser(user);
+        }
     }
 }
