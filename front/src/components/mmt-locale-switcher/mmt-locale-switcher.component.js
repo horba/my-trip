@@ -5,27 +5,30 @@ export default {
   components: {
     VSelect
   },
-  data () {
-    return {
-      locales: [
+  computed: {
+    locales () {
+      return [
         {
-          text: 'locale.en',
+          text: this.$t('locale.en'),
           value: 'en'
         },
         {
-          text: 'locale.ru',
+          text: this.$t('locale.ru'),
           value: 'ru'
         },
         {
-          text: 'locale.ua',
+          text: this.$t('locale.ua'),
           value: 'ua'
-        }]
-    };
-  },
-  methods: {
-    switchLocale (locale) {
-      this.$root.$i18n.locale = locale;
-      window.localStorage.Language = locale;
+        }
+      ];
+    },
+    currentLanguage: {
+      get: function () {
+        return this.$store.state.locale.language;
+      },
+      set: function (language) {
+        this.$store.dispatch('locale/setLanguage', language);
+      }
     }
   }
 };

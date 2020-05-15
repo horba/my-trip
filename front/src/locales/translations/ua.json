@@ -31,10 +31,10 @@
     "join": "Приєднатися",
     "subscribeToNews": "Підписатися на новини",
     "subscribeBtn": "Підписатися",
-    "emailPlh": "Введіть Ваш e-mail",
-    "language": "Мова"
+    "emailPlh": "Введіть Ваш e-mail"    
   },
   "locale": {
+    "language": "Мова",
     "en": "Англійська",
     "ru": "Pосійський",
     "ua": "Українська"

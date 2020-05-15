@@ -31,10 +31,10 @@
     "join": "Join",
     "subscribeToNews": "Subscribe to news",
     "subscribeBtn": "Subscribe",
-    "emailPlh": "Enter your e- mail",
-    "language": "Language"
+    "emailPlh": "Enter your e- mail"    
   },
   "locale": {
+    "language": "Language",
     "en": "English",
     "ru": "Russian",
     "ua": "Ukrainian"
