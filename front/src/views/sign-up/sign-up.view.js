@@ -5,10 +5,10 @@ export default {
   },
   data () {
     return {
+      email: 'user7@email.com',
+      firstPass: 'password',
+      secondPass: 'password',
       valid: true,
-      email: '',
-      firstPass: '',
-      secondPass: '',
       showPass: false,
       existingEmail: false,
       rules: {
@@ -21,23 +21,20 @@ export default {
     };
   },
   methods: {
-    signUp () {
+    async signUp () {
       if (this.valid) {
-        this.showHint = !this.showHint;
-        const body = {
+        const response = await this.$store.dispatch('signUp', {
           email: this.email,
           password: this.firstPass
-        };
-
-        this.$store.dispatch('signUp', body)
-          .then(() => this.$router.push('/login'))
-          .catch(e => {
-            if (e && e.response.status === 422) {
-              this.existingEmail = true;
-              this.validate();
-              this.existingEmail = false;
-            }
-          });
+        });
+        if (response === 'Ok') {
+          this.$router.push('/login');
+        }
+        if (response === 'UnprocessableEntity') {
+          this.existingEmail = true;
+          this.validate();
+          this.existingEmail = false;
+        }
       }
     },
     validate () {
