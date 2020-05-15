@@ -14,17 +14,17 @@ namespace Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlServer(
-                "Server=192.168.1.128,51528\\SQLEXPRESS;Database=master;User Id=sa;Password=server;"
+                "Server=(localdb)\\mssqllocaldb;Database=my-trip;Trusted_Connection=True;"
                 );
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(
-                new User { Id = -1, Email = "test1@users.com", Password = CryptoUtils.HashPassword("test1") },
-                new User { Id = -2, Email = "test2@users.com", Password = CryptoUtils.HashPassword("test2") },
-                new User { Id = -3, Email = "test3@users.com", Password = CryptoUtils.HashPassword("test3") },
-                new User { Id = -4, Email = "test4@users.com", Password = CryptoUtils.HashPassword("test4") },
-                new User { Id = -5, Email = "test5@users.com", Password = CryptoUtils.HashPassword("test5") }
+                new User { Id = -1, Email = "test1@users.com", Password = CryptoUtils.HashPassword("test1111") },
+                new User { Id = -2, Email = "test2@users.com", Password = CryptoUtils.HashPassword("test2222") },
+                new User { Id = -3, Email = "test3@users.com", Password = CryptoUtils.HashPassword("test3333") },
+                new User { Id = -4, Email = "test4@users.com", Password = CryptoUtils.HashPassword("test4444") },
+                new User { Id = -5, Email = "test5@users.com", Password = CryptoUtils.HashPassword("test5555") }
                 );
         }
     }

@@ -22,8 +22,8 @@ export default {
       })
         .then(() => {
           this.$router.push('/');
-        }).catch((error) => {
-          this.serverError = error.response.data || 'Invalid password';
+        }).catch(() => {
+          this.serverError = 'Invalid credentials';
         });
     },
     onInput () {
