@@ -32,7 +32,29 @@ h6 {
   font-size: 15px;
 }
 
+.text-body-regular {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 135%;
+}
+
 .v-btn {
   text-transform: none;
   letter-spacing: normal;
+}
+
+.text-small {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 125%;
+}
+
+.text-semi-bold {
+  font-weight: 600;
+}
+
+.not-accented {
+  color: var(--mmt-color-gray);
 }

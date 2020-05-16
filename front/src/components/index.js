@@ -6,5 +6,5 @@ export { default as MmtUserMenu } from './mmt-user-menu/mmt-user-menu.component.
 export { default as MmtStepper } from './mmt-stepper/mmt-stepper.component.vue';
 export { default as MmtTicketsList } from './mmt-tickets-list.vue';
 export { default as MmtTicketItem } from './mmt-ticket-item.vue';
-// export { default as MmtTicketRoute } from './mmt-ticket-route.vue';
+export { default as MmtTicketRoute } from './mmt-ticket-route.vue';
 export { default as MmtTextInput } from './controls/mmt-text-input/mmt-text-input.component.vue';

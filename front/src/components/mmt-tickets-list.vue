@@ -1,26 +1,18 @@
 ﻿<template>
   <div class="cards-list">
-    <MmtTicketItem v-for="ticket in tickets" :key="ticket.id" ticket-item="ticket"/>
+    <mmt-ticket-item v-for="ticket in ticketItems" :key="ticket.id" :ticket-item="ticket"/>
   </div>
 </template>
 
 <script>
-import { MmtTicketItem } from '@components';
+import MmtTicketItem from '@components/mmt-ticket-item';
 export default {
   name: 'MmtTicketsList',
   components: {
     MmtTicketItem
   },
-  data () {
-    return {
-      tickets: [
-        { id: 1 },
-        { id: 2 },
-        { id: 3 },
-        { id: 4 },
-        { id: 5 }
-      ]
-    };
+  props: {
+    ticketItems: Array
   }
 };
 
