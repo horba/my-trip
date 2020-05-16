@@ -42,7 +42,7 @@ export default {
     height: 72px;
   }
   .price {
-    margin-left: 72px;
+    margin-left: 42px;
   }
   .details {
     margin-right: 16px;
