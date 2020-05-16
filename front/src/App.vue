@@ -26,3 +26,5 @@ export default {
 </script>
 
 <style src="@styles/variables.css"/>
+
+<style src="@styles/common.css"/>
