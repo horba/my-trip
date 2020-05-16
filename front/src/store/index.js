@@ -42,6 +42,17 @@ export default new Vuex.Store({
     },
     logout ({ commit }) {
       commit('CLEAR_USER_DATA');
+    },
+    async getPreviousTrips ({ commit }, queryParams) {
+      return await axios.get(`${serverPath}api/trips/previous?${queryParams}`)
+        .then(r => {
+          if (r.status === 200) {
+            return r;
+          }
+        })
+        .catch(e => {
+          return 'ServerError';
+        });
     }
   },
   getters: {

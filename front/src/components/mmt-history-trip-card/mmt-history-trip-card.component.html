@@ -1,0 +1,43 @@
+<div class="d-flex pa-2 white">
+  <v-card class="mx-auto overflow-hidden trip"
+          color="primary lighten-6 white--text"
+          tile flat
+          :img="trip.imageUrl">
+
+    <v-card-subtitle class="pb-0">
+      Поездка
+    </v-card-subtitle>
+
+    <v-card-title class="headline mb-3 bt-1 ">
+      {{ trip.arrivalCountry.name }}
+    </v-card-title>
+
+    <v-card-subtitle>
+      {{ trip.endDate | date }} - {{ trip.endDate | date }} ({{ trip.totalPrice }} {{ trip.currency }})
+    </v-card-subtitle>
+
+    <div class="d-flex flex-no-wrap justify-space-between">
+
+      <v-card-text class="details">
+        <div v-if="trip.departureCity">
+          <span class="primary--text text--lighten-6">Вылет:</span>
+          {{ trip.departureCity }}.
+        </div>
+        <div v-if="trip.flightTime">
+          <span class="primary--text text--lighten-6">Время полета:</span>
+          {{ trip.flightTime }}.
+        </div>
+        <div v-if="trip.differenceInTime">
+          <span class="primary--text text--lighten-6">Разница во времени:</span>
+          {{ trip.differenceInTime }}.
+        </div>
+      </v-card-text>
+
+      <v-card-actions>
+        <v-btn rounded dense class="continue-button">Подробнее</v-btn>
+      </v-card-actions>
+
+    </div>
+
+  </v-card>
+</div>
