@@ -11,6 +11,8 @@ using Microsoft.IdentityModel.Tokens;
 using Service.Interfaces;
 using Service.MailService;
 using Service.Models;
+using Microsoft.OpenApi.Models;
+using WebAPI.Options;
 using WebAPI.Services;
 
 namespace WebAPI
@@ -57,14 +59,26 @@ namespace WebAPI
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["Jwt:Key"])),
                     ValidateIssuer = true,
+                    ValidIssuer = Configuration["Jwt:Issuer"],
                     ValidateAudience = true,
+                    ValidAudience = Configuration["Jwt:Audience"]
                 };
             });
+<<<<<<< HEAD
 			var emailConfig = Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
 			services.AddSingleton(emailConfig);
 			services.AddScoped<IEmailSender, EmailSender>();
 			services.AddControllers();
 		}
+=======
+            services.AddControllers();
+
+            services.AddSwaggerGen(x =>
+            {
+                x.SwaggerDoc("v1", new OpenApiInfo { Title = "MyTrip Api", Version = "v1" });
+            });
+        }
+>>>>>>> dev
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -73,6 +87,19 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            var swaggerOptions = new SwaggerOptions();
+            Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions);
+
+            app.UseSwagger(option =>
+            {
+                option.RouteTemplate = swaggerOptions.JsonRoute;
+            });
+
+            app.UseSwaggerUI(option =>
+            {
+                option.SwaggerEndpoint(swaggerOptions.UiEndpoint, swaggerOptions.Description);
+            });
 
             app.UseHttpsRedirection();
 

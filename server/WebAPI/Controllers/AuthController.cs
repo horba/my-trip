@@ -1,3 +1,5 @@
+using System.Linq;
+using System.Security.Claims;
 using Entities;
 using Entities.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -31,6 +33,29 @@ namespace WebAPI.Controllers
 
             var token = _authService.MakeToken(user);
             return Ok(new AuthResponse { AccessToken = token });
+        }
+
+        [HttpGet]
+        public IActionResult getTest()
+        {
+            var id = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
+            return Ok($"Your id: {id}");
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("SignUp")]
+        public IActionResult Registration(AuthRequest authRequest)
+        {
+            if (_userService.IsUserExist(authRequest.Email))
+            {
+                return UnprocessableEntity();
+            }
+            else
+            {
+                _userService.CreateUser(authRequest.Email, authRequest.Password);
+                return Ok();
+            }
         }
     }
 }
