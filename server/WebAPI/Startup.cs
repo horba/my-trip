@@ -61,7 +61,9 @@ namespace WebAPI
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["Jwt:Key"])),
                     ValidateIssuer = true,
+                    ValidIssuer = Configuration["Jwt:Issuer"],
                     ValidateAudience = true,
+                    ValidAudience = Configuration["Jwt:Audience"]
                 };
             });
             services.AddControllers();

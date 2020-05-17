@@ -28,7 +28,7 @@ namespace WebAPI.Services
 
         public bool IsUserExist(string email)
         {
-            return _userRepository.FindUserByEmail(email) == null ? false : true;
+            return _userRepository.FindUserByEmail(email) != null;
         }
 
         public void CreateUser(string email, string password)
