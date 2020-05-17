@@ -19,7 +19,7 @@ namespace WebAPI.Services
         public User GetUser(string email, string password)
         {
             var user = _userRepository.FindUserByEmail(email);
-            if (CryptoUtils.VerifyPassword(password, user.Password))
+            if (user != null && CryptoUtils.VerifyPassword(password, user.Password))
             {
                 return user;
             }
@@ -28,7 +28,7 @@ namespace WebAPI.Services
 
         public bool IsUserExist(string email)
         {
-            return _userRepository.FindUserByEmail(email) == null ? false : true;
+            return _userRepository.FindUserByEmail(email) != null;
         }
 
         public void CreateUser(string email, string password)
