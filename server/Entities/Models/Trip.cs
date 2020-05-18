@@ -23,6 +23,7 @@ namespace Entities.Models
 
     public DateTime StartDate { get; internal set; }
     public DateTime EndDate { get; internal set; }
+
     public decimal TotalPrice { get; set; }
     public string Currency { get; set; }
 

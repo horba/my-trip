@@ -16,7 +16,7 @@ using WebAPI.Services;
 
 namespace WebAPI
 {
-  public class Startup
+    public class Startup
     {
         readonly string VueCorsPolicy = "_vueCorsPolicy";
         public Startup(IConfiguration configuration)

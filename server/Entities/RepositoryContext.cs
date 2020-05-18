@@ -55,14 +55,14 @@ namespace Entities
                             Id = -country.Id,
                             UserId = -1,
                             DepartureCountryId = 8,
-                            DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
+                            DepartureCity = "РљРёРµРІ, РћРґРµСЃСЃР° СЃ РїРµСЂРµСЃР°РґРєРѕР№ РІ Р”СѓР±Р°Рµ РёР»Рё РљР°С‚Р°СЂРµ",
                             ArrivalCountryId = country.Id,
                             StartDate = startDate,
                             EndDate = endDate,
                             TotalPrice = 100 + i * country.Id,
                             Currency = "$",
-                            FlightTime = $"{i + i} часов + время пересадки",
-                            DifferenceInTime = $"{i + 1} час",
+                            FlightTime = $"{i + i} С‡Р°СЃРѕРІ + РІСЂРµРјСЏ РїРµСЂРµСЃР°РґРєРё",
+                            DifferenceInTime = $"{i + 1} С‡Р°СЃ",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg"
                           };
                         });

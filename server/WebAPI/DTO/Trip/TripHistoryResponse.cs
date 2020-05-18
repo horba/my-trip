@@ -13,10 +13,8 @@ namespace WebAPI.DTO.Trip
     public DateTime EndDate { get; internal set; }
     public decimal TotalPrice { get; set; }
     public string Currency { get; set; }
-
     public string FlightTime { get; set; }
     public string DifferenceInTime { get; set; }
-
     public string ImageUrl { get; set; }
   }
 }
