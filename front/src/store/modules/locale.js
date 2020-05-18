@@ -6,15 +6,26 @@ export default {
     language: localStorage.getItem('language')
   },
   mutations: {
-    SET_LANGUAGE (state, language) {
-      i18n.locale = language;
-      localStorage.setItem('language', language);
+    INIT_LANGUAGE (state, language) {
+      state.language = language;
+    },
+    CHANGE_LANGUAGE (state, language) {
       state.language = language;
     }
   },
   actions: {
-    setLanguage ({ commit }, locales) {
-      commit('SET_LANGUAGE', locales);
+    initLanguage ({ commit }) {
+      const language = localStorage.getItem('language');
+      if (language) {
+        i18n.locale = language;
+        localStorage.setItem('language', language);
+        commit('INIT_LANGUAGE', language);
+      }
+    },
+    changeLanguage ({ commit }, language) {
+      i18n.locale = language;
+      localStorage.setItem('language', language);
+      commit('CHANGE_LANGUAGE', language);
     }
   }
 };

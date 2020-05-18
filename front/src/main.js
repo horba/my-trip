@@ -19,16 +19,13 @@ new Vue({
   i18n,
   created () {
     // load data from localStorage to vuex (on f5)
-    const userString = localStorage.getItem('user'),
-          language = localStorage.getItem('language');
+    const userString = localStorage.getItem('user');
     if (userString) {
       const userData = JSON.parse(userString);
       this.$store.commit('SET_USER_DATA', userData);
     }
 
-    if (language) {
-      this.$store.dispatch('locale/setLanguage', language);
-    }
+    this.$store.dispatch('locale/initLanguage');
 
     // prevent to use outdated token
     axios.interceptors.response.use(response => response, error => {
