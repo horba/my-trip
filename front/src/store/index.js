@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 import locale from './modules/locale';
+const { serverPath } = require('@/config/config.dev.json');
 
 Vue.use(Vuex);
 
@@ -24,8 +25,21 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    async signUp (context, body) {
+      return await axios.post(`${serverPath}api/auth/signup`, body)
+        .then(r => {
+          if (r.status === 200) {
+            return 'Ok';
+          }
+        })
+        .catch(e => {
+          if (e && e.response.status === 422) {
+            return 'UnprocessableEntity';
+          }
+        });
+    },
     login ({ commit }, credentials) {
-      return axios.post('//localhost:3000/login', credentials)
+      return axios.post(`${serverPath}api/auth`, credentials)
         .then(({ data }) => {
           commit('SET_USER_DATA', data);
         });

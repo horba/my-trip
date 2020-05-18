@@ -18,3 +18,4 @@ export { default as MyFood } from '@views/user/Food.vue';
 export { default as MyTransport } from '@views/user/Transport.vue';
 export { default as MyLeisure } from '@views/user/Leisure.vue';
 export { default as SignIn } from './sign-in/sign-in.view.vue';
+export { default as SignUp } from './sign-up/sign-up.view.vue';
