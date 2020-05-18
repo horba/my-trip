@@ -1,7 +1,6 @@
 ﻿using Entities;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using WebAPI.DTO.Trip;
 using AutoMapper;
@@ -21,11 +20,9 @@ namespace WebAPI.Services
 
     public IEnumerable<TripHistoryResponse> GetPreviousTrips(int userId, int? year, string searchQuery)
     {
-      var culture = CultureInfo.CreateSpecificCulture("ru-RU");
-
-      var date = DateTime.Now;
+      var dateNow = DateTime.Now;
       var trips = _tripRepository.GetUserTrips(userId)
-                                 .Where(t => t.EndDate < date);
+                                 .Where(t => t.EndDate < dateNow);
 
       if (year.HasValue && year.Value > 0)
         trips = trips.Where(t => t.StartDate.Year.Equals(year.Value) ||

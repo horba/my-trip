@@ -1,15 +1,14 @@
 using System.Linq;
 using System.Security.Claims;
-using Entities;
-using Entities.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.DTO;
+using WebAPI.Extension;
 using WebAPI.Services;
 
 namespace WebAPI.Controllers
 {
-    [Authorize]
+  [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class AuthController : Controller
@@ -38,7 +37,7 @@ namespace WebAPI.Controllers
         [HttpGet]
         public IActionResult getTest()
         {
-            var id = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
+            var id = HttpContext.GetUserIdFromClaim();
             return Ok($"Your id: {id}");
         }
 

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using WebAPI.DTO.Trip;
+using WebAPI.Extension;
 using WebAPI.Services;
 
 namespace WebAPI.Controllers
@@ -18,13 +19,12 @@ namespace WebAPI.Controllers
       _tripService = tripService;
     }
 
-    //[Authorize]
+    [Authorize]
     [Route("previous")]
     [ProducesResponseType(typeof(IEnumerable<TripHistoryResponse>), StatusCodes.Status200OK)]
     public IActionResult GetPreviousTrips(int? year, string searchQuery)
     {
-      var userId = -1; // int.Parse("HttpContext.User.Identity.Name");
-      var trips = _tripService.GetPreviousTrips(userId, year, searchQuery);
+      var trips = _tripService.GetPreviousTrips(HttpContext.GetUserIdFromClaim(), year, searchQuery);
       return Ok(trips);
     }
   }
