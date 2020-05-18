@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     changeLanguage (language) {
-      this.$store.dispatch('locale/changeLanguage', language);
+      this.$store.commit('locale/CHANGE_LANGUAGE', language);
     }
   }
 };

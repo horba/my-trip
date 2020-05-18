@@ -25,7 +25,7 @@ new Vue({
       this.$store.commit('SET_USER_DATA', userData);
     }
 
-    this.$store.dispatch('locale/initLanguage');
+    this.$store.commit('locale/INIT_LANGUAGE');
 
     // prevent to use outdated token
     axios.interceptors.response.use(response => response, error => {
