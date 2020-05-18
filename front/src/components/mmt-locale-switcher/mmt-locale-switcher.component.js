@@ -1,5 +1,4 @@
 import { VSelect } from 'vuetify/lib';
-import { mapState } from 'vuex';
 
 export default {
   name: 'mmt-locale-switcher',
@@ -7,9 +6,9 @@ export default {
     VSelect
   },
   computed: {
-    ...mapState({
-      language: state => state.locale.language
-    }),
+    language () {
+      return this.$store.state.language;
+    },
     locales () {
       return [
         {
