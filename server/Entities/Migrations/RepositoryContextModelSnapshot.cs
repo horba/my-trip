@@ -271,31 +271,31 @@ namespace Entities.Migrations
                         {
                             Id = -1,
                             Email = "test1@users.com",
-                            Password = "IfBQ+WOkep6GOTjmLz+xjYXEbbl7+hJVOw+ZAr1a4xmL4HtuvV9yXIsFi4SrzVIN"
+                            Password = "0cy6qRLzxD3QlIuWRAgJglhK4naCwK1khtMXYUrocy4R7A98IFvyJgGS0u0rQuU2"
                         },
                         new
                         {
                             Id = -2,
                             Email = "test2@users.com",
-                            Password = "kWZVgA0hmrU0yCe5WKNWrzatDNnE3RfvjcBw3td2bhDC0is4gxzeuQfoDez3Uajh"
+                            Password = "pRpBVq2mZq/sFyneP5hfP9IfXdLxwcWqFddpI3Mksa30Qv5+l76BsbLoPyTsYJsr"
                         },
                         new
                         {
                             Id = -3,
                             Email = "test3@users.com",
-                            Password = "V1QjU6XjQ4kKODFMqRqPSQHctTDuWLAT4nsp44L14EBIrncLQzO8hawcozIQYBFR"
+                            Password = "MFUC0Wjm2iYvRI/rNJRBzQb+8/AHsN3GqLTkXj3UbPKxUwLgn3IsdNX3SplbVFHu"
                         },
                         new
                         {
                             Id = -4,
                             Email = "test4@users.com",
-                            Password = "5mgrcrdwS78STNTyyd4FotrXDJMuwZQKBIu+omYCG+m1v6zrJ76jc7o/LnMwbEHZ"
+                            Password = "nFIQsPpOx+YiLz/v0KfbDG4VSsmAiPZyf5nvpfyztO9EZqAyXfkv421amL9TymAE"
                         },
                         new
                         {
                             Id = -5,
                             Email = "test5@users.com",
-                            Password = "3ZrRqHvOc+mZkjK35J4YB6KRLnrqOJuJ5a5mL8cEieG22ZJ5ngAdsPiPVMubCJ9y"
+                            Password = "QGHv9Ph5Zs4Wamckp35z1tCgyknOdWwKzslA85YfJCPvONI994pAhF12LX4gdAbt"
                         });
                 });
 
