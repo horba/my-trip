@@ -4,6 +4,11 @@ export default {
       required: false,
       type: String,
       default: ''
+    },
+    mmtDense: {
+      required: false,
+      type: Boolean,
+      default: false
     }
   },
   inheritAttrs: false,
@@ -18,5 +23,4 @@ export default {
       this.isLabelError = rules ? rules.some(rule => rule(value) !== true) : false;
     }
   }
-
 };

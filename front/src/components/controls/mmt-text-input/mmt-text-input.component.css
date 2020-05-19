@@ -1,6 +1,14 @@
 * >>> * {
-  font-size: 12px;
   font-weight: normal;
+}
+
+label,
+.mmt-text-input >>> .v-messages__message {
+  font-size: 12px;
+}
+
+.mmt-text-input.mmt-text-input--dense >>> .v-input__slot > * {
+  font-size: 12px;
 }
 
 label {
@@ -20,8 +28,8 @@ label .mmt-text-input{
   flex-basis: 100%;
 }
 
-label .mmt-text-input.v-input--dense >>> .v-input__control > .v-input__slot {
-  min-height: var(--dense-input-min-height);
+label .mmt-text-input.mmt-text-input--dense >>> .v-input__control > .v-input__slot {
+  min-height: var(--mmt-dense-input-min-height);
 }
 
 label .mmt-text-input.v-text-field--filled >>> .v-input__control > .v-input__slot {

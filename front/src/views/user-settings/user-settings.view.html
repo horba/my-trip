@@ -1,0 +1,18 @@
+<div>
+  <v-form class="settings-form">
+    <h5>Общие настройки</h5>
+    <mmt-text-input class="input-field" v-model="lastName" mmt-label="Фамилия" hint="Введите фамилию" persistent-hint rounded filled
+      single-line dense />
+    <mmt-text-input class="input-field" v-model="firstName" mmt-label="Имя" hint="Введите имя" persistent-hint rounded filled
+      single-line dense />
+    <mmt-text-input class="input-field" v-model="email" mmt-label="Почта" hint="Пример: bereznievatiy@gmail.com" persistent-hint rounded
+      filled single-line dense />
+    <v-select v-model="gender" :items="genders" rounded filled dense append-icon="mdi-chevron-down" placeholder="Пол"
+      hide-details />
+    <v-select v-model="language" :items="languages" rounded filled dense append-icon="mdi-chevron-down" placeholder="Язык"
+      hide-details />
+    <v-select v-model="country" :items="countries" rounded filled dense append-icon="mdi-chevron-down" placeholder="Страна"
+      hide-details />
+    <v-btn @click.prevent="applySettings">Сохранить</v-btn>
+  </v-form>
+</div>

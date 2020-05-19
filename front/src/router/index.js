@@ -7,7 +7,8 @@ import {
   CookiePolicy, TermsOfUse, ForTourOperators,
   Contacts, ReviewNew, MyTickets,
   MyAccommodation, MyFood, MyTransport,
-  MyLeisure, SignIn, SignUp
+  MyLeisure, SignIn, SignUp,
+  UserSettings
 } from '@views';
 
 Vue.use(VueRouter);
@@ -22,6 +23,14 @@ const routes = [
     path: '/signup',
     name: 'SignUp',
     component: SignUp
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: UserSettings,
+    meta: {
+      allowUnknownUsers: false
+    }
   },
   {
     path: '/login',

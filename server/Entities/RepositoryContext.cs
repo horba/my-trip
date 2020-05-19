@@ -1,4 +1,5 @@
 using Entities.Models;
+using Entities.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace Entities
@@ -20,11 +21,61 @@ namespace Entities
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(
-                new User { Id = -1, Email = "test1@users.com", Password = CryptoUtils.HashPassword("test1111") },
-                new User { Id = -2, Email = "test2@users.com", Password = CryptoUtils.HashPassword("test2222") },
-                new User { Id = -3, Email = "test3@users.com", Password = CryptoUtils.HashPassword("test3333") },
-                new User { Id = -4, Email = "test4@users.com", Password = CryptoUtils.HashPassword("test4444") },
-                new User { Id = -5, Email = "test5@users.com", Password = CryptoUtils.HashPassword("test5555") }
+                new User
+                {
+                    Id = -1,
+                    Email = "test1@users.com",
+                    Password = CryptoUtils.HashPassword("test1111"),
+                    FirstName = "Fn1",
+                    LastName = "Ln1",
+                    Gender = Gender.Male,
+                    Language = Language.German,
+                    Country = Country.Germany
+                },
+                new User
+                {
+                    Id = -2,
+                    Email = "test2@users.com",
+                    Password = CryptoUtils.HashPassword("test2222"),
+                    FirstName = "FirstName2",
+                    LastName = "LastName2",
+                    Gender = Gender.Female,
+                    Language = Language.English,
+                    Country = Country.Ukraine
+                },
+                new User
+                {
+                    Id = -3,
+                    Email = "test3@users.com",
+                    Password = CryptoUtils.HashPassword("test3333"),
+                    FirstName = "FFFF3",
+                    LastName = "LLLL3",
+                    Gender = Gender.Other,
+                    Language = Language.Russian,
+                    Country = Country.Poland
+                },
+                new User
+                {
+                    Id = -4,
+                    Email = "test4@users.com",
+                    Password = CryptoUtils.HashPassword("test4444"),
+                    FirstName = "LongFirstName4",
+                    LastName = "LongLastName4",
+                    Language = Language.English,
+                    Country = Country.Poland,
+                    Gender = Gender.Female
+                },
+                new User
+                {
+                    Id = -5,
+                    Email = "test5@users.com",
+                    Password = CryptoUtils.HashPassword("test5555"),
+                    FirstName = "First5",
+                    LastName = "Last5",
+                    Language = Language.Ukrainian,
+                    Country = Country.Russia,
+                    Gender = Gender.Male
+                }
                 );
         }
     }

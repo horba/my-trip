@@ -5,6 +5,7 @@
   >{{mmtLabel}}
     <v-text-field
       class="mmt-text-input"
+      :class="{'mmt-text-input--dense': mmtDense}"
       v-bind="$attrs"
       v-on="$listeners"
       @input = "validateLabel($event)"

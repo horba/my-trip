@@ -1,0 +1,16 @@
+.settings-form {
+  width: 248px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: pink;
+}
+
+.input-field {
+  width: 100%;
+}
+
+.v-select {
+  margin: 20px 0;
+}
