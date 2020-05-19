@@ -26,13 +26,6 @@ namespace WebAPI.Services
             return null;
         }
 
-<<<<<<< HEAD
-/*        public User IsUser(string email)
-        {
-            var user = _userRepository.FindUserByEmail(email);
-            return user;
-        }*/
-=======
         public bool IsUserExist(string email)
         {
             return _userRepository.FindUserByEmail(email) != null;
@@ -48,6 +41,9 @@ namespace WebAPI.Services
             
             _userRepository.CreateUser(user);
         }
->>>>>>> dev
+        public User GetUser(string email)
+        {
+            return _userRepository.FindUserByEmail(email);
+        }
     }
 }

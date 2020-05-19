@@ -64,21 +64,17 @@ namespace WebAPI
                     ValidAudience = Configuration["Jwt:Audience"]
                 };
             });
-<<<<<<< HEAD
 			var emailConfig = Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
 			services.AddSingleton(emailConfig);
 			services.AddScoped<IEmailSender, EmailSender>();
+
 			services.AddControllers();
-		}
-=======
-            services.AddControllers();
 
             services.AddSwaggerGen(x =>
             {
                 x.SwaggerDoc("v1", new OpenApiInfo { Title = "MyTrip Api", Version = "v1" });
             });
         }
->>>>>>> dev
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
