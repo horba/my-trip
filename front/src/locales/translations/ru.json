@@ -1,0 +1,42 @@
+{
+  "appTitle": "MakeMeTrip",
+  "menu": {
+    "aboutUs": "О нас",
+    "accommodation": "Жилье",
+    "transport": "Транспорт",
+    "leisure": "Досуг",
+    "food": "Еда",
+    "hotTours": "Горящие туры",
+    "articles": "Статьи",
+    "privacyPolicy": "Политика конфиденциальности",
+    "cookiePolicy": "Политика использования Cookie",
+    "termsOfUse": "Пользовательское соглашение",
+    "forTourOperators": "Туроператорам",
+    "contacts": "Контакты",
+    "reviewNew": "Оставить отзыв о сайте",
+    "tickets": "Билеты",
+    "travelRoute": "Маршрут",
+    "bookmarks": "Закладки",
+    "scheduler": "Планер",
+    "history": "История",
+    "historyPrev": "Предыдущие",
+    "historyNext": "Предстоящие",
+    "settings": "Настройки",
+    "notifications": "Уведомления",
+    "editProfile": "Редактировать профиль",
+    "signin": "Вход",
+    "signout": "Выход"
+  },
+  "footer": {
+    "join": "Присоедениться",
+    "subscribeToNews": "Подписаться на новости",
+    "subscribeBtn": "Подписаться",
+    "emailPlh": "Введите Ваш e-mail"    
+  },
+  "locale": {
+    "language": "Язык",
+    "en": "Английский",
+    "ru": "Русский",
+    "ua": "Украинский"
+  }
+}
