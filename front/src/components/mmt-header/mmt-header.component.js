@@ -11,13 +11,13 @@ export default {
   data: () => ({
     drawer: false,
     links: [
-      { title: 'Жилье', route: '/accommodation' },
-      { title: 'Транспорт', route: '/transport' },
-      { title: 'Досуг', route: '/leisure' },
-      { title: 'Еда', route: '/food' },
-      { title: 'Горящие туры', route: '/hot-tours' },
-      { title: 'Статьи', route: '/articles' },
-      { title: 'Вход', route: '/my/tickets' }
+      { title: 'menu.accommodation', route: '/accommodation' },
+      { title: 'menu.transport', route: '/transport' },
+      { title: 'menu.leisure', route: '/leisure' },
+      { title: 'menu.food', route: '/food' },
+      { title: 'menu.hotTours', route: '/hot-tours' },
+      { title: 'menu.articles', route: '/articles' },
+      { title: 'menu.signin', route: '/my/tickets' }
     ]
   })
 };

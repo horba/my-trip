@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from '@router';
 import store from '@store';
 import vuetify from './plugins/vuetify';
+import i18n from './plugins/i18n';
 import axios from 'axios';
 import { Default, Authorize } from '@layout';
 
@@ -15,6 +16,7 @@ new Vue({
   router,
   store,
   vuetify,
+  i18n,
   created () {
     // load data from localStorage to vuex (on f5)
     const userString = localStorage.getItem('user');
@@ -22,6 +24,8 @@ new Vue({
       const userData = JSON.parse(userString);
       this.$store.commit('SET_USER_DATA', userData);
     }
+
+    this.$store.commit('locale/INIT_LANGUAGE');
 
     // prevent to use outdated token
     axios.interceptors.response.use(response => response, error => {
