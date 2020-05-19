@@ -3,13 +3,13 @@
     <v-row>
       <v-col md="3" sm="12">
         <div class="link-wrapper">
-          <router-link to="/" class="title">MakeMeTrip</router-link>
+          <router-link to="/" class="title">{{ $t('appTitle') }}</router-link>
         </div>
         <div class="link-wrapper">
-          <router-link to="/about-us" class="black--text">О нас</router-link>
+          <router-link to="/about-us" class="black--text">{{ $t('menu.aboutUs') }}</router-link>
         </div>
         <div>
-          <span>Присоедениться:</span>
+          <span>{{ $t('footer.join') }}:</span>
           <div>
             <v-btn icon>
               <v-icon>mdi-facebook</v-icon>
@@ -22,6 +22,9 @@
             </v-btn>
           </div>
         </div>
+        <div>
+          <mmt-locale-switcher />
+        </div>
       </v-col>
 
       <v-col md="6" sm="12">
@@ -29,7 +32,7 @@
           <v-col md="6" sm="12">
             <div v-for="link in links1" :key="link.title" class="link-wrapper">
               <router-link :to="link.route" class="black--text">
-                {{ link.title }}
+                {{ $t(link.title) }}
               </router-link>
             </div>
           </v-col>
@@ -37,7 +40,7 @@
           <v-col md="6" sm="12">
             <div v-for="link in links2" :key="link.title" class="link-wrapper">
               <router-link :to="link.route" class="black--text">
-                {{ link.title }}
+                {{ $t(link.title) }}
               </router-link>
             </div>
           </v-col>
@@ -45,13 +48,13 @@
       </v-col>
 
       <v-col md="3" sm="12">
-        <v-col md="12">Подписаться на новости MakeMeTrip:</v-col>
+        <v-col md="12">{{ $t('footer.subscribeToNews') }} {{ $t('appTitle') }}:</v-col>
         <v-row>
           <v-col md="6" sm="12">
-            <v-text-field placeholder="Введите Ваш e-mail" type="e-mail" solo flat rounded dense></v-text-field>
+            <v-text-field :placeholder="$t('footer.emailPlh')" type="e-mail" solo flat rounded dense></v-text-field>
           </v-col>
           <v-col md="6" sm="12">
-            <v-btn text rounded dense class="primary">Подписаться</v-btn>
+            <v-btn text rounded dense class="primary">{{ $t('footer.subscribeBtn') }}</v-btn>
           </v-col>
         </v-row>
       </v-col>

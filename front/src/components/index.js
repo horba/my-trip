@@ -8,3 +8,6 @@ export {
   default as MmtHistoryTripCard
 } from './mmt-history-trip-card/mmt-history-trip-card.component.vue';
 export { default as MmtTextInput } from './controls/mmt-text-input/mmt-text-input.component.vue';
+export {
+  default as MmtLocaleSwitcher
+} from './mmt-locale-switcher/mmt-locale-switcher.component.vue';

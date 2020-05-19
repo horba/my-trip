@@ -16,15 +16,15 @@ export default {
   data: () => ({
     drawer: false,
     links: [
-      { title: 'Жилье', route: '/accommodation' },
-      { title: 'Транспорт', route: '/transport' },
-      { title: 'Досуг', route: '/leisure' },
-      { title: 'Еда', route: '/food' },
-      { title: 'Горящие туры', route: '/hot-tours' },
-      { title: 'Статьи', route: '/articles' },
-      { title: 'Вход', route: '/login', isAuthorize: false },
-      { title: 'Регистрация', route: '/signup', isAuthorize: false },
-      { title: 'Выход', route: '/logout', isAuthorize: true }
+      { title: 'menu.accommodation', route: '/accommodation' },
+      { title: 'menu.transport', route: '/transport' },
+      { title: 'menu.leisure', route: '/leisure' },
+      { title: 'menu.food', route: '/food' },
+      { title: 'menu.hotTours', route: '/hot-tours' },
+      { title: 'menu.articles', route: '/articles' },
+      { title: 'menu.signin', route: '/my/tickets', isAuthorize: false },
+      { title: 'menu.signup', route: '/signup', isAuthorize: false },
+      { title: 'menu.signout', route: '/logout', isAuthorize: true }
     ]
   })
 };
