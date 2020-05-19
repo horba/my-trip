@@ -9,28 +9,28 @@ export default {
   data: () => ({
     items: [
       {
-        title: 'Tickets',
+        title: 'menu.tickets',
         icon: 'mdi-ticket',
         link: '/my/tickets',
         details: 'Kiev-Krakov 4-9 may $ 44'
       },
       {
-        title: 'Accommodation',
+        title: 'menu.accommodation',
         icon: 'mdi-home',
         link: '/my/accommodation'
       },
       {
-        title: 'Food',
+        title: 'menu.food',
         icon: 'mdi-food',
         link: '/my/food'
       },
       {
-        title: 'Transport',
+        title: 'menu.transport',
         icon: 'mdi-car',
         link: '/my/transport'
       },
       {
-        title: 'Leisure',
+        title: 'menu.leisure',
         icon: 'mdi-airballoon',
         link: '/my/leisure'
       }

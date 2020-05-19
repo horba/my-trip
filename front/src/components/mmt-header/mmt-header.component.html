@@ -6,7 +6,7 @@
                         class="white--text"></v-app-bar-nav-icon>
 
     <v-toolbar-title text>
-      <router-link to="/">MakeMeTrip</router-link>
+      <router-link to="/">{{ $t('appTitle') }}</router-link>      
     </v-toolbar-title>
 
     <v-spacer></v-spacer>
@@ -17,7 +17,7 @@
              :to="`${link.route}`"
              text
              class="white--text">
-        {{ link.title }}
+        {{ $t(link.title) }}
       </v-btn>
     </v-toolbar-items>
 
@@ -41,7 +41,7 @@
                      text
                      class="white--text"
                      active-class="primary--text">
-          <v-list-item-title>{{link.title}}</v-list-item-title>
+          <v-list-item-title>{{ $t(link.title) }}</v-list-item-title>
         </v-list-item>
     </v-list>
   </v-navigation-drawer>

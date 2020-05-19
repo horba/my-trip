@@ -11,6 +11,7 @@ module.exports = {
       .set('@router', path.resolve('src/router/'))
       .set('@store', path.resolve('src/store/'))
       .set('@styles', path.resolve('src/styles/'))
-      .set('@layout', path.resolve('src/layouts/'));
+      .set('@layout', path.resolve('src/layouts/'))
+      .set('@locales', path.resolve('src/locales/'));
   }
 };
