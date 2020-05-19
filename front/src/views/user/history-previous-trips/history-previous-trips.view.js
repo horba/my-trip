@@ -32,7 +32,7 @@ export default {
       this.getTrips();
     }
   },
-  created () {
+  mounted () {
     this.getTrips();
   }
 };

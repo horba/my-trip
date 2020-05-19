@@ -8,6 +8,11 @@ export default {
     VBtn,
     VIcon
   },
+  computed: {
+    isAuthorize () {
+      return this.$store.getters.isLoggedIn;
+    }
+  },
   data: () => ({
     drawer: false,
     links: [
@@ -17,7 +22,9 @@ export default {
       { title: 'Еда', route: '/food' },
       { title: 'Горящие туры', route: '/hot-tours' },
       { title: 'Статьи', route: '/articles' },
-      { title: 'Вход', route: '/my/tickets' }
+      { title: 'Вход', route: '/login', isAuthorize: false },
+      { title: 'Регистрация', route: '/signup', isAuthorize: false },
+      { title: 'Выход', route: '/logout', isAuthorize: true }
     ]
   })
 };
