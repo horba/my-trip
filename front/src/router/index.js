@@ -7,8 +7,7 @@ import {
   CookiePolicy, TermsOfUse, ForTourOperators,
   Contacts, ReviewNew, MyTickets,
   MyAccommodation, MyFood, MyTransport,
-  MyLeisure, SignIn, SignUp,
-  UserCabinet, MyHistoryPreviousTrips
+  MyLeisure, SignIn, SignUp, MyHistoryPreviousTrips
 } from '@views';
 
 Vue.use(VueRouter);
@@ -101,7 +100,7 @@ const routes = [
   {
     path: '/my',
     name: 'My',
-    component: UserCabinet,
+    component: MyTickets,
     children: [
       {
         path: 'tickets',
@@ -136,21 +135,25 @@ const routes = [
       {
         path: 'travel-route',
         name: 'MyTravelRoute',
+        component: MyTickets,
         meta: { layout: 'authorize' }
       },
       {
         path: 'bookmarks',
         name: 'MyBookmarks',
+        component: MyTickets,
         meta: { layout: 'authorize' }
       },
       {
         path: 'scheduler',
         name: 'MyScheduler',
+        component: MyTickets,
         meta: { layout: 'authorize' }
       },
       {
         path: 'history',
         name: 'MyHistory',
+        component: MyTickets,
         meta: { layout: 'authorize' }
       },
       {
@@ -162,16 +165,19 @@ const routes = [
       {
         path: 'history/next',
         name: 'MyHistoryNext',
+        component: MyTickets,
         meta: { layout: 'authorize' }
       },
       {
         path: 'settings',
         name: 'MySettings',
+        component: MyTickets,
         meta: { layout: 'authorize' }
       },
       {
         path: 'notifications',
         name: 'MyNotifications',
+        component: MyTickets,
         meta: { layout: 'authorize' }
       }
     ]

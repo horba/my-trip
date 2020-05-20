@@ -5,11 +5,11 @@
           :img="trip.imageUrl">
 
     <v-card-subtitle class="pb-0">
-      Поездка
+      {{ $t('tripHistory.trip') }}
     </v-card-subtitle>
 
     <v-card-title class="headline mb-3 bt-1 ">
-      {{ trip.arrivalCountry.name }}
+      {{ $t(`countries.${trip.arrivalCountry.name}`) || trip.arrivalCountry.name }}
     </v-card-title>
 
     <v-card-subtitle>
@@ -20,21 +20,21 @@
 
       <v-card-text class="details">
         <div v-if="trip.departureCity">
-          <span class="primary--text text--lighten-6">Вылет:</span>
+          <span class="primary--text text--lighten-6">{{ $t('tripHistory.departure') }}:</span>
           {{ trip.departureCity }}.
         </div>
         <div v-if="trip.flightTime">
-          <span class="primary--text text--lighten-6">Время полета:</span>
+          <span class="primary--text text--lighten-6">{{ $t('tripHistory.flightTime') }}:</span>
           {{ trip.flightTime }}.
         </div>
         <div v-if="trip.differenceInTime">
-          <span class="primary--text text--lighten-6">Разница во времени:</span>
+          <span class="primary--text text--lighten-6">{{ $t('tripHistory.differenceInTime') }}:</span>
           {{ trip.differenceInTime }}.
         </div>
       </v-card-text>
 
       <v-card-actions>
-        <v-btn rounded dense class="continue-button">Подробнее</v-btn>
+        <v-btn rounded dense class="continue-button">{{ $t('tripHistory.details') }}</v-btn>
       </v-card-actions>
 
     </div>

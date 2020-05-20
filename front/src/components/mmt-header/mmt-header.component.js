@@ -8,11 +8,6 @@ export default {
     VBtn,
     VIcon
   },
-  computed: {
-    isAuthorize () {
-      return this.$store.getters.isLoggedIn;
-    }
-  },
   data: () => ({
     drawer: false,
     links: [
@@ -22,9 +17,7 @@ export default {
       { title: 'menu.food', route: '/food' },
       { title: 'menu.hotTours', route: '/hot-tours' },
       { title: 'menu.articles', route: '/articles' },
-      { title: 'menu.signin', route: '/my/tickets', isAuthorize: false },
-      { title: 'menu.signup', route: '/signup', isAuthorize: false },
-      { title: 'menu.signout', route: '/logout', isAuthorize: true }
+      { title: 'menu.signin', route: '/my/tickets' }
     ]
   })
 };

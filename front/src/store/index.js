@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 import locale from './modules/locale';
+import trip from './modules/trip';
 const { serverPath } = require('@/config/config.dev.json');
 
 Vue.use(Vuex);
@@ -11,7 +12,8 @@ export default new Vuex.Store({
     user: null
   },
   modules: {
-    locale
+    locale,
+    trip
   },
   mutations: {
     SET_USER_DATA (state, userData) {
@@ -46,17 +48,6 @@ export default new Vuex.Store({
     },
     logout ({ commit }) {
       commit('CLEAR_USER_DATA');
-    },
-    async getPreviousTrips ({ commit }, queryParams) {
-      return await axios.get(`${serverPath}api/trips/previous?${queryParams}`)
-        .then(r => {
-          if (r.status === 200) {
-            return r;
-          }
-        })
-        .catch(e => {
-          return 'ServerError';
-        });
     }
   },
   getters: {

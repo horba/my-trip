@@ -13,8 +13,10 @@ export default {
   }),
   methods: {
     async getTrips () {
-      const queryParams = `year=${this.year}&&searchQuery=${this.searchQuery}`,
-            response = await this.$store.dispatch('getPreviousTrips', queryParams);
+      const response = await this.$store.dispatch('trip/getPreviousTrips', {
+        year: this.year,
+        searchQuery: this.searchQuery
+      });
 
       if (response && response.data) {
         this.trips = response.data;

@@ -1,11 +1,11 @@
 <div>
   <div class="d-flex flex-wrap align-stretch justify-space-between">
     <div>
-      <h4 class="accent--text text--lighten-2">Предыдущие поездки</h4>
+      <h4 class="accent--text text--lighten-2">{{ $t('tripHistory.previousTrips') }}</h4>
     </div>
     <div>
       <mmt-text-input class="search-text-field"
-                      placeholder="Поиск"
+                      :placeholder="$t('tripHistory.search')"
                       mmt-label=" "
                       rounded
                       filled
@@ -32,6 +32,6 @@
     </template>
   </div>
   <p v-else>
-    Поездки не найдены
+    {{ $t('tripHistory.tripsNotFound') }}
   </p>
 </div>
