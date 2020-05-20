@@ -25,6 +25,7 @@
     "notifications": "Notifications",
     "editProfile": "Edit Profile",
     "signin": "Login",
+    "signup": "Register",
     "signout": "Logout"
   },
   "footer": {

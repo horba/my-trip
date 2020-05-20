@@ -20,3 +20,4 @@ export { default as MyLeisure } from '@views/user/Leisure.vue';
 export { default as SignIn } from './sign-in/sign-in.view.vue';
 export { default as SignUp } from './sign-up/sign-up.view.vue';
 export { default as UserSettings } from './user-settings/user-settings.view.vue';
+export { default as UserCabinet } from '@views/user/UserCabinet.vue';
