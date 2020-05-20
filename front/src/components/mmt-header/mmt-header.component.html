@@ -16,14 +16,15 @@
              :key="link.title"
              :to="`${link.route}`"
              text
-             class="white--text">
+             class="white--text"
+             v-if="link.isVisible">
         {{ $t(link.title) }}
       </v-btn>
     </v-toolbar-items>
 
     <v-spacer></v-spacer>
 
-    <v-btn icon class="white--text">
+    <v-btn icon class="white--text" :to="{path: '/my/tickets'}" v-if="isAuthorize">
       <v-icon>mdi-account</v-icon>
     </v-btn>
 
