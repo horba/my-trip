@@ -25,14 +25,6 @@ const routes = [
     component: SignUp
   },
   {
-    path: '/settings',
-    name: 'Settings',
-    component: UserSettings,
-    meta: {
-      allowUnknownUsers: false
-    }
-  },
-  {
     path: '/login',
     name: 'Login',
     component: SignIn,
@@ -182,8 +174,8 @@ const routes = [
         name: 'MySettings',
         component: UserSettings,
         meta: {
-          layout: 'authorize'
-          // allowUnknownUsers: false
+          layout: 'authorize',
+          allowUnknownUsers: false
         }
       },
       {
