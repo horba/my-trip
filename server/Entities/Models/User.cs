@@ -7,6 +7,14 @@ namespace Entities.Models
     [Table("users")]
     public class User
     {
+
+        public User()
+        {
+            Country = Country.NotSpecified;
+            Gender = Gender.NotSpecified;
+            Language = Language.English;
+        }
+
         public int Id { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }

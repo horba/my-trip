@@ -4,13 +4,35 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: pink;
+}
+
+.v-card__title {
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0 0;
+}
+
+.v-card__text {
+  margin-top: 15px;
+}
+
+.form-header {
+  line-height: 1.5em;
+  font-weight: normal;
 }
 
 .input-field {
   width: 100%;
 }
 
-.v-select {
-  margin: 20px 0;
+.mmt-select.first-select {
+  margin-top: 20px;
+}
+
+.mmt-select {
+  margin-bottom: 38px;
+}
+
+.mmt-continue-button {
+  width: 173px;
 }

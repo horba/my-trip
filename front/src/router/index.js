@@ -174,14 +174,17 @@ const routes = [
       {
         path: 'history/next',
         name: 'MyHistoryNext',
-        component: MyTickets,
+        component: PrivacyPolicy,
         meta: { layout: 'authorize' }
       },
       {
         path: 'settings',
         name: 'MySettings',
-        component: MyTickets,
-        meta: { layout: 'authorize' }
+        component: UserSettings,
+        meta: {
+          layout: 'authorize'
+          // allowUnknownUsers: false
+        }
       },
       {
         path: 'notifications',

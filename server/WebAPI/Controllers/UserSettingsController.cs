@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 using Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.DTO.UserSettings;
+using WebAPI.Services;
 
 namespace WebAPI.Controllers
 {
@@ -52,17 +50,16 @@ namespace WebAPI.Controllers
                 return StatusCode(500);
             }
 
-            try
+            var userWithThisEmail = _userRepository.FindUserByEmail(userSettings.Email);
+
+            if (userWithThisEmail != null && userWithThisEmail.Id != id)
             {
-                userSettings.ApplyToUser(user);
-                _userRepository.UpdateUser(user);
-                return Ok();
+                return BadRequest("Email already taken");
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return BadRequest();
-            }
+
+            userSettings.ApplyToUser(user);
+            _userRepository.UpdateUser(user);
+            return Ok();
 
         }
 

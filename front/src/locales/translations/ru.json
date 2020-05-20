@@ -38,5 +38,53 @@
     "en": "Английский",
     "ru": "Русский",
     "ua": "Украинский"
+  },
+  "userSettings": {
+    "title": "Общие настройки",
+    "lastName": {
+      "label": "Фамилия",
+      "hint": "Введите фамилию"
+    },
+    "firstName": {
+      "label": "Имя",
+      "hint": "Введите имя"
+    },
+    "email": {
+      "label": "Почта",
+      "hint": "Пример: bereznievatiy@gmail.com",
+      "errors": {
+        "regexNotMatch": "Введите корректный email",
+        "alreadyTaken": "Данная почта уже занята"
+      }
+    },
+    "gender": {
+      "label": "Пол",
+      "options": {
+        "NotSpecified": "Пол не указан",
+        "Male": "Мужской",
+        "Female": "Женский",
+        "Other": "Другой"
+      }
+    },
+    "language": {
+      "label": "Язык",
+      "options": {
+        "English": "Английский",
+        "Russian": "Русский",
+        "Ukrainian": "Украинский",
+        "German": "Немецкий"
+      }
+    },
+    "country": {
+      "Label": "Страна",
+      "options": {
+        "NotSpecified": "Старана не указана",
+        "Ukraine": "Украина",
+        "Poland": "Польша",
+        "Germany": "Германия",
+        "Russia": "Россия"
+      }
+    },
+    "saveButton": "Сохранить"
   }
 }

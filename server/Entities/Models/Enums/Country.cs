@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Entities.Models.Enums
+﻿namespace Entities.Models.Enums
 {
     public enum Country
     {
-        Ukraine, Poland, Germany, Russia
+        NotSpecified, Ukraine, Poland, Germany, Russia
     }
 }

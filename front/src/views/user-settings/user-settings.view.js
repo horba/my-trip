@@ -1,10 +1,12 @@
-import { MmtTextInput } from '@components';
+import { MmtTextInput, MmtSelect, MmtSubmitButton } from '@components';
 import axios from 'axios';
-const { serverPath } = require('@/config/config.dev.json');
+const { serverPath, emailRegex } = require('@/config/config.dev.json');
 
 export default {
   components: {
-    MmtTextInput
+    MmtTextInput,
+    MmtSelect,
+    MmtSubmitButton
   },
   data () {
     return {
@@ -17,7 +19,13 @@ export default {
       gender: '',
       language: '',
       country: '',
-      isLoaded: false
+      isLoaded: false,
+      emailAlreadyTaken: false,
+      formValidity: true,
+      emailRules: [
+        email => RegExp(emailRegex).test(email)
+        || this.$t('userSettings.email.errors.regexNotMatch')
+      ]
     };
   },
   methods: {
@@ -31,13 +39,34 @@ export default {
           language: this.language,
           country: this.country
         })
-        .then(() => alert('Updated'));
+        .then(() => console.log('Settings updated'))
+        .catch(error => {
+          this.emailAlreadyTaken = error.response.data === 'Email already taken';
+        });
+    },
+    fillLoadedFields (data) {
+      this.genders = this.convertToSelectCompatible(data.genders, 'gender');
+      this.languages = this.convertToSelectCompatible(data.languages, 'language');
+      this.countries = this.convertToSelectCompatible(data.countries, 'country');
+      this.gender = data.gender;
+      this.language = data.language;
+      this.country = data.country;
+      this.email = data.email;
+      this.firstName = data.firstName;
+      this.lastName = data.lastName;
+    },
+    convertToSelectCompatible (arrOfValues, fieldType) {
+      return arrOfValues.map(id => (
+        {
+          value: id,
+          text: this.$t(`userSettings.${fieldType}.options.${id}`)
+        }));
     }
   },
   created () {
     axios.get(`${serverPath}api/userSettings`)
       .then(({ data }) => {
-        Object.assign(this, data);
+        this.fillLoadedFields(data);
         this.isLoaded = true;
       });
   }

@@ -1,3 +1,4 @@
 {
-  "serverPath": "https://localhost:5001/"
+  "serverPath": "https://localhost:5001/",
+  "emailRegex": "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$"
 }

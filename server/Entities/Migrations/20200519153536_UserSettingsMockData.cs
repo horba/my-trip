@@ -38,36 +38,36 @@ namespace Entities.Migrations
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -5,
-                columns: new[] { "Country", "FirstName", "Language", "LastName", "Password" },
-                values: new object[] { 3, "First5", 2, "Last5", "3ILzrBfqh9jiW/MXzCnrcJb6su2fKHK3YKJrDh8gJe3YBzzoRDg6z5Cd4ArueM5f" });
+                columns: new[] { "Language", "LastName", "Password" },
+                values: new object[] { 2, "Last5", "l/Xw4PpHfKbLQZDCG9cjzPkVqxb1SFSCKy/Dgq8kAWhDJXcEHVvJaDnQoPY6PiDZ" });
 
             migrationBuilder.UpdateData(
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -4,
                 columns: new[] { "Country", "FirstName", "Gender", "LastName", "Password" },
-                values: new object[] { 1, "LongFirstName4", 1, "LongLastName4", "ntkVOkoRXx9HsA11wPqw6JjYSQ/1K02psibRR3+lTZaL1mWgB2bFqbi93p6IlJej" });
+                values: new object[] { 2, "LongFirstName4", 2, "LongLastName4", "eePej1CqKBZ6Id36WWmiPP9eF30dPvBu6BvQJdha08e0WH3/24mqFvFNHTPYpam1" });
 
             migrationBuilder.UpdateData(
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -3,
                 columns: new[] { "Country", "FirstName", "Gender", "Language", "LastName", "Password" },
-                values: new object[] { 1, "FFFF3", 2, 1, "LLLL3", "brLwfLObHtt4nSPbYV9F9ny8SAp9EQmzmqo0SrQA1n45OwTtGyb+JEC+7Du28/2P" });
+                values: new object[] { 2, "FFFF3", 3, 1, "LLLL3", "6lLrFyf6gplT1VJH/tXjc6EkYqwbyBQMaRppE6IaF7xWJd3ekNnMIoYHmuHY/l2D" });
 
             migrationBuilder.UpdateData(
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -2,
-                columns: new[] { "FirstName", "Gender", "LastName", "Password" },
-                values: new object[] { "FirstName2", 1, "LastName2", "APQonDLtkfTx8LjAq/h3EKjIofprGeOeqIqbzbj7+l6nwlbrPPsPYLxTg3W1is+e" });
+                columns: new[] { "Country", "FirstName", "Gender", "LastName", "Password" },
+                values: new object[] { 1, "FirstName2", 2, "LastName2", "QV0YR2Pv6MtOVTS/sSLN+v2zPOl0gyAZUxG6Btu/i7Xz9hMecMGFujOrBg5ZUGlX" });
 
             migrationBuilder.UpdateData(
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -1,
                 columns: new[] { "Country", "FirstName", "Language", "LastName", "Password" },
-                values: new object[] { 2, "Fn1", 3, "Ln1", "y69sD36qZyBUUSRiI7l8rlk038JRgWao2P60v106CgGBEYCHslsmjo4a4PzIY+Cg" });
+                values: new object[] { 3, "Fn1", 3, "Ln1", "83x1MpGkCOw7x3Jzb9CVHcI6VbyxeZ99bXOZys2XLD0YfQTnUBuzQyf/Vj6shZFx" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entities.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20200518230653_UserSettingsMockData")]
+    [Migration("20200519153536_UserSettingsMockData")]
     partial class UserSettingsMockData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,57 +56,56 @@ namespace Entities.Migrations
                         new
                         {
                             Id = -1,
-                            Country = 2,
+                            Country = 3,
                             Email = "test1@users.com",
                             FirstName = "Fn1",
                             Gender = 0,
                             Language = 3,
                             LastName = "Ln1",
-                            Password = "y69sD36qZyBUUSRiI7l8rlk038JRgWao2P60v106CgGBEYCHslsmjo4a4PzIY+Cg"
+                            Password = "83x1MpGkCOw7x3Jzb9CVHcI6VbyxeZ99bXOZys2XLD0YfQTnUBuzQyf/Vj6shZFx"
                         },
                         new
                         {
                             Id = -2,
-                            Country = 0,
+                            Country = 1,
                             Email = "test2@users.com",
                             FirstName = "FirstName2",
-                            Gender = 1,
+                            Gender = 2,
                             Language = 0,
                             LastName = "LastName2",
-                            Password = "APQonDLtkfTx8LjAq/h3EKjIofprGeOeqIqbzbj7+l6nwlbrPPsPYLxTg3W1is+e"
+                            Password = "QV0YR2Pv6MtOVTS/sSLN+v2zPOl0gyAZUxG6Btu/i7Xz9hMecMGFujOrBg5ZUGlX"
                         },
                         new
                         {
                             Id = -3,
-                            Country = 1,
+                            Country = 2,
                             Email = "test3@users.com",
                             FirstName = "FFFF3",
-                            Gender = 2,
+                            Gender = 3,
                             Language = 1,
                             LastName = "LLLL3",
-                            Password = "brLwfLObHtt4nSPbYV9F9ny8SAp9EQmzmqo0SrQA1n45OwTtGyb+JEC+7Du28/2P"
+                            Password = "6lLrFyf6gplT1VJH/tXjc6EkYqwbyBQMaRppE6IaF7xWJd3ekNnMIoYHmuHY/l2D"
                         },
                         new
                         {
                             Id = -4,
-                            Country = 1,
+                            Country = 2,
                             Email = "test4@users.com",
                             FirstName = "LongFirstName4",
-                            Gender = 1,
+                            Gender = 2,
                             Language = 0,
                             LastName = "LongLastName4",
-                            Password = "ntkVOkoRXx9HsA11wPqw6JjYSQ/1K02psibRR3+lTZaL1mWgB2bFqbi93p6IlJej"
+                            Password = "eePej1CqKBZ6Id36WWmiPP9eF30dPvBu6BvQJdha08e0WH3/24mqFvFNHTPYpam1"
                         },
                         new
                         {
                             Id = -5,
-                            Country = 3,
+                            Country = 0,
                             Email = "test5@users.com",
-                            FirstName = "First5",
                             Gender = 0,
                             Language = 2,
                             LastName = "Last5",
-                            Password = "3ILzrBfqh9jiW/MXzCnrcJb6su2fKHK3YKJrDh8gJe3YBzzoRDg6z5Cd4ArueM5f"
+                            Password = "l/Xw4PpHfKbLQZDCG9cjzPkVqxb1SFSCKy/Dgq8kAWhDJXcEHVvJaDnQoPY6PiDZ"
                         });
                 });
 #pragma warning restore 612, 618

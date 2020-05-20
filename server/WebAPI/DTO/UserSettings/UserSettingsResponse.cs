@@ -31,7 +31,5 @@ namespace WebAPI.DTO.UserSettings
             Gender = user.Gender.ToString();
             Language = user.Language.ToString();
         }
-
-        public UserSettingsResponse() { }
     }
 }

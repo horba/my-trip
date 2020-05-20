@@ -28,7 +28,7 @@ namespace Entities
                     Password = CryptoUtils.HashPassword("test1111"),
                     FirstName = "Fn1",
                     LastName = "Ln1",
-                    Gender = Gender.Male,
+                    Gender = Gender.NotSpecified,
                     Language = Language.German,
                     Country = Country.Germany
                 },
@@ -70,11 +70,11 @@ namespace Entities
                     Id = -5,
                     Email = "test5@users.com",
                     Password = CryptoUtils.HashPassword("test5555"),
-                    FirstName = "First5",
+                    FirstName = null,
                     LastName = "Last5",
                     Language = Language.Ukrainian,
-                    Country = Country.Russia,
-                    Gender = Gender.Male
+                    Country = Country.NotSpecified,
+                    Gender = Gender.NotSpecified
                 }
                 );
         }
