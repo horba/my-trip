@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using WebAPI.DTO.Trip;
+using WebAPI.DTO;
 using WebAPI.Extension;
 using WebAPI.Services;
 
@@ -20,11 +20,11 @@ namespace WebAPI.Controllers
     }
 
     [Authorize]
-    [Route("previous")]
-    [ProducesResponseType(typeof(IEnumerable<TripHistoryResponse>), StatusCodes.Status200OK)]
-    public IActionResult GetPreviousTrips(int? year, string searchQuery)
+    [Route("history")]
+    [ProducesResponseType(typeof(IEnumerable<TripDTO>), StatusCodes.Status200OK)]
+    public IActionResult GetTripsHistory(string searchQuery)
     {
-      var trips = _tripService.GetPreviousTrips(HttpContext.GetUserIdFromClaim(), year, searchQuery);
+      var trips = _tripService.GetTripsHistory(HttpContext.GetUserIdFromClaim(), searchQuery);
       return Ok(trips);
     }
   }

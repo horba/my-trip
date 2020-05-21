@@ -8,24 +8,30 @@
       {{ $t('tripHistory.trip') }}
     </v-card-subtitle>
 
-    <v-card-title class="headline mb-3 bt-1 ">
+    <v-card-title class="headline mb-3 bt-1 pt-0">
       {{ $t(`countries.${trip.arrivalCountry.name}`) || trip.arrivalCountry.name }}
     </v-card-title>
 
     <v-card-subtitle>
-      {{ trip.endDate | date }} - {{ trip.endDate | date }} ({{ trip.totalPrice }} {{ trip.currency }})
+      {{ trip.startDate | date }} - {{ trip.endDate | date }} ({{ trip.totalPrice }} {{ trip.currency }})
     </v-card-subtitle>
+
+    <v-card-text class="details pb-0">
+      <div v-if="trip.departureCity">
+        <span class="primary--text text--lighten-6">{{ $t('tripHistory.departure') }}:</span>
+        {{ trip.departureCity }}.
+      </div>
+    </v-card-text>
 
     <div class="d-flex flex-no-wrap justify-space-between">
 
-      <v-card-text class="details">
-        <div v-if="trip.departureCity">
-          <span class="primary--text text--lighten-6">{{ $t('tripHistory.departure') }}:</span>
-          {{ trip.departureCity }}.
-        </div>
+      <v-card-text class="details pt-0">
         <div v-if="trip.flightTime">
           <span class="primary--text text--lighten-6">{{ $t('tripHistory.flightTime') }}:</span>
           {{ trip.flightTime }}.
+        </div>
+        <div v-if="trip.transplantTime">
+          {{ trip.transplantTime }}
         </div>
         <div v-if="trip.differenceInTime">
           <span class="primary--text text--lighten-6">{{ $t('tripHistory.differenceInTime') }}:</span>
@@ -34,7 +40,9 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-btn rounded dense class="continue-button">{{ $t('tripHistory.details') }}</v-btn>
+        <v-btn rounded small>
+          <span class="small">{{ $t('tripHistory.details') }}</span>
+        </v-btn>
       </v-card-actions>
 
     </div>

@@ -15,7 +15,7 @@ namespace Entities.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.3")
+                .HasAnnotation("ProductVersion", "3.1.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -113,6 +113,9 @@ namespace Entities.Migrations
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<string>("TransplantTime")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -135,11 +138,12 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "1 час",
-                            EndDate = new DateTime(2020, 5, 25, 23, 4, 52, 667, DateTimeKind.Local).AddTicks(8027),
-                            FlightTime = "0 часов + время пересадки",
-                            ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2020, 5, 18, 23, 4, 52, 664, DateTimeKind.Local).AddTicks(4771),
+                            EndDate = new DateTime(2020, 5, 28, 16, 23, 58, 90, DateTimeKind.Local).AddTicks(8946),
+                            FlightTime = "0 часов",
+                            ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
+                            StartDate = new DateTime(2020, 5, 21, 16, 23, 58, 87, DateTimeKind.Local).AddTicks(1613),
                             TotalPrice = 100m,
+                            TransplantTime = "+ время пересадки",
                             UserId = -1
                         },
                         new
@@ -150,11 +154,12 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "2 час",
-                            EndDate = new DateTime(2020, 5, 24, 23, 4, 52, 668, DateTimeKind.Local).AddTicks(9707),
-                            FlightTime = "2 часов + время пересадки",
+                            EndDate = new DateTime(2020, 5, 27, 16, 23, 58, 92, DateTimeKind.Local).AddTicks(1770),
+                            FlightTime = "2 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2020, 5, 17, 23, 4, 52, 668, DateTimeKind.Local).AddTicks(9675),
+                            StartDate = new DateTime(2020, 5, 20, 16, 23, 58, 92, DateTimeKind.Local).AddTicks(1739),
                             TotalPrice = 102m,
+                            TransplantTime = "- прямой",
                             UserId = -1
                         },
                         new
@@ -165,11 +170,12 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "3 час",
-                            EndDate = new DateTime(2018, 5, 23, 23, 4, 52, 668, DateTimeKind.Local).AddTicks(9941),
-                            FlightTime = "4 часов + время пересадки",
-                            ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2018, 5, 16, 23, 4, 52, 668, DateTimeKind.Local).AddTicks(9928),
+                            EndDate = new DateTime(2018, 5, 26, 16, 23, 58, 92, DateTimeKind.Local).AddTicks(2051),
+                            FlightTime = "4 часов",
+                            ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
+                            StartDate = new DateTime(2018, 5, 19, 16, 23, 58, 92, DateTimeKind.Local).AddTicks(2038),
                             TotalPrice = 106m,
+                            TransplantTime = "+ время пересадки",
                             UserId = -1
                         },
                         new
@@ -180,11 +186,12 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "4 час",
-                            EndDate = new DateTime(2018, 5, 22, 23, 4, 52, 668, DateTimeKind.Local).AddTicks(9969),
-                            FlightTime = "6 часов + время пересадки",
+                            EndDate = new DateTime(2018, 5, 25, 16, 23, 58, 92, DateTimeKind.Local).AddTicks(2081),
+                            FlightTime = "6 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2018, 5, 15, 23, 4, 52, 668, DateTimeKind.Local).AddTicks(9962),
+                            StartDate = new DateTime(2018, 5, 18, 16, 23, 58, 92, DateTimeKind.Local).AddTicks(2074),
                             TotalPrice = 112m,
+                            TransplantTime = "- прямой",
                             UserId = -1
                         },
                         new
@@ -195,11 +202,12 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "5 час",
-                            EndDate = new DateTime(2016, 5, 21, 23, 4, 52, 668, DateTimeKind.Local).AddTicks(9990),
-                            FlightTime = "8 часов + время пересадки",
-                            ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2016, 5, 14, 23, 4, 52, 668, DateTimeKind.Local).AddTicks(9983),
+                            EndDate = new DateTime(2016, 5, 24, 16, 23, 58, 92, DateTimeKind.Local).AddTicks(2101),
+                            FlightTime = "8 часов",
+                            ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
+                            StartDate = new DateTime(2016, 5, 17, 16, 23, 58, 92, DateTimeKind.Local).AddTicks(2095),
                             TotalPrice = 120m,
+                            TransplantTime = "+ время пересадки",
                             UserId = -1
                         },
                         new
@@ -210,11 +218,12 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "6 час",
-                            EndDate = new DateTime(2016, 5, 20, 23, 4, 52, 669, DateTimeKind.Local).AddTicks(88),
-                            FlightTime = "10 часов + время пересадки",
+                            EndDate = new DateTime(2016, 5, 23, 16, 23, 58, 92, DateTimeKind.Local).AddTicks(2128),
+                            FlightTime = "10 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2016, 5, 13, 23, 4, 52, 669, DateTimeKind.Local).AddTicks(79),
+                            StartDate = new DateTime(2016, 5, 16, 16, 23, 58, 92, DateTimeKind.Local).AddTicks(2121),
                             TotalPrice = 130m,
+                            TransplantTime = "- прямой",
                             UserId = -1
                         },
                         new
@@ -225,11 +234,12 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "7 час",
-                            EndDate = new DateTime(2014, 5, 19, 23, 4, 52, 669, DateTimeKind.Local).AddTicks(109),
-                            FlightTime = "12 часов + время пересадки",
-                            ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2014, 5, 12, 23, 4, 52, 669, DateTimeKind.Local).AddTicks(102),
+                            EndDate = new DateTime(2014, 5, 22, 16, 23, 58, 92, DateTimeKind.Local).AddTicks(2147),
+                            FlightTime = "12 часов",
+                            ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
+                            StartDate = new DateTime(2014, 5, 15, 16, 23, 58, 92, DateTimeKind.Local).AddTicks(2141),
                             TotalPrice = 142m,
+                            TransplantTime = "+ время пересадки",
                             UserId = -1
                         },
                         new
@@ -240,11 +250,12 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "8 час",
-                            EndDate = new DateTime(2014, 5, 18, 23, 4, 52, 669, DateTimeKind.Local).AddTicks(129),
-                            FlightTime = "14 часов + время пересадки",
+                            EndDate = new DateTime(2014, 5, 21, 16, 23, 58, 92, DateTimeKind.Local).AddTicks(2166),
+                            FlightTime = "14 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2014, 5, 11, 23, 4, 52, 669, DateTimeKind.Local).AddTicks(123),
+                            StartDate = new DateTime(2014, 5, 14, 16, 23, 58, 92, DateTimeKind.Local).AddTicks(2160),
                             TotalPrice = 156m,
+                            TransplantTime = "- прямой",
                             UserId = -1
                         });
                 });
@@ -271,31 +282,31 @@ namespace Entities.Migrations
                         {
                             Id = -1,
                             Email = "test1@users.com",
-                            Password = "0cy6qRLzxD3QlIuWRAgJglhK4naCwK1khtMXYUrocy4R7A98IFvyJgGS0u0rQuU2"
+                            Password = "3x9t2tIp1DrINz1VQQ91rqbRVRAmbPdgiSGJBPbNj3VRo9YjB7GtZaxrPd+Fz3HN"
                         },
                         new
                         {
                             Id = -2,
                             Email = "test2@users.com",
-                            Password = "pRpBVq2mZq/sFyneP5hfP9IfXdLxwcWqFddpI3Mksa30Qv5+l76BsbLoPyTsYJsr"
+                            Password = "GMGehiAyAT81alXm2BH4X8w+OhqWcE/yMkWRDQrDSuSfaMYfBIEeYwBvPfaIVWUs"
                         },
                         new
                         {
                             Id = -3,
                             Email = "test3@users.com",
-                            Password = "MFUC0Wjm2iYvRI/rNJRBzQb+8/AHsN3GqLTkXj3UbPKxUwLgn3IsdNX3SplbVFHu"
+                            Password = "2QZYiQwucs705q53Y3de6XRZO2eZ7kp7Med/geeMx76UDy+rjG4sVlx/+SHn/DcL"
                         },
                         new
                         {
                             Id = -4,
                             Email = "test4@users.com",
-                            Password = "nFIQsPpOx+YiLz/v0KfbDG4VSsmAiPZyf5nvpfyztO9EZqAyXfkv421amL9TymAE"
+                            Password = "IN51h1ztcjbwBzL1U0rivpl6AUc4OsecDyY+D3sPTyR07coCynJXiEmZE+NgyIDV"
                         },
                         new
                         {
                             Id = -5,
                             Email = "test5@users.com",
-                            Password = "QGHv9Ph5Zs4Wamckp35z1tCgyknOdWwKzslA85YfJCPvONI994pAhF12LX4gdAbt"
+                            Password = "KO5znqH0LxE1RrgPlJLw8Wxi+oj01rY8kUrAkiZjwBUdNij8RtJDdrazbTT8bpyj"
                         });
                 });
 

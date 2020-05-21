@@ -1,9 +1,9 @@
 ﻿using Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using WebAPI.DTO.Trip;
 using AutoMapper;
+using WebAPI.DTO;
+using System.Linq;
 
 namespace WebAPI.Services
 {
@@ -18,22 +18,18 @@ namespace WebAPI.Services
       _tripRepository = tripRepository;
     }
 
-    public IEnumerable<TripHistoryResponse> GetPreviousTrips(int userId, int? year, string searchQuery)
+    public IEnumerable<TripDTO> GetTripsHistory(int userId, string searchQuery)
     {
       var dateNow = DateTime.Now;
       var trips = _tripRepository.GetUserTrips(userId)
                                  .Where(t => t.EndDate < dateNow);
-
-      if (year.HasValue && year.Value > 0)
-        trips = trips.Where(t => t.StartDate.Year.Equals(year.Value) ||
-                                 t.EndDate.Year.Equals(year.Value));
 
       if (!string.IsNullOrEmpty(searchQuery))
         trips = trips.Where(t => t.DepartureCity.Contains(searchQuery) ||
                                  t.ArrivalCountry.Name.Contains(searchQuery) ||
                                  t.DepartureCountry.Name.Contains(searchQuery));
 
-      return _mapper.Map<IEnumerable<TripHistoryResponse>>(trips.ToList());
+      return _mapper.Map<IEnumerable<TripDTO>>(trips.ToList());
     }
   }
 }

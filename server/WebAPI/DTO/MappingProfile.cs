@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using WebAPI.DTO.Trip;
 
 namespace WebAPI.DTO
 {
@@ -7,9 +6,9 @@ namespace WebAPI.DTO
   {
     public MappingProfile()
     {
-      CreateMap<Entities.Models.Country, CountryResponse>();
+      CreateMap<Entities.Models.Country, CountryDTO>();
 
-      CreateMap<Entities.Models.Trip, TripHistoryResponse>();
+      CreateMap<Entities.Models.Trip, TripDTO>();
     }
   }
 }

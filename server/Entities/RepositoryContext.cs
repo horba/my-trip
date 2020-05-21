@@ -47,8 +47,7 @@ namespace Entities
            var moqTrips = moqCountries
                         .Select((country, i) =>
                         {
-                          var startDate = DateTime.Now.AddYears(i % 2 - i).AddDays(-i);
-                          var endDate = DateTime.Now.AddYears(i % 2 - i).AddDays(-i).AddDays(7);
+                          var date = DateTime.Now.AddYears(i % 2 - i).AddMonths(-i).AddDays(-i);
 
                           return new Trip
                           {
@@ -57,13 +56,14 @@ namespace Entities
                             DepartureCountryId = 8,
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             ArrivalCountryId = country.Id,
-                            StartDate = startDate,
-                            EndDate = endDate,
+                            StartDate = date,
+                            EndDate = date.AddDays(7),
                             TotalPrice = 100 + i * country.Id,
                             Currency = "$",
-                            FlightTime = $"{i + i} часов + время пересадки",
+                            FlightTime = $"{i + i} часов",
+                            TransplantTime = i % 2 == 0 ? "+ время пересадки" : "- прямой",
                             DifferenceInTime = $"{i + 1} час",
-                            ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg"
+                            ImageUrl = i % 2 == 0 ? "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg" : "https://cdn.vuetifyjs.com/images/cards/plane.jpg"
                           };
                         });
 

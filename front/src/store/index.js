@@ -3,7 +3,9 @@ import Vuex from 'vuex';
 import axios from 'axios';
 import locale from './modules/locale';
 import trip from './modules/trip';
-const { serverPath } = require('@/config/config.dev.json');
+import config from '@config';
+
+const { serverPath } = config;
 
 Vue.use(Vuex);
 

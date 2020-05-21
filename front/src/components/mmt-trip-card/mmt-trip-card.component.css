@@ -1,0 +1,18 @@
+.theme--light.trip {
+  width: 330px;
+}
+
+  .theme--light.trip .details * {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .theme--light.trip .v-card__actions .v-btn {
+    padding: 5px 20px;
+    background-color: var(--continue-button-background-color);
+    color: var(--continue-button-active-color);
+  }
+
+    .theme--light.trip .v-card__actions .v-btn .small {
+      font-size: 12px;
+    }

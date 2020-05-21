@@ -28,6 +28,7 @@ namespace Entities.Models
     public string Currency { get; set; }
 
     public string FlightTime { get; set; }
+    public string TransplantTime { get; set; }
     public string DifferenceInTime { get; set; }
 
     public string ImageUrl { get; set; }

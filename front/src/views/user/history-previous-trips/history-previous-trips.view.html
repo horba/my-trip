@@ -11,24 +11,35 @@
                       filled
                       dense
                       append-icon="mdi-find-replace"
-                      @click:append="getTrips"
+                      @click:append="searchTrips"
+                      @keyup.enter="searchTrips"
                       v-model="searchQuery" />
     </div>
   </div>
-  <div class="d-flex flex-wrap justify-space-between my-5">
-    <h5 v-for="y in years" :key="y">
-      <a v-on:click="filterByYear(y)"
-         :class="year === y ? `primary--text` : `accent--text text--lighten-2`">
-        {{y}}
+  <div class="d-flex flex-wrap justify-space-between my-5"
+       v-if="!filter.year">
+    <h5 v-for="year in years" :key="year">
+      <a class="accent--text text--lighten-2"
+         v-on:click="filterTrips({year: year})">
+        {{year}}
+      </a>
+    </h5>
+  </div>
+  <div class="d-flex flex-wrap justify-space-between my-5"
+       v-if="filter.year">
+    <h5 v-for="month in months" :key="month.id">
+      <a class="accent--text text--lighten-2"
+         v-on:click="filterTrips({month: month.id})">
+        {{month.name}}
       </a>
     </h5>
   </div>
   <div class="d-flex flex-wrap justify-space-between"
        v-if="trips.length">
     <template v-for="(trip,n) in trips">
-      <mmt-history-trip-card :key="`trip-${n}`"
-                             :trip="trip"
-                             class="mb-5" />
+      <mmt-trip-card :key="`trip-${n}`"
+                     :trip="trip"
+                     class="mb-5" />
     </template>
   </div>
   <p v-else>

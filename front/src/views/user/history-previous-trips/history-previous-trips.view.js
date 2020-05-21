@@ -1,40 +1,61 @@
-import { MmtHistoryTripCard, MmtTextInput } from '@components';
+import { MmtTripCard, MmtTextInput } from '@components';
 
 export default {
   components: {
-    MmtHistoryTripCard,
+    MmtTripCard,
     MmtTextInput
   },
   data: () => ({
     searchQuery: '',
-    year: 0,
-    years: [new Date().getFullYear(), new Date().getFullYear() - 1, new Date().getFullYear() - 2],
-    trips: []
+    filter: {
+      year: 0,
+      month: 0
+    }
   }),
-  methods: {
-    async getTrips () {
-      const response = await this.$store.dispatch('trip/getPreviousTrips', {
-        year: this.year,
-        searchQuery: this.searchQuery
-      });
-
-      if (response && response.data) {
-        this.trips = response.data;
-      } else {
-        this.trips = [];
-      }
+  computed: {
+    trips () {
+      return this.$store.state.trip.tripsHistory;
     },
-    filterByYear (y) {
-      if (this.year === y) {
-        this.year = 0;
-      } else {
-        this.year = y;
+    years () {
+      return this.trips.map(function (trip) {
+        return new Date(trip.startDate).getFullYear();
+      }).filter(function (trip, index, self) {
+        return self.indexOf(trip) === index;
+      }) || [];
+    },
+    months () {
+      if (this.filter.year) {
+        const lang = this.$store.state.locale.language || 'default';
+        return this.trips.map(function (trip) {
+          return {
+            name: new Date(trip.startDate).toLocaleString(lang, { month: 'long' }),
+            id: new Date(trip.startDate).getMonth() + 1
+          };
+        }).filter(function (trip, index, self) {
+          return self.indexOf(trip) === index;
+        });
       }
 
-      this.getTrips();
+      return [];
     }
   },
-  mounted () {
-    this.getTrips();
+  methods: {
+    async searchTrips () {
+      if (this.searchQuery) {
+        await this.$store.dispatch('trip/searchTripsHistory', this.searchQuery);
+      } else {
+        await this.$store.dispatch('trip/initTripsHistory');
+        this.filter.year = this.filter.month = 0;
+      }
+    },
+    filterTrips (filter) {
+      this.filter.year = filter.year || this.filter.year;
+      this.filter.month = filter.month || this.filter.month;
+
+      this.$store.commit('trip/FILTER_TRIPS_HISTORY', this.filter);
+    }
+  },
+  async mounted () {
+    await this.$store.dispatch('trip/initTripsHistory');
   }
 };
