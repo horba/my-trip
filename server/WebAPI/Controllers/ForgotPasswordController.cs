@@ -32,49 +32,49 @@ namespace WebAPI.Controllers
             return Ok(model);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ResetPassword(ResetPasswordModel resetPasswordModel)
-        {
-            if(!ModelState.IsValid)
-                return BadRequest(resetPasswordModel);
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> ResetPassword(ResetPasswordModel resetPasswordModel)
+        //{
+        //    if(!ModelState.IsValid)
+        //        return BadRequest(resetPasswordModel);
 
-            var user = userService.GetUser(resetPasswordModel.Email);
-            if(user == null)
-                RedirectToAction(nameof(ResetPasswordConfirmation));
+        //    var user = userService.GetUser(resetPasswordModel.Email);
+        //    if(user == null)
+                //RedirectToAction(nameof(ResetPasswordConfirmation));
 
-            var resetPassResult = await userService.ResetPasswordAsync(user, resetPasswordModel.Token, resetPasswordModel.Password);
-            if(!resetPassResult.Succeeded)
-            {
-                foreach(var error in resetPassResult.Errors)
-                {
-                    ModelState.TryAddModelError(error.Code, error.Description);
-                }
+            //var resetPassResult = await userService.ResetPasswordAsync(user, resetPasswordModel.Token, resetPasswordModel.Password);
+            //if(!resetPassResult.Succeeded)
+            //{
+            //    foreach(var error in resetPassResult.Errors)
+            //    {
+            //        ModelState.TryAddModelError(error.Code, error.Description);
+            //    }
 
-                return View();
-            }
+            //    return View();
+            //}
 
-            return RedirectToAction(nameof(ResetPasswordConfirmation));
-        }
+            //return RedirectToAction(nameof(ResetPasswordConfirmation));
+        //}
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ForgotPassword(ForgotPasswordModel forgotPasswordModel)
-        {
-            if(!ModelState.IsValid)
-                return BadRequest(forgotPasswordModel);
+    //    [HttpPost]
+    //    [ValidateAntiForgeryToken]
+    //    public async Task<IActionResult> ForgotPassword(ForgotPasswordModel forgotPasswordModel)
+    //    {
+    //        if(!ModelState.IsValid)
+    //            return BadRequest(forgotPasswordModel);
 
-            var user = userService.GetUser(forgotPasswordModel.Email);
-            if(user == null)
-                return RedirectToAction(nameof(ForgotPasswordConfirmation));
+    //        var user = userService.GetUser(forgotPasswordModel.Email);
+    //        if(user == null)
+    //            return RedirectToAction(nameof(ForgotPasswordConfirmation));
 
-            var token = await userService.GeneratePasswordResetTokenAsync(user);
-            var callback = Url.Action(nameof(ResetPassword), nameof(ForgotPasswordController), new { token, email = user.Email }, Request.Scheme);
+    //        var token = await userService.GeneratePasswordResetTokenAsync(user);
+    //        var callback = Url.Action(nameof(ResetPassword), nameof(ForgotPasswordController), new { token, email = user.Email }, Request.Scheme);
 
-            var message = new Message(new string[] { "codemazetest@gmail.com" }, "Reset password token", callback, null);
-            await emailSender.SendEmailAsync(message);
+    //        var message = new Message(new string[] { "codemazetest@gmail.com" }, "Reset password token", callback, null);
+    //        await emailSender.SendEmailAsync(message);
 
-            return RedirectToAction(nameof(ForgotPasswordConfirmation));
-        }
+    //        return RedirectToAction(nameof(ForgotPasswordConfirmation));
+    //    }
     }
 }

@@ -8,7 +8,6 @@ import {
   Contacts, ReviewNew, MyTickets,
   MyAccommodation, MyFood, MyTransport,
   MyLeisure, SignIn, SignUp, RecoveryPassword
-  
 } from '@views';
 
 Vue.use(VueRouter);
