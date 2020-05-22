@@ -6,7 +6,7 @@ using WebAPI.Validators;
 
 namespace WebAPI.DTO.UserSettings
 {
-    public class UserSettingsRequest
+    public class UserSettingsDTO
     {
         [EmailAddress]
         public string Email { get; set; }
@@ -33,5 +33,17 @@ namespace WebAPI.DTO.UserSettings
             user.Language = Enum.Parse<Language>(Language, true);
             user.Gender = Enum.Parse<Gender>(Gender, true);
         }
+
+        public UserSettingsDTO(User user)
+        {
+            Email = user.Email;
+            FirstName = user.FirstName;
+            LastName = user.LastName;
+            Country = user.Country.ToString();
+            Gender = user.Gender.ToString();
+            Language = user.Language.ToString();
+        }
+
+        public UserSettingsDTO() { }
     }
 }

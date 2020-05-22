@@ -33,11 +33,11 @@ namespace WebAPI.Controllers
                 return StatusCode(500);
             }
 
-            return Ok(new UserSettingsResponse(user));
+            return Ok(new UserSettingsDTO(user));
         }
 
         [HttpPut]
-        public IActionResult UpdateSettings(UserSettingsRequest userSettings)
+        public IActionResult UpdateSettings(UserSettingsDTO userSettings)
         {
             if (!Int32.TryParse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value, out var id))
             {
@@ -54,7 +54,7 @@ namespace WebAPI.Controllers
 
             if (userWithThisEmail != null && userWithThisEmail.Id != id)
             {
-                return BadRequest("Email already taken");
+                return BadRequest("Email is already taken");
             }
 
             userSettings.ApplyToUser(user);

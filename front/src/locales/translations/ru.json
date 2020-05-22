@@ -38,54 +38,28 @@
     "language": "Язык",
     "en": "Английский",
     "ru": "Русский",
-    "ua": "Украинский"
+    "ua": "Украинский",
+    "de": "Немецкий"
   },
   "userSettings": {
-    "title": "Общие настройки",
-    "lastName": {
-      "label": "Фамилия",
-      "hint": "Введите фамилию"
-    },
-    "firstName": {
-      "label": "Имя",
-      "hint": "Введите имя"
-    },
-    "email": {
-      "label": "Почта",
-      "hint": "Пример: bereznievatiy@gmail.com",
-      "errors": {
-        "regexNotMatch": "Введите корректный email",
-        "alreadyTaken": "Данная почта уже занята"
-      }
-    },
-    "gender": {
-      "label": "Пол",
-      "options": {
-        "NotSpecified": "Пол не указан",
-        "Male": "Мужской",
-        "Female": "Женский",
-        "Other": "Другой"
-      }
-    },
-    "language": {
-      "label": "Язык",
-      "options": {
-        "English": "Английский",
-        "Russian": "Русский",
-        "Ukrainian": "Украинский",
-        "German": "Немецкий"
-      }
-    },
-    "country": {
-      "Label": "Страна",
-      "options": {
-        "NotSpecified": "Старана не указана",
-        "Ukraine": "Украина",
-        "Poland": "Польша",
-        "Germany": "Германия",
-        "Russia": "Россия"
-      }
-    },
-    "saveButton": "Сохранить"
+    "generalSettings": "Общие настройки",
+    "lastName": "Фамилия",
+    "enterLastName": "Введите фамилию",
+    "firstName": "Имя",
+    "enterFirstName": "Введите имя",
+    "email": "Почта",
+    "emailExample": "Пример: bereznievatiy@gmail.com",
+    "enterCorrectEmail": "Введите корректный email",
+    "emailIsAlreadyTaken": "Данная почта уже занята",
+    "genderIsNotSpecified": "Пол не указан",
+    "male": "Мужской",
+    "female": "Женский",
+    "otherGender": "Другой",
+    "countryIsNotSpecified": "Старана не указана",
+    "ukraine": "Украина",
+    "poland": "Польша",
+    "germany": "Германия",
+    "russia": "Россия",
+    "save": "Сохранить"
   }
 }

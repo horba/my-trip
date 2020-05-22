@@ -6,6 +6,7 @@ import vuetify from './plugins/vuetify';
 import i18n from './plugins/i18n';
 import axios from 'axios';
 import { Default, Authorize } from '@layout';
+import { fetchServer } from '@/services/fetchServer.js';
 
 Vue.component('default-layout', Default);
 Vue.component('authorize-layout', Authorize);
@@ -34,6 +35,11 @@ new Vue({
       }
       return Promise.reject(error);
     });
+
+    if (this.$store.getters.isLoggedIn) {
+      // get userSettings data from server
+      fetchServer();
+    }
   },
   render: h => h(App)
 }).$mount('#app');

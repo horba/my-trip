@@ -3,6 +3,9 @@
   --filled-select-fill-color: #fff;
   --mmt-continue-button-height: 39px;
   --mmt-dense-input-min-height: 35px;
+  --mmt-dense-input-font-size: 12px;
+  --mmt-dense-input-label-font-size: 12px;
+  --mmt-dense-input-hint-font-size: 12px;
   --forget-password-text-color: #273B7A;
   --continue-button-background-color: #03A9F4;
   --continue-button-active-color: #fff;

@@ -1,4 +1,6 @@
 import { MmtTextInput } from '@components';
+import { fetchServer } from '@/services/fetchServer.js';
+
 export default {
   components: {
     MmtTextInput
@@ -21,6 +23,7 @@ export default {
         password: this.password
       })
         .then(() => {
+          fetchServer();
           this.$router.push('/');
         }).catch(() => {
           this.serverError = 'Invalid credentials';

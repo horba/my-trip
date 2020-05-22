@@ -38,54 +38,28 @@
     "language": "Language",
     "en": "English",
     "ru": "Russian",
-    "ua": "Ukrainian"
+    "ua": "Ukrainian",
+    "de": "German"
   },
   "userSettings": {
-    "title": "General settings",
-    "lastName": {
-      "label": "Last name",
-      "hint": "Enter last name"
-    },
-    "firstName": {
-      "label": "First name",
-      "hint": "Enter first name"
-    },
-    "email": {
-      "label": "Email",
-      "hint": "Example: bereznievatiy@gmail.com",
-      "errors": {
-        "regexNotMatch": "Enter valid email",
-        "alreadyTaken": "This email is already taken"
-      }
-    },
-    "gender": {
-      "label": "Gender",
-      "options": {
-        "NotSpecified": "Gender is not specified",
-        "Male": "Male",
-        "Female": "Female",
-        "Other": "Other"
-      }
-    },
-    "language": {
-      "label": "Language",
-      "options": {
-        "English": "English",
-        "Russian": "Russian",
-        "Ukrainian": "Ukrainian",
-        "German": "German"
-      }
-    },
-    "country": {
-      "Label": "Country",
-      "options": {
-        "NotSpecified": "Country is not specified",
-        "Ukraine": "Ukraine",
-        "Poland": "Poland",
-        "Germany": "Germany",
-        "Russia": "Russia"
-      }
-    },
-    "saveButton": "Save"
+    "generalSettings": "General settings",
+    "lastName": "Last name",
+    "enterLastName": "Enter last name",
+    "firstName": "First name",
+    "enterFirstName": "Enter first name",
+    "email": "Email",
+    "emailExample": "Example: bereznievatiy@gmail.com",
+    "enterCorrectEmail": "Enter valid email",
+    "emailIsAlreadyTaken": "This email is already taken",
+    "genderIsNotSpecified": "Gender is not specified",
+    "male": "Male",
+    "female": "Female",
+    "otherGender": "Other",
+    "countryIsNotSpecified": "Country is not specified",
+    "ukraine": "Ukraine",
+    "poland": "Poland",
+    "germany": "Germany",
+    "russia": "Russia",
+    "save": "Save"
   }
 }

@@ -2,13 +2,16 @@
   font-weight: normal;
 }
 
-label,
+label {
+  font-size: var(--mmt-dense-input-label-font-size);
+}
+
 .mmt-text-input >>> .v-messages__message {
-  font-size: 12px;
+  font-size: var(--mmt-dense-input-hint-font-size);
 }
 
 .mmt-text-input.mmt-text-input--dense >>> .v-input__slot > * {
-  font-size: 12px;
+  font-size: var(--mmt-dense-input-font-size);
 }
 
 label {

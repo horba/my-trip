@@ -38,54 +38,28 @@
     "language": "Мова",
     "en": "Англійська",
     "ru": "Pосійський",
-    "ua": "Українська"
+    "ua": "Українська",
+    "de": "Німецька"
   },
   "userSettings": {
-    "title": "Загальні налаштування",
-    "lastName": {
-      "label": "Прізвище",
-      "hint": "Введіть прізвище"
-    },
-    "firstName": {
-      "label": "Ім'я",
-      "hint": "Введіть ім'я"
-    },
-    "email": {
-      "label": "Скринька",
-      "hint": "Приклад: bereznievatiy@gmail.com",
-      "errors": {
-        "regexNotMatch": "Введіть дійсний email",
-        "alreadyTaken": "Цей email вже зайнятий"
-      }
-    },
-    "gender": {
-      "label": "Стать",
-      "options": {
-        "NotSpecified": "Стать не вказана",
-        "Male": "Чоловіча",
-        "Female": "Жіноча",
-        "Other": "Інша"
-      }
-    },
-    "language": {
-      "label": "Мова",
-      "options": {
-        "English": "Англійська",
-        "Russian": "Російська",
-        "Ukrainian": "Українська",
-        "German": "Німецька"
-      }
-    },
-    "country": {
-      "Label": "Країна",
-      "options": {
-        "NotSpecified": "Країна не вказана",
-        "Ukraine": "Україна",
-        "Poland": "Польща",
-        "Germany": "Німеччина",
-        "Russia": "Росія"
-      }
-    },
-    "saveButton": "Зберегти"
+    "generalSettings": "Загальні налаштування",
+    "lastName": "Прізвище",
+    "enterLastName": "Введіть прізвище",
+    "firstName": "Ім'я",
+    "enterFirstName": "Введіть ім'я",
+    "email": "Скринька",
+    "emailExample": "Приклад: bereznievatiy@gmail.com",
+    "enterCorrectEmail": "Введіть дійсний email",
+    "emailIsAlreadyTaken": "Цей email вже зайнятий",
+    "genderIsNotSpecified": "Стать не вказана",
+    "male": "Чоловіча",
+    "female": "Жіноча",
+    "otherGender": "Інша",
+    "countryIsNotSpecified": "Країна не вказана",
+    "ukraine": "Україна",
+    "poland": "Польща",
+    "germany": "Німеччина",
+    "russia": "Росія",
+    "save": "Зберегти"
   }
 }
