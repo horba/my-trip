@@ -1,0 +1,70 @@
+<div id="leisure" class="leisure mx-auto">
+  <nav class="breadcrumbs-wrap">
+    <v-breadcrumbs :items="breadcrumbs" class="breadcrumbs">
+      <template v-slot:divider>
+        <v-icon>mdi-chevron-right</v-icon>
+      </template>
+    </v-breadcrumbs>
+  </nav>
+  <div class="body-wrap">
+    <div class="sidebar">
+      <h5>{{ $t('leisure.leisureType') }}</h5>
+      <div class="categories">
+        <v-checkbox
+          class="leisure-type"
+          v-for="(type, index) in leisureType" :key="index"
+          :label=type
+          hide-details
+        ></v-checkbox>
+      </div>
+      <h5>{{ $t('leisure.popularSearches') }}</h5>
+    </div>
+    <div class="main-wrap">
+      <h4>{{ $t('leisure.pickUpLeisure') }}</h4>
+      <div class="main">
+        <div class="input-wrap">
+          <mmt-text-input
+            class="search-city"
+            :placeholder="$t('leisure.mapTextInput')"
+            append-icon="mdi-magnify"
+            rounded
+            filled
+            dense
+          ></mmt-text-input>
+          <v-switch
+            v-model="showMap"
+            inset
+            :label="$t('leisure.mapSwitch')"
+          ></v-switch>
+        </div>
+        <LeisureMap id="map" class="map" v-if="showMap"/>
+      </div>
+      <div class="places">
+        <div 
+          class="place"
+          v-for="(place, index) in places"
+          :key="index"
+        >
+          <div class="photo">
+            <v-btn
+              class="like-btn"
+              rounded
+            ><v-icon>mdi-heart-outline</v-icon></v-btn>
+          </div>
+          <div class="place-info">
+            <div class="title-wrap">
+              <span class="title">{{ place.title }}</span>
+              <span class="rating">{{ place.rating }}</span>
+            </div>
+            <div class="price-wrap">
+              <div class="price">{{ place.price }}</div>
+              <span class="state">{{ place.state }}</span>
+            </div>
+            <span class="disc">{{ place.discription }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="pages">pages</div>
+    </div>
+  </div>
+</div>
