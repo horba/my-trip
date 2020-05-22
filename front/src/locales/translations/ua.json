@@ -28,6 +28,13 @@
     "signup": "Реєстрація",
     "signout": "Вихід"
   },
+  "leisure": {
+    "leisureType": "Виберіть тип дозвілля",
+    "pickUpLeisure": "Підібрати дозвілля",
+    "popularSearches": "Популярні запити",
+    "mapSwitch": "Карта",
+    "mapTextInput": "Почніть вводити місто"
+  },
   "footer": {
     "join": "Приєднатися",
     "subscribeToNews": "Підписатися на новини",

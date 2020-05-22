@@ -28,6 +28,13 @@
     "signup": "Регистрация",
     "signout": "Выход"
   },
+  "leisure": {
+    "leisureType": "Выберите тип досуга",
+    "pickUpLeisure": "Подобрать досуг",
+    "popularSearches": "Популярные запросы",
+    "mapSwitch": "Карта",
+    "mapTextInput": "Начните вводить город"
+  },
   "footer": {
     "join": "Присоедениться",
     "subscribeToNews": "Подписаться на новости",

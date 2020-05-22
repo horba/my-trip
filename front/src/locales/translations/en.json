@@ -28,6 +28,13 @@
     "signup": "Register",
     "signout": "Logout"
   },
+  "leisure": {
+    "leisureType": "Choose leisure type",
+    "pickUpLeisure": "Pick up leisure",
+    "popularSearches": "Popular Searches",
+    "mapSwitch": "Map",
+    "mapTextInput": "Enter city"
+  },
   "footer": {
     "join": "Join",
     "subscribeToNews": "Subscribe to news",
