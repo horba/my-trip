@@ -3,7 +3,6 @@
     :map-config="mapConfig"
     api-key="AIzaSyDuiiLqO-HTj8vP0POPrsBGJdWc7esHdOY"
   >
-    // insert your google maps api key to render styled map
     <template slot-scope="{ google, map }">
       <GoogleMapMarker
         v-for="marker in markers"

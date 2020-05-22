@@ -68,5 +68,3 @@ export default {
   },
   mounted () {}
 };
-// heart-outline
-// heart
