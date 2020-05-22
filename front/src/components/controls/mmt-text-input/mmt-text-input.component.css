@@ -22,8 +22,13 @@ label .mmt-text-input{
 
 label .mmt-text-input.v-input--dense >>> .v-input__control > .v-input__slot {
   min-height: var(--dense-input-min-height);
+  padding-right: 15px;
 }
 
 label .mmt-text-input.v-text-field--filled >>> .v-input__control > .v-input__slot {
   background-color: var(--filled-input-fill-color);
+}
+
+.mmt-text-input >>> .v-icon {
+  margin-bottom: 6px;
 }
