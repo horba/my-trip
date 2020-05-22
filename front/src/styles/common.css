@@ -40,15 +40,15 @@ h6 {
 
 /* trip */
 
-.theme--light.v-card.trip .v-card__title {
+.theme--light.v-card.trip > .v-card__title {
   text-decoration: underline;
   text-transform: uppercase;
 }
 
-.theme--light.v-card.trip .v-card__title,
-.theme--light.v-card.trip .v-card__subtitle,
+.theme--light.v-card.trip > .v-card__title,
+.theme--light.v-card.trip > .v-card__subtitle,
 .theme--light.v-card.trip > .v-card__text {
   color: white;
 }
 
-/* trip end*/
+/* trip end */
