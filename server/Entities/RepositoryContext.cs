@@ -32,14 +32,14 @@ namespace Entities
                 );
 
             var moqCountries = new [] {
-                new Country { Id = 1, Name = "Albania" },
-                new Country { Id = 2, Name = "Canada" },
-                new Country { Id = 3, Name = "Colombia" },
-                new Country { Id = 4, Name = "Cyprus" },
-                new Country { Id = 5, Name = "Dominica" },
-                new Country { Id = 6, Name = "Egypt" },
-                new Country { Id = 7, Name = "France" },
-                new Country { Id = 8, Name = "Ukraine" }
+                new Country { Id = 1, Name = "Albania", NameRu = "Албания", NameUa = "Албанія" },
+                new Country { Id = 2, Name = "Canada", NameRu = "Канада", NameUa = "Канада" },
+                new Country { Id = 3, Name = "Colombia", NameRu = "Колумбия", NameUa = "Колумбія" },
+                new Country { Id = 4, Name = "Cyprus", NameRu = "Кипр", NameUa = "Кіпр" },
+                new Country { Id = 5, Name = "Dominica", NameRu = "Доминикана", NameUa = "Домінікана" },
+                new Country { Id = 6, Name = "Egypt", NameRu = "Египет", NameUa = "Єгипет" },
+                new Country { Id = 7, Name = "France", NameRu = "Франция", NameUa = "Франція" },
+                new Country { Id = 8, Name = "Ukraine", NameRu = "Украина", NameUa = "Україна" }
              };
 
            modelBuilder.Entity<Country>().HasData(moqCountries);

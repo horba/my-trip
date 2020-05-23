@@ -7,32 +7,35 @@ export default {
   },
   data: () => ({
     searchQuery: '',
-    filter: {
+    period: {
       year: 0,
       month: 0
     }
   }),
   computed: {
     trips () {
-      return this.$store.state.trip.tripsHistory;
+      return this.period.year || this.period.month
+        ? this.$store.getters['trip/getTripsHistoryByPeriod'](this.period)
+        : this.$store.state.trip.tripsHistory;
     },
     years () {
-      return this.trips.map(function (trip) {
+      return this.trips.map((trip) => {
         return new Date(trip.startDate).getFullYear();
-      }).filter(function (trip, index, self) {
+      }).filter((trip, index, self) => {
         return self.indexOf(trip) === index;
       }) || [];
     },
     months () {
-      if (this.filter.year) {
+      if (this.period.year) {
         const lang = this.$store.state.locale.language || 'default';
-        return this.trips.map(function (trip) {
+        return this.trips.map((trip) => {
+          const date = new Date(trip.startDate);
           return {
-            name: new Date(trip.startDate).toLocaleString(lang, { month: 'long' }),
-            id: new Date(trip.startDate).getMonth() + 1
+            name: date.toLocaleString(lang, { month: 'long' }),
+            id: date.getMonth() + 1
           };
-        }).filter(function (trip, index, self) {
-          return self.indexOf(trip) === index;
+        }).filter((trip, index, self) => {
+          return self.findIndex(t => t.id === trip.id) === index;
         });
       }
 
@@ -45,14 +48,8 @@ export default {
         await this.$store.dispatch('trip/searchTripsHistory', this.searchQuery);
       } else {
         await this.$store.dispatch('trip/initTripsHistory');
-        this.filter.year = this.filter.month = 0;
+        this.period.year = this.period.month = 0;
       }
-    },
-    filterTrips (filter) {
-      this.filter.year = filter.year || this.filter.year;
-      this.filter.month = filter.month || this.filter.month;
-
-      this.$store.commit('trip/FILTER_TRIPS_HISTORY', this.filter);
     }
   },
   async mounted () {

@@ -7,10 +7,14 @@
     <ItemGroup>
       <Compile Remove="Migrations\20200515170034_IncreaseLengthMockPasswords.cs" />
       <Compile Remove="Migrations\20200515170034_IncreaseLengthMockPasswords.Designer.cs" />
+      <Compile Remove="Migrations\20200518155449_Countries.cs" />
+      <Compile Remove="Migrations\20200518155449_Countries.Designer.cs" />
       <Compile Remove="Migrations\20200518160700_Trips.cs" />
       <Compile Remove="Migrations\20200518160700_Trips.Designer.cs" />
       <Compile Remove="Migrations\20200518200453_Trips.cs" />
       <Compile Remove="Migrations\20200518200453_Trips.Designer.cs" />
+      <Compile Remove="Migrations\20200521132358_Trips.cs" />
+      <Compile Remove="Migrations\20200521132358_Trips.Designer.cs" />
     </ItemGroup>
 
     <ItemGroup>

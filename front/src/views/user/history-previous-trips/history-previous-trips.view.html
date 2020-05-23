@@ -17,19 +17,19 @@
     </div>
   </div>
   <div class="d-flex flex-wrap justify-space-between my-5"
-       v-if="!filter.year">
+       v-if="!period.year">
     <h5 v-for="year in years" :key="year">
       <a class="accent--text text--lighten-2"
-         v-on:click="filterTrips({year: year})">
+         v-on:click="period.year = year">
         {{year}}
       </a>
     </h5>
   </div>
   <div class="d-flex flex-wrap justify-space-between my-5"
-       v-if="filter.year">
+       v-if="period.year">
     <h5 v-for="month in months" :key="month.id">
       <a class="accent--text text--lighten-2"
-         v-on:click="filterTrips({month: month.id})">
+         v-on:click="period.month = month.id">
         {{month.name}}
       </a>
     </h5>

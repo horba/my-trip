@@ -22,14 +22,15 @@ namespace WebAPI.Services
     {
       var dateNow = DateTime.Now;
       var trips = _tripRepository.GetUserTrips(userId)
-                                 .Where(t => t.EndDate < dateNow);
+                                 .Where(t => t.StartDate < dateNow);
 
       if (!string.IsNullOrEmpty(searchQuery))
-        trips = trips.Where(t => t.DepartureCity.Contains(searchQuery) ||
-                                 t.ArrivalCountry.Name.Contains(searchQuery) ||
-                                 t.DepartureCountry.Name.Contains(searchQuery));
+        trips = trips.Where(t => t.DepartureCity.ToLower().Contains(searchQuery.ToLower()) ||
+                                 t.ArrivalCountry.Name.ToLower().Contains(searchQuery.ToLower()) ||
+                                 t.ArrivalCountry.NameRu.ToLower().Contains(searchQuery.ToLower()) ||
+                                 t.ArrivalCountry.NameUa.ToLower().Contains(searchQuery.ToLower()));
 
-      return _mapper.Map<IEnumerable<TripDTO>>(trips.ToList());
+      return _mapper.Map<IEnumerable<TripDTO>>(trips.OrderBy(t => t.StartDate).ToList());
     }
   }
 }

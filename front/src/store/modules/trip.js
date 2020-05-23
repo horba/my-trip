@@ -14,23 +14,6 @@ export default {
     },
     REQUEST_TRIPS_HISTORY (state, trips) {
       state.tripsHistory = trips;
-    },
-    FILTER_TRIPS_HISTORY (state, data) {
-      let filterFunc;
-
-      if (data.year && data.month) {
-        filterFunc = function (trip) {
-          return new Date(trip.startDate).getFullYear() === data.year
-            && new Date(trip.startDate).getMonth() + 1 === data.month;
-        };
-      } else if (data.year) {
-        filterFunc = function (trip) {
-          return new Date(trip.startDate).getFullYear() === data.year;
-        };
-      }
-
-      const trips = state.tripsHistory.filter(filterFunc);
-      state.tripsHistory = trips;
     }
   },
   actions: {
@@ -49,6 +32,15 @@ export default {
             commit('REQUEST_TRIPS_HISTORY', r.data);
           }
         });
+    }
+  },
+  getters: {
+    getTripsHistoryByPeriod: state => period => {
+      return state.tripsHistory.filter((trip) => {
+        const date = new Date(trip.startDate);
+        return date.getFullYear() === period.year
+          && (period.month ? date.getMonth() + 1 === period.month : true);
+      });
     }
   }
 };
