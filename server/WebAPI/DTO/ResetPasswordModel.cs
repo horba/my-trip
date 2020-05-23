@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Service.Models
+namespace WebAPI.DTO
 {
-    public class ForgotPasswordModel
+    public class ResetPasswordModel
     {
-        [Required]
-        [EmailAddress]
+        public string Password { get; set; }
         public string Email { get; set; }
     }
 }

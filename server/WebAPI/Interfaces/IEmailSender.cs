@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using Service.Models;
+using WebAPI.DTO;
 
-namespace Service.Interfaces
+namespace WebAPI.Interfaces
 {
-    public interface IEmailSender
+  public interface IEmailSender
     {
         void SendEmail(Message message);
         Task SendEmailAsync(Message message);

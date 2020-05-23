@@ -1,4 +1,4 @@
-﻿namespace Service.Models
+﻿namespace WebAPI.DTO
 {
     public class EmailConfiguration
     {
