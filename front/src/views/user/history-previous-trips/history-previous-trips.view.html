@@ -1,0 +1,48 @@
+<div>
+  <div class="d-flex flex-wrap align-stretch justify-space-between">
+    <div>
+      <h4 class="accent--text text--lighten-2">{{ $t('tripHistory.previousTrips') }}</h4>
+    </div>
+    <div>
+      <mmt-text-input class="search-text-field"
+                      :placeholder="$t('tripHistory.search')"
+                      mmt-label=" "
+                      rounded
+                      filled
+                      dense
+                      append-icon="mdi-find-replace"
+                      @click:append="searchTrips"
+                      @keyup.enter="searchTrips"
+                      v-model="searchQuery" />
+    </div>
+  </div>
+  <div class="d-flex flex-wrap justify-space-between my-5"
+       v-if="!period.year">
+    <h5 v-for="year in years" :key="year">
+      <a class="accent--text text--lighten-2"
+         v-on:click="period.year = year">
+        {{year}}
+      </a>
+    </h5>
+  </div>
+  <div class="d-flex flex-wrap justify-space-between my-5"
+       v-if="period.year">
+    <h5 v-for="month in months" :key="month.id">
+      <a class="accent--text text--lighten-2"
+         v-on:click="period.month = month.id">
+        {{month.name}}
+      </a>
+    </h5>
+  </div>
+  <div class="d-flex flex-wrap justify-space-around"
+       v-if="trips.length">
+    <template v-for="(trip,n) in trips">
+      <mmt-trip-card :key="`trip-${n}`"
+                     :trip="trip"
+                     class="mb-5" />
+    </template>
+  </div>
+  <p v-else>
+    {{ $t('tripHistory.tripsNotFound') }}
+  </p>
+</div>

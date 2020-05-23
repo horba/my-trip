@@ -2,7 +2,10 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 import locale from './modules/locale';
-const { serverPath } = require('@/config/config.dev.json');
+import trip from './modules/trip';
+import config from '@config';
+
+const { serverPath } = config;
 
 Vue.use(Vuex);
 
@@ -11,7 +14,8 @@ export default new Vuex.Store({
     user: null
   },
   modules: {
-    locale
+    locale,
+    trip
   },
   mutations: {
     SET_USER_DATA (state, userData) {

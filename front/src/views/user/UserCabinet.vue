@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid primary lighten-5>
+  <v-container fluid primary lighten-5 pa-0>
     <div class="d-flex flex-row align-stretch">
       <div class="align-self-start">
         <mmt-user-menu></mmt-user-menu>

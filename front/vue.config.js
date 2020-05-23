@@ -12,6 +12,8 @@ module.exports = {
       .set('@store', path.resolve('src/store/'))
       .set('@styles', path.resolve('src/styles/'))
       .set('@layout', path.resolve('src/layouts/'))
-      .set('@locales', path.resolve('src/locales/'));
+      .set('@locales', path.resolve('src/locales/'))
+      .set('@filters', path.resolve('src/filters/'))
+      .set('@config', path.resolve('src/config/config.dev.json'));
   }
 };
