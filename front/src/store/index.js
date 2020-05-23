@@ -46,6 +46,34 @@ export default new Vuex.Store({
     },
     logout ({ commit }) {
       commit('CLEAR_USER_DATA');
+    },
+    recoveryPasswordSendEmail (context, payload) {
+      return new Promise((resolve, reject) => {
+        axios.post(`${serverPath}api/ForgotPassword`,
+          { Email: payload.email }).then(resp => {
+          if (resp.status !== 200) {
+            reject(resp.data);
+          } else {
+            localStorage.setItem('email', payload.email);
+            resolve();
+          }
+        });
+      });
+    },
+    recoveryPasswordSendPassword (context, passwordandtoken) {
+      return new Promise((resolve, reject) => {
+        axios.post(`${serverPath}api/ForgotPassword/ResetPassword`,
+          { Email: localStorage.getItem('email'), Password: passwordandtoken.password }, {
+            headers: { Authorization: 'Bearer ' + passwordandtoken.token }
+          }).then(resp => {
+          if (resp.data !== '') {
+            localStorage.removeItem('email');
+            resolve();
+          } else {
+            reject(resp.data);
+          }
+        });
+      });
     }
   },
   getters: {

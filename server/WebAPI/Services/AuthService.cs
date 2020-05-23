@@ -17,7 +17,7 @@ namespace WebAPI.Services
             _configuration = configuration;
         }
 
-        public string MakeToken(User user)
+        public string MakeToken(User user, bool oneDay = true)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
@@ -28,7 +28,7 @@ namespace WebAPI.Services
                     new Claim(ClaimTypes.Name, user.Id.ToString()),
                     new Claim(ClaimTypes.Email, user.Email)
                 }),
-                Expires = DateTime.UtcNow.AddDays(1),
+                Expires = oneDay ? DateTime.UtcNow.AddDays(1) : DateTime.UtcNow.AddMinutes(10),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
                 Issuer = _configuration["Jwt:Issuer"],
                 Audience = _configuration["Jwt:Audience"]

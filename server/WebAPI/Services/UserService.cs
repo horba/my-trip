@@ -45,5 +45,29 @@ namespace WebAPI.Services
         {
             return _userRepository.FindUserByEmail(email);
         }
+
+        public bool UpdateUserPassword(string email, string newPassword)
+        {
+            try
+            {
+                var user = GetUser(email);
+                if(user != null)
+                {
+                    user.Password = CryptoUtils.HashPassword(newPassword);
+                    _userRepository.UpdateUserPassword(user);
+                    return true;
+                }
+                else
+                {
+                    CreateUser(email, newPassword);
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }

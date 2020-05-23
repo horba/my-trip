@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using AutoMapper;
 using Entities.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -10,71 +9,48 @@ using WebAPI.Services;
 
 namespace WebAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ForgotPasswordController : ControllerBase
     {
         private readonly IEmailSender emailSender;
-        private IMapper mapper;
-        private UserService userService;
+        private readonly UserService userService;
+        private readonly AuthService authService;
 
-        public ForgotPasswordController(IMapper mapper, UserService userManager, IEmailSender emailSender)
+        public ForgotPasswordController( UserService userService, IEmailSender emailSender, AuthService authService)
         {
-            this.mapper = mapper;
-            this.userService = userManager;
+            this.userService = userService;
             this.emailSender = emailSender;
+            this.authService = authService;
         }
 
-        [HttpGet]
-        public IActionResult ResetPassword(string token, string email)
+        [HttpPost("ResetPassword")]
+        public IActionResult ResetPassword(ResetPasswordModel resetPasswordModel)
         {
-            var model = new ResetPasswordModel { Token = token, Email = email };
-            return Ok(model);
+            if(resetPasswordModel.Email != "" && resetPasswordModel.Password != "")
+            {
+                var result = userService.UpdateUserPassword(resetPasswordModel.Email, resetPasswordModel.Password);
+                return Ok(result);
+            }
+            return Ok(false);
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> ResetPassword(ResetPasswordModel resetPasswordModel)
-        //{
-        //    if(!ModelState.IsValid)
-        //        return BadRequest(resetPasswordModel);
-
-        //    var user = userService.GetUser(resetPasswordModel.Email);
-        //    if(user == null)
-                //RedirectToAction(nameof(ResetPasswordConfirmation));
-
-            //var resetPassResult = await userService.ResetPasswordAsync(user, resetPasswordModel.Token, resetPasswordModel.Password);
-            //if(!resetPassResult.Succeeded)
-            //{
-            //    foreach(var error in resetPassResult.Errors)
-            //    {
-            //        ModelState.TryAddModelError(error.Code, error.Description);
-            //    }
-
-            //    return View();
-            //}
-
-            //return RedirectToAction(nameof(ResetPasswordConfirmation));
-        //}
-
-    //    [HttpPost]
-    //    [ValidateAntiForgeryToken]
-    //    public async Task<IActionResult> ForgotPassword(ForgotPasswordModel forgotPasswordModel)
-    //    {
-    //        if(!ModelState.IsValid)
-    //            return BadRequest(forgotPasswordModel);
-
-    //        var user = userService.GetUser(forgotPasswordModel.Email);
-    //        if(user == null)
-    //            return RedirectToAction(nameof(ForgotPasswordConfirmation));
-
-    //        var token = await userService.GeneratePasswordResetTokenAsync(user);
-    //        var callback = Url.Action(nameof(ResetPassword), nameof(ForgotPasswordController), new { token, email = user.Email }, Request.Scheme);
-
-    //        var message = new Message(new string[] { "codemazetest@gmail.com" }, "Reset password token", callback, null);
-    //        await emailSender.SendEmailAsync(message);
-
-    //        return RedirectToAction(nameof(ForgotPasswordConfirmation));
-    //    }
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> ResetPasswordAsync(ResetPasswordModel resetPasswordModel)
+        {
+            var user = userService.GetUser(resetPasswordModel.Email);
+            if(user != null)
+			{
+				var token = authService.MakeToken(user, false);
+				var message = new Message(new string[] { user.Email },
+					"Reset password token", $"<a href='localhost:8080/recovery-password/{token}'>Recovery password</a>",
+					null);
+				await emailSender.SendEmailAsync(message);
+				return Ok();
+			}
+			return BadRequest($"user is not valid. user = {user}");
+        }
     }
 }

@@ -41,7 +41,18 @@
     "Conf": "Confirmation",
     "recover": "Recover",
     "back": "Back",
-    "note": "* After receiving the link, click on it and continue the procedure recoveries. It will only take a couple of minutes"
+    "note": "* After receiving the link, click on it and continue the procedure recoveries. It will only take a couple of minutes",
+    "excelentwrk": "Your email address has been successfully confirmed! Please enter a new password for your account.",
+    "password": "Password",
+    "confrimpass": "Confirm password",
+    "createpass": "Create a password",
+    "restriction": "At least 8 characters",
+    "save": "Save",
+    "repeatpass": "Repeat password",
+    "passmastidentity": "Passwords must match",
+    "thisnoemail": "Invalid email address",
+    "noempty": "Fill in the field.",
+    "congrats": "The password was successfully changed! You will receive a confirmation of your password change to Your email address."
   },
   "locale": {
     "language": "Language",

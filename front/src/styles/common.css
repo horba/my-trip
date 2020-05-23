@@ -39,19 +39,23 @@ h6 {
   line-height: 150%;
 }
 
-.text-small{
- font-size: 12px;
- line-height: 125%;
-}
-
 body{
   font-size: 14px;
   line-height: 140%;
 }
 
+.text-small{
+ font-size: 12px;
+ line-height: 125%;
+}
+
 .text-xsmall{
   font-size: 9px;
   line-height: 125%;
+}
+
+.text-normal{
+  font-weight: normal;
 }
 
 .mmt-btn{

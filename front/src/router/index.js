@@ -187,6 +187,12 @@ const routes = [
     name: 'RecoveryPassword',
     component: RecoveryPassword,
     meta: { layout: 'default' }
+  },
+  {
+    path: '/recovery-password/:token',
+    name: 'RecoveryPassword',
+    component: RecoveryPassword,
+    meta: { layout: 'default' }
   }
 ],
 
