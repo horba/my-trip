@@ -11,7 +11,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    user: null
+    user: null,
+    email: ''
   },
   modules: {
     locale,
@@ -25,7 +26,16 @@ export default new Vuex.Store({
     },
     CLEAR_USER_DATA (state) {
       localStorage.removeItem('user');
+      delete axios.defaults.headers.common.Authorization;
       location.reload();
+    },
+    SET_EMAIL_DATA (state, email) {
+      state.email = email;
+      localStorage.setItem('email', email);
+    },
+    CLEAR_EMAIL_DATA (state) {
+      state.email = '';
+      localStorage.removeItem('email');
     }
   },
   actions: {
@@ -51,27 +61,27 @@ export default new Vuex.Store({
     logout ({ commit }) {
       commit('CLEAR_USER_DATA');
     },
-    recoveryPasswordSendEmail (context, payload) {
+    recoveryPasswordSendEmail ({ commit }, payload) {
       return new Promise((resolve, reject) => {
         axios.post(`${serverPath}api/ForgotPassword`,
           { Email: payload.email }).then(resp => {
           if (resp.status !== 200) {
             reject(resp.data);
           } else {
-            localStorage.setItem('email', payload.email);
+            commit('SET_EMAIL_DATA', payload.email);
             resolve();
           }
         });
       });
     },
-    recoveryPasswordSendPassword (context, passwordandtoken) {
+    recoveryPasswordSendPassword ({ commit, state }, passwordandtoken) {
       return new Promise((resolve, reject) => {
         axios.post(`${serverPath}api/ForgotPassword/ResetPassword`,
-          { Email: localStorage.getItem('email'), Password: passwordandtoken.password }, {
+          { Email: state.email, Password: passwordandtoken.password }, {
             headers: { Authorization: 'Bearer ' + passwordandtoken.token }
           }).then(resp => {
           if (resp.data !== '') {
-            localStorage.removeItem('email');
+            commit('CLEAR_EMAIL_DATA');
             resolve();
           } else {
             reject(resp.data);
@@ -83,6 +93,9 @@ export default new Vuex.Store({
   getters: {
     isLoggedIn (state) {
       return !!state.user;
+    },
+    getEmail (state) {
+      return state.email;
     }
   }
 });
