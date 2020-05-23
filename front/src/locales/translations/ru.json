@@ -25,13 +25,14 @@
     "notifications": "Уведомления",
     "editProfile": "Редактировать профиль",
     "signin": "Вход",
+    "signup": "Регистрация",
     "signout": "Выход"
   },
   "footer": {
     "join": "Присоедениться",
     "subscribeToNews": "Подписаться на новости",
     "subscribeBtn": "Подписаться",
-    "emailPlh": "Введите Ваш e-mail"    
+    "emailPlh": "Введите Ваш e-mail"
   },
   "recoverypassword": {
     "title": "Восстановление пароля",
@@ -59,5 +60,25 @@
     "en": "Английский",
     "ru": "Русский",
     "ua": "Украинский"
+  },
+  "countries": {
+    "Albania": "Албания",
+    "Canada": "Канада",
+    "Colombia": "Колумбия",
+    "Cyprus": "Кипр",
+    "Dominica": "Доминика",
+    "Egypt": "Египет",
+    "France": "Франция",
+    "Ukraine": "Украина"
+  },
+  "tripHistory": {
+    "trip": "Поездка",
+    "previousTrips": "Предыдущие поездки",
+    "tripsNotFound": "Поездки не найдены",
+    "search": "Поиск",
+    "departure": "Вылет",
+    "flightTime": "Время полета",
+    "differenceInTime": "Разница во времени",
+    "details": "Подробнее"
   }
 }

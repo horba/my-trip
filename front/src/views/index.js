@@ -20,3 +20,8 @@ export { default as MyLeisure } from '@views/user/Leisure.vue';
 export { default as RecoveryPassword } from '@views/recovery-password/RecoveryPassword.vue';
 export { default as SignIn } from './sign-in/sign-in.view.vue';
 export { default as SignUp } from './sign-up/sign-up.view.vue';
+export { default as UserCabinet } from '@views/user/UserCabinet.vue';
+export {
+  default as MyHistoryPreviousTrips
+}
+  from '@views/user/history-previous-trips/history-previous-trips.view.vue';

@@ -7,7 +7,9 @@ import {
   CookiePolicy, TermsOfUse, ForTourOperators,
   Contacts, ReviewNew, MyTickets,
   MyAccommodation, MyFood, MyTransport,
-  MyLeisure, SignIn, SignUp, RecoveryPassword
+  MyLeisure, SignIn, SignUp,
+  UserCabinet, MyHistoryPreviousTrips, 
+  RecoveryPassword
 } from '@views';
 
 Vue.use(VueRouter);
@@ -100,7 +102,7 @@ const routes = [
   {
     path: '/my',
     name: 'My',
-    component: MyTickets,
+    component: UserCabinet,
     children: [
       {
         path: 'tickets',
@@ -159,7 +161,7 @@ const routes = [
       {
         path: 'history/prev',
         name: 'MyHistoryPrev',
-        component: MyTickets,
+        component: MyHistoryPreviousTrips,
         meta: { layout: 'authorize' }
       },
       {

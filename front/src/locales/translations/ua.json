@@ -25,13 +25,14 @@
     "notifications": "Повідомлення",
     "editProfile": "Редагувати профіль",
     "signin": "Вхід",
+    "signup": "Реєстрація",
     "signout": "Вихід"
   },
   "footer": {
     "join": "Приєднатися",
     "subscribeToNews": "Підписатися на новини",
     "subscribeBtn": "Підписатися",
-    "emailPlh": "Введіть Ваш e-mail"    
+    "emailPlh": "Введіть Ваш e-mail"
   },
   "recoverypassword": {
     "title": "Відновлення пароля",
@@ -59,5 +60,25 @@
     "en": "Англійська",
     "ru": "Pосійський",
     "ua": "Українська"
+  },
+  "countries": {
+    "Albania": "Албанія",
+    "Canada": "Канада",
+    "Colombia": "Колумбія",
+    "Cyprus": "Кіпр",
+    "Dominica": "Домініка",
+    "Egypt": "Єгипет",
+    "France": "Франція",
+    "Ukraine": "Україна"
+  },
+  "tripHistory": {
+    "trip": "Поїздка",
+    "previousTrips": "Попередні поїздки",
+    "tripsNotFound": "Поїздки не знайдені",
+    "search": "Пошук",
+    "departure": "Виліт",
+    "flightTime": "Час польоту",
+    "differenceInTime": "Різниця в часі",
+    "details": "Докладніше"
   }
 }

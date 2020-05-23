@@ -1,4 +1,5 @@
 using System.Text;
+using AutoMapper;
 using Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -13,6 +14,7 @@ using Service.MailService;
 using Service.Models;
 using Microsoft.OpenApi.Models;
 using WebAPI.Options;
+using WebAPI.DTO;
 using WebAPI.Services;
 
 namespace WebAPI
@@ -49,6 +51,8 @@ namespace WebAPI
             services.AddScoped<UserRepository>();
             services.AddScoped<UserService>();
             services.AddSingleton<AuthService>();
+            services.AddScoped<TripRepository>();
+            services.AddScoped<TripService>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(x =>
             {
@@ -74,8 +78,15 @@ namespace WebAPI
             {
                 x.SwaggerDoc("v1", new OpenApiInfo { Title = "MyTrip Api", Version = "v1" });
             });
-        }
+        
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+              mc.AddProfile(new MappingProfile());
+            });
 
+            services.AddSingleton(mappingConfig.CreateMapper());
+        }
+    
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -110,7 +121,7 @@ namespace WebAPI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
+            });      
         }
     }
 }

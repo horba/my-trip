@@ -1,0 +1,51 @@
+<div class="d-flex pa-2 white">
+  <v-card class="mx-auto overflow-hidden trip"
+          color="primary lighten-6 white--text"
+          tile flat
+          :img="trip.imageUrl">
+
+    <v-card-subtitle class="pb-0">
+      {{ $t('tripHistory.trip') }}
+    </v-card-subtitle>
+
+    <v-card-title class="headline mb-3 bt-1 pt-0">
+      {{ $t(`countries.${trip.arrivalCountry.name}`) || trip.arrivalCountry.name }}
+    </v-card-title>
+
+    <v-card-subtitle>
+      {{ trip.startDate | date }} - {{ trip.endDate | date }} ({{ trip.totalPrice }} {{ trip.currency }})
+    </v-card-subtitle>
+
+    <v-card-text class="details pb-0">
+      <div v-if="trip.departureCity">
+        <span class="primary--text text--lighten-6">{{ $t('tripHistory.departure') }}:</span>
+        {{ trip.departureCity }}.
+      </div>
+    </v-card-text>
+
+    <div class="d-flex flex-no-wrap justify-space-between">
+
+      <v-card-text class="details pt-0">
+        <div v-if="trip.flightTime">
+          <span class="primary--text text--lighten-6">{{ $t('tripHistory.flightTime') }}:</span>
+          {{ trip.flightTime }}.
+        </div>
+        <div v-if="trip.transplantTime">
+          {{ trip.transplantTime }}
+        </div>
+        <div v-if="trip.differenceInTime">
+          <span class="primary--text text--lighten-6">{{ $t('tripHistory.differenceInTime') }}:</span>
+          {{ trip.differenceInTime }}.
+        </div>
+      </v-card-text>
+
+      <v-card-actions>
+        <v-btn rounded small>
+          <span class="small">{{ $t('tripHistory.details') }}</span>
+        </v-btn>
+      </v-card-actions>
+
+    </div>
+
+  </v-card>
+</div>
