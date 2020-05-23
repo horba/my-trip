@@ -6,6 +6,7 @@ import vuetify from './plugins/vuetify';
 import i18n from './plugins/i18n';
 import axios from 'axios';
 import { Default, Authorize } from '@layout';
+import '@filters';
 
 Vue.component('default-layout', Default);
 Vue.component('authorize-layout', Authorize);

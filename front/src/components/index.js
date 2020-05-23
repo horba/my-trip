@@ -4,6 +4,7 @@ export { default as MmtFooter } from './mmt-footer/mmt-footer.component.vue';
 export { default as MmtHeader } from './mmt-header/mmt-header.component.vue';
 export { default as MmtUserMenu } from './mmt-user-menu/mmt-user-menu.component.vue';
 export { default as MmtStepper } from './mmt-stepper/mmt-stepper.component.vue';
+export { default as MmtTripCard } from './mmt-trip-card/mmt-trip-card.component.vue';
 export { default as MmtTextInput } from './controls/mmt-text-input/mmt-text-input.component.vue';
 export {
   default as MmtLocaleSwitcher

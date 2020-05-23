@@ -39,12 +39,32 @@
     "join": "Join",
     "subscribeToNews": "Subscribe to news",
     "subscribeBtn": "Subscribe",
-    "emailPlh": "Enter your e- mail"    
+    "emailPlh": "Enter your e- mail"
   },
   "locale": {
     "language": "Language",
     "en": "English",
     "ru": "Russian",
     "ua": "Ukrainian"
+  },
+  "countries": {
+    "Albania": "Albania",
+    "Canada": "Canada",
+    "Colombia": "Colombia",
+    "Cyprus": "Cyprus",
+    "Dominica": "Dominica",
+    "Egypt": "Egypt",
+    "France": "France",
+    "Ukraine": "Ukraine"
+  },
+  "tripHistory": {
+    "trip": "Trip",
+    "previousTrips": "Previous Trips",
+    "tripsNotFound": "No trips found",
+    "search": "Search",
+    "departure": "Departure",
+    "flightTime": "Flight time",
+    "differenceInTime": "Difference in time",
+    "details": "Details"
   }
 }

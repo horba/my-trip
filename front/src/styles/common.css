@@ -36,3 +36,19 @@ h6 {
   text-transform: none;
   letter-spacing: normal;
 }
+
+
+/* trip */
+
+.theme--light.v-card.trip > .v-card__title {
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+
+.theme--light.v-card.trip > .v-card__title,
+.theme--light.v-card.trip > .v-card__subtitle,
+.theme--light.v-card.trip > .v-card__text {
+  color: white;
+}
+
+/* trip end */
