@@ -6,7 +6,7 @@ export default {
   data () {
     return {
       email: '',
-      mystep: 1,
+      step: 1,
       firstPass: '',
       secondPass: '',
       valid: true,
@@ -34,12 +34,12 @@ export default {
         {
           password: this.secondPass,
           token: this.$route.params.token
-        }).then(this.mystep = 3);
+        }).then(this.step = 3);
     }
   },
   mounted () {
     if (this.$route.params.token !== undefined) {
-      this.mystep = 2;
+      this.step = 2;
       this.email = localStorage.getItem('email');
     }
   }

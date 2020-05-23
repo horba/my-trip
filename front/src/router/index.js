@@ -8,7 +8,7 @@ import {
   Contacts, ReviewNew, MyTickets,
   MyAccommodation, MyFood, MyTransport,
   MyLeisure, SignIn, SignUp,
-  UserCabinet, MyHistoryPreviousTrips, 
+  UserCabinet, MyHistoryPreviousTrips,
   RecoveryPassword
 } from '@views';
 

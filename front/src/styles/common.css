@@ -11,47 +11,47 @@
 
 h1 {
   font-size: 54px;
-  line-height: 170%;
+  line-height: 92px;
 }
 
 h2 {
   font-size: 38px;
-  line-height: 165%;
+  line-height: 63px;
 }
 
 h3 {
   font-size: 33px;
-  line-height: 160%;
+  line-height: 53px;
 }
 
 h4 {
   font-size: 23px;
-  line-height: 150%;
+  line-height: 34px;
 }
 
 h5 {
   font-size: 18px;
-  line-height: 150%;
+  line-height: 27px;
 }
 
 h6 {
   font-size: 15px;
-  line-height: 150%;
+  line-height: 21px;
 }
 
 body{
   font-size: 14px;
-  line-height: 140%;
+  line-height: 19px;
 }
 
 .text-small{
  font-size: 12px;
- line-height: 125%;
+ line-height: 15px;
 }
 
 .text-xsmall{
   font-size: 9px;
-  line-height: 125%;
+  line-height: 11px;
 }
 
 .text-normal{
