@@ -1,6 +1,8 @@
-import { VBreadcrumbs, VIcon, VBtn, VTextField, VSwitch } from 'vuetify/lib';
+import { VBreadcrumbs, VBtn, VIcon, VSwitch, VTextField } from 'vuetify/lib';
+
 import LeisureMap from './leisure.map.vue';
 import { MmtTextInput } from '@components/';
+
 export default {
   components: {
     MmtTextInput,
@@ -15,32 +17,6 @@ export default {
     return {
       like: false,
       showMap: true,
-      breadcrumbs: [
-        {
-          text: 'Досуг',
-          disabled: false,
-          href: 'breadcrumbs_dashboard'
-        },
-        {
-          text: 'Экскурсии',
-          disabled: false,
-          href: 'breadcrumbs_link_1'
-        },
-        {
-          text: 'Музеи и выставки',
-          disabled: true,
-          href: 'breadcrumbs_link_2'
-        }
-      ],
-      leisureType: [
-        'Активный отдых, экстрим',
-        'Музеи и выставки',
-        'Кинотеатры, театры',
-        'Красота, здоровье, Spa',
-        'Отдых для детей',
-        'Отдых для компании',
-        'Игровые клубы, квесты'
-      ],
       places: [
         {
           title: 'Музей',

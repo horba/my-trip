@@ -1,18 +1,11 @@
 <div id="leisure" class="leisure mx-auto">
-  <nav class="breadcrumbs-wrap">
-    <v-breadcrumbs :items="breadcrumbs" class="breadcrumbs">
-      <template v-slot:divider>
-        <v-icon>mdi-chevron-right</v-icon>
-      </template>
-    </v-breadcrumbs>
-  </nav>
   <div class="body-wrap">
     <div class="sidebar">
       <h5>{{ $t('leisure.leisureType') }}</h5>
       <div class="categories">
         <v-checkbox
           class="leisure-type"
-          v-for="(type, index) in leisureType" :key="index"
+          v-for="(type, index) in $t('leisure.leisureTypeList')" :key="index"
           :label=type
           hide-details
         ></v-checkbox>
@@ -37,7 +30,7 @@
             :label="$t('leisure.mapSwitch')"
           ></v-switch>
         </div>
-        <LeisureMap id="map" class="map" v-if="showMap"/>
+        <LeisureMap id="leisure-map" class="leisure-map" v-if="showMap"/>
       </div>
       <div class="places">
         <div 
