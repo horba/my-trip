@@ -1,5 +1,6 @@
 <script>
-import { LINE_PATH_CONFIG } from '@/constants/mapSettings';
+import { LINE_PATH_CONFIG } from '@constants';
+
 export default {
   props: {
     google: {
