@@ -63,6 +63,9 @@ body{
   letter-spacing: normal;
 }
 
+.theme--light.v-card.auth-card, .theme--light.v-card.recovery-card {
+  background-color: #F6F8FB;
+}
 
 /* trip */
 

@@ -23,11 +23,10 @@ namespace Entities
             RepositoryContext.SaveChanges();
         }
 
-        public void UpdateUserPassword(User user)
+        public void UpdateUserPassword(User user, string password)
         {
-            var newPassword = user.Password;
             user = FindUserByEmail(user.Email);
-            user.Password = newPassword;
+            user.Password = password;
             RepositoryContext.SaveChanges();
         }
     }

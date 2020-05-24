@@ -10,8 +10,8 @@ export default {
       firstPass: '',
       secondPass: '',
       valid: true,
-      showfirstPass: false,
-      showsecondPass: false,
+      showPassword: false,
+      passwordConfirmation: false,
       serverError: '',
       rules: {
         isEmpty: v => !!v || this.$t('recoverypassword.noempty'),

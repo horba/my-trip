@@ -50,8 +50,8 @@ namespace WebAPI.Services
         var user = GetUser(email);
         if(user != null)
         {
-          user.Password = CryptoUtils.HashPassword(newPassword);
-          _userRepository.UpdateUserPassword(user);
+          var password = CryptoUtils.HashPassword(newPassword);
+          _userRepository.UpdateUserPassword(user, password);
           return true;
         }
         else
