@@ -1,43 +1,43 @@
-.leisure{
+.leisure {
   max-width: 1140px;
 }
 
 .body-wrap, .places, .place, .place-info, 
-.title-wrap, .price-wrap, .photo, .input-wrap{
+.title-wrap, .price-wrap, .photo, .input-wrap {
   display: flex;
 }
 
-.sidebar{
+.sidebar {
   min-width: 280px;
   max-height: 2000px;
   padding: 20px;
   background:white;
 }
 
-.sidebar > h5{
+.sidebar > h5 {
   font-weight: 700;
 }
 
-.sidebar > .categories{
+.sidebar > .categories {
   height: 360px;
 }
 
-.main-wrap > h4{
+.main-wrap > h4 {
   text-align: center;
 }
 
-.leisure-type{
+.leisure-type {
   margin: 14px 0;
 }
 
-.leisure-type >>> label{
+.leisure-type >>> label {
   font-size: 14px;
   font-weight: 500;
   color:black;
   margin-left:5px;
 }
 
-.leisure-type >>> i{
+.leisure-type >>> i {
   font-size: 34px;
 }
 
@@ -46,21 +46,21 @@
   padding: 0 20px;
 }
 
-.main{
+.main {
   margin-bottom: 10px;
 }
 
-.search-city{
+.search-city {
   width: 248px;
 }
 
-.map{
+.leisure-map {
   width: 100%;
   height: 320px;
   background-color: #000;
 }
 
-.places{
+.places {
   flex-wrap: wrap;
   justify-content: start;
   justify-content: space-between;
@@ -73,7 +73,7 @@
   flex-direction: column;
 }
 
-.places > .place:last-child{
+.places > .place:last-child {
   margin: 10px auto 0 12px;
 }
 
@@ -91,11 +91,11 @@
   justify-content: space-between;
 }
 
-.title-wrap{
+.title-wrap {
   justify-content: space-between;
 }
 
-.breadcrumbs{
+.breadcrumbs {
   padding: 10px 0 20px 0;
 }
 
@@ -109,11 +109,7 @@
   justify-content: flex-end;
 }
 
-.travel-map {
-  height: 400px;
-}
-
-.photo >>> .v-btn:not(.v-btn--round).v-size--default{
+.photo >>> .v-btn:not(.v-btn--round).v-size--default {
   height: 30px;
   min-width: 30px;
 }
@@ -123,11 +119,7 @@
   margin-top: 2px;
 }
 
-.test{
-  margin-top: 50px;
-}
-
-.input-wrap{
+.input-wrap {
   justify-content: space-between;
   align-items: center;
 }
