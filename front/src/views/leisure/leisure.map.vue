@@ -1,17 +1,17 @@
 <template>
-  <GoogleMapLoader
+  <google-map-loader
     :map-config="mapConfig"
     api-key="AIzaSyDuiiLqO-HTj8vP0POPrsBGJdWc7esHdOY"
   >
     <template slot-scope="{ google, map }">
-      <GoogleMapMarker
+      <google-map-marker
         v-for="marker in markers"
         :key="marker.id"
         :marker="marker"
         :google="google"
         :map="map"
       />
-      <GoogleMapLine
+      <google-map-line
         v-for="line in lines"
         :key="line.id"
         :path.sync="line.path"
@@ -19,14 +19,11 @@
         :map="map"
       />
     </template>
-  </GoogleMapLoader>
+  </google-map-loader>
 </template>
 
 <script>
-import GoogleMapLoader from '@/components/google-map/GoogleMapLoader';
-import GoogleMapMarker from '@/components/google-map/GoogleMapMarker';
-import GoogleMapLine from '@/components/google-map/GoogleMapLine';
-
+import { GoogleMapLoader, GoogleMapMarker, GoogleMapLine } from '@components';
 import { mapSettings } from '@/constants/mapSettings';
 
 export default {
