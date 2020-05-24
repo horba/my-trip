@@ -8,7 +8,7 @@ import {
   Contacts, ReviewNew, MyTickets,
   MyAccommodation, MyFood, MyTransport,
   MyLeisure, SignIn, SignUp,
-  UserSettings, UserCabinet
+  UserSettings, UserCabinet, MyHistoryPreviousTrips
 } from '@views';
 
 Vue.use(VueRouter);
@@ -160,7 +160,7 @@ const routes = [
       {
         path: 'history/prev',
         name: 'MyHistoryPrev',
-        component: MyTickets,
+        component: MyHistoryPreviousTrips,
         meta: { layout: 'authorize' }
       },
       {

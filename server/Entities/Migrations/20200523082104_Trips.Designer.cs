@@ -4,14 +4,16 @@ using Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Entities.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20200523082104_Trips")]
+    partial class Trips
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -289,22 +291,7 @@ namespace Entities.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Country")
-                        .HasColumnType("int");
-
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Gender")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Language")
-                        .HasColumnType("int");
-
-                    b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
@@ -318,35 +305,30 @@ namespace Entities.Migrations
                         new
                         {
                             Id = -1,
-                            Country = 3,
                             Email = "test1@users.com",
                             Password = "r5AcRG+U3Yi5olP/rcToFJwKu2KH4PB6NJ99/fPCE8cp6SnyHWbir79TnanNAeVI"
                         },
                         new
                         {
                             Id = -2,
-                            Country = 1,
                             Email = "test2@users.com",
                             Password = "7JX8jQHqx1hd4HUMnBKbYO7ihBeVMl8jngm6qVXomOJx2xAlm1IuzXS5nLyGtIe1"
                         },
                         new
                         {
                             Id = -3,
-                            Country = 2,
                             Email = "test3@users.com",
                             Password = "9kQ0AnWvFManewW+MD4WpDnYhbhQ3PmWCGBiAbzgSoJLqK0EbGstl5YpWNGO5Pus"
                         },
                         new
                         {
                             Id = -4,
-                            Country = 2,
                             Email = "test4@users.com",
                             Password = "h1sk1rNrmMXAf0vXAGf+fU8YPLqop2kOQaRTQ4HWx1+w034u6Gt16nfgWNNArV5f"
                         },
                         new
                         {
                             Id = -5,
-                            Country = 0,
                             Email = "test5@users.com",
                             Password = "a8APt+FH76oSxud6xByXF80/9EEw3Md/rZ/Rh9/plZtnRd75zKHPUh1Y0Fmc+Xrg"
                         });

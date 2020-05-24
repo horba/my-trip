@@ -7,6 +7,7 @@ import i18n from './plugins/i18n';
 import axios from 'axios';
 import { Default, Authorize } from '@layout';
 import { fetchServer } from '@/services/fetchServer.js';
+import '@filters';
 
 Vue.component('default-layout', Default);
 Vue.component('authorize-layout', Authorize);
