@@ -33,7 +33,16 @@
     "pickUpLeisure": "Pick up leisure",
     "popularSearches": "Popular Searches",
     "mapSwitch": "Map",
-    "mapTextInput": "Enter city"
+    "mapTextInput": "Enter city",
+    "leisureTypeList": [
+      "Active rest, extreme",
+      "Museums and Exhibitions",
+      "Cinemas, theaters",
+      "Beauty, Health, Spa",
+      "Rest for children",
+      "Rest for the company",
+      "Game clubs, quests"
+    ]
   },
   "footer": {
     "join": "Join",
