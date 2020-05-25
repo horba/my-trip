@@ -1,5 +1,5 @@
 import { MmtTextInput } from '@components';
-import { mapActions, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 const { emailRegex } = require('@/config/constants.json');
 
 export default {
@@ -114,9 +114,8 @@ export default {
     }
   },
   methods: {
-    ...mapActions('userSettings', [ 'updateUserSettings' ]),
     applySettings () {
-      this.updateUserSettings(
+      this.$store.dispatch('userSettings/updateUserSettings',
         {
           lastName: this.lastName,
           firstName: this.firstName,
@@ -127,7 +126,7 @@ export default {
         }
       )
         .catch(error => {
-          this.emailIsAlreadyTaken = error.response.data === 'Email is already taken';
+          this.emailIsAlreadyTaken = error.response.data.isEmailUsed;
         });
     },
     fillLoadedFields (data) {

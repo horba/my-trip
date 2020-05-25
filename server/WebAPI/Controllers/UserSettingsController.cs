@@ -4,6 +4,7 @@ using System.Security.Claims;
 using Entities;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.DTO.UserSettings;
+using WebAPI.Extension;
 using WebAPI.Services;
 
 namespace WebAPI.Controllers
@@ -24,10 +25,7 @@ namespace WebAPI.Controllers
     [HttpGet]
     public IActionResult GetSettings()
     {
-      if (!Int32.TryParse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value, out var id))
-      {
-        return Forbid();
-      }
+      int id = HttpContext.GetUserIdFromClaim();
 
       var user = _userRepository.FindUserById(id);
       if (user == null)
@@ -41,10 +39,7 @@ namespace WebAPI.Controllers
     [HttpPut]
     public IActionResult UpdateSettings(UserSettingsDTO userSettings)
     {
-      if (!Int32.TryParse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value, out var id))
-      {
-        return Forbid();
-      }
+      int id = HttpContext.GetUserIdFromClaim();
 
       var user = _userRepository.FindUserById(id);
       if (user == null)
@@ -56,7 +51,7 @@ namespace WebAPI.Controllers
 
       if (userWithThisEmail != null && userWithThisEmail.Id != id)
       {
-        return BadRequest("Email is already taken");
+        return BadRequest(new { isEmailUsed = true });
       }
 
       _userService.ApplyUserSettingsDTOToUser(user, userSettings);
