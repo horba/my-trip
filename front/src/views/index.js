@@ -1,7 +1,7 @@
 export { default as Home } from '@views/Home.vue';
 export { default as Accommodation } from '@views/Accommodation.vue';
 export { default as Transport } from '@views/Transport.vue';
-export { default as Leisure } from '@views/Leisure.vue';
+export { default as Leisure } from './leisure/leisure.view.vue';
 export { default as Food } from '@views/Food.vue';
 export { default as HotTours } from '@views/HotTours.vue';
 export { default as Articles } from '@views/Articles.vue';

@@ -1,7 +1,7 @@
 <template>
   <v-content>
     <mmt-header></mmt-header>
-    <v-container fluid>
+    <v-container fluid primary lighten-3>
       <slot />
     </v-container>
     <mmt-footer></mmt-footer>
