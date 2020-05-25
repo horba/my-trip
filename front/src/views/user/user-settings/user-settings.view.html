@@ -1,4 +1,4 @@
-<v-card class="user-settings-card" flat tile min-height="100%" color="primary lighten-3" :disabled="!isLoaded" >
+<v-card class="user-settings-card" flat tile min-height="100%" color="primary lighten-3" :disabled="!isLoaded">
   <v-card-title>
     <h5 class="form-header">{{$t('userSettings.generalSettings')}}</h5>
   </v-card-title>
@@ -12,11 +12,15 @@
         :hint="$t('userSettings.emailExample')" persistent-hint rounded filled single-line dense :rules="emailRules"
         :error-messages="emailIsAlreadyTaken ? $t('userSettings.emailIsAlreadyTaken') : ''"
         @input="emailIsAlreadyTaken = false" />
-      <mmt-select class="first-select" v-model="gender" :items="genders" append-icon="mdi-chevron-down" />
-      <mmt-select v-model="language" :items="languages" append-icon="mdi-chevron-down" />
-      <mmt-select v-model="country" :items="countries" append-icon="mdi-chevron-down" />
-      <mmt-submit-button @click.prevent="applySettings" :disabled="!formValidity">
-        {{$t('userSettings.save')}}</mmt-submit-button>
+      <v-select persistent-hint rounded filled dense hide-details class="first-select mmt-select" v-model="gender"
+        :items="genders" append-icon="mdi-chevron-down" />
+      <v-select persistent-hint rounded filled dense hide-details class="mmt-select" v-model="languageId"
+        :items="languages" append-icon="mdi-chevron-down" />
+      <v-select persistent-hint rounded filled dense hide-details class="mmt-select" v-model="countryId"
+        :items="countries" append-icon="mdi-chevron-down" />
+      <v-btn height="39" width="173" class="mmt-continue-button" rounded depressed large @click.prevent="applySettings"
+        :disabled="!formValidity">
+        {{$t('userSettings.save')}}</v-btn>
     </v-form>
   </v-card-text>
 </v-card>

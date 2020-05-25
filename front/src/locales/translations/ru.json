@@ -55,6 +55,7 @@
     "female": "Женский",
     "otherGender": "Другой",
     "countryIsNotSpecified": "Старана не указана",
+    "languageIsNotSpecified": "Язык не указан",
     "save": "Сохранить"
   },
   "countries": {

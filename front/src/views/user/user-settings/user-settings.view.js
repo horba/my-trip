@@ -1,21 +1,19 @@
-import { MmtTextInput, MmtSelect, MmtSubmitButton } from '@components';
+import { MmtTextInput } from '@components';
 import { mapActions, mapGetters } from 'vuex';
 const { emailRegex } = require('@/config/constants.json');
 
 export default {
   components: {
-    MmtTextInput,
-    MmtSelect,
-    MmtSubmitButton
+    MmtTextInput
   },
   data () {
     return {
       lastName: '',
       firstName: '',
       email: '',
-      gender: '',
-      language: '',
-      country: '',
+      gender: 0,
+      languageId: null,
+      countryId: null,
       isLoaded: false,
       emailIsAlreadyTaken: false,
       formValidity: true,
@@ -30,19 +28,19 @@ export default {
       return [
         {
           text: this.$t('userSettings.genderIsNotSpecified'),
-          value: 'NotSpecified'
+          value: 0
         },
         {
           text: this.$t('userSettings.male'),
-          value: 'Male'
+          value: 1
         },
         {
           text: this.$t('userSettings.female'),
-          value: 'Female'
+          value: 2
         },
         {
           text: this.$t('userSettings.otherGender'),
-          value: 'Other'
+          value: 3
         }
       ];
     },
@@ -50,43 +48,59 @@ export default {
       return [
         {
           text: this.$t('userSettings.countryIsNotSpecified'),
-          value: 'NotSpecified'
+          value: null
         },
         {
-          text: this.$t('userSettings.ukraine'),
-          value: 'Ukraine'
+          text: this.$t('countries.Albania'),
+          value: 1
         },
         {
-          text: this.$t('userSettings.poland'),
-          value: 'Poland'
+          text: this.$t('countries.Canada'),
+          value: 2
         },
         {
-          text: this.$t('userSettings.germany'),
-          value: 'Germany'
+          text: this.$t('countries.Colombia'),
+          value: 3
         },
         {
-          text: this.$t('userSettings.russia'),
-          value: 'Russia'
+          text: this.$t('countries.Cyprus'),
+          value: 4
+        },
+        {
+          text: this.$t('countries.Dominica'),
+          value: 5
+        },
+        {
+          text: this.$t('countries.Egypt'),
+          value: 6
+        },
+        {
+          text: this.$t('countries.France'),
+          value: 7
+        },
+        {
+          text: this.$t('countries.Ukraine'),
+          value: 8
         }
       ];
     },
     languages () {
       return [
         {
-          text: this.$t('locale.ru'),
-          value: 'Russian'
-        },
-        {
-          text: this.$t('locale.ua'),
-          value: 'Ukrainian'
+          text: this.$t('userSettings.languageIsNotSpecified'),
+          value: null
         },
         {
           text: this.$t('locale.en'),
-          value: 'English'
+          value: 1
         },
         {
-          text: this.$t('locale.de'),
-          value: 'German'
+          text: this.$t('locale.ru'),
+          value: 2
+        },
+        {
+          text: this.$t('locale.ua'),
+          value: 3
         }
       ];
     },
@@ -108,8 +122,8 @@ export default {
           firstName: this.firstName,
           email: this.email,
           gender: this.gender,
-          language: this.language,
-          country: this.country
+          languageId: this.languageId,
+          countryId: this.countryId
         }
       )
         .catch(error => {
@@ -118,8 +132,8 @@ export default {
     },
     fillLoadedFields (data) {
       this.gender = data.gender;
-      this.language = data.language;
-      this.country = data.country;
+      this.languageId = data.languageId;
+      this.countryId = data.countryId;
       this.email = data.email;
       this.firstName = data.firstName;
       this.lastName = data.lastName;

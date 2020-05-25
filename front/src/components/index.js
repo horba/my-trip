@@ -6,10 +6,6 @@ export { default as MmtUserMenu } from './mmt-user-menu/mmt-user-menu.component.
 export { default as MmtStepper } from './mmt-stepper/mmt-stepper.component.vue';
 export { default as MmtTripCard } from './mmt-trip-card/mmt-trip-card.component.vue';
 export { default as MmtTextInput } from './controls/mmt-text-input/mmt-text-input.component.vue';
-export { default as MmtSelect } from './controls/mmt-select/mmt-select.component.vue';
-export {
-  default as MmtSubmitButton
-} from './controls/mmt-submit-button/mmt-submit-button.component.vue';
 export {
   default as MmtLocaleSwitcher
 } from './mmt-locale-switcher/mmt-locale-switcher.component.vue';

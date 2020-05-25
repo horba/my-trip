@@ -37,7 +37,7 @@
   "locale": {
     "language": "Мова",
     "en": "Англійська",
-    "ru": "Pосійський",
+    "ru": "Pосійська",
     "ua": "Українська"
   },
   "userSettings": {
@@ -55,6 +55,7 @@
     "female": "Жіноча",
     "otherGender": "Інша",
     "countryIsNotSpecified": "Країна не вказана",
+    "languageIsNotSpecified": "Мова не вказана",
     "save": "Зберегти"
   },
   "countries": {

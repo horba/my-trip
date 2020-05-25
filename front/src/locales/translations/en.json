@@ -55,6 +55,7 @@
     "female": "Female",
     "otherGender": "Other",
     "countryIsNotSpecified": "Country is not specified",
+    "languageIsNotSpecified": "Language is not specified",
     "save": "Save"
   },
   "countries": {

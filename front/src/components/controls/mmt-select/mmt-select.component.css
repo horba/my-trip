@@ -1,7 +1,0 @@
-.mmt-select.v-text-field--filled >>> .v-input__control > .v-input__slot {
-  background-color: var(--filled-select-fill-color);
-}
-
-.mmt-select >>> * {
-  font-weight: normal;
-}

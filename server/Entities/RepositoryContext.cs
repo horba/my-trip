@@ -11,6 +11,7 @@ namespace Entities
 
         public DbSet<User> Users { get; set; }
         public DbSet<Country> Countries { get; set; }
+        public DbSet<Language> Languages { get; set; }
         public DbSet<Trip> Trips { get; set; }
 
         public RepositoryContext(DbContextOptions options) : base(options)
@@ -33,8 +34,6 @@ namespace Entities
                     FirstName = "Fn1",
                     LastName = "Ln1",
                     Gender = Gender.NotSpecified,
-                    Language = Language.German,
-                    Country = Country.Germany
                 },
                 new User
                 {
@@ -44,8 +43,6 @@ namespace Entities
                     FirstName = "FirstName2",
                     LastName = "LastName2",
                     Gender = Gender.Female,
-                    Language = Language.English,
-                    Country = Country.Ukraine
                 },
                 new User
                 {
@@ -55,8 +52,6 @@ namespace Entities
                     FirstName = "FFFF3",
                     LastName = "LLLL3",
                     Gender = Gender.Other,
-                    Language = Language.Russian,
-                    Country = Country.Poland
                 },
                 new User
                 {
@@ -65,8 +60,6 @@ namespace Entities
                     Password = CryptoUtils.HashPassword("test4444"),
                     FirstName = "LongFirstName4",
                     LastName = "LongLastName4",
-                    Language = Language.English,
-                    Country = Country.Poland,
                     Gender = Gender.Female
                 },
                 new User
@@ -76,8 +69,6 @@ namespace Entities
                     Password = CryptoUtils.HashPassword("test5555"),
                     FirstName = null,
                     LastName = "Last5",
-                    Language = Language.Ukrainian,
-                    Country = Country.NotSpecified,
                     Gender = Gender.NotSpecified
                 }
                 );
@@ -94,6 +85,14 @@ namespace Entities
              };
 
            modelBuilder.Entity<Country>().HasData(moqCountries);
+
+           var moqLanguages = new[] {
+               new Language {Id = 1, Name = "English"},
+               new Language {Id = 2, Name = "Russian"},
+               new Language {Id = 3, Name = "Ukrainian"}
+           };
+
+           modelBuilder.Entity<Language>().HasData(moqLanguages);
 
            var moqTrips = moqCountries
                         .Select((country, i) =>

@@ -46,6 +46,8 @@ namespace WebAPI
                 options.UseSqlServer(Configuration.GetConnectionString("mssqlConnection")));
             services.AddSingleton(Configuration);
             services.AddScoped<UserRepository>();
+            services.AddScoped<CountryRepository>();
+            services.AddScoped<LanguageRepository>();
             services.AddScoped<UserService>();
             services.AddSingleton<AuthService>();
             services.AddScoped<TripRepository>();
