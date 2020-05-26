@@ -1,5 +1,5 @@
 import { MmtTextInput } from '@components';
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 const { emailRegex } = require('@/config/constants.json');
 
 export default {
@@ -8,15 +8,9 @@ export default {
   },
   data () {
     return {
-      lastName: '',
-      firstName: '',
-      email: '',
-      gender: 0,
-      languageId: null,
-      countryId: null,
-      isLoaded: false,
-      emailIsAlreadyTaken: false,
+      editedUserSettings: {},
       formValidity: true,
+      emailIsAlreadyTaken: false,
       emailRules: [
         email => RegExp(emailRegex).test(email)
         || this.$t('userSettings.enterCorrectEmail')
@@ -24,6 +18,7 @@ export default {
     };
   },
   computed: {
+    ...mapState('userSettings', [ 'userSettings' ]),
     genders () {
       return [
         {
@@ -104,45 +99,29 @@ export default {
         }
       ];
     },
-    ...mapGetters('userSettings', [ 'userSettings' ])
+    isLoaded () {
+      return !!Object.keys(this.editedUserSettings).length;
+    }
   },
   watch: {
     userSettings (data) {
       if (!this.isLoaded) {
-        this.fillLoadedFields(data);
+        this.editedUserSettings = Object.assign({}, data);
       }
     }
   },
   methods: {
     applySettings () {
-      this.$store.dispatch('userSettings/updateUserSettings',
-        {
-          lastName: this.lastName,
-          firstName: this.firstName,
-          email: this.email,
-          gender: this.gender,
-          languageId: this.languageId,
-          countryId: this.countryId
-        }
-      )
+      this.$store.dispatch('userSettings/updateUserSettings', this.editedUserSettings)
         .catch(error => {
           this.emailIsAlreadyTaken = error.response.data.isEmailUsed;
         });
-    },
-    fillLoadedFields (data) {
-      this.gender = data.gender;
-      this.languageId = data.languageId;
-      this.countryId = data.countryId;
-      this.email = data.email;
-      this.firstName = data.firstName;
-      this.lastName = data.lastName;
-      this.isLoaded = true;
     }
   },
   created () {
     // if settings are available in store - fill fields
-    if (this.userSettings != null) {
-      this.fillLoadedFields(this.userSettings);
+    if (this.userSettings) {
+      this.editedUserSettings = Object.assign({}, this.userSettings);
     }
   }
 };

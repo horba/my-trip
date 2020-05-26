@@ -22,7 +22,6 @@ export default {
         password: this.password
       })
         .then(() => {
-          this.$store.dispatch('userSettings/loadUserSettings');
           this.$router.push('/');
         }).catch(() => {
           this.serverError = 'Invalid credentials';

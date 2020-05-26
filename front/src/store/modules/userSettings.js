@@ -22,10 +22,5 @@ export default {
       return axios.put(`${serverPath}api/userSettings`, formData)
         .then(() => commit('SET_USER_SETTINGS', formData));
     }
-  },
-  getters: {
-    userSettings (state) {
-      return state.userSettings;
-    }
   }
 };

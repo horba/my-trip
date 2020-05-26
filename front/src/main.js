@@ -35,10 +35,6 @@ new Vue({
       }
       return Promise.reject(error);
     });
-
-    if (this.$store.getters.isLoggedIn) {
-      this.$store.dispatch('userSettings/loadUserSettings');
-    }
   },
   render: h => h(App)
 }).$mount('#app');
