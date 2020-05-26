@@ -64,7 +64,7 @@ body{
 }
 
 .theme--light.v-card.auth-card, .theme--light.v-card.recovery-card {
-  background-color: #F6F8FB;
+  background-color: var(--login-and-recovery-password-background-color);
 }
 
 /* trip */
