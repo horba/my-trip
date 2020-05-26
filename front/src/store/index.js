@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 import locale from './modules/locale';
+import userSettings from './modules/userSettings';
 import trip from './modules/trip';
 import config from '@config';
 
@@ -15,6 +16,7 @@ export default new Vuex.Store({
   },
   modules: {
     locale,
+    userSettings,
     trip
   },
   mutations: {

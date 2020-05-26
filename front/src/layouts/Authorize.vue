@@ -10,6 +10,7 @@ export default {
     if (!this.$store.getters.isLoggedIn) {
       this.$router.push('/');
     }
+    this.$store.dispatch('userSettings/loadUserSettings');
   }
 };
 </script>

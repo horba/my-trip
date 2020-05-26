@@ -56,6 +56,24 @@
     "ru": "Russian",
     "ua": "Ukrainian"
   },
+  "userSettings": {
+    "generalSettings": "General settings",
+    "lastName": "Last name",
+    "enterLastName": "Enter last name",
+    "firstName": "First name",
+    "enterFirstName": "Enter first name",
+    "email": "Email",
+    "emailExample": "Example: bereznievatiy@gmail.com",
+    "enterCorrectEmail": "Enter valid email",
+    "emailIsAlreadyTaken": "This email is already taken",
+    "genderIsNotSpecified": "Gender is not specified",
+    "male": "Male",
+    "female": "Female",
+    "otherGender": "Other",
+    "countryIsNotSpecified": "Country is not specified",
+    "languageIsNotSpecified": "Language is not specified",
+    "save": "Save"
+  },
   "countries": {
     "Albania": "Albania",
     "Canada": "Canada",

@@ -56,6 +56,24 @@
     "ru": "Русский",
     "ua": "Украинский"
   },
+  "userSettings": {
+    "generalSettings": "Общие настройки",
+    "lastName": "Фамилия",
+    "enterLastName": "Введите фамилию",
+    "firstName": "Имя",
+    "enterFirstName": "Введите имя",
+    "email": "Почта",
+    "emailExample": "Пример: bereznievatiy@gmail.com",
+    "enterCorrectEmail": "Введите корректный email",
+    "emailIsAlreadyTaken": "Данная почта уже занята",
+    "genderIsNotSpecified": "Пол не указан",
+    "male": "Мужской",
+    "female": "Женский",
+    "otherGender": "Другой",
+    "countryIsNotSpecified": "Старана не указана",
+    "languageIsNotSpecified": "Язык не указан",
+    "save": "Сохранить"
+  },
   "countries": {
     "Albania": "Албания",
     "Canada": "Канада",

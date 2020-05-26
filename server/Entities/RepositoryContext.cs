@@ -1,4 +1,5 @@
 using Entities.Models;
+using Entities.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Entities
 
         public DbSet<User> Users { get; set; }
         public DbSet<Country> Countries { get; set; }
+        public DbSet<Language> Languages { get; set; }
         public DbSet<Trip> Trips { get; set; }
 
         public RepositoryContext(DbContextOptions options) : base(options)
@@ -24,11 +26,51 @@ namespace Entities
             }
 
             modelBuilder.Entity<User>().HasData(
-                new User { Id = -1, Email = "test1@users.com", Password = CryptoUtils.HashPassword("test1111") },
-                new User { Id = -2, Email = "test2@users.com", Password = CryptoUtils.HashPassword("test2222") },
-                new User { Id = -3, Email = "test3@users.com", Password = CryptoUtils.HashPassword("test3333") },
-                new User { Id = -4, Email = "test4@users.com", Password = CryptoUtils.HashPassword("test4444") },
-                new User { Id = -5, Email = "test5@users.com", Password = CryptoUtils.HashPassword("test5555") }
+                new User
+                {
+                    Id = -1,
+                    Email = "test1@users.com",
+                    Password = CryptoUtils.HashPassword("test1111"),
+                    FirstName = "Fn1",
+                    LastName = "Ln1",
+                    Gender = Gender.NotSpecified,
+                },
+                new User
+                {
+                    Id = -2,
+                    Email = "test2@users.com",
+                    Password = CryptoUtils.HashPassword("test2222"),
+                    FirstName = "FirstName2",
+                    LastName = "LastName2",
+                    Gender = Gender.Female,
+                },
+                new User
+                {
+                    Id = -3,
+                    Email = "test3@users.com",
+                    Password = CryptoUtils.HashPassword("test3333"),
+                    FirstName = "FFFF3",
+                    LastName = "LLLL3",
+                    Gender = Gender.Other,
+                },
+                new User
+                {
+                    Id = -4,
+                    Email = "test4@users.com",
+                    Password = CryptoUtils.HashPassword("test4444"),
+                    FirstName = "LongFirstName4",
+                    LastName = "LongLastName4",
+                    Gender = Gender.Female
+                },
+                new User
+                {
+                    Id = -5,
+                    Email = "test5@users.com",
+                    Password = CryptoUtils.HashPassword("test5555"),
+                    FirstName = null,
+                    LastName = "Last5",
+                    Gender = Gender.NotSpecified
+                }
                 );
 
             var moqCountries = new [] {
@@ -43,6 +85,14 @@ namespace Entities
              };
 
            modelBuilder.Entity<Country>().HasData(moqCountries);
+
+           var moqLanguages = new[] {
+               new Language {Id = 1, Name = "English"},
+               new Language {Id = 2, Name = "Russian"},
+               new Language {Id = 3, Name = "Ukrainian"}
+           };
+
+           modelBuilder.Entity<Language>().HasData(moqLanguages);
 
            var moqTrips = moqCountries
                         .Select((country, i) =>
