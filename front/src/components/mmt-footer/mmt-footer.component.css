@@ -1,17 +1,28 @@
-.v-footer .link-wrapper {
-  margin-bottom: 10px;
-  text-align: start;
+.v-footer {
+  align-self: flex-end;
+  width: 100%;
 }
 
-  .v-footer .link-wrapper a {
-    text-decoration: none;
+  .v-footer .container {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0px 28px;
   }
 
-    .v-footer .link-wrapper a:hover {
+  .v-footer .link-wrapper {
+    margin-bottom: 10px;
+    text-align: start;
+  }
+
+    .v-footer .link-wrapper a {
       text-decoration: none;
     }
 
-    .v-footer .link-wrapper a.title {
-      font-size: 18px;
-      text-transform: uppercase;
-    }
+      .v-footer .link-wrapper a:hover {
+        text-decoration: none;
+      }
+
+      .v-footer .link-wrapper a.title {
+        font-size: 18px;
+        text-transform: uppercase;
+      }

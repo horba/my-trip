@@ -1,4 +1,4 @@
-import { VAppBar, VNavigationDrawer, VBtn, VIcon } from 'vuetify/lib';
+import { VAppBar, VNavigationDrawer, VBtn, VIcon, VContainer } from 'vuetify/lib';
 
 export default {
   name: 'mmt-header',
@@ -6,7 +6,8 @@ export default {
     VAppBar,
     VNavigationDrawer,
     VBtn,
-    VIcon
+    VIcon,
+    VContainer
   },
   data: () => ({
     drawer: false
