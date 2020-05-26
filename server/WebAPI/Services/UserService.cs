@@ -47,11 +47,10 @@ namespace WebAPI.Services
     {
       try
       {
-        var user = GetUser(email);
-        if(user != null)
+        if(IsUserExist(email))
         {
           var password = CryptoUtils.HashPassword(newPassword);
-          _userRepository.UpdateUserPassword(user, password);
+          _userRepository.UpdateUserPassword(email, password);
           return true;
         }
         else

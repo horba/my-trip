@@ -12,7 +12,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     user: null,
-    email: ''
+    email: localStorage.getItem('email') || ''
   },
   modules: {
     locale,
@@ -30,7 +30,6 @@ export default new Vuex.Store({
       location.reload();
     },
     SET_EMAIL_DATA (state, email) {
-      state.email = email;
       localStorage.setItem('email', email);
     },
     CLEAR_EMAIL_DATA (state) {
@@ -65,28 +64,23 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         axios.post(`${serverPath}api/ForgotPassword`,
           { Email: payload.email }).then(resp => {
-          if (resp.status !== 200) {
-            reject(resp.data);
-          } else {
-            commit('SET_EMAIL_DATA', payload.email);
-            resolve();
-          }
-        });
+          commit('SET_EMAIL_DATA', payload.email);
+          resolve();
+        }).catch(resp => { reject(resp.data); });
       });
     },
     recoveryPasswordSendPassword ({ commit, state }, passwordandtoken) {
       return new Promise((resolve, reject) => {
         axios.post(`${serverPath}api/ForgotPassword/ResetPassword`,
-          { Email: state.email, Password: passwordandtoken.password }, {
-            headers: { Authorization: 'Bearer ' + passwordandtoken.token }
-          }).then(resp => {
-          if (resp.data !== '') {
-            commit('CLEAR_EMAIL_DATA');
-            resolve();
-          } else {
-            reject(resp.data);
+          {
+            Email: state.email,
+            Password: passwordandtoken.password,
+            Token: passwordandtoken.token
           }
-        });
+        ).then(resp => {
+          commit('CLEAR_EMAIL_DATA');
+          resolve();
+        }).catch(resp => reject(resp.data));
       });
     }
   },

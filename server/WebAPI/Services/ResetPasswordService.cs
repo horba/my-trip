@@ -6,32 +6,67 @@ namespace WebAPI.Services
 {
   public class ResetPasswordService
   {
-    private readonly IEmailSender emailSender;
-    private readonly UserService userService;
-    private readonly AuthService authService;
-    private readonly FrontConfiguration frontConfiguration;
+    private readonly IEmailSender _emailSender;
+    private readonly UserService _userService;
+    private readonly AuthService _authService;
+    private readonly FrontConfiguration _frontConfiguration;
     public ResetPasswordService(UserService userService,
         IEmailSender emailSender, AuthService authService, FrontConfiguration frontConfiguration)
     {
-      this.userService = userService;
-      this.emailSender = emailSender;
-      this.authService = authService;
-      this.frontConfiguration = frontConfiguration;
+      _userService = userService;
+      _emailSender = emailSender;
+      _authService = authService;
+      _frontConfiguration = frontConfiguration;
     }
     public bool UpdatePass(ResetPasswordModel resetPasswordModel)
     {
       try
       {
-        var result = userService.UpdateUserPassword(resetPasswordModel.Email, resetPasswordModel.Password);
-        if(result)
+        if(resetPasswordModel.Email == "" &&
+          resetPasswordModel.Password == "" &&
+          resetPasswordModel.Token == "" && 
+          resetPasswordModel.Password.Length >= 8)
         {
-          var message = new Message(new string[] { resetPasswordModel.Email },
-              "Reset password token", "Your password has been changed successfully. " +
-              $"Please check our <a href = '{frontConfiguration.AddressFront}'>website</a>",
-              null);
-          emailSender.SendEmail(message);
+          if(resetPasswordModel.Email == "")
+          {
+            throw new ArgumentException("email is empty", "Email");
+          }
+          if(resetPasswordModel.Password == "")
+          {
+            throw new ArgumentException("password is empty", "Password");
+          }
+          if(resetPasswordModel.Token == "")
+          {
+            throw new ArgumentException("token is empty", "Token");
+          }
+          if(resetPasswordModel.Password.Length >= 8)
+          {
+            throw new ArgumentException("password lengt mus be >= 8", "password");
+          }
         }
-        return result;
+        var user = _userService.GetUser(resetPasswordModel.Email);
+        if(user != null && user.Password == resetPasswordModel.Token)
+        {
+          var result = _userService.UpdateUserPassword(resetPasswordModel.Email, resetPasswordModel.Password);
+          if(result)
+          {
+            var message = new Message(new string[] { resetPasswordModel.Email },
+                "Reset password token", "Your password has been changed successfully. " +
+                $"Please check our <a href = '{_frontConfiguration.AddressFront}'>website</a>",
+                null);
+            _emailSender.SendEmail(message);
+          }
+          return result;
+        }
+        else
+        {
+          throw new ArgumentException("token or email is not valid", "token");
+        }
+      }
+      catch(ArgumentException e)
+      {
+        Console.WriteLine(e.Message + e.ParamName);
+        throw;
       }
       catch(Exception)
       {
@@ -41,14 +76,14 @@ namespace WebAPI.Services
     public async System.Threading.Tasks.Task<bool> SendEmailAsync(ResetPasswordModel resetPasswordModel)
     {
       try {
-        var user = userService.GetUser(resetPasswordModel.Email);
+        var user = _userService.GetUser(resetPasswordModel.Email);
         if(user != null)
         {
-          var token = authService.MakeToken(user, false);
+          var token = user.Password;
           var message = new Message(new string[] { user.Email },
-            "Reset password token", $"<a href='{frontConfiguration.AddressFront}/recovery-password/{token}'>Recovery password</a>",
+            "Reset password token", $"<a href='{_frontConfiguration.AddressFront}/recovery-password/{token}'>Recovery password</a>",
             null);
-          await emailSender.SendEmailAsync(message);
+          await _emailSender.SendEmailAsync(message);
           return true;
         }
         else

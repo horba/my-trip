@@ -7,18 +7,18 @@ export default {
     return {
       email: '',
       step: 1,
-      firstPass: '',
-      secondPass: '',
-      valid: true,
+      password: '',
+      passwordConfirmation: '',
+      valid: false,
       showPassword: false,
-      passwordConfirmation: false,
+      showPasswordConfirmation: false,
       serverError: '',
       rules: {
-        isEmpty: v => !!v || this.$t('recoverypassword.noempty'),
+        isEmpty: v => !!v || this.$t('recoverypassword.noEmpty'),
         minPassLen: v => v.length >= 8 || this.$t('recoverypassword.restriction'),
-        validEmail: v => /.+@.+\..+/.test(v) || this.$t('recoverypassword.thisnoemail'),
-        samePass: () => this.firstPass === this.secondPass
-          || this.$t('recoverypassword.passmastidentity')
+        validEmail: v => /.+@.+\..+/.test(v) || this.$t('recoverypassword.thisNoEmail'),
+        samePass: () => this.password === this.passwordConfirmation
+          || this.$t('recoverypassword.passwordMustIdentity')
       }
     };
   },
@@ -31,17 +31,20 @@ export default {
         .then(this.valid = false);
     },
     SendPassword () {
+      this.valid = false;
       this.$store.dispatch('recoveryPasswordSendPassword',
         {
-          password: this.secondPass,
+          password: this.passwordConfirmation,
           token: this.$route.params.token
-        }).then(this.step = 3);
+        }).then(this.step = 3).catch(() => {
+        this.step = 2;
+        this.valid = true;
+      });
     }
   },
   mounted () {
     if (this.$route.params.token !== undefined) {
       this.step = 2;
-      this.email = localStorage.getItem('email');
     }
   }
 };

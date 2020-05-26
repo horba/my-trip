@@ -6,7 +6,6 @@ using WebAPI.Services;
 
 namespace WebAPI.Controllers
 {
-  [Authorize]
   [Route("api/[controller]")]
   [ApiController]
   public class ForgotPasswordController : ControllerBase
@@ -20,7 +19,9 @@ namespace WebAPI.Controllers
     [HttpPost("ResetPassword")]
     public IActionResult ResetPassword(ResetPasswordModel resetPasswordModel)
     {
-      if(resetPasswordModel.Email != "" && resetPasswordModel.Password != "")
+      if(resetPasswordModel.Email != "" &&
+        resetPasswordModel.Password != "" &&
+        resetPasswordModel.Token != "")
       {
         return Ok(resetPasswordService.UpdatePass(resetPasswordModel));
       }
@@ -30,7 +31,6 @@ namespace WebAPI.Controllers
       }
     }
 
-    [AllowAnonymous]
     [HttpPost]
     public async Task<IActionResult> ResetPasswordAsync(ResetPasswordModel resetPasswordModel)
     {
