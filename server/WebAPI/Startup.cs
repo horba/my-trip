@@ -56,6 +56,9 @@ namespace WebAPI
       services.AddScoped<TripService>();
       services.AddSingleton(frontConfiguration);
       services.AddScoped<ResetPasswordService>();
+      services.AddSingleton(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
+      services.AddScoped<IEmailSender, EmailSender>();
+
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
           .AddJwtBearer(x =>
       {

@@ -1,6 +1,6 @@
 ﻿namespace WebAPI.DTO
 {
-  public class ResetPasswordModel
+  public class RecoveryPasswordModel
   {
     public string Password { get; set; }
     public string Email { get; set; }

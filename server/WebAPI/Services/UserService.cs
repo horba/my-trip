@@ -42,29 +42,6 @@ namespace WebAPI.Services
       return _userRepository.FindUserByEmail(email);
     }
 
-    public bool UpdateUserPassword(string email, string newPassword)
-    {
-      try
-      {
-        if(IsUserExist(email))
-        {
-          var password = CryptoUtils.HashPassword(newPassword);
-          var user = _userRepository.FindUserByEmail(email);
-          user.Password = password;
-          _userRepository.UpdateUser(user);
-          return true;
-        }
-        else
-        {
-          CreateUser(email, newPassword);
-          return true;
-        }
-      }
-      catch
-      {
-        return false;
-      }
-    }
     public void CreateUser(string email, string password)
     {
       var user = new User
@@ -98,6 +75,47 @@ namespace WebAPI.Services
       user.Country = userSettingsDTO.CountryId != null ? _countryRepository.FindCountryById((int)userSettingsDTO.CountryId) : null;
       user.Language = userSettingsDTO.LanguageId != null ? _languageRepository.FindLanguageById((int)userSettingsDTO.LanguageId) : null;
     }
-
+    public bool UpdateUserPassword(string email, string newPassword)
+    {
+      try
+      {
+        if(IsUserExist(email))
+        {
+          var password = CryptoUtils.HashPassword(newPassword);
+          var user = _userRepository.FindUserByEmail(email);
+          user.Password = password;
+          _userRepository.UpdateUser(user);
+          return true;
+        }
+        else
+        {
+          CreateUser(email, newPassword);
+          return true;
+        }
+      }
+      catch
+      {
+        return false;
+      }
+    }
+    public bool IsRecoveryPasswordTokenExist(string token)
+    {
+      return _userRepository.FindUserByRecoveryPasswordToken(token) != null;
+    }
+    public void CreateRecoveryPasswordToken(string email)
+    {
+      _userRepository.CreateAndSetRecoveryPasswordToken(email);
+    }
+    public void DeleteRecoveryPasswordToken(string token)
+    {
+      if(IsRecoveryPasswordTokenExist(token))
+      {
+        _userRepository.DeleteRecoveryPasswordToken(token);
+      }
+    }
+    public User GetUserByRecoveryPasswordToken(string token)
+    {
+      return _userRepository.FindUserByRecoveryPasswordToken(token);
+    }
   }
 }

@@ -21,5 +21,7 @@ namespace Entities.Models
     public Gender Gender { get; set; }
     public Language Language { get; set; }
     public Country Country { get; set; }
+
+    public string ResetPasswordToken { get; set; }
   }
 }

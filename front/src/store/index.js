@@ -12,8 +12,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    user: null,
-    email: localStorage.getItem('email') || ''
+    user: null
   },
   modules: {
     locale,
@@ -30,13 +29,6 @@ export default new Vuex.Store({
       localStorage.removeItem('user');
       delete axios.defaults.headers.common.Authorization;
       location.reload();
-    },
-    SET_EMAIL_DATA (state, email) {
-      localStorage.setItem('email', email);
-    },
-    CLEAR_EMAIL_DATA (state) {
-      state.email = '';
-      localStorage.removeItem('email');
     }
   },
   actions: {
@@ -66,9 +58,10 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         axios.post(`${serverPath}api/ForgotPassword`,
           { Email: payload.email }).then(resp => {
-          commit('SET_EMAIL_DATA', payload.email);
           resolve();
-        }).catch(resp => { reject(resp.data); });
+        }).catch(resp => {
+          reject(resp.data);
+        });
       });
     },
     recoveryPasswordSendPassword ({ commit, state }, passwordandtoken) {
@@ -80,18 +73,16 @@ export default new Vuex.Store({
             Token: passwordandtoken.token
           }
         ).then(resp => {
-          commit('CLEAR_EMAIL_DATA');
           resolve();
-        }).catch(resp => reject(resp.data));
+        }).catch(resp =>
+          reject(resp.data)
+        );
       });
     }
   },
   getters: {
     isLoggedIn (state) {
       return !!state.user;
-    },
-    getEmail (state) {
-      return state.email;
     }
   }
 });

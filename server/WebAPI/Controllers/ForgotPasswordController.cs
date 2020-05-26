@@ -17,7 +17,7 @@ namespace WebAPI.Controllers
     }
 
     [HttpPost("ResetPassword")]
-    public IActionResult ResetPassword(ResetPasswordModel resetPasswordModel)
+    public IActionResult ResetPassword(RecoveryPasswordModel resetPasswordModel)
     {
       if(resetPasswordModel.Email != "" &&
         resetPasswordModel.Password != "" &&
@@ -32,7 +32,7 @@ namespace WebAPI.Controllers
     }
 
     [HttpPost]
-    public async Task<IActionResult> ResetPasswordAsync(ResetPasswordModel resetPasswordModel)
+    public async Task<IActionResult> ResetPasswordAsync(RecoveryPasswordModel resetPasswordModel)
     {
       if(resetPasswordModel.Email != "")
       {

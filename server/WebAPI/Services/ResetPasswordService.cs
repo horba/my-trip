@@ -8,49 +8,43 @@ namespace WebAPI.Services
   {
     private readonly IEmailSender _emailSender;
     private readonly UserService _userService;
-    private readonly AuthService _authService;
     private readonly FrontConfiguration _frontConfiguration;
     public ResetPasswordService(UserService userService,
-        IEmailSender emailSender, AuthService authService, FrontConfiguration frontConfiguration)
+        IEmailSender emailSender, FrontConfiguration frontConfiguration)
     {
       _userService = userService;
       _emailSender = emailSender;
-      _authService = authService;
       _frontConfiguration = frontConfiguration;
     }
-    public bool UpdatePass(ResetPasswordModel resetPasswordModel)
+    public bool UpdatePass(RecoveryPasswordModel recoveryPasswordModel)
     {
       try
       {
-        if(resetPasswordModel.Email == "" &&
-          resetPasswordModel.Password == "" &&
-          resetPasswordModel.Token == "" && 
-          resetPasswordModel.Password.Length >= 8)
+        if(recoveryPasswordModel.Password == "" &&
+          recoveryPasswordModel.Token == "" && 
+          recoveryPasswordModel.Password.Length >= 8)
         {
-          if(resetPasswordModel.Email == "")
-          {
-            throw new ArgumentException("email is empty", "Email");
-          }
-          if(resetPasswordModel.Password == "")
+          if(recoveryPasswordModel.Password == "")
           {
             throw new ArgumentException("password is empty", "Password");
           }
-          if(resetPasswordModel.Token == "")
+          if(recoveryPasswordModel.Token == "")
           {
             throw new ArgumentException("token is empty", "Token");
           }
-          if(resetPasswordModel.Password.Length >= 8)
+          if(recoveryPasswordModel.Password.Length >= 8)
           {
             throw new ArgumentException("password lengt mus be >= 8", "password");
           }
         }
-        var user = _userService.GetUser(resetPasswordModel.Email);
-        if(user != null && user.Password == resetPasswordModel.Token)
+        var user = _userService.GetUserByRecoveryPasswordToken(recoveryPasswordModel.Token);
+        if(user != null)
         {
-          var result = _userService.UpdateUserPassword(resetPasswordModel.Email, resetPasswordModel.Password);
+          var result = _userService.UpdateUserPassword(user.Email, recoveryPasswordModel.Password);
           if(result)
           {
-            var message = new Message(new string[] { resetPasswordModel.Email },
+          _userService.DeleteRecoveryPasswordToken(recoveryPasswordModel.Token);
+            var message = new Message(new string[] { user.Email },
                 "Reset password token", "Your password has been changed successfully. " +
                 $"Please check our <a href = '{_frontConfiguration.AddressFront}'>website</a>",
                 null);
@@ -60,26 +54,27 @@ namespace WebAPI.Services
         }
         else
         {
-          throw new ArgumentException("token or email is not valid", "token");
+          throw new ArgumentException("invalid token", "token");
         }
       }
       catch(ArgumentException e)
       {
         Console.WriteLine(e.Message + e.ParamName);
-        throw;
+        throw new Exception();
       }
       catch(Exception)
       {
         return false;
       }
     }
-    public async System.Threading.Tasks.Task<bool> SendEmailAsync(ResetPasswordModel resetPasswordModel)
+    public async System.Threading.Tasks.Task<bool> SendEmailAsync(RecoveryPasswordModel resetPasswordModel)
     {
       try {
         var user = _userService.GetUser(resetPasswordModel.Email);
         if(user != null)
         {
-          var token = user.Password;
+          _userService.CreateRecoveryPasswordToken(resetPasswordModel.Email);
+          var token = user.ResetPasswordToken;
           var message = new Message(new string[] { user.Email },
             "Reset password token", $"<a href='{_frontConfiguration.AddressFront}/recovery-password/{token}'>Recovery password</a>",
             null);
