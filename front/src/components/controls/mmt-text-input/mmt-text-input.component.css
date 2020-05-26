@@ -1,6 +1,17 @@
 * >>> * {
-  font-size: 12px;
   font-weight: normal;
+}
+
+label {
+  font-size: var(--mmt-dense-input-label-font-size);
+}
+
+.mmt-text-input >>> .v-messages__message {
+  font-size: var(--mmt-dense-input-hint-font-size);
+}
+
+.mmt-text-input.mmt-text-input--dense >>> .v-input__slot > * {
+  font-size: var(--mmt-dense-input-font-size);
 }
 
 label {
@@ -15,15 +26,20 @@ label .input-wrapper {
   flex-wrap: wrap;
 }
 
-label .mmt-text-input{
+label .mmt-text-input {
   margin-top: 6px;
   flex-basis: 100%;
 }
 
-label .mmt-text-input.v-input--dense >>> .v-input__control > .v-input__slot {
-  min-height: var(--dense-input-min-height);
+label .mmt-text-input.mmt-text-input--dense >>> .v-input__control > .v-input__slot {
+  min-height: var(--mmt-dense-input-min-height);
+  padding-right: 15px;
 }
 
 label .mmt-text-input.v-text-field--filled >>> .v-input__control > .v-input__slot {
   background-color: var(--filled-input-fill-color);
+}
+
+.mmt-text-input >>> .v-icon {
+  margin-bottom: 6px;
 }

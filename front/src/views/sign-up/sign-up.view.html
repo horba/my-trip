@@ -19,6 +19,7 @@
         rounded
         filled
         dense
+        mmt-dense
         :rules="[rules.isEmpty, rules.validEmail, rules.existingEmail]"
         v-model="email"
       />
@@ -29,6 +30,7 @@
         rounded
         filled
         dense
+        mmt-dense
         counter
         :type="showPass ? 'text' : 'password'"
         :append-icon="showPass ? 'mdi-eye' : 'mdi-eye-off'"
@@ -43,6 +45,7 @@
         rounded
         filled
         dense
+        mmt-dense
         counter
         :type="showPass ? 'text' : 'password'"
         :rules="[rules.isEmpty, rules.minPassLen, rules.samePass]"

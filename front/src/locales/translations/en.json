@@ -28,6 +28,22 @@
     "signup": "Register",
     "signout": "Logout"
   },
+  "leisure": {
+    "leisureType": "Choose leisure type",
+    "pickUpLeisure": "Pick up leisure",
+    "popularSearches": "Popular Searches",
+    "mapSwitch": "Map",
+    "mapTextInput": "Enter city",
+    "leisureTypeList": [
+      "Active rest, extreme",
+      "Museums and Exhibitions",
+      "Cinemas, theaters",
+      "Beauty, Health, Spa",
+      "Rest for children",
+      "Rest for the company",
+      "Game clubs, quests"
+    ]
+  },
   "footer": {
     "join": "Join",
     "subscribeToNews": "Subscribe to news",
@@ -60,6 +76,24 @@
     "en": "English",
     "ru": "Russian",
     "ua": "Ukrainian"
+  },
+  "userSettings": {
+    "generalSettings": "General settings",
+    "lastName": "Last name",
+    "enterLastName": "Enter last name",
+    "firstName": "First name",
+    "enterFirstName": "Enter first name",
+    "email": "Email",
+    "emailExample": "Example: bereznievatiy@gmail.com",
+    "enterCorrectEmail": "Enter valid email",
+    "emailIsAlreadyTaken": "This email is already taken",
+    "genderIsNotSpecified": "Gender is not specified",
+    "male": "Male",
+    "female": "Female",
+    "otherGender": "Other",
+    "countryIsNotSpecified": "Country is not specified",
+    "languageIsNotSpecified": "Language is not specified",
+    "save": "Save"
   },
   "countries": {
     "Albania": "Albania",

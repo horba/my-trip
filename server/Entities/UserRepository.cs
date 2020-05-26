@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Entities
 {
@@ -18,44 +19,24 @@ namespace Entities
       return RepositoryContext.Users.FirstOrDefault(u => u.Email.Equals(email));
     }
 
+    public User FindUserById(int id)
+    {
+      return RepositoryContext.Users
+        .Include(u => u.Country)
+        .Include(u => u.Language)
+        .FirstOrDefault(u => u.Id.Equals(id));
+    }
+
     public void CreateUser(User user)
     {
       RepositoryContext.Users.Add(user);
       RepositoryContext.SaveChanges();
     }
 
-    public void UpdateUserPassword(string email, string password)
+    public void UpdateUser(User user)
     {
-      try
-      {
-        if(email == "" || password == "" || password.Length < 8)
-        {
-          if(email == "")
-          {
-            throw new ArgumentException("variable email is empty", "email");
-          }
-          if(password == "")
-          {
-            throw new ArgumentException("variable password is empty", "password");
-          }
-          if(password.Length < 8)
-          {
-            throw new ArgumentException("variable password is not valid. password length must be >= 8", "password");
-          }
-        }
-        var user = FindUserByEmail(email);
-        user.Password = password;
-        RepositoryContext.SaveChanges();
-      }
-      catch(ArgumentException e)
-      {
-        Console.WriteLine(e.ParamName + e.Message);
-        throw;
-      }
-      catch(Exception)
-      {
-        throw;
-      }
+      RepositoryContext.Users.Update(user);
+      RepositoryContext.SaveChanges();
     }
   }
 }

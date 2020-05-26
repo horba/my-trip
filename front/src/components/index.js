@@ -6,6 +6,9 @@ export { default as MmtUserMenu } from './mmt-user-menu/mmt-user-menu.component.
 export { default as MmtStepper } from './mmt-stepper/mmt-stepper.component.vue';
 export { default as MmtTripCard } from './mmt-trip-card/mmt-trip-card.component.vue';
 export { default as MmtTextInput } from './controls/mmt-text-input/mmt-text-input.component.vue';
+export { default as GoogleMapLine } from './google-map/GoogleMapLine.vue';
+export { default as GoogleMapLoader } from './google-map/GoogleMapLoader.vue';
+export { default as GoogleMapMarker } from './google-map/GoogleMapMarker.vue';
 export {
   default as MmtLocaleSwitcher
 } from './mmt-locale-switcher/mmt-locale-switcher.component.vue';

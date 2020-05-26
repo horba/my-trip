@@ -81,3 +81,27 @@ body{
 }
 
 /* trip end */
+
+/* mmt-select */
+
+.mmt-select.v-text-field--filled .v-input__control > .v-input__slot {
+  background-color: var(--filled-select-fill-color);
+}
+
+.mmt-select * {
+  font-weight: normal;
+}
+
+/* end mmt-select */
+
+/* mmt-continue-button */
+
+.mmt-continue-button.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+  background-color: var(--continue-button-background-color);
+}
+
+.mmt-continue-button.v-btn:not(.v-btn--disabled):not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) .v-btn__content {
+  color: var(--continue-button-active-color);
+}
+
+/* end mmt-continue-button */

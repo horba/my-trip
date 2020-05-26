@@ -1,7 +1,7 @@
 export { default as Home } from '@views/Home.vue';
 export { default as Accommodation } from '@views/Accommodation.vue';
 export { default as Transport } from '@views/Transport.vue';
-export { default as Leisure } from '@views/Leisure.vue';
+export { default as Leisure } from './leisure/leisure.view.vue';
 export { default as Food } from '@views/Food.vue';
 export { default as HotTours } from '@views/HotTours.vue';
 export { default as Articles } from '@views/Articles.vue';
@@ -19,6 +19,7 @@ export { default as MyTransport } from '@views/user/Transport.vue';
 export { default as MyLeisure } from '@views/user/Leisure.vue';
 export { default as SignIn } from './sign-in/sign-in.view.vue';
 export { default as SignUp } from './sign-up/sign-up.view.vue';
+export { default as UserSettings } from './user/user-settings/user-settings.view.vue';
 export { default as UserCabinet } from '@views/user/UserCabinet.vue';
 export { default as RecoveryPassword } from '@views/recovery-password/RecoveryPassword.vue';
 export {

@@ -30,7 +30,6 @@ namespace WebAPI
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-
       var frontConfiguration = Configuration.GetSection("Front").Get<FrontConfiguration>();
       services.AddCors(options =>
       {
@@ -45,16 +44,18 @@ namespace WebAPI
                             });
       });
 
-      services.AddSingleton(frontConfiguration);
-      services.AddScoped<ResetPasswordService>();
       services.AddDbContext<RepositoryContext>(options =>
           options.UseSqlServer(Configuration.GetConnectionString("mssqlConnection")));
       services.AddSingleton(Configuration);
       services.AddScoped<UserRepository>();
+      services.AddScoped<CountryRepository>();
+      services.AddScoped<LanguageRepository>();
       services.AddScoped<UserService>();
       services.AddSingleton<AuthService>();
       services.AddScoped<TripRepository>();
       services.AddScoped<TripService>();
+      services.AddSingleton(frontConfiguration);
+      services.AddScoped<ResetPasswordService>();
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
           .AddJwtBearer(x =>
       {
@@ -70,10 +71,6 @@ namespace WebAPI
           ValidAudience = Configuration["Jwt:Audience"]
         };
       });
-      var emailConfig = Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
-      services.AddSingleton(emailConfig);
-      services.AddScoped<IEmailSender, EmailSender>();
-
       services.AddControllers();
 
       services.AddSwaggerGen(x =>

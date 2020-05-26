@@ -15,6 +15,7 @@ module.exports = {
       .set('@locales', path.resolve('src/locales/'))
       .set('@assets', path.resolve('src/assets/'))
       .set('@filters', path.resolve('src/filters/'))
-      .set('@config', path.resolve('src/config/config.dev.json'));
+      .set('@config', path.resolve('src/config/config.dev.json'))
+      .set('@constants', path.resolve('src/constants/mapSettings.js'));
   }
 };

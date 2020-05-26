@@ -28,6 +28,22 @@
     "signup": "Реєстрація",
     "signout": "Вихід"
   },
+  "leisure": {
+    "leisureType": "Виберіть тип дозвілля",
+    "pickUpLeisure": "Підібрати дозвілля",
+    "popularSearches": "Популярні запити",
+    "mapSwitch": "Карта",
+    "mapTextInput": "Почніть вводити місто",
+    "leisureTypeList": [
+      "Активний відпочинок, екстрим",
+      "Музеї і виставки",
+      "Кінотеатри, театри",
+      "Краса, здоров'я, Spa",
+      "Відпочинок для дітей",
+      "Відпочинок для компанії",
+      "Ігрові клуби, квести"
+    ]
+  },
   "footer": {
     "join": "Приєднатися",
     "subscribeToNews": "Підписатися на новини",
@@ -58,8 +74,26 @@
   "locale": {
     "language": "Мова",
     "en": "Англійська",
-    "ru": "Pосійський",
+    "ru": "Pосійська",
     "ua": "Українська"
+  },
+  "userSettings": {
+    "generalSettings": "Загальні налаштування",
+    "lastName": "Прізвище",
+    "enterLastName": "Введіть прізвище",
+    "firstName": "Ім'я",
+    "enterFirstName": "Введіть ім'я",
+    "email": "Скринька",
+    "emailExample": "Приклад: bereznievatiy@gmail.com",
+    "enterCorrectEmail": "Введіть дійсний email",
+    "emailIsAlreadyTaken": "Цей email вже зайнятий",
+    "genderIsNotSpecified": "Стать не вказана",
+    "male": "Чоловіча",
+    "female": "Жіноча",
+    "otherGender": "Інша",
+    "countryIsNotSpecified": "Країна не вказана",
+    "languageIsNotSpecified": "Мова не вказана",
+    "save": "Зберегти"
   },
   "countries": {
     "Albania": "Албанія",
