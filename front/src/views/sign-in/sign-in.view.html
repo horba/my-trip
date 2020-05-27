@@ -41,7 +41,9 @@
         :disabled="!formValidity"
         @click="login"
       >Продолжить</v-btn>
-      <div class="forget-password">Забыли пароль?</div>
+      <router-link to="/recovery-password" class="forget-password">
+        Забыли пароль?
+      </router-link>
     </v-form>
   </v-card-text>
 </v-card>

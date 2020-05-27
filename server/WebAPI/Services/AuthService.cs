@@ -17,12 +17,8 @@ namespace WebAPI.Services
       _configuration = configuration;
     }
 
-    public string MakeToken(User user/*, long ticks = 0*/)
+    public string MakeToken(User user)
     {
-/*      if(ticks == 0)
-      {
-        ticks = DateTime.UtcNow.AddDays(1).Ticks;
-      }*/
       var tokenHandler = new JwtSecurityTokenHandler();
       var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
       var tokenDescriptor = new SecurityTokenDescriptor
