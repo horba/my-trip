@@ -16,7 +16,7 @@ namespace WebAPI.Services
       _emailSender = emailSender;
       _frontConfiguration = frontConfiguration;
     }
-    public bool UpdatePass(RecoveryPasswordModel recoveryPasswordModel)
+    public bool UpdatePassword(RecoveryPasswordModel recoveryPasswordModel)
     {
       try
       {
