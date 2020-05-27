@@ -50,7 +50,7 @@
     "subscribeBtn": "Підписатися",
     "emailPlh": "Введіть Ваш e-mail"
   },
-  "recoverypassword": {
+  "recoveryPassword": {
     "title": "Відновлення пароля",
     "emailPlease": "Введіть Ваш e-mail",
     "enterYourEmail": "Введіть електронну пошту вашого аккаунта, після чого Вам буде відправлена посилання для відновлення пароля.",

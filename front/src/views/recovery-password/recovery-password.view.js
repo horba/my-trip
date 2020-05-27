@@ -14,11 +14,11 @@ export default {
       showPasswordConfirmation: false,
       serverError: '',
       rules: {
-        isEmpty: v => !!v || this.$t('recoverypassword.noEmpty'),
-        minPassLen: v => v.length >= 8 || this.$t('recoverypassword.restriction'),
-        validEmail: v => /.+@.+\..+/.test(v) || this.$t('recoverypassword.thisNoEmail'),
+        isEmpty: v => !!v || this.$t('recoveryPassword.noEmpty'),
+        minPassLen: v => v.length >= 8 || this.$t('recoveryPassword.restriction'),
+        validEmail: v => /.+@.+\..+/.test(v) || this.$t('recoveryPassword.thisNoEmail'),
         samePass: () => this.password === this.passwordConfirmation
-          || this.$t('recoverypassword.passwordMustIdentity')
+          || this.$t('recoveryPassword.passwordMustIdentity')
       }
     };
   },
