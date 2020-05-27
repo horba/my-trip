@@ -1,4 +1,4 @@
-<v-card class="auth-card" color="primary lighten-3">
+<v-card class="auth-card" flat tile color="#F6F8FB">
   <v-card-title class="auth-card-title">
     <h4>
       Добро пожаловать!
@@ -12,7 +12,7 @@
         rounded
         filled
         single-line
-        dense
+        mmt-dense
         placeholder="Введите Ваш e-mail"
         v-model="email"
         :rules="rules"
@@ -25,7 +25,7 @@
         rounded
         filled
         single-line
-        dense
+        mmt-dense
         placeholder="Введите Ваш пароль"
         type="password"
         v-model="password"
