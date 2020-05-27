@@ -30,7 +30,7 @@ export default {
       this.$store.dispatch('recoveryPasswordSendEmail', { email: this.email })
         .then(this.valid = false);
     },
-    SendPassword () {
+    sendPassword () {
       this.valid = false;
       this.$store.dispatch('recoveryPasswordSendPassword',
         {
