@@ -1,7 +1,7 @@
 <template>
-  <v-content>
+  <v-content :class="($vuetify.breakpoint.mdAndUp) ? 'md' : ''">
     <mmt-header></mmt-header>
-    <v-container fluid primary lighten-3>
+    <v-container fluid primary lighten-3 class="content-container">
       <slot />
     </v-container>
     <mmt-footer></mmt-footer>

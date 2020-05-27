@@ -63,10 +63,6 @@ body{
   letter-spacing: normal;
 }
 
-.theme--light.v-card.auth-card, .theme--light.v-card.recovery-card {
-  background-color: var(--login-and-recovery-password-background-color);
-}
-
 /* trip */
 
 .theme--light.v-card.trip > .v-card__title {
@@ -105,3 +101,21 @@ body{
 }
 
 /* end mmt-continue-button */
+
+.md .v-content__wrap {
+  display: flex;
+  flex-direction:column;
+}
+
+.v-content__wrap .content-container {
+  flex-grow: 1;
+  margin-top: 56px;
+}
+
+.md .v-content__wrap .content-container {
+  margin-top: 64px;
+}
+
+.theme--light.v-card.auth-card, .theme--light.v-card.recovery-card {
+  background-color: var(--login-and-recovery-password-background-color);
+}
