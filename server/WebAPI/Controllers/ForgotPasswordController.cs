@@ -23,7 +23,7 @@ namespace WebAPI.Controllers
         resetPasswordModel.Password != "" &&
         resetPasswordModel.Token != "")
       {
-        return Ok(resetPasswordService.UpdatePass(resetPasswordModel));
+        return Ok(resetPasswordService.UpdatePassword(resetPasswordModel));
       }
       else
       {

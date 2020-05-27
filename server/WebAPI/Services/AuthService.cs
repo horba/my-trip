@@ -17,12 +17,12 @@ namespace WebAPI.Services
       _configuration = configuration;
     }
 
-    public string MakeToken(User user, long ticks = 0)
+    public string MakeToken(User user/*, long ticks = 0*/)
     {
-      if(ticks == 0)
+/*      if(ticks == 0)
       {
         ticks = DateTime.UtcNow.AddDays(1).Ticks;
-      }
+      }*/
       var tokenHandler = new JwtSecurityTokenHandler();
       var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
       var tokenDescriptor = new SecurityTokenDescriptor
@@ -32,7 +32,7 @@ namespace WebAPI.Services
                     new Claim(ClaimTypes.Name, user.Id.ToString()),
                     new Claim(ClaimTypes.Email, user.Email)
                 }),
-        Expires = DateTime.UtcNow.AddTicks(ticks),
+        Expires = DateTime.UtcNow.AddDays(1),
         SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
         Issuer = _configuration["Jwt:Issuer"],
         Audience = _configuration["Jwt:Audience"]

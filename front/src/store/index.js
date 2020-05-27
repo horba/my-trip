@@ -33,7 +33,7 @@ export default new Vuex.Store({
   },
   actions: {
     async signUp (context, body) {
-      return await axios.post(`${serverPath}api/auth/signup`, body)
+      return await axios.post(`${serverPath}/api/auth/signup`, body)
         .then(r => {
           if (r.status === 200) {
             return 'Ok';
@@ -46,7 +46,7 @@ export default new Vuex.Store({
         });
     },
     login ({ commit }, credentials) {
-      return axios.post(`${serverPath}api/auth`, credentials)
+      return axios.post(`${serverPath}/api/auth`, credentials)
         .then(({ data }) => {
           commit('SET_USER_DATA', data);
         });
@@ -55,29 +55,11 @@ export default new Vuex.Store({
       commit('CLEAR_USER_DATA');
     },
     recoveryPasswordSendEmail ({ commit }, payload) {
-      return new Promise((resolve, reject) => {
-        axios.post(`${serverPath}api/ForgotPassword`,
-          { Email: payload.email }).then(resp => {
-          resolve();
-        }).catch(resp => {
-          reject(resp.data);
-        });
-      });
+      axios.post(`${serverPath}/api/forgotPassword/`,
+        { email: payload.email });
     },
-    recoveryPasswordSendPassword ({ commit, state }, passwordandtoken) {
-      return new Promise((resolve, reject) => {
-        axios.post(`${serverPath}api/ForgotPassword/ResetPassword`,
-          {
-            Email: state.email,
-            Password: passwordandtoken.password,
-            Token: passwordandtoken.token
-          }
-        ).then(resp => {
-          resolve();
-        }).catch(resp =>
-          reject(resp.data)
-        );
-      });
+    recoveryPasswordSendPassword ({ commit, state }, payload) {
+      axios.post(`${serverPath}/api/forgotPassword/resetPassword/`, payload);
     }
   },
   getters: {

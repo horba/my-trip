@@ -18,7 +18,7 @@ export default {
   },
   actions: {
     async initTripsHistory ({ commit }) {
-      await axios.get(`${serverPath}api/trips/history`)
+      await axios.get(`${serverPath}/api/trips/history`)
         .then(r => {
           if (r.status === 200) {
             commit('INIT_TRIPS_HISTORY', r.data);
@@ -26,7 +26,7 @@ export default {
         });
     },
     async searchTripsHistory ({ commit }, searchQuery) {
-      await axios.get(`${serverPath}api/trips/history?searchQuery=${searchQuery}`)
+      await axios.get(`${serverPath}/api/trips/history?searchQuery=${searchQuery}`)
         .then(r => {
           if (r.status === 200) {
             commit('REQUEST_TRIPS_HISTORY', r.data);
