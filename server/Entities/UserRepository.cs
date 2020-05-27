@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
@@ -36,6 +37,38 @@ namespace Entities
     {
       RepositoryContext.Users.Update(user);
       RepositoryContext.SaveChanges();
+    }
+    public User FindUserByRecoveryPasswordToken(string token)
+    {
+      return RepositoryContext.Users.FirstOrDefault(u => u.ResetPasswordToken.Equals(token));
+    }
+
+    public void CreateAndSetRecoveryPasswordToken(string email)
+    {
+      var user = FindUserByEmail(email);
+      if(user != null)
+      {
+        do
+        {
+          int Length = 30;
+          var Alphabet = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm.-0123456789";
+          Random rnd = new Random();
+          System.Text.StringBuilder sb = new System.Text.StringBuilder(Length - 1);
+          for(int i = 0; i < Length; i++)
+          {
+            int Position = rnd.Next(0, Alphabet.Length - 1);
+            sb.Append(Alphabet[Position]);
+          }
+          user.ResetPasswordToken = sb.ToString();
+        } while(FindUserByRecoveryPasswordToken(user.ResetPasswordToken) != null);
+        UpdateUser(user);
+      }
+    }
+    public void DeleteRecoveryPasswordToken(string token)
+    {
+      var user = FindUserByRecoveryPasswordToken(token);
+      user.ResetPasswordToken = "";
+      UpdateUser(user);
     }
   }
 }

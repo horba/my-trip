@@ -27,12 +27,13 @@ export default new Vuex.Store({
     },
     CLEAR_USER_DATA (state) {
       localStorage.removeItem('user');
+      delete axios.defaults.headers.common.Authorization;
       location.reload();
     }
   },
   actions: {
     async signUp (context, body) {
-      return await axios.post(`${serverPath}api/auth/signup`, body)
+      return await axios.post(`${serverPath}/api/auth/signup`, body)
         .then(r => {
           if (r.status === 200) {
             return 'Ok';
@@ -45,13 +46,20 @@ export default new Vuex.Store({
         });
     },
     login ({ commit }, credentials) {
-      return axios.post(`${serverPath}api/auth`, credentials)
+      return axios.post(`${serverPath}/api/auth`, credentials)
         .then(({ data }) => {
           commit('SET_USER_DATA', data);
         });
     },
     logout ({ commit }) {
       commit('CLEAR_USER_DATA');
+    },
+    recoveryPasswordSendEmail ({ commit }, payload) {
+      axios.post(`${serverPath}/api/forgotPassword/`,
+        { email: payload.email });
+    },
+    recoveryPasswordSendPassword ({ commit, state }, payload) {
+      axios.post(`${serverPath}/api/forgotPassword/resetPassword/`, payload);
     }
   },
   getters: {

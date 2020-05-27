@@ -8,7 +8,8 @@ import {
   Contacts, ReviewNew, MyTickets,
   MyAccommodation, MyFood, MyTransport,
   MyLeisure, SignIn, SignUp,
-  UserSettings, UserCabinet, MyHistoryPreviousTrips
+  UserSettings, UserCabinet, MyHistoryPreviousTrips,
+  RecoveryPassword
 } from '@views';
 
 Vue.use(VueRouter);
@@ -185,6 +186,12 @@ const routes = [
         meta: { layout: 'authorize' }
       }
     ]
+  },
+  {
+    path: '/recovery-password/:token?',
+    name: 'recovery-password',
+    component: RecoveryPassword,
+    meta: { layout: 'default' }
   }
 ],
 
