@@ -43,6 +43,7 @@
   color: var(--forget-password-text-color);
   line-height: 1.35em;
   user-select: none;
+  text-decoration: none;
 }
 
 .auth-form{

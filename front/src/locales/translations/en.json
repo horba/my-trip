@@ -50,6 +50,27 @@
     "subscribeBtn": "Subscribe",
     "emailPlh": "Enter your e- mail"
   },
+  "recoveryPassword":{
+    "title": "Password recovery",
+    "emailPlease": "Enter your e-mail",
+    "enterYourEmail": "Enter your account's email address, and then you will be asked a link was sent to restore your password.",
+    "checkMail": "Mail check",
+    "confrimation": "Confirmation",
+    "recover": "Recover",
+    "back": "Back",
+    "note": "* After receiving the link, click on it and continue the procedure recoveries. It will only take a couple of minutes",
+    "successfulСonfirmation": "Your email address has been successfully confirmed! Please enter a new password for your account.",
+    "password": "Password",
+    "confrimPassword": "Confirm password",
+    "createPassword": "Create a password",
+    "restriction": "At least 8 characters",
+    "save": "Save",
+    "repeatPassword": "Repeat password",
+    "passwordMustIdentity": "Passwords must match",
+    "thisNoEmail": "Invalid email address",
+    "noEmpty": "Fill in the field.",
+    "successfulСhange": "The password was successfully changed! You will receive a confirmation of your password change to Your email address."
+  },
   "locale": {
     "language": "Language",
     "en": "English",

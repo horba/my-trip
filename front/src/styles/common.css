@@ -4,39 +4,64 @@
   font-weight: 600;
   font-size: 14px;
   font-family: Open Sans;
+  font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1 {
   font-size: 54px;
+  line-height: 92px;
 }
 
 h2 {
   font-size: 38px;
+  line-height: 63px;
 }
 
 h3 {
   font-size: 33px;
+  line-height: 53px;
 }
 
 h4 {
   font-size: 23px;
+  line-height: 34px;
 }
 
 h5 {
   font-size: 18px;
+  line-height: 27px;
 }
 
 h6 {
   font-size: 15px;
+  line-height: 21px;
 }
 
-.v-btn {
+body{
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.text-small{
+ font-size: 12px;
+ line-height: 15px;
+}
+
+.text-xsmall{
+  font-size: 9px;
+  line-height: 11px;
+}
+
+.text-normal{
+  font-weight: normal;
+}
+
+.mmt-btn{
   text-transform: none;
   letter-spacing: normal;
 }
-
 
 /* trip */
 
@@ -76,3 +101,21 @@ h6 {
 }
 
 /* end mmt-continue-button */
+
+.md .v-content__wrap {
+  display: flex;
+  flex-direction:column;
+}
+
+.v-content__wrap .content-container {
+  flex-grow: 1;
+  margin-top: 56px;
+}
+
+.md .v-content__wrap .content-container {
+  margin-top: 64px;
+}
+
+.theme--light.v-card.auth-card, .theme--light.v-card.recovery-card {
+  background-color: var(--login-and-recovery-password-background-color);
+}

@@ -14,13 +14,13 @@ export default {
   },
   actions: {
     loadUserSettings ({ commit }) {
-      axios.get(`${serverPath}api/userSettings`)
+      axios.get(`${serverPath}/api/userSettings`)
         .then(({ data }) => {
           commit('SET_USER_SETTINGS', data);
         });
     },
     updateUserSettings ({ commit }, formData) {
-      return axios.put(`${serverPath}api/userSettings`, formData)
+      return axios.put(`${serverPath}/api/userSettings`, formData)
         .then(() => commit('SET_USER_SETTINGS', formData));
     },
     uploadUserAvatarFile ({ commit }, formData) {
