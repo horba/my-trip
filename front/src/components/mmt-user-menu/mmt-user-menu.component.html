@@ -3,7 +3,8 @@
 
     <v-list-item-avatar :size="`${$vuetify.breakpoint.smAndDown ? 48 : 130}`" 
                         :class="`${$vuetify.breakpoint.smAndDown ? 'mx-1' : ''}`">
-      <img :src="user.avatar" />
+      <img v-if="user.avatar" :src="user.avatar"  />
+      <v-icon v-else x-large>mdi-camera</v-icon>
     </v-list-item-avatar>
 
     <v-list-item v-if="!$vuetify.breakpoint.smAndDown" two-line>

@@ -72,6 +72,11 @@
     "otherGender": "Інша",
     "countryIsNotSpecified": "Країна не вказана",
     "languageIsNotSpecified": "Мова не вказана",
+    "pickAnAvatar": "Виберіть аватар",
+    "avatar": "Аватар",
+    "fileIsEmpty": "Виберіть файл",
+    "fileIsToBig": "Розмір файлу повинен бути менше 2 Мб",
+    "notAllowedContentType": "Виберіть .png, .jpeg або .bmp файл",
     "save": "Зберегти"
   },
   "countries": {

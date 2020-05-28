@@ -1,11 +1,10 @@
-﻿using System;
-using System.Linq;
-using System.Security.Claims;
-using Entities;
+﻿using Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using WebAPI.DTO.UserSettings;
 using WebAPI.Extension;
 using WebAPI.Services;
+using WebAPI.Services.Assets;
 
 namespace WebAPI.Controllers
 {
@@ -15,11 +14,13 @@ namespace WebAPI.Controllers
   {
     private readonly UserRepository _userRepository;
     private readonly UserService _userService;
+    private readonly AssetsService _filesService;
 
-    public UserSettingsController(UserRepository userRepository, UserService userService)
+    public UserSettingsController(UserRepository userRepository, UserService userService, AssetsService filesService)
     {
       _userRepository = userRepository;
       _userService = userService;
+      _filesService = filesService;
     }
 
     [HttpGet]
@@ -52,6 +53,15 @@ namespace WebAPI.Controllers
       if (userWithThisEmail != null && userWithThisEmail.Id != id)
       {
         return BadRequest(new { isEmailUsed = true });
+      }
+
+      if (string.IsNullOrEmpty(userSettings.AvatarFileName))
+      {
+        _filesService.DeleteFile(user.AvatarFileName, AssetType.UserAvatar);
+      }
+      else if (!string.IsNullOrEmpty(user.AvatarFileName) && !user.AvatarFileName.Equals(userSettings.AvatarFileName, System.StringComparison.OrdinalIgnoreCase))
+      {
+        _filesService.DeleteFile(user.AvatarFileName, AssetType.UserAvatar);
       }
 
       _userService.ApplyUserSettingsDTOToUser(user, userSettings);

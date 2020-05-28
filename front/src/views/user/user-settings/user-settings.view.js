@@ -1,19 +1,40 @@
 import { MmtTextInput } from '@components';
 import { mapState } from 'vuex';
+import { VFileInput, VIcon } from 'vuetify/lib';
 const { emailRegex } = require('@/config/constants.json');
 
 export default {
   components: {
-    MmtTextInput
+    MmtTextInput,
+    VFileInput,
+    VIcon
   },
   data () {
     return {
       editedUserSettings: {},
       formValidity: true,
       emailIsAlreadyTaken: false,
+      fileUploadError: '',
       emailRules: [
         email => RegExp(emailRegex).test(email)
         || this.$t('userSettings.enterCorrectEmail')
+      ],
+      avatarRules: [
+        value => {
+          if (value && value.size > 1024 * 1024 * 2) {
+            return this.$t('userSettings.fileIsToBig');
+          }
+
+          if (value
+            && value.type !== 'image/png'
+            && value.type !== 'image/jpeg'
+            && value.type !== 'image/jpg'
+            && value.type !== 'image/bmp') {
+            return this.$t('userSettings.notAllowedContentType');
+          }
+
+          return true;
+        }
       ]
     };
   },
@@ -115,6 +136,35 @@ export default {
       this.$store.dispatch('userSettings/updateUserSettings', this.editedUserSettings)
         .catch(error => {
           this.emailIsAlreadyTaken = error.response.data.isEmailUsed;
+        });
+    },
+    avatarUpload (file) {
+      this.fileUploadError = null;
+
+      if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        this.$store.dispatch('userSettings/uploadUserAvatarFile', formData)
+          .then(r => {
+            if (r.status === 200) {
+              this.editedUserSettings.avatarFileName = r.data;
+            }
+          })
+          .catch((error) => {
+            this.fileUploadError = error.response.data;
+          });
+      }
+    },
+    avatarClear () {
+      const formData = new FormData();
+      formData.append('fileName', this.editedUserSettings.avatarFileName);
+
+      this.$store.dispatch('userSettings/deleteUserAvatarFile', formData)
+        .then(r => {
+          if (r.status === 200) {
+            this.editedUserSettings.avatarFileName = null;
+          }
         });
     }
   },

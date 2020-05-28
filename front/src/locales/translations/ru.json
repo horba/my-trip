@@ -72,6 +72,11 @@
     "otherGender": "Другой",
     "countryIsNotSpecified": "Старана не указана",
     "languageIsNotSpecified": "Язык не указан",
+    "pickAnAvatar": "Выберите аватар",
+    "avatar": "Аватар",
+    "fileIsEmpty": "Пожалуйста, выберите файл",
+    "fileIsToBig": "Размер файла должен быть менее 2 МБ",
+    "notAllowedContentType": "Пожалуйста, выберите файл .png, .jpeg или .bmp",
     "save": "Сохранить"
   },
   "countries": {

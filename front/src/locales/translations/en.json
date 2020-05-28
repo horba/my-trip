@@ -72,6 +72,11 @@
     "otherGender": "Other",
     "countryIsNotSpecified": "Country is not specified",
     "languageIsNotSpecified": "Language is not specified",
+    "pickAnAvatar": "Pick an avatar",
+    "avatar": "Avatar",
+    "fileIsEmpty": "Please select file",
+    "fileIsToBig": "File size should be less than 2 MB",
+    "notAllowedContentType": "Please select .png, .jpeg or .bmp file",
     "save": "Save"
   },
   "countries": {

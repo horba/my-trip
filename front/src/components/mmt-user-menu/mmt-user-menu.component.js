@@ -9,12 +9,12 @@ export default {
     VSwitch,
     VIcon
   },
+  computed: {
+    user () {
+      return this.$store.getters['userSettings/getUserProfile'];
+    }
+  },
   data: () => ({
-    user: {
-      fullName: 'OKSANA BEREZNIEVATA',
-      email: 'oksana@gmail.com',
-      avatar: 'https://randomuser.me/api/portraits/women/85.jpg'
-    },
     items: [
       {
         title: 'menu.tickets',

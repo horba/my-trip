@@ -20,7 +20,20 @@
         v-model="editedUserSettings.languageId" :items="languages" append-icon="mdi-chevron-down" />
       <v-select persistent-hint rounded filled dense hide-details class="mmt-select"
         v-model="editedUserSettings.countryId" :items="countries" append-icon="mdi-chevron-down" />
-      <v-btn height="39" width="173" class="mmt-continue-button" rounded depressed large @click.prevent="applySettings"
+
+      
+      <v-file-input class="input-field"
+                    :rules="avatarRules"
+                    accept="image/png, image/jpeg, image/jpg, image/bmp"
+                    :placeholder="editedUserSettings.avatarFileName || $t('userSettings.pickAnAvatar')"
+                    prepend-icon="mdi-camera"
+                    :label="$t('userSettings.avatar')"
+                    @change="avatarUpload"
+                    @click:clear="avatarClear"
+                    :error-messages="fileUploadError ? $t(`userSettings.${fileUploadError}`) : ''">
+      </v-file-input>
+
+      <v-btn height="39" width="173" class="mmt-continue-button mt-5" rounded depressed large @click.prevent="applySettings"
         :disabled="!formValidity">
         {{$t('userSettings.save')}}</v-btn>
     </v-form>
