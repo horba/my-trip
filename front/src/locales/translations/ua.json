@@ -34,6 +34,8 @@
     "popularSearches": "Популярні запити",
     "mapSwitch": "Карта",
     "mapTextInput": "Почніть вводити місто",
+    "placeOpenState": "Відкрито",
+    "placeCloseState": "Зачинено",
     "leisureTypeList": [
       "Активний відпочинок, екстрим",
       "Музеї і виставки",
