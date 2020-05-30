@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import { VBreadcrumbs, VBtn, VIcon, VPagination, VSwitch, VTextField } from 'vuetify/lib';
 
 import GoogleMapsApiLoader from 'google-maps-api-loader';
@@ -110,10 +108,10 @@ export default {
             place.photos = place.photos[0].getUrl();
           }
           if (place.opening_hours) {
-            if(place.opening_hours.open_now){
-              place.opening_hours = this.$t('leisure.placeOpenState'); 
+            if (place.opening_hours.open_now) {
+              place.opening_hours = this.$t('leisure.placeOpenState');
             } else {
-              place.opening_hours = this.$t('leisure.placeCloseState'); 
+              place.opening_hours = this.$t('leisure.placeCloseState');
             }
           }
 
@@ -125,6 +123,7 @@ export default {
           setTimeout(this.dropMarker(i), i * 100);
         });
         this.places = places;
+        console.log(places);
       }
     },
     dropMarker (i) {
