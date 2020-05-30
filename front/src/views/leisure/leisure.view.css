@@ -3,7 +3,8 @@
 }
 
 .body-wrap, .places, .place, .place-info, 
-.title-wrap, .price-wrap, .photo, .input-wrap {
+.title-wrap, .price-wrap, .photo, .input-wrap,
+.pages, .rating, .rating-wrap {
   display: flex;
 }
 
@@ -62,7 +63,6 @@
 
 .places {
   flex-wrap: wrap;
-  justify-content: start;
   justify-content: space-between;
 }
 
@@ -73,13 +73,8 @@
   flex-direction: column;
 }
 
-.places > .place:last-child {
-  margin: 10px auto 0 12px;
-}
-
 .place > .photo {
   height: 150px;
-  background: url('https://i.ibb.co/fQTGpcw/amsterda1-1024x731.jpg') center no-repeat;
   background-size: cover;
 }
 
@@ -122,4 +117,57 @@
 .input-wrap {
   justify-content: space-between;
   align-items: center;
+}
+
+.infoWindow {
+  width: 100px;
+  height: 100px;
+}
+
+.pages {
+  max-width: 850px;
+  min-width: 526px;
+  height: 88px;
+  justify-content: center;
+  align-items: center;
+  background: #FFF;
+}
+
+.price-wrap {
+  justify-self: center;
+  align-items: center;
+}
+
+.price-wrap .opacity {
+  opacity: .5;
+}
+
+.price-wrap p {
+  padding: 0px 5px;
+  font-size: 10px;
+  margin:0px;
+}
+
+.rating{
+  justify-content: center;
+  align-items: center;
+}
+
+.price-wrap .state {
+  color: #00C853;
+}
+
+.place-info span {
+  font-size: 15px;
+}
+
+.price-wrap span {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.rating-wrap .star {
+  font-size: 18px;
+  margin-right: 3px;
+  color: #4DD0E1;
 }
