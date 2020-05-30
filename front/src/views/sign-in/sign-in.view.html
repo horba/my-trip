@@ -41,6 +41,9 @@
         :disabled="!formValidity"
         @click="login"
       >Продолжить</v-btn>
+      <a href="https://accounts.google.com/o/oauth2/v2/auth?scope=email&include_granted_scopes=true&response_type=code&redirect_uri=http%3A//me.test.com/login-with-google&client_id=333247262677-ri736kk9bh4c129e44j7i6d18idt4ptu.apps.googleusercontent.com">
+        Войти с гуглом!
+      </a>
       <router-link to="/recovery-password" class="forget-password">
         Забыли пароль?
       </router-link>

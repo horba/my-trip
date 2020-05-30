@@ -37,6 +37,7 @@ namespace WebAPI.Services
     {
       return _userRepository.FindUserByEmail(email) != null;
     }
+
     public User GetUser(string email)
     {
       return _userRepository.FindUserByEmail(email);
@@ -50,6 +51,12 @@ namespace WebAPI.Services
         Password = CryptoUtils.HashPassword(password)
       };
 
+      _userRepository.CreateUser(user);
+    }
+
+    public void CreateOauthUser(string email)
+    {
+      var user = new User {Email = email, IsOauth = true};
       _userRepository.CreateUser(user);
     }
 

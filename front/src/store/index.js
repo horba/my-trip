@@ -51,6 +51,13 @@ export default new Vuex.Store({
           commit('SET_USER_DATA', data);
         });
     },
+    loginWithGoogle ({ commit }, code) {
+      console.log(code);
+      return axios.post(`${serverPath}/api/auth/google`, { code })
+        .then(({ data }) => {
+          commit('SET_USER_DATA', data);
+        });
+    },
     logout ({ commit }) {
       commit('CLEAR_USER_DATA');
     },

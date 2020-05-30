@@ -9,7 +9,7 @@ import {
   MyAccommodation, MyFood, MyTransport,
   MyLeisure, SignIn, SignUp,
   UserSettings, UserCabinet, MyHistoryPreviousTrips,
-  RecoveryPassword
+  SignInWithGoogle, RecoveryPassword
 } from '@views';
 
 Vue.use(VueRouter);
@@ -32,6 +32,14 @@ const routes = [
     meta: {
       allowUnknownUsers: true, // default is true
       allowLoggedUsers: false // default is true
+    }
+  },
+  {
+    path: '/login-with-google',
+    name: 'LoginWithGoogle',
+    component: SignInWithGoogle,
+    meta: {
+      allowLoggedUsers: false
     }
   },
   {
