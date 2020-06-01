@@ -12,3 +12,4 @@ export { default as GoogleMapMarker } from './google-map/GoogleMapMarker.vue';
 export {
   default as MmtLocaleSwitcher
 } from './mmt-locale-switcher/mmt-locale-switcher.component.vue';
+export { default as MmtSelect } from './mmt-select/mmt-select.component.vue';

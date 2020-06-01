@@ -4,4 +4,10 @@
             :value="language"
             @change="changeLanguage">
   </v-select>
+  <mmt-select
+    :items="locales"
+    :label="$t('locale.language')"
+    :value="language"
+    @change="changeLanguage"
+  />
 </div>

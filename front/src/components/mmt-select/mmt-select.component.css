@@ -1,0 +1,14 @@
+/* mmt-select */
+
+.mmt-select.v-text-field--filled .v-input__control>.v-input__slot {
+    background-color: var(--filled-select-fill-color);
+}
+
+.mmt-select * {
+    font-weight: normal;
+}
+
+.theme--light.v-list-item--active:hover::before,.theme--light.v-list-item--active::before{
+    opacity: 0.5;
+}
+/* end mmt-select */
