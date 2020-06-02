@@ -9,7 +9,7 @@ export { default as MmtTextInput } from './controls/mmt-text-input/mmt-text-inpu
 export { default as GoogleMapLine } from './google-map/GoogleMapLine.vue';
 export { default as GoogleMapLoader } from './google-map/GoogleMapLoader.vue';
 export { default as GoogleMapMarker } from './google-map/GoogleMapMarker.vue';
+export { default as MmtSelect } from './mmt-select/mmt-select.component.vue';
 export {
   default as MmtLocaleSwitcher
 } from './mmt-locale-switcher/mmt-locale-switcher.component.vue';
-export { default as MmtSelect } from './mmt-select/mmt-select.component.vue';

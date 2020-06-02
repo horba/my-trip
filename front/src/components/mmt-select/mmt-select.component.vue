@@ -1,5 +1,11 @@
-<template src="./mmt-select.component.html"></template>
+<template src="./mmt-select.component.html">
 
-<script src="./mmt-select.component.js"></script>
+</template>
 
-<style scoped src="./mmt-select.component.css"></style>
+<script src="./mmt-select.component.js">
+
+</script>
+
+<style scoped src="./mmt-select.component.css">
+
+</style>
