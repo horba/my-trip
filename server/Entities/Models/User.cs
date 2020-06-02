@@ -9,7 +9,6 @@ namespace Entities.Models
     public User()
     {
       Gender = Gender.NotSpecified;
-      IsOauth = false;
     }
 
     public int Id { get; set; }

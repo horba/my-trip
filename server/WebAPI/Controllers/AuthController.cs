@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
     public IActionResult Auth(AuthRequest authRequest)
     {
       var user = _userService.GetUser(authRequest.Email, authRequest.Password);
-      if (user == null || user.IsOauth)
+      if (user == null)
         return Unauthorized();
 
       var token = _authService.MakeToken(user);

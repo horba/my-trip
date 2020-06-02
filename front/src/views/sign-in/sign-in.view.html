@@ -1,4 +1,4 @@
-<v-card class="auth-card" flat tile >
+<v-card class="auth-card" flat tile>
   <v-card-title class="auth-card-title">
     <h4>
       Добро пожаловать!
@@ -6,44 +6,21 @@
   </v-card-title>
   <v-card-text>
     <v-form class="auth-form" ref="form" v-model="formValidity">
-      <mmt-text-input
-        class="input-field"
-        mmt-label="E-mail"
-        rounded
-        filled
-        single-line
-        mmt-dense
-        placeholder="Введите Ваш e-mail"
-        v-model="email"
-        :rules="rules"
-        :error-messages="serverError"
-        @input="onInput"
-      />
-      <mmt-text-input
-        class="input-field"
-        mmt-label="Password"
-        rounded
-        filled
-        single-line
-        mmt-dense
-        placeholder="Введите Ваш пароль"
-        type="password"
-        v-model="password"
-        :rules="rules"
-        :error-messages="serverError"
-        @input="onInput"
-      />
-      <v-btn
-        class="continue-button mmt-btn"
-        rounded
-        depressed
-        large
-        :disabled="!formValidity"
-        @click="login"
-      >Продолжить</v-btn>
-      <a href="https://accounts.google.com/o/oauth2/v2/auth?scope=email&include_granted_scopes=true&response_type=code&redirect_uri=http%3A//me.test.com/login-with-google&client_id=333247262677-ri736kk9bh4c129e44j7i6d18idt4ptu.apps.googleusercontent.com">
-        Войти с гуглом!
-      </a>
+      <mmt-text-input class="input-field" mmt-label="E-mail" rounded filled single-line mmt-dense
+        placeholder="Введите Ваш e-mail" v-model="email" :rules="rules" :error-messages="serverError"
+        @input="onInput" />
+      <mmt-text-input class="input-field" mmt-label="Password" rounded filled single-line mmt-dense
+        placeholder="Введите Ваш пароль" type="password" v-model="password" :rules="rules" :error-messages="serverError"
+        @input="onInput" />
+      <v-btn class="continue-button mmt-btn" rounded depressed large :disabled="!formValidity" @click="login">Продолжить
+      </v-btn>
+      Или
+      <!-- To make it works you need to bind custom domain (me.test.com) to localhost (C:\Windows\System32\drivers\etc\hosts) -->
+      <v-btn class="google-btn social-btn" rounded outlined
+        :href="`https://accounts.google.com/o/oauth2/v2/auth?scope=email&include_granted_scopes=true&response_type=code&redirect_uri=${googleOauth.redirectUri}&client_id=${googleOauth.clientId}`">
+        Продолжить через Google
+        <v-icon right>mdi-google</v-icon>
+      </v-btn>
       <router-link to="/recovery-password" class="forget-password">
         Забыли пароль?
       </router-link>

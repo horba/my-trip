@@ -1,4 +1,5 @@
 import { MmtTextInput } from '@components';
+const { googleOauth } = require('@/config/constants.json');
 
 export default {
   components: {
@@ -10,6 +11,7 @@ export default {
       password: '',
       serverError: '',
       formValidity: true,
+      googleOauth,
       rules: [
         value => !!value || 'Поле не должно быть пустым'
       ]
