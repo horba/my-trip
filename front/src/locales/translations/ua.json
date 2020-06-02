@@ -95,9 +95,6 @@
     "languageIsNotSpecified": "Мова не вказана",
     "pickAnAvatar": "Виберіть аватар",
     "avatar": "Аватар",
-    "fileIsEmpty": "Виберіть файл",
-    "fileIsToBig": "Розмір файлу повинен бути менше 2 Мб",
-    "notAllowedContentType": "Виберіть .png, .jpeg або .bmp файл",
     "save": "Зберегти"
   },
   "countries": {
@@ -119,5 +116,11 @@
     "flightTime": "Час польоту",
     "differenceInTime": "Різниця в часі",
     "details": "Докладніше"
+  },
+  "fileUpload": {
+    "fileIsEmpty": "Виберіть файл",
+    "fileIsToBig": "Файл занадто великий",
+    "correctFileSize": "Правильний розмір файлу",
+    "notAllowedContentType": "Виберіть .png, .jpeg або .bmp файл"
   }
 }

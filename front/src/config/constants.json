@@ -2,5 +2,6 @@
   "emailRegex": "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$",
   "serverImagesPath": {
     "avatars": "avatars"
-  }
+  },
+  "MAX_AVATAR_SIZE_MB": 2
 }

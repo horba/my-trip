@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace WebAPI.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
+  [Authorize]
   public class AssetsController : ControllerBase
   {
     private readonly AssetsService _filesService;
@@ -18,7 +20,7 @@ namespace WebAPI.Controllers
       _filesService = filesService;
     }
 
-    [HttpPut]
+    [HttpPost]
     [Route("{assetType}")]
     [Consumes("multipart/form-data")]
     public async Task<IActionResult> UploadFile([FromForm] IFormFile file, [FromRoute] AssetType assetType)
@@ -38,9 +40,12 @@ namespace WebAPI.Controllers
     }
 
     [HttpDelete]
-    [Route("{assetType}")]
-    public IActionResult DeleteFile(string fileName, [FromRoute] AssetType assetType)
+    [Route("{assetType}/{fileName}")]
+    public IActionResult DeleteFile([FromRoute] AssetType assetType, [FromRoute] string fileName)
     {
+      if (string.IsNullOrEmpty(fileName))
+        return BadRequest("File name is required");
+
       _filesService.DeleteFile(fileName, assetType);
       return Ok();
     }

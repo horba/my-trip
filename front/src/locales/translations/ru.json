@@ -95,9 +95,6 @@
     "languageIsNotSpecified": "Язык не указан",
     "pickAnAvatar": "Выберите аватар",
     "avatar": "Аватар",
-    "fileIsEmpty": "Пожалуйста, выберите файл",
-    "fileIsToBig": "Размер файла должен быть менее 2 МБ",
-    "notAllowedContentType": "Пожалуйста, выберите файл .png, .jpeg или .bmp",
     "save": "Сохранить"
   },
   "countries": {
@@ -119,5 +116,11 @@
     "flightTime": "Время полета",
     "differenceInTime": "Разница во времени",
     "details": "Подробнее"
+  },
+  "fileUpload": {
+    "fileIsEmpty": "Пожалуйста, выберите файл",
+    "fileIsToBig": "Файл слишком большой",
+    "correctFileSize": "Верный размер файла",
+    "notAllowedContentType": "Пожалуйста, выберите файл .png, .jpeg или .bmp"
   }
 }

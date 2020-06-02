@@ -1,0 +1,8 @@
+<v-avatar :size="size">
+  <img v-if="src" :src="src" />
+  <v-icon v-else
+          :size="size"
+          dark>
+    mdi-account-circle
+  </v-icon>
+</v-avatar>

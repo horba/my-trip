@@ -7,7 +7,8 @@ export default {
     VList,
     VBtn,
     VSwitch,
-    VIcon
+    VIcon,
+    MmtAvatar: () => import('../controls/mmt-avatar/mmt-avatar.component.vue')
   },
   computed: {
     user () {
