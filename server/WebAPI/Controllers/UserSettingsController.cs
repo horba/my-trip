@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Security.Claims;
 using Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.DTO.UserSettings;
 using WebAPI.Extension;
@@ -9,6 +10,7 @@ using WebAPI.Services;
 
 namespace WebAPI.Controllers
 {
+  [Authorize]
   [Route("api/[controller]")]
   [ApiController]
   public class UserSettingsController : ControllerBase
