@@ -8,7 +8,6 @@ export default {
     return {
       email: '',
       valid: false,
-      serverError: '',
       rules: {
         isEmpty: v => !!v || this.$t('recoveryPassword.noEmpty'),
         validEmail: v => /.+@.+\..+/.test(v) || this.$t('recoveryPassword.thisNoEmail')
@@ -16,9 +15,6 @@ export default {
     };
   },
   methods: {
-    onInput (input) {
-      this.serverError = '';
-    },
     recoveryPassword () {
       this.$store.dispatch('recoveryPassword/recoveryPasswordSendEmail', { email: this.email })
         .then(this.valid = false)

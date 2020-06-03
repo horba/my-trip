@@ -32,7 +32,6 @@
         @click:append="showPasswordConfirmation = !showPasswordConfirmation"
         :rules="[rules.isEmpty, rules.minPassLen, rules.samePass]"
         v-model="passwordConfirmation"
-        @input="onInput"
         required
       />
     </div>

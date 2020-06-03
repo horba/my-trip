@@ -14,8 +14,6 @@
         :placeholder="$t('recoveryPassword.emailPlease')"
         v-model="email"
         :rules="[rules.isEmpty, rules.validEmail]"
-        :error-messages="serverError"
-        @input="onInput"
         required
       />
     </div>

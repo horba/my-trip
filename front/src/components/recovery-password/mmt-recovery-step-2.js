@@ -21,9 +21,6 @@ export default {
     };
   },
   methods: {
-    onInput (input) {
-      this.serverError = '';
-    },
     sendPassword () {
       this.valid = false;
       this.$store.dispatch('recoveryPassword/recoveryPasswordSendPassword',
