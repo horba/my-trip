@@ -5,10 +5,10 @@ export default {
   namespaced: true,
   actions: {
     recoveryPasswordSendEmail ({ commit }, payload) {
-      return axios.post(`${serverPath}/api/forgotPassword/`, { email: payload.email });
+      return axios.post(`${serverPath}/api/recoveryPassword/`, { email: payload.email });
     },
     recoveryPasswordSendPassword ({ commit, state }, payload) {
-      return axios.post(`${serverPath}/api/forgotPassword/resetPassword/`, payload);
+      return axios.post(`${serverPath}/api/recoveryPassword/resetPassword/`, payload);
     }
   }
 };

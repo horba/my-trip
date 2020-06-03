@@ -55,7 +55,7 @@ namespace WebAPI
       services.AddScoped<TripRepository>();
       services.AddScoped<TripService>();
       services.AddSingleton(frontConfiguration);
-      services.AddScoped<ResetPasswordService>();
+      services.AddScoped<RecoveryPasswordService>();
       services.AddSingleton(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
       services.AddScoped<IEmailSender, EmailSender>();
 

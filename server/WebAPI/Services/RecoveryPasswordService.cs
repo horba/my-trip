@@ -4,12 +4,12 @@ using WebAPI.Interfaces;
 
 namespace WebAPI.Services
 {
-  public class ResetPasswordService
+  public class RecoveryPasswordService
   {
     private readonly IEmailSender _emailSender;
     private readonly UserService _userService;
     private readonly FrontConfiguration _frontConfiguration;
-    public ResetPasswordService(UserService userService,
+    public RecoveryPasswordService(UserService userService,
         IEmailSender emailSender, FrontConfiguration frontConfiguration)
     {
       _userService = userService;
@@ -67,13 +67,13 @@ namespace WebAPI.Services
         return false;
       }
     }
-    public async System.Threading.Tasks.Task<bool> SendEmailAsync(RecoveryPasswordModel resetPasswordModel)
+    public async System.Threading.Tasks.Task<bool> SendEmailAsync(RecoveryPasswordModel recoveryPasswordModel)
     {
       try {
-        var user = _userService.GetUser(resetPasswordModel.Email);
+        var user = _userService.GetUser(recoveryPasswordModel.Email);
         if(user != null)
         {
-          _userService.CreateRecoveryPasswordToken(resetPasswordModel.Email);
+          _userService.CreateRecoveryPasswordToken(recoveryPasswordModel.Email);
           var token = user.ResetPasswordToken;
           var message = new Message(new string[] { user.Email },
             "Reset password token", $"<a href='{_frontConfiguration.AddressFront}/recovery-password/{token}'>Recovery password</a>",
