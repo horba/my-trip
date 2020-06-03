@@ -16,8 +16,8 @@ export default {
   },
   methods: {
     recoveryPassword () {
+      this.valid = false;
       this.$store.dispatch('recoveryPassword/recoveryPasswordSendEmail', { email: this.email })
-        .then(this.valid = false)
         .catch(this.valid = true);
     }
   }

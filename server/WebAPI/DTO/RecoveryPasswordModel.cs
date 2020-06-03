@@ -1,9 +1,11 @@
-﻿namespace WebAPI.DTO
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WebAPI.DTO
 {
   public class RecoveryPasswordModel
   {
-    public string Password { get; set; }
+    [Required]
+    [EmailAddress]
     public string Email { get; set; }
-    public string Token { get; set; }
   }
 }

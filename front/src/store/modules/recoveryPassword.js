@@ -8,7 +8,7 @@ export default {
       return axios.post(`${serverPath}/api/recoveryPassword/`, { email: payload.email });
     },
     recoveryPasswordSendPassword ({ commit, state }, payload) {
-      return axios.post(`${serverPath}/api/recoveryPassword/resetPassword/`, payload);
+      return axios.post(`${serverPath}/api/recoveryPassword/updatePassword/`, payload);
     }
   }
 };

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 using WebAPI.DTO;
 using WebAPI.Interfaces;
 
@@ -16,79 +19,88 @@ namespace WebAPI.Services
       _emailSender = emailSender;
       _frontConfiguration = frontConfiguration;
     }
-    public bool UpdatePassword(RecoveryPasswordModel recoveryPasswordModel)
+    public async Task UpdatePasswordAsync(UpdatePasswordModel updatePasswordModel)
     {
+      var results = new List<ValidationResult>();
+      var context = new ValidationContext(updatePasswordModel);
       try
       {
-        if(recoveryPasswordModel.Password == "" &&
-          recoveryPasswordModel.Token == "" && 
-          recoveryPasswordModel.Password.Length >= 8)
+        if(!Validator.TryValidateObject(updatePasswordModel, context, results, true))
         {
-          if(recoveryPasswordModel.Password == "")
+          foreach(var error in results)
           {
-            throw new ArgumentException("password is empty", "Password");
+            Console.WriteLine(error.ErrorMessage);
           }
-          if(recoveryPasswordModel.Token == "")
-          {
-            throw new ArgumentException("token is empty", "Token");
-          }
-          if(recoveryPasswordModel.Password.Length >= 8)
-          {
-            throw new ArgumentException("password lengt mus be >= 8", "password");
-          }
-        }
-        var user = _userService.GetUserByRecoveryPasswordToken(recoveryPasswordModel.Token);
-        if(user != null)
-        {
-          var result = _userService.UpdateUserPassword(user.Email, recoveryPasswordModel.Password);
-          if(result)
-          {
-          _userService.DeleteRecoveryPasswordToken(recoveryPasswordModel.Token);
-            var message = new Message(new string[] { user.Email },
-                "Reset password token", "Your password has been changed successfully. " +
-                $"Please check our <a href = '{_frontConfiguration.AddressFront}'>website</a>",
-                null);
-            _emailSender.SendEmail(message);
-          }
-          return result;
+          throw new ArgumentException();
         }
         else
         {
-          throw new ArgumentException("invalid token", "token");
+          var user = await Task.Run(() => _userService.GetUserByRecoveryPasswordToken(updatePasswordModel.Token));
+          if(user != null)
+          {
+            var result = _userService.UpdateUserPassword(user.Email, updatePasswordModel.Password);
+            if(result)
+            {
+              _userService.DeleteRecoveryPasswordToken(updatePasswordModel.Token);
+              var message = new Message(new string[] { user.Email },
+                  "Reset password token", "Your password has been changed successfully. " +
+                  $"Please check our <a href = '{_frontConfiguration.AddressFront}'>website</a>",
+                  null);
+              await _emailSender.SendEmailAsync(message);
+            }
+          }
+          else
+          {
+            throw new ArgumentException("invalid token", "token");
+          }
         }
       }
       catch(ArgumentException e)
       {
-        Console.WriteLine(e.Message + e.ParamName);
-        throw new Exception();
+        Console.WriteLine(e.Message);
+        return;
       }
       catch(Exception)
       {
-        return false;
+        return;
       }
     }
-    public async System.Threading.Tasks.Task<bool> SendEmailAsync(RecoveryPasswordModel recoveryPasswordModel)
+    public async Task SendEmailAsync(RecoveryPasswordModel recoveryPasswordModel)
     {
+      var results = new List<ValidationResult>();
+      var context = new ValidationContext(recoveryPasswordModel);
       try {
-        var user = _userService.GetUser(recoveryPasswordModel.Email);
-        if(user != null)
+
+        if(!Validator.TryValidateObject(recoveryPasswordModel, context, results, true))
         {
-          _userService.CreateRecoveryPasswordToken(recoveryPasswordModel.Email);
-          var token = user.ResetPasswordToken;
-          var message = new Message(new string[] { user.Email },
-            "Reset password token", $"<a href='{_frontConfiguration.AddressFront}/recovery-password/{token}'>Recovery password</a>",
-            null);
-          await _emailSender.SendEmailAsync(message);
-          return true;
+          foreach(var error in results)
+          {
+            Console.WriteLine(error.ErrorMessage);
+          }
+          throw new ArgumentException();
         }
         else
         {
-          throw new NullReferenceException();
+          var user = _userService.GetUser(recoveryPasswordModel.Email);
+          if(user != null)
+          {
+            _userService.CreateRecoveryPasswordToken(recoveryPasswordModel.Email);
+            var token = user.ResetPasswordToken;
+            var message = new Message(new string[] { user.Email },
+              "Reset password token", $"<a href='{_frontConfiguration.AddressFront}/recovery-password/{token}'>Recovery password</a>",
+              null);
+            await _emailSender.SendEmailAsync(message);
+            return;
+          }
+          else
+          {
+            throw new NullReferenceException();
+          }
         }
       }
       catch(Exception)
       {
-        return false;
+        return;
       }
     }
   }

@@ -15,32 +15,18 @@ namespace WebAPI.Controllers
       this.recoveryPasswordService = recoveryPasswordService;
     }
 
-    [HttpPost("ResetPassword")]
-    public IActionResult ResetPassword(RecoveryPasswordModel recoveryPasswordModel)
+    [HttpPost("UpdatePassword")]
+    public async Task<IActionResult> UpdatePasswordAsync(UpdatePasswordModel updatePasswordModel)
     {
-      if(recoveryPasswordModel.Email != "" &&
-        recoveryPasswordModel.Password != "" &&
-        recoveryPasswordModel.Token != "")
-      {
-        return Ok(recoveryPasswordService.UpdatePassword(recoveryPasswordModel));
-      }
-      else
-      {
-        return BadRequest(false);
-      }
+      await recoveryPasswordService.UpdatePasswordAsync(updatePasswordModel);
+      return Ok();
     }
 
     [HttpPost]
     public async Task<IActionResult> ResetPasswordAsync(RecoveryPasswordModel recoveryPasswordModel)
     {
-      if(recoveryPasswordModel.Email != "")
-      {
-        return Ok(await recoveryPasswordService.SendEmailAsync(recoveryPasswordModel));
-      }
-      else
-      {
-        return BadRequest($"user is not valid. user = {recoveryPasswordModel.Email}");
-      }
+      await recoveryPasswordService.SendEmailAsync(recoveryPasswordModel);
+      return Ok();
     }
   }
 }

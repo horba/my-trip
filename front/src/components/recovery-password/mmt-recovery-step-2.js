@@ -27,10 +27,7 @@ export default {
         {
           password: this.passwordConfirmation,
           token: this.$route.params.token
-        }).then(this.$emit('stepDone')).catch(() => {
-        this.$emit('stepNotDone');
-        this.valid = true;
-      });
+        }).then(this.$emit('stepDone'));
     }
   }
 };
