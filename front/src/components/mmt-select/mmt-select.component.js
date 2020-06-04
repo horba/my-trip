@@ -6,13 +6,30 @@ export default {
     VSelect
   },
   data () {
-    return {};
+    return {
+      selected: ''
+    };
   },
   props: {
     mmtItem: {
       required: false,
-      type: [ { text: String, value: String } ],
-      default: () => { return [ { text: '', value: '' } ]; }
+      type: Array,
+      default: () => { return []; }
+    },
+    mmtLabel: {
+      required: false,
+      type: String,
+      default: ''
+    },
+    mmtValue: {
+      required: false,
+      type: String,
+      default: ''
+    }
+  },
+  methods: {
+    change () {
+      this.$emit('change', this.selected);
     }
   }
 };

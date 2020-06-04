@@ -1,14 +1,8 @@
 <div class="locale-switcher">
-  <v-select 
-    :items="locales"
-    :label="$t('locale.language')"            
-    :value="language"
-    @change="changeLanguage">
-  </v-select>
   <mmt-select
-   :mmt-items="locales"
-  :label="$t('locale.language')"            
-  :value="language"
-  @change="changeLanguage"
+    :mmt-item="locales"
+    :mmt-label="$t('locale.language')"            
+    :mmt-value="language"
+    @change="changeLanguage"
   />
 </div>

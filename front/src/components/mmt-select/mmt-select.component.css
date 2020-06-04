@@ -8,7 +8,11 @@
     font-weight: normal;
 }
 
-.theme--light.v-list-item--active:hover::before,.theme--light.v-list-item--active::before{
+.v-text-field--solo, .v-list {
+    border-radius: 0;
+}
+
+.theme--light.v-list-item--active:hover::before,.theme--light.v-list-item--active::before {
     opacity: 0.5;
 }
 /* end mmt-select */
