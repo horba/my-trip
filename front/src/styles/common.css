@@ -9,6 +9,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.v-application {
+  min-height: 100vh;
+}
+
 h1 {
   font-size: 54px;
   line-height: 92px;
