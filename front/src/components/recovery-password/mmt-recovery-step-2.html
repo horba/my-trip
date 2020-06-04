@@ -9,7 +9,8 @@
         :mmt-label="$t('recoveryPassword.password')"
         class="input-field"
         rounded
-        filled
+        solo
+        flat
         dense
         :type="showPassword  ? 'text' : 'password'"
         :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
@@ -25,7 +26,8 @@
         :mmt-label="$t('recoveryPassword.confrimPassword')"
         class="input-field"
         rounded
-        filled
+        solo
+        flat
         dense
         :type="showPasswordConfirmation ? 'text' : 'password'"
         :append-icon="showPasswordConfirmation ? 'mdi-eye' : 'mdi-eye-off'"
