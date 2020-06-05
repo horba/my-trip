@@ -1,5 +1,7 @@
 import axios from 'axios';
-const { serverPath } = require('@/config/config.dev.json');
+import config from '@config';
+
+const { serverPath } = config;
 
 export default {
   namespaced: true,

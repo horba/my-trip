@@ -47,13 +47,6 @@ export default {
     },
     logout ({ commit }) {
       commit('CLEAR_USER_DATA');
-    },
-    recoveryPasswordSendEmail ({ commit }, payload) {
-      axios.post(`${serverPath}/api/forgotPassword/`,
-        { email: payload.email });
-    },
-    recoveryPasswordSendPassword ({ commit, state }, payload) {
-      axios.post(`${serverPath}/api/forgotPassword/resetPassword/`, payload);
     }
   },
   getters: {

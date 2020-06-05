@@ -27,12 +27,12 @@ export default {
       this.serverError = '';
     },
     recoveryPassword () {
-      this.$store.dispatch('auth/recoveryPasswordSendEmail', { email: this.email })
+      this.$store.dispatch('recoveryPasswordSendEmail', { email: this.email })
         .then(this.valid = false);
     },
     sendPassword () {
       this.valid = false;
-      this.$store.dispatch('auth/recoveryPasswordSendPassword',
+      this.$store.dispatch('recoveryPasswordSendPassword',
         {
           password: this.passwordConfirmation,
           token: this.$route.params.token
