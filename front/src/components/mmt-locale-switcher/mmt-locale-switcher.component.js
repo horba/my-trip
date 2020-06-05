@@ -1,11 +1,9 @@
 import { VSelect } from 'vuetify/lib';
-import { MmtSelect } from '@components';
 
 export default {
   name: 'mmt-locale-switcher',
   components: {
-    VSelect,
-    MmtSelect
+    VSelect
   },
   computed: {
     language () {
