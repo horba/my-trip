@@ -136,9 +136,7 @@ export default {
 
         this.$store.dispatch('userSettings/uploadUserAvatarFile', formData)
           .then(r => {
-            if (r.status === 200) {
-              this.editedUserSettings.avatarFileName = r.data;
-            }
+            this.editedUserSettings.avatarFileName = r.data;
           })
           .catch((error) => {
             this.fileUploadError = error.response.data;
@@ -148,10 +146,8 @@ export default {
     avatarClear () {
       this.$store.dispatch('userSettings/deleteUserAvatarFile',
         this.editedUserSettings.avatarFileName)
-        .then(r => {
-          if (r.status === 200) {
-            this.editedUserSettings.avatarFileName = null;
-          }
+        .then(() => {
+          this.editedUserSettings.avatarFileName = null;
         });
     }
   },

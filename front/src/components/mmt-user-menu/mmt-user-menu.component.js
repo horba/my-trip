@@ -1,4 +1,5 @@
 import { VNavigationDrawer, VList, VBtn, VSwitch, VIcon } from 'vuetify/lib';
+import MmtAvatar from '../controls/mmt-avatar/mmt-avatar.component.vue';
 
 export default {
   name: 'mmt-user-menu',
@@ -8,7 +9,7 @@ export default {
     VBtn,
     VSwitch,
     VIcon,
-    MmtAvatar: () => import('../controls/mmt-avatar/mmt-avatar.component.vue')
+    MmtAvatar
   },
   computed: {
     user () {
