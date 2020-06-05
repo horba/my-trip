@@ -1,3 +1,4 @@
 {
-  "serverPath": "https://localhost:5001"
+  "serverPath": "https://localhost:5001",
+  "apiPath": "https://localhost:5001/api"
 }
