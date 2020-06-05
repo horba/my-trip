@@ -23,7 +23,7 @@ export default {
   methods: {
     async signUp () {
       if (this.valid) {
-        const response = await this.$store.dispatch('signUp', {
+        const response = await this.$store.dispatch('auth/signUp', {
           email: this.email,
           password: this.firstPass
         });

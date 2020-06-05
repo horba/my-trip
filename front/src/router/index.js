@@ -204,7 +204,7 @@ const routes = [
 
 router.beforeEach((to, from, next) => { // Auth Guards
   if (to.query.state === 'google-oauth') {
-    store.dispatch('loginWithGoogle', to.query.code)
+    store.dispatch('auth/loginWithGoogle', to.query.code)
       .then(() => next('/'))
       .catch(() => next({ name: 'Login' }));
     return;
