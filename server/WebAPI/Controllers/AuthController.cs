@@ -38,21 +38,21 @@ namespace WebAPI.Controllers
 
     [AllowAnonymous]
     [HttpPost("google")]
-    public async Task<IActionResult> AuthWithGoogle(GoogleOauthDTO gAuth) // I can transfer access code with path variable (google/{id})
+    public async Task<IActionResult> AuthWithGoogle(GoogleOauthDTO gAuth)
     {
       string googleBearer = await _googleOauthService.GetToken(gAuth.Code);
-      string email = await _googleOauthService.GetEmail(googleBearer);
+      var emailUserId = await _googleOauthService.GetGoogleUserData(googleBearer);
       
-      var user = _userService.GetUser(email);
-      if (email == null || user != null && !user.IsOauth)
+      var user = _userService.GetUser(emailUserId.Key);
+      if (emailUserId.Key == null)
       {
         return Unauthorized();
       }
 
       if (user == null)
       {
-        _userService.CreateOauthUser(email);
-        user = _userService.GetUser(email);
+        _userService.CreateGoogleOauthUser(emailUserId.Key, emailUserId.Value);
+        user = _userService.GetUser(emailUserId.Key);
       }
 
       var token = _authService.MakeToken(user);

@@ -54,9 +54,9 @@ namespace WebAPI.Services
       _userRepository.CreateUser(user);
     }
 
-    public void CreateOauthUser(string email)
+    public void CreateGoogleOauthUser(string email, string googleId)
     {
-      var user = new User {Email = email, IsOauth = true};
+      var user = new User {Email = email, GoogleId = googleId};
       _userRepository.CreateUser(user);
     }
 

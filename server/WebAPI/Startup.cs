@@ -58,9 +58,7 @@ namespace WebAPI
       services.AddScoped<ResetPasswordService>();
       services.AddSingleton(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
       services.AddScoped<IEmailSender, EmailSender>();
-      services.AddSingleton(Configuration.GetSection("GoogleOauth").Get<GooleOauthConfiguration>());
       services.AddScoped<GoogleOauthService>();
-      services.AddScoped<JSONExtractor>();
 
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
           .AddJwtBearer(x =>

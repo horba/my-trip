@@ -1,7 +1,3 @@
 {
-  "emailRegex": "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$",
-  "googleOauth": {
-    "redirectUri": "http://me.test.com/login-with-google",
-    "clientId": "333247262677-ri736kk9bh4c129e44j7i6d18idt4ptu.apps.googleusercontent.com"
-  }
+  "emailRegex": "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$"
 }

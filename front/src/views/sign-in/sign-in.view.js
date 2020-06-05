@@ -1,5 +1,4 @@
 import { MmtTextInput } from '@components';
-const { googleOauth } = require('@/config/constants.json');
 
 export default {
   components: {
@@ -11,7 +10,7 @@ export default {
       password: '',
       serverError: '',
       formValidity: true,
-      googleOauth,
+      process,
       rules: [
         value => !!value || 'Поле не должно быть пустым'
       ]
@@ -31,6 +30,12 @@ export default {
     },
     onInput () {
       this.serverError = '';
+    },
+    googleRedirect () {
+      window.location = 'https://accounts.google.com/o/oauth2/v2/auth?scope=email'
+      + '&include_granted_scopes=true&response_type=code&state=google-oauth'
+      + `&redirect_uri=${window.location.origin}`
+      + `&client_id=${process.env.VUE_APP_GOOGLE_OAUTH_CLIENT_ID}`;
     }
   }
 };

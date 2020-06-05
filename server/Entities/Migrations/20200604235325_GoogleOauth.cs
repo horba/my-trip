@@ -3,112 +3,111 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Entities.Migrations
 {
-    public partial class AddUserOauthField : Migration
+    public partial class GoogleOauth : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<bool>(
-                name: "IsOauth",
+            migrationBuilder.AddColumn<string>(
+                name: "GoogleId",
                 table: "users",
-                nullable: false,
-                defaultValue: false);
+                nullable: true);
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -8,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2013, 10, 29, 22, 21, 54, 314, DateTimeKind.Local).AddTicks(9376), new DateTime(2013, 10, 22, 22, 21, 54, 314, DateTimeKind.Local).AddTicks(9376) });
+                values: new object[] { new DateTime(2013, 11, 5, 2, 53, 25, 33, DateTimeKind.Local).AddTicks(7227), new DateTime(2013, 10, 29, 2, 53, 25, 33, DateTimeKind.Local).AddTicks(7227) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -7,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2013, 11, 30, 22, 21, 54, 314, DateTimeKind.Local).AddTicks(9369), new DateTime(2013, 11, 23, 22, 21, 54, 314, DateTimeKind.Local).AddTicks(9369) });
+                values: new object[] { new DateTime(2013, 12, 6, 2, 53, 25, 33, DateTimeKind.Local).AddTicks(7221), new DateTime(2013, 11, 29, 2, 53, 25, 33, DateTimeKind.Local).AddTicks(7221) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -6,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2015, 12, 31, 22, 21, 54, 314, DateTimeKind.Local).AddTicks(9363), new DateTime(2015, 12, 24, 22, 21, 54, 314, DateTimeKind.Local).AddTicks(9363) });
+                values: new object[] { new DateTime(2016, 1, 7, 2, 53, 25, 33, DateTimeKind.Local).AddTicks(7214), new DateTime(2015, 12, 31, 2, 53, 25, 33, DateTimeKind.Local).AddTicks(7214) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -5,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2016, 2, 1, 22, 21, 54, 314, DateTimeKind.Local).AddTicks(9353), new DateTime(2016, 1, 25, 22, 21, 54, 314, DateTimeKind.Local).AddTicks(9353) });
+                values: new object[] { new DateTime(2016, 2, 8, 2, 53, 25, 33, DateTimeKind.Local).AddTicks(7206), new DateTime(2016, 2, 1, 2, 53, 25, 33, DateTimeKind.Local).AddTicks(7206) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -4,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2018, 3, 4, 22, 21, 54, 314, DateTimeKind.Local).AddTicks(9346), new DateTime(2018, 2, 25, 22, 21, 54, 314, DateTimeKind.Local).AddTicks(9346) });
+                values: new object[] { new DateTime(2018, 3, 9, 2, 53, 25, 33, DateTimeKind.Local).AddTicks(7199), new DateTime(2018, 3, 2, 2, 53, 25, 33, DateTimeKind.Local).AddTicks(7199) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -3,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2018, 4, 3, 22, 21, 54, 314, DateTimeKind.Local).AddTicks(9333), new DateTime(2018, 3, 27, 22, 21, 54, 314, DateTimeKind.Local).AddTicks(9333) });
+                values: new object[] { new DateTime(2018, 4, 10, 2, 53, 25, 33, DateTimeKind.Local).AddTicks(7186), new DateTime(2018, 4, 3, 2, 53, 25, 33, DateTimeKind.Local).AddTicks(7186) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -2,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2020, 5, 5, 22, 21, 54, 314, DateTimeKind.Local).AddTicks(9175), new DateTime(2020, 4, 28, 22, 21, 54, 314, DateTimeKind.Local).AddTicks(9175) });
+                values: new object[] { new DateTime(2020, 5, 11, 2, 53, 25, 33, DateTimeKind.Local).AddTicks(7046), new DateTime(2020, 5, 4, 2, 53, 25, 33, DateTimeKind.Local).AddTicks(7046) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -1,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2020, 6, 5, 22, 21, 54, 312, DateTimeKind.Local).AddTicks(6941), new DateTime(2020, 5, 29, 22, 21, 54, 312, DateTimeKind.Local).AddTicks(6941) });
+                values: new object[] { new DateTime(2020, 6, 12, 2, 53, 25, 31, DateTimeKind.Local).AddTicks(5250), new DateTime(2020, 6, 5, 2, 53, 25, 31, DateTimeKind.Local).AddTicks(5250) });
 
             migrationBuilder.UpdateData(
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -5,
                 column: "Password",
-                value: "Tn8kOZQvYGroCzka2lLIdVJ4eQPjdFt+YHdW/J4iaqokp0vcd3MOv05c4YBiwmBm");
+                value: "UWgSQNtAfogybuM/37qy+e5TKbQwwj7bSZrba8Nw+5sexrTrvprOD6Wjas5rdSfA");
 
             migrationBuilder.UpdateData(
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -4,
                 column: "Password",
-                value: "SEyC6fnHQEb3DFsSbvh6VjwwWL2GxjBClRJM67BavUKsBPsUbXjgJF/NnSgapr1m");
+                value: "BhcXGg4a2kL1vRwRfjNV417FNyFKugLwfvYCh3n+Va94AlQnUkeGnoViJJb+0L9O");
 
             migrationBuilder.UpdateData(
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -3,
                 column: "Password",
-                value: "+VneloBGDNt2mKUpfuh4knRJmdU1KIt0p3uQOrBrMrjQQ3LVBl/goG81JUz/KFvq");
+                value: "I2ZZ+2yloWpmOa5NYzbM8VEXkQBXme6GIBYLQrJdWv/C3C9LQw6lIjAIOu92usqJ");
 
             migrationBuilder.UpdateData(
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -2,
                 column: "Password",
-                value: "9AwI2qR3KDyLvu1XdoQt00qI87nL3yOKpoJZcFaKB1DXBvIzchAUfcz+EctzzTzp");
+                value: "EtwTgsWilouR140gsX9HP3XpQb2JeMeRttBw9vLt1uUQHNA8N2T7bmRKQ+MmZli9");
 
             migrationBuilder.UpdateData(
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -1,
                 column: "Password",
-                value: "+4iQPk7yJhk7+oHfxD3KGDeY4D66BYeIvbeIePU2gQ5Vyt1HxtyACMx/508WUmTJ");
+                value: "GihIs8O98aZFO2co1kVF5GX6YIekHXSW+UWW5q+LqHsQcQk4Q1K9JMtUEiJZyzan");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "IsOauth",
+                name: "GoogleId",
                 table: "users");
 
             migrationBuilder.UpdateData(

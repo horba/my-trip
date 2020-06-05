@@ -15,9 +15,8 @@
       <v-btn class="continue-button mmt-btn" rounded depressed large :disabled="!formValidity" @click="login">Продолжить
       </v-btn>
       Или
-      <!-- To make it works you need to bind custom domain (me.test.com) to localhost (C:\Windows\System32\drivers\etc\hosts) -->
       <v-btn class="google-btn social-btn" rounded outlined
-        :href="`https://accounts.google.com/o/oauth2/v2/auth?scope=email&include_granted_scopes=true&response_type=code&redirect_uri=${googleOauth.redirectUri}&client_id=${googleOauth.clientId}`">
+        @click="googleRedirect">
         Продолжить через Google
         <v-icon right>mdi-google</v-icon>
       </v-btn>

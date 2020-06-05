@@ -9,8 +9,9 @@ import {
   MyAccommodation, MyFood, MyTransport,
   MyLeisure, SignIn, SignUp,
   UserSettings, UserCabinet, MyHistoryPreviousTrips,
-  SignInWithGoogle, RecoveryPassword
+  RecoveryPassword
 } from '@views';
+import store from '@store';
 
 Vue.use(VueRouter);
 
@@ -32,14 +33,6 @@ const routes = [
     meta: {
       allowUnknownUsers: true, // default is true
       allowLoggedUsers: false // default is true
-    }
-  },
-  {
-    path: '/login-with-google',
-    name: 'LoginWithGoogle',
-    component: SignInWithGoogle,
-    meta: {
-      allowLoggedUsers: false
     }
   },
   {
@@ -210,6 +203,13 @@ const routes = [
       });
 
 router.beforeEach((to, from, next) => { // Auth Guards
+  if (to.query.state === 'google-oauth') {
+    store.dispatch('loginWithGoogle', to.query.code)
+      .then(() => next('/'))
+      .catch(() => next({ name: 'Login' }));
+    return;
+  }
+
   const isLoggedIn = localStorage.getItem('user');
 
   if (isLoggedIn
