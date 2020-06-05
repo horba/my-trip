@@ -1,14 +1,11 @@
 <div class="locale-switcher">
   <v-select 
+    solo
+    append-icon="mdi-chevron-down"
     :items="locales"
     :label="$t('locale.language')"            
     :value="language"
-    @change="changeLanguage">
+    @change="changeLanguage"
+    class="mmt-select">
   </v-select>
-  <mmt-select
-   :mmt-items="locales"
-  :label="$t('locale.language')"            
-  :value="language"
-  @change="changeLanguage"
-  />
 </div>
