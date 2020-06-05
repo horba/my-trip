@@ -9,7 +9,7 @@ export default {
   },
   computed: {
     language () {
-      return this.$store.state.language;
+      return this.$store.state.locale.language;
     },
     locales () {
       return [
