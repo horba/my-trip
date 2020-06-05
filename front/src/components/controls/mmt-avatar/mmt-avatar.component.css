@@ -2,6 +2,6 @@
   background-color: var(--mmt-avatar-color);
 }
 
-  .v-avatar img {
-    border: 4px solid var(--mmt-avatar-color);
-  }
+.v-avatar img {
+  border: 4px solid var(--mmt-avatar-color);
+}

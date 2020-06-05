@@ -1,0 +1,4 @@
+const SERVER_AVATARS_PATH = 'avatars',
+      MAX_AVATAR_SIZE_MB = 2;
+
+export { SERVER_AVATARS_PATH, MAX_AVATAR_SIZE_MB };

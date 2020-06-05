@@ -1,7 +1,7 @@
 import { MmtTextInput } from '@components';
 import { mapState } from 'vuex';
 import { VFileInput, VIcon } from 'vuetify/lib';
-const { emailRegex, MAX_AVATAR_SIZE_MB } = require('@/config/constants.json'),
+const { EMAIL_REGEX, MAX_AVATAR_SIZE_MB } = require('@constants'),
       MAX_AVATAR_SIZE_KB = 1024 * 1024 * MAX_AVATAR_SIZE_MB;
 
 export default {
@@ -17,7 +17,7 @@ export default {
       emailIsAlreadyTaken: false,
       fileUploadError: '',
       emailRules: [
-        email => RegExp(emailRegex).test(email)
+        email => RegExp(EMAIL_REGEX).test(email)
         || this.$t('userSettings.enterCorrectEmail')
       ],
       avatarRules: [
