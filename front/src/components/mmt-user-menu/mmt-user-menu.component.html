@@ -12,7 +12,10 @@
 
     <v-list-item class="edit-btn" v-if="!$vuetify.breakpoint.smAndDown">
       <v-list-item-content>
-        <v-btn rounded outlined primary>{{ $t('menu.editProfile') }}</v-btn>
+        <v-btn rounded outlined primary
+               :to="{path: '/my/settings'}">
+          <span class="edit-btn-text">{{ $t('menu.editProfile') }}</span>
+        </v-btn>
       </v-list-item-content>
     </v-list-item>
 
@@ -20,10 +23,11 @@
                  :key="item.title"
                  :to="item.link"
                  link
-                 :class="`link my-2 ${!$vuetify.breakpoint.smAndDown && item.isChild ? 'child' : ''}`"
-                 active-class="active">
+                 :class="`link ${!$vuetify.breakpoint.smAndDown && item.isChild ? 'child' : ''}`"
+                 active-class="active"
+                 @click="itemSelected(item)">
 
-      <v-list-item-icon :class="!$vuetify.breakpoint.smAndDown && 'px-4'">
+      <v-list-item-icon :class="!$vuetify.breakpoint.smAndDown && 'pl-10 pr-3'">
         <v-icon>{{ item.icon }}</v-icon>
       </v-list-item-icon>
 

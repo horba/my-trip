@@ -88,8 +88,15 @@ export default {
       {
         title: 'menu.signout',
         icon: 'mdi-arrow-left-bold-circle-outline',
-        link: '/signout'
+        type: 'signout'
       }
     ]
-  })
+  }),
+  methods: {
+    itemSelected (item) {
+      if (item.type === 'signout') {
+        this.$store.dispatch('logout');
+      }
+    }
+  }
 };
