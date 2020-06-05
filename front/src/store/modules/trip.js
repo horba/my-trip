@@ -1,7 +1,4 @@
-import axios from 'axios';
-import config from '@config';
-
-const { serverPath } = config;
+import api from '@api';
 
 export default {
   namespaced: true,
@@ -18,7 +15,7 @@ export default {
   },
   actions: {
     async initTripsHistory ({ commit }) {
-      await axios.get(`${serverPath}/api/trips/history`)
+      await api.get('/trips/history')
         .then(r => {
           if (r.status === 200) {
             commit('INIT_TRIPS_HISTORY', r.data);
@@ -26,7 +23,7 @@ export default {
         });
     },
     async searchTripsHistory ({ commit }, searchQuery) {
-      await axios.get(`${serverPath}/api/trips/history?searchQuery=${searchQuery}`)
+      await api.get(`/trips/history?searchQuery=${searchQuery}`)
         .then(r => {
           if (r.status === 200) {
             commit('REQUEST_TRIPS_HISTORY', r.data);

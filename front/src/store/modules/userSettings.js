@@ -1,5 +1,4 @@
-import axios from 'axios';
-const { serverPath } = require('@/config/config.dev.json');
+import api from '@api';
 
 export default {
   namespaced: true,
@@ -13,13 +12,13 @@ export default {
   },
   actions: {
     loadUserSettings ({ commit }) {
-      axios.get(`${serverPath}/api/userSettings`)
+      api.get('/userSettings')
         .then(({ data }) => {
           commit('SET_USER_SETTINGS', data);
         });
     },
     updateUserSettings ({ commit }, formData) {
-      return axios.put(`${serverPath}/api/userSettings`, formData)
+      return api.put('/userSettings', formData)
         .then(() => commit('SET_USER_SETTINGS', formData));
     }
   }
