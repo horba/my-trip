@@ -1,4 +1,4 @@
 {
   "baseUrl": "https://localhost:5001",
-  "apiSuffix": "/api"
+  "apiSuffix": "api"
 }
