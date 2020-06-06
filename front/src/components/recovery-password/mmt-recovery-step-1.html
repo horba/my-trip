@@ -1,0 +1,49 @@
+<v-card class="recovery-card">
+  <div class="text-center text-normal">
+    {{$t('recoveryPassword.enterYourEmail')}}
+  </div>
+  <v-form ref="form" v-model="valid">
+    <div class="d-flex justify-center">
+      <mmt-text-input
+        class="input-field"
+        mmt-label="E-mail"
+        rounded
+        solo
+        flat
+        dense
+        :placeholder="$t('recoveryPassword.emailPlease')"
+        v-model="email"
+        :rules="[rules.isEmpty, rules.validEmail]"
+        required
+      />
+    </div>
+    <v-row cols="2" class="d-flex justify-center">
+      <v-col class="d-flex justify-center">
+        <v-btn
+          class="mmt-btn btn-step-1"
+          rounded
+          color="primary"
+          :disabled="!valid"
+          @click="recoveryPassword"
+        >
+          {{$t('recoveryPassword.recover')}}
+        </v-btn>
+      </v-col>
+      <v-col class="d-flex justify-center">
+        <v-btn
+          rounded
+          outlined
+          color="accent lighten-1"
+          class="mmt-btn btn-step-1"
+          dense
+          @click="$router.push('/');"
+        >
+          {{$t('recoveryPassword.back')}}
+        </v-btn>
+      </v-col>
+    </v-row>
+  </v-form>
+  <div class="text-center text-normal">
+    {{$t('recoveryPassword.note')}}
+  </div>
+</v-card>

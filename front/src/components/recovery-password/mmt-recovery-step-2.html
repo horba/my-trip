@@ -1,0 +1,66 @@
+<v-card class="recovery-card">
+  <div class="text-center text-normal">
+    {{$t('recoveryPassword.successfulСonfirmation')}}
+  </div>
+  <v-form ref="form" v-model="valid">
+    <div class="d-flex justify-center">
+      <mmt-text-input
+        :placeholder="$t('recoveryPassword.createPassword')"
+        :mmt-label="$t('recoveryPassword.password')"
+        class="input-field"
+        rounded
+        solo
+        flat
+        dense
+        :type="showPassword  ? 'text' : 'password'"
+        :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+        @click:append="showPassword = !showPassword"
+        :rules="[rules.isEmpty, rules.minPassLen]"
+        v-model="password"
+        required
+      />
+    </div>
+    <div class="d-flex justify-center">
+      <mmt-text-input
+        :placeholder="$t('recoveryPassword.repeatPassword')"
+        :mmt-label="$t('recoveryPassword.confrimPassword')"
+        class="input-field"
+        rounded
+        solo
+        flat
+        dense
+        :type="showPasswordConfirmation ? 'text' : 'password'"
+        :append-icon="showPasswordConfirmation ? 'mdi-eye' : 'mdi-eye-off'"
+        @click:append="showPasswordConfirmation = !showPasswordConfirmation"
+        :rules="[rules.isEmpty, rules.minPassLen, rules.samePass]"
+        v-model="passwordConfirmation"
+        required
+      />
+    </div>
+    <v-row cols="2" class="d-flex justify-center">
+      <v-col class="d-flex justify-center">
+        <v-btn
+          class="mmt-btn btn-step-2"
+          rounded
+          color="primary"
+          :disabled="!valid"
+          @click="sendPassword"
+        >
+          {{$t('recoveryPassword.save')}}
+        </v-btn>
+      </v-col>
+      <v-col class="d-flex justify-center">
+        <v-btn
+          rounded
+          outlined
+          color="accent lighten-1"
+          class="mmt-btn btn-step-2"
+          dense
+          @click="$router.push('/');"
+        >
+          {{$t('recoveryPassword.back')}}
+        </v-btn>
+      </v-col>
+    </v-row>
+  </v-form>
+</v-card>
