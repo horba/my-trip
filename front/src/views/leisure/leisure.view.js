@@ -1,4 +1,4 @@
-import { VBreadcrumbs, VBtn, VIcon, VPagination, VSwitch, VTextField } from 'vuetify/lib';
+import { VBreadcrumbs, VBtn, VIcon, VRating, VSwitch, VTextField } from 'vuetify/lib';
 
 import GoogleMapsApiLoader from 'google-maps-api-loader';
 import { MmtTextInput } from '@components/';
@@ -7,7 +7,7 @@ import { mapSettings } from '@constants';
 export default {
   components: {
     MmtTextInput,
-    VPagination,
+    VRating,
     VBreadcrumbs,
     VIcon,
     VBtn,
@@ -23,14 +23,15 @@ export default {
       leisureTypes: [ 'restaurant' ],
       placesService: null,
       autocomplete: null,
-      getNextPage: null,
+      loadNextPage: null,
       google: null,
       map: null,
-      apiKey: 'AIzaSyDuiiLqO-HTj8vP0POPrsBGJdWc7esHdOY',
+      apiKey: process.env.VUE_APP_GOOGLE_MAP_API,
       radius: 1,
       paginationLength: 10,
       totalVisible: 9,
-      page: 1
+      page: 1,
+      rating: []
     };
   },
   computed: {
@@ -115,16 +116,18 @@ export default {
             }
           }
 
-          this.getNextPage = pagination.hasNextPage && function () {
+          this.loadNextPage = pagination.hasNextPage && function () {
             pagination.nextPage();
           };
 
           this.markers[i].placeResult = place;
-          setTimeout(this.dropMarker(i), i * 100);
+          this.dropMarkerAnimation(i);
         });
         this.places = places;
-        console.log(places);
       }
+    },
+    dropMarkerAnimation (i) {
+      setTimeout(this.dropMarker(i), i * 100);
     },
     dropMarker (i) {
       const markers = this.markers,
@@ -142,8 +145,8 @@ export default {
       this.markers = [];
     },
     nextPage () {
-      if (this.getNextPage) {
-        this.getNextPage();
+      if (this.loadNextPage) {
+        this.loadNextPage();
       }
     }
   },
@@ -159,29 +162,7 @@ export default {
       return value ? 'Открыто' : 'Закрыто';
     },
     trimString (value) {
-      return value.length > 15 ? value.substr(0, 15) + '...' : value;
-    },
-    opacityPrice (value) {
-      if (value) {
-        let str = '';
-        for (let i = 0; i < value; i++) {
-          str += '$';
-        }
-        return str;
-      } else {
-        return value;
-      }
-    },
-    nonOpacityPrice (value) {
-      if (value) {
-        let str = '';
-        for (let i = 0; i < 4 - value; i++) {
-          str += '$';
-        }
-        return str;
-      } else {
-        return value;
-      }
+      return value.length > 13 ? value.substr(0, 13) + '...' : value;
     }
   },
   async mounted () {
