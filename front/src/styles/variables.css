@@ -9,5 +9,7 @@
   --leisure-containers-bgc: #FFF;
   --leisure-leisure-type-label-color: #000;
   --leisure-price-state-color: #00C853;
-  --leisure-rating-wrap-color: #4DD0E1;
+  --leisure-place-star-color: #4DD0E1;
+  --leisure-place-price-color: #6C6C6C;
+  --leisure-place-price-bgc: #B6B6B6;
 }
