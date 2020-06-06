@@ -1,12 +1,10 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using Entities.Models;
+﻿using System.ComponentModel.DataAnnotations;
 using Entities.Models.Enums;
 using WebAPI.Validators;
 
 namespace WebAPI.DTO.UserSettings
 {
-    public class UserSettingsDTO
+  public class UserSettingsDTO
     {
         [EmailAddress]
         public string Email { get; set; }
@@ -18,5 +16,6 @@ namespace WebAPI.DTO.UserSettings
         public Gender Gender { get; set; }
         public int? CountryId { get; set; }
         public int? LanguageId { get; set; }
-    }
+        public string AvatarFileName { get; set; }
+  }
 }

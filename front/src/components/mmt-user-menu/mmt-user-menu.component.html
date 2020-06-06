@@ -1,10 +1,7 @@
 <v-navigation-drawer permanent overflow :mini-variant="$vuetify.breakpoint.smAndDown">
   <v-list dense flat tile align="center" justify="center" class="overflow-hidden py-3">
-
-    <v-list-item-avatar :size="`${$vuetify.breakpoint.smAndDown ? 48 : 126}`"
-                        :class="`${$vuetify.breakpoint.smAndDown ? 'mx-1' : ''}`">
-      <img :src="user.avatar" />
-    </v-list-item-avatar>
+        
+    <mmt-avatar :src="user.avatar" :size="`${$vuetify.breakpoint.smAndDown ? 48 : 130}`" />    
 
     <v-list-item v-if="!$vuetify.breakpoint.smAndDown" two-line>
       <v-list-item-content>

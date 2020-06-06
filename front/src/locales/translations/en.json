@@ -93,6 +93,8 @@
     "otherGender": "Other",
     "countryIsNotSpecified": "Country is not specified",
     "languageIsNotSpecified": "Language is not specified",
+    "pickAnAvatar": "Pick an avatar",
+    "avatar": "Avatar",    
     "save": "Save"
   },
   "countries": {
@@ -114,5 +116,11 @@
     "flightTime": "Flight time",
     "differenceInTime": "Difference in time",
     "details": "Details"
+  },
+  "fileUpload": {
+    "fileIsEmpty": "Please select file",
+    "fileIsToBig": "File is too large",
+    "correctFileSize": "The correct file size",
+    "notAllowedContentType": "Please select .png, .jpeg or .bmp file"
   }
 }

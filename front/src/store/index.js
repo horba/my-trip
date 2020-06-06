@@ -4,6 +4,7 @@ import axios from 'axios';
 import locale from './modules/locale';
 import userSettings from './modules/userSettings';
 import trip from './modules/trip';
+import recoveryPassword from './modules/recoveryPassword.store';
 import config from '@config';
 
 const { serverPath } = config;
@@ -17,7 +18,8 @@ export default new Vuex.Store({
   modules: {
     locale,
     userSettings,
-    trip
+    trip,
+    recoveryPassword
   },
   mutations: {
     SET_USER_DATA (state, userData) {
@@ -53,13 +55,6 @@ export default new Vuex.Store({
     },
     logout ({ commit }) {
       commit('CLEAR_USER_DATA');
-    },
-    recoveryPasswordSendEmail ({ commit }, payload) {
-      axios.post(`${serverPath}/api/forgotPassword/`,
-        { email: payload.email });
-    },
-    recoveryPasswordSendPassword ({ commit, state }, payload) {
-      axios.post(`${serverPath}/api/forgotPassword/resetPassword/`, payload);
     }
   },
   getters: {

@@ -29,10 +29,6 @@
     color: var( --user-menu-disabled-color);
   }
 
-.v-avatar {
-  border: 6px solid var(--user-menu-active-color);
-}
-
 .edit-btn {
   margin-bottom: 50px;
 }

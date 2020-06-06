@@ -1,4 +1,5 @@
 import { VNavigationDrawer, VList, VBtn, VSwitch, VIcon } from 'vuetify/lib';
+import MmtAvatar from '../controls/mmt-avatar/mmt-avatar.component.vue';
 
 export default {
   name: 'mmt-user-menu',
@@ -7,14 +8,15 @@ export default {
     VList,
     VBtn,
     VSwitch,
-    VIcon
+    VIcon,
+    MmtAvatar
+  },
+  computed: {
+    user () {
+      return this.$store.getters['userSettings/getUserProfile'];
+    }
   },
   data: () => ({
-    user: {
-      fullName: 'OKSANA BEREZNIEVATA',
-      email: 'oksana@gmail.com',
-      avatar: 'https://randomuser.me/api/portraits/women/85.jpg'
-    },
     items: [
       {
         title: 'menu.tickets',
