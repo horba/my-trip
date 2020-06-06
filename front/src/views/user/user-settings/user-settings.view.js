@@ -1,5 +1,5 @@
 import { MmtTextInput } from '@components';
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 const { emailRegex } = require('@/config/constants.json');
 
 export default {
@@ -19,86 +19,7 @@ export default {
   },
   computed: {
     ...mapState('userSettings', [ 'userSettings' ]),
-    genders () {
-      return [
-        {
-          text: this.$t('userSettings.genderIsNotSpecified'),
-          value: 0
-        },
-        {
-          text: this.$t('userSettings.male'),
-          value: 1
-        },
-        {
-          text: this.$t('userSettings.female'),
-          value: 2
-        },
-        {
-          text: this.$t('userSettings.otherGender'),
-          value: 3
-        }
-      ];
-    },
-    countries () {
-      return [
-        {
-          text: this.$t('userSettings.countryIsNotSpecified'),
-          value: null
-        },
-        {
-          text: this.$t('countries.Albania'),
-          value: 1
-        },
-        {
-          text: this.$t('countries.Canada'),
-          value: 2
-        },
-        {
-          text: this.$t('countries.Colombia'),
-          value: 3
-        },
-        {
-          text: this.$t('countries.Cyprus'),
-          value: 4
-        },
-        {
-          text: this.$t('countries.Dominica'),
-          value: 5
-        },
-        {
-          text: this.$t('countries.Egypt'),
-          value: 6
-        },
-        {
-          text: this.$t('countries.France'),
-          value: 7
-        },
-        {
-          text: this.$t('countries.Ukraine'),
-          value: 8
-        }
-      ];
-    },
-    languages () {
-      return [
-        {
-          text: this.$t('userSettings.languageIsNotSpecified'),
-          value: null
-        },
-        {
-          text: this.$t('locale.en'),
-          value: 1
-        },
-        {
-          text: this.$t('locale.ru'),
-          value: 2
-        },
-        {
-          text: this.$t('locale.ua'),
-          value: 3
-        }
-      ];
-    },
+    ...mapGetters('dictionaries', ['genders', 'countries', 'languages']),
     isLoaded () {
       return !!Object.keys(this.editedUserSettings).length;
     }

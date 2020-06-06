@@ -9,6 +9,7 @@ module.exports = {
       .set('@components', path.resolve('src/components/'))
       .set('@views', path.resolve('src/views/'))
       .set('@router', path.resolve('src/router/'))
+      .set('@plugins', path.resolve('src/plugins/'))
       .set('@store', path.resolve('src/store/'))
       .set('@styles', path.resolve('src/styles/'))
       .set('@layout', path.resolve('src/layouts/'))
