@@ -21,11 +21,10 @@ const api = {
       data: data
     });
   },
-  delete (path, data) {
+  delete (path) {
     return instance({
       url: path,
-      method: 'DELETE',
-      data: data
+      method: 'DELETE'
     });
   }
 };

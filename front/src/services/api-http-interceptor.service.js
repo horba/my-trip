@@ -1,14 +1,14 @@
-import { apiPath } from '@config';
+import { apiSuffix, baseUrl } from '@config';
+
 import axios from 'axios';
 
-const baseURL = apiPath,
-      instance = axios.create({
-        baseURL: baseURL,
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        }
-      });
+const instance = axios.create({
+  baseURL: baseUrl + apiSuffix,
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  }
+});
 
 instance.interceptors.request.use(
   config => {
