@@ -4,7 +4,7 @@
 
 .body-wrap, .places, .place, .place-info, 
 .title-wrap, .price-wrap, .photo, .input-wrap,
-.pages, .rating, .rating-wrap {
+.more-pages, .rating, .rating-wrap {
   display: flex;
 }
 
@@ -12,7 +12,7 @@
   min-width: 280px;
   max-height: 2000px;
   padding: 20px;
-  background:white;
+  background: var(--leisure-containers-bgc);
 }
 
 .sidebar > h5 {
@@ -34,7 +34,7 @@
 .leisure-type >>> label {
   font-size: 14px;
   font-weight: 500;
-  color:black;
+  color:var(--leisure-leisure-type-label-color);
   margin-left:5px;
 }
 
@@ -58,7 +58,6 @@
 .leisure-map {
   width: 100%;
   height: 320px;
-  background-color: #000;
 }
 
 .places {
@@ -80,7 +79,7 @@
 
 .place > .place-info {
   height: 135px;
-  background: #FFF;
+  background: var(--leisure-containers-bgc);
   padding: 15px 20px 20px 20px;
   flex-direction: column;
   justify-content: space-between;
@@ -119,23 +118,22 @@
   align-items: center;
 }
 
-.infoWindow {
-  width: 100px;
-  height: 100px;
-}
-
-.pages {
+.more-pages {
   max-width: 850px;
   min-width: 526px;
   height: 88px;
   justify-content: center;
   align-items: center;
-  background: #FFF;
+  background:var(--leisure-containers-bgc);
 }
 
 .price-wrap {
   justify-self: center;
   align-items: center;
+}
+
+.price-wrap >>> .v-rating--dense .v-icon {
+  padding: 0;
 }
 
 .price-wrap .opacity {
@@ -154,7 +152,7 @@
 }
 
 .price-wrap .state {
-  color: #00C853;
+  color: var(--leisure-price-state-color);
 }
 
 .place-info span {
@@ -169,5 +167,5 @@
 .rating-wrap .star {
   font-size: 18px;
   margin-right: 3px;
-  color: #4DD0E1;
+  color: var(--leisure-rating-wrap-color);
 }
