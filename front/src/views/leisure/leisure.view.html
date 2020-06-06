@@ -33,7 +33,9 @@
         </div>
         <div class="leisure-map" ref="leisure-map" v-if="showMap"></div>
       </div>
-      <div class="places">
+      <div 
+        class="places"
+      >
         <div 
           class="place"
           v-for="(place, index) in places"
@@ -46,16 +48,31 @@
                     :title="place.name"
               >{{ place.name | trimString }}</span>
               <div class="rating-wrap">
-                <v-icon
-                  v-if="place.rating"
+                <v-rating 
                   class="star"
-                >mdi-star</v-icon>
+                  v-model="rating[index]"
+                  clearable
+                  length=1
+                  color="var(--leisure-place-star-color)"
+                  background-color="var(--leisure-place-star-color)"
+                ></v-rating>
                 <span class="rating">{{ place.rating }}</span>
               </div>
             </div>
             <div class="price-wrap">
-              <div class="price non-opacity">{{ place.price_level | nonOpacityPrice }}</div>
-              <div class="price opacity">{{ place.price_level | opacityPrice }}</div>
+              <v-rating
+                v-if="place.price_level"
+                class="price-level"
+                empty-icon="mdi-currency-usd"
+                full-icon="mdi-currency-usd"
+                length=4
+                :value=place.price_level
+                dense
+                size="16px"
+                readonly
+                background-color="var(--leisure-place-price-bgc)"
+                color="var(--leisure-place-price-color)"
+              ></v-rating>
               <p v-if="place.price_level">•</p>
               <span class="state">{{ place.opening_hours }}</span>
             </div>
@@ -63,14 +80,7 @@
           </div>
         </div>
       </div>
-      <div class="pages">
-        <v-pagination
-          v-model="page"
-          :length="paginationLength"
-          :total-visible="totalVisible"
-          @next="nextPage"
-        ></v-pagination>
-      </div>
+      <div class="more-pages"></div>
     </div>
   </div>
 </div>
