@@ -4,7 +4,7 @@ import axios from 'axios';
 import locale from './modules/locale';
 import userSettings from './modules/userSettings';
 import trip from './modules/trip';
-import recoveryPassword from './modules/recoveryPassword';
+import recoveryPassword from './modules/recoveryPassword.store';
 import config from '@config';
 
 const { serverPath } = config;
