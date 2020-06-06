@@ -24,7 +24,7 @@
 
 <script>
 import { GoogleMapLoader, GoogleMapMarker, GoogleMapLine } from '@components';
-import { mapSettings } from '@/constants/mapSettings';
+import { mapSettings } from '@constants';
 
 export default {
   components: {

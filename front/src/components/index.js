@@ -12,3 +12,7 @@ export { default as GoogleMapMarker } from './google-map/GoogleMapMarker.vue';
 export {
   default as MmtLocaleSwitcher
 } from './mmt-locale-switcher/mmt-locale-switcher.component.vue';
+export { default as MmtRecoveryStep1 } from './recovery-password/mmt-recovery-step-1.vue';
+export { default as MmtRecoveryStep2 } from './recovery-password/mmt-recovery-step-2.vue';
+export { default as MmtRecoveryStep3 } from './recovery-password/mmt-recovery-step-3.vue';
+export { default as MmtAvatar } from './controls/mmt-avatar/mmt-avatar.component.vue';

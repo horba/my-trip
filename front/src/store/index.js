@@ -14,7 +14,8 @@ export default new Vuex.Store({
   modules: {
     locale,
     userSettings,
-    trip
+    trip,
+    recoveryPassword
   },
   mutations: {
     SET_USER_DATA (state, userData) {
@@ -48,12 +49,6 @@ export default new Vuex.Store({
     },
     logout ({ commit }) {
       commit('CLEAR_USER_DATA');
-    },
-    recoveryPasswordSendEmail ({ commit }, payload) {
-      api.post('/forgotPassword/', { email: payload.email });
-    },
-    recoveryPasswordSendPassword ({ commit, state }, payload) {
-      api.post('/forgotPassword/resetPassword/', payload);
     }
   },
   getters: {
