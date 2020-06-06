@@ -93,6 +93,8 @@
     "otherGender": "Другой",
     "countryIsNotSpecified": "Старана не указана",
     "languageIsNotSpecified": "Язык не указан",
+    "pickAnAvatar": "Выберите аватар",
+    "avatar": "Аватар",
     "save": "Сохранить"
   },
   "countries": {
@@ -114,5 +116,11 @@
     "flightTime": "Время полета",
     "differenceInTime": "Разница во времени",
     "details": "Подробнее"
+  },
+  "fileUpload": {
+    "fileIsEmpty": "Пожалуйста, выберите файл",
+    "fileIsToBig": "Файл слишком большой",
+    "correctFileSize": "Верный размер файла",
+    "notAllowedContentType": "Пожалуйста, выберите файл .png, .jpeg или .bmp"
   }
 }

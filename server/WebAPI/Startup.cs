@@ -14,6 +14,9 @@ using WebAPI.Options;
 using WebAPI.DTO;
 using WebAPI.Services;
 using WebAPI.Interfaces;
+using System.IO;
+using Microsoft.Extensions.FileProviders;
+using WebAPI.Services.Assets;
 
 namespace WebAPI
 {
@@ -59,6 +62,7 @@ namespace WebAPI
       services.AddSingleton(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
       services.AddScoped<IEmailSender, EmailSender>();
       services.AddScoped<GoogleOauthService>();
+      services.AddScoped<AssetsService>();
 
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
           .AddJwtBearer(x =>
@@ -88,6 +92,8 @@ namespace WebAPI
       });
 
       services.AddSingleton(mappingConfig.CreateMapper());
+
+      services.AddDirectoryBrowser();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -124,6 +130,14 @@ namespace WebAPI
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllers();
+      });
+
+      app.UseFileServer(new FileServerOptions
+      {
+        FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), Consts.UsersAvatarsPath)),
+        RequestPath = "/avatars",
+        EnableDirectoryBrowsing = true
       });
     }
   }

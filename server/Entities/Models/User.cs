@@ -25,5 +25,7 @@ namespace Entities.Models
     public Country Country { get; set; }
 
     public string ResetPasswordToken { get; set; }
+
+    public string AvatarFileName { get; set; }
   }
 }

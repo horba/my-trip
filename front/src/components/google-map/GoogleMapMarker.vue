@@ -1,5 +1,5 @@
 <script>
-import { POINT_MARKER_ICON_CONFIG } from '@/constants/mapSettings';
+import { POINT_MARKER_ICON_CONFIG } from '@constants';
 
 export default {
   props: {
