@@ -1,17 +1,11 @@
 using Entities;
 using Entities.Models;
-using System;
-using System.Runtime.InteropServices.ComTypes;
-using System.Security.Cryptography;
-using System.Text;
-using Entities.Models.Enums;
 using WebAPI.DTO.UserSettings;
 
 namespace WebAPI.Services
 {
   public class UserService
   {
-
     private readonly UserRepository _userRepository;
     private readonly CountryRepository _countryRepository;
     private readonly LanguageRepository _languageRepository;
@@ -62,7 +56,8 @@ namespace WebAPI.Services
         Email = user.Email,
         Gender = user.Gender,
         CountryId = user.Country?.Id,
-        LanguageId = user.Language?.Id
+        LanguageId = user.Language?.Id,
+        AvatarFileName = user.AvatarFileName
       };
     }
 
@@ -74,7 +69,9 @@ namespace WebAPI.Services
       user.Gender = userSettingsDTO.Gender;
       user.Country = userSettingsDTO.CountryId != null ? _countryRepository.FindCountryById((int)userSettingsDTO.CountryId) : null;
       user.Language = userSettingsDTO.LanguageId != null ? _languageRepository.FindLanguageById((int)userSettingsDTO.LanguageId) : null;
+      user.AvatarFileName = userSettingsDTO.AvatarFileName;
     }
+    
     public bool UpdateUserPassword(string email, string newPassword)
     {
       try
@@ -98,14 +95,17 @@ namespace WebAPI.Services
         return false;
       }
     }
+    
     public bool IsRecoveryPasswordTokenExist(string token)
     {
       return _userRepository.FindUserByRecoveryPasswordToken(token) != null;
     }
+    
     public void CreateRecoveryPasswordToken(string email)
     {
       _userRepository.CreateAndSetRecoveryPasswordToken(email);
     }
+    
     public void DeleteRecoveryPasswordToken(string token)
     {
       if(IsRecoveryPasswordTokenExist(token))
@@ -113,6 +113,7 @@ namespace WebAPI.Services
         _userRepository.DeleteRecoveryPasswordToken(token);
       }
     }
+    
     public User GetUserByRecoveryPasswordToken(string token)
     {
       return _userRepository.FindUserByRecoveryPasswordToken(token);

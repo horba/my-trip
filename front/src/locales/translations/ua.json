@@ -93,6 +93,8 @@
     "otherGender": "Інша",
     "countryIsNotSpecified": "Країна не вказана",
     "languageIsNotSpecified": "Мова не вказана",
+    "pickAnAvatar": "Виберіть аватар",
+    "avatar": "Аватар",
     "save": "Зберегти"
   },
   "countries": {
@@ -114,5 +116,11 @@
     "flightTime": "Час польоту",
     "differenceInTime": "Різниця в часі",
     "details": "Докладніше"
+  },
+  "fileUpload": {
+    "fileIsEmpty": "Виберіть файл",
+    "fileIsToBig": "Файл занадто великий",
+    "correctFileSize": "Правильний розмір файлу",
+    "notAllowedContentType": "Виберіть .png, .jpeg або .bmp файл"
   }
 }
