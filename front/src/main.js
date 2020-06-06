@@ -4,7 +4,6 @@ import { Authorize, Default } from '@layout';
 
 import App from './App.vue';
 import Vue from 'vue';
-import api from '@api';
 import axios from 'axios';
 import i18n from './plugins/i18n';
 import router from '@router';
@@ -13,7 +12,6 @@ import vuetify from './plugins/vuetify';
 
 Vue.component('default-layout', Default);
 Vue.component('authorize-layout', Authorize);
-Vue.prototype.$api = api;
 
 new Vue({
   router,
