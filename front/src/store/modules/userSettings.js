@@ -1,5 +1,4 @@
 import api from '@api';
-import axios from 'axios';
 
 const { serverPath } = require('@/config/config.dev.json'),
       { SERVER_AVATARS_PATH } = require('@constants');
@@ -26,7 +25,7 @@ export default {
         .then(() => commit('SET_USER_SETTINGS', formData));
     },
     uploadUserAvatarFile ({ commit }, formData) {
-      return axios.post(`${serverPath}/api/assets/useravatar`, formData,
+      return api.post('/assets/useravatar', formData,
         {
           headers: {
             'Content-Type': 'multipart/form-data'
@@ -34,7 +33,7 @@ export default {
         });
     },
     deleteUserAvatarFile ({ commit }, fileName) {
-      return axios.delete(`${serverPath}/api/assets/useravatar/${fileName}`);
+      return api.delete(`/assets/useravatar/${fileName}`);
     }
   },
   getters: {

@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import api from '@api';
 import locale from './modules/locale';
+import recoveryPassword from './modules/recoveryPassword.store';
 import trip from './modules/trip';
 import userSettings from './modules/userSettings';
 
@@ -30,10 +31,8 @@ export default new Vuex.Store({
   actions: {
     async signUp (context, body) {
       return await api.post('/auth/signup', body)
-        .then(r => {
-          if (r.status === 200) {
-            return 'Ok';
-          }
+        .then(() => {
+          return 'Ok';
         })
         .catch(e => {
           if (e && e.response.status === 422) {

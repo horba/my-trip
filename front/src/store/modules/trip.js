@@ -17,17 +17,13 @@ export default {
     async initTripsHistory ({ commit }) {
       await api.get('/trips/history')
         .then(r => {
-          if (r.status === 200) {
-            commit('INIT_TRIPS_HISTORY', r.data);
-          }
+          commit('INIT_TRIPS_HISTORY', r.data);
         });
     },
     async searchTripsHistory ({ commit }, searchQuery) {
       await api.get(`/trips/history?searchQuery=${searchQuery}`)
         .then(r => {
-          if (r.status === 200) {
-            commit('REQUEST_TRIPS_HISTORY', r.data);
-          }
+          commit('REQUEST_TRIPS_HISTORY', r.data);
         });
     }
   },
