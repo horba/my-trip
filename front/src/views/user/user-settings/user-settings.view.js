@@ -1,19 +1,29 @@
 import { MmtTextInput } from '@components';
 import { mapState } from 'vuex';
-const { emailRegex } = require('@/config/constants.json');
+import { VFileInput, VIcon } from 'vuetify/lib';
+const { EMAIL_REGEX, MAX_AVATAR_SIZE_MB } = require('@constants'),
+      MAX_AVATAR_SIZE_KB = 1024 * 1024 * MAX_AVATAR_SIZE_MB;
 
 export default {
   components: {
-    MmtTextInput
+    MmtTextInput,
+    VFileInput,
+    VIcon
   },
   data () {
     return {
       editedUserSettings: {},
       formValidity: true,
       emailIsAlreadyTaken: false,
+      fileUploadError: '',
       emailRules: [
-        email => RegExp(emailRegex).test(email)
+        email => RegExp(EMAIL_REGEX).test(email)
         || this.$t('userSettings.enterCorrectEmail')
+      ],
+      avatarRules: [
+        value => !value || value.size < MAX_AVATAR_SIZE_KB
+          || `${this.$t('fileUpload.fileIsToBig')}.
+          ${this.$t('fileUpload.correctFileSize')}: ${MAX_AVATAR_SIZE_MB} mb.`
       ]
     };
   },
@@ -115,6 +125,29 @@ export default {
       this.$store.dispatch('userSettings/updateUserSettings', this.editedUserSettings)
         .catch(error => {
           this.emailIsAlreadyTaken = error.response.data.isEmailUsed;
+        });
+    },
+    avatarUpload (file) {
+      this.fileUploadError = null;
+
+      if (file && file.size < MAX_AVATAR_SIZE_KB) {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        this.$store.dispatch('userSettings/uploadUserAvatarFile', formData)
+          .then(r => {
+            this.editedUserSettings.avatarFileName = r.data;
+          })
+          .catch((error) => {
+            this.fileUploadError = error.response.data;
+          });
+      }
+    },
+    avatarClear () {
+      this.$store.dispatch('userSettings/deleteUserAvatarFile',
+        this.editedUserSettings.avatarFileName)
+        .then(() => {
+          this.editedUserSettings.avatarFileName = null;
         });
     }
   },
