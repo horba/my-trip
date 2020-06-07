@@ -33,10 +33,9 @@ instance.interceptors.response.use(
   }, error => {
     if (error.response.status) {
       switch (error.response.status) {
-        case 400:
+        default:
           return Promise.reject(error.response);
       }
-      return Promise.reject(error.response);
     }
   }
 );

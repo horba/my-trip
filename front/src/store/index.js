@@ -35,7 +35,7 @@ export default new Vuex.Store({
           return 'Ok';
         })
         .catch(e => {
-          if (e && e.response.status === 422) {
+          if (e && e.status === 422) {
             return 'UnprocessableEntity';
           }
         });
