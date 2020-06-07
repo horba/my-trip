@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import locale from './modules/locale';
-import userSettings from './modules/userSettings';
-import trip from './modules/trip';
-import auth from './modules/auth';
+import locale from './modules/locale.store';
 import recoveryPassword from './modules/recoveryPassword.store';
+import auth from './modules/auth.store';
+import trip from './modules/trip.store';
+import userSettings from './modules/userSettings.store';
 
 Vue.use(Vuex);
 
