@@ -1,6 +1,6 @@
 import api from '@api';
 
-const { baseUrl, apiSuffix } = require('@/config/config.dev.json'),
+const { baseUrl } = require('@/config/config.dev.json'),
       { SERVER_AVATARS_PATH } = require('@constants');
 
 export default {
@@ -42,7 +42,7 @@ export default {
         fullName: `${state.userSettings.firstName} ${state.userSettings.lastName}`,
         email: state.userSettings.email,
         avatar: state.userSettings.avatarFileName
-          ? `${baseUrl}/${apiSuffix}/${SERVER_AVATARS_PATH}/${state.userSettings.avatarFileName}`
+          ? `${baseUrl}/${SERVER_AVATARS_PATH}/${state.userSettings.avatarFileName}`
           : null
       }
         : {};
