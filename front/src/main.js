@@ -1,17 +1,17 @@
-import Vue from 'vue';
+import '@filters';
+
+import { Authorize, Default } from '@layout';
+
 import App from './App.vue';
+import Vue from 'vue';
+import axios from 'axios';
+import i18n from './plugins/i18n';
 import router from '@router';
 import store from '@store';
 import vuetify from './plugins/vuetify';
-import i18n from './plugins/i18n';
-import axios from 'axios';
-import { Default, Authorize } from '@layout';
-import '@filters';
 
 Vue.component('default-layout', Default);
 Vue.component('authorize-layout', Authorize);
-
-Vue.config.productionTip = false;
 
 new Vue({
   router,

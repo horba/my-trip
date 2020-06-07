@@ -1,13 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import axios from 'axios';
+import api from '@api';
 import locale from './modules/locale';
-import userSettings from './modules/userSettings';
-import trip from './modules/trip';
 import recoveryPassword from './modules/recoveryPassword.store';
-import config from '@config';
-
-const { serverPath } = config;
+import trip from './modules/trip';
+import userSettings from './modules/userSettings';
 
 Vue.use(Vuex);
 
@@ -25,30 +22,26 @@ export default new Vuex.Store({
     SET_USER_DATA (state, userData) {
       state.user = userData;
       localStorage.setItem('user', JSON.stringify(userData));
-      axios.defaults.headers.common.Authorization = `Bearer ${userData.accessToken}`;
     },
     CLEAR_USER_DATA (state) {
       localStorage.removeItem('user');
-      delete axios.defaults.headers.common.Authorization;
       location.reload();
     }
   },
   actions: {
     async signUp (context, body) {
-      return await axios.post(`${serverPath}/api/auth/signup`, body)
-        .then(r => {
-          if (r.status === 200) {
-            return 'Ok';
-          }
+      return await api.post('/auth/signup', body)
+        .then(() => {
+          return 'Ok';
         })
         .catch(e => {
-          if (e && e.response.status === 422) {
+          if (e && e.status === 422) {
             return 'UnprocessableEntity';
           }
         });
     },
     login ({ commit }, credentials) {
-      return axios.post(`${serverPath}/api/auth`, credentials)
+      return api.post('/auth', credentials)
         .then(({ data }) => {
           commit('SET_USER_DATA', data);
         });
