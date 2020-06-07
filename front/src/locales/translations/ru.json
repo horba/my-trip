@@ -122,5 +122,15 @@
     "fileIsToBig": "Файл слишком большой",
     "correctFileSize": "Верный размер файла",
     "notAllowedContentType": "Пожалуйста, выберите файл .png, .jpeg или .bmp"
+  },
+  "signIn": {
+    "welcome": "Добро пожаловать!",
+    "passwordPlease": "Введите ваш пароль",
+    "continue": "Продолжить",
+    "or": "Или",
+    "continueWithGoogle": "Продолжить через Google",
+    "forgetPassword": "Забыли пароль?",
+    "invalidCredentials": "Неверные учетные данные",
+    "unknownApiError": "Неизвестная ошибка сервера"
   }
 }

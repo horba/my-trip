@@ -12,7 +12,7 @@ export default {
       formValidity: true,
       process,
       rules: [
-        value => !!value || 'Поле не должно быть пустым'
+        value => !!value || this.$t('recoveryPassword.noEmpty')
       ]
     };
   },
@@ -24,15 +24,21 @@ export default {
       })
         .then(() => {
           this.$router.push('/');
-        }).catch(() => {
-          this.serverError = 'Invalid credentials';
+        }).catch(err => {
+          if (err.status === 401 || err.status === 400) {
+            this.serverError = this.$t('signIn.invalidCredentials');
+          } else {
+            this.serverError = this.$t('signIn.unknownApiError');
+          }
         });
     },
     onInput () {
       this.serverError = '';
-    },
-    googleRedirect () {
-      window.location = 'https://accounts.google.com/o/oauth2/v2/auth?scope=email'
+    }
+  },
+  computed: {
+    googleOauthUri () {
+      return 'https://accounts.google.com/o/oauth2/v2/auth?scope=email'
       + '&include_granted_scopes=true&response_type=code&state=google-oauth'
       + `&redirect_uri=${window.location.origin}`
       + `&client_id=${process.env.VUE_APP_GOOGLE_OAUTH_CLIENT_ID}`;

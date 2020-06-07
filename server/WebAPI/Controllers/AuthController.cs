@@ -43,11 +43,12 @@ namespace WebAPI.Controllers
       string googleBearer = await _googleOauthService.GetToken(gAuth.Code);
       var emailUserId = await _googleOauthService.GetGoogleUserData(googleBearer);
       
-      var user = _userService.GetUser(emailUserId.Key);
       if (emailUserId.Key == null)
       {
         return Unauthorized();
       }
+
+      var user = _userService.GetUser(emailUserId.Key);
 
       if (user == null)
       {
