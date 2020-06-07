@@ -1,8 +1,7 @@
 import api from '@api';
 
 const { baseUrl, apiSuffix } = require('@/config/config.dev.json'),
-      { SERVER_AVATARS_PATH } = require('@constants'),
-      
+      { SERVER_AVATARS_PATH } = require('@constants');
 
 export default {
   namespaced: true,
