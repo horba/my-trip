@@ -96,7 +96,7 @@ export default {
           value: null
         },
         {
-          text: this.$t('locale.en'),
+          text: this.$t('locale.enUS'),
           value: 1
         },
         {
@@ -104,7 +104,7 @@ export default {
           value: 2
         },
         {
-          text: this.$t('locale.ua'),
+          text: this.$t('locale.uk'),
           value: 3
         }
       ];
