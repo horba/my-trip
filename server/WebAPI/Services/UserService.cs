@@ -56,6 +56,12 @@ namespace WebAPI.Services
       _userRepository.CreateUser(user);
     }
 
+    public void CreateGoogleOauthUser(string email, string googleId)
+    {
+      var user = new User {Email = email, GoogleId = googleId};
+      _userRepository.CreateUser(user);
+    }
+
     public UserSettingsDTO ConvertUserToUserSettingsDTO(User user)
     {
       return new UserSettingsDTO

@@ -23,7 +23,7 @@ new Vue({
     const userString = localStorage.getItem('user');
     if (userString) {
       const userData = JSON.parse(userString);
-      this.$store.commit('SET_USER_DATA', userData);
+      this.$store.commit('auth/SET_USER_DATA', userData);
     }
 
     this.$store.commit('locale/INIT_LANGUAGE');
@@ -31,7 +31,7 @@ new Vue({
     // prevent to use outdated token
     axios.interceptors.response.use(response => response, error => {
       if (error.response.status === 403) {
-        this.$store.dispatch('logout');
+        this.$store.dispatch('auth/logout');
       }
       return Promise.reject(error);
     });
