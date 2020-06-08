@@ -5,6 +5,7 @@ import locale from './modules/locale';
 import recoveryPassword from './modules/recoveryPassword.store';
 import trip from './modules/trip';
 import userSettings from './modules/userSettings';
+import userTickets from './modules/userTickets.store';
 
 Vue.use(Vuex);
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     locale,
     userSettings,
     trip,
+    userTickets,
     recoveryPassword
   },
   mutations: {

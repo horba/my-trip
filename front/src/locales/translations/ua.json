@@ -117,6 +117,14 @@
     "differenceInTime": "Різниця в часі",
     "details": "Докладніше"
   },
+  "tickets": {
+    "ticketItem": {
+      "priceLabel": "Вартість за {adults} дорослих та {children} дітей",
+      "details": "Докладніше",
+      "travelTimeLabel": "Тривалість подорожі",
+      "travelTime": "{hours} годин {minutes} хвилин"
+    }
+  },
   "fileUpload": {
     "fileIsEmpty": "Виберіть файл",
     "fileIsToBig": "Файл занадто великий",
