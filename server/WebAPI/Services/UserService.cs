@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Entities;
 using Entities.Models;
 using WebAPI.DTO.UserSettings;
@@ -9,12 +10,14 @@ namespace WebAPI.Services
     private readonly UserRepository _userRepository;
     private readonly CountryRepository _countryRepository;
     private readonly LanguageRepository _languageRepository;
+    private readonly TicketsRepository _ticketsRepository;
 
-    public UserService(UserRepository userRepository, CountryRepository countryRepository, LanguageRepository languageRepository)
+    public UserService(UserRepository userRepository, TicketsRepository ticketsRepository, CountryRepository countryRepository, LanguageRepository languageRepository)
     {
       _userRepository = userRepository;
       _countryRepository = countryRepository;
       _languageRepository = languageRepository;
+      _ticketsRepository = ticketsRepository;
     }
 
     public User GetUser(string email, string password)
@@ -25,6 +28,11 @@ namespace WebAPI.Services
         return user;
       }
       return null;
+    }
+
+    public User GetUser(int userId)
+    {
+        return _userRepository.FindUserById(userId);
     }
 
     public bool IsUserExist(string email)

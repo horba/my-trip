@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entities.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20200606151828_GoogleOauth")]
-    partial class GoogleOauth
+    [Migration("20200530125541_Tickets")]
+    partial class Tickets
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -132,6 +132,200 @@ namespace Entities.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Entities.Models.Ticket", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Adults")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Children")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Tickets");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = -1,
+                            Adults = 5,
+                            Children = 0,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -2,
+                            Adults = 4,
+                            Children = 0,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -3,
+                            Adults = 3,
+                            Children = 0,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -4,
+                            Adults = 2,
+                            Children = 0,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -5,
+                            Adults = 1,
+                            Children = 0,
+                            UserId = -1
+                        });
+                });
+
+            modelBuilder.Entity("Entities.Models.TicketRoute", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ArrivalCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ArrivalDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DepartureCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DepartureDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TicketId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TicketId");
+
+                    b.ToTable("TicketRoutes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = -1,
+                            ArrivalCode = "KBP",
+                            ArrivalDateTime = new DateTime(2022, 1, 3, 9, 0, 0, 0, DateTimeKind.Local),
+                            DepartureCode = "KBK",
+                            DepartureDateTime = new DateTime(2022, 1, 2, 9, 0, 0, 0, DateTimeKind.Local),
+                            Price = 1000,
+                            TicketId = -1
+                        },
+                        new
+                        {
+                            Id = -2,
+                            ArrivalCode = "KBP",
+                            ArrivalDateTime = new DateTime(2022, 1, 3, 9, 0, 0, 0, DateTimeKind.Local),
+                            DepartureCode = "KBK",
+                            DepartureDateTime = new DateTime(2022, 1, 2, 9, 0, 0, 0, DateTimeKind.Local),
+                            Price = 900,
+                            TicketId = -1
+                        },
+                        new
+                        {
+                            Id = -3,
+                            ArrivalCode = "KBP",
+                            ArrivalDateTime = new DateTime(2022, 1, 3, 9, 0, 0, 0, DateTimeKind.Local),
+                            DepartureCode = "KBK",
+                            DepartureDateTime = new DateTime(2022, 1, 2, 9, 0, 0, 0, DateTimeKind.Local),
+                            Price = 800,
+                            TicketId = -2
+                        },
+                        new
+                        {
+                            Id = -4,
+                            ArrivalCode = "KBP",
+                            ArrivalDateTime = new DateTime(2022, 1, 3, 9, 0, 0, 0, DateTimeKind.Local),
+                            DepartureCode = "KBK",
+                            DepartureDateTime = new DateTime(2022, 1, 2, 9, 0, 0, 0, DateTimeKind.Local),
+                            Price = 700,
+                            TicketId = -2
+                        },
+                        new
+                        {
+                            Id = -5,
+                            ArrivalCode = "KBP",
+                            ArrivalDateTime = new DateTime(2022, 1, 3, 9, 0, 0, 0, DateTimeKind.Local),
+                            DepartureCode = "KBK",
+                            DepartureDateTime = new DateTime(2022, 1, 2, 9, 0, 0, 0, DateTimeKind.Local),
+                            Price = 600,
+                            TicketId = -3
+                        },
+                        new
+                        {
+                            Id = -6,
+                            ArrivalCode = "KBP",
+                            ArrivalDateTime = new DateTime(2022, 1, 3, 9, 0, 0, 0, DateTimeKind.Local),
+                            DepartureCode = "KBK",
+                            DepartureDateTime = new DateTime(2022, 1, 2, 9, 0, 0, 0, DateTimeKind.Local),
+                            Price = 500,
+                            TicketId = -3
+                        },
+                        new
+                        {
+                            Id = -7,
+                            ArrivalCode = "KBP",
+                            ArrivalDateTime = new DateTime(2022, 1, 3, 9, 0, 0, 0, DateTimeKind.Local),
+                            DepartureCode = "KBK",
+                            DepartureDateTime = new DateTime(2022, 1, 2, 9, 0, 0, 0, DateTimeKind.Local),
+                            Price = 400,
+                            TicketId = -4
+                        },
+                        new
+                        {
+                            Id = -8,
+                            ArrivalCode = "KBP",
+                            ArrivalDateTime = new DateTime(2022, 1, 3, 9, 0, 0, 0, DateTimeKind.Local),
+                            DepartureCode = "KBK",
+                            DepartureDateTime = new DateTime(2022, 1, 2, 9, 0, 0, 0, DateTimeKind.Local),
+                            Price = 300,
+                            TicketId = -4
+                        },
+                        new
+                        {
+                            Id = -9,
+                            ArrivalCode = "KBP",
+                            ArrivalDateTime = new DateTime(2022, 1, 3, 9, 0, 0, 0, DateTimeKind.Local),
+                            DepartureCode = "KBK",
+                            DepartureDateTime = new DateTime(2022, 1, 2, 9, 0, 0, 0, DateTimeKind.Local),
+                            Price = 200,
+                            TicketId = -5
+                        },
+                        new
+                        {
+                            Id = -10,
+                            ArrivalCode = "KBP",
+                            ArrivalDateTime = new DateTime(2022, 1, 3, 9, 0, 0, 0, DateTimeKind.Local),
+                            DepartureCode = "KBK",
+                            DepartureDateTime = new DateTime(2022, 1, 2, 9, 0, 0, 0, DateTimeKind.Local),
+                            Price = 100,
+                            TicketId = -5
+                        });
+                });
+
             modelBuilder.Entity("Entities.Models.Trip", b =>
                 {
                     b.Property<int>("Id")
@@ -194,10 +388,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "1 час",
-                            EndDate = new DateTime(2020, 6, 13, 18, 18, 28, 166, DateTimeKind.Local).AddTicks(6942),
+                            EndDate = new DateTime(2020, 6, 6, 15, 55, 41, 340, DateTimeKind.Local).AddTicks(7440),
                             FlightTime = "0 часов",
                             ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
-                            StartDate = new DateTime(2020, 6, 6, 18, 18, 28, 166, DateTimeKind.Local).AddTicks(6942),
+                            StartDate = new DateTime(2020, 5, 30, 15, 55, 41, 340, DateTimeKind.Local).AddTicks(7440),
                             TotalPrice = 100m,
                             TransplantTime = "+ время пересадки",
                             UserId = -1
@@ -210,10 +404,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "2 час",
-                            EndDate = new DateTime(2020, 5, 12, 18, 18, 28, 168, DateTimeKind.Local).AddTicks(8787),
+                            EndDate = new DateTime(2020, 5, 6, 15, 55, 41, 343, DateTimeKind.Local).AddTicks(5911),
                             FlightTime = "2 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2020, 5, 5, 18, 18, 28, 168, DateTimeKind.Local).AddTicks(8787),
+                            StartDate = new DateTime(2020, 4, 29, 15, 55, 41, 343, DateTimeKind.Local).AddTicks(5911),
                             TotalPrice = 102m,
                             TransplantTime = "- прямой",
                             UserId = -1
@@ -226,10 +420,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "3 час",
-                            EndDate = new DateTime(2018, 4, 11, 18, 18, 28, 168, DateTimeKind.Local).AddTicks(8950),
+                            EndDate = new DateTime(2018, 4, 4, 15, 55, 41, 343, DateTimeKind.Local).AddTicks(6150),
                             FlightTime = "4 часов",
                             ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
-                            StartDate = new DateTime(2018, 4, 4, 18, 18, 28, 168, DateTimeKind.Local).AddTicks(8950),
+                            StartDate = new DateTime(2018, 3, 28, 15, 55, 41, 343, DateTimeKind.Local).AddTicks(6150),
                             TotalPrice = 106m,
                             TransplantTime = "+ время пересадки",
                             UserId = -1
@@ -242,10 +436,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "4 час",
-                            EndDate = new DateTime(2018, 3, 10, 18, 18, 28, 168, DateTimeKind.Local).AddTicks(8963),
+                            EndDate = new DateTime(2018, 3, 4, 15, 55, 41, 343, DateTimeKind.Local).AddTicks(6166),
                             FlightTime = "6 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2018, 3, 3, 18, 18, 28, 168, DateTimeKind.Local).AddTicks(8963),
+                            StartDate = new DateTime(2018, 2, 25, 15, 55, 41, 343, DateTimeKind.Local).AddTicks(6166),
                             TotalPrice = 112m,
                             TransplantTime = "- прямой",
                             UserId = -1
@@ -258,10 +452,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "5 час",
-                            EndDate = new DateTime(2016, 2, 9, 18, 18, 28, 168, DateTimeKind.Local).AddTicks(8969),
+                            EndDate = new DateTime(2016, 2, 2, 15, 55, 41, 343, DateTimeKind.Local).AddTicks(6174),
                             FlightTime = "8 часов",
                             ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
-                            StartDate = new DateTime(2016, 2, 2, 18, 18, 28, 168, DateTimeKind.Local).AddTicks(8969),
+                            StartDate = new DateTime(2016, 1, 26, 15, 55, 41, 343, DateTimeKind.Local).AddTicks(6174),
                             TotalPrice = 120m,
                             TransplantTime = "+ время пересадки",
                             UserId = -1
@@ -274,10 +468,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "6 час",
-                            EndDate = new DateTime(2016, 1, 8, 18, 18, 28, 168, DateTimeKind.Local).AddTicks(8978),
+                            EndDate = new DateTime(2016, 1, 1, 15, 55, 41, 343, DateTimeKind.Local).AddTicks(6185),
                             FlightTime = "10 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2016, 1, 1, 18, 18, 28, 168, DateTimeKind.Local).AddTicks(8978),
+                            StartDate = new DateTime(2015, 12, 25, 15, 55, 41, 343, DateTimeKind.Local).AddTicks(6185),
                             TotalPrice = 130m,
                             TransplantTime = "- прямой",
                             UserId = -1
@@ -290,10 +484,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "7 час",
-                            EndDate = new DateTime(2013, 12, 7, 18, 18, 28, 168, DateTimeKind.Local).AddTicks(8985),
+                            EndDate = new DateTime(2013, 12, 1, 15, 55, 41, 343, DateTimeKind.Local).AddTicks(6193),
                             FlightTime = "12 часов",
                             ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
-                            StartDate = new DateTime(2013, 11, 30, 18, 18, 28, 168, DateTimeKind.Local).AddTicks(8985),
+                            StartDate = new DateTime(2013, 11, 24, 15, 55, 41, 343, DateTimeKind.Local).AddTicks(6193),
                             TotalPrice = 142m,
                             TransplantTime = "+ время пересадки",
                             UserId = -1
@@ -306,10 +500,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "8 час",
-                            EndDate = new DateTime(2013, 11, 6, 18, 18, 28, 168, DateTimeKind.Local).AddTicks(8991),
+                            EndDate = new DateTime(2013, 10, 30, 15, 55, 41, 343, DateTimeKind.Local).AddTicks(6200),
                             FlightTime = "14 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2013, 10, 30, 18, 18, 28, 168, DateTimeKind.Local).AddTicks(8991),
+                            StartDate = new DateTime(2013, 10, 23, 15, 55, 41, 343, DateTimeKind.Local).AddTicks(6200),
                             TotalPrice = 156m,
                             TransplantTime = "- прямой",
                             UserId = -1
@@ -323,9 +517,6 @@ namespace Entities.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AvatarFileName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("CountryId")
                         .HasColumnType("int");
 
@@ -337,9 +528,6 @@ namespace Entities.Migrations
 
                     b.Property<int>("Gender")
                         .HasColumnType("int");
-
-                    b.Property<string>("GoogleId")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("LanguageId")
                         .HasColumnType("int");
@@ -369,7 +557,7 @@ namespace Entities.Migrations
                             FirstName = "Fn1",
                             Gender = 0,
                             LastName = "Ln1",
-                            Password = "g9DBKodifkvPmxLcIcK5bjqvnE5UbKrta+1ce5sz5feeW7H/VO8Ha5l+49h3IbWM"
+                            Password = "Y976u2T+6V1ThKGpFgawAH4FHEyqJUVuwLRWPWUWp8C8h5+SYbuXFqbAAnivnQ6S"
                         },
                         new
                         {
@@ -378,7 +566,7 @@ namespace Entities.Migrations
                             FirstName = "FirstName2",
                             Gender = 2,
                             LastName = "LastName2",
-                            Password = "R6MHxLnIoK9EES3Mlsg8FNigTuLsV2E0x7M2I48Y3UCRJNNF++AumhJc6kae3R6z"
+                            Password = "bGGf3HcSSUiG70+akiTPlKZRdfrWshHktJSKF1IcYLsKwUmrYrD4TZC/STmWHt2G"
                         },
                         new
                         {
@@ -387,7 +575,7 @@ namespace Entities.Migrations
                             FirstName = "FFFF3",
                             Gender = 3,
                             LastName = "LLLL3",
-                            Password = "bgkkjrtmyIzonlZIPGTXTpxS/glBB0o4RC90zxK3+569ABEiMr0cmg9xGwBm1cyw"
+                            Password = "6JMOHkuhJv+h4+/5mEGl8DxMmR0Iyh2UlAI2vPEv6T1MAPFEiUxzDC1DOZVIayoL"
                         },
                         new
                         {
@@ -396,7 +584,7 @@ namespace Entities.Migrations
                             FirstName = "LongFirstName4",
                             Gender = 2,
                             LastName = "LongLastName4",
-                            Password = "RagBObu5+kUspZ9UqF5ShZIvtO2i8SanxphDotAlDvtB1W7s721AheDLDApoj1ae"
+                            Password = "OhXVAOBpY7EV/2c2zvtR321sg4FVS2bw/bK0wT82OYbVkBbfUyXmCwfL0lAEuwA6"
                         },
                         new
                         {
@@ -404,8 +592,26 @@ namespace Entities.Migrations
                             Email = "test5@users.com",
                             Gender = 0,
                             LastName = "Last5",
-                            Password = "OOud1W38lNkIiGzsYCIM9BYN41hOP53A23hzimR2LSH0Xi77X5RK5LXMgt+HuNkS"
+                            Password = "lA9s6WVDhX/9ik4F2QpYhZqUAKXGnt69jNR0CG8lCFW27F8n+vYQSDSOt5hTnPYU"
                         });
+                });
+
+            modelBuilder.Entity("Entities.Models.Ticket", b =>
+                {
+                    b.HasOne("Entities.Models.User", "User")
+                        .WithMany("Tickets")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Entities.Models.TicketRoute", b =>
+                {
+                    b.HasOne("Entities.Models.Ticket", null)
+                        .WithMany("Routes")
+                        .HasForeignKey("TicketId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.Models.Trip", b =>
