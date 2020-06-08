@@ -117,10 +117,28 @@
     "differenceInTime": "Разница во времени",
     "details": "Подробнее"
   },
+  "tickets": {
+    "ticketItem": {
+      "priceLabel": "Цена за {adults} взрослых и {children} детей",
+      "details": "Подробнее",
+      "travelTimeLabel": "В пути",
+      "travelTime": "{hours} часов {minutes} минут"
+    }
+  },
   "fileUpload": {
     "fileIsEmpty": "Пожалуйста, выберите файл",
     "fileIsToBig": "Файл слишком большой",
     "correctFileSize": "Верный размер файла",
     "notAllowedContentType": "Пожалуйста, выберите файл .png, .jpeg или .bmp"
+  },
+  "signIn": {
+    "welcome": "Добро пожаловать!",
+    "passwordPlease": "Введите ваш пароль",
+    "continue": "Продолжить",
+    "or": "Или",
+    "continueWithGoogle": "Продолжить через Google",
+    "forgetPassword": "Забыли пароль?",
+    "invalidCredentials": "Неверные учетные данные",
+    "unknownApiError": "Неизвестная ошибка сервера"
   }
 }

@@ -1,6 +1,7 @@
-import axios from 'axios';
-const { serverPath } = require('@/config/config.dev.json'),
-      { SERVER_AVATARS_PATH } = require('@constants');
+import api from '@api';
+import { SERVER_AVATARS_PATH } from '@constants';
+
+const { baseUrl } = require('@/config/config.dev.json');
 
 export default {
   namespaced: true,
@@ -14,17 +15,17 @@ export default {
   },
   actions: {
     loadUserSettings ({ commit }) {
-      axios.get(`${serverPath}/api/userSettings`)
+      api.get('/userSettings')
         .then(({ data }) => {
           commit('SET_USER_SETTINGS', data);
         });
     },
     updateUserSettings ({ commit }, formData) {
-      return axios.put(`${serverPath}/api/userSettings`, formData)
+      return api.put('/userSettings', formData)
         .then(() => commit('SET_USER_SETTINGS', formData));
     },
     uploadUserAvatarFile ({ commit }, formData) {
-      return axios.post(`${serverPath}/api/assets/useravatar`, formData,
+      return api.post('/assets/useravatar', formData,
         {
           headers: {
             'Content-Type': 'multipart/form-data'
@@ -32,7 +33,7 @@ export default {
         });
     },
     deleteUserAvatarFile ({ commit }, fileName) {
-      return axios.delete(`${serverPath}/api/assets/useravatar/${fileName}`);
+      return api.delete(`/assets/useravatar/${fileName}`);
     }
   },
   getters: {
@@ -41,7 +42,7 @@ export default {
         fullName: `${state.userSettings.firstName} ${state.userSettings.lastName}`,
         email: state.userSettings.email,
         avatar: state.userSettings.avatarFileName
-          ? `${serverPath}/${SERVER_AVATARS_PATH}/${state.userSettings.avatarFileName}`
+          ? `${baseUrl}/${SERVER_AVATARS_PATH}/${state.userSettings.avatarFileName}`
           : null
       }
         : {};

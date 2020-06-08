@@ -1,4 +1,9 @@
-﻿using Entities;
+using System;
+using System.Linq;
+using System.Security.Claims;
+using Entities;
+using Microsoft.AspNetCore.Authorization;
+using Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using WebAPI.DTO.UserSettings;
@@ -8,6 +13,7 @@ using WebAPI.Services.Assets;
 
 namespace WebAPI.Controllers
 {
+  [Authorize]
   [Route("api/[controller]")]
   [ApiController]
   public class UserSettingsController : ControllerBase

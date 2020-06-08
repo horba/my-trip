@@ -14,7 +14,7 @@ export default {
   }),
   computed: {
     isAuthorize () {
-      return this.$store.getters.isLoggedIn;
+      return this.$store.getters['auth/isLoggedIn'];
     },
     links () {
       return [

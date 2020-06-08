@@ -53,6 +53,8 @@ namespace WebAPI
       services.AddScoped<UserRepository>();
       services.AddScoped<CountryRepository>();
       services.AddScoped<LanguageRepository>();
+      services.AddScoped<TicketsRepository>();
+      services.AddScoped<TicketsService>();
       services.AddScoped<UserService>();
       services.AddSingleton<AuthService>();
       services.AddScoped<TripRepository>();
@@ -61,6 +63,7 @@ namespace WebAPI
       services.AddScoped<RecoveryPasswordService>();
       services.AddSingleton(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
       services.AddScoped<IEmailSender, EmailSender>();
+      services.AddScoped<GoogleOauthService>();
       services.AddScoped<AssetsService>();
 
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

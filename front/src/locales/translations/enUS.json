@@ -94,7 +94,7 @@
     "countryIsNotSpecified": "Country is not specified",
     "languageIsNotSpecified": "Language is not specified",
     "pickAnAvatar": "Pick an avatar",
-    "avatar": "Avatar",    
+    "avatar": "Avatar",
     "save": "Save"
   },
   "countries": {
@@ -117,10 +117,28 @@
     "differenceInTime": "Difference in time",
     "details": "Details"
   },
+  "tickets": {
+    "ticketItem": {
+      "priceLabel": "Price for {adults} adults and {children} children",
+      "details": "Details",
+      "travelTimeLabel": "Travel time",
+      "travelTime": "{hours}h {minutes}m"
+    }
+  },
   "fileUpload": {
     "fileIsEmpty": "Please select file",
     "fileIsToBig": "File is too large",
     "correctFileSize": "The correct file size",
     "notAllowedContentType": "Please select .png, .jpeg or .bmp file"
+  },
+  "signIn": {
+    "welcome": "Welcome!",
+    "passwordPlease": "Enter your password",
+    "continue": "Continue",
+    "or": "Or",
+    "continueWithGoogle": "Continue with Google",
+    "forgetPassword": "Forget password?",
+    "invalidCredentials": "Invalid credentials",
+    "unknownApiError": "Unknown server error"
   }
 }

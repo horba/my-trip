@@ -11,6 +11,7 @@ import {
   UserSettings, UserCabinet, MyHistoryPreviousTrips,
   RecoveryPassword
 } from '@views';
+import store from '@store';
 
 Vue.use(VueRouter);
 
@@ -202,6 +203,13 @@ const routes = [
       });
 
 router.beforeEach((to, from, next) => { // Auth Guards
+  if (to.query.state === 'google-oauth') {
+    store.dispatch('auth/loginWithGoogle', to.query.code)
+      .then(() => next('/'))
+      .catch(() => next({ name: 'Login' }));
+    return;
+  }
+
   const isLoggedIn = localStorage.getItem('user');
 
   if (isLoggedIn

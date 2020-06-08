@@ -1,17 +1,17 @@
-import Vue from 'vue';
+import '@filters';
+
+import { Authorize, Default } from '@layout';
+
 import App from './App.vue';
+import Vue from 'vue';
+import axios from 'axios';
+import i18n from './plugins/i18n';
 import router from '@router';
 import store from '@store';
 import vuetify from './plugins/vuetify';
-import i18n from './plugins/i18n';
-import axios from 'axios';
-import { Default, Authorize } from '@layout';
-import '@filters';
 
 Vue.component('default-layout', Default);
 Vue.component('authorize-layout', Authorize);
-
-Vue.config.productionTip = false;
 
 new Vue({
   router,
@@ -23,7 +23,7 @@ new Vue({
     const userString = localStorage.getItem('user');
     if (userString) {
       const userData = JSON.parse(userString);
-      this.$store.commit('SET_USER_DATA', userData);
+      this.$store.commit('auth/SET_USER_DATA', userData);
     }
 
     this.$store.commit('locale/INIT_LANGUAGE');
@@ -31,7 +31,7 @@ new Vue({
     // prevent to use outdated token
     axios.interceptors.response.use(response => response, error => {
       if (error.response.status === 403) {
-        this.$store.dispatch('logout');
+        this.$store.dispatch('auth/logout');
       }
       return Promise.reject(error);
     });

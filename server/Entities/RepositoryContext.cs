@@ -2,6 +2,7 @@ using Entities.Models;
 using Entities.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System;
 using System.Linq;
 
 namespace Entities
@@ -10,6 +11,8 @@ namespace Entities
     {
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<TicketRoute> TicketRoutes { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<Trip> Trips { get; set; }
@@ -19,7 +22,7 @@ namespace Entities
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {   
+        {
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             {
                 relationship.DeleteBehavior = DeleteBehavior.Restrict;
@@ -118,6 +121,73 @@ namespace Entities
                         });
 
            modelBuilder.Entity<Trip>().HasData(moqTrips);
+
+           modelBuilder.Entity<Ticket>()
+            .HasOne(t => t.User)
+            .WithMany(u => u.Tickets)
+            .HasForeignKey("UserId");
+
+           modelBuilder.Entity<Ticket>()
+            .HasMany(t => t.Routes)
+            .WithOne()
+            .HasForeignKey(t => t.TicketId);
+
+            modelBuilder.Entity<Ticket>().HasData(
+                new Ticket { Id = -1, UserId = -1, Adults = 5, Children = 0 },
+                new Ticket { Id = -2, UserId = -1, Adults = 4, Children = 0 },
+                new Ticket { Id = -3, UserId = -1, Adults = 3, Children = 0 },
+                new Ticket { Id = -4, UserId = -1, Adults = 2, Children = 0 },
+                new Ticket { Id = -5, UserId = -1, Adults = 1, Children = 0 }
+            );
+
+            var moqDate = DateTime.Parse("2022-01-01T07:00:00.0000000Z");
+            modelBuilder.Entity<TicketRoute>().HasData(
+                new TicketRoute { Id = -1, TicketId = -1, Price = 1000,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                },
+
+                new TicketRoute { Id = -2, TicketId = -1, Price = 900,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                },
+
+                new TicketRoute { Id = -3, TicketId = -2, Price = 800,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                },
+                new TicketRoute { Id = -4, TicketId = -2, Price = 700,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                },
+
+                new TicketRoute { Id = -5, TicketId = -3, Price = 600,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                },
+                new TicketRoute { Id = -6, TicketId = -3, Price = 500,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                },
+
+                new TicketRoute { Id = -7, TicketId = -4, Price = 400,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                },
+                new TicketRoute { Id = -8, TicketId = -4, Price = 300,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                },
+
+                new TicketRoute { Id = -9, TicketId = -5, Price = 200,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                },
+                new TicketRoute { Id = -10, TicketId = -5, Price = 100,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                }
+            );
         }
     }
 }

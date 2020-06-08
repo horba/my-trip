@@ -96,7 +96,7 @@ export default {
   methods: {
     itemSelected (item) {
       if (item.type === 'signout') {
-        this.$store.dispatch('logout');
+        this.$store.dispatch('auth/logout');
       }
     }
   }
