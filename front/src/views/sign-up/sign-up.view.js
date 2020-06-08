@@ -1,4 +1,5 @@
 import { MmtTextInput } from '@components';
+
 export default {
   components: {
     MmtTextInput
@@ -23,12 +24,14 @@ export default {
   methods: {
     async signUp () {
       if (this.valid) {
-        const response = await this.$store.dispatch('signUp', {
+        const body = {
           email: this.email,
           password: this.firstPass
-        });
+        },
+              response = await this.$store.dispatch('signUp', body);
         if (response === 'Ok') {
-          this.$router.push('/login');
+          this.$store.dispatch('login', body);
+          this.$router.push('/');
         }
         if (response === 'UnprocessableEntity') {
           this.existingEmail = true;
