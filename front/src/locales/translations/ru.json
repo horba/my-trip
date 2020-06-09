@@ -52,11 +52,52 @@
     "subscribeBtn": "Подписаться",
     "emailPlh": "Введите Ваш e-mail"
   },
+  "recoveryPassword": {
+    "title": "Восстановление пароля",
+    "emailPlease": "Введите Ваш e-mail",
+    "enterYourEmail": "Введите электронную почту Вашего аккаунта, после чего Вам будет отправлена ссылка для восстановления пароля.",
+    "checkMail": "Проверка почты",
+    "confrimation": "Подтверждение",
+    "recover": "Восстановить",
+    "back": "Назад",
+    "note": "* Получив ссылку, перейтиде по ней и продолжите процедуру восстановления. Это займет всего пару минут",
+    "successfulСonfirmation": "Ваш адрес электронной почты успешно подтвержден! Пожалуйста, введите новый пароль для вашей учетной записи.",
+    "password": "Пароль",
+    "confrimPassword": "Подтверждение пароля",
+    "createPassword": "Придумайте пароль",
+    "restriction": "Не менее 8 символов",
+    "save": "Сохранить",
+    "repeatPassword": "Повторите пароль",
+    "passwordMustIdentity": "Пароли должны совпадать",
+    "thisNoEmail": "Не действительный e-mail",
+    "noEmpty": "Заполните поле.",
+    "successfulСhange": "Пароль успешно изменен! Вы получите подтверждение об изменении пароля на Ваш электронный адрес."
+  },
   "locale": {
     "language": "Язык",
-    "en": "Английский",
+    "enUS": "Английский",
     "ru": "Русский",
-    "ua": "Украинский"
+    "uk": "Украинский"
+  },
+  "userSettings": {
+    "generalSettings": "Общие настройки",
+    "lastName": "Фамилия",
+    "enterLastName": "Введите фамилию",
+    "firstName": "Имя",
+    "enterFirstName": "Введите имя",
+    "email": "Почта",
+    "emailExample": "Пример: bereznievatiy@gmail.com",
+    "enterCorrectEmail": "Введите корректный email",
+    "emailIsAlreadyTaken": "Данная почта уже занята",
+    "genderIsNotSpecified": "Пол не указан",
+    "male": "Мужской",
+    "female": "Женский",
+    "otherGender": "Другой",
+    "countryIsNotSpecified": "Старана не указана",
+    "languageIsNotSpecified": "Язык не указан",
+    "pickAnAvatar": "Выберите аватар",
+    "avatar": "Аватар",
+    "save": "Сохранить"
   },
   "countries": {
     "Albania": "Албания",
@@ -77,5 +118,29 @@
     "flightTime": "Время полета",
     "differenceInTime": "Разница во времени",
     "details": "Подробнее"
+  },
+  "tickets": {
+    "ticketItem": {
+      "priceLabel": "Цена за {adults} взрослых и {children} детей",
+      "details": "Подробнее",
+      "travelTimeLabel": "В пути",
+      "travelTime": "{hours} часов {minutes} минут"
+    }
+  },
+  "fileUpload": {
+    "fileIsEmpty": "Пожалуйста, выберите файл",
+    "fileIsToBig": "Файл слишком большой",
+    "correctFileSize": "Верный размер файла",
+    "notAllowedContentType": "Пожалуйста, выберите файл .png, .jpeg или .bmp"
+  },
+  "signIn": {
+    "welcome": "Добро пожаловать!",
+    "passwordPlease": "Введите ваш пароль",
+    "continue": "Продолжить",
+    "or": "Или",
+    "continueWithGoogle": "Продолжить через Google",
+    "forgetPassword": "Забыли пароль?",
+    "invalidCredentials": "Неверные учетные данные",
+    "unknownApiError": "Неизвестная ошибка сервера"
   }
 }

@@ -1,5 +1,7 @@
 using Entities.Models;
+using Entities.Models.Enums;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System;
 using System.Linq;
 
@@ -9,7 +11,10 @@ namespace Entities
     {
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<TicketRoute> TicketRoutes { get; set; }
         public DbSet<Country> Countries { get; set; }
+        public DbSet<Language> Languages { get; set; }
         public DbSet<Trip> Trips { get; set; }
 
         public RepositoryContext(DbContextOptions options) : base(options)
@@ -17,18 +22,58 @@ namespace Entities
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {   
+        {
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             {
                 relationship.DeleteBehavior = DeleteBehavior.Restrict;
             }
 
             modelBuilder.Entity<User>().HasData(
-                new User { Id = -1, Email = "test1@users.com", Password = CryptoUtils.HashPassword("test1111") },
-                new User { Id = -2, Email = "test2@users.com", Password = CryptoUtils.HashPassword("test2222") },
-                new User { Id = -3, Email = "test3@users.com", Password = CryptoUtils.HashPassword("test3333") },
-                new User { Id = -4, Email = "test4@users.com", Password = CryptoUtils.HashPassword("test4444") },
-                new User { Id = -5, Email = "test5@users.com", Password = CryptoUtils.HashPassword("test5555") }
+                new User
+                {
+                    Id = -1,
+                    Email = "test1@users.com",
+                    Password = CryptoUtils.HashPassword("test1111"),
+                    FirstName = "Fn1",
+                    LastName = "Ln1",
+                    Gender = Gender.NotSpecified,
+                },
+                new User
+                {
+                    Id = -2,
+                    Email = "test2@users.com",
+                    Password = CryptoUtils.HashPassword("test2222"),
+                    FirstName = "FirstName2",
+                    LastName = "LastName2",
+                    Gender = Gender.Female,
+                },
+                new User
+                {
+                    Id = -3,
+                    Email = "test3@users.com",
+                    Password = CryptoUtils.HashPassword("test3333"),
+                    FirstName = "FFFF3",
+                    LastName = "LLLL3",
+                    Gender = Gender.Other,
+                },
+                new User
+                {
+                    Id = -4,
+                    Email = "test4@users.com",
+                    Password = CryptoUtils.HashPassword("test4444"),
+                    FirstName = "LongFirstName4",
+                    LastName = "LongLastName4",
+                    Gender = Gender.Female
+                },
+                new User
+                {
+                    Id = -5,
+                    Email = "test5@users.com",
+                    Password = CryptoUtils.HashPassword("test5555"),
+                    FirstName = null,
+                    LastName = "Last5",
+                    Gender = Gender.NotSpecified
+                }
                 );
 
             var moqCountries = new [] {
@@ -43,6 +88,14 @@ namespace Entities
              };
 
            modelBuilder.Entity<Country>().HasData(moqCountries);
+
+           var moqLanguages = new[] {
+               new Language {Id = 1, Name = "English"},
+               new Language {Id = 2, Name = "Russian"},
+               new Language {Id = 3, Name = "Ukrainian"}
+           };
+
+           modelBuilder.Entity<Language>().HasData(moqLanguages);
 
            var moqTrips = moqCountries
                         .Select((country, i) =>
@@ -68,6 +121,73 @@ namespace Entities
                         });
 
            modelBuilder.Entity<Trip>().HasData(moqTrips);
+
+           modelBuilder.Entity<Ticket>()
+            .HasOne(t => t.User)
+            .WithMany(u => u.Tickets)
+            .HasForeignKey("UserId");
+
+           modelBuilder.Entity<Ticket>()
+            .HasMany(t => t.Routes)
+            .WithOne()
+            .HasForeignKey(t => t.TicketId);
+
+            modelBuilder.Entity<Ticket>().HasData(
+                new Ticket { Id = -1, UserId = -1, Adults = 5, Children = 0 },
+                new Ticket { Id = -2, UserId = -1, Adults = 4, Children = 0 },
+                new Ticket { Id = -3, UserId = -1, Adults = 3, Children = 0 },
+                new Ticket { Id = -4, UserId = -1, Adults = 2, Children = 0 },
+                new Ticket { Id = -5, UserId = -1, Adults = 1, Children = 0 }
+            );
+
+            var moqDate = DateTime.Parse("2022-01-01T07:00:00.0000000Z");
+            modelBuilder.Entity<TicketRoute>().HasData(
+                new TicketRoute { Id = -1, TicketId = -1, Price = 1000,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                },
+
+                new TicketRoute { Id = -2, TicketId = -1, Price = 900,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                },
+
+                new TicketRoute { Id = -3, TicketId = -2, Price = 800,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                },
+                new TicketRoute { Id = -4, TicketId = -2, Price = 700,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                },
+
+                new TicketRoute { Id = -5, TicketId = -3, Price = 600,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                },
+                new TicketRoute { Id = -6, TicketId = -3, Price = 500,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                },
+
+                new TicketRoute { Id = -7, TicketId = -4, Price = 400,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                },
+                new TicketRoute { Id = -8, TicketId = -4, Price = 300,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                },
+
+                new TicketRoute { Id = -9, TicketId = -5, Price = 200,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                },
+                new TicketRoute { Id = -10, TicketId = -5, Price = 100,
+                    ArrivalCode = "KBP", ArrivalDateTime = moqDate.AddDays(2),
+                    DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
+                }
+            );
         }
     }
 }

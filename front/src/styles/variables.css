@@ -1,10 +1,14 @@
 :root {
   --filled-input-fill-color: #fff;
-  --dense-input-min-height: 35px;
+  --filled-select-fill-color: #fff;
+  --mmt-dense-input-min-height: 35px;
+  --mmt-dense-input-font-size: 12px;
+  --mmt-dense-input-label-font-size: 12px;
+  --mmt-dense-input-hint-font-size: 12px;
   --forget-password-text-color: #273B7A;
   --continue-button-background-color: #03A9F4;
   --continue-button-active-color: #fff;
-  --social-network-button-background-color:#2962FF;
+  --social-network-button-background-color: #2962FF;
   --mmt-label-color: #000;
   --leisure-containers-bgc: #FFF;
   --leisure-leisure-type-label-color: #000;
@@ -12,4 +16,10 @@
   --leisure-place-star-color: #4DD0E1;
   --leisure-place-price-color: #6C6C6C;
   --leisure-place-price-bgc: #B6B6B6;
+  --mmt-color-gray: #B6B6B6;
+  --mmt-color-light-gray: #DDDDDD;
+  --login-and-recovery-password-background-color: #F6F8FB;
+  --user-menu-active-color: #195292;
+  --user-menu-disabled-color: #B6B6B6;
+  --mmt-avatar-color: #195292;
 }

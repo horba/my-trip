@@ -7,21 +7,21 @@ export default {
   },
   computed: {
     language () {
-      return this.$store.state.language;
+      return this.$store.state.locale.language;
     },
     locales () {
       return [
         {
-          text: this.$t('locale.en'),
-          value: 'en'
+          text: this.$t('locale.enUS'),
+          value: 'enUS'
         },
         {
           text: this.$t('locale.ru'),
           value: 'ru'
         },
         {
-          text: this.$t('locale.ua'),
-          value: 'ua'
+          text: this.$t('locale.uk'),
+          value: 'uk'
         }
       ];
     }

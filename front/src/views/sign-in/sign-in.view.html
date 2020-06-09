@@ -1,47 +1,27 @@
-<v-card class="auth-card" color="primary lighten-3">
+<v-card class="auth-card" flat tile>
   <v-card-title class="auth-card-title">
     <h4>
-      Добро пожаловать!
+      {{$t('signIn.welcome')}}
     </h4>
   </v-card-title>
   <v-card-text>
-    <v-form class="auth-form" ref="form" v-model="formValidity">
-      <mmt-text-input
-        class="input-field"
-        mmt-label="E-mail"
-        rounded
-        filled
-        single-line
-        dense
-        placeholder="Введите Ваш e-mail"
-        v-model="email"
-        :rules="rules"
-        :error-messages="serverError"
-        @input="onInput"
-      />
-      <mmt-text-input
-        class="input-field"
-        mmt-label="Password"
-        rounded
-        filled
-        single-line
-        dense
-        placeholder="Введите Ваш пароль"
-        type="password"
-        v-model="password"
-        :rules="rules"
-        :error-messages="serverError"
-        @input="onInput"
-      />
-      <v-btn
-        class="continue-button"
-        rounded
-        depressed
-        large
-        :disabled="!formValidity"
-        @click="login"
-      >Продолжить</v-btn>
-      <div class="forget-password">Забыли пароль?</div>
+    <v-form class="auth-form" v-model="formValidity">
+      <mmt-text-input class="input-field" :mmt-label="$t('userSettings.email')" rounded filled single-line mmt-dense
+        :placeholder="$t('recoveryPassword.emailPlease')" v-model="email" :rules="rules" :error-messages="serverError"
+        @input="onInput" />
+      <mmt-text-input class="input-field" :mmt-label="$t('recoveryPassword.password')" rounded filled single-line mmt-dense
+        :placeholder="$t('signIn.passwordPlease')" type="password" v-model="password" :rules="rules" :error-messages="serverError"
+        @input="onInput" />
+      <v-btn class="continue-button mmt-btn" rounded depressed large :disabled="!formValidity" @click="login">{{$t('signIn.continue')}}
+      </v-btn>
+      {{$t('signIn.or')}}
+      <v-btn class="google-btn social-btn" rounded outlined :href="googleOauthUri">
+        {{$t('signIn.continueWithGoogle')}}
+        <v-icon right>mdi-google</v-icon>
+      </v-btn>
+      <router-link to="/recovery-password" class="forget-password">
+        {{$t('signIn.forgetPassword')}}
+      </router-link>
     </v-form>
   </v-card-text>
 </v-card>

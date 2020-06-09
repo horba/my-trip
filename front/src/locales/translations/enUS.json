@@ -1,0 +1,146 @@
+{
+  "appTitle": "MakeMeTrip",
+  "menu": {
+    "aboutUs": "About Us",
+    "accommodation": "Accommodation",
+    "transport": "Transport",
+    "leisure": "Lleisure",
+    "food": "Food",
+    "hotTours": "Hot Tours",
+    "articles": "Articles",
+    "privacyPolicy": "Privacy policy",
+    "cookiePolicy": "Cookie Policy",
+    "termsOfUse": "Terms of use",
+    "forTourOperators": "For tour operators",
+    "contacts": "Contacts",
+    "reviewNew": "Leave a review about the site",
+    "tickets": "Tickets",
+    "travelRoute": "Travel Route",
+    "bookmarks": "Bookmarks",
+    "scheduler": "Scheduler",
+    "history": "History",
+    "historyPrev": "Previous",
+    "historyNext": "Upcoming",
+    "settings": "Settings",
+    "notifications": "Notifications",
+    "editProfile": "Edit Profile",
+    "signin": "Login",
+    "signup": "Register",
+    "signout": "Logout"
+  },
+  "leisure": {
+    "leisureType": "Choose leisure type",
+    "pickUpLeisure": "Pick up leisure",
+    "popularSearches": "Popular Searches",
+    "mapSwitch": "Map",
+    "mapTextInput": "Enter city",
+    "placeOpenState": "Open",
+    "placeCloseState": "Close",
+    "leisureTypeList": [
+      "Active rest, extreme",
+      "Museums and Exhibitions",
+      "Cinemas, theaters",
+      "Beauty, Health, Spa",
+      "Rest for children",
+      "Rest for the company",
+      "Game clubs, quests"
+    ]
+  },
+  "footer": {
+    "join": "Join",
+    "subscribeToNews": "Subscribe to news",
+    "subscribeBtn": "Subscribe",
+    "emailPlh": "Enter your e- mail"
+  },
+  "recoveryPassword":{
+    "title": "Password recovery",
+    "emailPlease": "Enter your e-mail",
+    "enterYourEmail": "Enter your account's email address, and then you will be asked a link was sent to restore your password.",
+    "checkMail": "Mail check",
+    "confrimation": "Confirmation",
+    "recover": "Recover",
+    "back": "Back",
+    "note": "* After receiving the link, click on it and continue the procedure recoveries. It will only take a couple of minutes",
+    "successfulСonfirmation": "Your email address has been successfully confirmed! Please enter a new password for your account.",
+    "password": "Password",
+    "confrimPassword": "Confirm password",
+    "createPassword": "Create a password",
+    "restriction": "At least 8 characters",
+    "save": "Save",
+    "repeatPassword": "Repeat password",
+    "passwordMustIdentity": "Passwords must match",
+    "thisNoEmail": "Invalid email address",
+    "noEmpty": "Fill in the field.",
+    "successfulСhange": "The password was successfully changed! You will receive a confirmation of your password change to Your email address."
+  },
+  "locale": {
+    "language": "Language",
+    "enUS": "English",
+    "ru": "Russian",
+    "uk": "Ukrainian"
+  },
+  "userSettings": {
+    "generalSettings": "General settings",
+    "lastName": "Last name",
+    "enterLastName": "Enter last name",
+    "firstName": "First name",
+    "enterFirstName": "Enter first name",
+    "email": "Email",
+    "emailExample": "Example: bereznievatiy@gmail.com",
+    "enterCorrectEmail": "Enter valid email",
+    "emailIsAlreadyTaken": "This email is already taken",
+    "genderIsNotSpecified": "Gender is not specified",
+    "male": "Male",
+    "female": "Female",
+    "otherGender": "Other",
+    "countryIsNotSpecified": "Country is not specified",
+    "languageIsNotSpecified": "Language is not specified",
+    "pickAnAvatar": "Pick an avatar",
+    "avatar": "Avatar",
+    "save": "Save"
+  },
+  "countries": {
+    "Albania": "Albania",
+    "Canada": "Canada",
+    "Colombia": "Colombia",
+    "Cyprus": "Cyprus",
+    "Dominica": "Dominica",
+    "Egypt": "Egypt",
+    "France": "France",
+    "Ukraine": "Ukraine"
+  },
+  "tripHistory": {
+    "trip": "Trip",
+    "previousTrips": "Previous Trips",
+    "tripsNotFound": "No trips found",
+    "search": "Search",
+    "departure": "Departure",
+    "flightTime": "Flight time",
+    "differenceInTime": "Difference in time",
+    "details": "Details"
+  },
+  "tickets": {
+    "ticketItem": {
+      "priceLabel": "Price for {adults} adults and {children} children",
+      "details": "Details",
+      "travelTimeLabel": "Travel time",
+      "travelTime": "{hours}h {minutes}m"
+    }
+  },
+  "fileUpload": {
+    "fileIsEmpty": "Please select file",
+    "fileIsToBig": "File is too large",
+    "correctFileSize": "The correct file size",
+    "notAllowedContentType": "Please select .png, .jpeg or .bmp file"
+  },
+  "signIn": {
+    "welcome": "Welcome!",
+    "passwordPlease": "Enter your password",
+    "continue": "Continue",
+    "or": "Or",
+    "continueWithGoogle": "Continue with Google",
+    "forgetPassword": "Forget password?",
+    "invalidCredentials": "Invalid credentials",
+    "unknownApiError": "Unknown server error"
+  }
+}

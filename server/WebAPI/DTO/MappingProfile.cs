@@ -1,4 +1,7 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Linq;
+using AutoMapper;
+using Entities.Models;
 
 namespace WebAPI.DTO
 {

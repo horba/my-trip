@@ -15,6 +15,8 @@
       <Compile Remove="Migrations\20200518200453_Trips.Designer.cs" />
       <Compile Remove="Migrations\20200521132358_Trips.cs" />
       <Compile Remove="Migrations\20200521132358_Trips.Designer.cs" />
+      <Compile Remove="Migrations\20200529192154_AddUserOauthField.cs" />
+      <Compile Remove="Migrations\20200529192154_AddUserOauthField.Designer.cs" />
     </ItemGroup>
 
     <ItemGroup>
@@ -26,10 +28,7 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.4" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.4">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.4" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.4" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.4">
         <PrivateAssets>all</PrivateAssets>

@@ -4,39 +4,90 @@
   font-weight: 600;
   font-size: 14px;
   font-family: Open Sans;
+  font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+.v-application {
+  min-height: 100vh;
+}
+
 h1 {
   font-size: 54px;
+  line-height: 92px;
 }
 
 h2 {
   font-size: 38px;
+  line-height: 63px;
 }
 
 h3 {
   font-size: 33px;
+  line-height: 53px;
 }
 
 h4 {
   font-size: 23px;
+  line-height: 34px;
 }
 
 h5 {
   font-size: 18px;
+  line-height: 27px;
 }
 
 h6 {
   font-size: 15px;
+  line-height: 21px;
 }
 
-.v-btn {
+body{
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.text-small{
+ font-size: 12px;
+ line-height: 15px;
+}
+
+.text-xsmall{
+  font-size: 9px;
+  line-height: 11px;
+}
+
+.text-normal{
+  font-weight: normal;
+}
+
+.text-body-regular {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 135%;
+}
+
+.text-small {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 125%;
+}
+
+.text-semi-bold {
+  font-weight: 600;
+}
+
+.not-accented {
+  color: var(--mmt-color-gray);
+}
+
+.mmt-btn{
   text-transform: none;
   letter-spacing: normal;
 }
-
 
 /* trip */
 
@@ -52,3 +103,52 @@ h6 {
 }
 
 /* trip end */
+
+/* mmt-select */
+
+.mmt-select.v-text-field--filled .v-input__control > .v-input__slot {
+  background-color: var(--filled-select-fill-color);
+}
+
+.mmt-select * {
+  font-weight: normal;
+}
+
+.v-list, .v-menu__content.theme--light.menuable__content__active {
+  border-radius: 0;
+}
+
+.theme--light.v-list-item--active:hover::before,.theme--light.v-list-item--active::before {
+  opacity: 0.5;
+}
+/* end mmt-select */
+
+/* mmt-continue-button */
+
+.mmt-continue-button.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+  background-color: var(--continue-button-background-color);
+}
+
+.mmt-continue-button.v-btn:not(.v-btn--disabled):not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) .v-btn__content {
+  color: var(--continue-button-active-color);
+}
+
+/* end mmt-continue-button */
+
+.md .v-content__wrap {
+  display: flex;
+  flex-direction:column;
+}
+
+.v-content__wrap .content-container {
+  flex-grow: 1;
+  margin-top: 56px;
+}
+
+.md .v-content__wrap .content-container {
+  margin-top: 64px;
+}
+
+.theme--light.v-card.auth-card, .theme--light.v-card.recovery-card {
+  background-color: var(--login-and-recovery-password-background-color);
+}

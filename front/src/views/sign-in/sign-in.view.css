@@ -43,6 +43,7 @@
   color: var(--forget-password-text-color);
   line-height: 1.35em;
   user-select: none;
+  text-decoration: none;
 }
 
 .auth-form{
@@ -51,4 +52,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.social-btn {
+  border-color: var(--social-network-button-background-color);
+  color: var(--social-network-button-background-color);
+  text-transform: none;
+  margin: 20px 0;
 }

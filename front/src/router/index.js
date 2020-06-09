@@ -8,8 +8,10 @@ import {
   Contacts, ReviewNew, MyTickets,
   MyAccommodation, MyFood, MyTransport,
   MyLeisure, SignIn, SignUp,
-  UserCabinet, MyHistoryPreviousTrips
+  UserSettings, UserCabinet, MyHistoryPreviousTrips,
+  RecoveryPassword
 } from '@views';
+import store from '@store';
 
 Vue.use(VueRouter);
 
@@ -166,14 +168,17 @@ const routes = [
       {
         path: 'history/next',
         name: 'MyHistoryNext',
-        component: MyTickets,
+        component: PrivacyPolicy,
         meta: { layout: 'authorize' }
       },
       {
         path: 'settings',
         name: 'MySettings',
-        component: MyTickets,
-        meta: { layout: 'authorize' }
+        component: UserSettings,
+        meta: {
+          layout: 'authorize',
+          allowUnknownUsers: false
+        }
       },
       {
         path: 'notifications',
@@ -182,6 +187,12 @@ const routes = [
         meta: { layout: 'authorize' }
       }
     ]
+  },
+  {
+    path: '/recovery-password/:token?',
+    name: 'recovery-password',
+    component: RecoveryPassword,
+    meta: { layout: 'default' }
   }
 ],
 
@@ -192,6 +203,13 @@ const routes = [
       });
 
 router.beforeEach((to, from, next) => { // Auth Guards
+  if (to.query.state === 'google-oauth') {
+    store.dispatch('auth/loginWithGoogle', to.query.code)
+      .then(() => next('/'))
+      .catch(() => next({ name: 'Login' }));
+    return;
+  }
+
   const isLoggedIn = localStorage.getItem('user');
 
   if (isLoggedIn

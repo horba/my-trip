@@ -3,7 +3,7 @@
     <v-row>
       <v-col md="3" sm="12">
         <div class="link-wrapper">
-          <router-link to="/" class="title">{{ $t('appTitle') }}</router-link>
+          <router-link to="/" class="title white--text">{{ $t('appTitle') }}</router-link>
         </div>
         <div class="link-wrapper">
           <router-link to="/about-us" class="black--text">{{ $t('menu.aboutUs') }}</router-link>
@@ -27,7 +27,7 @@
         </div>
       </v-col>
 
-      <v-col md="6" sm="12">
+      <v-col md="5" sm="12">
         <v-row justify="space-between">
           <v-col md="6" sm="12">
             <div v-for="link in links1" :key="link.title" class="link-wrapper">
@@ -47,14 +47,26 @@
         </v-row>
       </v-col>
 
-      <v-col md="3" sm="12">
+      <v-col md="4" sm="12">
         <v-col md="12">{{ $t('footer.subscribeToNews') }} {{ $t('appTitle') }}:</v-col>
         <v-row>
-          <v-col md="6" sm="12">
-            <v-text-field :placeholder="$t('footer.emailPlh')" type="e-mail" solo flat rounded dense></v-text-field>
+          <v-col md="6" sm="12" class="pr-0">
+            <v-text-field type="e-mail"
+                          :placeholder="$t('footer.emailPlh')"
+                          class="black--text"
+                          solo
+                          flat
+                          rounded
+                          dense>
+            </v-text-field>
           </v-col>
-          <v-col md="6" sm="12">
-            <v-btn text rounded dense class="primary">{{ $t('footer.subscribeBtn') }}</v-btn>
+          <v-col md="6" sm="12"  class="pl-0">
+            <v-btn text
+                   rounded
+                   dense
+                   class="accent lighten-1">
+              {{ $t('footer.subscribeBtn') }}
+            </v-btn>
           </v-col>
         </v-row>
       </v-col>

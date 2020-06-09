@@ -1,38 +1,40 @@
-<v-card flat tile class="mx-auto">
-  <v-app-bar flat color="primary white--text" class="overflow-hidden">
+<v-card flat tile class="accent lighten-1 header-wrapper">
 
-    <v-app-bar-nav-icon v-if="$vuetify.breakpoint.smAndDown"
-                        @click="drawer = !drawer"
-                        class="white--text"></v-app-bar-nav-icon>
+  <v-container class="py-0">
+    <v-app-bar flat class="accent lighten-1 white--text overflow-hidden">
+      <v-app-bar-nav-icon v-if="$vuetify.breakpoint.smAndDown"
+                          @click="drawer = !drawer"
+                          class="white--text"></v-app-bar-nav-icon>
 
-    <v-toolbar-title text>
-      <router-link to="/">{{ $t('appTitle') }}</router-link>
-    </v-toolbar-title>
+      <v-toolbar-title text>
+        <router-link to="/">{{ $t('appTitle') }}</router-link>
+      </v-toolbar-title>
 
-    <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
 
-    <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn v-for="link in links"
-             :key="link.title"
-             :to="`${link.route}`"
-             text
-             class="white--text"
-             v-if="link.isVisible">
-        {{ $t(link.title) }}
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn v-for="link in links"
+               :key="link.title"
+               :to="`${link.route}`"
+               text
+               class="white--text"
+               v-if="link.isVisible">
+          {{ $t(link.title) }}
+        </v-btn>
+      </v-toolbar-items>
+
+      <v-spacer></v-spacer>
+
+      <v-btn icon class="white--text" :to="{path: '/my/tickets'}" v-if="isAuthorize">
+        <v-icon>mdi-account</v-icon>
       </v-btn>
-    </v-toolbar-items>
 
-    <v-spacer></v-spacer>
-
-    <v-btn icon class="white--text" :to="{path: '/my/tickets'}" v-if="isAuthorize">
-      <v-icon>mdi-account</v-icon>
-    </v-btn>
-
-    <v-btn icon class="white--text">
-      <v-icon>mdi-magnify</v-icon>
-    </v-btn>
-
-  </v-app-bar>
+      <v-btn icon class="white--text">
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+    
+    </v-app-bar>
+  </v-container>
 
   <v-navigation-drawer v-if="$vuetify.breakpoint.smAndDown" v-model="drawer" absolute temporary app>
     <v-list nav dense>

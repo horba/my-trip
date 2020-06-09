@@ -1,0 +1,146 @@
+{
+  "appTitle": "MakeMeTrip",
+  "menu": {
+    "aboutUs": "Про нас",
+    "accommodation": "Житло",
+    "transport": "Транспорт",
+    "leisure": "Дозвілля",
+    "food": "Їжа",
+    "hotTours": "Гарячі тури",
+    "articles": "Статті",
+    "privacyPolicy": "Політика конфіденційності",
+    "cookiePolicy": "Політика використання Cookie",
+    "termsOfUse": "Угода",
+    "forTourOperators": "Туроператорам",
+    "contacts": "Контакти",
+    "reviewNew": "Залишити відгук про сайт",
+    "tickets": "Квитки",
+    "travelRoute": "Маршрут",
+    "bookmarks": "Закладки",
+    "scheduler": "Планер",
+    "history": "Історія",
+    "historyPrev": "Попередні",
+    "historyNext": "Майбутні",
+    "settings": "Налаштування",
+    "notifications": "Повідомлення",
+    "editProfile": "Редагувати профіль",
+    "signin": "Вхід",
+    "signup": "Реєстрація",
+    "signout": "Вихід"
+  },
+  "leisure": {
+    "leisureType": "Виберіть тип дозвілля",
+    "pickUpLeisure": "Підібрати дозвілля",
+    "popularSearches": "Популярні запити",
+    "mapSwitch": "Карта",
+    "mapTextInput": "Почніть вводити місто",
+    "placeOpenState": "Відкрито",
+    "placeCloseState": "Зачинено",
+    "leisureTypeList": [
+      "Активний відпочинок, екстрим",
+      "Музеї і виставки",
+      "Кінотеатри, театри",
+      "Краса, здоров'я, Spa",
+      "Відпочинок для дітей",
+      "Відпочинок для компанії",
+      "Ігрові клуби, квести"
+    ]
+  },
+  "footer": {
+    "join": "Приєднатися",
+    "subscribeToNews": "Підписатися на новини",
+    "subscribeBtn": "Підписатися",
+    "emailPlh": "Введіть Ваш e-mail"
+  },
+  "recoveryPassword": {
+    "title": "Відновлення пароля",
+    "emailPlease": "Введіть Ваш e-mail",
+    "enterYourEmail": "Введіть електронну пошту вашого аккаунта, після чого Вам буде відправлена посилання для відновлення пароля.",
+    "checkMail": "Перевірка пошти",
+    "confrimation": "Підтвердження",
+    "recover": "Відновити",
+    "back": "Назад",
+    "note": "* Отримавши посилання, перейдіть по ньому і продовжите процедуру відновлення. Це займе всього кілька хвилин",
+    "successfulСonfirmation": "Ваша адреса електронної пошти успішно підтверджена! Будь ласка, введіть новий пароль для вашого облікового запису.",
+    "password": "Пароль",
+    "confrimPassword": "Підтвердження пароля",
+    "createPassword": "Придумайте пароль",
+    "restriction": "Не менше 8 символів",
+    "save": "Зберегти",
+    "repeatPassword": "Повторіть пароль",
+    "passwordMustIdentity": "Паролі повинні співпадати",
+    "thisNoEmail": "Не дійсний e-mail",
+    "noEmpty": "Заповніть поле.",
+    "successfulСhange": "Пароль успішно змінено! Ви отримаєте підтвердження про зміну пароля на Вашу електронну адресу."
+  },
+  "locale": {
+    "language": "Мова",
+    "enUS": "Англійська",
+    "ru": "Pосійська",
+    "uk": "Українська"
+  },
+  "userSettings": {
+    "generalSettings": "Загальні налаштування",
+    "lastName": "Прізвище",
+    "enterLastName": "Введіть прізвище",
+    "firstName": "Ім'я",
+    "enterFirstName": "Введіть ім'я",
+    "email": "Скринька",
+    "emailExample": "Приклад: bereznievatiy@gmail.com",
+    "enterCorrectEmail": "Введіть дійсний email",
+    "emailIsAlreadyTaken": "Цей email вже зайнятий",
+    "genderIsNotSpecified": "Стать не вказана",
+    "male": "Чоловіча",
+    "female": "Жіноча",
+    "otherGender": "Інша",
+    "countryIsNotSpecified": "Країна не вказана",
+    "languageIsNotSpecified": "Мова не вказана",
+    "pickAnAvatar": "Виберіть аватар",
+    "avatar": "Аватар",
+    "save": "Зберегти"
+  },
+  "countries": {
+    "Albania": "Албанія",
+    "Canada": "Канада",
+    "Colombia": "Колумбія",
+    "Cyprus": "Кіпр",
+    "Dominica": "Домініка",
+    "Egypt": "Єгипет",
+    "France": "Франція",
+    "Ukraine": "Україна"
+  },
+  "tripHistory": {
+    "trip": "Поїздка",
+    "previousTrips": "Попередні поїздки",
+    "tripsNotFound": "Поїздки не знайдені",
+    "search": "Пошук",
+    "departure": "Виліт",
+    "flightTime": "Час польоту",
+    "differenceInTime": "Різниця в часі",
+    "details": "Докладніше"
+  },
+  "tickets": {
+    "ticketItem": {
+      "priceLabel": "Вартість за {adults} дорослих та {children} дітей",
+      "details": "Докладніше",
+      "travelTimeLabel": "Тривалість подорожі",
+      "travelTime": "{hours} годин {minutes} хвилин"
+    }
+  },
+  "fileUpload": {
+    "fileIsEmpty": "Виберіть файл",
+    "fileIsToBig": "Файл занадто великий",
+    "correctFileSize": "Правильний розмір файлу",
+    "notAllowedContentType": "Виберіть .png, .jpeg або .bmp файл"
+  },
+  "signIn": {
+    "welcome": "Ласкаво просимо!",
+    "passwordPlease": "Введіть ваш пароль",
+    "continue": "Продовжити",
+    "or": "Або",
+    "continueWithGoogle": "Продовжити через Google",
+    "forgetPassword": "Забули пароль?",
+    "invalidCredentials": "Недійсні облікові дані",
+    "unknownApiError": "Невідома помилка сервера"
+  }
+}
