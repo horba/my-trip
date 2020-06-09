@@ -28,6 +28,9 @@ namespace WebAPI.Controllers
     [HttpPost]
     public IActionResult Auth(AuthRequest authRequest)
     {
+      if (!ModelState.IsValid)
+        return BadRequest(ModelState);
+
       var user = _userService.GetUser(authRequest.Email, authRequest.Password);
       if (user == null)
         return Unauthorized();
@@ -72,6 +75,9 @@ namespace WebAPI.Controllers
     [Route("SignUp")]
     public IActionResult Registration(AuthRequest authRequest)
     {
+      if (!ModelState.IsValid)
+        return BadRequest(ModelState);
+
       if (_userService.IsUserExist(authRequest.Email))
       {
         return UnprocessableEntity();

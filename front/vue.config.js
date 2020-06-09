@@ -17,6 +17,7 @@ module.exports = {
       .set('@filters', path.resolve('src/filters/'))
       .set('@config', path.resolve('src/config/config.dev.json'))
       .set('@api', path.resolve('src/services/api-service.service.js'))
-      .set('@constants', path.resolve('src/constants/'));
+      .set('@constants', path.resolve('src/constants/'))
+      .set('@mixins', path.resolve('src/mixins/'));
   }
 };

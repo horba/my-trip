@@ -20,7 +20,7 @@
         filled
         dense
         mmt-dense
-        :rules="[rules.isEmpty, rules.validEmail, rules.existingEmail]"
+        :rules="[rules.required, emailRules.validEmail, rules.existingEmail]"
         v-model="email"
       />
       <mmt-text-input
@@ -35,7 +35,7 @@
         :type="showPass ? 'text' : 'password'"
         :append-icon="showPass ? 'mdi-eye' : 'mdi-eye-off'"
         @click:append="showPass = !showPass"
-        :rules="[rules.isEmpty, rules.minPassLen]"
+        :rules="[rules.required, rules.minPassLen]"
         v-model="firstPass"  
       />
       <mmt-text-input
@@ -48,7 +48,7 @@
         mmt-dense
         counter
         :type="showPass ? 'text' : 'password'"
-        :rules="[rules.isEmpty, rules.minPassLen, rules.samePass]"
+        :rules="[rules.required, rules.minPassLen, rules.samePass]"
         v-model="secondPass" 
       />
     </v-form>

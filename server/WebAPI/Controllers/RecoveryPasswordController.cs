@@ -18,6 +18,9 @@ namespace WebAPI.Controllers
     [HttpPost("UpdatePassword")]
     public async Task<IActionResult> UpdatePasswordAsync(UpdatePasswordModel updatePasswordModel)
     {
+      if (!ModelState.IsValid)
+        return BadRequest(ModelState);
+
       await recoveryPasswordService.UpdatePasswordAsync(updatePasswordModel);
       return Ok();
     }
@@ -25,6 +28,9 @@ namespace WebAPI.Controllers
     [HttpPost]
     public async Task<IActionResult> ResetPasswordAsync(RecoveryPasswordModel recoveryPasswordModel)
     {
+      if (!ModelState.IsValid)
+        return BadRequest(ModelState);
+
       await recoveryPasswordService.SendEmailAsync(recoveryPasswordModel);
       return Ok();
     }
