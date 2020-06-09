@@ -6,11 +6,12 @@ export default {
   },
   data () {
     return {
-      email: 'user7@email.com',
-      firstPass: 'password',
-      secondPass: 'password',
+      email: '',
+      firstPass: '',
+      secondPass: '',
       valid: true,
-      showPass: false,
+      showFirstPassword: false,
+      showSecondPassword: false,
       existingEmail: false,
       rules: {
         isEmpty: v => !!v || 'Заполните поле.',
