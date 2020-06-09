@@ -1,4 +1,5 @@
 import { MmtTextInput } from '@components';
+
 export default {
   components: {
     MmtTextInput
@@ -12,11 +13,11 @@ export default {
       showPass: false,
       existingEmail: false,
       rules: {
-        isEmpty: v => !!v || 'Заполните поле.',
-        minPassLen: v => v.length >= 8 || 'Не менее 8 символов',
-        validEmail: v => /.+@.+\..+/.test(v) || 'Не действительный e-mail',
-        samePass: () => this.firstPass === this.secondPass || 'Пароли должны совпадать',
-        existingEmail: () => !this.existingEmail || 'Этот e-mail уже занят. Попробуйте другой.'
+        isEmpty: v => !!v || this.$t('signUp.fillField'),
+        minPassLen: v => v.length >= 8 || this.$t('signUp.leastCharacters'),
+        validEmail: v => /.+@.+\..+/.test(v) || this.$t('signUp.invalidEmail'),
+        samePass: () => this.firstPass === this.secondPass || this.$t('signUp.passwordCoincide'),
+        existingEmail: () => !this.existingEmail || this.$t('signUp.anotherEmail')
       }
     };
   },

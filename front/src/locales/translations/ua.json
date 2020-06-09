@@ -140,5 +140,24 @@
     "forgetPassword": "Забули пароль?",
     "invalidCredentials": "Недійсні облікові дані",
     "unknownApiError": "Невідома помилка сервера"
+  },
+  "signUp": {
+    "welcome": "Ласкаво просимо!",
+    "continue": "Продовжити",
+    "or": "Або",
+    "continueGoogle": "Продовжити через Google",
+    "continueFacebook": "Продовжити через Facebook",
+    "privacyPolicyPart1": "Продовжуючи, Ви погоджуєтеся з",
+    "privacyPolicyPart2": "умовами користування",
+    "privacyPolicyPart3": "сервісом і",
+    "privacyPolicyPart4": "політикою конфіденційності MakeMeTrip.",
+    "enterEmailPH": "Введіть Ваш e-mail",
+    "pickPasswordPH": "Придумайте пароль",
+    "confirmPasswordPH": "Повторіть пароль",
+    "fillField": "Заповніть поле.",
+    "leastCharacters": "Не менш 8 символів",
+    "invalidEmail": "Не дійсний e-mail",
+    "passwordCoincide": "Паролі повинні співпадати",
+    "anotherEmail": "Цей e-mail вже зайнятий. Спробуйте інший."
   }
 }
