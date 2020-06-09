@@ -6,9 +6,9 @@ export default {
   },
   data () {
     return {
-      email: 'user7@email.com',
-      firstPass: 'password',
-      secondPass: 'password',
+      email: '',
+      firstPass: '',
+      secondPass: '',
       valid: true,
       showPass: false,
       existingEmail: false,
