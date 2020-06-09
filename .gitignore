@@ -16,6 +16,10 @@
 # Mono auto generated files
 mono_crash.*
 
+#configs
+*config.dev.json
+*appsettings.Development.json
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
@@ -60,7 +64,6 @@ BenchmarkDotNet.Artifacts/
 project.lock.json
 project.fragment.lock.json
 artifacts/
-appsettings.Development.json
 
 # StyleCop
 StyleCopReport.xml
