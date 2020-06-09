@@ -73,9 +73,9 @@
   },
   "locale": {
     "language": "Language",
-    "en": "English",
+    "enUS": "English",
     "ru": "Russian",
-    "ua": "Ukrainian"
+    "uk": "Ukrainian"
   },
   "userSettings": {
     "generalSettings": "General settings",
