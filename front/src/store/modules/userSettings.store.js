@@ -1,7 +1,7 @@
 import api from '@api';
+import { SERVER_AVATARS_PATH } from '@constants';
 
-const { baseUrl } = require('@/config/config.dev.json'),
-      { SERVER_AVATARS_PATH } = require('@constants');
+const { baseUrl } = require('@/config/config.dev.json');
 
 export default {
   namespaced: true,

@@ -130,5 +130,15 @@
     "fileIsToBig": "File is too large",
     "correctFileSize": "The correct file size",
     "notAllowedContentType": "Please select .png, .jpeg or .bmp file"
+  },
+  "signIn": {
+    "welcome": "Welcome!",
+    "passwordPlease": "Enter your password",
+    "continue": "Continue",
+    "or": "Or",
+    "continueWithGoogle": "Continue with Google",
+    "forgetPassword": "Forget password?",
+    "invalidCredentials": "Invalid credentials",
+    "unknownApiError": "Unknown server error"
   }
 }

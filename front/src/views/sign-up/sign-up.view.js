@@ -22,22 +22,25 @@ export default {
     };
   },
   methods: {
-    async signUp () {
+    signUp () {
       if (this.valid) {
         const body = {
           email: this.email,
           password: this.firstPass
-        },
-              response = await this.$store.dispatch('signUp', body);
-        if (response === 'Ok') {
-          this.$store.dispatch('login', body);
-          this.$router.push('/');
-        }
-        if (response === 'UnprocessableEntity') {
-          this.existingEmail = true;
-          this.validate();
-          this.existingEmail = false;
-        }
+        };
+
+        this.$store.dispatch('auth/signUp', body)
+          .then(() => {
+            this.$store.dispatch('auth/login', body);
+            this.$router.push('/');
+          })
+          .catch(err => {
+            if (err.status === 422) {
+              this.existingEmail = true;
+              this.validate();
+              this.existingEmail = false;
+            }
+          });
       }
     },
     validate () {
