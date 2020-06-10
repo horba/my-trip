@@ -23,13 +23,36 @@
       </div>
       </div>
     </div>
-    <div class="my-entertainments-map-wrap">fdssdfds
+    <div class="my-entertainments-map-wrap">
       <div id="my-entertainments-autocomplete" class="my-entertainments-autocomplete">
         
       </div>
-      <div id="my-entertainments-map" class="my-entertainments-map">
-        
-      </div>
+      <gmap-autocomplete class="introInput">
+        <template v-slot:input="slotProps">
+          <v-text-field
+            outlined
+            prepend-inner-icon="place"
+            placeholder="Location Of Event"
+            ref="input"
+            v-on:listeners="slotProps.listeners"
+            v-on:attrs="slotProps.attrs">
+          </v-text-field>
+        </template>
+      </gmap-autocomplete>
+      <GmapMap
+        id="my-entertainments-map"
+        class="my-entertainments-map"
+        ref="mapRef"
+        :center="mapCenter"
+        :zoom="15"
+        style="width: 100%; height: 100%"
+      >
+        <GmapMarker
+          :key="index"
+          v-for="(m, index) in markers"
+          :position="m.position"
+        />
+      </GmapMap>
     </div>
   </div>
 </div>
