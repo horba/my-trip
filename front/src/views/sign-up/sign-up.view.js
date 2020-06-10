@@ -1,20 +1,21 @@
 import { MmtTextInput } from '@components';
+import { emailValidationMixin, requiredValidationMixin } from '@mixins';
+
 export default {
+  mixins: [emailValidationMixin, requiredValidationMixin],
   components: {
     MmtTextInput
   },
   data () {
     return {
-      email: 'user7@email.com',
-      firstPass: 'password',
-      secondPass: 'password',
+      email: '',
+      firstPass: '',
+      secondPass: '',
       valid: true,
       showPass: false,
       existingEmail: false,
       rules: {
-        isEmpty: v => !!v || 'Заполните поле.',
         minPassLen: v => v.length >= 8 || 'Не менее 8 символов',
-        validEmail: v => /.+@.+\..+/.test(v) || 'Не действительный e-mail',
         samePass: () => this.firstPass === this.secondPass || 'Пароли должны совпадать',
         existingEmail: () => !this.existingEmail || 'Этот e-mail уже занят. Попробуйте другой.'
       }
@@ -40,6 +41,7 @@ export default {
       }
     },
     validate () {
+      console.log('validate');
       this.$refs.signUpForm.validate();
     }
   }

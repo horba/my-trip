@@ -69,8 +69,7 @@
     "save": "Сохранить",
     "repeatPassword": "Повторите пароль",
     "passwordMustIdentity": "Пароли должны совпадать",
-    "thisNoEmail": "Не действительный e-mail",
-    "noEmpty": "Заполните поле.",
+    "thisNoEmail": "Не действительный e-mail",    
     "successfulСhange": "Пароль успешно изменен! Вы получите подтверждение об изменении пароля на Ваш электронный адрес."
   },
   "locale": {
@@ -86,8 +85,7 @@
     "firstName": "Имя",
     "enterFirstName": "Введите имя",
     "email": "Почта",
-    "emailExample": "Пример: bereznievatiy@gmail.com",
-    "enterCorrectEmail": "Введите корректный email",
+    "emailExample": "Пример: bereznievatiy@gmail.com",    
     "emailIsAlreadyTaken": "Данная почта уже занята",
     "genderIsNotSpecified": "Пол не указан",
     "male": "Мужской",
@@ -142,5 +140,9 @@
     "forgetPassword": "Забыли пароль?",
     "invalidCredentials": "Неверные учетные данные",
     "unknownApiError": "Неизвестная ошибка сервера"
+  },
+  "validationRules": {
+    "noEmpty": "Заполните поле.",
+    "enterCorrectEmail": "Введите корректный email"
   }
 }

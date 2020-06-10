@@ -6,6 +6,7 @@ namespace WebAPI.DTO.UserSettings
 {
   public class UserSettingsDTO
     {
+        [Required]
         [EmailAddress]
         public string Email { get; set; }
 
