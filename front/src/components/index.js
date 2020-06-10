@@ -9,9 +9,6 @@ export { default as MmtTicketItem } from './mmt-ticket-item.component.vue';
 export { default as MmtTicketRoute } from './mmt-ticket-route.component.vue';
 export { default as MmtTripCard } from './mmt-trip-card/mmt-trip-card.component.vue';
 export { default as MmtTextInput } from './controls/mmt-text-input/mmt-text-input.component.vue';
-export { default as GoogleMapLine } from './google-map/GoogleMapLine.vue';
-export { default as GoogleMapLoader } from './google-map/GoogleMapLoader.vue';
-export { default as GoogleMapMarker } from './google-map/GoogleMapMarker.vue';
 export {
   default as MmtLocaleSwitcher
 } from './mmt-locale-switcher/mmt-locale-switcher.component.vue';

@@ -1,6 +1,9 @@
+import { emailValidationMixin, requiredValidationMixin } from '@mixins';
+
 import { MmtTextInput } from '@components';
 
 export default {
+  mixins: [emailValidationMixin, requiredValidationMixin],
   components: {
     MmtTextInput
   },
@@ -13,9 +16,7 @@ export default {
       showPass: false,
       existingEmail: false,
       rules: {
-        isEmpty: v => !!v || this.$t('signUp.fillField'),
         minPassLen: v => v.length >= 8 || this.$t('signUp.leastCharacters'),
-        validEmail: v => /.+@.+\..+/.test(v) || this.$t('signUp.invalidEmail'),
         samePass: () => this.firstPass === this.secondPass || this.$t('signUp.passwordCoincide'),
         existingEmail: () => !this.existingEmail || this.$t('signUp.anotherEmail')
       }
@@ -41,6 +42,7 @@ export default {
       }
     },
     validate () {
+      console.log('validate');
       this.$refs.signUpForm.validate();
     }
   }

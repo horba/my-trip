@@ -34,6 +34,8 @@
     "popularSearches": "Popular Searches",
     "mapSwitch": "Map",
     "mapTextInput": "Enter city",
+    "placeOpenState": "Open",
+    "placeCloseState": "Close",
     "leisureTypeList": [
       "Active rest, extreme",
       "Museums and Exhibitions",
@@ -50,7 +52,7 @@
     "subscribeBtn": "Subscribe",
     "emailPlh": "Enter your e- mail"
   },
-  "recoveryPassword":{
+  "recoveryPassword": {
     "title": "Password recovery",
     "emailPlease": "Enter your e-mail",
     "enterYourEmail": "Enter your account's email address, and then you will be asked a link was sent to restore your password.",
@@ -67,8 +69,7 @@
     "save": "Save",
     "repeatPassword": "Repeat password",
     "passwordMustIdentity": "Passwords must match",
-    "thisNoEmail": "Invalid email address",
-    "noEmpty": "Fill in the field.",
+    "thisNoEmail": "Invalid email address",    
     "successfulСhange": "The password was successfully changed! You will receive a confirmation of your password change to Your email address."
   },
   "locale": {
@@ -84,8 +85,7 @@
     "firstName": "First name",
     "enterFirstName": "Enter first name",
     "email": "Email",
-    "emailExample": "Example: bereznievatiy@gmail.com",
-    "enterCorrectEmail": "Enter valid email",
+    "emailExample": "Example: bereznievatiy@gmail.com",    
     "emailIsAlreadyTaken": "This email is already taken",
     "genderIsNotSpecified": "Gender is not specified",
     "male": "Male",
@@ -159,5 +159,9 @@
     "invalidEmail": "Invalid e-mail",
     "passwordCoincide": "Passwords must match",
     "anotherEmail": "This e-mail is already taken. Try another one."
+  },
+  "validationRules": {
+    "noEmpty": "Fill in the field.",
+    "enterCorrectEmail": "Enter valid email"
   }
 }

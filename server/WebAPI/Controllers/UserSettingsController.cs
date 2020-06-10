@@ -46,6 +46,9 @@ namespace WebAPI.Controllers
     [HttpPut]
     public IActionResult UpdateSettings(UserSettingsDTO userSettings)
     {
+      if (!ModelState.IsValid)
+        return BadRequest(ModelState);
+
       int id = HttpContext.GetUserIdFromClaim();
 
       var user = _userRepository.FindUserById(id);

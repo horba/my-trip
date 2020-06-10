@@ -34,6 +34,8 @@
     "popularSearches": "Популярные запросы",
     "mapSwitch": "Карта",
     "mapTextInput": "Начните вводить город",
+    "placeOpenState": "Открыто",
+    "placeCloseState": "Закрыто",
     "leisureTypeList": [
       "Активный отдых, экстрим",
       "Музеи и выставки",
@@ -67,8 +69,7 @@
     "save": "Сохранить",
     "repeatPassword": "Повторите пароль",
     "passwordMustIdentity": "Пароли должны совпадать",
-    "thisNoEmail": "Не действительный e-mail",
-    "noEmpty": "Заполните поле.",
+    "thisNoEmail": "Не действительный e-mail",    
     "successfulСhange": "Пароль успешно изменен! Вы получите подтверждение об изменении пароля на Ваш электронный адрес."
   },
   "locale": {
@@ -84,8 +85,7 @@
     "firstName": "Имя",
     "enterFirstName": "Введите имя",
     "email": "Почта",
-    "emailExample": "Пример: bereznievatiy@gmail.com",
-    "enterCorrectEmail": "Введите корректный email",
+    "emailExample": "Пример: bereznievatiy@gmail.com",    
     "emailIsAlreadyTaken": "Данная почта уже занята",
     "genderIsNotSpecified": "Пол не указан",
     "male": "Мужской",
@@ -159,5 +159,9 @@
     "invalidEmail": "Не действительный e-mail",
     "passwordCoincide": "Пароли должны совпадать",
     "anotherEmail": "Этот e-mail уже занят. Попробуйте другой."
+  },
+  "validationRules": {
+    "noEmpty": "Заполните поле.",
+    "enterCorrectEmail": "Введите корректный email"
   }
 }

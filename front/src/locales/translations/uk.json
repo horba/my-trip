@@ -34,6 +34,8 @@
     "popularSearches": "Популярні запити",
     "mapSwitch": "Карта",
     "mapTextInput": "Почніть вводити місто",
+    "placeOpenState": "Відкрито",
+    "placeCloseState": "Зачинено",
     "leisureTypeList": [
       "Активний відпочинок, екстрим",
       "Музеї і виставки",
@@ -68,7 +70,6 @@
     "repeatPassword": "Повторіть пароль",
     "passwordMustIdentity": "Паролі повинні співпадати",
     "thisNoEmail": "Не дійсний e-mail",
-    "noEmpty": "Заповніть поле.",
     "successfulСhange": "Пароль успішно змінено! Ви отримаєте підтвердження про зміну пароля на Вашу електронну адресу."
   },
   "locale": {
@@ -85,7 +86,6 @@
     "enterFirstName": "Введіть ім'я",
     "email": "Скринька",
     "emailExample": "Приклад: bereznievatiy@gmail.com",
-    "enterCorrectEmail": "Введіть дійсний email",
     "emailIsAlreadyTaken": "Цей email вже зайнятий",
     "genderIsNotSpecified": "Стать не вказана",
     "male": "Чоловіча",
@@ -159,5 +159,9 @@
     "invalidEmail": "Не дійсний e-mail",
     "passwordCoincide": "Паролі повинні співпадати",
     "anotherEmail": "Цей e-mail вже зайнятий. Спробуйте інший."
+  },
+  "validationRules": {
+    "noEmpty": "Заповніть поле.",
+    "enterCorrectEmail": "Введіть дійсний email"
   }
 }
