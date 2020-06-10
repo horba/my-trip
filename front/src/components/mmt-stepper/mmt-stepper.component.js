@@ -32,7 +32,7 @@ export default {
       {
         title: 'menu.leisure',
         icon: 'mdi-airballoon',
-        link: '/my/leisure'
+        link: '/my/entertainments'
       }
     ]
   }),

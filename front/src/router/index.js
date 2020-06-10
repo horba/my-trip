@@ -1,16 +1,33 @@
+import {
+  AboutUs,
+  Accommodation,
+  Articles,
+  Contacts,
+  CookiePolicy,
+  Entertainments,
+  Food,
+  ForTourOperators,
+  Home,
+  HotTours,
+  Leisure,
+  MyAccommodation,
+  MyFood,
+  MyHistoryPreviousTrips,
+  MyTickets,
+  MyTransport,
+  PrivacyPolicy,
+  RecoveryPassword,
+  ReviewNew,
+  SignIn,
+  SignUp,
+  TermsOfUse,
+  Transport,
+  UserCabinet,
+  UserSettings
+} from '@views';
+
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import {
-  Home, Accommodation, Transport,
-  Leisure, Food, HotTours,
-  Articles, AboutUs, PrivacyPolicy,
-  CookiePolicy, TermsOfUse, ForTourOperators,
-  Contacts, ReviewNew, MyTickets,
-  MyAccommodation, MyFood, MyTransport,
-  MyLeisure, SignIn, SignUp,
-  UserSettings, UserCabinet, MyHistoryPreviousTrips,
-  RecoveryPassword
-} from '@views';
 import store from '@store';
 
 Vue.use(VueRouter);
@@ -130,9 +147,9 @@ const routes = [
         meta: { layout: 'authorize' }
       },
       {
-        path: 'leisure',
-        name: 'MyLeisure',
-        component: MyLeisure,
+        path: 'entertainments',
+        name: 'Entertainments',
+        component: Entertainments,
         meta: { layout: 'authorize' }
       },
       {
