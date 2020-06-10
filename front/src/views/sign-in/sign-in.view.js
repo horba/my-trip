@@ -1,6 +1,8 @@
 import { MmtTextInput } from '@components';
+import { emailValidationMixin, requiredValidationMixin } from '@mixins';
 
 export default {
+  mixins: [emailValidationMixin, requiredValidationMixin],
   components: {
     MmtTextInput
   },
@@ -10,10 +12,7 @@ export default {
       password: '',
       serverError: '',
       formValidity: true,
-      process,
-      rules: [
-        value => !!value || this.$t('recoveryPassword.noEmpty')
-      ]
+      process
     };
   },
   methods: {

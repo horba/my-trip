@@ -34,6 +34,8 @@
     "popularSearches": "Популярні запити",
     "mapSwitch": "Карта",
     "mapTextInput": "Почніть вводити місто",
+    "placeOpenState": "Відкрито",
+    "placeCloseState": "Зачинено",
     "leisureTypeList": [
       "Активний відпочинок, екстрим",
       "Музеї і виставки",
@@ -68,14 +70,13 @@
     "repeatPassword": "Повторіть пароль",
     "passwordMustIdentity": "Паролі повинні співпадати",
     "thisNoEmail": "Не дійсний e-mail",
-    "noEmpty": "Заповніть поле.",
     "successfulСhange": "Пароль успішно змінено! Ви отримаєте підтвердження про зміну пароля на Вашу електронну адресу."
   },
   "locale": {
     "language": "Мова",
-    "en": "Англійська",
+    "enUS": "Англійська",
     "ru": "Pосійська",
-    "ua": "Українська"
+    "uk": "Українська"
   },
   "userSettings": {
     "generalSettings": "Загальні налаштування",
@@ -85,7 +86,6 @@
     "enterFirstName": "Введіть ім'я",
     "email": "Скринька",
     "emailExample": "Приклад: bereznievatiy@gmail.com",
-    "enterCorrectEmail": "Введіть дійсний email",
     "emailIsAlreadyTaken": "Цей email вже зайнятий",
     "genderIsNotSpecified": "Стать не вказана",
     "male": "Чоловіча",
@@ -140,5 +140,9 @@
     "forgetPassword": "Забули пароль?",
     "invalidCredentials": "Недійсні облікові дані",
     "unknownApiError": "Невідома помилка сервера"
+  },
+  "validationRules": {
+    "noEmpty": "Заповніть поле.",
+    "enterCorrectEmail": "Введіть дійсний email"
   }
 }

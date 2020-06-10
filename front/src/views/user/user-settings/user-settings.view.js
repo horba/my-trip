@@ -1,10 +1,12 @@
 import { MmtTextInput } from '@components';
 import { mapState } from 'vuex';
 import { VFileInput, VIcon } from 'vuetify/lib';
-const { EMAIL_REGEX, MAX_AVATAR_SIZE_MB } = require('@constants'),
+import { emailValidationMixin, requiredValidationMixin } from '@mixins';
+const { MAX_AVATAR_SIZE_MB } = require('@constants'),
       MAX_AVATAR_SIZE_KB = 1024 * 1024 * MAX_AVATAR_SIZE_MB;
 
 export default {
+  mixins: [emailValidationMixin, requiredValidationMixin],
   components: {
     MmtTextInput,
     VFileInput,
@@ -16,10 +18,6 @@ export default {
       formValidity: true,
       emailIsAlreadyTaken: false,
       fileUploadError: '',
-      emailRules: [
-        email => RegExp(EMAIL_REGEX).test(email)
-        || this.$t('userSettings.enterCorrectEmail')
-      ],
       avatarRules: [
         value => !value || value.size < MAX_AVATAR_SIZE_KB
           || `${this.$t('fileUpload.fileIsToBig')}.
@@ -96,7 +94,7 @@ export default {
           value: null
         },
         {
-          text: this.$t('locale.en'),
+          text: this.$t('locale.enUS'),
           value: 1
         },
         {
@@ -104,7 +102,7 @@ export default {
           value: 2
         },
         {
-          text: this.$t('locale.ua'),
+          text: this.$t('locale.uk'),
           value: 3
         }
       ];
