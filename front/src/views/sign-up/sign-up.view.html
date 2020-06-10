@@ -32,10 +32,10 @@
         dense
         mmt-dense
         counter
-        :type="showPass ? 'text' : 'password'"
-        :append-icon="showPass ? 'mdi-eye' : 'mdi-eye-off'"
-        @click:append="showPass = !showPass"
-        :rules="[rules.required, rules.minPassLen]"
+        :type="showFirstPassword ? 'text' : 'password'"
+        :append-icon="showFirstPassword ? 'mdi-eye' : 'mdi-eye-off'"
+        @click:append="showFirstPassword = !showFirstPassword"
+        :rules="[rules.isEmpty, rules.minPassLen]"
         v-model="firstPass"  
       />
       <mmt-text-input
@@ -47,8 +47,10 @@
         dense
         mmt-dense
         counter
-        :type="showPass ? 'text' : 'password'"
-        :rules="[rules.required, rules.minPassLen, rules.samePass]"
+        :type="showSecondPassword ? 'text' : 'password'"
+        :append-icon="showSecondPassword ? 'mdi-eye' : 'mdi-eye-off'"
+        @click:append="showSecondPassword = !showSecondPassword"
+        :rules="[rules.isEmpty, rules.minPassLen, rules.samePass]"
         v-model="secondPass" 
       />
     </v-form>

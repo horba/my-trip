@@ -13,7 +13,8 @@ export default {
       firstPass: '',
       secondPass: '',
       valid: true,
-      showPass: false,
+      showFirstPassword: false,
+      showSecondPassword: false,
       existingEmail: false,
       rules: {
         minPassLen: v => v.length >= 8 || this.$t('signUp.leastCharacters'),
@@ -25,12 +26,15 @@ export default {
   methods: {
     signUp () {
       if (this.valid) {
-        this.$store.dispatch('auth/signUp', {
+        const body = {
           email: this.email,
           password: this.firstPass
-        })
+        };
+
+        this.$store.dispatch('auth/signUp', body)
           .then(() => {
-            this.$router.push('/login');
+            this.$store.dispatch('auth/login', body);
+            this.$router.push('/');
           })
           .catch(err => {
             if (err.status === 422) {
