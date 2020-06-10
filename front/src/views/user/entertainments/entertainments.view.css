@@ -1,0 +1,38 @@
+.body-wrap, .places {
+  display: flex;
+}
+
+.body-wrap {
+  max-width: 1095px;
+  height: 100%;
+  flex-direction: row;
+}
+
+.places {
+  flex-wrap: wrap;
+  max-width: 530px;
+  background-color: lightgoldenrodyellow;
+  border: 3px solid red;
+}
+
+.my-entertainments-map-wrap {
+  width: 540px;
+  height: 890px;
+  background-color: green;
+  border: 3px solid red;
+}
+
+.place {
+  width: 260px;
+  height: 285px;
+  border: 3px solid black;
+}
+
+.place .schedule {
+  display: flex;
+}
+
+.place .photo {
+  height: 140px;
+  width: 100%;
+}

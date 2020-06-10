@@ -1,0 +1,35 @@
+<div id="entertainments" class="entertainments">
+  <mmt-stepper></mmt-stepper>
+  <nav>
+
+  </nav>
+  <div class="body-wrap">
+    <div class="places">
+      <div
+        class="place" 
+        v-for="(place, index) in places"
+        :key="index"
+      >
+      <img class="photo" src="/">
+      <h5>{{ place.title }}</h5>
+      <div class="rating">{{ place.rating }}</div>
+      <div class="schedule">
+        <p>{{ place.placeGraph }}</p>
+        <span>•</span>
+        <p>{{ place.placeState }}</p>
+      </div>
+      <div class="decription">
+        {{ place.description }}
+      </div>
+      </div>
+    </div>
+    <div class="my-entertainments-map-wrap">fdssdfds
+      <div id="my-entertainments-autocomplete" class="my-entertainments-autocomplete">
+        
+      </div>
+      <div id="my-entertainments-map" class="my-entertainments-map">
+        
+      </div>
+    </div>
+  </div>
+</div>
