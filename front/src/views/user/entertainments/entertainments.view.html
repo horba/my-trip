@@ -27,17 +27,9 @@
       <div id="my-entertainments-autocomplete" class="my-entertainments-autocomplete">
         
       </div>
-      <gmap-autocomplete class="introInput">
-        <template v-slot:input="slotProps">
-          <v-text-field
-            outlined
-            prepend-inner-icon="place"
-            placeholder="Location Of Event"
-            ref="input"
-            v-on:listeners="slotProps.listeners"
-            v-on:attrs="slotProps.attrs">
-          </v-text-field>
-        </template>
+      <gmap-autocomplete
+        placeholder="This is a placeholder text"
+        @place_changed="setPlace">
       </gmap-autocomplete>
       <GmapMap
         id="my-entertainments-map"

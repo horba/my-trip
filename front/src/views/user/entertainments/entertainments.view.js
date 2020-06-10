@@ -58,23 +58,28 @@ export default {
   methods: {
     geolocate () {
       navigator.geolocation.getCurrentPosition(position => {
-        const pos = { lat: position.coords.latitude, lng: position.coords.longitude };
-        this.mapCenter = pos;
-        this.$refs.mapRef.$mapPromise.then((map) => {
-          map.setCenter(pos);
-        });
-        this.gmapNearbySearch();
+        this.mapCenter = { lat: position.coords.latitude, lng: position.coords.longitude };
+        this.setMapCenter(this.mapCenter);
+        this.nearbySearch();
       });
     },
-    getPlacesFromBounds () {
-      const request = {
-        location: this.mapCenter,
-        radius: 1000,
-        keyword: ['restaurant', 'bar', 'kebab', 'bakery', 'meal_takeaway']
-      };
-      this.gmapNearbySearch(request, true);
+    setMapCenter (position) {
+      this.$refs.mapRef.$mapPromise.then((map) => {
+        map.setCenter(position);
+      });
     },
-    gmapNearbySearch (req, setCenter) {
+    setPlace (place) {
+      this.mapCenter = this.getLatLng(place);
+      this.setMapCenter(this.mapCenter);
+      this.nearbySearch();
+    },
+    getLatLng (place) {
+      return {
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng()
+      }
+    },
+    nearbySearch (req, setCenter) {
       let service;
       const request = {
         types:  [ 'restaurant' ],
@@ -88,10 +93,7 @@ export default {
           if (status === this.google.maps.places.PlacesServiceStatus.OK) {
             results.forEach(el => {
               this.markers.push({
-                position: {
-                  lat: el.geometry.location.lat(),
-                  lng: el.geometry.location.lng()
-                }
+                position: this.getLatLng(el)
               });
             });
             if (setCenter) {
