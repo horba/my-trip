@@ -1,9 +1,9 @@
-import en from './translations/en';
+import enUS from './translations/enUS';
 import ru from './translations/ru';
-import ua from './translations/ua';
+import uk from './translations/uk';
 
 export default {
-  en,
+  enUS,
   ru,
-  ua
+  uk
 };

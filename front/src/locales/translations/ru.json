@@ -34,6 +34,8 @@
     "popularSearches": "Популярные запросы",
     "mapSwitch": "Карта",
     "mapTextInput": "Начните вводить город",
+    "placeOpenState": "Открыто",
+    "placeCloseState": "Закрыто",
     "leisureTypeList": [
       "Активный отдых, экстрим",
       "Музеи и выставки",
@@ -72,9 +74,9 @@
   },
   "locale": {
     "language": "Язык",
-    "en": "Английский",
+    "enUS": "Английский",
     "ru": "Русский",
-    "ua": "Украинский"
+    "uk": "Украинский"
   },
   "userSettings": {
     "generalSettings": "Общие настройки",

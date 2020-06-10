@@ -34,6 +34,8 @@
     "popularSearches": "Popular Searches",
     "mapSwitch": "Map",
     "mapTextInput": "Enter city",
+    "placeOpenState": "Open",
+    "placeCloseState": "Close",
     "leisureTypeList": [
       "Active rest, extreme",
       "Museums and Exhibitions",
@@ -72,9 +74,9 @@
   },
   "locale": {
     "language": "Language",
-    "en": "English",
+    "enUS": "English",
     "ru": "Russian",
-    "ua": "Ukrainian"
+    "uk": "Ukrainian"
   },
   "userSettings": {
     "generalSettings": "General settings",
