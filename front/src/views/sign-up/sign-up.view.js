@@ -1,5 +1,6 @@
-import { MmtTextInput } from '@components';
 import { emailValidationMixin, requiredValidationMixin } from '@mixins';
+
+import { MmtTextInput } from '@components';
 
 export default {
   mixins: [emailValidationMixin, requiredValidationMixin],
@@ -15,9 +16,9 @@ export default {
       showPass: false,
       existingEmail: false,
       rules: {
-        minPassLen: v => v.length >= 8 || 'Не менее 8 символов',
-        samePass: () => this.firstPass === this.secondPass || 'Пароли должны совпадать',
-        existingEmail: () => !this.existingEmail || 'Этот e-mail уже занят. Попробуйте другой.'
+        minPassLen: v => v.length >= 8 || this.$t('signUp.leastCharacters'),
+        samePass: () => this.firstPass === this.secondPass || this.$t('signUp.passwordCoincide'),
+        existingEmail: () => !this.existingEmail || this.$t('signUp.anotherEmail')
       }
     };
   },

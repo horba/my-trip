@@ -141,6 +141,25 @@
     "invalidCredentials": "Invalid credentials",
     "unknownApiError": "Unknown server error"
   },
+  "signUp": {
+    "welcome": "Welcome!",
+    "continue": "Continue",
+    "or": "Or",
+    "continueGoogle": "Continue through Google",
+    "continueFacebook": "Continue through Facebook",
+    "privacyPolicyPart1": "By continuing, you agree to the",
+    "privacyPolicyPart2": "terms of use",
+    "privacyPolicyPart3": "and",
+    "privacyPolicyPart4": "the MakeMeTrip privacy policy.",
+    "enterEmail": "Enter Your e-mail",
+    "pickPassword": "Pick a password",
+    "confirmPassword": "Confirm password",
+    "fillField": "Fill the field",
+    "leastCharacters": "At least 8 characters",
+    "invalidEmail": "Invalid e-mail",
+    "passwordCoincide": "Passwords must match",
+    "anotherEmail": "This e-mail is already taken. Try another one."
+  },
   "validationRules": {
     "noEmpty": "Fill in the field.",
     "enterCorrectEmail": "Enter valid email"
