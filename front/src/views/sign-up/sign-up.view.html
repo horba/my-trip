@@ -4,7 +4,7 @@
   color="#F6F8FB"
   >
   <v-card-title>
-    <h4>Добро пожаловать!</h4>
+    <h4>{{ $t('signUp.welcome') }}</h4>
   </v-card-title>
   <v-card-text>
     <v-form
@@ -14,7 +14,7 @@
     >
       <mmt-text-input
         class="sign-up-text-field"
-        placeholder="Введите Ваш e-mail"
+        :placeholder="$t('signUp.enterEmail')"
         mmt-label="E-mail"
         rounded
         filled
@@ -25,7 +25,7 @@
       />
       <mmt-text-input
         class="sign-up-text-field"
-        placeholder="Придумайте пароль"
+        :placeholder="$t('signUp.pickPassword')"
         mmt-label="Password"
         rounded
         filled
@@ -40,7 +40,7 @@
       />
       <mmt-text-input
         class="sign-up-text-field"
-        placeholder="Повторите пароль"
+        :placeholder="$t('signUp.confirmPassword')"
         mmt-label="Password"
         rounded
         filled
@@ -61,23 +61,23 @@
       rounded
       elevation="0"
       @click="signUp"
-    >Продолжить</v-btn>
-    <span>Или</span>
+    >{{ $t('signUp.continue') }}</v-btn>
+    <span>{{ $t('signUp.or') }}</span>
     <v-btn
       class="google-btn social-btn mmt-btn"
       rounded
       outlined
-    >Продолжить через Google<v-icon right>mdi-google</v-icon></v-btn>
+    >{{ $t('signUp.continueGoogle') }}<v-icon right>mdi-google</v-icon></v-btn>
     <v-btn
       class="facebook-btn social-btn mmt-btn"
       rounded
       outlined
-    >Продолжить через Facebook<v-icon right>mdi-facebook</v-icon></v-btn>
+    >{{ $t('signUp.continueFacebook') }}<v-icon right>mdi-facebook</v-icon></v-btn>
   </v-card-actions>
   <span>
-    Продолжая, Вы соглашаетесь с
-    <a>условиями пользования</a>
-    сервисом и
-    <a>политикой конфиденциальности MakeMeTrip.</a>
+    {{ $t('signUp.privacyPolicyPart1') }}
+    <a>{{ $t('signUp.privacyPolicyPart2') }}</a>
+    {{ $t('signUp.privacyPolicyPart3') }}
+    <a>{{ $t('signUp.privacyPolicyPart4') }}</a>
   </span>
 </v-card>
