@@ -45,9 +45,11 @@ const {
         clickableIcons: true,
         streetViewControl: true,
         panControlOptions: true,
+        fullscreenControl: false,
+        zoomControl: true,
         gestureHandling: 'cooperative',
         backgroundColor: COLORS.LANDSCAPE,
-        mapTypeControl: true,
+        mapTypeControl: false,
         zoomControlOptions: {
           style: 'SMALL'
         },

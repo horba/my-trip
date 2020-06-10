@@ -17,6 +17,7 @@
       <div class="main">
         <div class="input-wrap">
           <mmt-text-input
+            id="leisure-autocomplete"
             class="search-city"
             :placeholder="$t('leisure.mapTextInput')"
             append-icon="mdi-magnify"
@@ -30,34 +31,56 @@
             :label="$t('leisure.mapSwitch')"
           ></v-switch>
         </div>
-        <LeisureMap id="leisure-map" class="leisure-map" v-if="showMap"/>
+        <div class="leisure-map" ref="leisure-map" v-if="showMap"></div>
       </div>
-      <div class="places">
+      <div 
+        class="places"
+      >
         <div 
           class="place"
           v-for="(place, index) in places"
           :key="index"
         >
-          <div class="photo">
-            <v-btn
-              class="like-btn"
-              rounded
-            ><v-icon>mdi-heart-outline</v-icon></v-btn>
-          </div>
+          <img class="photo" :src="place.photos"></img>
           <div class="place-info">
             <div class="title-wrap">
-              <span class="title">{{ place.title }}</span>
-              <span class="rating">{{ place.rating }}</span>
+              <span class="title"
+                    :title="place.name"
+              >{{ place.name | trimString }}</span>
+              <div class="rating-wrap">
+                <v-rating 
+                  class="star"
+                  v-model="rating[index]"
+                  clearable
+                  length=1
+                  color="var(--leisure-place-star-color)"
+                  background-color="var(--leisure-place-star-color)"
+                ></v-rating>
+                <span class="rating">{{ place.rating }}</span>
+              </div>
             </div>
             <div class="price-wrap">
-              <div class="price">{{ place.price }}</div>
-              <span class="state">{{ place.state }}</span>
+              <v-rating
+                v-if="place.price_level"
+                class="price-level"
+                empty-icon="mdi-currency-usd"
+                full-icon="mdi-currency-usd"
+                length=4
+                :value=place.price_level
+                dense
+                size="16px"
+                readonly
+                background-color="var(--leisure-place-price-bgc)"
+                color="var(--leisure-place-price-color)"
+              ></v-rating>
+              <p v-if="place.price_level">•</p>
+              <span class="state">{{ place.opening_hours }}</span>
             </div>
-            <span class="disc">{{ place.discription }}</span>
+            <span class="desc"></span>
           </div>
         </div>
       </div>
-      <div class="pages">pages</div>
+      <div class="more-pages"></div>
     </div>
   </div>
 </div>
