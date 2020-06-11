@@ -1,0 +1,67 @@
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.place-info, .place-state, .title-wrap,
+.schedule-wrap, .rating-wrap {
+  display: flex;
+}
+
+.place {
+  width: 260px;
+  height: 285px;
+  background-color: var(--leisure-containers-bgc);
+}
+
+.place-info {
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px 20px 10px 20px;
+  height: 115px;
+}
+
+.title-wrap {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.photo {
+  height: 140px;
+  width: 100%;
+}
+
+.place-state > p {
+  font-size: 12px;
+}
+
+.rating-wrap {
+  width: 60px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.place-state > .schedule {
+  font-weight: bold;
+}
+
+.place-state > span {
+  margin: 0 5px;
+  font-size: 12px;
+}
+
+.open {
+  color: var(--leisure-place-open-state-color);
+}
+
+.close {
+  color: var(--leisure-place-close-state-color);
+}
+
+.decription {
+  margin-top: 6px;
+}
