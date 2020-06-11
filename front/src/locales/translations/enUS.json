@@ -46,6 +46,9 @@
       "Game clubs, quests"
     ]
   },
+  "entertainments": {
+    "search": "Search on map"
+  },
   "footer": {
     "join": "Join",
     "subscribeToNews": "Subscribe to news",
