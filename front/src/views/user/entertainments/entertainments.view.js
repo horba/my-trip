@@ -1,51 +1,20 @@
-import { MmtStepper } from '@components';
+import { MmtLeisureCard, MmtStepper } from '@components';
+
 import { gmapApi } from 'vue2-google-maps';
 
 /* eslint-disable */
 export default {
   components: {
-    MmtStepper
+    MmtStepper,
+    MmtLeisureCard
   },
   computed: {
     google: gmapApi
   },
   data () {
     return {
-      places: [
-        {
-          photo: 'photo',
-          title: 'Title1',
-          rating: '5,0',
-          placeGraph: 'График работы',
-          placeState: 'Открыто',
-          description: 'Слово'
-        },
-        {
-          photo: 'photo',
-          title: 'Title2',
-          rating: '5,0',
-          placeGraph: 'График работы',
-          placeState: 'Открыто',
-          description: 'Слово'
-        },
-        {
-          photo: 'photo',
-          title: 'Title3',
-          rating: '5,0',
-          placeGraph: 'График работы',
-          placeState: 'Открыто',
-          description: 'Слово'
-        },
-        {
-          photo: 'photo',
-          title: 'Title4',
-          rating: '5,0',
-          placeGraph: 'График работы',
-          placeState: 'Открыто',
-          description: 'Слово'
-        }
-      ],
-      mapCenter: { 
+      places: [],
+      mapCenter: {
         lat: 48.459322,
         lng: 35.052729
       },
@@ -69,36 +38,38 @@ export default {
       });
     },
     setPlace (place) {
-      this.mapCenter = this.getLatLng(place);
-      this.setMapCenter(this.mapCenter);
-      this.nearbySearch();
+      this.markers = [];
+      this.places = [];
+      if (place.geometry) {
+        this.mapCenter = this.getLatLng(place);
+        this.setMapCenter(this.mapCenter);
+        this.nearbySearch();
+      }
     },
     getLatLng (place) {
       return {
         lat: place.geometry.location.lat(),
         lng: place.geometry.location.lng()
-      }
+      };
     },
-    nearbySearch (req, setCenter) {
+    nearbySearch () {
       let service;
       const request = {
-        types:  [ 'restaurant' ],
+        types: [ 'restaurant' ],
         location: this.mapCenter,
         radius: 1000
       };
-      setCenter = true;
       this.$refs.mapRef.$mapPromise.then((map) => {
         service = new this.google.maps.places.PlacesService(map);
-        service.nearbySearch(request,(results, status) => {
+        service.nearbySearch(request, (results, status) => {
           if (status === this.google.maps.places.PlacesServiceStatus.OK) {
             results.forEach(el => {
+              this.places.push(el);
               this.markers.push({
                 position: this.getLatLng(el)
               });
             });
-            if (setCenter) {
-              map.setCenter(results[0].geometry.location);
-            }
+            map.setCenter(results[0].geometry.location);
           }
         });
       });

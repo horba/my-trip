@@ -5,30 +5,17 @@
   </nav>
   <div class="body-wrap">
     <div class="places">
-      <div
+      <mmt-leisure-card
         class="place" 
         v-for="(place, index) in places"
         :key="index"
-      >
-      <img class="photo" src="/">
-      <h5>{{ place.title }}</h5>
-      <div class="rating">{{ place.rating }}</div>
-      <div class="schedule">
-        <p>{{ place.placeGraph }}</p>
-        <span>•</span>
-        <p>{{ place.placeState }}</p>
-      </div>
-      <div class="decription">
-        {{ place.description }}
-      </div>
-      </div>
+        :place="place"
+      ></mmt-leisure-card>
     </div>
     <div class="my-entertainments-map-wrap">
-      <div id="my-entertainments-autocomplete" class="my-entertainments-autocomplete">
-        
-      </div>
       <gmap-autocomplete
-        placeholder="This is a placeholder text"
+        class="entertainments-autocomplete"
+        :placeholder="$t('entertainments.search')"
         @place_changed="setPlace">
       </gmap-autocomplete>
       <GmapMap
@@ -38,6 +25,9 @@
         :center="mapCenter"
         :zoom="15"
         style="width: 100%; height: 100%"
+        :options="{
+          mapTypeControl: false,
+        }"
       >
         <GmapMarker
           :key="index"
