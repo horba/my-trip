@@ -55,6 +55,8 @@ namespace WebAPI
       services.AddScoped<LanguageRepository>();
       services.AddScoped<TicketsRepository>();
       services.AddScoped<TicketsService>();
+      services.AddScoped<WaypointRepository>();
+      services.AddScoped<WaypointService>();
       services.AddScoped<UserService>();
       services.AddSingleton<AuthService>();
       services.AddScoped<TripRepository>();

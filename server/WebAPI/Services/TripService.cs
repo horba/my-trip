@@ -32,5 +32,11 @@ namespace WebAPI.Services
 
       return _mapper.Map<IEnumerable<TripDTO>>(trips.OrderBy(t => t.StartDate).ToList());
     }
+
+    public IEnumerable<TripDTO> GetUpcomingTrips(int userId)
+    {
+      var trips = _tripRepository.GetUserTrips(userId).Where(t => t.StartDate >= DateTime.Now);
+      return _mapper.Map<IEnumerable<TripDTO>>(trips.OrderBy(t => t.StartDate).ToList());
+    }
   }
 }

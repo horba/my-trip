@@ -1,0 +1,91 @@
+<div>
+  <div class="card-button-wrapper">
+    <v-card class="card-wrapper" color="primary lighten-7" tile flat>
+      <div class="delete-btn" @click="deleteWaypoint">
+        X
+      </div>
+      <div class="card">
+        <div class="return-to-home" v-if="firstCard">
+          <div class="trip-start">
+            <span class="subtitle">
+              {{$t('tripHistory.startTripFrom')}}
+            </span>
+            <br />
+            <span class="content">
+              {{waypoint.city}}
+            </span>
+          </div>
+          <!-- <div class="return-to-checkbox">
+            <v-checkbox hide-details :label="`${$t('tripHistory.returnTo')} Киев`" color="#2962FF"></v-checkbox>
+          </div> -->
+        </div>
+        <div class="arrival" v-else>
+          <div class="date">{{$t('tripHistory.arrival')}} {{waypoint.arrival | date('d MMM y, hh:mm')}}</div>
+          <div class="city">
+            <span class="subtitle">
+              {{$t('tripHistory.goingTo')}}
+            </span>
+            <br />
+            <span class="content">
+              {{waypoint.city}}
+            </span>
+          </div>
+        </div>
+        <div class="departure" v-if="!lastCard">
+          <div class="city">
+            {{$t('tripHistory.departurefromCity')}}
+          </div>
+          <div class="datetime">
+            <div class="date">
+              <span class="subtitle">
+                {{$t('tripHistory.date')}}
+              </span>
+              <br />
+              <span class="content">
+                {{waypoint.departure | date('d MMM y')}}
+              </span>
+            </div>
+            <div class="time">
+              <span class="subtitle">
+                {{$t('tripHistory.time')}}
+              </span>
+              <br />
+              <span class="content">
+                {{waypoint.departure | date('hh:mm')}}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="details">
+          <div>
+            <span class="subtitle">
+              {{$t('tripHistory.details')}}:
+            </span>
+            <br />
+            {{waypoint.details}}
+          </div>
+        </div>
+        <img src="https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg">
+      </div>
+    </v-card>
+    <v-btn class="completed-btn white--text" color="success" tile depressed height="59" width="166"
+      @click="updateCompletedState">
+      <v-checkbox color="white" readonly v-model="waypoint.isCompleted"></v-checkbox>
+      <span class="button-text">
+        {{$t('tripHistory.isCompleted')}}
+      </span>
+    </v-btn>
+  </div>
+  <div class="path-info" v-if="!lastCard">
+    <div class="vertical-line"></div>
+    <v-icon class="transport-icon" :class="{'rotate-180': waypoint.transport === 0}">{{iconMap[waypoint.transport]}}
+    </v-icon>
+    <div class="text-content">
+      {{waypoint.pathLength}} {{$t('tripHistory.km')}} | 
+      <template v-if="waypoint.pathTime.hours">{{waypoint.pathTime.hours}} {{$t('tripHistory.hoursShort')}} </template> 
+      <template v-if="waypoint.pathTime.minutes || !waypoint.pathTime.hours">{{waypoint.pathTime.minutes}} {{$t('tripHistory.minutesShort')}}</template> 
+    </div>
+    <div class="vertical-line"></div>
+    <v-icon class="pencil">mdi-pencil</v-icon>
+  </div>
+</div>

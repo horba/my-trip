@@ -115,7 +115,21 @@
     "departure": "Вылет",
     "flightTime": "Время полета",
     "differenceInTime": "Разница во времени",
-    "details": "Подробнее"
+    "details": "Подробнее",
+    "planNewTrip": "Спланировать будущую поездку",
+    "createNewTrip": "Создать новое путешествие",
+    "addNewWaypoint": "Добавить новый пункт маршрута",
+    "isCompleted": "Выполнено",
+    "arrival": "Прибытие:",
+    "goingTo": "Собираюсь в",
+    "departurefromCity": "Отъезд из города",
+    "date": "Дата",
+    "time": "Время",
+    "startTripFrom": "Начало путешествия из",
+    "returnTo": "Вернутся в",
+    "km": "км",
+    "hoursShort": "ч",
+    "minutesShort": "мин"
   },
   "tickets": {
     "ticketItem": {

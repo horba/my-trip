@@ -4,6 +4,7 @@ import locale from './modules/locale.store';
 import recoveryPassword from './modules/recoveryPassword.store';
 import auth from './modules/auth.store';
 import trip from './modules/trip.store';
+import waypoints from './modules/waypoints.store';
 import userSettings from './modules/userSettings.store';
 import userTickets from './modules/userTickets.store';
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     trip,
     auth,
     userTickets,
-    recoveryPassword
+    recoveryPassword,
+    waypoints
   }
 });

@@ -12,6 +12,8 @@ namespace WebAPI.DTO
       CreateMap<Entities.Models.Country, CountryDTO>();
 
       CreateMap<Entities.Models.Trip, TripDTO>();
+
+      CreateMap<Waypoint, WaypointDTO>();
     }
   }
 }

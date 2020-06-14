@@ -27,5 +27,15 @@ namespace WebAPI.Controllers
       var trips = _tripService.GetTripsHistory(HttpContext.GetUserIdFromClaim(), searchQuery);
       return Ok(trips);
     }
+
+    [HttpGet]
+    [Authorize]
+    [Route("upcoming")]
+    [ProducesResponseType(typeof(IEnumerable<TripDTO>), StatusCodes.Status200OK)]
+    public IActionResult GetUpcomingTrips()
+    {
+      var trips = _tripService.GetUpcomingTrips(HttpContext.GetUserIdFromClaim());
+      return Ok(trips);
+    }
   }
 }

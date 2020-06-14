@@ -26,3 +26,13 @@ export {
   default as MyHistoryPreviousTrips
 }
   from '@views/user/history-previous-trips/history-previous-trips.view.vue';
+
+export {
+  default as MyHistoryUpcomingTrips
+}
+  from '@views/user/history-upcoming-trips/history-upcoming-trips.view.vue';
+
+export {
+  default as MyHistoryTripRoute
+}
+  from '@views/user/history-trip-route/history-trip-route.view.vue';

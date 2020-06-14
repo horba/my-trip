@@ -115,7 +115,21 @@
     "departure": "Departure",
     "flightTime": "Flight time",
     "differenceInTime": "Difference in time",
-    "details": "Details"
+    "details": "Details",
+    "planNewTrip": "Plan your future trip",
+    "createNewTrip": "Create a new journey",
+    "addNewWaypoint": "Add new waypoint",
+    "isCompleted": "Completed",
+    "arrival": "Arrival:",
+    "goingTo": "Going to",
+    "departurefromCity": "Departure from city",
+    "date": "Date",
+    "time": "Time",
+    "startTripFrom": "Start trip from",
+    "returnTo": "Return to",
+    "km": "km",
+    "hoursShort": "h",
+    "minutesShort": "min"
   },
   "tickets": {
     "ticketItem": {

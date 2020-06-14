@@ -115,7 +115,21 @@
     "departure": "Виліт",
     "flightTime": "Час польоту",
     "differenceInTime": "Різниця в часі",
-    "details": "Докладніше"
+    "details": "Докладніше",
+    "planNewTrip": "Спланувати майбутню поїздку",
+    "createNewTrip": "Створити нову подорож",
+    "addNewWaypoint": "Додати новий пункт маршруту",
+    "isCompleted": "Виконано",
+    "arrival": "Прибуття:",
+    "goingTo": "Збираюсь до",
+    "departurefromCity": "Від'їзд з міста",
+    "date": "Дата",
+    "time": "Час",
+    "startTripFrom": "Початок подорожі з",
+    "returnTo": "Повернутися до",
+    "km": "км",
+    "hoursShort": "ч",
+    "minutesShort": "мин"
   },
   "tickets": {
     "ticketItem": {

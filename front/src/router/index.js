@@ -9,7 +9,7 @@ import {
   MyAccommodation, MyFood, MyTransport,
   MyLeisure, SignIn, SignUp,
   UserSettings, UserCabinet, MyHistoryPreviousTrips,
-  RecoveryPassword
+  MyHistoryUpcomingTrips, MyHistoryTripRoute, RecoveryPassword
 } from '@views';
 import store from '@store';
 
@@ -166,9 +166,21 @@ const routes = [
         meta: { layout: 'authorize' }
       },
       {
-        path: 'history/next',
+        path: 'history/future',
         name: 'MyHistoryNext',
-        component: PrivacyPolicy,
+        component: MyHistoryUpcomingTrips,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'history/future/:id/route',
+        name: 'MyHistoryFututeRoute',
+        component: MyHistoryTripRoute,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'history/prev/:id/route',
+        name: 'MyHistoryPrevRoute',
+        component: MyHistoryTripRoute,
         meta: { layout: 'authorize' }
       },
       {
