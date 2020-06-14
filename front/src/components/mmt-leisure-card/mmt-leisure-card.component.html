@@ -1,0 +1,58 @@
+<div class="place">
+  <div class="photo-wrap">
+    <img
+      v-if="place.photos"
+      class="photo"
+      :src="place.photos[0].getUrl()"
+    >
+    <img
+      v-else
+      class="photo"
+      src="http://www.rangerwoodperiyar.com/images/joomlart/demo/default.jpg"
+    >
+  </div>
+  <div class="place-info">
+    <div class="place-body-wrap">
+      <div class="title-wrap">
+        <h6
+          class="title"
+          :title="place.name"
+        >
+          {{ place.name |  trimString(20) }}
+        </h6>
+        <div class="rating-wrap">
+          <p class="rating">{{ place.rating }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="place-footer-wrap">
+      <div class="schedule-wrap">
+        <div 
+          v-if="place.opening_hours && place.utc_offset_minutes"
+          class="place-state"
+        >
+          <p class="schedule">График работы</p>
+          <span>•</span>
+          <p
+            class="open"
+            v-if="place.opening_hours.isOpen()"
+          >
+            {{ $t('leisure.placeOpenState') }}
+          </p>
+          <p
+            class="close"
+            v-else
+          >
+            {{ $t('leisure.placeCloseState') }}
+          </p>
+        </div>
+      </div>
+      <div
+        class="decription"
+        :title="place.types | splitTypes"
+      >
+        {{ place.types | splitTypes | trimString(25) }}
+      </div>
+    </div>
+  </div>
+</div>
