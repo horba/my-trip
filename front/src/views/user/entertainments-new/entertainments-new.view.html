@@ -1,0 +1,108 @@
+<div class="new-entertainments">
+  <div class="adding-container">
+    <h4 class="title">Добавить досуг</h4>
+    <mmt-text-input
+      class="sign-up-text-field"
+      placeholder="Введите название"
+      mmt-label="Название"
+      rounded
+      filled
+      dense
+      mmt-dense
+      v-model="placeName"
+    />
+    <mmt-text-input
+      class="sign-up-text-field"
+      placeholder="Введите описание"
+      mmt-label="Описание"
+      rounded
+      filled
+      dense
+      mmt-dense
+      v-model="placeDescription"
+    />
+    <mmt-text-input
+      class="sign-up-text-field"
+      placeholder="Введите количество человек"
+      mmt-label="Количество человек"
+      rounded
+      filled
+      dense
+      mmt-dense
+      v-model="peopleCount"
+    />
+    <div class="datepicker">
+      <v-menu
+        v-model="menu"
+        :close-on-content-click="false"
+        transition="scale-transition"
+        offset-y
+        max-width="290px"
+        min-width="290px"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-text-field
+            prepend-inner-icon="mdi-calendar-check"
+            v-model="date"
+            label="Дата"
+            readonly
+            v-bind="attrs"
+            v-on="on"
+            background-color="white"
+            rounded
+          ></v-text-field>
+        </template>
+        <v-date-picker v-model="date" @input="menu = false"></v-date-picker>
+      </v-menu>
+    </div>
+    <v-btn
+      class="add-file mmt-btn"
+      rounded
+      elevation="0"
+    >Добавить файл</v-btn>
+    <v-btn
+      class="add-file mmt-btn"
+      rounded
+      elevation="0"
+      @click="savePlace"
+    >Запланировать</v-btn>
+  </div>
+  <div class="gmap-container">
+    <div class="autocomplete-container">
+      <v-btn
+        class="set-marker"
+        title="Выбрать место вручную"
+        color="white"
+        x-large
+        @click="setCenterMarker"
+      >
+        <v-icon>mdi-map-marker</v-icon>
+      </v-btn>
+      <gmap-autocomplete
+      class="new-entertainments-autocomplete"
+      :placeholder="$t('entertainments.search')"
+      @place_changed="findPlace"
+      >
+      </gmap-autocomplete>
+    </div>
+    <GmapMap
+      id="new-entertainments-map"
+      class="new-entertainments-map"
+      ref="mapRef2"
+      :center="mapCenter"
+      :zoom="13"
+      :options="{
+        mapTypeControl: false
+      }"
+    >
+      <GmapMarker
+        ref="placeMarker"
+        v-if="mapCenter"
+        :position="mapCenter"
+        :draggable="true"
+        v-model="mapCenter"
+      />
+      </GmapMap>
+    </GmapMap>
+  </div>
+</div>

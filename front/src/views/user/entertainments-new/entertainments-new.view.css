@@ -1,0 +1,89 @@
+.new-entertainments, .autocomplete-container, .adding-container {
+  display: flex;
+}
+
+.title {
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+
+.new-entertainments {
+  max-width: 1095px;
+  height: 90vh;
+  justify-content: space-between;
+}
+
+.gmap-container {
+  width: 840px;
+  height: 100%;
+}
+
+.new-entertainments-map {
+  width: 100%;
+  height: 100%;
+}
+
+.new-entertainments-autocomplete {
+  width: 94%;
+  height: 50px;
+  background-color: #fff;
+  padding:0 20px;
+}
+
+.autocomplete-container >>> .set-marker {
+  border-radius: 0;
+  min-width: 60px;
+  padding:0;
+  box-shadow:none;
+  height: 50px;
+}
+
+.mmt-btn.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+  background-color: var(--continue-button-background-color);
+}
+
+.mmt-btn.v-btn:not(.v-btn--disabled):not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) >>> .v-btn__content {
+  color: var(--continue-button-active-color);
+}
+
+.mmt-btn {
+  padding:10px 48px;
+  margin: 14px 0;
+  color: white;
+}
+
+.adding-container {
+  flex-direction: column;
+  width: 200px;
+  justify-content: start;
+}
+
+.datepicker >>> .v-text-field__slot {
+  font-size:12px;
+}
+
+.datepicker >>> input {
+  max-height: 34px;
+}
+
+.datepicker >>> .v-input__slot {
+  padding-left: 14px;
+}
+
+.datepicker >>> * {
+  font-weight: normal;
+}
+
+.datepicker >>> .v-input {
+  padding-top:20px;
+}
+
+.datepicker >>> .v-label {
+  top: -6px;
+  left: -22px !important;
+  color: black;
+}
+
+.datepicker >>> .v-icon {
+  cursor: pointer;
+}

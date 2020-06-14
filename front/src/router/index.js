@@ -5,6 +5,7 @@ import {
   Contacts,
   CookiePolicy,
   Entertainments,
+  EntertainmentsNew,
   Food,
   ForTourOperators,
   Home,
@@ -150,6 +151,12 @@ const routes = [
         path: 'entertainments',
         name: 'Entertainments',
         component: Entertainments,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'entertainments/new',
+        name: 'EntertainmentsNew',
+        component: EntertainmentsNew,
         meta: { layout: 'authorize' }
       },
       {
