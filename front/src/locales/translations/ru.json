@@ -47,7 +47,8 @@
     ]
   },
   "entertainments": {
-    "search": "Искать на карте"
+    "search": "Искать на карте",
+    "placesCount": "РЕЗУЛЬТАТЫ"
   },
   "footer": {
     "join": "Присоедениться",

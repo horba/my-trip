@@ -47,7 +47,8 @@
     ]
   },
   "entertainments": {
-    "search": "Search on map"
+    "search": "Search on map",
+    "placesCount": "RESULTS"
   },
   "footer": {
     "join": "Join",

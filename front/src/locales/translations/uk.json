@@ -47,7 +47,8 @@
     ]
   },
   "entertainments": {
-    "search": "шукати на мапі"
+    "search": "шукати на мапі",
+    "placesCount": "РЕЗУЛЬТАТИ"
   },
   "footer": {
     "join": "Приєднатися",
