@@ -1,9 +1,17 @@
-.body-wrap, .places, .place-state {
+.body-wrap, .places, .place-state, nav {
   display: flex;
 }
 
+nav {
+  align-items: center;
+  height: 50px;
+}
+
+nav > .results {
+  margin:0 2px 0 10px;
+}
+
 .body-wrap {
-  margin-top: 20px;
   max-width: 1095px;
   height: 100%;
   flex-direction: row;

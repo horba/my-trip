@@ -1,7 +1,15 @@
 <div id="entertainments" class="entertainments">
   <mmt-stepper></mmt-stepper>
   <nav>
-
+    <span class="results">
+      {{ $t('entertainments.placesCount') }}
+    </span>
+    <span class="results-count">
+      ({{ places.length }})
+    </span>
+    <div class="buttons-container">
+      
+    </div>
   </nav>
   <div class="body-wrap">
     <div class="places">
@@ -26,7 +34,7 @@
         :zoom="15"
         style="width: 100%; height: 100%"
         :options="{
-          mapTypeControl: false,
+          mapTypeControl: false
         }"
       >
         <GmapMarker
