@@ -1,0 +1,16 @@
+.eating-new-autocomplete {
+    width: 94%;
+    height: 39px;
+    background-color: #fff;
+    padding: 0 20px;
+    border-radius: 20px;
+    width: 248px;
+}
+
+.date-picker, .time-picker {
+    width: 248px;;
+}
+
+input.eating-new-autocomplete.pac-target-input:focus {
+    outline: none;
+}

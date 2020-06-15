@@ -142,5 +142,26 @@
     "forgetPassword": "Забули пароль?",
     "invalidCredentials": "Недійсні облікові дані",
     "unknownApiError": "Невідома помилка сервера"
+  },
+  "eating": {
+    "open": "Відчинено",
+    "close": "Зачинено",
+    "menu": "Меню",
+    "cafe": "Кафе",
+    "restaurant": "Ресторан",
+    "bar": "Бар",
+    "establishment": "Установа",
+    "meal_delivery": "Доставка їжі",
+    "meal_takeaway": "Їжа на винесення",
+    "food": "Їжа",
+    "results": "Результати",
+    "add": "Додати",
+    "filter": "Фільтр"
+  },
+  "eatingNew": {
+    "addCafe": "Додати кафе",
+    "textFieldHint": "Місце/назва об'єкта",
+    "addFile": "Додати файл",
+    "date": "Дата"
   }
 }

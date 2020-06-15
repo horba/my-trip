@@ -142,5 +142,26 @@
     "forgetPassword": "Forget password?",
     "invalidCredentials": "Invalid credentials",
     "unknownApiError": "Unknown server error"
+  },
+  "eating": {
+    "open": "Open",
+    "close": "Close",
+    "menu": "Menu",
+    "cafe": "Cafe",
+    "restaurant": "Restourant",
+    "bar": "Bar",
+    "establishment": "Establishment",
+    "meal_delivery": "Meal delivery",
+    "meal_takeaway": "Meal takeawey",
+    "food": "Food",
+    "results": "Results",
+    "add": "Add",
+    "filter": "Filter"
+  },
+  "eatingNew": {
+    "addCafe": "Add cafe",
+    "textFieldHint": "Place/name of the object",
+    "addFile": "Add file",
+    "date": "Date"
   }
 }

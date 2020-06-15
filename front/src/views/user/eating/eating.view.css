@@ -1,0 +1,25 @@
+#map {
+  height: 857px;
+  width: 100%;
+}
+
+.place-card {
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.separator {
+  margin: 0 10px;
+}
+
+.text-card {
+  margin: 0 20px;
+}
+
+.types {
+  margin: 10px 20px 10px 0;
+}
+
+.active-card {
+  border: 1px solid var(--select-card-border-color);
+}

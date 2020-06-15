@@ -6,10 +6,10 @@ import {
   Articles, AboutUs, PrivacyPolicy,
   CookiePolicy, TermsOfUse, ForTourOperators,
   Contacts, ReviewNew, MyTickets,
-  MyAccommodation, MyFood, MyTransport,
+  MyAccommodation, Eating, MyTransport,
   MyLeisure, SignIn, SignUp,
   UserSettings, UserCabinet, MyHistoryPreviousTrips,
-  RecoveryPassword
+  RecoveryPassword, EatingNew
 } from '@views';
 import store from '@store';
 
@@ -118,9 +118,15 @@ const routes = [
         meta: { layout: 'authorize' }
       },
       {
-        path: 'food',
-        name: 'MyFood',
-        component: MyFood,
+        path: 'eating',
+        name: 'Eating',
+        component: Eating,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'eating/new',
+        name: 'EatingNew',
+        component: EatingNew,
         meta: { layout: 'authorize' }
       },
       {

@@ -31,7 +31,7 @@ export default {
       {
         title: 'menu.food',
         icon: 'mdi-food',
-        link: '/my/food'
+        link: '/my/eating'
       },
       {
         title: 'menu.transport',

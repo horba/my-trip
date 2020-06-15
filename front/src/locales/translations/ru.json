@@ -142,5 +142,26 @@
     "forgetPassword": "Забыли пароль?",
     "invalidCredentials": "Неверные учетные данные",
     "unknownApiError": "Неизвестная ошибка сервера"
+  },
+  "eating": {
+    "open": "Открыто",
+    "close": "Закрыто",
+    "menu": "Меню",
+    "cafe": "Кафе",
+    "restaurant": "Ресторан",
+    "bar": "Бар",
+    "establishment": "Заведение",
+    "meal_delivery": "Доставка еды",
+    "meal_takeaway": "Еда на вынос",
+    "food": "Еда",
+    "results": "Результаты",
+    "add": "Добавить",
+    "filter": "Фильтр"
+  },
+  "eatingNew": {
+    "addCafe": "Добавить кафе",
+    "textFieldHint": "Место/название объекта",
+    "addFile": "Добавить файл",
+    "date": "Дата"
   }
 }
