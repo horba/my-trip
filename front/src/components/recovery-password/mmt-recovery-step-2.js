@@ -1,5 +1,8 @@
 import { MmtTextInput } from '@components';
+import { requiredValidationMixin } from '@mixins';
+
 export default {
+  mixins: [ requiredValidationMixin ],
   components: {
     MmtTextInput
   },
@@ -13,7 +16,6 @@ export default {
       showPasswordConfirmation: false,
       serverError: '',
       rules: {
-        isEmpty: v => !!v || this.$t('recoveryPassword.noEmpty'),
         minPassLen: v => v.length >= 8 || this.$t('recoveryPassword.restriction'),
         samePass: () => this.password === this.passwordConfirmation
           || this.$t('recoveryPassword.passwordMustIdentity')

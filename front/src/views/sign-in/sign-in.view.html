@@ -7,10 +7,14 @@
   <v-card-text>
     <v-form class="auth-form" v-model="formValidity">
       <mmt-text-input class="input-field" :mmt-label="$t('userSettings.email')" rounded filled single-line mmt-dense
-        :placeholder="$t('recoveryPassword.emailPlease')" v-model="email" :rules="rules" :error-messages="serverError"
+        :placeholder="$t('recoveryPassword.emailPlease')" v-model="email" 
+        :rules="[rules.required, emailRules.validEmail]" 
+        :error-messages="serverError"
         @input="onInput" />
       <mmt-text-input class="input-field" :mmt-label="$t('recoveryPassword.password')" rounded filled single-line mmt-dense
-        :placeholder="$t('signIn.passwordPlease')" type="password" v-model="password" :rules="rules" :error-messages="serverError"
+        :placeholder="$t('signIn.passwordPlease')" type="password" v-model="password" 
+        :rules="[rules.required]" 
+        :error-messages="serverError"
         @input="onInput" />
       <v-btn class="continue-button mmt-btn" rounded depressed large :disabled="!formValidity" @click="login">{{$t('signIn.continue')}}
       </v-btn>

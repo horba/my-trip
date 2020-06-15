@@ -13,7 +13,7 @@
         dense
         :placeholder="$t('recoveryPassword.emailPlease')"
         v-model="email"
-        :rules="[rules.isEmpty, rules.validEmail]"
+        :rules="[rules.required, emailRules.validEmail]"
         required
       />
     </div>

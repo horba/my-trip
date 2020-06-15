@@ -15,7 +15,7 @@
         :type="showPassword  ? 'text' : 'password'"
         :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
         @click:append="showPassword = !showPassword"
-        :rules="[rules.isEmpty, rules.minPassLen]"
+        :rules="[rules.required, rules.minPassLen]"
         v-model="password"
         required
       />
@@ -32,7 +32,7 @@
         :type="showPasswordConfirmation ? 'text' : 'password'"
         :append-icon="showPasswordConfirmation ? 'mdi-eye' : 'mdi-eye-off'"
         @click:append="showPasswordConfirmation = !showPasswordConfirmation"
-        :rules="[rules.isEmpty, rules.minPassLen, rules.samePass]"
+        :rules="[rules.required, rules.minPassLen, rules.samePass]"
         v-model="passwordConfirmation"
         required
       />
