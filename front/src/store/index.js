@@ -6,6 +6,7 @@ import auth from './modules/auth.store';
 import trip from './modules/trip.store';
 import userSettings from './modules/userSettings.store';
 import userTickets from './modules/userTickets.store';
+import accommodations from './modules/accommodations.store';
 
 Vue.use(Vuex);
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     trip,
     auth,
     userTickets,
-    recoveryPassword
+    recoveryPassword,
+    accommodations
   }
 });

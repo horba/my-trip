@@ -9,7 +9,7 @@ import {
   MyAccommodation, MyFood, MyTransport,
   MyLeisure, SignIn, SignUp,
   UserSettings, UserCabinet, MyHistoryPreviousTrips,
-  RecoveryPassword
+  RecoveryPassword, AccommodationEditor
 } from '@views';
 import store from '@store';
 
@@ -115,6 +115,12 @@ const routes = [
         path: 'accommodation',
         name: 'MyAccommodation',
         component: MyAccommodation,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'accommodation/manage/:id?',
+        name: 'ManageAccommodation',
+        component: AccommodationEditor,
         meta: { layout: 'authorize' }
       },
       {

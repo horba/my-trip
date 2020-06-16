@@ -2,7 +2,6 @@ using Entities.Models;
 using Entities.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System;
 using System.Linq;
 
 namespace Entities
@@ -16,6 +15,7 @@ namespace Entities
         public DbSet<Country> Countries { get; set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<Trip> Trips { get; set; }
+       public DbSet<Accommodation> Accommodations { get; set; }
 
         public RepositoryContext(DbContextOptions options) : base(options)
         {
@@ -188,6 +188,37 @@ namespace Entities
                     DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
                 }
             );
+
+            var moqAccommodations = new[] {
+                      new Accommodation
+                      {
+                        Id = -1,
+                        Name = "Grand Hotel Ukraine",
+                        ArrivalDateTime = DateTime.Now.AddDays(5),
+                        DepartureDateTime = DateTime.Now.AddDays(7),
+                        Address = "Dmytra Yavornytskoho Avenue, 67К, Dnipro",
+                        GuestCount = 1,
+                        RoomsCount = 1,
+                        Link = "http://www.grand-hotel-ukraine.dp.ua",
+                        Note = "056 790 1441",
+                        UserId = -1
+                      },
+                      new Accommodation
+                      {
+                        Id = -2,
+                        Name = "Menorah",
+                        ArrivalDateTime = DateTime.Now.AddDays(12),
+                        DepartureDateTime = DateTime.Now.AddDays(17),
+                        Address = "Sholom-Aleikhema Street, 4/26, Dnipro",
+                        GuestCount = 2,
+                        RoomsCount = 2,
+                        Link = "http://menorah-center.com",
+                        Note = "056 717 7000",
+                        UserId = -1
+                      }
+                   };
+
+            modelBuilder.Entity<Accommodation>().HasData(moqAccommodations);
         }
     }
 }

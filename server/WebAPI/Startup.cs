@@ -54,6 +54,7 @@ namespace WebAPI
       services.AddScoped<CountryRepository>();
       services.AddScoped<LanguageRepository>();
       services.AddScoped<TicketsRepository>();
+      services.AddScoped<AccommodationRepository>();
       services.AddScoped<TicketsService>();
       services.AddScoped<UserService>();
       services.AddSingleton<AuthService>();
@@ -65,6 +66,7 @@ namespace WebAPI
       services.AddScoped<IEmailSender, EmailSender>();
       services.AddScoped<GoogleOauthService>();
       services.AddScoped<AssetsService>();
+      services.AddScoped<AccommodationService>();
 
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
           .AddJwtBearer(x =>
@@ -139,6 +141,13 @@ namespace WebAPI
         FileProvider = new PhysicalFileProvider(
                     Path.Combine(Directory.GetCurrentDirectory(), Consts.UsersAvatarsPath)),
         RequestPath = "/avatars",
+        EnableDirectoryBrowsing = true
+      });
+      app.UseFileServer(new FileServerOptions
+      {
+        FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), Consts.AccommodationsPath)),
+        RequestPath = "/accommodations",
         EnableDirectoryBrowsing = true
       });
     }

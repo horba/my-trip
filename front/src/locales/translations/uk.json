@@ -129,7 +129,9 @@
     "fileIsEmpty": "Виберіть файл",
     "fileIsToBig": "Файл занадто великий",
     "correctFileSize": "Правильний розмір файлу",
-    "notAllowedContentType": "Виберіть .png, .jpeg або .bmp файл"
+    "notAllowedContentType": "Виберіть .png, .jpeg або .bmp файл",
+    "selecFiles": "Виберіть файли",
+    "addFiles": "Додати файли"
   },
   "signIn": {
     "welcome": "Ласкаво просимо!",
@@ -163,5 +165,29 @@
   "validationRules": {
     "noEmpty": "Заповніть поле.",
     "enterCorrectEmail": "Введіть дійсний email"
+  },
+  "accommodations": {
+    "results": "Результати",
+    "addAccommodation": "Додати житло",
+    "editAccommodation": "Змінити житло",
+    "filter": "Фільтр",
+    "notFound": "Нічого не знайдено",
+    "subtitle": "Кімната в готелі",
+    "guest": "гість",
+    "guests": "гостей",
+    "room": "кімната",
+    "rooms": "кімнати",
+    "perNight": "за ніч",
+    "total": "Всього",
+    "place": "Місце",
+    "name": "Назва об'єкта",
+    "arrivalDateTime": "Дата заїзду",
+    "departureDateTime": "Дата від'їзду",
+    "guestCount": "Кількість гостей",
+    "roomsCount": "Кількість номерів",
+    "address": "Звідки",
+    "link": "Посилання",
+    "note": "Нотатки",
+    "save": "Зберегти"
   }
 }

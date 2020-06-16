@@ -1,0 +1,185 @@
+<v-card class="user-settings-card" flat tile min-height="100%" color="primary lighten-3">
+  <v-card-title>
+    <h5 class="form-header">
+      <span v-if="accommodation.id">
+        {{$t('accommodations.editAccommodation')}}
+      </span>
+      <span v-else>
+        {{$t('accommodations.addAccommodation')}}
+      </span>
+    </h5>
+  </v-card-title>
+  <v-card-text>
+    <div class="d-flex flex-row align-stretch justify-space-between">
+      <div class="align-self-start">
+        <v-form class="form" v-model="formValidity">
+
+          <mmt-text-input id="placeAutocomplete"
+                          v-model="accommodation.place"
+                          class="input-field"
+                          :mmt-label="$t('accommodations.place')"
+                          :placeholder="$t('accommodations.place')"
+                          :rules="[rules.required]"
+                          persistent-hint
+                          rounded
+                          filled
+                          single-line
+                          dense />
+
+          <label>
+            {{ $t('accommodations.name') }}
+            <v-autocomplete v-model="accommodation.name"
+                            :items="place.results"
+                            :placeholder="$t('accommodations.name')"
+                            @change="selectPlace"
+                            hide-no-data
+                            hide-selected
+                            return-object
+                            item-text="name"
+                            item-value="place_id"
+                            rounded
+                            filled
+                            single-line
+                            dense>
+            </v-autocomplete>
+          </label>
+
+          <v-menu v-model="menuArrivalDateTime"
+                  :close-on-content-click="false"
+                  :nudge-right="40"
+                  transition="scale-transition"
+                  offset-y
+                  min-width="290px">
+            <template v-slot:activator="{ on, attrs }">
+              <mmt-text-input v-bind="attrs"
+                              v-on="on"
+                              class="input-field"
+                              v-model="accommodation.arrivalDateTime"
+                              :mmt-label="$t('accommodations.arrivalDateTime')"
+                              :rules="[rules.required]"
+                              persistent-hint
+                              rounded
+                              filled
+                              single-line
+                              dense
+                              prepend-icon="mdi-calendar-check-outline" />
+            </template>
+            <v-date-picker v-model="accommodation.arrivalDateTime"
+                           @input="menuArrivalDateTime = false">
+            </v-date-picker>
+          </v-menu>
+
+          <v-menu v-model="menuDepartureDateTime"
+                  :close-on-content-click="false"
+                  :nudge-right="40"
+                  transition="scale-transition"
+                  offset-y
+                  min-width="290px">
+            <template v-slot:activator="{ on, attrs }">
+              <mmt-text-input v-bind="attrs"
+                              v-on="on"
+                              class="input-field"
+                              v-model="accommodation.departureDateTime"
+                              :mmt-label="$t('accommodations.departureDateTime')"
+                              :rules="[rules.required]"
+                              persistent-hint
+                              rounded
+                              filled
+                              single-line
+                              dense
+                              prepend-icon="mdi-calendar-check-outline" />
+            </template>
+            <v-date-picker v-model="accommodation.departureDateTime"
+                           @input="menuDepartureDateTime = false">
+            </v-date-picker>
+          </v-menu>
+
+          <mmt-text-input class="input-field"
+                          v-model.number="accommodation.guestCount"
+                          :mmt-label="$t('accommodations.guestCount')"
+                          :rules="[rules.required]"
+                          persistent-hint
+                          rounded
+                          filled
+                          single-line
+                          dense />
+
+          <mmt-text-input class="input-field"
+                          v-model.number="accommodation.roomsCount"
+                          :mmt-label="$t('accommodations.roomsCount')"
+                          :rules="[rules.required]"
+                          persistent-hint
+                          rounded
+                          filled
+                          single-line
+                          dense />
+
+          <mmt-text-input class="input-field"
+                          v-model.trim="accommodation.address"
+                          :mmt-label="$t('accommodations.address')"
+                          :rules="[rules.required]"
+                          persistent-hint
+                          rounded
+                          filled
+                          single-line
+                          dense />
+
+          <mmt-text-input class="input-field"
+                          v-model.trim="accommodation.link"
+                          :mmt-label="$t('accommodations.link')"
+                          persistent-hint
+                          rounded
+                          filled
+                          single-line
+                          dense />
+
+          <mmt-text-input class="input-field"
+                          v-model.trim="accommodation.note"
+                          :mmt-label="$t('accommodations.note')"
+                          persistent-hint
+                          rounded
+                          filled
+                          single-line
+                          dense />
+
+          <v-btn height="39"
+                 width="173"
+                 class="mmt-continue-button mt-5"
+                 @click.prevent="saveAccommodation"
+                 :disabled="!formValidity"
+                 rounded
+                 depressed
+                 large>
+            {{$t('accommodations.save')}}
+          </v-btn>
+
+        </v-form>
+      </div>
+      <div class="side align-self-stretch ml-5">
+        <div class="map" ref="map-holder"></div>
+        <div class="mt-5">
+          <v-file-input class="input-field"
+                        :rules="fileUploadRules"
+                        accept="image/png, image/jpeg, image/jpg, image/bmp"
+                        :show-size="true"
+                        multiple
+                        :placeholder="$t('fileUpload.selecFiles')"
+                        prepend-icon="mdi-camera"
+                        :label="$t('fileUpload.addFiles')"
+                        @change="fileUpload"
+                        @click:clear="fileUploadClear"
+                        :error-messages="fileUploadError ? $t(`fileUpload.${fileUploadError}`) : ''">
+          </v-file-input>
+        </div>
+        <div>
+          <template v-for="(photo,n) in accommodation.photos">
+            <img :key="`photo-${n}`"
+                 class="ma-5"
+                 :src="getFilePath(photo)"
+                 style="width: 100px; height:100px;" />
+          </template>
+        </div>
+      </div>
+    </div>
+  </v-card-text>
+</v-card>

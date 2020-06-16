@@ -4,6 +4,8 @@
   {
     public const string UsersAvatarsPath = @"Assets\Avatars";
 
+    public const string AccommodationsPath = @"Assets\Accommodations";
+
     public static string[] AllowedImageContentTypes = new[] { "image/png", "image/jpeg", "image/jpg",  "image/bmp" };
 
     public const int MaxImageFileSize = 1024 * 1024 * 2;

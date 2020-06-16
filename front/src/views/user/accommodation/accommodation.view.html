@@ -1,0 +1,45 @@
+<div>
+  <mmt-stepper></mmt-stepper>
+  <div class="d-flex flex-wrap align-stretch justify-space-between mb-5 mt-10">
+    <div>
+      <h6 class="accent--text text--lighten-2 text-uppercase">
+        {{ $t('accommodations.results') }} ({{ accommodations.length }})
+      </h6>
+    </div>
+    <div>
+      <v-btn rounded
+             class="details accent lighten-1 mr-5"
+             to="/my/accommodation/manage">
+        <span class="text-capitalize">
+          {{ $t('accommodations.addAccommodation') }}
+        </span>
+      </v-btn>
+      <v-btn rounded
+             class="details accent lighten-1">
+        <span class="text-capitalize">
+          {{ $t('accommodations.filter') }}
+          <v-icon right class="white--text">mdi-filter-variant</v-icon>
+        </span>
+      </v-btn>
+    </div>
+  </div>
+  <div class="d-flex flex-row align-stretch py-5">
+    <div class="align-self-start">
+      <div class="d-flex flex-wrap justify-space-between"
+           v-if="accommodations.length">
+        <template v-for="(accommodation,n) in accommodations">
+          <mmt-accommodation-card :key="`accommodation-${n}`"
+                                  :accommodation="accommodation"
+                                  :class="`${ selectedAccommodation && accommodation.id === selectedAccommodation.id ? 'active' : ''} mb-5`"
+                                  v-on:click.native="viewAccommodation(accommodation, $event)" />
+        </template>
+      </div>
+      <p v-else>
+        {{ $t('accommodations.notFound') }}
+      </p>
+    </div>
+    <div class="align-self-stretch pl-5">
+      <div class="map" ref="map-holder"></div>
+    </div>
+  </div>
+</div>

@@ -69,7 +69,7 @@
     "save": "Save",
     "repeatPassword": "Repeat password",
     "passwordMustIdentity": "Passwords must match",
-    "thisNoEmail": "Invalid email address",    
+    "thisNoEmail": "Invalid email address",
     "successfulСhange": "The password was successfully changed! You will receive a confirmation of your password change to Your email address."
   },
   "locale": {
@@ -85,7 +85,7 @@
     "firstName": "First name",
     "enterFirstName": "Enter first name",
     "email": "Email",
-    "emailExample": "Example: bereznievatiy@gmail.com",    
+    "emailExample": "Example: bereznievatiy@gmail.com",
     "emailIsAlreadyTaken": "This email is already taken",
     "genderIsNotSpecified": "Gender is not specified",
     "male": "Male",
@@ -129,7 +129,9 @@
     "fileIsEmpty": "Please select file",
     "fileIsToBig": "File is too large",
     "correctFileSize": "The correct file size",
-    "notAllowedContentType": "Please select .png, .jpeg or .bmp file"
+    "notAllowedContentType": "Please select .png, .jpeg or .bmp file",
+    "selecFiles": "Select files",
+    "addFiles": "Add files"
   },
   "signIn": {
     "welcome": "Welcome!",
@@ -163,5 +165,29 @@
   "validationRules": {
     "noEmpty": "Fill in the field.",
     "enterCorrectEmail": "Enter valid email"
+  },
+  "accommodations": {
+    "results": "Results",
+    "addAccommodation": "Add Housing",
+    "editAccommodation": "Change Housing",
+    "filter": "Filter",
+    "notFound": "Nothing found",
+    "subtitle": "Hotel room",
+    "guest": "guest",
+    "guests": "guests",
+    "room": "room",
+    "rooms": "rooms",
+    "perNight": "per night",
+    "total": "Total",
+    "place": "Place",
+    "name": "Name of the object",
+    "arrivalDateTime": "Arrival date",
+    "departureDateTime": "Departure Date",
+    "guestCount": "Number of guests",
+    "roomsCount": "Number of rooms",
+    "address": "Address",
+    "link": "Link",
+    "note": "Notes",
+    "save": "Save"
   }
 }

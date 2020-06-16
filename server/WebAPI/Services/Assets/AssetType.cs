@@ -2,6 +2,7 @@
 {
   public enum AssetType
   {
-    UserAvatar = 1
+    UserAvatar = 1,
+    Accommodation = 2
   }
 }

@@ -1,0 +1,61 @@
+<div class="d-flex white">
+  <v-card class="mx-auto overflow-hidden accommodation"
+          tile flat>
+    <div class="d-flex flex-no-wrap justify-start">
+      <div class="carousel">
+        <v-carousel v-if="accommodation.photos.length"
+                    hide-delimiters
+                    height="150px">
+          <v-carousel-item v-for="(photo,i) in accommodation.photos"
+                           :key="i"
+                           :src="getFilePath(photo)"
+                           reverse-transition="fade-transition"
+                           transition="fade-transition"></v-carousel-item>
+        </v-carousel>
+        <v-img v-else
+               src="@/assets/default-accommodation.png"></v-img>
+      </div>
+      <div>
+        <v-card-subtitle class="details pb-0">
+          {{ $t('accommodations.subtitle') }}
+        </v-card-subtitle>
+
+        <v-card-title class="headline mb-3 bt-1 pt-0">
+          <span>{{ accommodation.name }}</span>
+        </v-card-title>
+        <v-card-subtitle class="details">
+          <div>{{ accommodation.arrivalDateTime | date }} - {{ accommodation.departureDateTime | date }}</div>
+          <div v-if="accommodation.guestCount">{{ accommodation.guestCount }} {{ $t('accommodations.guest') }}</div>
+          <div v-if="accommodation.roomsCount">{{ accommodation.roomsCount }} {{ $t('accommodations.room') }}</div>
+        </v-card-subtitle>
+      </div>
+      <div class="d-flex flex-column justify-space-between ml-auto side pr-5 pb-2">
+        <div>
+          <div class="d-flex justify-space-around">
+            <v-rating v-if="accommodation.rating"
+                      v-model="accommodation.rating"
+                      length="1"
+                      readonly></v-rating>
+            <div v-if="accommodation.rating"
+                 class="pt-3">
+              <span>{{accommodation.rating}}</span>
+            </div>
+          </div>
+          <div>
+            <v-card-subtitle class="pa-0"
+                             v-if="accommodation.ratingTotal"> ({{ accommodation.ratingTotal }})</v-card-subtitle>
+          </div>
+        </div>
+        <div>
+          <div v-if="accommodation.pricePerNight">${{ accommodation.pricePerNight }} {{ $t('accommodations.perNight') }}</div>
+          <div v-if="accommodation.totalPrice">{{ $t('accommodations.total') }} {{ accommodation.totalPrice }}</div>
+        </div>
+        <div>
+          <router-link :to="`/my/accommodation/manage/${accommodation.id}`" class="icon">
+            <v-icon small>mdi-lead-pencil</v-icon>
+          </router-link>
+        </div>
+      </div>
+    </div>
+  </v-card>
+</div>

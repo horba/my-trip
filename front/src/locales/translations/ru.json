@@ -69,7 +69,7 @@
     "save": "Сохранить",
     "repeatPassword": "Повторите пароль",
     "passwordMustIdentity": "Пароли должны совпадать",
-    "thisNoEmail": "Не действительный e-mail",    
+    "thisNoEmail": "Не действительный e-mail",
     "successfulСhange": "Пароль успешно изменен! Вы получите подтверждение об изменении пароля на Ваш электронный адрес."
   },
   "locale": {
@@ -85,7 +85,7 @@
     "firstName": "Имя",
     "enterFirstName": "Введите имя",
     "email": "Почта",
-    "emailExample": "Пример: bereznievatiy@gmail.com",    
+    "emailExample": "Пример: bereznievatiy@gmail.com",
     "emailIsAlreadyTaken": "Данная почта уже занята",
     "genderIsNotSpecified": "Пол не указан",
     "male": "Мужской",
@@ -129,7 +129,9 @@
     "fileIsEmpty": "Пожалуйста, выберите файл",
     "fileIsToBig": "Файл слишком большой",
     "correctFileSize": "Верный размер файла",
-    "notAllowedContentType": "Пожалуйста, выберите файл .png, .jpeg или .bmp"
+    "notAllowedContentType": "Пожалуйста, выберите файл .png, .jpeg или .bmp",
+    "selecFiles": "Выберите файлы",
+    "addFiles":  "Добавить файлы"
   },
   "signIn": {
     "welcome": "Добро пожаловать!",
@@ -163,5 +165,29 @@
   "validationRules": {
     "noEmpty": "Заполните поле.",
     "enterCorrectEmail": "Введите корректный email"
+  },
+  "accommodations": {
+    "results": "Результаты",
+    "addAccommodation": "Добавить жилье",
+    "editAccommodation": "Изменить жилье",
+    "filter": "Фильтр",
+    "notFound": "Ничего не найдено",
+    "subtitle": "Комната в гостинице",
+    "guest": "гость",
+    "guests": "гостей",
+    "room": "комната",
+    "rooms": "комнаты",
+    "perNight": "за ночь",
+    "total": "Всего",
+    "place": "Место",
+    "name": "Название обьекта",
+    "arrivalDateTime": "Дата заезда",
+    "departureDateTime": "Дата отьезда",
+    "guestCount": "Количество гостей",
+    "roomsCount": "Количество номеров",
+    "address": "Адрес",
+    "link": "Ссылка",
+    "note": "Заметки",
+    "save": "Сохранить"
   }
 }
