@@ -2,6 +2,7 @@ import { MmtTextInput } from '@components';
 import { requiredValidationMixin } from '@mixins';
 
 export default {
+  props: ['id', 'wpId'],
   mixins: [
     requiredValidationMixin
   ],
@@ -67,18 +68,18 @@ export default {
           pathTime: this.newWpValues.pathTime,
           details: this.newWpValues.details,
           transport: this.newWpValues.transport,
-          tripId: +this.$route.params.id,
-          newId: +this.$route.params.wpId || 0
+          tripId: +this.id,
+          newId: +this.wpId || 0
         });
       this.$router.push({ name: 'MyHistoryFututeRoute' });
     }
   },
   created () {
     if (this.isEditForm) {
-      this.$store.dispatch('waypoints/loadWaypoints', this.$route.params.id)
+      this.$store.dispatch('waypoints/loadWaypoints', [ +this.id ])
         .then(() => {
           const wps = this.$store.state.waypoints.waypoints,
-                currentWp = wps.find(wp => wp.id === +this.$route.params.wpId),
+                currentWp = wps.find(wp => wp.id === +this.wpId),
                 nextWp = wps[wps.findIndex(wp => wp === currentWp) + 1];
 
           this.newWpValues.departureCity = currentWp.city;

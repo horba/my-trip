@@ -176,25 +176,29 @@ const routes = [
         path: 'history/future/:id/route',
         name: 'MyHistoryFututeRoute',
         component: MyHistoryTripRoute,
-        meta: { layout: 'authorize' }
+        meta: { layout: 'authorize' },
+        props: true
       },
       {
         path: 'history/prev/:id/route',
         name: 'MyHistoryPrevRoute',
         component: MyHistoryTripRoute,
-        meta: { layout: 'authorize' }
+        meta: { layout: 'authorize' },
+        props: true
       },
       {
         path: 'history/future/:id/route/add',
         name: 'MyHistoryAddRoute',
         component: MyHistoryAddTripRoute,
-        meta: { layout: 'authorize' }
+        meta: { layout: 'authorize' },
+        props: true
       },
       {
         path: 'history/future/:id/route/:wpId/edit',
         name: 'MyHistoryEditRoute',
         component: MyHistoryAddTripRoute,
-        meta: { layout: 'authorize' }
+        meta: { layout: 'authorize' },
+        props: true
       },
       {
         path: 'settings',

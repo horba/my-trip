@@ -107,6 +107,17 @@
     "France": "Франция",
     "Ukraine": "Украина"
   },
+  "cities": {
+    "kyiv": "Киев",
+    "krakow": "Краков" 
+  },
+  "transportTypes": {
+    "plane": "Самолет",
+    "train": "Поезд",
+    "bus": "Автобус",
+    "car": "Автомобиль",
+    "bicycle": "Велосипед"
+  },
   "tripHistory": {
     "trip": "Поездка",
     "previousTrips": "Предыдущие поездки",
@@ -129,7 +140,16 @@
     "returnTo": "Вернутся в",
     "km": "км",
     "hoursShort": "ч",
-    "minutesShort": "мин"
+    "minutesShort": "мин",
+    "departureCity": "Город отправления",
+    "departureDate": "Дата отправления",
+    "departureTime": "Время отправления",
+    "arrivalCity": "Город прибытия",
+    "arrivalDate": "Дата прибытия",
+    "arrivalTime": "Время прибытия",
+    "distanceBetweenPoints": "Расстояние между точками",
+    "tripDuration": "Длительность поездки",
+    "changeCurrencyOnArrival": "Изменить валюту по прибытии"
   },
   "tickets": {
     "ticketItem": {

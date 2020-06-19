@@ -1,6 +1,7 @@
 import { MmtWaypointCard } from '@components';
 
 export default {
+  props: [ 'id' ],
   components: {
     MmtWaypointCard
   },
@@ -10,6 +11,6 @@ export default {
     }
   },
   mounted () {
-    this.$store.dispatch('waypoints/loadWaypoints', this.$route.params.id);
+    this.$store.dispatch('waypoints/loadWaypoints', [ this.id ]);
   }
 };

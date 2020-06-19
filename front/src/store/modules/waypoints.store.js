@@ -25,27 +25,18 @@ export default {
     },
     SET_TRIP_ID (state, id) {
       state.tripId = id;
-    },
-    SET_FRESH (state, isFresh) {
-      state.isFresh = isFresh;
     }
   },
   actions: {
-    loadWaypoints ({ commit, state }, tripId) {
-      if (state.tripId === tripId && state.isFresh) {
+    loadWaypoints ({ commit, state }, [tripId, isForce]) {
+      if (state.tripId === tripId && !isForce) {
         return Promise.resolve();
       }
 
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve();
-        }, state.isFresh ? 0 : 1000);
-      })
-        .then(() => api.get(`/waypoints/bytrip/${tripId}`))
+      return api.get(`/waypoints/bytrip/${tripId}`)
         .then(({ data }) => {
           commit('SET_WAYPOINTS', data);
           commit('SET_TRIP_ID', tripId);
-          commit('SET_FRESH', true);
         });
     },
     switchCompletedState ({ commit, state }, id) {
@@ -66,15 +57,19 @@ export default {
       }
       api.delete(`/waypoints/${id}`);
     },
-    insertWaypoint ({ commit }, wp) {
-      commit('SET_FRESH', false);
+    insertWaypoint ({ commit, dispatch, state }, wp) {
       commit('CLEAR_WAYPOINTS');
-      return api.post('/waypoints', wp);
+      return api.post('/waypoints', wp)
+        .then(() => {
+          dispatch('loadWaypoints', [state.tripId, true]);
+        });
     },
-    updateWaypoint ({ commit }, wp) {
-      commit('SET_FRESH', false);
+    updateWaypoint ({ commit, dispatch, state }, wp) {
       commit('CLEAR_WAYPOINTS');
-      return api.put('/waypoints', wp);
+      return api.put('/waypoints', wp)
+        .then(() => {
+          dispatch('loadWaypoints', [state.tripId, true]);
+        });
     }
   },
   getters: {
