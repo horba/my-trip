@@ -1,6 +1,5 @@
 .card-wrapper {
   width: 910px;
-  /* height: 100px; */
   position: relative;
   flex-grow: 1;
 }
@@ -18,6 +17,10 @@
   justify-content: space-between;
 }
 
+.card > * {
+  width: 200px;
+}
+
 .card .arrival,
 .card .departure,
 .card .return-to-home {
@@ -26,17 +29,12 @@
   justify-content: space-between;
 }
 
-.card .return-to-home .return-to-checkbox >>> .v-label {
-  font-size: 12px;
+.details >>> .v-icon::before {
+  font-size: 32px;
 }
 
-.card .return-to-home .return-to-checkbox >>> .v-icon::before {
-  font-size: 28px;
-}
-
-.card .return-to-home .return-to-checkbox {
-  /* display: inline-block; */
-  font-size: 12px;
+.details >>> .v-input--checkbox {
+  margin-top: 0;
 }
 
 .card .arrival .date {
@@ -72,14 +70,13 @@
 
 .card .departure .datetime {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .card .details {
   display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  max-width: 200px;
+  align-items: center;
+  justify-content: start;
 }
 
 .card .details .subtitle {
@@ -132,7 +129,7 @@
 .path-info .vertical-line {
   width: 0;
   height: 36px;
-  border: 1px solid #6C6C6C;
+  border: 1px solid #6c6c6c;
   margin-left: 17px;
 }
 
@@ -149,7 +146,7 @@
 
 .path-info .text-content {
   margin-left: 6px;
-  color: #0F0E0E;
+  color: #0f0e0e;
   margin-bottom: 3px;
 }
 

@@ -9,7 +9,8 @@ import {
   MyAccommodation, MyFood, MyTransport,
   MyLeisure, SignIn, SignUp,
   UserSettings, UserCabinet, MyHistoryPreviousTrips,
-  MyHistoryUpcomingTrips, MyHistoryTripRoute, RecoveryPassword
+  MyHistoryUpcomingTrips, MyHistoryTripRoute, RecoveryPassword,
+  MyHistoryAddTripRoute
 } from '@views';
 import store from '@store';
 
@@ -181,6 +182,18 @@ const routes = [
         path: 'history/prev/:id/route',
         name: 'MyHistoryPrevRoute',
         component: MyHistoryTripRoute,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'history/future/:id/route/add',
+        name: 'MyHistoryAddRoute',
+        component: MyHistoryAddTripRoute,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'history/future/:id/route/:wpId/edit',
+        name: 'MyHistoryEditRoute',
+        component: MyHistoryAddTripRoute,
         meta: { layout: 'authorize' }
       },
       {

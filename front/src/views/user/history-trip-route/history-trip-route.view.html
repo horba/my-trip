@@ -3,7 +3,7 @@
     <div>
       <h4 class="accent--text text--lighten-2 header">{{ $t('tripHistory.planNewTrip') }}</h4>
     </div>
-    <v-btn class="mmt-btn mmt-continue-button" height="39" rounded depressed large>
+    <v-btn class="mmt-btn mmt-continue-button" height="39" rounded depressed large :to="{name: 'MyHistoryAddRoute'}">
       {{ $t('tripHistory.addNewWaypoint') }}</v-btn>
   </div>
   <mmt-waypoint-card v-for='(wp, index) of waypoints' :key='wp.id' :firstCard="index === 0"

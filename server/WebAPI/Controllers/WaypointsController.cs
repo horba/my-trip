@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.DTO;
+using WebAPI.DTO.Waypoint;
 using WebAPI.Extension;
 using WebAPI.Services;
 using WebAPI.Services.Waypoints;
@@ -20,25 +21,25 @@ namespace WebAPI.Controllers
   public class WaypointsController : ControllerBase
   {
 
-    private WaypointService _waypointService;
-    private WaypointRepository _waypointRepository;
+    private readonly WaypointService _waypointService;
+    private readonly TripService _tripService;
 
-    public WaypointsController(WaypointService waypointService, WaypointRepository waypointRepository)
+    public WaypointsController(WaypointService waypointService, TripService tripService)
     {
+      _tripService = tripService;
       _waypointService = waypointService;
-      _waypointRepository = waypointRepository;
     }
 
     [HttpGet]
     [Route("bytrip/{id}")]
     public IActionResult GetWaypoints(int id)
     {
-      return Ok(_waypointService.GetWaypoints(id));
+      return Ok(_waypointService.GetWaypointDTOsOfTrip(id));
     }
 
     [HttpPut]
     [Route("set-completed-state")]
-    public IActionResult SetCompletedState(WaypointCompletedDTO waypoint)
+    public IActionResult SetCompletedState(CheckboxDTO waypoint)
     {
       if (!_waypointService.IsWaypointAllowed(HttpContext.GetUserIdFromClaim(), waypoint.Id))
       {
@@ -46,6 +47,31 @@ namespace WebAPI.Controllers
       }
 
       _waypointService.UpdateCompletedState(waypoint.Id, waypoint.State);
+      return Ok();
+    }
+
+    [HttpPut]
+    [Route("set-details-state")]
+    public IActionResult SetDetailsState(CheckboxDTO waypoint)
+    {
+      if (!_waypointService.IsWaypointAllowed(HttpContext.GetUserIdFromClaim(), waypoint.Id))
+      {
+        return Forbid();
+      }
+
+      _waypointService.UpdateDetailsState(waypoint.Id, waypoint.State);
+      return Ok();
+    }
+
+    [HttpPut]
+    public IActionResult UpdateWaypoint(WaypointRequestDTO wp)
+    {
+      if (!_waypointService.IsWaypointAllowed(HttpContext.GetUserIdFromClaim(), wp.NewId))
+      {
+        return Forbid();
+      }
+
+      _waypointService.UpdateWaypoint(wp);
       return Ok();
     }
 
@@ -58,7 +84,19 @@ namespace WebAPI.Controllers
         return Forbid();
       }
 
-      _waypointRepository.DeleteWaypoint(new Waypoint { Id = id });
+      _waypointService.DeleteWaypoint(id);
+      return Ok();
+    }
+
+    [HttpPost]
+    public IActionResult CreateWaypoint(WaypointRequestDTO wp)
+    {
+      if (!_tripService.IsTripAllowed(HttpContext.GetUserIdFromClaim(), wp.TripId))
+      {
+        return Forbid();
+      }
+
+      _waypointService.InsertWaypoint(wp);
       return Ok();
     }
 

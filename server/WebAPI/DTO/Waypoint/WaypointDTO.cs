@@ -10,12 +10,10 @@ namespace WebAPI.DTO
   {
     public int Id { get; set; }
 
-    public int Order { get; set; }
-
     public string City { get; set; }
 
-    public DateTime Departure { get; set; }
-    public DateTime Arrival { get; set; }
+    public DateTime DepartureDate { get; set; }
+    public DateTime ArrivalDate { get; set; }
 
     public TimeSpan PathTime { get; set; }
     public int PathLength { get; set; }
@@ -25,5 +23,6 @@ namespace WebAPI.DTO
     public TransportTypes Transport { get; set; }
 
     public bool IsCompleted { get; set; }
+    public bool IsDetails { get; set; }
   }
 }

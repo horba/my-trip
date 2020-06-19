@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using AutoMapper;
 using WebAPI.DTO;
 using System.Linq;
+using Org.BouncyCastle.Math.EC.Multiplier;
 
 namespace WebAPI.Services
 {
@@ -37,6 +38,11 @@ namespace WebAPI.Services
     {
       var trips = _tripRepository.GetUserTrips(userId).Where(t => t.StartDate >= DateTime.Now);
       return _mapper.Map<IEnumerable<TripDTO>>(trips.OrderBy(t => t.StartDate).ToList());
+    }
+
+    public bool IsTripAllowed(int userId, int tripId)
+    {
+      return _tripRepository.GetUserTrips(userId).Any(tr => tr.Id == tripId);
     }
   }
 }

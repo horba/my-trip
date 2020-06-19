@@ -107,6 +107,17 @@
     "France": "France",
     "Ukraine": "Ukraine"
   },
+  "cities": {
+    "kyiv": "Kyiv",
+    "krakow": "Krakow" 
+  },
+  "transportTypes": {
+    "plane": "Plane",
+    "train": "Train",
+    "bus": "Bus",
+    "car": "Car",
+    "bicycle": "Bicycle"
+  },
   "tripHistory": {
     "trip": "Trip",
     "previousTrips": "Previous Trips",
@@ -129,7 +140,16 @@
     "returnTo": "Return to",
     "km": "km",
     "hoursShort": "h",
-    "minutesShort": "min"
+    "minutesShort": "min",
+    "departureCity": "Departure city",
+    "departureDate": "Departure date",
+    "departureTime": "Departure time",
+    "arrivalCity": "Arrival city",
+    "arrivalDate": "Arrival date",
+    "arrivalTime": "Arrival time",
+    "distanceBetweenPoints": "Distance between points",
+    "tripDuration": "Trip duration",
+    "changeCurrencyOnArrival": "Change currency on arrival"
   },
   "tickets": {
     "ticketItem": {

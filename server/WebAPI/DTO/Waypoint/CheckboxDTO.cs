@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Services.Waypoints
 {
-  public class WaypointCompletedDTO
+  public class CheckboxDTO
   {
     public int Id { get; set; }
     public bool State { get; set; }

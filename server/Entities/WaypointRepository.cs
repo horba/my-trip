@@ -17,30 +17,9 @@ namespace Entities
       _repositoryContext = repositoryContext;
     }
 
-    public IQueryable<Waypoint> GetWaypointsByTripId(int tripId)
+    public IQueryable<Waypoint> GetWaypoints()
     {
-      return _repositoryContext.Waypoints
-        .AsNoTracking()
-        .Where(w => w.TripId == tripId)
-        .OrderBy(w => w.Order);
-    }
-
-    public Waypoint GetWaypoint(int id)
-    {
-      return _repositoryContext.Waypoints
-        .AsNoTracking()
-        .FirstOrDefault(wp => wp.Id == id);
-    }
-
-    public int? GetWaypointUserOwner(int id)
-    {
-      return _repositoryContext.Waypoints
-        .AsNoTracking()
-        .Where(wp => wp.Id == id)
-        .Include(wp => wp.Trip)
-        .FirstOrDefault()
-        ?.Trip
-        ?.UserId;
+      return _repositoryContext.Waypoints.AsNoTracking();
     }
 
     public void UpdateWaypoint(Waypoint wp)
@@ -51,37 +30,27 @@ namespace Entities
 
     public void DeleteWaypoint(Waypoint wp)
     {
-      _repositoryContext.Remove(wp);
+      _repositoryContext.Waypoints.Remove(wp);
       _repositoryContext.SaveChanges();
     }
 
-    //public KeyValuePair<int, int> AddWaypoint(Waypoint waypoint, string departureCity)
-    //{
-    //  int tripId = waypoint.TripId;
-    //  int newOrder = _repositoryContext.Waypoints
-    //                   .FirstOrDefault(w => w.TripId == tripId && w.City.Equals(departureCity, StringComparison.CurrentCultureIgnoreCase))?.Id + 1 ??
-    //                 _repositoryContext.Waypoints.Count(w => w.TripId == tripId);
+    public void DeleteRange(IEnumerable<Waypoint> wps)
+    {
+      _repositoryContext.Waypoints.RemoveRange(wps);
+      _repositoryContext.SaveChanges();
+    }
 
-    //  _repositoryContext.Waypoints.Where(w => w.TripId == tripId && w.Order >= newOrder)
-    //    .ToList()
-    //    .ForEach(w => w.Order++);
-    //  waypoint.Order = newOrder;
-    //  _repositoryContext.Add(waypoint);
-    //  _repositoryContext.SaveChanges();
+    public void UpdateRange(IEnumerable<Waypoint> wps)
+    {
+      _repositoryContext.Waypoints.UpdateRange(wps);
+      _repositoryContext.SaveChanges();
+    }
 
-    //  return new KeyValuePair<int, int>(waypoint.Id, newOrder);
-    //}
+    public void AddWaypoint(Waypoint wp)
+    {
+      _repositoryContext.Waypoints.Add(wp);
+      _repositoryContext.SaveChanges();
+    }
 
-    //public void DeleteWaypoint(int id)
-    //{
-    //  var wp = _repositoryContext.Waypoints.FirstOrDefault(w => w.Id == id);
-
-    //  _repositoryContext.Waypoints.Where(w => w.TripId == wp.TripId && w.Order > wp.Order)
-    //    .ToList()
-    //    .ForEach(w => w.Order--);
-
-    //  _repositoryContext.Waypoints.Remove(wp);
-    //  _repositoryContext.SaveChanges();
-    //}
   }
 }

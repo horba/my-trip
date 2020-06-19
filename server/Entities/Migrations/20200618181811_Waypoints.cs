@@ -16,13 +16,14 @@ namespace Entities.Migrations
                     TripId = table.Column<int>(nullable: false),
                     Order = table.Column<int>(nullable: false),
                     City = table.Column<string>(nullable: true),
-                    Departure = table.Column<DateTime>(nullable: false),
-                    Arrival = table.Column<DateTime>(nullable: false),
+                    DepartureDate = table.Column<DateTime>(nullable: false),
+                    ArrivalDate = table.Column<DateTime>(nullable: false),
                     PathTime = table.Column<TimeSpan>(nullable: false),
                     PathLength = table.Column<int>(nullable: false),
                     Details = table.Column<string>(nullable: true),
                     Transport = table.Column<int>(nullable: false),
-                    IsCompleted = table.Column<bool>(nullable: false)
+                    IsCompleted = table.Column<bool>(nullable: false),
+                    IsDetails = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -37,16 +38,16 @@ namespace Entities.Migrations
 
             migrationBuilder.InsertData(
                 table: "Waypoints",
-                columns: new[] { "Id", "Arrival", "City", "Departure", "Details", "IsCompleted", "Order", "PathLength", "PathTime", "Transport", "TripId" },
+                columns: new[] { "Id", "ArrivalDate", "City", "DepartureDate", "Details", "IsCompleted", "IsDetails", "Order", "PathLength", "PathTime", "Transport", "TripId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2021, 1, 15, 1, 0, 0, 0, DateTimeKind.Unspecified), "0CitY0", new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Купить зарядку для телефона с нужной вилкой на 220 и 110", true, 0, 43, new TimeSpan(0, 2, 0, 0, 0), 0, 1 },
-                    { 2, new DateTime(2021, 2, 16, 2, 5, 0, 0, DateTimeKind.Unspecified), "1CitY1", new DateTime(2021, 2, 2, 1, 3, 0, 0, DateTimeKind.Unspecified), "Купить зарядку для телефона с нужной вилкой на 220 и 110", false, 1, 121, new TimeSpan(0, 3, 14, 0, 0), 1, 1 },
-                    { 3, new DateTime(2021, 3, 17, 3, 10, 0, 0, DateTimeKind.Unspecified), "2CitY2", new DateTime(2021, 3, 3, 2, 6, 0, 0, DateTimeKind.Unspecified), "Купить зарядку для телефона с нужной вилкой на 220 и 110", true, 2, 199, new TimeSpan(0, 4, 28, 0, 0), 2, 1 },
-                    { 4, new DateTime(2021, 4, 18, 4, 15, 0, 0, DateTimeKind.Unspecified), "3CitY3", new DateTime(2021, 4, 4, 0, 9, 0, 0, DateTimeKind.Unspecified), "Купить зарядку для телефона с нужной вилкой на 220 и 110", false, 3, 277, new TimeSpan(0, 5, 42, 0, 0), 3, 1 },
-                    { 5, new DateTime(2021, 5, 19, 1, 20, 0, 0, DateTimeKind.Unspecified), "4CitY4", new DateTime(2021, 5, 5, 1, 12, 0, 0, DateTimeKind.Unspecified), "Купить зарядку для телефона с нужной вилкой на 220 и 110", true, 4, 355, new TimeSpan(0, 6, 56, 0, 0), 4, 1 },
-                    { 6, new DateTime(2021, 6, 20, 2, 25, 0, 0, DateTimeKind.Unspecified), "5CitY5", new DateTime(2021, 6, 6, 2, 15, 0, 0, DateTimeKind.Unspecified), "Купить зарядку для телефона с нужной вилкой на 220 и 110", false, 5, 433, new TimeSpan(0, 7, 10, 0, 0), 0, 1 },
-                    { 7, new DateTime(2021, 7, 21, 3, 30, 0, 0, DateTimeKind.Unspecified), "6CitY6", new DateTime(2021, 7, 7, 0, 18, 0, 0, DateTimeKind.Unspecified), "Купить зарядку для телефона с нужной вилкой на 220 и 110", true, 6, 511, new TimeSpan(0, 8, 24, 0, 0), 1, 1 }
+                    { 1, new DateTime(2021, 1, 15, 1, 0, 0, 0, DateTimeKind.Unspecified), "0CitY0", new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Купить зарядку для телефона", true, true, 0, 43, new TimeSpan(0, 2, 0, 0, 0), 0, 1 },
+                    { 2, new DateTime(2021, 2, 16, 2, 5, 0, 0, DateTimeKind.Unspecified), "1CitY1", new DateTime(2021, 2, 2, 1, 3, 0, 0, DateTimeKind.Unspecified), "Купить зарядку для телефона", false, false, 1, 121, new TimeSpan(0, 3, 14, 0, 0), 1, 1 },
+                    { 3, new DateTime(2021, 3, 17, 3, 10, 0, 0, DateTimeKind.Unspecified), "2CitY2", new DateTime(2021, 3, 3, 2, 6, 0, 0, DateTimeKind.Unspecified), "Купить зарядку для телефона", true, false, 2, 199, new TimeSpan(0, 4, 28, 0, 0), 2, 1 },
+                    { 4, new DateTime(2021, 4, 18, 4, 15, 0, 0, DateTimeKind.Unspecified), "3CitY3", new DateTime(2021, 4, 4, 0, 9, 0, 0, DateTimeKind.Unspecified), "Купить зарядку для телефона", false, true, 3, 277, new TimeSpan(0, 5, 42, 0, 0), 3, 1 },
+                    { 5, new DateTime(2021, 5, 19, 1, 20, 0, 0, DateTimeKind.Unspecified), "4CitY4", new DateTime(2021, 5, 5, 1, 12, 0, 0, DateTimeKind.Unspecified), "Купить зарядку для телефона", true, false, 4, 355, new TimeSpan(0, 6, 56, 0, 0), 4, 1 },
+                    { 6, new DateTime(2021, 6, 20, 2, 25, 0, 0, DateTimeKind.Unspecified), "5CitY5", new DateTime(2021, 6, 6, 2, 15, 0, 0, DateTimeKind.Unspecified), "Купить зарядку для телефона", false, false, 5, 433, new TimeSpan(0, 7, 10, 0, 0), 0, 1 },
+                    { 7, new DateTime(2021, 7, 21, 3, 30, 0, 0, DateTimeKind.Unspecified), "6CitY6", new DateTime(2021, 7, 7, 0, 18, 0, 0, DateTimeKind.Unspecified), "Купить зарядку для телефона", true, true, 6, 511, new TimeSpan(0, 8, 24, 0, 0), 1, 1 }
                 });
 
             migrationBuilder.UpdateData(
@@ -54,147 +55,147 @@ namespace Entities.Migrations
                 keyColumn: "Id",
                 keyValue: -8,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2013, 11, 14, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(1931), new DateTime(2013, 11, 7, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(1931) });
+                values: new object[] { new DateTime(2013, 11, 18, 21, 18, 10, 652, DateTimeKind.Local).AddTicks(9999), new DateTime(2013, 11, 11, 21, 18, 10, 652, DateTimeKind.Local).AddTicks(9999) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -7,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2013, 12, 15, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(1924), new DateTime(2013, 12, 8, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(1924) });
+                values: new object[] { new DateTime(2013, 12, 19, 21, 18, 10, 652, DateTimeKind.Local).AddTicks(9992), new DateTime(2013, 12, 12, 21, 18, 10, 652, DateTimeKind.Local).AddTicks(9992) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -6,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2016, 1, 16, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(1917), new DateTime(2016, 1, 9, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(1917) });
+                values: new object[] { new DateTime(2016, 1, 20, 21, 18, 10, 652, DateTimeKind.Local).AddTicks(9985), new DateTime(2016, 1, 13, 21, 18, 10, 652, DateTimeKind.Local).AddTicks(9985) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -5,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2016, 2, 17, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(1908), new DateTime(2016, 2, 10, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(1908) });
+                values: new object[] { new DateTime(2016, 2, 21, 21, 18, 10, 652, DateTimeKind.Local).AddTicks(9937), new DateTime(2016, 2, 14, 21, 18, 10, 652, DateTimeKind.Local).AddTicks(9937) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -4,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2018, 3, 18, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(1900), new DateTime(2018, 3, 11, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(1900) });
+                values: new object[] { new DateTime(2018, 3, 22, 21, 18, 10, 652, DateTimeKind.Local).AddTicks(9930), new DateTime(2018, 3, 15, 21, 18, 10, 652, DateTimeKind.Local).AddTicks(9930) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -3,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2018, 4, 19, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(1846), new DateTime(2018, 4, 12, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(1846) });
+                values: new object[] { new DateTime(2018, 4, 23, 21, 18, 10, 652, DateTimeKind.Local).AddTicks(9918), new DateTime(2018, 4, 16, 21, 18, 10, 652, DateTimeKind.Local).AddTicks(9918) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -2,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2020, 5, 20, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(1686), new DateTime(2020, 5, 13, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(1686) });
+                values: new object[] { new DateTime(2020, 5, 24, 21, 18, 10, 652, DateTimeKind.Local).AddTicks(9761), new DateTime(2020, 5, 17, 21, 18, 10, 652, DateTimeKind.Local).AddTicks(9761) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -1,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2020, 6, 21, 3, 8, 22, 769, DateTimeKind.Local).AddTicks(9616), new DateTime(2020, 6, 14, 3, 8, 22, 769, DateTimeKind.Local).AddTicks(9616) });
+                values: new object[] { new DateTime(2020, 6, 25, 21, 18, 10, 650, DateTimeKind.Local).AddTicks(7644), new DateTime(2020, 6, 18, 21, 18, 10, 650, DateTimeKind.Local).AddTicks(7644) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: 1,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2020, 9, 29, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(3535), new DateTime(2020, 9, 14, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(3535) });
+                values: new object[] { new DateTime(2020, 10, 3, 21, 18, 10, 653, DateTimeKind.Local).AddTicks(1612), new DateTime(2020, 9, 18, 21, 18, 10, 653, DateTimeKind.Local).AddTicks(1612) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: 2,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2020, 10, 31, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(4104), new DateTime(2020, 10, 16, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(4104) });
+                values: new object[] { new DateTime(2020, 11, 4, 21, 18, 10, 653, DateTimeKind.Local).AddTicks(2192), new DateTime(2020, 10, 20, 21, 18, 10, 653, DateTimeKind.Local).AddTicks(2192) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: 3,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2020, 12, 3, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(4123), new DateTime(2020, 11, 18, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(4123) });
+                values: new object[] { new DateTime(2020, 12, 7, 21, 18, 10, 653, DateTimeKind.Local).AddTicks(2211), new DateTime(2020, 11, 22, 21, 18, 10, 653, DateTimeKind.Local).AddTicks(2211) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: 4,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2022, 1, 4, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(4133), new DateTime(2021, 12, 20, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(4133) });
+                values: new object[] { new DateTime(2022, 1, 8, 21, 18, 10, 653, DateTimeKind.Local).AddTicks(2221), new DateTime(2021, 12, 24, 21, 18, 10, 653, DateTimeKind.Local).AddTicks(2221) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: 5,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2022, 2, 6, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(4143), new DateTime(2022, 1, 22, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(4143) });
+                values: new object[] { new DateTime(2022, 2, 10, 21, 18, 10, 653, DateTimeKind.Local).AddTicks(2231), new DateTime(2022, 1, 26, 21, 18, 10, 653, DateTimeKind.Local).AddTicks(2231) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: 6,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2022, 3, 11, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(4152), new DateTime(2022, 2, 24, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(4152) });
+                values: new object[] { new DateTime(2022, 3, 15, 21, 18, 10, 653, DateTimeKind.Local).AddTicks(2241), new DateTime(2022, 2, 28, 21, 18, 10, 653, DateTimeKind.Local).AddTicks(2241) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: 7,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2023, 4, 10, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(4161), new DateTime(2023, 3, 26, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(4161) });
+                values: new object[] { new DateTime(2023, 4, 14, 21, 18, 10, 653, DateTimeKind.Local).AddTicks(2250), new DateTime(2023, 3, 30, 21, 18, 10, 653, DateTimeKind.Local).AddTicks(2250) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: 8,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2023, 5, 13, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(4171), new DateTime(2023, 4, 28, 3, 8, 22, 772, DateTimeKind.Local).AddTicks(4171) });
+                values: new object[] { new DateTime(2023, 5, 17, 21, 18, 10, 653, DateTimeKind.Local).AddTicks(2259), new DateTime(2023, 5, 2, 21, 18, 10, 653, DateTimeKind.Local).AddTicks(2259) });
 
             migrationBuilder.UpdateData(
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -5,
                 column: "Password",
-                value: "/0KytQckJRBfiSNqLbIna40/qQ0Le60xRR7kOlXgH7XR3XSTdFeY/giJCX6aXbt4");
+                value: "Z/FX2z/1PaeJLquYo3/KJt97bIaJO4iBCyhKj13xOhKPbgk+0sBED9d+Uy6PUHAv");
 
             migrationBuilder.UpdateData(
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -4,
                 column: "Password",
-                value: "pejtNFgcnm2GS/0OlHfaRR5BZ6FivxfaNLz8B9T6p8fUnG1+BB5HvblQlfCEOQgw");
+                value: "GO89OpZx+b3aQk00/f0mXuYqlEclMTz6rsPk6H8QnSERy0lRgaryIHF3+Tq7c9Hc");
 
             migrationBuilder.UpdateData(
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -3,
                 column: "Password",
-                value: "dX69i6yjU6uMhYd/N0PXxC36S+Xxv+5WKvwzmmWeON36y4G9P8NDFOtQcAFsCFDm");
+                value: "Y7oAxv6Keel9EJAJJWxsGDXoC5oN1+a+uGTyOM5m7UXHhiFwg9JJeIrmF7X9iBnE");
 
             migrationBuilder.UpdateData(
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -2,
                 column: "Password",
-                value: "m0sgyKcAoe49tp3HLmy2vXrbm9TZ2JLhxA4Dw20DS7PjgOm/aajZVjnaApsciCHZ");
+                value: "7VfwUAdVg+k0NKgNVKOGAC3f0QrMART+LJRqg7t5Ynl2/OD2X0Vj0qlmM+uXcc6Z");
 
             migrationBuilder.UpdateData(
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -1,
                 column: "Password",
-                value: "TUE84wwScLNrNAqIIntL6pM5aXdQH86I45ktdpySWW7Lks+IQ8ROMipz9/25/yyv");
+                value: "922/GopM6mca3ZMdwcQQMvjRV90SmSN8EPRcjvJU5YTZf638aLidwNYoN6tmLxOU");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Waypoints_TripId",

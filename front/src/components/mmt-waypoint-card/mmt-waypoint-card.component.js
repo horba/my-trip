@@ -28,6 +28,9 @@ export default {
     updateCompletedState () {
       this.$store.dispatch('waypoints/switchCompletedState', this.waypoint.id);
     },
+    updateDetailsState () {
+      this.$store.dispatch('waypoints/switchDetailsState', this.waypoint.id);
+    },
     deleteWaypoint () {
       this.$store.dispatch('waypoints/deleteWaypoint', this.waypoint.id);
     }

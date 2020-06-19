@@ -36,3 +36,8 @@ export {
   default as MyHistoryTripRoute
 }
   from '@views/user/history-trip-route/history-trip-route.view.vue';
+
+export {
+  default as MyHistoryAddTripRoute
+}
+  from '@views/user/history-trip-add-route/history-trip-add-route.view.vue';
