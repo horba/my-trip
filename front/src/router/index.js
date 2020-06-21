@@ -10,7 +10,7 @@ import {
   MyLeisure, SignIn, SignUp,
   UserSettings, UserCabinet, MyHistoryPreviousTrips,
   MyHistoryUpcomingTrips, MyHistoryTripRoute, RecoveryPassword,
-  MyHistoryAddTripRoute
+  MyHistoryAddTripRoute, MyHistoryAddTrip
 } from '@views';
 import store from '@store';
 
@@ -170,6 +170,12 @@ const routes = [
         path: 'history/future',
         name: 'MyHistoryNext',
         component: MyHistoryUpcomingTrips,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'history/future/add',
+        name: 'MyHistoryAdd',
+        component: MyHistoryAddTrip,
         meta: { layout: 'authorize' }
       },
       {

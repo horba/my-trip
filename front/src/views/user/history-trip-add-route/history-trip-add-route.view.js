@@ -1,5 +1,6 @@
 import { MmtTextInput } from '@components';
 import { requiredValidationMixin } from '@mixins';
+import { mapGetters } from 'vuex';
 
 export default {
   props: ['id', 'wpId'],
@@ -28,30 +29,7 @@ export default {
     };
   },
   computed: {
-    transportTypes () {
-      return [
-        {
-          text: this.$t('transportTypes.plane'),
-          value: 0
-        },
-        {
-          text: this.$t('transportTypes.train'),
-          value: 1
-        },
-        {
-          text: this.$t('transportTypes.bus'),
-          value: 2
-        },
-        {
-          text: this.$t('transportTypes.car'),
-          value: 3
-        },
-        {
-          text: this.$t('transportTypes.bicycle'),
-          value: 4
-        }
-      ];
-    },
+    ...mapGetters('dictionaries', [ 'transportTypes' ]),
     isEditForm () {
       return this.$route.name === 'MyHistoryEditRoute';
     }

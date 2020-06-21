@@ -30,5 +30,7 @@ namespace Entities.Models
 
     public bool IsCompleted { get; set; }
     public bool IsDetails { get; set; }
+
+    public string ImageUrl { get; set; }
   }
 }

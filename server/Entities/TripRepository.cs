@@ -20,5 +20,12 @@ namespace Entities
         .Include(i => i.ArrivalCountry)
         .Where(u => u.UserId.Equals(userId));
     }
+
+    public void CreateTrip(Trip trip)
+    {
+      RepositoryContext.Trips.Add(trip);
+      RepositoryContext.SaveChanges();
+    }
+
   }
 }

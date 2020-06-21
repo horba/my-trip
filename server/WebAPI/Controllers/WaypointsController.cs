@@ -64,14 +64,14 @@ namespace WebAPI.Controllers
     }
 
     [HttpPut]
-    public IActionResult UpdateWaypoint(WaypointRequestDTO wp)
+    public async Task<IActionResult> UpdateWaypoint(WaypointRequestDTO wp)
     {
       if (!_waypointService.IsWaypointAllowed(HttpContext.GetUserIdFromClaim(), wp.NewId))
       {
         return Forbid();
       }
 
-      _waypointService.UpdateWaypoint(wp);
+      await _waypointService.UpdateWaypoint(wp);
       return Ok();
     }
 
@@ -89,14 +89,14 @@ namespace WebAPI.Controllers
     }
 
     [HttpPost]
-    public IActionResult CreateWaypoint(WaypointRequestDTO wp)
+    public async Task<IActionResult> CreateWaypoint(WaypointRequestDTO wp)
     {
       if (!_tripService.IsTripAllowed(HttpContext.GetUserIdFromClaim(), wp.TripId))
       {
         return Forbid();
       }
 
-      _waypointService.InsertWaypoint(wp);
+      await _waypointService.InsertWaypoint(wp);
       return Ok();
     }
 

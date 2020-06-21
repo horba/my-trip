@@ -2,7 +2,6 @@ using Entities.Models;
 using Entities.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -152,7 +151,8 @@ namespace Entities
           IsDetails = i % 3 == 0,
           PathLength = 78 * i + 43,
           PathTime = new TimeSpan(i + 2, i * 14 % 60, 0),
-          Transport = (TransportTypes)(i % 5)
+          Transport = (TransportTypes)(i % 5),
+          ImageUrl = i % 2 == 0 ? "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg" : "https://cdn.vuetifyjs.com/images/cards/plane.jpg"
         });
       }
 

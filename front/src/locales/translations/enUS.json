@@ -141,15 +141,21 @@
     "km": "km",
     "hoursShort": "h",
     "minutesShort": "min",
+    "departureCountry": "Departure country",
     "departureCity": "Departure city",
     "departureDate": "Departure date",
     "departureTime": "Departure time",
+    "transplantTime": "Transplant time",
+    "arrivalCountry": "Arrival country",
     "arrivalCity": "Arrival city",
     "arrivalDate": "Arrival date",
     "arrivalTime": "Arrival time",
     "distanceBetweenPoints": "Distance between points",
     "tripDuration": "Trip duration",
-    "changeCurrencyOnArrival": "Change currency on arrival"
+    "changeCurrencyOnArrival": "Change currency on arrival",
+    "currency": "Currency",
+    "totalPrice": "Total price",
+    "hours": "hours"
   },
   "tickets": {
     "ticketItem": {

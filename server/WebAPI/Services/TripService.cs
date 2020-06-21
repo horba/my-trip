@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using AutoMapper;
 using WebAPI.DTO;
 using System.Linq;
+using System.Threading.Tasks;
+using Entities.Models;
 using Org.BouncyCastle.Math.EC.Multiplier;
+using WebAPI.DTO.Trip;
 
 namespace WebAPI.Services
 {
@@ -12,11 +15,14 @@ namespace WebAPI.Services
   {
     private readonly IMapper _mapper;
     private readonly TripRepository _tripRepository;
+    private readonly GooglePlacePhotoService _photoService;
 
-    public TripService(IMapper mapper, TripRepository tripRepository)
+
+    public TripService(IMapper mapper, TripRepository tripRepository, GooglePlacePhotoService photoService)
     {
       _mapper = mapper;
       _tripRepository = tripRepository;
+      _photoService = photoService;
     }
 
     public IEnumerable<TripDTO> GetTripsHistory(int userId, string searchQuery)
@@ -43,6 +49,14 @@ namespace WebAPI.Services
     public bool IsTripAllowed(int userId, int tripId)
     {
       return _tripRepository.GetUserTrips(userId).Any(tr => tr.Id == tripId);
+    }
+
+    public async Task CreateTrip(int userId, TripRequestDTO trip)
+    {
+      var tripDao = _mapper.Map<Trip>(trip);
+      tripDao.UserId = userId;
+      tripDao.ImageUrl = await _photoService.GetPlaceImage(tripDao.DepartureCity);
+      _tripRepository.CreateTrip(tripDao);
     }
   }
 }

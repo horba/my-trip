@@ -18,6 +18,9 @@ export default {
     }
   },
   actions: {
+    createNewTrip (_, tripData) {
+      return api.post('/trips', tripData);
+    },
     initUpcomingTrips ({ commit }) {
       return api.get('/trips/upcoming')
         .then(r => commit('INIT_UPCOMING_TRIPS', r.data));

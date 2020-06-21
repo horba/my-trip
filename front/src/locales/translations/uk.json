@@ -141,15 +141,21 @@
     "km": "км",
     "hoursShort": "ч",
     "minutesShort": "мин",
+    "departureCountry": "Країна відправлення",
     "departureCity": "Місто відправлення",
     "departureDate": "Дата відправлення",
     "departureTime": "Час відправлення",
+    "transplantTime": "Час пересадки",
+    "arrivalCountry": "Країна прибуття",
     "arrivalCity": "Місто прибуття",
     "arrivalDate": "Дата прибуття",
     "arrivalTime": "Час прибуття",
     "distanceBetweenPoints": "Відстань між пунктами",
     "tripDuration": "Тривалість поїздки",
-    "changeCurrencyOnArrival": "Обміняти валюту по прибуттю"
+    "changeCurrencyOnArrival": "Обміняти валюту по прибуттю",
+    "currency": "Валюта",
+    "totalPrice": "Загальна ціна",
+    "hours": "годин"
   },
   "tickets": {
     "ticketItem": {

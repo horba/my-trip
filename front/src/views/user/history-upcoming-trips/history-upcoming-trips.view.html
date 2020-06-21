@@ -3,7 +3,7 @@
     <div>
       <h4 class="accent--text text--lighten-2 header">{{ $t('tripHistory.planNewTrip') }}</h4>
     </div>
-    <v-btn class="mmt-btn mmt-continue-button" height="39" rounded depressed large>{{ $t('tripHistory.createNewTrip') }}</v-btn>
+    <v-btn class="mmt-btn mmt-continue-button" height="39" rounded depressed large :to="{name: 'MyHistoryAdd'}">{{ $t('tripHistory.createNewTrip') }}</v-btn>
   </div>
   <div class="d-flex flex-wrap justify-space-around"
        v-if="upcomingTrips.length">

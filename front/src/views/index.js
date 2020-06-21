@@ -41,3 +41,8 @@ export {
   default as MyHistoryAddTripRoute
 }
   from '@views/user/history-trip-add-route/history-trip-add-route.view.vue';
+
+export {
+  default as MyHistoryAddTrip
+}
+  from '@views/user/history-add-trip/history-add-trip.view.vue';

@@ -2,6 +2,7 @@
 using System.Linq;
 using AutoMapper;
 using Entities.Models;
+using WebAPI.DTO.Trip;
 using WebAPI.DTO.Waypoint;
 
 namespace WebAPI.DTO
@@ -20,6 +21,10 @@ namespace WebAPI.DTO
         .ForMember(wp => wp.PathTime, opt => opt.MapFrom(wp => TimeSpan.Parse(wp.PathTime)))
         .ForMember(wp => wp.City, opt => opt.MapFrom(wp => wp.DepartureCity))
         .ForMember(wp => wp.Id, opt => opt.MapFrom(wp => wp.NewId));
+
+      CreateMap<TripRequestDTO, Entities.Models.Trip>()
+        .ForMember(tr => tr.StartDate, opt => opt.MapFrom(tr => tr.DepartureDate))
+        .ForMember(tr => tr.EndDate, opt => opt.MapFrom(tr => tr.ArrivalDate));
     }
   }
 }

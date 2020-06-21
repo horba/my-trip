@@ -24,7 +24,7 @@ namespace Entities
 
     public void UpdateWaypoint(Waypoint wp)
     {
-      _repositoryContext.Update(wp);
+      _repositoryContext.Waypoints.Update(wp);
       _repositoryContext.SaveChanges();
     }
 

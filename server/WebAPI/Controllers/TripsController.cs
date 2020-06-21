@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using WebAPI.DTO;
+using WebAPI.DTO.Trip;
 using WebAPI.Extension;
 using WebAPI.Services;
 
@@ -17,6 +19,14 @@ namespace WebAPI.Controllers
     public TripsController(TripService tripService)
     {
       _tripService = tripService;
+    }
+
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> CreateTrip(TripRequestDTO trip)
+    {
+      await _tripService.CreateTrip(HttpContext.GetUserIdFromClaim(), trip);
+      return Ok();
     }
 
     [Authorize]
