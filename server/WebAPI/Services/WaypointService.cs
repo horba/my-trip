@@ -96,13 +96,15 @@ namespace WebAPI.Services
       }
 
       wp.Order = toReplace.Order;
+      wp.IsDetails = toReplace.IsDetails;
+      wp.IsCompleted = toReplace.IsCompleted;
       toReplace.Order++;
+      toReplace.IsDetails = toReplace.IsCompleted = false;
       toReplace.City = wpDTO.ArrivalCity;
       toReplace.ImageUrl = allImg[1];
 
       var wps = _waypointRepository.GetWaypoints()
-          .Where(w => w.TripId == wpDTO.TripId && w.Order > toReplace.Order)
-          .AsNoTracking()
+          .Where(w => w.TripId == wpDTO.TripId && w.Order > wp.Order)
           .ToList();
       wps.ForEach(w => w.Order++);
       _waypointRepository.UpdateRange(wps);
