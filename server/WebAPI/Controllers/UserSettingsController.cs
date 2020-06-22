@@ -1,11 +1,6 @@
-using System;
-using System.Linq;
-using System.Security.Claims;
 using Entities;
 using Microsoft.AspNetCore.Authorization;
-using Entities;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 using WebAPI.DTO.UserSettings;
 using WebAPI.Extension;
 using WebAPI.Services;

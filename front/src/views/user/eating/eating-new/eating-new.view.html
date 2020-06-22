@@ -1,119 +1,102 @@
-<v-form>
+<v-form v-model="formValid">
   <h4>{{$t('eatingNew.addCafe')}}</h4>
   <v-row>
     <v-col md="4" sm="12" class="d-flex justify-start">
-      <gmap-autocomplete
-        class="eating-new-autocomplete"
-        hintDetails="true"
-        :hint="$t('eatingNew.textFieldHint')"
-      /><!-- @place_changed="findPlace"  -->
+      <div class="name">
+        <v-text-field rounded filled background-color="white" dense :label="$t('eatingNew.namePlace')"
+          :rules="[rules.required, rules.maxLengthName]" v-model="namePlace" />
+      </div>
     </v-col>
-    <v-col md="4" />
-    <v-col md="4" sm="12" class="d-flex justify-end">
-      <v-btn
-        color="accent lighten-1"
+    <v-col md="4" sm="12" class="d-flex justify-start">
+      <gmap-autocomplete class="eating-new-autocomplete" :placeholder="$t('eatingNew.addressPlace')"
+        @place_changed="findPlace" />
+    </v-col>
+    <v-col md="4" sm="12" class="d-flex justify-start">
+      <v-file-input
+        color="primary"
         rounded
-        class="mmt-btn"
-        width="206"
-        depressed
-      >
-        {{$t('eatingNew.addFile')}}
-      </v-btn>
+        filled
+        background-color="white"
+        dense
+        :label="$t('eatingNew.addFile')"
+        accept="image/*, .txt, .doc, .docx"
+        multiple
+        :rules="[rules.fileValid, rules.fileLength]"
+        @change="uploadFiles"
+        showSize
+      />
     </v-col>
   </v-row>
   <v-row>
-    <v-col>
+    <v-col md="4" sm="12" class="d-flex justify-start">
       <div class="date-picker">
-        <v-menu
-          v-model="menuDatePicker"
-          :close-on-content-click="false"
-          transition="scale-transition"
-          offset-y
-          ref="refMenu"
-          min-width="290px"
-        >
+        <v-menu v-model="menuDatePicker" :close-on-content-click="false" transition="scale-transition" offset-y
+          ref="refMenu" min-width="290px">
           <template v-slot:activator="{ on, attrs }">
-            <v-text-field
-              prepend-inner-icon="mdi-calendar-check"
-              v-model="date"
-              :label="$t('eatingNew.date')"
-              readonly
-              v-bind="attrs"
-              v-on="on"
-              rounded
-              filled
-              dense
-              hideDetails
-              background-color="white"
-              @click:prepend-inner=""
-            />
+            <v-text-field prepend-inner-icon="mdi-calendar-check" v-model="date" :label="$t('eatingNew.date')" readonly
+              v-bind="attrs" v-on="on" rounded filled dense background-color="white" :rules="[rules.required]" />
           </template>
-          <v-date-picker
-            v-model="date"
-            @input="menuDatePicker=false"
-            scrollable
-            color="primary"
-            v-if="menuDatePicker"
-          >
+          <v-date-picker v-model="date" @input="menuDatePicker=false" scrollable color="primary" v-if="menuDatePicker">
             <v-spacer></v-spacer>
-            <v-btn
-              text
-              color="primary"
-              @click="menuDatePicker=false"
-              class="mmt-btn"
-              >Cancel</v-btn
-            >
-            <v-btn
-              text
-              color="primary"
-              @click="$refs.refMenu.save(date)"
-              class="mmt-btn"
-              >OK</v-btn
-            >
+            <v-btn text color="primary" @click="menuDatePicker=false" class="mmt-btn">Cancel</v-btn>
+            <v-btn text color="primary" @click="$refs.refMenu.save(date)" class="mmt-btn">OK</v-btn>
           </v-date-picker>
         </v-menu>
       </div>
     </v-col>
   </v-row>
   <v-row>
-    <v-col md="4" sm="12">
+    <v-col md="4" sm="12" class="d-flex justify-start">
       <div class="time-picker">
-        <v-menu
-          ref="menuTime"
-          v-model="menuTimePicker"
-          :close-on-content-click="false"
-          :nudge-right="40"
-          :return-value.sync="time"
-          transition="scale-transition"
-          offset-y
-          min-width="290px"
-        >
+        <v-menu ref="menuTime" v-model="menuTimePicker" :close-on-content-click="false" :nudge-right="40"
+          :return-value.sync="time" transition="scale-transition" offset-y min-width="290px">
           <template v-slot:activator="{ on, attrs }">
-            <v-text-field
-              dense
-              v-model="time"
-              label="Picker in menu"
-              prepend-inner-icon="mdi-clock"
-              readonly
-              v-bind="attrs"
-              v-on="on"
-              rounded
-              filled
-              dense
-              hideDetails
-              background-color="white"
-            >
+            <v-text-field dense v-model="time" :label="$t('eatingNew.time')" prepend-inner-icon="mdi-clock" readonly
+              v-bind="attrs" v-on="on" rounded filled dense background-color="white" :rules="[rules.required]">
             </v-text-field>
           </template>
-          <v-time-picker
-            v-if="menuTimePicker"
-            v-model="time"
-            full-width
-            @click:minute="$refs.menuTime.save(time)"
-            format="24hr"
-            color="primary"
-          ></v-time-picker>
+          <v-time-picker v-if="menuTimePicker" v-model="time" full-width @click:minute="$refs.menuTime.save(time)"
+            format="24hr" color="primary"></v-time-picker>
         </v-menu>
+      </div>
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col md="4" sm="12" class="d-flex justify-start">
+      <div class="link">
+        <v-text-field rounded filled background-color="white" dense :label="$t('eatingNew.link')" v-model="link"
+          :rules="[rules.linkValid]" />
+      </div>
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col md="4" sm="12" class="d-flex justify-start">
+      <div class="link">
+        <v-text-field
+          rounded
+          filled
+          background-color="white"
+          dense :label="$t('eatingNew.notes')"
+          v-model="notes"
+          :rules="[rules.maxLengthNotes]"
+        />
+      </div>
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col md="4" sm="12" class="d-flex justify-start">
+      <div class="save-btn">
+        <v-btn
+          rounded
+          color="primary"
+          depressed
+          :disabled="!formValid"
+          class="mmt-btn"
+          width="206"
+          @click="save"
+        >
+          {{$t('eatingNew.save')}}
+        </v-btn>
       </div>
     </v-col>
   </v-row>

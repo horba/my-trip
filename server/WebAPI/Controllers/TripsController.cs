@@ -22,6 +22,7 @@ namespace WebAPI.Controllers
     [Authorize]
     [Route("history")]
     [ProducesResponseType(typeof(IEnumerable<TripDTO>), StatusCodes.Status200OK)]
+    [HttpGet]
     public IActionResult GetTripsHistory(string searchQuery)
     {
       var trips = _tripService.GetTripsHistory(HttpContext.GetUserIdFromClaim(), searchQuery);

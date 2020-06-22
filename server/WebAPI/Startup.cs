@@ -39,12 +39,12 @@ namespace WebAPI
         options.AddPolicy(name: VueCorsPolicy,
                                 builder =>
                                 {
-                              builder
-                                      .AllowAnyHeader()
-                                      .AllowAnyMethod()
-                                      .AllowCredentials()
-                                      .WithOrigins(frontConfiguration.AddressFront);
-                            });
+                                  builder
+                                          .AllowAnyHeader()
+                                          .AllowAnyMethod()
+                                          .AllowCredentials()
+                                          .WithOrigins(frontConfiguration.AddressFront);
+                                });
       });
 
       services.AddDbContext<RepositoryContext>(options =>
@@ -65,6 +65,9 @@ namespace WebAPI
       services.AddScoped<IEmailSender, EmailSender>();
       services.AddScoped<GoogleOauthService>();
       services.AddScoped<AssetsService>();
+      services.AddScoped<ScheduledPlaceToEatRepository>();
+      services.AddScoped<ScheduledPlaceToEatService>();
+      services.AddScoped<AttachmentFileEatingRepository>();
 
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
           .AddJwtBearer(x =>

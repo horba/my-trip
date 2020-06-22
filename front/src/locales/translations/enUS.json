@@ -158,9 +158,17 @@
   },
   "eatingNew": {
     "addCafe": "Add cafe",
-    "textFieldHint": "Place/name of the object",
+    "namePlace": "Name object",
+    "addressPlace": "Address object",
     "addFile": "Add file",
-    "date": "Date"
+    "date": "Date",
+    "time": "Time",
+    "link": "Link",
+    "notes": "Notes",
+    "maxLengthName": "Maximum name length = 200 characters",
+    "maxLengthNotes": "Maximum note length = 2000 characters",
+    "isNoLink": "It doesn't look like a link",
+    "save": "Save"
   },
   "signUp": {
     "welcome": "Welcome!",

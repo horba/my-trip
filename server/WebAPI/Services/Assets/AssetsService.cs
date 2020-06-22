@@ -46,6 +46,8 @@ namespace WebAPI.Services.Assets
       {
         case AssetType.UserAvatar:
           return Consts.UsersAvatarsPath;
+        case AssetType.FileEating:
+          return Consts.FileEatingPath;
         default:
           break;
       }

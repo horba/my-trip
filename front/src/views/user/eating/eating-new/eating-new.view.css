@@ -4,13 +4,21 @@
     background-color: #fff;
     padding: 0 20px;
     border-radius: 20px;
-    width: 248px;
+    margin: 10px 0;
 }
 
-.date-picker, .time-picker {
-    width: 248px;;
+.date-picker,
+.time-picker,
+.name,
+.link,
+.eating-new-autocomplete {
+    width: 248px;
 }
 
 input.eating-new-autocomplete.pac-target-input:focus {
     outline: none;
+}
+
+.col {
+    padding: 0 12px;
 }
