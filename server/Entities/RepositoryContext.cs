@@ -15,6 +15,7 @@ namespace Entities
         public DbSet<TicketRoute> TicketRoutes { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Language> Languages { get; set; }
+        public DbSet<Entertainment> Entertainments { get; set; }
         public DbSet<Trip> Trips { get; set; }
 
         public RepositoryContext(DbContextOptions options) : base(options)
@@ -188,6 +189,7 @@ namespace Entities
                     DepartureCode = "KBK", DepartureDateTime = moqDate.AddDays(1)
                 }
             );
+            modelBuilder.Entity<Entertainment>();
         }
     }
 }

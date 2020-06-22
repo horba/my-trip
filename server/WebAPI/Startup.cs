@@ -65,6 +65,8 @@ namespace WebAPI
       services.AddScoped<IEmailSender, EmailSender>();
       services.AddScoped<GoogleOauthService>();
       services.AddScoped<AssetsService>();
+      services.AddScoped<EntertainmentService>();
+      services.AddScoped<EntertainmentRepository>();
 
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
           .AddJwtBearer(x =>
