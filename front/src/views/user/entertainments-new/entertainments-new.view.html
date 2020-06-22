@@ -1,5 +1,5 @@
 <div class="new-entertainments">
-  <div class="adding-container">
+  <div class="manage-container">
     <h4 class="title">Добавить досуг</h4>
     <mmt-text-input
       class="sign-up-text-field"
@@ -9,20 +9,10 @@
       filled
       dense
       mmt-dense
-      v-model="placeName"
+      v-model="placeTitle"
     />
     <mmt-text-input
-      class="sign-up-text-field"
-      placeholder="Введите описание"
-      mmt-label="Описание"
-      rounded
-      filled
-      dense
-      mmt-dense
-      v-model="placeDescription"
-    />
-    <mmt-text-input
-      class="sign-up-text-field"
+      class="person-count-field"
       placeholder="Введите количество человек"
       mmt-label="Количество человек"
       rounded
@@ -43,17 +33,31 @@
         <template v-slot:activator="{ on, attrs }">
           <v-text-field
             prepend-inner-icon="mdi-calendar-check"
-            v-model="date"
+            v-model="visitDate"
             label="Дата"
             readonly
             v-bind="attrs"
             v-on="on"
             background-color="white"
             rounded
+            filled
+            dense
+            hideDetails
           ></v-text-field>
         </template>
-        <v-date-picker v-model="date" @input="menu = false"></v-date-picker>
+        <v-date-picker v-model="visitDate" @input="menu = false"></v-date-picker>
       </v-menu>
+      <v-textarea
+        class="note-field"
+        label="Заметки"
+        placeholder="Введите заметки"
+        filled
+        background-color="white"
+        no-resize
+        counter
+        rounded
+        v-model="note"
+      ></v-textarea>
     </div>
     <v-btn
       class="add-file mmt-btn"
@@ -79,30 +83,41 @@
         <v-icon>mdi-map-marker</v-icon>
       </v-btn>
       <gmap-autocomplete
-      class="new-entertainments-autocomplete"
-      :placeholder="$t('entertainments.search')"
-      @place_changed="findPlace"
+        class="new-entertainments-autocomplete"
+        :placeholder="$t('entertainments.search')"
+        :select-first-on-enter="true"
+        @place_changed="findPlace"
       >
       </gmap-autocomplete>
     </div>
     <GmapMap
       id="new-entertainments-map"
       class="new-entertainments-map"
-      ref="mapRef2"
+      ref="entertainmentsMap"
       :center="mapCenter"
       :zoom="13"
       :options="{
-        mapTypeControl: false
+        mapTypeControl: false,
+        styles: [
+          {
+            featureType: 'poi',
+            stylers: [{ visibility: 'off' }]
+          },
+          {
+            featureType: 'poi.attraction',
+            stylers: [{ visibility: 'on' }]
+          }
+        ]
       }"
     >
-      <GmapMarker
-        ref="placeMarker"
-        v-if="mapCenter"
-        :position="mapCenter"
-        :draggable="true"
-        v-model="mapCenter"
-      />
-      </GmapMap>
+      <div class="markerWrap" v-if="markerPos">
+        <GmapMarker
+          ref="placeMarker"
+          :position="markerPos"
+          :draggable="true"
+          v-model="markerPos"
+        />
+      </div>
     </GmapMap>
   </div>
 </div>

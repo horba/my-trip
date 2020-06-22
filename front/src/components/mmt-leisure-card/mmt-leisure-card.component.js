@@ -1,12 +1,12 @@
-import { VRating } from 'vuetify/lib';
+import { VIcon, VRating } from 'vuetify/lib';
 
 export default {
   components: {
-    VRating
+    VRating,
+    VIcon
   },
   name: 'mmt-leisure-card',
-  props: [ 'place' ],
-  rating: [],
+  props: ['place', 'isActive'],
   filters: {
     splitTypes (value) {
       return value.join(', ');

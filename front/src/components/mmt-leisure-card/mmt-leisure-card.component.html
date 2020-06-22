@@ -1,9 +1,9 @@
-<div class="place">
+<div :class="`${ isActive ? 'active' : '' } place`">
   <div class="photo-wrap">
     <img
-      v-if="place.photos"
+      v-if="place.photo"
       class="photo"
-      :src="place.photos[0].getUrl()"
+      :src="place.photo"
     >
     <img
       v-else
@@ -12,15 +12,18 @@
     >
   </div>
   <div class="place-info">
+    <router-link :to="`/my/entertainments/manage/${place.id}`" class="icon">
+      <v-icon small>mdi-lead-pencil</v-icon>
+    </router-link>
     <div class="place-body-wrap">
       <div class="title-wrap">
         <h6
           class="title"
-          :title="place.name"
+          :title="place.title"
         >
-          {{ place.name |  trimString(20) }}
+          {{ place.title |  trimString(20) }}
         </h6>
-        <div class="rating-wrap">
+        <div class="rating-wrap" v-if="place.rating">
           <p class="rating">{{ place.rating }}</p>
         </div>
       </div>
@@ -48,6 +51,7 @@
         </div>
       </div>
       <div
+        v-if="place.types"
         class="decription"
         :title="place.types | splitTypes"
       >

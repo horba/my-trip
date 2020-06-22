@@ -1,29 +1,48 @@
 import { MmtLeisureCard, MmtStepper } from '@components';
+import { VBtn, VIcon } from 'vuetify/lib';
 
 import { gmapApi } from 'vue2-google-maps';
 
 export default {
   components: {
     MmtStepper,
-    MmtLeisureCard
+    MmtLeisureCard,
+    VBtn,
+    VIcon
   },
   computed: {
-    google: gmapApi
+    google: gmapApi,
+    entertainments () {
+      return this.$store.state.entertainment.entertainments;
+    }
   },
   data () {
     return {
-      places: [],
       mapCenter: {
         lat: 48.459322,
         lng: 35.052729
       },
-      markers: []
+      places: [],
+      markers: [],
+      map: null,
+      placeService: null,
+      selectedPlaceIndex: null,
+      markerPos: null
     };
   },
-  mounted () {
+  async mounted () {
+    await this.initMap();
+    await this.$store.dispatch('entertainment/initEntertainments');
     this.geolocate();
+    this.getPlaces();
   },
   methods: {
+    async initMap () {
+      await this.$refs.entertainmentMap.$mapPromise.then(map => {
+        this.map = map;
+      });
+      this.placeService = new this.google.maps.places.PlacesService(this.map);
+    },
     geolocate () {
       navigator.geolocation.getCurrentPosition(position => {
         this.mapCenter = { lat: position.coords.latitude, lng: position.coords.longitude };
@@ -31,9 +50,7 @@ export default {
       });
     },
     setMapCenter (position) {
-      this.$refs.mapRef.$mapPromise.then((map) => {
-        map.setCenter(position);
-      });
+      this.map.setCenter(position);
     },
     setPlace (place) {
       this.markers = [];
@@ -43,11 +60,49 @@ export default {
         this.setMapCenter(this.mapCenter);
       }
     },
+    getDetailsCallback (place, entertainment) {
+      this.places.push({
+        title: place.name,
+        rating: place.rating,
+        locationLat: place.geometry.location.lat(),
+        locationLng: place.geometry.location.lng(),
+        types: place.types,
+        opening_hours: place.opening_hours,
+        utc_offset_minutes: place.utc_offset_minutes,
+        photo: place.photos[0].getUrl()
+      });
+    },
     getLatLng (place) {
       return {
         lat: place.geometry.location.lat(),
         lng: place.geometry.location.lng()
       };
+    },
+    getPlaces () {
+      this.entertainments.forEach((e, i) => {
+        if (e.placeId) {
+          this.placeService.getDetails({
+            placeId: e.placeId,
+            language: 'ru',
+            region: 'ru'
+          }, this.getDetailsCallback);
+        } else {
+          this.places.push(e);
+        }
+      });
+    },
+    setActive (i) {
+      if (this.selectedPlaceIndex === i + 1) {
+        this.selectedPlaceIndex = null;
+      } else {
+        this.selectedPlaceIndex = i + 1;
+        if (this.places[i].locationLat) {
+          this.map.panTo({
+            lat: this.places[i].locationLat,
+            lng: this.places[i].locationLng
+          });
+        }
+      }
     }
   }
 };

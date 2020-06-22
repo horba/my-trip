@@ -1,24 +1,48 @@
 <div id="entertainments" class="entertainments">
   <mmt-stepper></mmt-stepper>
   <nav>
-    <span class="results">
-      {{ $t('entertainments.placesCount') }}
-    </span>
-    <span class="results-count">
-      ({{ places.length }})
-    </span>
+    <div class="results-wrap">
+      <span class="results">
+        {{ $t('entertainments.placesCount') }}
+      </span>
+      <span class="results-count">
+        ({{ places.length }})
+      </span>
+    </div>
     <div class="buttons-container">
-      
+      <v-btn
+        rounded
+        depressed
+        class="details accent lighten-1 mr-5"
+        to="/my/entertainments/manage">
+        <span class="text-capitalize">
+          Добавить
+        </span>
+      </v-btn>
+      <v-btn
+        rounded
+        depressed
+        class="details accent lighten-1"
+      >
+        <span class="text-capitalize">
+          Фильтр
+          <v-icon right class="white--text">mdi-filter-variant</v-icon>
+        </span>
+      </v-btn>
     </div>
   </nav>
   <div class="body-wrap">
     <div class="places">
-      <mmt-leisure-card
-        class="place" 
+      <div class="place-wrap"
         v-for="(place, index) in places"
         :key="index"
-        :place="place"
-      ></mmt-leisure-card>
+        @click="setActive(index)"
+      >
+        <mmt-leisure-card
+          :place="place"
+          :isActive="selectedPlaceIndex && selectedPlaceIndex === index + 1 ? true : false"
+        />
+      </div>
     </div>
     <div class="my-entertainments-map-wrap">
       <gmap-autocomplete
@@ -29,18 +53,27 @@
       <GmapMap
         id="my-entertainments-map"
         class="my-entertainments-map"
-        ref="mapRef"
+        ref="entertainmentMap"
         :center="mapCenter"
-        :zoom="15"
+        :zoom="17"
         style="width: 100%; height: 100%"
         :options="{
-          mapTypeControl: false
+          mapTypeControl: false,
+          styles: [
+            {
+              featureType: 'poi',
+              stylers: [{ visibility: 'off' }]
+            },
+            {
+              featureType: 'poi.attraction',
+              stylers: [{ visibility: 'on' }]
+            }
+          ]
         }"
       >
         <GmapMarker
-          :key="index"
-          v-for="(m, index) in markers"
-          :position="m.position"
+          v-if="markerPos"
+          :position="markerPos"
         />
       </GmapMap>
     </div>

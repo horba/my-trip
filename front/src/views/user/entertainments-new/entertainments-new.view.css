@@ -1,4 +1,4 @@
-.new-entertainments, .autocomplete-container, .adding-container {
+.new-entertainments, .autocomplete-container, .manage-container {
   display: flex;
 }
 
@@ -14,8 +14,9 @@
 }
 
 .gmap-container {
-  width: 840px;
+  width: 100%;
   height: 100%;
+  margin: 0 20px 0 40px;
 }
 
 .new-entertainments-map {
@@ -38,6 +39,14 @@
   height: 50px;
 }
 
+.note-field {
+  margin-top: 40px;
+}
+
+.person-count-field {
+  margin-bottom: 10px;
+}
+
 .mmt-btn.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
   background-color: var(--continue-button-background-color);
 }
@@ -52,13 +61,13 @@
   color: white;
 }
 
-.adding-container {
+.manage-container {
   flex-direction: column;
-  width: 200px;
+  width: 300px;
   justify-content: start;
 }
 
-.datepicker >>> .v-text-field__slot {
+/* .datepicker >>> .v-text-field__slot {
   font-size:12px;
 }
 
@@ -86,4 +95,4 @@
 
 .datepicker >>> .v-icon {
   cursor: pointer;
-}
+} */

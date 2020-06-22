@@ -1,9 +1,10 @@
-.body-wrap, .places, .place-state, nav {
+.body-wrap, .places, .place-state, nav{
   display: flex;
 }
 
 nav {
   align-items: center;
+  justify-content: space-between;
   height: 50px;
 }
 
@@ -15,15 +16,18 @@ nav > .results {
   max-width: 1095px;
   height: 100%;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .places {
   flex-wrap: wrap;
-  max-width: 530px;
+  max-width: 545px;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .my-entertainments-map-wrap {
-  width: 540px;
+  width: 515px;
   height: 830px;
 }
 
