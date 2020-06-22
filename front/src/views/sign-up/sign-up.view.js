@@ -1,34 +1,40 @@
+import { emailValidationMixin, requiredValidationMixin } from '@mixins';
+
 import { MmtTextInput } from '@components';
+
 export default {
+  mixins: [emailValidationMixin, requiredValidationMixin],
   components: {
     MmtTextInput
   },
   data () {
     return {
-      email: 'user7@email.com',
-      firstPass: 'password',
-      secondPass: 'password',
+      email: '',
+      firstPass: '',
+      secondPass: '',
       valid: true,
-      showPass: false,
+      showFirstPassword: false,
+      showSecondPassword: false,
       existingEmail: false,
       rules: {
-        isEmpty: v => !!v || 'Заполните поле.',
-        minPassLen: v => v.length >= 8 || 'Не менее 8 символов',
-        validEmail: v => /.+@.+\..+/.test(v) || 'Не действительный e-mail',
-        samePass: () => this.firstPass === this.secondPass || 'Пароли должны совпадать',
-        existingEmail: () => !this.existingEmail || 'Этот e-mail уже занят. Попробуйте другой.'
+        minPassLen: v => v.length >= 8 || this.$t('signUp.leastCharacters'),
+        samePass: () => this.firstPass === this.secondPass || this.$t('signUp.passwordCoincide'),
+        existingEmail: () => !this.existingEmail || this.$t('signUp.anotherEmail')
       }
     };
   },
   methods: {
     signUp () {
       if (this.valid) {
-        this.$store.dispatch('auth/signUp', {
+        const body = {
           email: this.email,
           password: this.firstPass
-        })
+        };
+
+        this.$store.dispatch('auth/signUp', body)
           .then(() => {
-            this.$router.push('/login');
+            this.$store.dispatch('auth/login', body);
+            this.$router.push('/');
           })
           .catch(err => {
             if (err.status === 422) {
@@ -40,6 +46,7 @@ export default {
       }
     },
     validate () {
+      console.log('validate');
       this.$refs.signUpForm.validate();
     }
   }

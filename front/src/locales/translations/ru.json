@@ -73,8 +73,7 @@
     "save": "Сохранить",
     "repeatPassword": "Повторите пароль",
     "passwordMustIdentity": "Пароли должны совпадать",
-    "thisNoEmail": "Не действительный e-mail",
-    "noEmpty": "Заполните поле.",
+    "thisNoEmail": "Не действительный e-mail",    
     "successfulСhange": "Пароль успешно изменен! Вы получите подтверждение об изменении пароля на Ваш электронный адрес."
   },
   "locale": {
@@ -90,8 +89,7 @@
     "firstName": "Имя",
     "enterFirstName": "Введите имя",
     "email": "Почта",
-    "emailExample": "Пример: bereznievatiy@gmail.com",
-    "enterCorrectEmail": "Введите корректный email",
+    "emailExample": "Пример: bereznievatiy@gmail.com",    
     "emailIsAlreadyTaken": "Данная почта уже занята",
     "genderIsNotSpecified": "Пол не указан",
     "male": "Мужской",
@@ -146,5 +144,28 @@
     "forgetPassword": "Забыли пароль?",
     "invalidCredentials": "Неверные учетные данные",
     "unknownApiError": "Неизвестная ошибка сервера"
+  },
+  "signUp": {
+    "welcome": "Добро пожаловать!",
+    "continue": "Продолжить",
+    "or": "Или",
+    "continueGoogle": "Продолжить через Google",
+    "continueFacebook": "Продолжить через Facebook",
+    "privacyPolicyPart1": "Продолжая, Вы соглашаетесь с",
+    "privacyPolicyPart2": "условиями пользования",
+    "privacyPolicyPart3": "сервисом и",
+    "privacyPolicyPart4": "политикой конфиденциальности MakeMeTrip.",
+    "enterEmail": "Введите Ваш e-mail",
+    "pickPassword": "Придумайте пароль",
+    "confirmPassword": "Повторите пароль",
+    "fillField": "Заполните поле.",
+    "leastCharacters": "Не менее 8 символов",
+    "invalidEmail": "Не действительный e-mail",
+    "passwordCoincide": "Пароли должны совпадать",
+    "anotherEmail": "Этот e-mail уже занят. Попробуйте другой."
+  },
+  "validationRules": {
+    "noEmpty": "Заполните поле.",
+    "enterCorrectEmail": "Введите корректный email"
   }
 }

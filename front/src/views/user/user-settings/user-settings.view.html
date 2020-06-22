@@ -11,7 +11,8 @@
         :mmt-label="$t('userSettings.firstName')" :hint="$t('userSettings.enterFirstName')" persistent-hint rounded
         filled single-line dense />
       <mmt-text-input class="input-field" v-model="editedUserSettings.email" :mmt-label="$t('userSettings.email')"
-        :hint="$t('userSettings.emailExample')" persistent-hint rounded filled single-line dense :rules="emailRules"
+        :hint="$t('userSettings.emailExample')" persistent-hint rounded filled single-line dense 
+        :rules="[rules.required, emailRules.validEmail]"
         :error-messages="emailIsAlreadyTaken ? $t('userSettings.emailIsAlreadyTaken') : ''"
         @input="emailIsAlreadyTaken = false" />
       <v-select persistent-hint rounded filled dense hide-details class="first-select mmt-select"
