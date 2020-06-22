@@ -5,12 +5,12 @@ import {
   Contacts,
   CookiePolicy,
   Entertainments,
-  EntertainmentsNew,
   Food,
   ForTourOperators,
   Home,
   HotTours,
   Leisure,
+  ManageEntertainments,
   MyAccommodation,
   MyFood,
   MyHistoryPreviousTrips,
@@ -154,9 +154,9 @@ const routes = [
         meta: { layout: 'authorize' }
       },
       {
-        path: 'entertainments/new',
+        path: 'entertainments/manage/:id?',
         name: 'EntertainmentsNew',
-        component: EntertainmentsNew,
+        component: ManageEntertainments,
         meta: { layout: 'authorize' }
       },
       {

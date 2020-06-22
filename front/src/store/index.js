@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import auth from './modules/auth.store';
+import entertainment from './modules/entertainment.store';
 import locale from './modules/locale.store';
 import recoveryPassword from './modules/recoveryPassword.store';
-import auth from './modules/auth.store';
 import trip from './modules/trip.store';
 import userSettings from './modules/userSettings.store';
 import userTickets from './modules/userTickets.store';
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     trip,
     auth,
     userTickets,
-    recoveryPassword
+    recoveryPassword,
+    entertainment
   }
 });
