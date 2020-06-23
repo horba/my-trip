@@ -169,7 +169,11 @@
     "fileIsEmpty": "Виберіть файл",
     "fileIsToBig": "Файл занадто великий",
     "correctFileSize": "Правильний розмір файлу",
-    "notAllowedContentType": "Виберіть .png, .jpeg або .bmp файл"
+    "notAllowedContentType": "Виберіть .png, .jpeg або .bmp файл",
+    "files": "Файли",
+    "addFile": "Додати файл",
+    "maxFileLength": "Максимальна вага файла",
+    "close": "Зачинити"
   },
   "signIn": {
     "welcome": "Ласкаво просимо!",

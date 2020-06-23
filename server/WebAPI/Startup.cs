@@ -15,6 +15,7 @@ using WebAPI.DTO;
 using WebAPI.Services;
 using WebAPI.Interfaces;
 using System.IO;
+using Entities.Models;
 using Microsoft.Extensions.FileProviders;
 using WebAPI.Services.Assets;
 
@@ -56,7 +57,9 @@ namespace WebAPI
       services.AddScoped<TicketsRepository>();
       services.AddScoped<TicketsService>();
       services.AddScoped<WaypointRepository>();
+      services.AddScoped<WaypointFileRepository>();
       services.AddScoped<WaypointService>();
+      services.AddScoped<WaypointFileService>();
       services.AddScoped<UserService>();
       services.AddSingleton<AuthService>();
       services.AddScoped<TripRepository>();
@@ -140,9 +143,10 @@ namespace WebAPI
       app.UseFileServer(new FileServerOptions
       {
         FileProvider = new PhysicalFileProvider(
-                    Path.Combine(Directory.GetCurrentDirectory(), Consts.UsersAvatarsPath)),
-        RequestPath = "/avatars",
-        EnableDirectoryBrowsing = true
+                    Path.Combine(Directory.GetCurrentDirectory(), Consts.AssetsPath)),
+        RequestPath = "/assets",
+        EnableDirectoryBrowsing = true,
+        StaticFileOptions = { ServeUnknownFileTypes = true}
       });
     }
   }

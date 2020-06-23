@@ -25,6 +25,14 @@ export default {
     },
     SET_TRIP_ID (state, id) {
       state.tripId = id;
+    },
+    DELETE_FILE (state, [fileName, wpId]) {
+      const targetWp = state.waypoints.find(wp => wp.id === wpId);
+      targetWp.files = targetWp.files.filter(f => f.actualFileName !== fileName);
+    },
+    ADD_FILE (state, [userFileName, actualFileName, wpId]) {
+      const targetWp = state.waypoints.find(wp => wp.id === wpId);
+      targetWp.files.push({ actualFileName, userFileName });
     }
   },
   actions: {
@@ -70,6 +78,19 @@ export default {
         .then(() => {
           dispatch('loadWaypoints', [state.tripId, true]);
         });
+    },
+    deleteFile ({ commit }, [fileName, wpId]) {
+      commit('DELETE_FILE', [fileName, wpId]);
+      api.delete(`/waypointFile/${wpId}/${fileName}`);
+    },
+    addFile ({ commit }, [formData, fileName, wpId]) {
+      api.post(`/waypointFile/${wpId}`, formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+        .then(({ data }) => commit('ADD_FILE', [fileName, data, wpId]));
     }
   },
   getters: {

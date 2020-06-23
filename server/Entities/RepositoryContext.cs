@@ -17,6 +17,7 @@ namespace Entities
     public DbSet<Language> Languages { get; set; }
     public DbSet<Trip> Trips { get; set; }
     public DbSet<Waypoint> Waypoints { get; set; }
+    public DbSet<WaypointFile> WaypointFiles { get; set; }
 
     public RepositoryContext(DbContextOptions options) : base(options)
     {

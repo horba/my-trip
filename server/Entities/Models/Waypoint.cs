@@ -32,5 +32,7 @@ namespace Entities.Models
     public bool IsDetails { get; set; }
 
     public string ImageUrl { get; set; }
+
+    public IEnumerable<WaypointFile> Files { get; set; }
   }
 }

@@ -62,3 +62,7 @@
 .date-pseudo-input .date {
   color: var(--history-date-input-date-color);
 }
+
+.files-card.v-card.v-sheet {
+  border-radius: 20px;
+}

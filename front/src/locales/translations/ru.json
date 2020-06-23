@@ -169,7 +169,11 @@
     "fileIsEmpty": "Пожалуйста, выберите файл",
     "fileIsToBig": "Файл слишком большой",
     "correctFileSize": "Верный размер файла",
-    "notAllowedContentType": "Пожалуйста, выберите файл .png, .jpeg или .bmp"
+    "notAllowedContentType": "Пожалуйста, выберите файл .png, .jpeg или .bmp",
+    "files": "Файлы",
+    "addFile": "Добавить файл",
+    "maxFileLength": "Максимальный размер файла",
+    "close": "Закрыть"
   },
   "signIn": {
     "welcome": "Добро пожаловать!",

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Entities.Models;
 using Entities.Models.Enums;
+using WebAPI.DTO.Waypoint;
 
 namespace WebAPI.DTO
 {
@@ -26,5 +28,7 @@ namespace WebAPI.DTO
     public bool IsDetails { get; set; }
 
     public string ImageUrl { get; set; }
+
+    public IEnumerable<WaypointFileDTO> Files { get; set; }
   }
 }

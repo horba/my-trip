@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Entities;
 using Entities.Models;
+using MailKit;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.DTO;
 using WebAPI.DTO.Waypoint;
+using WebAPI.Services.Assets;
 
 namespace WebAPI.Services
 {
@@ -16,14 +19,16 @@ namespace WebAPI.Services
   {
 
     private readonly WaypointRepository _waypointRepository;
+    private readonly WaypointFileService _waypointFileService;
     private readonly GooglePlacePhotoService _photoService;
     private readonly IMapper _mapper;
 
-    public WaypointService(WaypointRepository waypointRepository, IMapper mapper, GooglePlacePhotoService photoService)
+    public WaypointService(WaypointRepository waypointRepository, IMapper mapper, GooglePlacePhotoService photoService, WaypointFileService waypointFileService)
     {
       _waypointRepository = waypointRepository;
       _mapper = mapper;
       _photoService = photoService;
+      _waypointFileService = waypointFileService;
     }
 
     private Waypoint GetWaypointById(int id)
@@ -33,7 +38,10 @@ namespace WebAPI.Services
 
     public IEnumerable<WaypointDTO> GetWaypointDTOsOfTrip(int tripId)
     {
-      return _mapper.Map<IEnumerable<WaypointDTO>>(_waypointRepository.GetWaypoints().Where(wp => wp.TripId == tripId).OrderBy(wp => wp.Order));
+      return _mapper.Map<IEnumerable<WaypointDTO>>(_waypointRepository.GetWaypoints()
+        .Where(wp => wp.TripId == tripId)
+        .Include(wp => wp.Files)
+        .OrderBy(wp => wp.Order));
     }
 
     public void UpdateCompletedState(int wpId, bool state)
@@ -91,7 +99,7 @@ namespace WebAPI.Services
 
         wp.Order = wpCount;
         _waypointRepository.AddWaypoint(wp);
-        _waypointRepository.AddWaypoint(new Waypoint { City = wpDTO.ArrivalCity, Order = wpCount + 1, TripId = wp.TripId, ImageUrl = allImg[1]});
+        _waypointRepository.AddWaypoint(new Waypoint { City = wpDTO.ArrivalCity, Order = wpCount + 1, TripId = wp.TripId, ImageUrl = allImg[1] });
         return;
       }
 
@@ -147,14 +155,16 @@ namespace WebAPI.Services
         return;
       }
 
-      var wps = _waypointRepository.GetWaypoints().Where(w => w.TripId == wp.TripId);
+      var wps = _waypointRepository.GetWaypoints().Where(w => w.TripId == wp.TripId).ToList();
 
       if (wps.Count() == 2)
       {
+        wps.ForEach(wp => _waypointFileService.DeleteAllFilesOfWaypoint(wp.Id));
         _waypointRepository.DeleteRange(wps);
         return;
       }
 
+      _waypointFileService.DeleteAllFilesOfWaypoint(wp.Id);
       _waypointRepository.DeleteWaypoint(wp);
       var toMove = _waypointRepository.GetWaypoints()
         .Where(w => w.TripId == wp.TripId && w.Order > wp.Order)

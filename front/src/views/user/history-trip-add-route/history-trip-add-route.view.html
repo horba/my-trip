@@ -1,6 +1,6 @@
 <div>
   <h4 class="accent--text text--lighten-2 font-weight-regular">{{$t('tripHistory.addNewWaypoint')}}</h4>
-  <v-form v-model="formValidity">
+  <v-form v-model="formValidity" class="mt-3">
     <mmt-text-input class="input-field" :placeholder="$t('cities.kyiv')" :hint="$t('tripHistory.departureCity')"
       persistent-hint rounded filled single-line dense v-model="newWpValues.departureCity" :rules="[rules.required]" />
     <div class="date-input">
@@ -77,11 +77,41 @@
     <mmt-text-input class="input-field" v-model="newWpValues.details"
       :placeholder="$t('tripHistory.changeCurrencyOnArrival')" :hint="$t('tripHistory.details')" persistent-hint rounded
       filled single-line dense />
-    <v-select persistent-hint rounded filled dense hide-details class="mmt-select mt-3"
-      :items="transportTypes" v-model="newWpValues.transport"
-      append-icon="mdi-chevron-down" />
+    <v-select persistent-hint rounded filled dense hide-details class="mmt-select mt-3" :items="transportTypes"
+      v-model="newWpValues.transport" append-icon="mdi-chevron-down" />
+
+    <v-card flat class="mt-6 files-card" v-if="isEditForm" width="100%">
+      <v-card-title>
+        {{$t('fileUpload.files')}}
+      </v-card-title>
+      <v-card-text class="my-n4">
+        <v-chip-group column>
+          <v-chip v-for="file of files" close close-icon="mdi-delete"
+            :href="`${baseUrl}/${waypointFilesSuffix}/${file.actualFileName}`" target="_blank"
+            @click:close="deleteFile(file.actualFileName)">
+            <div class="text-truncate">
+              {{file.userFileName}}
+            </div>
+          </v-chip>
+        </v-chip-group>
+      </v-card-text>
+      <v-card-actions>
+        <v-btn height="35" width="150" class="input-field mmt-continue-button mx-auto" rounded depressed large
+          @click="onPickFile" :disabled="files.length >= MAX_WAYPOINT_FILE_COUNT">
+          <input type="file" style="display: none" ref="fileInput" @change="onFilePicked($event.target.files[0])" />
+          {{$t('fileUpload.addFile')}}</v-btn>
+      </v-card-actions>
+    </v-card>
+
     <v-btn height="39" width="173" class="input-field mmt-continue-button mt-5" rounded depressed large
       @click.prevent="createWaypoint" :disabled="!formValidity">
       {{$t('userSettings.save')}}</v-btn>
   </v-form>
+
+  <v-snackbar v-model="fileSizeError" :timeout="3500">
+    {{$t('fileUpload.maxFileLength')}} {{MAX_WAYPOINT_SIZE_MB}} Mb
+    <v-btn color="red" text @click="fileSizeError = false">
+      {{$t('fileUpload.close')}}
+    </v-btn>
+  </v-snackbar>
 </div>

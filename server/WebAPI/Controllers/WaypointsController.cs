@@ -11,6 +11,7 @@ using WebAPI.DTO;
 using WebAPI.DTO.Waypoint;
 using WebAPI.Extension;
 using WebAPI.Services;
+using WebAPI.Services.Assets;
 using WebAPI.Services.Waypoints;
 
 namespace WebAPI.Controllers

@@ -25,6 +25,10 @@
       <Compile Remove="Migrations\20200614000823_Waypoints.Designer.cs" />
       <Compile Remove="Migrations\20200618181811_Waypoints.cs" />
       <Compile Remove="Migrations\20200618181811_Waypoints.Designer.cs" />
+      <Compile Remove="Migrations\20200621142455_Waypoints.cs" />
+      <Compile Remove="Migrations\20200621142455_Waypoints.Designer.cs" />
+      <Compile Remove="Migrations\20200622013445_Waypoint.cs" />
+      <Compile Remove="Migrations\20200622013445_Waypoint.Designer.cs" />
     </ItemGroup>
 
     <ItemGroup>

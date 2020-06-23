@@ -1,6 +1,9 @@
 import { MmtTextInput } from '@components';
 import { requiredValidationMixin } from '@mixins';
 import { mapGetters } from 'vuex';
+import { baseUrl, waypointFilesSuffix } from '@config';
+const { MAX_WAYPOINT_SIZE_MB, MAX_WAYPOINT_FILE_COUNT } = require('@constants'),
+      MAX_WAYPOINT_SIZE_KB = 1024 * 1024 * MAX_WAYPOINT_SIZE_MB;
 
 export default {
   props: ['id', 'wpId'],
@@ -25,16 +28,43 @@ export default {
         'title-date-format': dt => this.$options.filters.date(dt, 'iiiiii LLL dd'),
         'weekday-format': dt => this.$options.filters.date(dt, 'EEEEEE')
       },
-      formValidity: false
+      formValidity: false,
+      baseUrl,
+      waypointFilesSuffix,
+      MAX_WAYPOINT_FILE_COUNT,
+      MAX_WAYPOINT_SIZE_MB,
+      fileSizeError: false
     };
   },
   computed: {
     ...mapGetters('dictionaries', [ 'transportTypes' ]),
+    files () {
+      const targetWp = this.$store.state.waypoints.waypoints.find(wp => wp.id === +this.wpId);
+      return targetWp ? targetWp.files : [];
+    },
     isEditForm () {
       return this.$route.name === 'MyHistoryEditRoute';
     }
   },
   methods: {
+    onFilePicked (file) {
+      if (file) {
+        if (file.size < MAX_WAYPOINT_SIZE_KB) {
+          const formData = new FormData();
+          formData.append('file', file);
+
+          this.$store.dispatch('waypoints/addFile', [formData, file.name, +this.wpId]);
+        } else {
+          this.fileSizeError = true;
+        }
+      }
+    },
+    onPickFile () {
+      this.$refs.fileInput.click();
+    },
+    deleteFile (fileName) {
+      this.$store.dispatch('waypoints/deleteFile', [fileName, +this.wpId]);
+    },
     createWaypoint () {
       this.$store.dispatch(
         this.isEditForm ? 'waypoints/updateWaypoint' : 'waypoints/insertWaypoint', {
