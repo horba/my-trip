@@ -32,7 +32,7 @@ namespace WebAPI.DTO.ScheduledPlaceToEat
 
     public double Lng { get; set; }
 
-    public IFormFileCollection Attachments { get; set; }
+    //public IFormFileCollection Attachments { get; set; }
 
     public IEnumerable<string> FileNames { get; set; }
   }

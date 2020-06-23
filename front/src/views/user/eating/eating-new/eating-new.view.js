@@ -110,9 +110,11 @@ export default {
         });
     },
     uploadFiles (files) {
+      const tempFiles = new FormData();
       files.forEach(file => {
-        this.files.append('file', file);
+        tempFiles.append(file.name, file);
       });
+      this.files = tempFiles;
     }
   }
 };

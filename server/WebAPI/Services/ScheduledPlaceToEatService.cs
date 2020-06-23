@@ -62,20 +62,20 @@ namespace WebAPI.Services
               GooglePlaceId = scheduledPlaceToEatDTO.GooglePlaceId
             };
             _scheduledPlaceToEatRepository.CreateScheduledPlaceToEat(eating);
-            if(scheduledPlaceToEatDTO.Attachments != null)
-            {
-              foreach(var file in scheduledPlaceToEatDTO.Attachments)
-              {
-                var fileName = Path.GetRandomFileName();
-                var filePath = Path.Combine(_webHostEnvironment.ContentRootPath, Consts.FileEatingPath, fileName);
-                File.Create(filePath);
-                _attachmentFileEatingRepository.CreateAttachmentFileEating(new AttachmentFileEating
-                {
-                  ScheduledPlaceToEatId = eating.Id,
-                  Path = fileName
-                });
-              }
-            }
+            //if(scheduledPlaceToEatDTO.Attachments != null)
+            //{
+            //  foreach(var file in scheduledPlaceToEatDTO.Attachments)
+            //  {
+            //    var fileName = Path.GetRandomFileName();
+            //    var filePath = Path.Combine(_webHostEnvironment.ContentRootPath, Consts.FileEatingPath, fileName);
+            //    File.Create(filePath);
+            //    _attachmentFileEatingRepository.CreateAttachmentFileEating(new AttachmentFileEating
+            //    {
+            //      ScheduledPlaceToEatId = eating.Id,
+            //      Path = fileName
+            //    });
+            //  }
+            //}
           }
           else
           {
@@ -125,25 +125,25 @@ namespace WebAPI.Services
           {
             throw new ArgumentException();
           }
-          var oldfiles = _attachmentFileEatingRepository.GetAttachmentFileEatingByScheduledPlaceId(scheduledPlaceToEatDTO.Id);
-          foreach(var file in oldfiles)
-          {
-            File.Delete(file.Path);
-            _attachmentFileEatingRepository.DeleteAttachmentFileEating(file);
-          }
-          if(scheduledPlaceToEatDTO.Attachments != null)
-          {
-            foreach(var file in scheduledPlaceToEatDTO.Attachments)
-            {
-              var fileName = Path.Combine(_webHostEnvironment.ContentRootPath, Consts.FileEatingPath, Path.GetRandomFileName());
-              File.Create(fileName);
-              _attachmentFileEatingRepository.CreateAttachmentFileEating(new AttachmentFileEating
-              {
-                ScheduledPlaceToEatId = scheduledPlaceToEatDTO.Id,
-                Path = fileName
-              });
-            }
-          }
+          //var oldfiles = _attachmentFileEatingRepository.GetAttachmentFileEatingByScheduledPlaceId(scheduledPlaceToEatDTO.Id);
+          //foreach(var file in oldfiles)
+          //{
+          //  File.Delete(file.Path);
+          //  _attachmentFileEatingRepository.DeleteAttachmentFileEating(file);
+          //}
+          //if(scheduledPlaceToEatDTO.Attachments != null)
+          //{
+          //  foreach(var file in scheduledPlaceToEatDTO.Attachments)
+          //  {
+          //    var fileName = Path.Combine(_webHostEnvironment.ContentRootPath, Consts.FileEatingPath, Path.GetRandomFileName());
+          //    File.Create(fileName);
+          //    _attachmentFileEatingRepository.CreateAttachmentFileEating(new AttachmentFileEating
+          //    {
+          //      ScheduledPlaceToEatId = scheduledPlaceToEatDTO.Id,
+          //      Path = fileName
+          //    });
+          //  }
+          //}
           var eating = new ScheduledPlaceToEat
           {
             Id = scheduledPlaceToEatDTO.Id,
@@ -200,6 +200,11 @@ namespace WebAPI.Services
       {
         return;
       }
+    }
+
+    public void SaveFilesName(AttachmentFileEatingDTO attachmentFileEatingDTO)
+    {
+      //_attachmentFileEatingRepository.CreateAttachmentFileEating(new AttachmentFileEating { })
     }
 
     private bool Valid(ScheduledPlaceToEatDTO scheduledPlaceToEatDTO)

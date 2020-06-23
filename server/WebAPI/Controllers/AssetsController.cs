@@ -2,8 +2,12 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPI.DTO.ScheduledPlaceToEat;
+using WebAPI.Extension;
+using WebAPI.Services;
 using WebAPI.Services.Assets;
 
 namespace WebAPI.Controllers
@@ -13,11 +17,35 @@ namespace WebAPI.Controllers
   [Authorize]
   public class AssetsController : ControllerBase
   {
-    private readonly AssetsService _filesService;
+    private readonly AssetsService _assetsService;
+    private readonly UserService _userService;
 
-    public AssetsController(AssetsService filesService)
+    public AssetsController(AssetsService filesService, UserService userService)
     {
-      _filesService = filesService;
+      _assetsService = filesService;
+      _userService = userService;
+    }
+
+    [HttpPost("UploadEatingMultiFile")]
+    [Consumes("multipart/form-data")]
+    public async Task<IActionResult> UploadEatingMultiFile([FromForm] IFormFileCollection files)
+    {
+      if(files.Count <= Consts.MaxEatingFileCount)
+      {
+        List <AttachmentFileEatingDTO> fileNames = new List<AttachmentFileEatingDTO>();
+        foreach(var file in files)
+        {
+          if(!Consts.AllowedImageContentTypes.Contains(file.ContentType, StringComparer.OrdinalIgnoreCase))
+            return BadRequest("notAllowedContentType");
+
+          if(file.Length > Consts.MaxEatingFileSize)
+            return BadRequest("fileIsToBig");
+
+          var fileName = await _assetsService.SaveFileAsync(file, AssetType.FileEating);
+          fileNames.Add(new AttachmentFileEatingDTO { FileName = fileName });
+        }
+      }
+      return Ok();
     }
 
     [HttpPost]
@@ -31,12 +59,23 @@ namespace WebAPI.Controllers
       if (!Consts.AllowedImageContentTypes.Contains(file.ContentType, StringComparer.OrdinalIgnoreCase))
         return BadRequest("notAllowedContentType");
 
-      if (file.Length > Consts.MaxImageFileSize)
-        return BadRequest("fileIsToBig");
 
-      var fileName = await _filesService.SaveFileAsync(file, assetType);
 
-      return Ok(fileName);
+      switch(assetType)
+      {
+        case AssetType.UserAvatar:
+        {
+          if(file.Length > Consts.MaxImageFileSize)
+            return BadRequest("fileIsToBig");
+          var fileName = await _assetsService.SaveFileAsync(file, assetType);
+          _userService.UpdateUserAvatar(HttpContext.GetUserIdFromClaim(), fileName);
+          break;
+        }
+        default:
+          break;
+      }
+
+      return Ok();
     }
 
     [HttpDelete]
@@ -46,7 +85,19 @@ namespace WebAPI.Controllers
       if (string.IsNullOrEmpty(fileName))
         return BadRequest("File name is required");
 
-      _filesService.DeleteFile(fileName, assetType);
+      _assetsService.DeleteFile(fileName, assetType);
+
+      switch(assetType)
+      {
+        case AssetType.UserAvatar:
+        {
+          _userService.UpdateUserAvatar(HttpContext.GetUserIdFromClaim(), fileName);
+          break;
+        }
+        default:
+          break;
+      }
+
       return Ok();
     }
   }

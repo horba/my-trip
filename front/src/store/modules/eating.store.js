@@ -10,13 +10,23 @@ export default {
       return api.get('/scheduledPlaceToEat');
     },
     createNewEating ({ commit }, payload) {
-      return api.post('/scheduledPlaceToEat/create/', payload);
+      return api.post('/assets/UploadEatingMultiFile/', payload.attachments,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
     },
     updateEating ({ commit }, payload) {
       return api.post('/scheduledPlaceToEat/update/', payload);
     },
     deleteEating ({ commit }, payload) {
-      return api.post('/scheduledPlaceToEat/delete/', payload);
+      return api.post('/scheduledPlaceToEat/delete/', { payload, files: payload.attachments },
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
     },
     getFiles ({ commit }, payload) {
       payload.files = [];

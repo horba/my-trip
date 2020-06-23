@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -32,38 +31,40 @@ namespace WebAPI.Controllers
 
     // POST: api/ScheduledPlaceToEat/Create
     [HttpPost("Create")]
-    public void Create([FromBody] ScheduledPlaceToEatDTO ScheduledPlaceToEatDTO)
+    //[Consumes("multipart/form-data")]
+    public void Create([FromBody] ScheduledPlaceToEatDTO ScheduledPlaceToEatDTO/*, [FromForm] IFormFileCollection files*/)
     {
-        if(ScheduledPlaceToEatDTO.Attachments.Count <= Consts.MaxEatingFileCount)
-        {
-          foreach(var file in ScheduledPlaceToEatDTO.Attachments)
-          {
-            if(file.Length >= Consts.MaxEatingFileSize)
-            {
-              return;
-            }
-          }
+      //ScheduledPlaceToEatDTO.Attachments = files;
+        //if(ScheduledPlaceToEatDTO.Attachments.Count <= Consts.MaxEatingFileCount)
+        //{
+        //  foreach(var file in ScheduledPlaceToEatDTO.Attachments)
+        //  {
+        //    if(file.Length >= Consts.MaxEatingFileSize)
+        //    {
+        //      return;
+        //    }
+        //  }
           ScheduledPlaceToEatDTO.UserId = HttpContext.GetUserIdFromClaim();
           _scheduledPlaceToEatService.CreateNewEating(ScheduledPlaceToEatDTO);
-        }
+        //}
     }
 
     // POST: api/ScheduledPlaceToEat/UpdateScheduledPlaceToEat
     [HttpPost("Update")]
     public void Update([FromBody] ScheduledPlaceToEatDTO ScheduledPlaceToEatDTO)
     {
-      if(ScheduledPlaceToEatDTO.Attachments.Count <= Consts.MaxEatingFileCount)
-      {
-        foreach(var file in ScheduledPlaceToEatDTO.Attachments)
-        {
-          if(file.Length >= Consts.MaxEatingFileSize)
-          {
-            return;
-          }
-        }
+    //  if(ScheduledPlaceToEatDTO.Attachments.Count <= Consts.MaxEatingFileCount)
+    //  {
+    //    foreach(var file in ScheduledPlaceToEatDTO.Attachments)
+    //    {
+    //      if(file.Length >= Consts.MaxEatingFileSize)
+    //      {
+    //        return;
+    //      }
+    //    }
         ScheduledPlaceToEatDTO.UserId = HttpContext.GetUserIdFromClaim();
         _scheduledPlaceToEatService.UpdateEating(ScheduledPlaceToEatDTO);
-      }
+      //}
     }
 
     // DELETE: api/ScheduledPlaceToEat/DeleteScheduledPlaceToEat
@@ -71,18 +72,18 @@ namespace WebAPI.Controllers
     [HttpPost("Delete")]
     public void Delete([FromBody] ScheduledPlaceToEatDTO ScheduledPlaceToEatDTO)
     {
-      if(ScheduledPlaceToEatDTO.Attachments.Count <= Consts.MaxEatingFileCount)
-      {
-        foreach(var file in ScheduledPlaceToEatDTO.Attachments)
-        {
-          if(file.Length >= Consts.MaxEatingFileSize)
-          {
-            return;
-          }
-        }
+      //if(ScheduledPlaceToEatDTO.Attachments.Count <= Consts.MaxEatingFileCount)
+      //{
+      //  foreach(var file in ScheduledPlaceToEatDTO.Attachments)
+      //  {
+      //    if(file.Length >= Consts.MaxEatingFileSize)
+      //    {
+      //      return;
+      //    }
+      //  }
         ScheduledPlaceToEatDTO.UserId = HttpContext.GetUserIdFromClaim();
         _scheduledPlaceToEatService.DeleteScheduledPlaceToEat(ScheduledPlaceToEatDTO);
-      }
+      //}
     }
   }
 }
