@@ -97,8 +97,7 @@ namespace WebAPI.Controllers
         return Forbid();
       }
 
-      await _waypointService.InsertWaypoint(wp);
-      return Ok();
+      return Ok(await _waypointService.InsertWaypoint(wp));
     }
 
   }

@@ -135,15 +135,14 @@ namespace Entities
 
       modelBuilder.Entity<Trip>().HasData(moqUpcomingTrips);
 
-      int tripId = 1;
       var waypoints = new List<Waypoint>();
-      for (int i = 0; i < 7; i++)
+      for (int i = 0; i < 10; i++)
       {
         waypoints.Add(new Waypoint
         {
           Id = i + 1,
           Order = i,
-          TripId = tripId,
+          TripId = i < 5 ? 1 : -1,
           City = $"{i}CitY{i}",
           DepartureDate = new DateTime(2021, i + 1, i + 1, i % 3, 3 * i, 0),
           ArrivalDate = new DateTime(2021, i + 1, i + 15, i % 4 + 1, 5 * i, 0),

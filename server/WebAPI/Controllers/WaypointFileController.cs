@@ -46,6 +46,31 @@ namespace WebAPI.Controllers
       return Ok(await _waypointFileService.AddFile(id, file));
     }
 
+    [HttpPost]
+    [Route("multiple/{id}")]
+    [Consumes("multipart/form-data")]
+    public async Task<IActionResult> UploadFiles(int id, [FromForm] IFormFileCollection files)
+    {
+      if (!_waypointService.IsWaypointAllowed(HttpContext.GetUserIdFromClaim(), id))
+        return Forbid();
+
+      foreach (var file in files)
+      {
+        if (file == null || file.Length < 0)
+          return BadRequest("fileIsEmpty");
+
+        if (file.Length > Consts.MaxWaypointFileSize)
+          return BadRequest("fileIsToBig");
+
+        if (!_waypointFileService.HasFreeSpace(id))
+          return BadRequest("NoSpaceAvailable");
+
+        await _waypointFileService.AddFile(id, file);
+      }
+
+      return Ok();
+    }
+
     [HttpDelete]
     [Route("{id}/{actualName}")]
     public IActionResult DeleteFile(string actualName, int id)

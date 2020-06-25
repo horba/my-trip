@@ -65,12 +65,9 @@ export default {
       }
       api.delete(`/waypoints/${id}`);
     },
-    insertWaypoint ({ commit, dispatch, state }, wp) {
+    insertWaypoint ({ commit }, wp) {
       commit('CLEAR_WAYPOINTS');
-      return api.post('/waypoints', wp)
-        .then(() => {
-          dispatch('loadWaypoints', [state.tripId, true]);
-        });
+      return api.post('/waypoints', wp);
     },
     updateWaypoint ({ commit, dispatch, state }, wp) {
       commit('CLEAR_WAYPOINTS');
@@ -91,6 +88,14 @@ export default {
           }
         })
         .then(({ data }) => commit('ADD_FILE', [fileName, data, wpId]));
+    },
+    sendMultipleFiles (_, [formData, wpId]) {
+      return api.post(`/waypointFile/multiple/${wpId}`, formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
     }
   },
   getters: {

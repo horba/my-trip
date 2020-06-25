@@ -76,7 +76,7 @@ namespace WebAPI.Services
         ?.UserId == userId;
     }
 
-    public async Task InsertWaypoint(WaypointRequestDTO wpDTO)
+    public async Task<int> InsertWaypoint(WaypointRequestDTO wpDTO)
     {
       var wp = _mapper.Map<Waypoint>(wpDTO);
       var toReplace = _waypointRepository.GetWaypoints()
@@ -100,7 +100,7 @@ namespace WebAPI.Services
         wp.Order = wpCount;
         _waypointRepository.AddWaypoint(wp);
         _waypointRepository.AddWaypoint(new Waypoint { City = wpDTO.ArrivalCity, Order = wpCount + 1, TripId = wp.TripId, ImageUrl = allImg[1] });
-        return;
+        return wp.Id;
       }
 
       wp.Order = toReplace.Order;
@@ -119,7 +119,7 @@ namespace WebAPI.Services
       _waypointRepository.UpdateWaypoint(toReplace);
 
       _waypointRepository.AddWaypoint(wp);
-
+      return wp.Id;
     }
 
     public async Task UpdateWaypoint(WaypointRequestDTO wpDTO)

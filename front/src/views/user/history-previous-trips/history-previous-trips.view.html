@@ -34,12 +34,12 @@
       </a>
     </h5>
   </div>
-  <div class="d-flex flex-wrap justify-space-around"
+  <div class="d-flex flex-wrap"
        v-if="trips.length">
     <template v-for="(trip,n) in trips">
       <mmt-trip-card :key="`trip-${n}`"
                      :trip="trip"
-                     class="mb-5" />
+                     class="mb-5 mr-5" />
     </template>
   </div>
   <p v-else>

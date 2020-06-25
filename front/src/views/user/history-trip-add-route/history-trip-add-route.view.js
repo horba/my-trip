@@ -33,7 +33,9 @@ export default {
       waypointFilesSuffix,
       MAX_WAYPOINT_FILE_COUNT,
       MAX_WAYPOINT_SIZE_MB,
-      fileSizeError: false
+      fileSizeError: false,
+      tempFiles: [],
+      sendBtnDisable: false
     };
   },
   computed: {
@@ -47,6 +49,15 @@ export default {
     }
   },
   methods: {
+    onTempFilePicked (file) {
+      if (file) {
+        if (file.size < MAX_WAYPOINT_SIZE_KB) {
+          this.tempFiles.push(file);
+        } else {
+          this.fileSizeError = true;
+        }
+      }
+    },
     onFilePicked (file) {
       if (file) {
         if (file.size < MAX_WAYPOINT_SIZE_KB) {
@@ -66,6 +77,11 @@ export default {
       this.$store.dispatch('waypoints/deleteFile', [fileName, +this.wpId]);
     },
     createWaypoint () {
+      this.$refs.form.validate();
+      if (!this.formValidity) {
+        return;
+      }
+      this.sendBtnDisable = true;
       this.$store.dispatch(
         this.isEditForm ? 'waypoints/updateWaypoint' : 'waypoints/insertWaypoint', {
           departureCity: this.newWpValues.departureCity,
@@ -78,8 +94,23 @@ export default {
           transport: this.newWpValues.transport,
           tripId: +this.id,
           newId: +this.wpId || 0
+        })
+        .then((r) => {
+          if (this.tempFiles.length === 0 || this.isEditForm) {
+            return Promise.resolve();
+          }
+          const formData = new FormData();
+          this.tempFiles.forEach(file => {
+            formData.append('files', file);
+          });
+
+          return this.$store.dispatch('waypoints/sendMultipleFiles', [formData, r.data]);
+        })
+        .then(() => {
+          this.$store.dispatch('waypoints/loadWaypoints',
+            [this.id, true]);
+          this.$router.push({ name: 'MyHistoryFututeRoute' });
         });
-      this.$router.push({ name: 'MyHistoryFututeRoute' });
     }
   },
   created () {

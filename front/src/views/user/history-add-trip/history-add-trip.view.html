@@ -1,6 +1,6 @@
 <div>
   <h4 class="accent--text text--lighten-2 font-weight-regular">{{$t('tripHistory.createNewTrip')}}</h4>
-  <v-form v-model="formValidity">
+  <v-form v-model="formValidity" ref="form">
     <v-select persistent-hint rounded filled dense :hint="$t('tripHistory.departureCountry')"
       class="mmt-select mb-1 mt-4 select-field" :items="countries" v-model="newTripValues.departureCountryId"
       append-icon="mdi-chevron-down" :rules="[rules.required]" />
@@ -92,7 +92,7 @@
       :hint="$t('tripHistory.differenceInTime')" v-model="newTripValues.differenceInTime" :rules="[rules.required]" />
 
     <v-btn height="39" width="173" class="input-field mmt-continue-button mt-2" rounded depressed large
-      @click.prevent="createNewTrip" :disabled="!formValidity">
+      @click.prevent="createNewTrip">
       {{$t('userSettings.save')}}</v-btn>
   </v-form>
 </div>

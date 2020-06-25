@@ -34,6 +34,10 @@ export default {
   },
   methods: {
     createNewTrip () {
+      this.$refs.form.validate();
+      if (!this.formValidity) {
+        return;
+      }
       this.$store.dispatch('trip/createNewTrip', {
         departureCountryId: this.newTripValues.departureCountryId,
         departureCity: this.newTripValues.departureCity,
