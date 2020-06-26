@@ -6,8 +6,8 @@
 
 .delete-btn {
   position: absolute;
-  top: 1px;
-  right: 5px;
+  top: 0;
+  right: 0;
   cursor: pointer;
 }
 
@@ -80,7 +80,7 @@
 }
 
 .card .details .subtitle {
-  color: var(--history-route-details-color);
+  color: var(--user-menu-active-color);
 }
 
 .card img {
@@ -134,7 +134,7 @@
 }
 
 .path-info .transport-icon {
-  color: var(--history-route-transport-icon-color);
+  color: var(--success-base-color);
   font-size: 28px;
   margin-left: 4px;
   margin-top: 6px;

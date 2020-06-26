@@ -6,6 +6,6 @@
     <v-btn class="mmt-btn mmt-continue-button" height="39" rounded depressed large :to="{name: 'MyHistoryAddRoute'}">
       {{ $t('tripHistory.addNewWaypoint') }}</v-btn>
   </div>
-  <mmt-waypoint-card v-for='(wp, index) of waypoints' :key='wp.id' :firstCard="index === 0"
-    :lastCard="index === waypoints.length - 1" :waypoint="wp" />
+  <mmt-waypoint-card v-for='(waypoint, index) of waypoints' :key='waypoint.id' :firstCard="index === 0"
+    :lastCard="index === waypoints.length - 1" :waypoint="waypoint" />
 </div>

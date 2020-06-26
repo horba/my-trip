@@ -8,11 +8,21 @@ using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Entities
 {
-  public class WaypointRepository
+  public interface IWaypointRepository
   {
-    private readonly RepositoryContext _repositoryContext;
+    IQueryable<Waypoint> GetWaypoints();
+    void UpdateWaypoint(Waypoint wp);
+    void DeleteWaypoint(Waypoint wp);
+    void DeleteRange(IEnumerable<Waypoint> wps);
+    void UpdateRange(IEnumerable<Waypoint> wps);
+    void AddWaypoint(Waypoint wp);
+  }
 
-    public WaypointRepository(RepositoryContext repositoryContext)
+  public class WaypointRepository : IWaypointRepository
+  {
+    private readonly IRepositoryContext _repositoryContext;
+
+    public WaypointRepository(IRepositoryContext repositoryContext)
     {
       _repositoryContext = repositoryContext;
     }

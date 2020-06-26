@@ -7,7 +7,21 @@ using System.Linq;
 
 namespace Entities
 {
-  public class RepositoryContext : DbContext
+  public interface IRepositoryContext
+  {
+    DbSet<User> Users { get; set; }
+    DbSet<Ticket> Tickets { get; set; }
+    DbSet<TicketRoute> TicketRoutes { get; set; }
+    DbSet<Country> Countries { get; set; }
+    DbSet<Language> Languages { get; set; }
+    DbSet<Trip> Trips { get; set; }
+    DbSet<Waypoint> Waypoints { get; set; }
+    DbSet<WaypointFile> WaypointFiles { get; set; }
+
+    int SaveChanges();
+  }
+
+  public class RepositoryContext : DbContext, IRepositoryContext
   {
 
     public DbSet<User> Users { get; set; }

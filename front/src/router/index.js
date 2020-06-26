@@ -8,9 +8,9 @@ import {
   Contacts, ReviewNew, MyTickets,
   MyAccommodation, MyFood, MyTransport,
   MyLeisure, SignIn, SignUp,
-  UserSettings, UserCabinet, MyHistoryPreviousTrips,
-  MyHistoryUpcomingTrips, MyHistoryTripRoute, RecoveryPassword,
-  MyHistoryAddTripRoute, MyHistoryAddTrip
+  UserSettings, UserCabinet, MyHistoryTripList,
+  MyHistoryTripRoute, RecoveryPassword,
+  AddEditRouteForm, AddTripForm
 } from '@views';
 import store from '@store';
 
@@ -163,19 +163,19 @@ const routes = [
       {
         path: 'history/prev',
         name: 'MyHistoryPrev',
-        component: MyHistoryPreviousTrips,
+        component: MyHistoryTripList,
         meta: { layout: 'authorize' }
       },
       {
         path: 'history/future',
         name: 'MyHistoryNext',
-        component: MyHistoryUpcomingTrips,
+        component: MyHistoryTripList,
         meta: { layout: 'authorize' }
       },
       {
         path: 'history/future/add',
         name: 'MyHistoryAdd',
-        component: MyHistoryAddTrip,
+        component: AddTripForm,
         meta: { layout: 'authorize' }
       },
       {
@@ -195,14 +195,14 @@ const routes = [
       {
         path: 'history/future/:id/route/add',
         name: 'MyHistoryAddRoute',
-        component: MyHistoryAddTripRoute,
+        component: AddEditRouteForm,
         meta: { layout: 'authorize' },
         props: true
       },
       {
-        path: 'history/future/:id/route/:wpId/edit',
+        path: 'history/future/:id/route/:waypointId/edit',
         name: 'MyHistoryEditRoute',
-        component: MyHistoryAddTripRoute,
+        component: AddEditRouteForm,
         meta: { layout: 'authorize' },
         props: true
       },

@@ -8,9 +8,9 @@ namespace Entities
 {
   public class CountryRepository
   {
-    private readonly RepositoryContext RepositoryContext;
+    private readonly IRepositoryContext RepositoryContext;
 
-    public CountryRepository(RepositoryContext repositoryContext)
+    public CountryRepository(IRepositoryContext repositoryContext)
     {
       this.RepositoryContext = repositoryContext;
     }

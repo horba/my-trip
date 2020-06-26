@@ -22,10 +22,10 @@ namespace WebAPI.Controllers
   public class WaypointsController : ControllerBase
   {
 
-    private readonly WaypointService _waypointService;
+    private readonly IWaypointService _waypointService;
     private readonly TripService _tripService;
 
-    public WaypointsController(WaypointService waypointService, TripService tripService)
+    public WaypointsController(IWaypointService waypointService, TripService tripService)
     {
       _tripService = tripService;
       _waypointService = waypointService;

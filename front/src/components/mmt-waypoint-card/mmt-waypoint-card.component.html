@@ -1,9 +1,9 @@
 <div>
   <div class="card-button-wrapper">
     <v-card class="card-wrapper" color="primary lighten-7" tile flat>
-      <div class="delete-btn" @click="deleteWaypoint">
-        X
-      </div>
+      <v-btn icon class="delete-btn" @click="deleteWaypoint">
+        <v-icon>mdi-delete</v-icon>
+      </v-btn>
       <div class="card">
         <div class="return-to-home" v-if="firstCard">
           <div class="trip-start">
@@ -56,7 +56,8 @@
         <div v-else>
         </div>
         <div class="details">
-          <v-checkbox hide-details readonly color="#2962FF" :input-value="waypoint.isDetails" @click.self="updateDetailsState"/>
+          <v-checkbox hide-details readonly color="secondary" :input-value="waypoint.isDetails"
+            @click.self="updateDetailsState" />
           <div class="content">
             <span class="subtitle">
               {{$t('tripHistory.details')}}:
@@ -80,15 +81,16 @@
   </div>
   <div class="path-info" v-if="!lastCard">
     <div class="vertical-line"></div>
-    <v-icon class="transport-icon" :class="{'rotate-180': waypoint.transport === 0}" >{{iconMap[waypoint.transport]}}
+    <v-icon class="transport-icon" :class="{'rotate-180': waypoint.transport === 0}">{{iconMap[waypoint.transport]}}
     </v-icon>
     <div class="text-content">
-      {{waypoint.pathLength}} {{$t('tripHistory.km')}} | 
-      <template v-if="waypoint.pathTime.hours">{{waypoint.pathTime.hours}} {{$t('tripHistory.hoursShort')}} </template> 
-      <template v-if="waypoint.pathTime.minutes || !waypoint.pathTime.hours">{{waypoint.pathTime.minutes}} {{$t('tripHistory.minutesShort')}}</template> 
+      {{waypoint.pathLength}} {{$t('tripHistory.km')}} |
+      <template v-if="waypoint.pathTime.hours">{{waypoint.pathTime.hours}} {{$t('tripHistory.hoursShort')}} </template>
+      <template v-if="waypoint.pathTime.minutes || !waypoint.pathTime.hours">{{waypoint.pathTime.minutes}}
+        {{$t('tripHistory.minutesShort')}}</template>
     </div>
     <div class="vertical-line"></div>
-    <router-link :to="{name:'MyHistoryEditRoute', params: {wpId: waypoint.id}}">
+    <router-link :to="{name:'MyHistoryEditRoute', params: {waypointId: waypoint.id}}">
       <v-icon class="pencil">mdi-pencil</v-icon>
     </router-link>
   </div>

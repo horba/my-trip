@@ -6,7 +6,7 @@ const { MAX_WAYPOINT_SIZE_MB, MAX_WAYPOINT_FILE_COUNT } = require('@constants'),
       MAX_WAYPOINT_SIZE_KB = 1024 * 1024 * MAX_WAYPOINT_SIZE_MB;
 
 export default {
-  props: ['id', 'wpId'],
+  props: ['id', 'waypointId'],
   mixins: [
     requiredValidationMixin
   ],
@@ -15,7 +15,7 @@ export default {
   },
   data () {
     return {
-      newWpValues: {
+      newWaypointValues: {
         departureDate: this.$options.filters.date(new Date(), 'yyyy-MM-dd'),
         arrivalDate: this.$options.filters.date(new Date(), 'yyyy-MM-dd'),
         departureTime: this.$options.filters.date(new Date(), 'HH:mm'),
@@ -41,8 +41,9 @@ export default {
   computed: {
     ...mapGetters('dictionaries', [ 'transportTypes' ]),
     files () {
-      const targetWp = this.$store.state.waypoints.waypoints.find(wp => wp.id === +this.wpId);
-      return targetWp ? targetWp.files : [];
+      const targetWaypoint = this.$store.state.waypoints.waypoints
+        .find(waypoint => waypoint.id === +this.waypointId);
+      return targetWaypoint ? targetWaypoint.files : [];
     },
     isEditForm () {
       return this.$route.name === 'MyHistoryEditRoute';
@@ -64,7 +65,7 @@ export default {
           const formData = new FormData();
           formData.append('file', file);
 
-          this.$store.dispatch('waypoints/addFile', [formData, file.name, +this.wpId]);
+          this.$store.dispatch('waypoints/addFile', [formData, file.name, +this.waypointId]);
         } else {
           this.fileSizeError = true;
         }
@@ -74,7 +75,7 @@ export default {
       this.$refs.fileInput.click();
     },
     deleteFile (fileName) {
-      this.$store.dispatch('waypoints/deleteFile', [fileName, +this.wpId]);
+      this.$store.dispatch('waypoints/deleteFile', [fileName, +this.waypointId]);
     },
     createWaypoint () {
       this.$refs.form.validate();
@@ -82,18 +83,17 @@ export default {
         return;
       }
       this.sendBtnDisable = true;
+      const { departureTime, arrivalTime, ...rest } = this.newWaypointValues;
       this.$store.dispatch(
         this.isEditForm ? 'waypoints/updateWaypoint' : 'waypoints/insertWaypoint', {
-          departureCity: this.newWpValues.departureCity,
-          departureDate: `${this.newWpValues.departureDate}T${this.newWpValues.departureTime}Z`,
-          arrivalCity: this.newWpValues.arrivalCity,
-          arrivalDate: `${this.newWpValues.arrivalDate}T${this.newWpValues.arrivalTime}Z`,
-          pathLength: +this.newWpValues.pathLength,
-          pathTime: this.newWpValues.pathTime,
-          details: this.newWpValues.details,
-          transport: this.newWpValues.transport,
+          ...rest,
+          departureDate:
+          `${this.newWaypointValues.departureDate}T${this.newWaypointValues.departureTime}Z`,
+          arrivalDate:
+          `${this.newWaypointValues.arrivalDate}T${this.newWaypointValues.arrivalTime}Z`,
+          pathLength: +this.newWaypointValues.pathLength,
           tripId: +this.id,
-          newId: +this.wpId || 0
+          newId: +this.waypointId || 0
         })
         .then((r) => {
           if (this.tempFiles.length === 0 || this.isEditForm) {
@@ -106,37 +106,36 @@ export default {
 
           return this.$store.dispatch('waypoints/sendMultipleFiles', [formData, r.data]);
         })
-        .then(() => {
-          this.$store.dispatch('waypoints/loadWaypoints',
-            [this.id, true]);
-          this.$router.push({ name: 'MyHistoryFututeRoute' });
-        });
+        .then(() => this.$store.dispatch('waypoints/loadWaypoints', [+this.id, true]))
+        .then(() => this.$router.push({ name: 'MyHistoryFututeRoute' }));
     }
   },
   created () {
     if (this.isEditForm) {
       this.$store.dispatch('waypoints/loadWaypoints', [ +this.id ])
         .then(() => {
-          const wps = this.$store.state.waypoints.waypoints,
-                currentWp = wps.find(wp => wp.id === +this.wpId),
-                nextWp = wps[wps.findIndex(wp => wp === currentWp) + 1];
+          const waypoints = this.$store.state.waypoints.waypoints,
+                currentWaypoint = waypoints.find(waypoint => waypoint.id === +this.waypointId),
+                nextWaypoint
+                 = waypoints[waypoints.findIndex(waypoint => waypoint === currentWaypoint) + 1];
 
-          this.newWpValues.departureCity = currentWp.city;
-          this.newWpValues.departureDate
-          = this.$options.filters.date(currentWp.departureDate, 'yyyy-MM-dd');
-          this.newWpValues.departureTime
-          = this.$options.filters.date(currentWp.departureDate, 'HH:mm');
+          this.newWaypointValues.departureCity = currentWaypoint.city;
+          this.newWaypointValues.departureDate
+          = this.$options.filters.date(currentWaypoint.departureDate, 'yyyy-MM-dd');
+          this.newWaypointValues.departureTime
+          = this.$options.filters.date(currentWaypoint.departureDate, 'HH:mm');
 
-          this.newWpValues.arrivalCity = nextWp.city;
-          this.newWpValues.arrivalDate
-          = this.$options.filters.date(currentWp.arrivalDate, 'yyyy-MM-dd');
-          this.newWpValues.arrivalTime
-          = this.$options.filters.date(currentWp.arrivalDate, 'HH:mm');
+          this.newWaypointValues.arrivalCity = nextWaypoint.city;
+          this.newWaypointValues.arrivalDate
+          = this.$options.filters.date(currentWaypoint.arrivalDate, 'yyyy-MM-dd');
+          this.newWaypointValues.arrivalTime
+          = this.$options.filters.date(currentWaypoint.arrivalDate, 'HH:mm');
 
-          this.newWpValues.pathLength = currentWp.pathLength;
-          this.newWpValues.pathTime = `${currentWp.pathTime.hours}:${currentWp.pathTime.minutes}`;
-          this.newWpValues.details = currentWp.details;
-          this.newWpValues.transport = currentWp.transport;
+          this.newWaypointValues.pathLength = currentWaypoint.pathLength;
+          this.newWaypointValues.pathTime
+          = `${currentWaypoint.pathTime.hours}:${currentWaypoint.pathTime.minutes}`;
+          this.newWaypointValues.details = currentWaypoint.details;
+          this.newWaypointValues.transport = currentWaypoint.transport;
 
           this.$forceUpdate();
         });

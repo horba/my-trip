@@ -15,15 +15,26 @@ using WebAPI.Services.Assets;
 
 namespace WebAPI.Services
 {
-  public class WaypointService
+  public interface IWaypointService
+  {
+    IEnumerable<WaypointDTO> GetWaypointDTOsOfTrip(int tripId);
+    void UpdateCompletedState(int wpId, bool state);
+    void UpdateDetailsState(int wpId, bool state);
+    bool IsWaypointAllowed(int userId, int wpId);
+    Task<int> InsertWaypoint(WaypointRequestDTO wpDTO);
+    Task UpdateWaypoint(WaypointRequestDTO wpDTO);
+    void DeleteWaypoint(int wpId);
+  }
+
+  public class WaypointService : IWaypointService
   {
 
-    private readonly WaypointRepository _waypointRepository;
-    private readonly WaypointFileService _waypointFileService;
+    private readonly IWaypointRepository _waypointRepository;
+    private readonly IWaypointFileService _waypointFileService;
     private readonly GooglePlacePhotoService _photoService;
     private readonly IMapper _mapper;
 
-    public WaypointService(WaypointRepository waypointRepository, IMapper mapper, GooglePlacePhotoService photoService, WaypointFileService waypointFileService)
+    public WaypointService(IWaypointRepository waypointRepository, IMapper mapper, GooglePlacePhotoService photoService, IWaypointFileService waypointFileService)
     {
       _waypointRepository = waypointRepository;
       _mapper = mapper;

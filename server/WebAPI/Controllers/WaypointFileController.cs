@@ -17,10 +17,10 @@ namespace WebAPI.Controllers
   public class WaypointFileController : ControllerBase
   {
 
-    private readonly WaypointFileService _waypointFileService;
-    private readonly WaypointService _waypointService;
+    private readonly IWaypointFileService _waypointFileService;
+    private readonly IWaypointService _waypointService;
 
-    public WaypointFileController(WaypointFileService waypointFileFileService, WaypointService waypointService)
+    public WaypointFileController(IWaypointFileService waypointFileFileService, IWaypointService waypointService)
     {
       _waypointFileService = waypointFileFileService;
       _waypointService = waypointService;

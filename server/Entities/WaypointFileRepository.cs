@@ -6,11 +6,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Entities.Models
 {
-  public class WaypointFileRepository
+  public interface IWaypointFileRepository
   {
-    private readonly RepositoryContext _repositoryContext;
+    IQueryable<WaypointFile> GetFiles();
+    void CreateFile(WaypointFile waypointFile);
+    void DeleteFile(WaypointFile waypointFile);
+  }
 
-    public WaypointFileRepository(RepositoryContext repositoryContext)
+  public class WaypointFileRepository : IWaypointFileRepository
+  {
+    private readonly IRepositoryContext _repositoryContext;
+
+    public WaypointFileRepository(IRepositoryContext repositoryContext)
     {
       _repositoryContext = repositoryContext;
     }
@@ -29,12 +36,6 @@ namespace Entities.Models
     public void DeleteFile(WaypointFile waypointFile)
     {
       _repositoryContext.WaypointFiles.Remove(waypointFile);
-      _repositoryContext.SaveChanges();
-    }
-
-    public void DeleteRange(IEnumerable<WaypointFile> wpfs)
-    {
-      _repositoryContext.WaypointFiles.RemoveRange(wpfs);
       _repositoryContext.SaveChanges();
     }
 

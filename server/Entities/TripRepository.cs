@@ -6,9 +6,9 @@ namespace Entities
 {
   public class TripRepository
   {
-    private readonly RepositoryContext RepositoryContext;
+    private readonly IRepositoryContext RepositoryContext;
 
-    public TripRepository(RepositoryContext repositoryContext)
+    public TripRepository(IRepositoryContext repositoryContext)
     {
       this.RepositoryContext = repositoryContext;
     }

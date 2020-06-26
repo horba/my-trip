@@ -4,7 +4,7 @@
 
     <v-form v-model="formValidity" class="mt-3" ref="form">
       <mmt-text-input class="input-field" :placeholder="$t('cities.kyiv')" :hint="$t('tripHistory.departureCity')"
-        persistent-hint rounded filled single-line dense v-model="newWpValues.departureCity"
+        persistent-hint rounded filled single-line dense v-model="newWaypointValues.departureCity"
         :rules="[rules.required]" />
       <div class="date-input">
         <v-menu offset-y :close-on-content-click="false">
@@ -13,12 +13,12 @@
               <v-icon>mdi-calendar-check</v-icon>
               <div class="content">
                 <div class="date-title">{{$t('tripHistory.departureDate')}}</div>
-                <div class="date">{{newWpValues.departureDate | date('EEEEEE, d MMM')}}</div>
+                <div class="date">{{newWaypointValues.departureDate | date('EEEEEE, d MMM')}}</div>
               </div>
             </div>
           </template>
           <v-date-picker first-day-of-week="1" v-bind="calendarLocale" color="accent lighten-1" width="248"
-            v-model="newWpValues.departureDate" />
+            v-model="newWaypointValues.departureDate" />
         </v-menu>
       </div>
       <div class="date-input">
@@ -28,15 +28,15 @@
               <v-icon>mdi-calendar-check</v-icon>
               <div class="content">
                 <div class="date-title">{{$t('tripHistory.departureTime')}}</div>
-                <div class="date">{{newWpValues.departureTime}}</div>
+                <div class="date">{{newWaypointValues.departureTime}}</div>
               </div>
             </div>
           </template>
-          <v-time-picker color="accent lighten-1" width="248" format="24hr" v-model="newWpValues.departureTime" />
+          <v-time-picker color="accent lighten-1" width="248" format="24hr" v-model="newWaypointValues.departureTime" />
         </v-menu>
       </div>
       <mmt-text-input class="input-field" :placeholder="$t('cities.krakow')" :hint="$t('tripHistory.arrivalCity')"
-        persistent-hint rounded filled single-line dense :rules="[rules.required]" v-model="newWpValues.arrivalCity" />
+        persistent-hint rounded filled single-line dense :rules="[rules.required]" v-model="newWaypointValues.arrivalCity" />
       <div class="date-input">
         <v-menu offset-y :close-on-content-click="false">
           <template v-slot:activator="{ on }">
@@ -44,12 +44,12 @@
               <v-icon>mdi-calendar-check</v-icon>
               <div class="content">
                 <div class="date-title">{{$t('tripHistory.arrivalDate')}}</div>
-                <div class="date">{{newWpValues.arrivalDate | date('EEEEEE, d MMM')}}</div>
+                <div class="date">{{newWaypointValues.arrivalDate | date('EEEEEE, d MMM')}}</div>
               </div>
             </div>
           </template>
           <v-date-picker first-day-of-week="1" v-bind="calendarLocale" color="accent lighten-1" width="248"
-            v-model="newWpValues.arrivalDate" />
+            v-model="newWaypointValues.arrivalDate" />
         </v-menu>
       </div>
       <div class="date-input">
@@ -59,29 +59,29 @@
               <v-icon>mdi-calendar-check</v-icon>
               <div class="content">
                 <div class="date-title">{{$t('tripHistory.arrivalTime')}}</div>
-                <div class="date">{{newWpValues.arrivalTime}}</div>
+                <div class="date">{{newWaypointValues.arrivalTime}}</div>
               </div>
             </div>
           </template>
-          <v-time-picker color="accent lighten-1" width="248" format="24hr" v-model="newWpValues.arrivalTime" />
+          <v-time-picker color="accent lighten-1" width="248" format="24hr" v-model="newWaypointValues.arrivalTime" />
         </v-menu>
       </div>
-      <mmt-text-input class="input-field" v-model="newWpValues.pathLength" placeholder="845"
+      <mmt-text-input class="input-field" v-model="newWaypointValues.pathLength" placeholder="845"
         :hint="$t('tripHistory.distanceBetweenPoints')" :suffix="$t('tripHistory.km')" persistent-hint rounded filled
         single-line dense :rules="[rules.required]" type="number" />
       <v-menu offset-y :close-on-content-click="false">
         <template v-slot:activator="{ on }">
           <mmt-text-input class="input-field" placeholder="00:00" :hint="$t('tripHistory.tripDuration')" persistent-hint
-            rounded filled single-line dense readonly v-model="newWpValues.pathTime" v-on="on"
+            rounded filled single-line dense readonly v-model="newWaypointValues.pathTime" v-on="on"
             :rules="[rules.required]" />
         </template>
-        <v-time-picker color="accent lighten-1" width="248" format="24hr" v-model="newWpValues.pathTime" />
+        <v-time-picker color="accent lighten-1" width="248" format="24hr" v-model="newWaypointValues.pathTime" />
       </v-menu>
-      <mmt-text-input class="input-field" v-model="newWpValues.details"
+      <mmt-text-input class="input-field" v-model="newWaypointValues.details"
         :placeholder="$t('tripHistory.changeCurrencyOnArrival')" :hint="$t('tripHistory.details')" persistent-hint
         rounded filled single-line dense />
       <v-select persistent-hint rounded filled dense hide-details class="mmt-select mt-3" :items="transportTypes"
-        v-model="newWpValues.transport" append-icon="mdi-chevron-down" />
+        v-model="newWaypointValues.transport" append-icon="mdi-chevron-down" />
       <v-btn height="39" width="173" class="input-field mmt-continue-button mt-5" rounded depressed large
         @click.prevent="createWaypoint" :disabled="sendBtnDisable">
         {{$t('userSettings.save')}}</v-btn>

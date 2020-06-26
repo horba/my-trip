@@ -14,25 +14,25 @@ export default {
     CLEAR_WAYPOINTS (state) {
       state.waypoints = [];
     },
-    SWITCH_WP_STATE (_, wp) {
-      wp.isCompleted = !wp.isCompleted;
+    SWITCH_WAYPOINT_STATE (_, waypoint) {
+      waypoint.isCompleted = !waypoint.isCompleted;
     },
-    SWITCH_WP_DETAILS (_, wp) {
-      wp.isDetails = !wp.isDetails;
+    SWITCH_WAYPOINT_DETAILS (_, waypoint) {
+      waypoint.isDetails = !waypoint.isDetails;
     },
     DETELE_WAYPOINT (state, id) {
-      state.waypoints = state.waypoints.filter(wp => wp.id !== id);
+      state.waypoints = state.waypoints.filter(waypoint => waypoint.id !== id);
     },
     SET_TRIP_ID (state, id) {
-      state.tripId = id;
+      state.tripId = +id;
     },
-    DELETE_FILE (state, [fileName, wpId]) {
-      const targetWp = state.waypoints.find(wp => wp.id === wpId);
-      targetWp.files = targetWp.files.filter(f => f.actualFileName !== fileName);
+    DELETE_FILE (state, [fileName, waypointId]) {
+      const targetWaypoint = state.waypoints.find(waypoint => waypoint.id === waypointId);
+      targetWaypoint.files = targetWaypoint.files.filter(f => f.actualFileName !== fileName);
     },
-    ADD_FILE (state, [userFileName, actualFileName, wpId]) {
-      const targetWp = state.waypoints.find(wp => wp.id === wpId);
-      targetWp.files.push({ actualFileName, userFileName });
+    ADD_FILE (state, [userFileName, actualFileName, waypointId]) {
+      const targetWaypoint = state.waypoints.find(waypoint => waypoint.id === waypointId);
+      targetWaypoint.files.push({ actualFileName, userFileName });
     }
   },
   actions: {
@@ -44,18 +44,18 @@ export default {
       return api.get(`/waypoints/bytrip/${tripId}`)
         .then(({ data }) => {
           commit('SET_WAYPOINTS', data);
-          commit('SET_TRIP_ID', tripId);
+          commit('SET_TRIP_ID', +tripId);
         });
     },
     switchCompletedState ({ commit, state }, id) {
-      const wp = state.waypoints.find(wp => wp.id === id);
-      commit('SWITCH_WP_STATE', wp);
-      api.put('/waypoints/set-completed-state', { id, state: wp.isCompleted });
+      const waypoint = state.waypoints.find(waypoint => waypoint.id === id);
+      commit('SWITCH_WAYPOINT_STATE', waypoint);
+      api.put('/waypoints/set-completed-state', { id, state: waypoint.isCompleted });
     },
     switchDetailsState ({ commit, state }, id) {
-      const wp = state.waypoints.find(wp => wp.id === id);
-      commit('SWITCH_WP_DETAILS', wp);
-      api.put('/waypoints/set-details-state', { id, state: wp.isDetails });
+      const waypoint = state.waypoints.find(waypoint => waypoint.id === id);
+      commit('SWITCH_WAYPOINT_DETAILS', waypoint);
+      api.put('/waypoints/set-details-state', { id, state: waypoint.isDetails });
     },
     deleteWaypoint ({ commit, state }, id) {
       if (state.waypoints.length === 2) {
@@ -65,32 +65,27 @@ export default {
       }
       api.delete(`/waypoints/${id}`);
     },
-    insertWaypoint ({ commit }, wp) {
-      commit('CLEAR_WAYPOINTS');
-      return api.post('/waypoints', wp);
+    insertWaypoint (_, waypoint) {
+      return api.post('/waypoints', waypoint);
     },
-    updateWaypoint ({ commit, dispatch, state }, wp) {
-      commit('CLEAR_WAYPOINTS');
-      return api.put('/waypoints', wp)
-        .then(() => {
-          dispatch('loadWaypoints', [state.tripId, true]);
-        });
+    updateWaypoint (_, waypoint) {
+      return api.put('/waypoints', waypoint);
     },
-    deleteFile ({ commit }, [fileName, wpId]) {
-      commit('DELETE_FILE', [fileName, wpId]);
-      api.delete(`/waypointFile/${wpId}/${fileName}`);
+    deleteFile ({ commit }, [fileName, waypointId]) {
+      commit('DELETE_FILE', [fileName, waypointId]);
+      api.delete(`/waypointFile/${waypointId}/${fileName}`);
     },
-    addFile ({ commit }, [formData, fileName, wpId]) {
-      api.post(`/waypointFile/${wpId}`, formData,
+    addFile ({ commit }, [formData, fileName, waypointId]) {
+      api.post(`/waypointFile/${waypointId}`, formData,
         {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         })
-        .then(({ data }) => commit('ADD_FILE', [fileName, data, wpId]));
+        .then(({ data }) => commit('ADD_FILE', [fileName, data, waypointId]));
     },
-    sendMultipleFiles (_, [formData, wpId]) {
-      return api.post(`/waypointFile/multiple/${wpId}`, formData,
+    sendMultipleFiles (_, [formData, waypointId]) {
+      return api.post(`/waypointFile/multiple/${waypointId}`, formData,
         {
           headers: {
             'Content-Type': 'multipart/form-data'
@@ -100,17 +95,17 @@ export default {
   },
   getters: {
     cardedWaypoints (state) {
-      const wps = [];
-      state.waypoints.forEach(wp => {
-        wps.push(Object.assign({}, wp));
+      const waypoints = [];
+      state.waypoints.forEach(waypoint => {
+        waypoints.push(Object.assign({}, waypoint));
       });
 
-      for (let i = wps.length - 1; i > 0; i--) {
-        wps[i].arrivalDate = wps[i - 1].arrivalDate;
-        wps[i].details = wps[i - 1].details;
+      for (let i = waypoints.length - 1; i > 0; i--) {
+        waypoints[i].arrivalDate = waypoints[i - 1].arrivalDate;
+        waypoints[i].details = waypoints[i - 1].details;
       }
 
-      return wps;
+      return waypoints;
     }
   }
 };

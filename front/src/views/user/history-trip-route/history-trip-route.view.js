@@ -11,6 +11,6 @@ export default {
     }
   },
   mounted () {
-    this.$store.dispatch('waypoints/loadWaypoints', [ this.id ]);
+    this.$store.dispatch('waypoints/loadWaypoints', [ +this.id ]);
   }
 };

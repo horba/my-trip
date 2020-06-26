@@ -39,17 +39,10 @@ export default {
         return;
       }
       this.$store.dispatch('trip/createNewTrip', {
-        departureCountryId: this.newTripValues.departureCountryId,
-        departureCity: this.newTripValues.departureCity,
+        ...this.newTripValues,
         departureDate: `${this.newTripValues.departureDate}T${this.newTripValues.departureTime}Z`,
-        arrivalCountryId: this.newTripValues.arrivalCountryId,
-        arrivalCity: this.newTripValues.arrivalCity,
         arrivalDate: `${this.newTripValues.arrivalDate}T${this.newTripValues.arrivalTime}Z`,
-        totalPrice: +this.newTripValues.totalPrice,
-        currency: this.newTripValues.currency,
-        flightTime: this.newTripValues.flightTime,
-        transplantTime: this.newTripValues.transplantTime,
-        differenceInTime: this.newTripValues.differenceInTime
+        totalPrice: +this.newTripValues.totalPrice
       })
         .then(() => this.$router.push({ name: 'MyHistoryNext' }));
     }

@@ -11,13 +11,21 @@ using WebAPI.Services.Assets;
 
 namespace WebAPI.Services
 {
-  public class WaypointFileService
+  public interface IWaypointFileService
   {
-    private readonly WaypointFileRepository _waypointFileRepository;
-    private readonly WaypointRepository _waypointRepository;
+    bool HasFreeSpace(int wpId);
+    Task<string> AddFile(int wpId, IFormFile file);
+    void DeleteFile(string actualName);
+    void DeleteAllFilesOfWaypoint(int wpId);
+  }
+
+  public class WaypointFileService : IWaypointFileService
+  {
+    private readonly IWaypointFileRepository _waypointFileRepository;
+    private readonly IWaypointRepository _waypointRepository;
     private readonly AssetsService _assetsService;
 
-    public WaypointFileService(WaypointFileRepository waypointFileRepository, AssetsService assetsService, WaypointRepository waypointRepository)
+    public WaypointFileService(IWaypointFileRepository waypointFileRepository, AssetsService assetsService, IWaypointRepository waypointRepository)
     {
       _waypointFileRepository = waypointFileRepository;
       _assetsService = assetsService;

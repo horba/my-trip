@@ -48,7 +48,7 @@ namespace WebAPI
                             });
       });
 
-      services.AddDbContext<RepositoryContext>(options =>
+      services.AddDbContext<IRepositoryContext, RepositoryContext>(options =>
           options.UseSqlServer(Configuration.GetConnectionString("mssqlConnection")));
       services.AddSingleton(Configuration);
       services.AddScoped<UserRepository>();
@@ -56,10 +56,10 @@ namespace WebAPI
       services.AddScoped<LanguageRepository>();
       services.AddScoped<TicketsRepository>();
       services.AddScoped<TicketsService>();
-      services.AddScoped<WaypointRepository>();
-      services.AddScoped<WaypointFileRepository>();
-      services.AddScoped<WaypointService>();
-      services.AddScoped<WaypointFileService>();
+      services.AddScoped<IWaypointRepository, WaypointRepository>();
+      services.AddScoped<IWaypointFileRepository, WaypointFileRepository>();
+      services.AddScoped<IWaypointService, WaypointService>();
+      services.AddScoped<IWaypointFileService, WaypointFileService>();
       services.AddScoped<UserService>();
       services.AddSingleton<AuthService>();
       services.AddScoped<TripRepository>();
