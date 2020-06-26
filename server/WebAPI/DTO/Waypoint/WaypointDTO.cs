@@ -14,8 +14,8 @@ namespace WebAPI.DTO
 
     public string City { get; set; }
 
-    public DateTime DepartureDate { get; set; }
-    public DateTime ArrivalDate { get; set; }
+    public string DepartureDate { get; set; }
+    public string ArrivalDate { get; set; }
 
     public TimeSpan PathTime { get; set; }
     public int PathLength { get; set; }

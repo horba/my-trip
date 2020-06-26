@@ -11,6 +11,7 @@
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "date-fns": "^2.13.0",
+    "date-fns-tz": "^1.0.10",
     "google-maps-api-loader": "^1.1.1",
     "vue": "^2.6.11",
     "vue-i18n": "^8.17.4",

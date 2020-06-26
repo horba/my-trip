@@ -15,7 +15,9 @@ namespace WebAPI.DTO
 
       CreateMap<Entities.Models.Trip, TripDTO>();
 
-      CreateMap<Entities.Models.Waypoint, WaypointDTO>();
+      CreateMap<Entities.Models.Waypoint, WaypointDTO>()
+        .ForMember(wp => wp.ArrivalDate, opt => opt.MapFrom(wp => wp.ArrivalDate.ToString("yyyy-MM-ddTHH:mm:ssZ")))
+        .ForMember(wp => wp.DepartureDate, opt => opt.MapFrom(wp => wp.DepartureDate.ToString("yyyy-MM-ddTHH:mm:ssZ")));
 
       CreateMap<WaypointFile, WaypointFileDTO>();
 
