@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Entities.Models;
 
@@ -23,19 +25,20 @@ namespace Entities
       return RepositoryContext.ScheduledPlacesToEat.Where(u => u.Id.Equals(Id)).FirstOrDefault();
     }
 
-    public void CreateScheduledPlaceToEat(ScheduledPlaceToEat scheduledPlaceToEat)
+    public int CreateScheduledPlaceToEat(ScheduledPlaceToEat scheduledPlaceToEat)
     {
       RepositoryContext.ScheduledPlacesToEat.Add(scheduledPlaceToEat);
       RepositoryContext.SaveChanges();
+      return scheduledPlaceToEat.Id;
     }
 
     public void UptateScheduledPlaceToEat(ScheduledPlaceToEat scheduledPlaceToEat)
     {
-      if(RepositoryContext.ScheduledPlacesToEat.Where(u => u.UserId.Equals(scheduledPlaceToEat.UserId) && u.Id.Equals(scheduledPlaceToEat.Id)) != null)
-      {
+      /*if(RepositoryContext.ScheduledPlacesToEat.Where(u => u.UserId.Equals(scheduledPlaceToEat.UserId) && u.Id.Equals(scheduledPlaceToEat.Id)) != null)
+      {*/
         RepositoryContext.ScheduledPlacesToEat.Update(scheduledPlaceToEat);
         RepositoryContext.SaveChanges();
-      }
+      /*}*/
     }
 
     public void DeleteScheduledPlaceToEat(ScheduledPlaceToEat scheduledPlaceToEat)

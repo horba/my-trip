@@ -13,6 +13,11 @@ namespace Entities
       RepositoryContext = repositoryContext;
     }
 
+    public AttachmentFileEating GetAttachmentFileEatingById(int Id)
+    {
+      return RepositoryContext.AttachmentFilesEating.Where(u => u.Id.Equals(Id)).FirstOrDefault();
+    }
+
     public IEnumerable<AttachmentFileEating> GetAttachmentFileEatingByScheduledPlaceId(int ScheduledPlaceId)
     {
       return RepositoryContext.AttachmentFilesEating.Where(u => u.ScheduledPlaceToEatId.Equals(ScheduledPlaceId));

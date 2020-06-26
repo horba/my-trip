@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Entities.Models;
-using Microsoft.AspNetCore.Http;
 
 namespace WebAPI.DTO.ScheduledPlaceToEat
 {
-  public class ScheduledPlaceToEatDTO
+  public class InputScheduledPlaceToEatDTO
   {
     public int Id { get; set; }
 
@@ -31,9 +29,5 @@ namespace WebAPI.DTO.ScheduledPlaceToEat
     public double Lat { get; set; }
 
     public double Lng { get; set; }
-
-    //public IFormFileCollection Attachments { get; set; }
-
-    public IEnumerable<string> FileNames { get; set; }
   }
 }

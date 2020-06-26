@@ -9,7 +9,7 @@ import {
   MyAccommodation, Eating, MyTransport,
   MyLeisure, SignIn, SignUp,
   UserSettings, UserCabinet, MyHistoryPreviousTrips,
-  RecoveryPassword, EatingNew
+  RecoveryPassword, ScheduleEatingPlace
 } from '@views';
 import store from '@store';
 
@@ -119,14 +119,20 @@ const routes = [
       },
       {
         path: 'eating',
-        name: 'Eating',
+        name: 'ScheduleEatingPlace',
         component: Eating,
         meta: { layout: 'authorize' }
       },
       {
         path: 'eating/new',
-        name: 'EatingNew',
-        component: EatingNew,
+        name: 'ScheduleEatingPlaceNew',
+        component: ScheduleEatingPlace,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'eating/:id',
+        name: 'EditScheduleEatingPlace',
+        component: ScheduleEatingPlace,
         meta: { layout: 'authorize' }
       },
       {

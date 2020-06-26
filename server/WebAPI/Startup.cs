@@ -65,9 +65,10 @@ namespace WebAPI
       services.AddScoped<IEmailSender, EmailSender>();
       services.AddScoped<GoogleOauthService>();
       services.AddScoped<AssetsService>();
+      services.AddScoped<AttachmentFileEatingRepository>();
+      services.AddScoped<AttachmentFileEatingService>();
       services.AddScoped<ScheduledPlaceToEatRepository>();
       services.AddScoped<ScheduledPlaceToEatService>();
-      services.AddScoped<AttachmentFileEatingRepository>();
 
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
           .AddJwtBearer(x =>

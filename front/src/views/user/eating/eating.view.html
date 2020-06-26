@@ -1,30 +1,18 @@
 <div>
   <mmt-stepper></mmt-stepper>
-  <v-row >
+  <v-row>
     <v-col md="2" sm="12" class="d-flex justify-center align-center">
-      {{$t('eating.results')}} ({{markers.length}})
+      {{$t('eating.results')}} ({{scheduledPlacesList.length}})
     </v-col>
-    <v-col md="6" sm="12"/>
-    <v-col md="2" sm ="12" class="d-flex justify-center align-center">
-      <v-btn
-        rounded
-        small
-        color="accent lighten-1"
-        class="mmt-btn"
-        width="165"
-        height="39"
-        @click="$router.push({name: 'EatingNew'})">
+    <v-col md="6" sm="12" />
+    <v-col md="2" sm="12" class="d-flex justify-center align-center">
+      <v-btn rounded small color="accent lighten-1" class="mmt-btn" width="165" height="39"
+        @click="$router.push({name: 'ScheduleEatingPlaceNew'})">
         {{$t('eating.add')}}
       </v-btn>
     </v-col>
-    <v-col md="2" sm="12"  class="d-flex justify-center align-center">
-      <v-btn
-        rounded
-        small
-        color="accent lighten-1"
-        class="mmt-btn"
-        width="110"
-        height="39">
+    <v-col md="2" sm="12" class="d-flex justify-center align-center">
+      <v-btn rounded small color="accent lighten-1" class="mmt-btn" width="110" height="39">
         {{$t('eating.filter')}}
         <v-icon dense right>mdi-tune</v-icon>
       </v-btn>
@@ -32,91 +20,71 @@
   </v-row>
   <v-row>
     <v-col class="d-flex flex-wrap">
-      <v-card
-        :flat="!place.isActive"
-        class="place-card"
-        :key="index"
-        v-for="(place, index) in markers"
-        height="284"
-        width="259"
-        @click="selectPlace(place)"
-        v-bind:class="{ 'active-card': place.isActive }"
-      >
-        <v-img
-          :aspect-ratio="16/9"
-          lazy-src="@/assets/default-image.jpg"
-          :src="place.photos[0].getUrl(259)"
-          max-height="150"
-          max-width="259"
-        />
+      <v-card :key="index" v-for="(serverInfo, index) in scheduledPlacesList" :flat="!serverInfo.isActive"
+        class="place-card" height="284" width="259" @click="selectPlace(index)"
+        v-bind:class="{ 'active-card': serverInfo.isActive }">
+        <v-img v-if="serverInfo.googleDetails && serverInfo.googleDetails.photos" :aspect-ratio="16/9"
+          :lazy-src="defaultImage" :src="serverInfo.googleDetails.photos[0].getUrl(259)" max-height="150"
+          max-width="259" />
+        <v-img v-else :aspect-ratio="16/9" :lazy-src="defaultImage" src="../../../assets/default-image.jpg"
+          max-height="150" max-width="259" />
         <div class="text-card">
           <div class="d-flex">
             <v-row>
               <v-col md="5" sm="12">
-                <h6
-                  :title="place.name"
-                  class="text-semi-bold d-flex justify-start align-center"
-                >
-                  {{ place.name | trimString}}
+                <h6 :title="serverInfo.namePlace" class="text-semi-bold d-flex justify-start align-center">
+                  {{ serverInfo.namePlace | trimString}}
                 </h6>
               </v-col>
               <v-col md="7" sm="12">
-                <div class="d-flex justify-center align-center">
-                  <v-rating
-                    readonly
-                    half-increments
-                    dense
-                    color="accent"
-                    length="1"
-                    :value="place.rating"
-                  />
+                <div class="d-flex justify-center align-center"
+                  v-if="serverInfo.googleDetails && serverInfo.googleDetails.rating">
+                  <v-rating readonly half-increments dense color="accent" length="1"
+                    :value="serverInfo.googleDetails.rating" />
                   <div>
-                    {{place.rating}} ({{place.user_ratings_total}})
+                    {{serverInfo.googleDetails.rating}} ({{serverInfo.googleDetails.user_ratings_total}})
                   </div>
                 </div>
               </v-col>
             </v-row>
           </div>
-          <div class="d-flex flex-column">
-            <div class="d-flex">
+          <div class="d-flex flex-column" v-if="serverInfo.googleDetails">
+            <div class="d-flex flex-row">
               <div class="text-small text-semi-bold">
                 {{$t('eating.menu')}}
               </div>
-              <div class="d-flex" v-if="place.opening_hours">
+              <div class="d-flex" v-if="serverInfo.googleDetails && serverInfo.googleDetails.opening_hours">
                 <div class="text-small text-semi-bold separator">•</div>
-                <div
-                  class="text-small text-semi-bold success--text"
-                  v-if="isOpen(place)">
+                <div class="text-small text-semi-bold success--text" v-if="isOpen(serverInfo.googleDetails)">
                   {{$t('eating.open')}}
                 </div>
-                <div
-                  class="text-small text-semi-bold error--text"
-                  v-else>
+                <div class="text-small text-semi-bold error--text" v-else>
                   {{$t('eating.close')}}
                 </div>
               </div>
             </div>
-            <div class="d-flex justify-space-between types">
-              <div
-              class="text-small text-semi-bold"
-              :key="index"
-              v-for="(type, index) in replacementTypes(place.types)">
-              {{type}}
+            <div class="d-flex justify-space-between types" v-if="serverInfo.googleDetails">
+              <div class="text-small text-semi-bold" :key="index"
+                v-for="(type, index) in replacementTypes(serverInfo.googleDetails.types)">
+                {{type}}
               </div>
             </div>
+          </div>
+          <div class="d-flex justify-end">
+            <v-btn :title="$t('eating.edit')" icon x-small depressed
+              @click="$router.push({name: 'EditScheduleEatingPlace', params: { id: serverInfo.id } })">
+              <v-icon color="primary">mdi-pencil</v-icon>
+            </v-btn>
           </div>
         </div>
       </v-card>
     </v-col>
     <v-col width="538">
       <GmapMap v-bind='options' id='map'>
-      <GmapMarker
-        :key="index"
-        v-for="(m, index) in markers"
-        :position="m.geometry.location"
-      >
-      </GmapMarker>
-    </GmapMap>
+        <GmapMarker :key="index" v-for="(m, index) in scheduledPlacesList" v-if="m.googleDetails"
+          :position="m.googleDetails.geometry.location">
+        </GmapMarker>
+      </GmapMap>
     </v-col>
   </v-row>
 </div>

@@ -7,9 +7,6 @@ namespace WebAPI.DTO.ScheduledPlaceToEat
   {
     public int Id { get; set; }
 
-    [Required]
-    public IFormFile File { get; set; }
-
-    public string FileName { get; set; }
+    public string Path { get; set; }
   }
 }

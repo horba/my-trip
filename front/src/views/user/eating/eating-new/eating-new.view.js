@@ -1,6 +1,6 @@
 import { MmtTextInput } from '@/components';
 import { requiredValidationMixin } from '@mixins';
-import { LINK_REGEX } from '@constants';
+import { LINK_REGEX, MAX_FILE_SIZE_SCHEDULET_PLACE_TO_EAT } from '@constants';
 import {
   VCol,
   VRow,
@@ -49,7 +49,7 @@ export default {
           if (v) {
             let valid = true;
             v.forEach(file => {
-              if (file.size > 10000000) {
+              if (file.size > MAX_FILE_SIZE_SCHEDULET_PLACE_TO_EAT) {
                 valid = false;
               }
             });
@@ -71,10 +71,12 @@ export default {
       notes: '',
       link: '',
       namePlace: '',
-      place_id: '',
+      googlePlaceId: '',
       lat: 0,
       lng: 0,
-      files: new FormData()
+      files: new FormData(),
+      text: '',
+      snackbar: false
     };
   },
   computed: {
@@ -82,7 +84,7 @@ export default {
   },
   methods: {
     findPlace (place) {
-      this.place_id = place.place_id || '';
+      this.googlePlaceId = place.place_id || '';
       if (place.geometry) {
         this.lat = place.geometry.location.lat();
         this.lng = place.geometry.location.lng();
@@ -97,24 +99,59 @@ export default {
       return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
     },
     save () {
-      this.$store.dispatch('eating/createNewEating',
-        {
-          dateTime: `${this.date}T${this.time}`,
-          namePlace: this.namePlace,
-          notes: this.notes,
-          link: this.link,
-          place_id: this.place_id,
-          lat: this.lat,
-          lng: this.lng,
-          attachments: this.files
-        });
+      const payload = {
+        dateTime: `${this.date}T${this.time}`,
+        namePlace: this.namePlace,
+        notes: this.notes,
+        link: this.link,
+        googlePlaceId: this.googlePlaceId,
+        lat: this.lat,
+        lng: this.lng
+      };
+      if (this.$route.params.id) {
+        payload.id = Number(this.$route.params.id);
+        this.$store.dispatch('eating/updateEating', payload)
+          .then(() => {
+            this.text = this.$t('eatingNew.successfullyEdited');
+            this.snackbar = true;
+            this.$store.dispatch('eating/uploadNewFilesEating', {
+              files: this.files,
+              eatingId: payload.id
+            });
+          });
+      } else {
+        this.$store.dispatch('eating/createNewEating', payload)
+          .then(r => {
+            this.text = this.$t('eatingNew.successfullySaved');
+            this.snackbar = true;
+            this.$store.dispatch('eating/uploadNewFilesEating', {
+              files: this.files,
+              eatingId: r.data
+            });
+          });
+      }
     },
     uploadFiles (files) {
       const tempFiles = new FormData();
       files.forEach(file => {
-        tempFiles.append(file.name, file);
+        if (file.size <= MAX_FILE_SIZE_SCHEDULET_PLACE_TO_EAT) {
+          tempFiles.append('file', file);
+        }
       });
       this.files = tempFiles;
+    }
+  },
+  mounted () {
+    if (this.$route.params.id) {
+      this.$store.dispatch('eating/getEatingUserByEatingId', { id: this.$route.params.id })
+        .then(infoFromServer => {
+          this.notes = infoFromServer.notes;
+          this.link = infoFromServer.link;
+          this.date = infoFromServer.dateTime.substr(0, 10);
+          this.time = infoFromServer.dateTime.substr(11, 5);
+          this.namePlace = infoFromServer.namePlace;
+          this.googlePlaceId = infoFromServer.googlePlaceId;
+        });
     }
   }
 };

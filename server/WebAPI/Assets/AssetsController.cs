@@ -26,28 +26,6 @@ namespace WebAPI.Controllers
       _userService = userService;
     }
 
-    [HttpPost("UploadEatingMultiFile")]
-    [Consumes("multipart/form-data")]
-    public async Task<IActionResult> UploadEatingMultiFile([FromForm] IFormFileCollection files)
-    {
-      if(files.Count <= Consts.MaxEatingFileCount)
-      {
-        List <AttachmentFileEatingDTO> fileNames = new List<AttachmentFileEatingDTO>();
-        foreach(var file in files)
-        {
-          if(!Consts.AllowedImageContentTypes.Contains(file.ContentType, StringComparer.OrdinalIgnoreCase))
-            return BadRequest("notAllowedContentType");
-
-          if(file.Length > Consts.MaxEatingFileSize)
-            return BadRequest("fileIsToBig");
-
-          var fileName = await _assetsService.SaveFileAsync(file, AssetType.FileEating);
-          fileNames.Add(new AttachmentFileEatingDTO { FileName = fileName });
-        }
-      }
-      return Ok();
-    }
-
     [HttpPost]
     [Route("{assetType}")]
     [Consumes("multipart/form-data")]

@@ -15,7 +15,7 @@ export { default as ReviewNew } from '@views/ReviewNew.vue';
 export { default as MyTickets } from '@views/user/Tickets.vue';
 export { default as MyAccommodation } from '@views/user/Accommodation.vue';
 export { default as Eating } from '@views/user/eating/eating.view.vue';
-export { default as EatingNew } from '@views/user/eating/eating-new/eating-new.view.vue';
+export { default as ScheduleEatingPlace } from '@views/user/eating/eating-new/eating-new.view.vue';
 export { default as MyTransport } from '@views/user/Transport.vue';
 export { default as MyLeisure } from '@views/user/Leisure.vue';
 export { default as SignIn } from './sign-in/sign-in.view.vue';

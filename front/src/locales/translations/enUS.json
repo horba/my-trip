@@ -154,7 +154,8 @@
     "food": "Food",
     "results": "Results",
     "add": "Add",
-    "filter": "Filter"
+    "filter": "Filter",
+    "edit": "Edit"
   },
   "eatingNew": {
     "addCafe": "Add cafe",
@@ -168,7 +169,10 @@
     "maxLengthName": "Maximum name length = 200 characters",
     "maxLengthNotes": "Maximum note length = 2000 characters",
     "isNoLink": "It doesn't look like a link",
-    "save": "Save"
+    "save": "Save",
+    "close": "Close",
+    "successfullySaved": "Successfully saved",
+    "successfullyEdited": "Successfully edited"
   },
   "signUp": {
     "welcome": "Welcome!",

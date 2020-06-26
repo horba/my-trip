@@ -23,91 +23,51 @@ export default {
         mapTypeId: 'roadmap',
         ref: 'mapRef'
       },
-      markers: [],
+      scheduledPlacesList: [],
       defaultImage: '@/assets/default-image.jpg'
     };
   },
   computed: {
     google: gmapApi
   },
-  mounted () {
-    this.geolocate();
+  created () {
+    this.$store.dispatch('eating/getEatingUser')
+      .then(r => {
+        this.scheduledPlacesList = r.data;
+        this.scheduledPlacesList
+          .forEach(serverInfo => {
+            this.gmapAddDetails(serverInfo);
+            serverInfo.isActive = false;
+          });
+      });
   },
   methods: {
-    geolocate () {
-      navigator.geolocation.getCurrentPosition(position => {
-        const pos = { lat: position.coords.latitude, lng: position.coords.longitude };
-        this.PosMarker = pos;
-        this.options.center = pos;
+    gmapAddDetails (serverInfo) {
+      if (serverInfo.googlePlaceId !== '') {
+        const request = {
+          placeId: serverInfo.googlePlaceId,
+          fields:
+            [
+              'geometry',
+              'rating',
+              'opening_hours',
+              'photos',
+              'user_ratings_total',
+              'types',
+              'utc_offset_minutes'
+            ]
+        };
         this.$refs.mapRef.$mapPromise.then((map) => {
-          map.setCenter(pos);
-          map.setZoom(16);
-          this.getNearbyPlacesFromCenter();
-        });
-      });
-    },
-    getNearbyPlacesFromCenter () {
-      const request = {
-        location: this.options.center,
-        radius: 1000,
-        types: [
-          'food',
-          'restaurant',
-          'bar',
-          'establishment',
-          'cafe',
-          'meal_delivery',
-          'meal_takeaway'
-        ]
-      };
-      this.gmapNearbySearch(request, true);
-    },
-    gmapNearbySearch (req, setCenter) {
-      let service;
-      const request = req;
-      this.$refs.mapRef.$mapPromise.then((map) => {
-        service = new this.google.maps.places.PlacesService(map);
-        service.nearbySearch(request, (results, status) => {
-          if (status === this.google.maps.places.PlacesServiceStatus.OK) {
-            results.forEach(el => {
-              this.gmapGetDetails(el);
-            });
-            if (setCenter) {
-              map.setCenter(results[0].geometry.location);
-            };
-          }
-        });
-      });
-    },
-    gmapGetDetails (el) {
-      const request = {
-        placeId: el.place_id,
-        fields:
-          [
-            'name',
-            'rating',
-            'vicinity',
-            'geometry',
-            'opening_hours',
-            'photos',
-            'user_ratings_total',
-            'types',
-            'utc_offset_minutes'
-          ]
-      };
-      this.$refs.mapRef.$mapPromise.then((map) => {
-        const service = new this.google.maps.places.PlacesService(map);
-        service.getDetails(request, (place, status) => {
-          if (status === this.google.maps.places.PlacesServiceStatus.OK) {
-            if (!place.photos) {
-              place.photos = [];
-              place.photos.push({ getUrl () { return this.defaultImage; } });
+          const service = new this.google.maps.places.PlacesService(map);
+          service.getDetails(request, (place, status) => {
+            if (status === this.google.maps.places.PlacesServiceStatus.OK) {
+              serverInfo.googleDetails = place;
             }
-            place.isActive = false;
-            this.markers.push(place);
-          }
+          });
         });
-      });
+      } else {
+        serverInfo.googleDetails = undefined;
+      }
     },
     isOpen (place) {
       let isOpen;
@@ -146,13 +106,16 @@ export default {
       });
       return replaceTypes.slice(0, 3);
     },
-    selectPlace (place) {
-      this.markers.forEach((marker) => {
-        marker.isActive = false;
-      });
-      place.isActive = true;
-      this.$refs.mapRef.$mapPromise.then((map) => {
-        map.setCenter(place.geometry.location);
+    selectPlace (index) {
+      this.scheduledPlacesList.forEach(card => {
+        card.isActive = false;
+        if (card === this.scheduledPlacesList[index]) {
+          card.isActive = true;
+          if (card.googleDetails !== null) {
+            this.options.center.lat = card.googleDetails.geometry.location.lat();
+            this.options.center.lng = card.googleDetails.geometry.location.lng();
+          }
+        }
       });
     }
   },

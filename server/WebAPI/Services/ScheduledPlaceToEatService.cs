@@ -19,32 +19,26 @@ namespace WebAPI.Services
     private readonly ScheduledPlaceToEatRepository _scheduledPlaceToEatRepository;
     private readonly AttachmentFileEatingRepository _attachmentFileEatingRepository;
     private readonly IMapper _mapper;
-    private readonly AssetsService _filesService;
-    private IWebHostEnvironment _webHostEnvironment;
 
     public ScheduledPlaceToEatService(
       UserService userService,
       ScheduledPlaceToEatRepository scheduledPlaceToEatRepository,
       AttachmentFileEatingRepository attachmentFileEatingRepository,
-      IMapper mapper,
-      IWebHostEnvironment webHostEnvironment,
-      AssetsService filesService)
+      IMapper mapper)
     {
       _userService = userService;
       _scheduledPlaceToEatRepository = scheduledPlaceToEatRepository;
       _attachmentFileEatingRepository = attachmentFileEatingRepository;
       _mapper = mapper;
-      _webHostEnvironment = webHostEnvironment;
-      _filesService = filesService;
     }
 
-    public void CreateNewEating(ScheduledPlaceToEatDTO scheduledPlaceToEatDTO)
+    public int CreateNewEating(InputScheduledPlaceToEatDTO scheduledPlaceToEatDTO)
     {
       try
       {
         if(!Valid(scheduledPlaceToEatDTO))
         {
-          return;
+          throw new ArgumentException();
         }
         else
         {
@@ -61,21 +55,7 @@ namespace WebAPI.Services
               NamePlace = scheduledPlaceToEatDTO.NamePlace,
               GooglePlaceId = scheduledPlaceToEatDTO.GooglePlaceId
             };
-            _scheduledPlaceToEatRepository.CreateScheduledPlaceToEat(eating);
-            //if(scheduledPlaceToEatDTO.Attachments != null)
-            //{
-            //  foreach(var file in scheduledPlaceToEatDTO.Attachments)
-            //  {
-            //    var fileName = Path.GetRandomFileName();
-            //    var filePath = Path.Combine(_webHostEnvironment.ContentRootPath, Consts.FileEatingPath, fileName);
-            //    File.Create(filePath);
-            //    _attachmentFileEatingRepository.CreateAttachmentFileEating(new AttachmentFileEating
-            //    {
-            //      ScheduledPlaceToEatId = eating.Id,
-            //      Path = fileName
-            //    });
-            //  }
-            //}
+            return _scheduledPlaceToEatRepository.CreateScheduledPlaceToEat(eating);
           }
           else
           {
@@ -85,25 +65,29 @@ namespace WebAPI.Services
       }
       catch(Exception)
       {
-        return;
+        return -1;
       }
     }
 
-    public IEnumerable<ScheduledPlaceToEatDTO> GetEatingByUserId(int UserId)
+    public IEnumerable<OutputScheduledPlaceToEatDTO> GetEatingByUserId(int UserId)
     {
       if(_userService.GetUser(UserId) != null)
       {
-        var eating =_scheduledPlaceToEatRepository.GetScheduledPlaceToEatByUserId(UserId).ToList();
-        var mappedEating = _mapper.Map<IEnumerable<ScheduledPlaceToEatDTO>>(eating.OrderBy(t => t.Id).ToList());
-        foreach(var scheduledPlaceToEatDTO in mappedEating)
+        var eatings = _scheduledPlaceToEatRepository.GetScheduledPlaceToEatByUserId(UserId);
+        List<OutputScheduledPlaceToEatDTO> result = new List<OutputScheduledPlaceToEatDTO>();
+        foreach(var eating in eatings)
         {
-          var attachments = _mapper.Map<IEnumerable<AttachmentFileEatingDTO>>(_attachmentFileEatingRepository.GetAttachmentFileEatingByScheduledPlaceId(scheduledPlaceToEatDTO.Id));
-          foreach(var attachment in attachments)
-          {
-            scheduledPlaceToEatDTO.FileNames.Append(attachment.FileName);
-          }
+          result.Add(this.ConvertScheduledPlaceToEatToOutputScheduletPlaceToEatDTO(eating));
         }
-        return mappedEating;
+        //foreach(var scheduledPlaceToEatDTO in result)
+        //{
+        //  var attachments = _mapper.Map<IEnumerable<AttachmentFileEatingDTO>>(_attachmentFileEatingRepository.GetAttachmentFileEatingByScheduledPlaceId(scheduledPlaceToEatDTO.Id));
+        //  foreach(var attachment in attachments)
+        //  {
+        //    scheduledPlaceToEatDTO.FileNames.Append(attachment.Path);
+        //  }
+        //}
+        return result;
       }
       else
       {
@@ -111,7 +95,7 @@ namespace WebAPI.Services
       }
     }
 
-    public void UpdateEating(ScheduledPlaceToEatDTO scheduledPlaceToEatDTO)
+    public void UpdateEating(InputScheduledPlaceToEatDTO scheduledPlaceToEatDTO)
     {
       try
       {
@@ -121,52 +105,23 @@ namespace WebAPI.Services
         }
         else
         {
-          if(_scheduledPlaceToEatRepository.GetScheduledPlaceToEatById(scheduledPlaceToEatDTO.Id) != null)
+          if(_scheduledPlaceToEatRepository.GetScheduledPlaceToEatById(scheduledPlaceToEatDTO.Id) == null)
           {
             throw new ArgumentException();
           }
-          //var oldfiles = _attachmentFileEatingRepository.GetAttachmentFileEatingByScheduledPlaceId(scheduledPlaceToEatDTO.Id);
-          //foreach(var file in oldfiles)
-          //{
-          //  File.Delete(file.Path);
-          //  _attachmentFileEatingRepository.DeleteAttachmentFileEating(file);
-          //}
-          //if(scheduledPlaceToEatDTO.Attachments != null)
-          //{
-          //  foreach(var file in scheduledPlaceToEatDTO.Attachments)
-          //  {
-          //    var fileName = Path.Combine(_webHostEnvironment.ContentRootPath, Consts.FileEatingPath, Path.GetRandomFileName());
-          //    File.Create(fileName);
-          //    _attachmentFileEatingRepository.CreateAttachmentFileEating(new AttachmentFileEating
-          //    {
-          //      ScheduledPlaceToEatId = scheduledPlaceToEatDTO.Id,
-          //      Path = fileName
-          //    });
-          //  }
-          //}
-          var eating = new ScheduledPlaceToEat
-          {
-            Id = scheduledPlaceToEatDTO.Id,
-            UserId = scheduledPlaceToEatDTO.UserId,
-            DateTime = scheduledPlaceToEatDTO.DateTime,
-            Lat = scheduledPlaceToEatDTO.Lat,
-            Lng = scheduledPlaceToEatDTO.Lng,
-            Link = scheduledPlaceToEatDTO.Link,
-            Notes = scheduledPlaceToEatDTO.Notes,
-            NamePlace = scheduledPlaceToEatDTO.NamePlace,
-            GooglePlaceId = scheduledPlaceToEatDTO.GooglePlaceId
-          };
+          var eating = ConvertInputScheduledPlaceToEatDTOToScheduletPlaceToEat(scheduledPlaceToEatDTO);
           _scheduledPlaceToEatRepository.UptateScheduledPlaceToEat(eating);
           return;
         }
       }
-      catch(Exception)
+      catch(Exception e)
       {
+        Console.WriteLine(e);
         return;
       }
     }
 
-    public void DeleteScheduledPlaceToEat(ScheduledPlaceToEatDTO scheduledPlaceToEatDTO)
+    public void DeleteScheduledPlaceToEat(InputScheduledPlaceToEatDTO scheduledPlaceToEatDTO)
     {
       try
       {
@@ -207,7 +162,7 @@ namespace WebAPI.Services
       //_attachmentFileEatingRepository.CreateAttachmentFileEating(new AttachmentFileEating { })
     }
 
-    private bool Valid(ScheduledPlaceToEatDTO scheduledPlaceToEatDTO)
+    private bool Valid(InputScheduledPlaceToEatDTO scheduledPlaceToEatDTO)
     {
       var results = new List<ValidationResult>();
       var context = new System.ComponentModel.DataAnnotations.ValidationContext(scheduledPlaceToEatDTO);
@@ -229,6 +184,79 @@ namespace WebAPI.Services
       catch {
         return false;
       }
+    }
+
+    public OutputScheduledPlaceToEatDTO ConvertScheduledPlaceToEatToOutputScheduletPlaceToEatDTO(ScheduledPlaceToEat scheduledPlaceToEat)
+    {
+      if(scheduledPlaceToEat is null)
+      {
+        throw new ArgumentNullException(nameof(scheduledPlaceToEat));
+      }
+      var fileNames = new List<string>();
+      if(scheduledPlaceToEat.Attachments != null)
+      {
+        var files = scheduledPlaceToEat.Attachments.Where(el => el.ScheduledPlaceToEatId.Equals(scheduledPlaceToEat.Id));
+        foreach(var file in files)
+        {
+          fileNames.Add(file.Path);
+        }
+      }
+      return new OutputScheduledPlaceToEatDTO
+      {
+        Id = scheduledPlaceToEat.Id,
+        DateTime = scheduledPlaceToEat.DateTime,
+        FileNames = fileNames,
+        GooglePlaceId = scheduledPlaceToEat.GooglePlaceId,
+        Lat = scheduledPlaceToEat.Lat,
+        Lng = scheduledPlaceToEat.Lng,
+        Link = scheduledPlaceToEat.Link,
+        NamePlace = scheduledPlaceToEat.NamePlace,
+        Notes = scheduledPlaceToEat.Notes
+      };
+    }
+    public OutputScheduledPlaceToEatDTO ConvertInputScheduledPlaceToEatDTOToOutputScheduletPlaceToEatDTO(InputScheduledPlaceToEatDTO inputScheduledPlaceToEatDTO)
+    {
+      if(inputScheduledPlaceToEatDTO is null)
+      {
+        throw new ArgumentNullException(nameof(inputScheduledPlaceToEatDTO));
+      }
+      var files = _attachmentFileEatingRepository.GetAttachmentFileEatingByScheduledPlaceId(inputScheduledPlaceToEatDTO.Id);
+      var fileNames = new List<string>();
+      foreach(var file in files)
+      {
+        fileNames.Add(file.Path);
+      }
+      return new OutputScheduledPlaceToEatDTO
+      {
+        Id = inputScheduledPlaceToEatDTO.Id,
+        DateTime = inputScheduledPlaceToEatDTO.DateTime,
+        FileNames = fileNames,
+        GooglePlaceId = inputScheduledPlaceToEatDTO.GooglePlaceId,
+        Lat = inputScheduledPlaceToEatDTO.Lat,
+        Lng = inputScheduledPlaceToEatDTO.Lng,
+        Link = inputScheduledPlaceToEatDTO.Link,
+        NamePlace = inputScheduledPlaceToEatDTO.NamePlace,
+        Notes = inputScheduledPlaceToEatDTO.Notes
+      };
+    }
+
+    public ScheduledPlaceToEat ConvertInputScheduledPlaceToEatDTOToScheduletPlaceToEat(InputScheduledPlaceToEatDTO inputScheduledPlaceToEatDTO)
+    {
+      if(inputScheduledPlaceToEatDTO is null)
+      {
+        throw new ArgumentNullException(nameof(inputScheduledPlaceToEatDTO));
+      }
+      return new ScheduledPlaceToEat
+      {
+        Id = inputScheduledPlaceToEatDTO.Id,
+        DateTime = inputScheduledPlaceToEatDTO.DateTime,
+        GooglePlaceId = inputScheduledPlaceToEatDTO.GooglePlaceId,
+        Lat = inputScheduledPlaceToEatDTO.Lat,
+        Lng = inputScheduledPlaceToEatDTO.Lng,
+        Link = inputScheduledPlaceToEatDTO.Link,
+        NamePlace = inputScheduledPlaceToEatDTO.NamePlace,
+        Notes = inputScheduledPlaceToEatDTO.Notes
+      };
     }
   }
 }
