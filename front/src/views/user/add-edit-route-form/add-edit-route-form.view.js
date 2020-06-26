@@ -2,7 +2,7 @@ import { MmtTextInput } from '@components';
 import { requiredValidationMixin } from '@mixins';
 import { mapGetters } from 'vuex';
 import { baseUrl, waypointFilesSuffix } from '@config';
-import dateLocalizer from '@services/date-localizer';
+import { zonedTimeToUtc } from 'date-fns-tz';
 const { MAX_WAYPOINT_SIZE_MB, MAX_WAYPOINT_FILE_COUNT } = require('@constants'),
       MAX_WAYPOINT_SIZE_KB = 1024 * 1024 * MAX_WAYPOINT_SIZE_MB;
 
@@ -88,9 +88,9 @@ export default {
       this.$store.dispatch(
         this.isEditForm ? 'waypoints/updateWaypoint' : 'waypoints/insertWaypoint', {
           ...rest,
-          departureDate: dateLocalizer.toUtc(
+          departureDate: zonedTimeToUtc(
             `${this.newWaypointValues.departureDate}T${this.newWaypointValues.departureTime}`),
-          arrivalDate: dateLocalizer.toUtc(
+          arrivalDate: zonedTimeToUtc(
             `${this.newWaypointValues.arrivalDate}T${this.newWaypointValues.arrivalTime}`),
           pathLength: +this.newWaypointValues.pathLength,
           tripId: +this.id,
