@@ -105,7 +105,18 @@ export default {
         waypoints[i].details = waypoints[i - 1].details;
       }
 
-      return waypoints;
+      return waypoints.map(waypointFull => {
+        const { transport, pathTime, pathLength, ...waypoint } = waypointFull;
+        return {
+          waypoint,
+          transfer: {
+            transport,
+            pathTime,
+            pathLength,
+            id: waypointFull.id
+          }
+        };
+      });
     }
   }
 };

@@ -1,21 +1,10 @@
 export default {
-  data () {
-    return {
-      iconMap: [
-        'mdi-airplane',
-        'mdi-train',
-        'mdi-bus',
-        'mdi-car',
-        'mdi-bicycle'
-      ]
-    };
-  },
   props: {
-    lastCard: {
+    hideDeparture: {
       type: Boolean,
       default: false
     },
-    firstCard: {
+    hideArrival: {
       type: Boolean,
       default: false
     },

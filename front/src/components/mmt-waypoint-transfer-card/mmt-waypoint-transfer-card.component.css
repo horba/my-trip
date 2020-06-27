@@ -1,0 +1,35 @@
+.path-info {
+  position: relative;
+}
+
+.path-info .vertical-line {
+  width: 0;
+  height: 36px;
+  border: 1px solid #6c6c6c;
+  margin-left: 17px;
+}
+
+.path-info .transport-icon {
+  color: var(--success-base-color);
+  font-size: 28px;
+  margin-left: 4px;
+  margin-top: 6px;
+}
+
+.rotate-180 {
+  transform: rotateZ(180deg);
+}
+
+.path-info .text-content {
+  margin-left: 6px;
+  color: #0f0e0e;
+  margin-bottom: 3px;
+}
+
+.path-info .pencil {
+  color: var(--history-route-pencil-icon-color);
+  top: 65px;
+  left: 145px;
+  position: absolute;
+  cursor: pointer;
+}
