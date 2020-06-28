@@ -57,8 +57,8 @@
       <v-menu offset-y :close-on-content-click="false">
         <template v-slot:activator="{ on }">
           <mmt-text-input class="input-field" placeholder="00:00" :hint="$t('tripHistory.tripDuration')" persistent-hint
-            rounded filled single-line dense readonly v-model="newWaypointValues.pathTime" v-on="on"
-            :rules="[rules.required]" />
+            rounded filled single-line dense v-model="newWaypointValues.pathTime" v-on="on"
+            :rules="[rules.required, rules.time]" />
         </template>
         <v-time-picker color="accent lighten-1" width="248" format="24hr" v-model="newWaypointValues.pathTime" />
       </v-menu>
@@ -132,7 +132,6 @@
         </v-btn>
       </v-card-actions>
     </v-card>
-
 
   </div>
 

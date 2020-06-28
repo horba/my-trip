@@ -24,6 +24,7 @@ export default {
         arrivalDate: this.$options.filters.date(new Date(), 'yyyy-MM-dd'),
         departureTime: this.$options.filters.date(new Date(), 'HH:mm'),
         arrivalTime: this.$options.filters.date(new Date(), 'HH:mm'),
+        pathTime: null,
         transport: 0
       },
       calendarLocale: {

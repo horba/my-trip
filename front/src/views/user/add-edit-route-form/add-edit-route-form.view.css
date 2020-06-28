@@ -40,7 +40,7 @@
 }
 
 .files-card .img-container {
-  background-color: #e0e0e0;
+  background-color: var(--files-image-container-background-color);
   padding: 7px;
   border-radius: 10px;
   max-width: 100%;
