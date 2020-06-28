@@ -92,31 +92,5 @@ export default {
           }
         });
     }
-  },
-  getters: {
-    cardedWaypoints (state) {
-      const waypoints = [];
-      state.waypoints.forEach(waypoint => {
-        waypoints.push(Object.assign({}, waypoint));
-      });
-
-      for (let i = waypoints.length - 1; i > 0; i--) {
-        waypoints[i].arrivalDate = waypoints[i - 1].arrivalDate;
-        waypoints[i].details = waypoints[i - 1].details;
-      }
-
-      return waypoints.map(waypointFull => {
-        const { transport, pathTime, pathLength, ...waypoint } = waypointFull;
-        return {
-          waypoint,
-          transfer: {
-            transport,
-            pathTime,
-            pathLength,
-            id: waypointFull.id
-          }
-        };
-      });
-    }
   }
 };

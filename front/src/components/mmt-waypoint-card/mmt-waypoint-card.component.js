@@ -11,6 +11,10 @@ export default {
     waypoint: {
       type: Object,
       required: true
+    },
+    prevWaypoint: {
+      type: Object,
+      required: true
     }
   },
   methods: {

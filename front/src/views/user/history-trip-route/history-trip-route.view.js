@@ -1,5 +1,5 @@
 import { MmtWaypointCard, MmtWaypointTransferCard } from '@components';
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
   props: [ 'id' ],
@@ -8,7 +8,7 @@ export default {
     MmtWaypointTransferCard
   },
   computed: {
-    ...mapGetters('waypoints', [ 'cardedWaypoints' ])
+    ...mapState('waypoints', [ 'waypoints' ])
   },
   mounted () {
     this.$store.dispatch('waypoints/loadWaypoints', [ +this.id ]);

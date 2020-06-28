@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="arrival" v-else>
-        <div class="date">{{$t('tripHistory.arrivalDate')}} {{waypoint.arrivalDate | date('d MMM y, HH:mm')}}</div>
+        <div class="date">{{$t('tripHistory.arrivalDate')}} {{prevWaypoint.arrivalDate | date('d MMM y, HH:mm')}}</div>
         <div class="city">
           <span class="subtitle">
             {{$t('tripHistory.goingTo')}}
@@ -63,7 +63,7 @@
           </span>
           <br />
           <template v-if="!hideArrival">
-            {{waypoint.details}}
+            {{prevWaypoint.details}}
           </template>
         </div>
       </div>
