@@ -69,7 +69,7 @@
     "save": "Save",
     "repeatPassword": "Repeat password",
     "passwordMustIdentity": "Passwords must match",
-    "thisNoEmail": "Invalid email address",    
+    "thisNoEmail": "Invalid email address",
     "successfulСhange": "The password was successfully changed! You will receive a confirmation of your password change to Your email address."
   },
   "locale": {
@@ -85,7 +85,7 @@
     "firstName": "First name",
     "enterFirstName": "Enter first name",
     "email": "Email",
-    "emailExample": "Example: bereznievatiy@gmail.com",    
+    "emailExample": "Example: bereznievatiy@gmail.com",
     "emailIsAlreadyTaken": "This email is already taken",
     "genderIsNotSpecified": "Gender is not specified",
     "male": "Male",
@@ -109,7 +109,7 @@
   },
   "cities": {
     "kyiv": "Kyiv",
-    "krakow": "Krakow" 
+    "krakow": "Krakow"
   },
   "transportTypes": {
     "plane": "Plane",
@@ -206,6 +206,8 @@
   },
   "validationRules": {
     "noEmpty": "Fill in the field.",
-    "enterCorrectEmail": "Enter valid email"
+    "enterCorrectEmail": "Enter valid email",
+    "enterCorrectDate": "Enter valid date",
+    "enterCorrectTime": "Enter valid time"
   }
 }

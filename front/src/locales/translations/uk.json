@@ -206,6 +206,8 @@
   },
   "validationRules": {
     "noEmpty": "Заповніть поле.",
-    "enterCorrectEmail": "Введіть дійсний email"
+    "enterCorrectEmail": "Введіть дійсний email",
+    "enterCorrectDate": "Введіть дійсну дату",
+    "enterCorrectTime": "Введіть дійсний час"
   }
 }

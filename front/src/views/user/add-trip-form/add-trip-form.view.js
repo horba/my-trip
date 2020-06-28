@@ -1,10 +1,12 @@
 import { MmtTextInput } from '@components';
-import { requiredValidationMixin } from '@mixins';
+import { requiredValidationMixin, timeValidationMixin, dateValidationMixin } from '@mixins';
 import { mapGetters } from 'vuex';
 
 export default {
   mixins: [
-    requiredValidationMixin
+    requiredValidationMixin,
+    timeValidationMixin,
+    dateValidationMixin
   ],
   components: {
     MmtTextInput

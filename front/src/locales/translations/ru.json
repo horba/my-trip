@@ -69,7 +69,7 @@
     "save": "Сохранить",
     "repeatPassword": "Повторите пароль",
     "passwordMustIdentity": "Пароли должны совпадать",
-    "thisNoEmail": "Не действительный e-mail",    
+    "thisNoEmail": "Не действительный e-mail",
     "successfulСhange": "Пароль успешно изменен! Вы получите подтверждение об изменении пароля на Ваш электронный адрес."
   },
   "locale": {
@@ -85,7 +85,7 @@
     "firstName": "Имя",
     "enterFirstName": "Введите имя",
     "email": "Почта",
-    "emailExample": "Пример: bereznievatiy@gmail.com",    
+    "emailExample": "Пример: bereznievatiy@gmail.com",
     "emailIsAlreadyTaken": "Данная почта уже занята",
     "genderIsNotSpecified": "Пол не указан",
     "male": "Мужской",
@@ -109,7 +109,7 @@
   },
   "cities": {
     "kyiv": "Киев",
-    "krakow": "Краков" 
+    "krakow": "Краков"
   },
   "transportTypes": {
     "plane": "Самолет",
@@ -206,6 +206,8 @@
   },
   "validationRules": {
     "noEmpty": "Заполните поле.",
-    "enterCorrectEmail": "Введите корректный email"
+    "enterCorrectEmail": "Введите корректный email",
+    "enterCorrectDate": "Введите корректную дату",
+    "enterCorrectTime": "Введите корректное время"
   }
 }

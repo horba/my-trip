@@ -15,10 +15,6 @@
   margin-bottom: 6px;
 }
 
-.date-input {
-  margin-bottom: 20px;
-}
-
 .mmt-select >>> .v-select__selection {
   font-size: 12px;
 }
@@ -35,34 +31,10 @@
   font-size: 9px;
 }
 
-.date-pseudo-input {
-  background-color: var(--filled-input-fill-color);
-  height: 39px;
-  border-radius: 20px;
-  display: flex;
-  padding: 0 18px;
-  cursor: pointer;
-  align-items: center;
-}
-
-.date-pseudo-input .date,
-.date-pseudo-input .date-title {
-  font-size: 12px;
-  font-weight: normal;
-}
-
-.date-pseudo-input .date-title {
-  color: var(--mmt-color-gray);
-}
-
-.date-pseudo-input .v-icon {
-  margin-right: 8px;
-}
-
-.date-pseudo-input .date {
-  color: var(--history-date-input-date-color);
-}
-
 .files-card.v-card.v-sheet {
   border-radius: 20px;
+}
+
+.input-field >>> .v-icon {
+  font-size: 32px;
 }

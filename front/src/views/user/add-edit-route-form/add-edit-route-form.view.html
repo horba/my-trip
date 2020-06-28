@@ -9,13 +9,9 @@
       <div class="date-input">
         <v-menu offset-y :close-on-content-click="false">
           <template v-slot:activator="{ on }">
-            <div class="date-pseudo-input" v-on="on">
-              <v-icon>mdi-calendar-check</v-icon>
-              <div class="content">
-                <div class="date-title">{{$t('tripHistory.departureDate')}}</div>
-                <div class="date">{{newWaypointValues.departureDate | date('EEEEEE, d MMM')}}</div>
-              </div>
-            </div>
+            <mmt-text-input class="input-field" placeholder="2020-04-22" :hint="$t('tripHistory.departureDate')"
+              persistent-hint rounded filled single-line dense v-model="newWaypointValues.departureDate"
+              :rules="[rules.required, rules.date]" v-on="on" prepend-icon="mdi-calendar-check" />
           </template>
           <v-date-picker first-day-of-week="1" v-bind="calendarLocale" color="accent lighten-1" width="248"
             v-model="newWaypointValues.departureDate" />
@@ -24,29 +20,22 @@
       <div class="date-input">
         <v-menu offset-y :close-on-content-click="false">
           <template v-slot:activator="{ on }">
-            <div class="date-pseudo-input" v-on="on">
-              <v-icon>mdi-calendar-check</v-icon>
-              <div class="content">
-                <div class="date-title">{{$t('tripHistory.departureTime')}}</div>
-                <div class="date">{{newWaypointValues.departureTime}}</div>
-              </div>
-            </div>
+            <mmt-text-input class="input-field" placeholder="11:02" :hint="$t('tripHistory.departureTime')"
+              persistent-hint rounded filled single-line dense v-model="newWaypointValues.departureTime"
+              :rules="[rules.required, rules.time]" v-on="on" prepend-icon="mdi-clock" />
           </template>
           <v-time-picker color="accent lighten-1" width="248" format="24hr" v-model="newWaypointValues.departureTime" />
         </v-menu>
       </div>
       <mmt-text-input class="input-field" :placeholder="$t('cities.krakow')" :hint="$t('tripHistory.arrivalCity')"
-        persistent-hint rounded filled single-line dense :rules="[rules.required]" v-model="newWaypointValues.arrivalCity" />
+        persistent-hint rounded filled single-line dense :rules="[rules.required]"
+        v-model="newWaypointValues.arrivalCity" />
       <div class="date-input">
         <v-menu offset-y :close-on-content-click="false">
           <template v-slot:activator="{ on }">
-            <div class="date-pseudo-input" v-on="on">
-              <v-icon>mdi-calendar-check</v-icon>
-              <div class="content">
-                <div class="date-title">{{$t('tripHistory.arrivalDate')}}</div>
-                <div class="date">{{newWaypointValues.arrivalDate | date('EEEEEE, d MMM')}}</div>
-              </div>
-            </div>
+            <mmt-text-input class="input-field" placeholder="2020-05-12" :hint="$t('tripHistory.arrivalDate')"
+              persistent-hint rounded filled single-line dense v-model="newWaypointValues.arrivalDate"
+              :rules="[rules.required, rules.date]" v-on="on" prepend-icon="mdi-calendar-check" />
           </template>
           <v-date-picker first-day-of-week="1" v-bind="calendarLocale" color="accent lighten-1" width="248"
             v-model="newWaypointValues.arrivalDate" />
@@ -55,13 +44,9 @@
       <div class="date-input">
         <v-menu offset-y :close-on-content-click="false">
           <template v-slot:activator="{ on }">
-            <div class="date-pseudo-input" v-on="on">
-              <v-icon>mdi-calendar-check</v-icon>
-              <div class="content">
-                <div class="date-title">{{$t('tripHistory.arrivalTime')}}</div>
-                <div class="date">{{newWaypointValues.arrivalTime}}</div>
-              </div>
-            </div>
+            <mmt-text-input class="input-field" placeholder="15:43" :hint="$t('tripHistory.arrivalTime')"
+              persistent-hint rounded filled single-line dense v-model="newWaypointValues.arrivalTime"
+              :rules="[rules.required, rules.time]" v-on="on" prepend-icon="mdi-clock" />
           </template>
           <v-time-picker color="accent lighten-1" width="248" format="24hr" v-model="newWaypointValues.arrivalTime" />
         </v-menu>
@@ -113,7 +98,7 @@
         </v-btn>
       </v-card-actions>
     </v-card>
-    
+
     <v-card flat class="files-card mt-5" v-else width="248">
       <v-card-title>
         {{$t('fileUpload.files')}}
@@ -139,7 +124,7 @@
         </v-btn>
       </v-card-actions>
     </v-card>
-    
+
 
   </div>
 

@@ -1,5 +1,6 @@
 import { MmtTextInput } from '@components';
-import { requiredValidationMixin } from '@mixins';
+import { format } from 'date-fns';
+import { requiredValidationMixin, timeValidationMixin, dateValidationMixin } from '@mixins';
 import { mapGetters } from 'vuex';
 import { baseUrl, waypointFilesSuffix } from '@config';
 import { zonedTimeToUtc } from 'date-fns-tz';
@@ -9,7 +10,9 @@ const { MAX_WAYPOINT_SIZE_MB, MAX_WAYPOINT_FILE_COUNT } = require('@constants'),
 export default {
   props: ['id', 'waypointId'],
   mixins: [
-    requiredValidationMixin
+    requiredValidationMixin,
+    timeValidationMixin,
+    dateValidationMixin
   ],
   components: {
     MmtTextInput
@@ -122,15 +125,15 @@ export default {
 
           this.newWaypointValues.departureCity = currentWaypoint.city;
           this.newWaypointValues.departureDate
-          = this.$options.filters.date(currentWaypoint.departureDate, 'yyyy-MM-dd');
+          = format(new Date(currentWaypoint.departureDate), 'yyyy-MM-dd');
           this.newWaypointValues.departureTime
-          = this.$options.filters.date(currentWaypoint.departureDate, 'HH:mm');
+          = format(new Date(currentWaypoint.departureDate), 'HH:mm');
 
           this.newWaypointValues.arrivalCity = nextWaypoint.city;
           this.newWaypointValues.arrivalDate
-          = this.$options.filters.date(currentWaypoint.arrivalDate, 'yyyy-MM-dd');
+          = format(new Date(currentWaypoint.arrivalDate), 'yyyy-MM-dd');
           this.newWaypointValues.arrivalTime
-          = this.$options.filters.date(currentWaypoint.arrivalDate, 'HH:mm');
+          = format(new Date(currentWaypoint.arrivalDate), 'HH:mm');
 
           this.newWaypointValues.pathLength = currentWaypoint.pathLength;
           this.newWaypointValues.pathTime
