@@ -78,13 +78,21 @@
       </v-card-title>
       <v-card-text class="my-n5">
         <v-chip-group column>
-          <v-chip v-for="file of files" close close-icon="mdi-delete"
-            :href="`${baseUrl}/${waypointFilesSuffix}/${file.actualFileName}`" target="_blank"
-            @click:close="deleteFile(file.actualFileName)">
-            <div class="text-truncate">
-              {{file.userFileName}}
-            </div>
-          </v-chip>
+          <template v-for="file of files">
+            <a class="img-container my-1" v-if="/.(jpg|jpeg|png|gif|svg|bmp)$/is.test(file.userFileName)"
+              :href="`${baseUrl}/${waypointFilesSuffix}/${file.actualFileName}`" target="_blank">
+              <v-img max-height="200" :src="`${baseUrl}/${waypointFilesSuffix}/${file.actualFileName}`">
+              </v-img>
+              <v-icon @click.prevent="deleteFile(file.actualFileName)">mdi-delete</v-icon>
+            </a>
+            <v-chip close v-else close-icon="mdi-delete"
+              :href="`${baseUrl}/${waypointFilesSuffix}/${file.actualFileName}`" target="_blank"
+              @click:close="deleteFile(file.actualFileName)">
+              <div class="text-truncate">
+                {{file.userFileName}}
+              </div>
+            </v-chip>
+          </template>
         </v-chip-group>
         <template v-if="files.length === 0">
           {{$t('fileUpload.addFiles')}}
