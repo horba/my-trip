@@ -55,7 +55,7 @@
       <div v-else>
       </div>
       <div class="details">
-        <v-checkbox hide-details readonly color="secondary" :input-value="waypoint.isDetails"
+        <v-checkbox hide-details readonly color="secondary" :input-value="isDetails"
           @click.self="updateDetailsState" />
         <div class="content">
           <span class="subtitle">
@@ -72,7 +72,7 @@
   </v-card>
   <v-btn class="completed-btn white--text" color="success" tile depressed height="59" width="166"
     @click="updateCompletedState">
-    <v-checkbox color="white" readonly v-model="waypoint.isCompleted" />
+    <v-checkbox color="white" readonly :input-value="isCompleted" />
     <span class="button-text">
       {{$t('tripHistory.isCompleted')}}
     </span>

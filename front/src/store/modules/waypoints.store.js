@@ -14,11 +14,11 @@ export default {
     CLEAR_WAYPOINTS (state) {
       state.waypoints = [];
     },
-    SWITCH_WAYPOINT_STATE (_, waypoint) {
-      waypoint.isCompleted = !waypoint.isCompleted;
+    SET_WAYPOINT_STATE (state, { id, isChecked }) {
+      state.waypoints.find(waypoint => waypoint.id === id).isCompleted = isChecked;
     },
-    SWITCH_WAYPOINT_DETAILS (_, waypoint) {
-      waypoint.isDetails = !waypoint.isDetails;
+    SET_WAYPOINT_DETAILS (state, { id, isChecked }) {
+      state.waypoints.find(waypoint => waypoint.id === id).isDetails = isChecked;
     },
     DETELE_WAYPOINT (state, id) {
       state.waypoints = state.waypoints.filter(waypoint => waypoint.id !== id);
@@ -47,15 +47,13 @@ export default {
           commit('SET_TRIP_ID', +tripId);
         });
     },
-    switchCompletedState ({ commit, state }, id) {
-      const waypoint = state.waypoints.find(waypoint => waypoint.id === id);
-      commit('SWITCH_WAYPOINT_STATE', waypoint);
-      api.put('/waypoints/set-completed-state', { id, state: waypoint.isCompleted });
+    setCompletedState ({ commit, state }, { id, isChecked }) {
+      api.put('/waypoints/set-completed-state', { id, state: isChecked })
+        .then(() => commit('SET_WAYPOINT_STATE', { id, isChecked }));
     },
-    switchDetailsState ({ commit, state }, id) {
-      const waypoint = state.waypoints.find(waypoint => waypoint.id === id);
-      commit('SWITCH_WAYPOINT_DETAILS', waypoint);
-      api.put('/waypoints/set-details-state', { id, state: waypoint.isDetails });
+    setDetailsState ({ commit, state }, { id, isChecked }) {
+      api.put('/waypoints/set-details-state', { id, state: isChecked })
+        .then(() => commit('SET_WAYPOINT_DETAILS', { id, isChecked }));
     },
     deleteWaypoint ({ commit, state }, id) {
       if (state.waypoints.length === 2) {
