@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
+using Entities.Interfaces;
 using Entities.Models;
 
 namespace Entities
 {
   public class CountryRepository
   {
-    private readonly RepositoryContext RepositoryContext;
+    private readonly IRepositoryContext RepositoryContext;
 
-    public CountryRepository(RepositoryContext repositoryContext)
+    public CountryRepository(IRepositoryContext repositoryContext)
     {
       this.RepositoryContext = repositoryContext;
     }

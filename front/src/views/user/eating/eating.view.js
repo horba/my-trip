@@ -1,6 +1,16 @@
 import { MmtStepper } from '@components';
 import { gmapApi } from 'vue2-google-maps';
-import { VCol, VRow, VCard, VRating, VBtn, VIcon } from 'vuetify/lib';
+import { VCol, VRow, VCard, VRating, VBtn, VIcon, VSnackbar } from 'vuetify/lib';
+
+const fields = [
+  'geometry',
+  'rating',
+  'opening_hours',
+  'photos',
+  'user_ratings_total',
+  'types',
+  'utc_offset_minutes'
+];
 
 export default {
   components: {
@@ -10,7 +20,8 @@ export default {
     VCard,
     VRating,
     VBtn,
-    VIcon
+    VIcon,
+    VSnackbar
   },
   data () {
     return {
@@ -24,50 +35,58 @@ export default {
         ref: 'mapRef'
       },
       scheduledPlacesList: [],
-      defaultImage: '@/assets/default-image.jpg'
+      defaultImage: '@/assets/default-image.jpg',
+      selectedId: 0,
+      text: '',
+      snackbar: false,
+      color: ''
     };
   },
   computed: {
     google: gmapApi
   },
   created () {
-    this.$store.dispatch('eating/getEatingUser')
-      .then(r => {
-        this.scheduledPlacesList = r.data;
-        this.scheduledPlacesList
-          .forEach(serverInfo => {
-            this.gmapAddDetails(serverInfo);
-            serverInfo.isActive = false;
-          });
-      });
+    this.responseDataFromServer();
   },
   methods: {
-    gmapAddDetails (serverInfo) {
-      if (serverInfo.googlePlaceId !== '') {
-        const request = {
-          placeId: serverInfo.googlePlaceId,
-          fields:
-            [
-              'geometry',
-              'rating',
-              'opening_hours',
-              'photos',
-              'user_ratings_total',
-              'types',
-              'utc_offset_minutes'
-            ]
-        };
-        this.$refs.mapRef.$mapPromise.then((map) => {
-          const service = new this.google.maps.places.PlacesService(map);
+    responseDataFromServer () {
+      this.$store.dispatch('eating/getEatingUser')
+        .then(response => {
+          this.scheduledPlacesList = response.data
+          /// scheduledPlacesList: [{serverInfo, googleDetails}]
+          /// for [{...serverPlaceInfo, googleDetails}] change into
+          /// .map(serverPlaceInfo => { return { ..., googleDetails: null }; });
+            .map(serverPlaceInfo => {
+              return {
+                serverInfo: serverPlaceInfo, googleDetails: null
+              };
+            });
+          return Promise.all(this.scheduledPlacesList.map(this.addGoogleMapDetails));
+        });
+    },
+    addGoogleMapDetails (place) {
+      return place.serverInfo.googlePlaceId
+        ? this.getGoogleDetails(place.serverInfo.googlePlaceId)
+          .then(googleDetails => { place.googleDetails = googleDetails || null; })
+        : Promise.resolve(place);
+    },
+    getGoogleDetails (googlePlaceId) {
+      const request = {
+        placeId: googlePlaceId,
+        fields
+      };
+      return this.$refs.mapRef.$mapPromise.then((map) => {
+        const service = new this.google.maps.places.PlacesService(map);
+        return new Promise((resolve, reject) => {
           service.getDetails(request, (place, status) => {
             if (status === this.google.maps.places.PlacesServiceStatus.OK) {
-              serverInfo.googleDetails = place;
+              return resolve(place);
+            } else {
+              return resolve(null);
             }
           });
         });
-      } else {
-        serverInfo.googleDetails = undefined;
-      }
+      });
     },
     isOpen (place) {
       let isOpen;
@@ -78,45 +97,26 @@ export default {
       }
       return isOpen;
     },
-    replacementTypes (types) {
-      const replaceTypes = [];
-      types.forEach((type) => {
-        if (type === 'food') {
-          type = this.$t('eating.food');
-          replaceTypes.push(type);
-        } else if (type === 'restaurant') {
-          type = this.$t('eating.restaurant');
-          replaceTypes.push(type);
-        } else if (type === 'bar') {
-          type = this.$t('eating.bar');
-          replaceTypes.push(type);
-        } else if (type === 'establishment') {
-          type = this.$t('eating.establishment');
-          replaceTypes.push(type);
-        } else if (type === 'cafe') {
-          type = this.$t('eating.cafe');
-          replaceTypes.push(type);
-        } else if (type === 'meal_delivery') {
-          type = this.$t('eating.meal_delivery');
-          replaceTypes.push(type);
-        } else if (type === 'meal_takeaway') {
-          type = this.$t('eating.meal_takeaway');
-          replaceTypes.push(type);
-        } else { }
-      });
-      return replaceTypes.slice(0, 3);
+    onSelectPlace (selectedPlace) {
+      if (selectedPlace.googleDetails !== null) {
+        this.options.center.lat = selectedPlace.googleDetails.geometry.location.lat();
+        this.options.center.lng = selectedPlace.googleDetails.geometry.location.lng();
+      }
+      this.selectedId = selectedPlace.serverInfo.id;
     },
-    selectPlace (index) {
-      this.scheduledPlacesList.forEach(card => {
-        card.isActive = false;
-        if (card === this.scheduledPlacesList[index]) {
-          card.isActive = true;
-          if (card.googleDetails !== null) {
-            this.options.center.lat = card.googleDetails.geometry.location.lat();
-            this.options.center.lng = card.googleDetails.geometry.location.lng();
-          }
-        }
-      });
+    deletePlace (id) {
+      this.$store.dispatch('eating/deleteEating', { id })
+        .then(() => {
+          this.text = this.$t('eating.successfullyDelete');
+          this.snackbar = true;
+          this.color = 'success';
+          setTimeout(() => this.responseDataFromServer(), 3000);
+        })
+        .catch(error => {
+          this.text = error;
+          this.snackbar = true;
+          this.color = 'error';
+        });
     }
   },
   filters: {

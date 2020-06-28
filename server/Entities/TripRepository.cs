@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Entities.Interfaces;
+using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
@@ -6,9 +7,9 @@ namespace Entities
 {
   public class TripRepository
   {
-    private readonly RepositoryContext RepositoryContext;
+    private readonly IRepositoryContext RepositoryContext;
 
-    public TripRepository(RepositoryContext repositoryContext)
+    public TripRepository(IRepositoryContext repositoryContext)
     {
       this.RepositoryContext = repositoryContext;
     }

@@ -3,36 +3,30 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
-using AutoMapper;
-using Entities;
+using Entities.Interfaces;
 using Entities.Models;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
 using WebAPI.DTO.ScheduledPlaceToEat;
-using WebAPI.Services.Assets;
+using WebAPI.Interfaces;
 
 namespace WebAPI.Services
 {
-  public class ScheduledPlaceToEatService
+  public class ScheduledPlaceToEatService : IScheduledPlaceToEatService
   {
     private readonly UserService _userService;
-    private readonly ScheduledPlaceToEatRepository _scheduledPlaceToEatRepository;
-    private readonly AttachmentFileEatingRepository _attachmentFileEatingRepository;
-    private readonly IMapper _mapper;
+    private readonly IScheduledPlaceToEatRepository _scheduledPlaceToEatRepository;
+    private readonly IAttachmentFileEatingRepository _attachmentFileEatingRepository;
 
     public ScheduledPlaceToEatService(
       UserService userService,
-      ScheduledPlaceToEatRepository scheduledPlaceToEatRepository,
-      AttachmentFileEatingRepository attachmentFileEatingRepository,
-      IMapper mapper)
+      IScheduledPlaceToEatRepository scheduledPlaceToEatRepository,
+      IAttachmentFileEatingRepository attachmentFileEatingRepository)
     {
       _userService = userService;
       _scheduledPlaceToEatRepository = scheduledPlaceToEatRepository;
       _attachmentFileEatingRepository = attachmentFileEatingRepository;
-      _mapper = mapper;
     }
 
-    public int CreateNewEating(InputScheduledPlaceToEatDTO scheduledPlaceToEatDTO)
+    public int CreateNewEating(InputScheduledPlaceToEatForCreateDTO scheduledPlaceToEatDTO)
     {
       try
       {
@@ -44,18 +38,7 @@ namespace WebAPI.Services
         {
           if(_userService.GetUser(scheduledPlaceToEatDTO.UserId) != null)
           {
-            var eating = new ScheduledPlaceToEat
-            {
-              UserId = scheduledPlaceToEatDTO.UserId,
-              DateTime = scheduledPlaceToEatDTO.DateTime,
-              Lat = scheduledPlaceToEatDTO.Lat,
-              Lng = scheduledPlaceToEatDTO.Lng,
-              Link = scheduledPlaceToEatDTO.Link,
-              Notes = scheduledPlaceToEatDTO.Notes,
-              NamePlace = scheduledPlaceToEatDTO.NamePlace,
-              GooglePlaceId = scheduledPlaceToEatDTO.GooglePlaceId
-            };
-            return _scheduledPlaceToEatRepository.CreateScheduledPlaceToEat(eating);
+            return _scheduledPlaceToEatRepository.CreateScheduledPlaceToEat(ConvertInputScheduledPlaceToEatForCreateDTOToScheduletPlaceToEat(scheduledPlaceToEatDTO));
           }
           else
           {
@@ -77,16 +60,8 @@ namespace WebAPI.Services
         List<OutputScheduledPlaceToEatDTO> result = new List<OutputScheduledPlaceToEatDTO>();
         foreach(var eating in eatings)
         {
-          result.Add(this.ConvertScheduledPlaceToEatToOutputScheduletPlaceToEatDTO(eating));
+          result.Add(ConvertScheduledPlaceToEatToOutputScheduletPlaceToEatDTO(eating));
         }
-        //foreach(var scheduledPlaceToEatDTO in result)
-        //{
-        //  var attachments = _mapper.Map<IEnumerable<AttachmentFileEatingDTO>>(_attachmentFileEatingRepository.GetAttachmentFileEatingByScheduledPlaceId(scheduledPlaceToEatDTO.Id));
-        //  foreach(var attachment in attachments)
-        //  {
-        //    scheduledPlaceToEatDTO.FileNames.Append(attachment.Path);
-        //  }
-        //}
         return result;
       }
       else
@@ -95,93 +70,65 @@ namespace WebAPI.Services
       }
     }
 
-    public void UpdateEating(InputScheduledPlaceToEatDTO scheduledPlaceToEatDTO)
+    public bool UpdateScheduledPlaceToEat(InputScheduledPlaceToEatForUpdateOrDeleteDTO scheduledPlaceToEatDTO)
     {
       try
       {
         if(!Valid(scheduledPlaceToEatDTO))
         {
-          return;
+          throw new ArgumentException();
         }
         else
         {
-          if(_scheduledPlaceToEatRepository.GetScheduledPlaceToEatById(scheduledPlaceToEatDTO.Id) == null)
+          var oldEating = _scheduledPlaceToEatRepository.GetScheduledPlaceToEatById(scheduledPlaceToEatDTO.Id);
+          if( oldEating == null)
           {
             throw new ArgumentException();
           }
-          var eating = ConvertInputScheduledPlaceToEatDTOToScheduletPlaceToEat(scheduledPlaceToEatDTO);
-          _scheduledPlaceToEatRepository.UptateScheduledPlaceToEat(eating);
-          return;
+          oldEating.Notes = scheduledPlaceToEatDTO.Notes;
+          oldEating.NamePlace = scheduledPlaceToEatDTO.NamePlace;
+          oldEating.Lng = scheduledPlaceToEatDTO.Lng;
+          oldEating.Lat = scheduledPlaceToEatDTO.Lat;
+          oldEating.Link = scheduledPlaceToEatDTO.Link;
+          oldEating.GooglePlaceId = scheduledPlaceToEatDTO.GooglePlaceId;
+          oldEating.DateTime = scheduledPlaceToEatDTO.DateTime;
+          _scheduledPlaceToEatRepository.UptateScheduledPlaceToEat(oldEating);
+          return true;
         }
       }
       catch(Exception e)
       {
         Console.WriteLine(e);
-        return;
+        return false;
       }
     }
 
-    public void DeleteScheduledPlaceToEat(InputScheduledPlaceToEatDTO scheduledPlaceToEatDTO)
+    public bool DeleteScheduledPlaceToEat(InputScheduledPlaceToEatForUpdateOrDeleteDTO scheduledPlaceToEatDTO)
     {
       try
       {
         if(!Valid(scheduledPlaceToEatDTO))
         {
-          return;
-        }
-        else
-        {
-          var attachments = _attachmentFileEatingRepository.GetAttachmentFileEatingByScheduledPlaceId(scheduledPlaceToEatDTO.Id);
-          foreach(var file in attachments)
-          {
-            File.Delete(file.Path);
-            _attachmentFileEatingRepository.DeleteAttachmentFileEating(file);
-          }
-          _scheduledPlaceToEatRepository.DeleteScheduledPlaceToEat(new ScheduledPlaceToEat
-          {
-            Id = scheduledPlaceToEatDTO.Id,
-            UserId = scheduledPlaceToEatDTO.UserId,
-            DateTime = scheduledPlaceToEatDTO.DateTime,
-            Lat = scheduledPlaceToEatDTO.Lat,
-            Lng = scheduledPlaceToEatDTO.Lng,
-            Link = scheduledPlaceToEatDTO.Link,
-            Notes = scheduledPlaceToEatDTO.Notes,
-            NamePlace = scheduledPlaceToEatDTO.NamePlace,
-            GooglePlaceId = scheduledPlaceToEatDTO.GooglePlaceId
-          });
-        }
-      }
-      catch(Exception)
-      {
-        return;
-      }
-    }
-
-    public void SaveFilesName(AttachmentFileEatingDTO attachmentFileEatingDTO)
-    {
-      //_attachmentFileEatingRepository.CreateAttachmentFileEating(new AttachmentFileEating { })
-    }
-
-    private bool Valid(InputScheduledPlaceToEatDTO scheduledPlaceToEatDTO)
-    {
-      var results = new List<ValidationResult>();
-      var context = new System.ComponentModel.DataAnnotations.ValidationContext(scheduledPlaceToEatDTO);
-      try
-      {
-        if(!Validator.TryValidateObject(scheduledPlaceToEatDTO, context, results, true))
-        {
-          foreach(var error in results)
-          {
-            Console.WriteLine(error.ErrorMessage);
-          }
           throw new ArgumentException();
         }
         else
         {
+          var attachments = _attachmentFileEatingRepository.GetAttachmentFileEatingByScheduledPlaceId(scheduledPlaceToEatDTO.Id);
+          if(attachments != null)
+          {
+            foreach(var file in attachments)
+            {
+              File.Delete(file.Path);
+              _attachmentFileEatingRepository.DeleteAttachmentFileEating(file);
+            }
+          }
+          _scheduledPlaceToEatRepository.DeleteScheduledPlaceToEat(scheduledPlaceToEatDTO.Id);
           return true;
         }
       }
-      catch {
+      catch(Exception e)
+      {
+        Console.WriteLine(e);
         return false;
       }
     }
@@ -193,10 +140,10 @@ namespace WebAPI.Services
         throw new ArgumentNullException(nameof(scheduledPlaceToEat));
       }
       var fileNames = new List<string>();
-      if(scheduledPlaceToEat.Attachments != null)
+      var attachmentFileEatings = _attachmentFileEatingRepository.GetAttachmentFileEatingByScheduledPlaceId(scheduledPlaceToEat.Id);
+      if(attachmentFileEatings != null)
       {
-        var files = scheduledPlaceToEat.Attachments.Where(el => el.ScheduledPlaceToEatId.Equals(scheduledPlaceToEat.Id));
-        foreach(var file in files)
+        foreach(var file in attachmentFileEatings)
         {
           fileNames.Add(file.Path);
         }
@@ -214,33 +161,27 @@ namespace WebAPI.Services
         Notes = scheduledPlaceToEat.Notes
       };
     }
-    public OutputScheduledPlaceToEatDTO ConvertInputScheduledPlaceToEatDTOToOutputScheduletPlaceToEatDTO(InputScheduledPlaceToEatDTO inputScheduledPlaceToEatDTO)
+
+    public ScheduledPlaceToEat ConvertInputScheduledPlaceToEatForCreateDTOToScheduletPlaceToEat(InputScheduledPlaceToEatForCreateDTO inputScheduledPlaceToEatDTO)
     {
       if(inputScheduledPlaceToEatDTO is null)
       {
         throw new ArgumentNullException(nameof(inputScheduledPlaceToEatDTO));
       }
-      var files = _attachmentFileEatingRepository.GetAttachmentFileEatingByScheduledPlaceId(inputScheduledPlaceToEatDTO.Id);
-      var fileNames = new List<string>();
-      foreach(var file in files)
+      return new ScheduledPlaceToEat
       {
-        fileNames.Add(file.Path);
-      }
-      return new OutputScheduledPlaceToEatDTO
-      {
-        Id = inputScheduledPlaceToEatDTO.Id,
         DateTime = inputScheduledPlaceToEatDTO.DateTime,
-        FileNames = fileNames,
         GooglePlaceId = inputScheduledPlaceToEatDTO.GooglePlaceId,
         Lat = inputScheduledPlaceToEatDTO.Lat,
         Lng = inputScheduledPlaceToEatDTO.Lng,
         Link = inputScheduledPlaceToEatDTO.Link,
         NamePlace = inputScheduledPlaceToEatDTO.NamePlace,
-        Notes = inputScheduledPlaceToEatDTO.Notes
+        Notes = inputScheduledPlaceToEatDTO.Notes,
+        UserId = inputScheduledPlaceToEatDTO.UserId
       };
     }
 
-    public ScheduledPlaceToEat ConvertInputScheduledPlaceToEatDTOToScheduletPlaceToEat(InputScheduledPlaceToEatDTO inputScheduledPlaceToEatDTO)
+    public ScheduledPlaceToEat ConvertInputScheduledPlaceToEatForUpdateOrDeleteDTOToScheduletPlaceToEat(InputScheduledPlaceToEatForUpdateOrDeleteDTO inputScheduledPlaceToEatDTO)
     {
       if(inputScheduledPlaceToEatDTO is null)
       {
@@ -255,8 +196,59 @@ namespace WebAPI.Services
         Lng = inputScheduledPlaceToEatDTO.Lng,
         Link = inputScheduledPlaceToEatDTO.Link,
         NamePlace = inputScheduledPlaceToEatDTO.NamePlace,
-        Notes = inputScheduledPlaceToEatDTO.Notes
+        Notes = inputScheduledPlaceToEatDTO.Notes,
+        UserId = inputScheduledPlaceToEatDTO.UserId
       };
+    }
+
+    private bool Valid(InputScheduledPlaceToEatForUpdateOrDeleteDTO scheduledPlaceToEatDTO)
+    {
+      var results = new List<ValidationResult>();
+      var context = new ValidationContext(scheduledPlaceToEatDTO);
+      try
+      {
+        if(!Validator.TryValidateObject(scheduledPlaceToEatDTO, context, results, true))
+        {
+          foreach(var error in results)
+          {
+            Console.WriteLine(error.ErrorMessage);
+          }
+          throw new ArgumentException();
+        }
+        else
+        {
+          return true;
+        }
+      }
+      catch
+      {
+        return false;
+      }
+    }
+
+    private bool Valid(InputScheduledPlaceToEatForCreateDTO scheduledPlaceToEatDTO)
+    {
+      var results = new List<ValidationResult>();
+      var context = new ValidationContext(scheduledPlaceToEatDTO);
+      try
+      {
+        if(!Validator.TryValidateObject(scheduledPlaceToEatDTO, context, results, true))
+        {
+          foreach(var error in results)
+          {
+            Console.WriteLine(error.ErrorMessage);
+          }
+          throw new ArgumentException();
+        }
+        else
+        {
+          return true;
+        }
+      }
+      catch
+      {
+        return false;
+      }
     }
   }
 }

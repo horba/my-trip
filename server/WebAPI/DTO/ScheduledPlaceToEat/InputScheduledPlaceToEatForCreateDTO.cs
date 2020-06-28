@@ -1,21 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Entities.Models
+namespace WebAPI.DTO.ScheduledPlaceToEat
 {
-  [Table("scheduledPlaceToEat")]
-  public class ScheduledPlaceToEat
+  public class InputScheduledPlaceToEatForCreateDTO
   {
-    [Key]
-    public int Id { get; set; }
-
-    [Required(ErrorMessage = "{0} is required")]
     public int UserId { get; set; }
-
-    [ForeignKey("UserId")]
-    public User User { get; set; }
 
     [Required(ErrorMessage = "{0} is required")]
     public DateTime DateTime { get; set; }

@@ -1,23 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Entities;
-using Entities.Models;
+﻿using System.Linq;
+using Entities.Interfaces;
 using Microsoft.AspNetCore.Http;
-using WebAPI.DTO.ScheduledPlaceToEat;
+using WebAPI.Interfaces;
 using WebAPI.Services.Assets;
 
 namespace WebAPI.Services
 {
-  public class AttachmentFileEatingService
+  public class AttachmentFileEatingService: IAttachmentFileEatingService
   {
     private readonly AssetsService _assetsService;
-    private readonly AttachmentFileEatingRepository _attachmentFileEatingRepository;
-    private readonly ScheduledPlaceToEatService _scheduledPlaceToEatService;
+    private readonly IAttachmentFileEatingRepository _attachmentFileEatingRepository;
+    private readonly IScheduledPlaceToEatService _scheduledPlaceToEatService;
     private readonly UserService _userService;
 
-    public AttachmentFileEatingService(AssetsService assetsService, AttachmentFileEatingRepository attachmentFileEatingRepository, ScheduledPlaceToEatService scheduledPlaceToEatService, UserService userService)
+    public AttachmentFileEatingService(
+      AssetsService assetsService,
+      IAttachmentFileEatingRepository attachmentFileEatingRepository,
+      IScheduledPlaceToEatService scheduledPlaceToEatService,
+      UserService userService)
     {
       _assetsService = assetsService;
       _attachmentFileEatingRepository = attachmentFileEatingRepository;

@@ -17,6 +17,7 @@ using WebAPI.Interfaces;
 using System.IO;
 using Microsoft.Extensions.FileProviders;
 using WebAPI.Services.Assets;
+using Entities.Interfaces;
 
 namespace WebAPI
 {
@@ -47,7 +48,7 @@ namespace WebAPI
                                 });
       });
 
-      services.AddDbContext<RepositoryContext>(options =>
+      services.AddDbContext<IRepositoryContext, RepositoryContext>(options =>
           options.UseSqlServer(Configuration.GetConnectionString("mssqlConnection")));
       services.AddSingleton(Configuration);
       services.AddScoped<UserRepository>();
@@ -65,10 +66,10 @@ namespace WebAPI
       services.AddScoped<IEmailSender, EmailSender>();
       services.AddScoped<GoogleOauthService>();
       services.AddScoped<AssetsService>();
-      services.AddScoped<AttachmentFileEatingRepository>();
-      services.AddScoped<AttachmentFileEatingService>();
-      services.AddScoped<ScheduledPlaceToEatRepository>();
-      services.AddScoped<ScheduledPlaceToEatService>();
+      services.AddTransient<IAttachmentFileEatingRepository, AttachmentFileEatingRepository>();
+      services.AddTransient<IAttachmentFileEatingService, AttachmentFileEatingService>();
+      services.AddTransient<IScheduledPlaceToEatRepository, ScheduledPlaceToEatRepository>();
+      services.AddTransient<IScheduledPlaceToEatService, ScheduledPlaceToEatService>();
 
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
           .AddJwtBearer(x =>
@@ -141,9 +142,10 @@ namespace WebAPI
       app.UseFileServer(new FileServerOptions
       {
         FileProvider = new PhysicalFileProvider(
-                    Path.Combine(Directory.GetCurrentDirectory(), Consts.UsersAvatarsPath)),
+                    Path.Combine(Directory.GetCurrentDirectory(), Consts.AssetsPath)),
         RequestPath = "/avatars",
-        EnableDirectoryBrowsing = true
+        EnableDirectoryBrowsing = true,
+        StaticFileOptions = { ServeUnknownFileTypes = true }
       });
     }
   }

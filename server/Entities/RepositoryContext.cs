@@ -1,3 +1,4 @@
+using Entities.Interfaces;
 using Entities.Models;
 using Entities.Models.Enums;
 using Microsoft.EntityFrameworkCore;
@@ -6,7 +7,7 @@ using System.Linq;
 
 namespace Entities
 {
-  public class RepositoryContext : DbContext
+  public class RepositoryContext : DbContext, IRepositoryContext
   {
 
     public DbSet<User> Users { get; set; }

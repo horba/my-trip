@@ -1,28 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.Linq;
+using Entities.Interfaces;
 using Entities.Models;
 
 namespace Entities
 {
-  public class ScheduledPlaceToEatRepository
+  public class ScheduledPlaceToEatRepository: IScheduledPlaceToEatRepository
   {
-    private readonly RepositoryContext RepositoryContext;
+    private readonly IRepositoryContext RepositoryContext;
 
-    public ScheduledPlaceToEatRepository(RepositoryContext repositoryContext)
+    public ScheduledPlaceToEatRepository(IRepositoryContext repositoryContext)
     {
       RepositoryContext = repositoryContext;
     }
+
     public IQueryable<ScheduledPlaceToEat> GetScheduledPlaceToEatByUserId(int UserId)
     {
       return RepositoryContext.ScheduledPlacesToEat.Where(u => u.UserId.Equals(UserId));
     }
+
     public ScheduledPlaceToEat GetScheduledPlaceToEatById(int Id)
     {
-      return RepositoryContext.ScheduledPlacesToEat.Where(u => u.Id.Equals(Id)).FirstOrDefault();
+      return RepositoryContext.ScheduledPlacesToEat.FirstOrDefault(u => u.Id.Equals(Id));
     }
 
     public int CreateScheduledPlaceToEat(ScheduledPlaceToEat scheduledPlaceToEat)
@@ -34,20 +32,19 @@ namespace Entities
 
     public void UptateScheduledPlaceToEat(ScheduledPlaceToEat scheduledPlaceToEat)
     {
-      /*if(RepositoryContext.ScheduledPlacesToEat.Where(u => u.UserId.Equals(scheduledPlaceToEat.UserId) && u.Id.Equals(scheduledPlaceToEat.Id)) != null)
-      {*/
-        RepositoryContext.ScheduledPlacesToEat.Update(scheduledPlaceToEat);
-        RepositoryContext.SaveChanges();
-      /*}*/
+      RepositoryContext.ScheduledPlacesToEat.Update(scheduledPlaceToEat);
+      RepositoryContext.SaveChanges();
     }
 
     public void DeleteScheduledPlaceToEat(ScheduledPlaceToEat scheduledPlaceToEat)
     {
-      if(RepositoryContext.ScheduledPlacesToEat.Where(u => u.UserId.Equals(scheduledPlaceToEat.UserId) && u.Id.Equals(scheduledPlaceToEat.Id)) != null)
-      {
-        RepositoryContext.ScheduledPlacesToEat.Remove(scheduledPlaceToEat);
-        RepositoryContext.SaveChanges();
-      }
+      RepositoryContext.ScheduledPlacesToEat.Remove(scheduledPlaceToEat);
+      RepositoryContext.SaveChanges();
+    }
+
+    public void DeleteScheduledPlaceToEat(int id)
+    {
+      DeleteScheduledPlaceToEat(GetScheduledPlaceToEatById(id));
     }
   }
 }

@@ -1,21 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Entities.Interfaces;
 using Entities.Models;
 
 namespace Entities
 {
-  public class AttachmentFileEatingRepository
+  public class AttachmentFileEatingRepository: IAttachmentFileEatingRepository
   {
-    private readonly RepositoryContext RepositoryContext;
+    private readonly IRepositoryContext RepositoryContext;
 
-    public AttachmentFileEatingRepository(RepositoryContext repositoryContext)
+    public AttachmentFileEatingRepository(IRepositoryContext repositoryContext)
     {
       RepositoryContext = repositoryContext;
     }
 
     public AttachmentFileEating GetAttachmentFileEatingById(int Id)
     {
-      return RepositoryContext.AttachmentFilesEating.Where(u => u.Id.Equals(Id)).FirstOrDefault();
+      return RepositoryContext.AttachmentFilesEating.FirstOrDefault(u => u.Id.Equals(Id));
     }
 
     public IEnumerable<AttachmentFileEating> GetAttachmentFileEatingByScheduledPlaceId(int ScheduledPlaceId)
@@ -39,6 +40,11 @@ namespace Entities
     {
       RepositoryContext.AttachmentFilesEating.Remove(attachmentFileEating);
       RepositoryContext.SaveChanges();
+    }
+
+    public void DeleteAttachmentFileEating(int id)
+    {
+      DeleteAttachmentFileEating(RepositoryContext.AttachmentFilesEating.FirstOrDefault(r => r.Id.Equals(id)));
     }
   }
 }

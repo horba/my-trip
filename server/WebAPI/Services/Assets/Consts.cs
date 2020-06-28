@@ -6,6 +6,8 @@
 
     public const string FileEatingPath = @"Assets\ScheduledPlaceToEatFiles";
 
+    public const string AssetsPath = @"Assets";
+
     public static string[] AllowedImageContentTypes = new[] { "image/png", "image/jpeg", "image/jpg",  "image/bmp" };
 
     public static string[] AllowedTextContentTypes = new[] { ".txt", ".doc", ".docx" };

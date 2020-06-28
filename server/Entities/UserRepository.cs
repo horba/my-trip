@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Entities.Interfaces;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,11 +8,11 @@ namespace Entities
 {
   public class UserRepository
   {
-    private readonly RepositoryContext RepositoryContext;
+    private readonly IRepositoryContext RepositoryContext;
 
-    public UserRepository(RepositoryContext repositoryContext)
+    public UserRepository(IRepositoryContext repositoryContext)
     {
-      this.RepositoryContext = repositoryContext;
+      RepositoryContext = repositoryContext;
     }
 
     public User FindUserByEmail(string email)

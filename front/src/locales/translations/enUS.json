@@ -155,7 +155,9 @@
     "results": "Results",
     "add": "Add",
     "filter": "Filter",
-    "edit": "Edit"
+    "edit": "Edit",
+    "delete": "Delete",
+    "successfullyDelete": "Successfully delete"
   },
   "eatingNew": {
     "addCafe": "Add cafe",

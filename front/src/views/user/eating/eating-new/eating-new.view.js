@@ -76,7 +76,8 @@ export default {
       lng: 0,
       files: new FormData(),
       text: '',
-      snackbar: false
+      snackbar: false,
+      color: ''
     };
   },
   computed: {
@@ -114,10 +115,17 @@ export default {
           .then(() => {
             this.text = this.$t('eatingNew.successfullyEdited');
             this.snackbar = true;
+            this.color = 'success';
             this.$store.dispatch('eating/uploadNewFilesEating', {
               files: this.files,
               eatingId: payload.id
             });
+            setTimeout(() => this.$router.push({ name: 'ScheduleEatingPlace' }), 3000);
+          })
+          .catch(error => {
+            this.text = error;
+            this.snackbar = true;
+            this.color = 'error';
           });
       } else {
         this.$store.dispatch('eating/createNewEating', payload)
@@ -128,6 +136,12 @@ export default {
               files: this.files,
               eatingId: r.data
             });
+            setTimeout(() => this.$router.push({ name: 'ScheduleEatingPlace' }), 3000);
+          })
+          .catch(error => {
+            this.text = error;
+            this.snackbar = true;
+            this.color = 'error';
           });
       }
     },

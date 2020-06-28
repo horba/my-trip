@@ -6,13 +6,13 @@ const { baseUrl } = require('@/config/config.dev.json');
 export default {
   namespaced: true,
   actions: {
-    async getEatingUser ({ commit }) {
+    getEatingUser ({ commit }) {
       return api.get('/scheduledPlaceToEat');
     },
-    async getEatingUserByEatingId ({ commit }, payload) {
-      return new Promise((resolve, reject) => {
-        api.get('/scheduledPlaceToEat/' + payload.id).then(r => {
-          const scheduledPlaceToEat = r.data;
+    getEatingUserByEatingId ({ commit }, payload) {
+      return api.get('/scheduledPlaceToEat/' + payload.id)
+        .then(response => {
+          const scheduledPlaceToEat = response.data;
           if (scheduledPlaceToEat.fileNames.length > 0) {
             scheduledPlaceToEat.files = [];
             scheduledPlaceToEat.fileNames.forEach(fileName => {
@@ -20,21 +20,29 @@ export default {
                 .push(`${baseUrl}/${SERVER_SCHEDULED_PLACE_TO_EAT_PATH}/${fileName}`);
             });
           }
-          resolve(scheduledPlaceToEat);
-        }).catch(r => reject(r));
-      });
+          return scheduledPlaceToEat;
+        }).catch(error => Promise.reject(error));
     },
-    async createNewEating ({ commit }, payload) {
-      return await api.post('/ScheduledPlaceToEat/create/', payload);
+    createNewEating ({ commit }, payload) {
+      return api.post('/ScheduledPlaceToEat/create/', payload);
     },
-    async updateEating ({ commit }, payload) {
-      return await api.post('/scheduledPlaceToEat/update/', payload);
+    updateEating ({ commit }, payload) {
+      return api.post('/scheduledPlaceToEat/update/', payload);
     },
-    async deleteEating ({ commit }, payload) {
-      return await api.post('/scheduledPlaceToEat/delete/', payload);
+    deleteEating ({ commit }, payload) {
+      if (payload.id) {
+        return api.post('/scheduledPlaceToEat/deleteById/' + payload.id);
+      } else {
+        return api.post('/scheduledPlaceToEat/delete/', payload);
+      }
     },
-    async uploadNewFilesEating ({ commit }, payload) {
-      return await api.post('/ScheduledPlaceToEat/uploadEatingMultiFile/', payload);
+    uploadNewFilesEating ({ commit }, { eatingId, files }) {
+      return api.post('/ScheduledPlaceToEat/uploadEatingMultiFile/' + eatingId, files,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
     }
   }
 };

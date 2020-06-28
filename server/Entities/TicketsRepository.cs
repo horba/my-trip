@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Entities.Interfaces;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,9 +8,9 @@ namespace Entities
 {
     public class TicketsRepository
     {
-        private readonly RepositoryContext _repositoryContext;
+        private readonly IRepositoryContext _repositoryContext;
 
-        public TicketsRepository(RepositoryContext repositoryContext )
+        public TicketsRepository(IRepositoryContext repositoryContext )
         {
             _repositoryContext = repositoryContext;
         }

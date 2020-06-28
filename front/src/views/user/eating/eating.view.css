@@ -23,3 +23,8 @@
 .active-card {
   border: 1px solid var(--select-card-border-color);
 }
+
+.col .trash-btn,
+.pencil-btn {
+  padding: 0 6px;
+}
