@@ -10,6 +10,7 @@ using WebAPI.Services;
 
 namespace WebAPI.Controllers
 {
+  [Authorize]
   [Route("api/[controller]")]
   [ApiController]
   public class TripsController : ControllerBase
@@ -21,7 +22,6 @@ namespace WebAPI.Controllers
       _tripService = tripService;
     }
 
-    [Authorize]
     [HttpPost]
     public async Task<IActionResult> CreateTrip(TripRequestDTO trip)
     {
@@ -29,7 +29,6 @@ namespace WebAPI.Controllers
       return Ok();
     }
 
-    [Authorize]
     [Route("history")]
     [ProducesResponseType(typeof(IEnumerable<TripDTO>), StatusCodes.Status200OK)]
     public IActionResult GetTripsHistory(string searchQuery)
@@ -39,7 +38,6 @@ namespace WebAPI.Controllers
     }
 
     [HttpGet]
-    [Authorize]
     [Route("upcoming")]
     [ProducesResponseType(typeof(IEnumerable<TripDTO>), StatusCodes.Status200OK)]
     public IActionResult GetUpcomingTrips()

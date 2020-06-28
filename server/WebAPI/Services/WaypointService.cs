@@ -18,12 +18,12 @@ namespace WebAPI.Services
   public interface IWaypointService
   {
     IEnumerable<WaypointDTO> GetWaypointDTOsOfTrip(int tripId);
-    void UpdateCompletedState(int wpId, bool state);
-    void UpdateDetailsState(int wpId, bool state);
-    bool IsWaypointAllowed(int userId, int wpId);
-    Task<int> InsertWaypoint(WaypointRequestDTO wpDTO);
-    Task UpdateWaypoint(WaypointRequestDTO wpDTO);
-    void DeleteWaypoint(int wpId);
+    void UpdateCompletedState(int waypointId, bool state);
+    void UpdateDetailsState(int waypointId, bool state);
+    bool IsWaypointAllowed(int userId, int waypointId);
+    Task<int> InsertWaypoint(WaypointRequestDTO waypointDTO);
+    Task UpdateWaypoint(WaypointRequestDTO waypointDTO);
+    void DeleteWaypoint(int waypointId);
   }
 
   public class WaypointService : IWaypointService
@@ -31,10 +31,10 @@ namespace WebAPI.Services
 
     private readonly IWaypointRepository _waypointRepository;
     private readonly IWaypointFileService _waypointFileService;
-    private readonly GooglePlacePhotoService _photoService;
+    private readonly IGooglePlacePhotoService _photoService;
     private readonly IMapper _mapper;
 
-    public WaypointService(IWaypointRepository waypointRepository, IMapper mapper, GooglePlacePhotoService photoService, IWaypointFileService waypointFileService)
+    public WaypointService(IWaypointRepository waypointRepository, IMapper mapper, IGooglePlacePhotoService photoService, IWaypointFileService waypointFileService)
     {
       _waypointRepository = waypointRepository;
       _mapper = mapper;
@@ -44,141 +44,152 @@ namespace WebAPI.Services
 
     private Waypoint GetWaypointById(int id)
     {
-      return _waypointRepository.GetWaypoints().FirstOrDefault(wp => wp.Id == id);
+      return _waypointRepository.GetWaypoints().FirstOrDefault(waypoint => waypoint.Id == id);
     }
 
     public IEnumerable<WaypointDTO> GetWaypointDTOsOfTrip(int tripId)
     {
       return _mapper.Map<IEnumerable<WaypointDTO>>(_waypointRepository.GetWaypoints()
-        .Where(wp => wp.TripId == tripId)
-        .Include(wp => wp.Files)
-        .OrderBy(wp => wp.Order));
+        .Where(waypoint => waypoint.TripId == tripId)
+        .Include(waypoint => waypoint.Files)
+        .OrderBy(waypoint => waypoint.Order));
     }
 
-    public void UpdateCompletedState(int wpId, bool state)
+    public void UpdateCompletedState(int waypointId, bool state)
     {
-      var wp = GetWaypointById(wpId);
+      var waypoint = GetWaypointById(waypointId);
 
-      if (wp != null)
+      if (waypoint != null)
       {
-        wp.IsCompleted = state;
-        _waypointRepository.UpdateWaypoint(wp);
+        waypoint.IsCompleted = state;
+        _waypointRepository.UpdateWaypoint(waypoint);
       }
     }
 
-    public void UpdateDetailsState(int wpId, bool state)
+    public void UpdateDetailsState(int waypointId, bool state)
     {
-      var wp = GetWaypointById(wpId);
+      var waypoint = GetWaypointById(waypointId);
 
-      if (wp != null)
+      if (waypoint != null)
       {
-        wp.IsDetails = state;
-        _waypointRepository.UpdateWaypoint(wp);
+        waypoint.IsDetails = state;
+        _waypointRepository.UpdateWaypoint(waypoint);
       }
     }
 
-    public bool IsWaypointAllowed(int userId, int wpId)
+    public bool IsWaypointAllowed(int userId, int waypointId)
     {
       return _waypointRepository
         .GetWaypoints()
-        .Include(wp => wp.Trip)
-        .FirstOrDefault(wp => wp.Id == wpId)
+        .Include(waypoint => waypoint.Trip)
+        .FirstOrDefault(waypoint => waypoint.Id == waypointId)
         ?.Trip
         ?.UserId == userId;
     }
 
-    public async Task<int> InsertWaypoint(WaypointRequestDTO wpDTO)
+    public async Task<int> InsertWaypoint(WaypointRequestDTO waypointDTO)
     {
-      var wp = _mapper.Map<Waypoint>(wpDTO);
+      var waypoint = _mapper.Map<Waypoint>(waypointDTO);
       var toReplace = _waypointRepository.GetWaypoints()
-        .FirstOrDefault(wp => wp.TripId == wpDTO.TripId && wp.City == wpDTO.DepartureCity);
+        .FirstOrDefault(waypoint => waypoint.TripId == waypointDTO.TripId && waypoint.City == waypointDTO.DepartureCity);
 
-      var wpImg = _photoService.GetPlaceImage(wpDTO.DepartureCity);
-      var nextWpImg = _photoService.GetPlaceImage(wpDTO.ArrivalCity);
+      var waypointImg = _photoService.GetPlaceImage(waypointDTO.DepartureCity);
+      var nextwaypointImg = _photoService.GetPlaceImage(waypointDTO.ArrivalCity);
 
-      var allImg = await Task.WhenAll(wpImg, nextWpImg);
-      wp.ImageUrl = allImg[0];
+      var allImg = await Task.WhenAll(waypointImg, nextwaypointImg);
+      waypoint.ImageUrl = allImg[0];
 
       if (toReplace == null)
       {
-        int wpCount = _waypointRepository.GetWaypoints().Count(wp => wp.TripId == wpDTO.TripId);
-        if (wpCount > 0)
+        int waypointCount = _waypointRepository.GetWaypoints().Count(waypoint => waypoint.TripId == waypointDTO.TripId);
+        if (waypointCount > 0)
         {
-          _waypointRepository.DeleteWaypoint(_waypointRepository.GetWaypoints().Where(wp => wp.TripId == wpDTO.TripId).OrderByDescending(wp => wp.Order).FirstOrDefault());
-          wpCount--;
+          _waypointRepository.DeleteWaypoint(_waypointRepository
+            .GetWaypoints()
+            .Where(waypoint => waypoint.TripId == waypointDTO.TripId)
+            .OrderByDescending(waypoint => waypoint.Order)
+            .FirstOrDefault());
+          waypointCount--;
         }
 
-        wp.Order = wpCount;
-        _waypointRepository.AddWaypoint(wp);
-        _waypointRepository.AddWaypoint(new Waypoint { City = wpDTO.ArrivalCity, Order = wpCount + 1, TripId = wp.TripId, ImageUrl = allImg[1] });
-        return wp.Id;
+        waypoint.Order = waypointCount;
+        _waypointRepository.AddWaypoint(waypoint);
+        _waypointRepository.AddWaypoint(
+          new Waypoint
+          {
+            City = waypointDTO.ArrivalCity,
+            Order = waypointCount + 1,
+            TripId = waypoint.TripId,
+            ImageUrl = allImg[1]
+          });
+        return waypoint.Id;
       }
 
-      wp.Order = toReplace.Order;
-      wp.IsDetails = toReplace.IsDetails;
-      wp.IsCompleted = toReplace.IsCompleted;
+      waypoint.Order = toReplace.Order;
+      waypoint.IsDetails = toReplace.IsDetails;
+      waypoint.IsCompleted = toReplace.IsCompleted;
       toReplace.Order++;
       toReplace.IsDetails = toReplace.IsCompleted = false;
-      toReplace.City = wpDTO.ArrivalCity;
+      toReplace.City = waypointDTO.ArrivalCity;
       toReplace.ImageUrl = allImg[1];
 
-      var wps = _waypointRepository.GetWaypoints()
-          .Where(w => w.TripId == wpDTO.TripId && w.Order > wp.Order)
+      var waypoints = _waypointRepository.GetWaypoints()
+          .Where(w => w.TripId == waypointDTO.TripId && w.Order > waypoint.Order)
           .ToList();
-      wps.ForEach(w => w.Order++);
-      _waypointRepository.UpdateRange(wps);
+      waypoints.ForEach(w => w.Order++);
+      _waypointRepository.UpdateRange(waypoints);
       _waypointRepository.UpdateWaypoint(toReplace);
 
-      _waypointRepository.AddWaypoint(wp);
-      return wp.Id;
+      _waypointRepository.AddWaypoint(waypoint);
+      return waypoint.Id;
     }
 
-    public async Task UpdateWaypoint(WaypointRequestDTO wpDTO)
+    public async Task UpdateWaypoint(WaypointRequestDTO waypointDTO)
     {
-      var wp = _mapper.Map<Waypoint>(wpDTO);
-      wp.Order = _waypointRepository.GetWaypoints().FirstOrDefault(w => w.Id == wp.Id).Order;
-      var nextWp = _waypointRepository.GetWaypoints().FirstOrDefault(w => w.TripId == wp.TripId && w.Order == wp.Order + 1);
-      if (nextWp != null)
+      var waypoint = _mapper.Map<Waypoint>(waypointDTO);
+      waypoint.Order = _waypointRepository.GetWaypoints().FirstOrDefault(w => w.Id == waypoint.Id).Order;
+      var nextwaypoint = _waypointRepository.GetWaypoints().FirstOrDefault(w => w.TripId == waypoint.TripId && w.Order == waypoint.Order + 1);
+      if (nextwaypoint != null)
       {
-        var wpImg = _photoService.GetPlaceImage(wpDTO.DepartureCity);
-        var nextWpImg = _photoService.GetPlaceImage(wpDTO.ArrivalCity);
+        var waypointImg = _photoService.GetPlaceImage(waypointDTO.DepartureCity);
+        var nextwaypointImg = _photoService.GetPlaceImage(waypointDTO.ArrivalCity);
 
-        var allImg = await Task.WhenAll(wpImg, nextWpImg);
+        var allImg = await Task.WhenAll(waypointImg, nextwaypointImg);
 
-        nextWp.City = wpDTO.ArrivalCity;
-        wp.ImageUrl = allImg[0];
-        nextWp.ImageUrl = allImg[1];
+        nextwaypoint.City = waypointDTO.ArrivalCity;
+        waypoint.ImageUrl = allImg[0];
+        nextwaypoint.ImageUrl = allImg[1];
 
-        var wpfromDb = _waypointRepository.GetWaypoints().FirstOrDefault(w => w.Id == wp.Id);
-        wp.IsDetails = wpfromDb.IsDetails;
-        wp.IsCompleted = wpfromDb.IsCompleted;
+        var waypointfromDb = _waypointRepository.GetWaypoints().FirstOrDefault(w => w.Id == waypoint.Id);
+        waypoint.IsDetails = waypointfromDb.IsDetails;
+        waypoint.IsCompleted = waypointfromDb.IsCompleted;
 
-        _waypointRepository.UpdateWaypoint(wp);
-        _waypointRepository.UpdateWaypoint(nextWp);
+        _waypointRepository.UpdateWaypoint(waypoint);
+        _waypointRepository.UpdateWaypoint(nextwaypoint);
       }
     }
 
-    public void DeleteWaypoint(int wpId)
+    public void DeleteWaypoint(int waypointId)
     {
-      var wp = GetWaypointById(wpId);
-      if (wp == null)
+      var waypoint = GetWaypointById(waypointId);
+      if (waypoint == null)
       {
         return;
       }
 
-      var wps = _waypointRepository.GetWaypoints().Where(w => w.TripId == wp.TripId).ToList();
+      var waypoints = _waypointRepository.GetWaypoints().Where(w => w.TripId == waypoint.TripId).ToList();
 
-      if (wps.Count() == 2)
+      if (waypoints.Count() == 2)
       {
-        wps.ForEach(wp => _waypointFileService.DeleteAllFilesOfWaypoint(wp.Id));
-        _waypointRepository.DeleteRange(wps);
+        waypoints.ForEach(waypoint => _waypointFileService.DeleteAllFilesOfWaypoint(waypoint.Id));
+        _waypointRepository.DeleteRange(waypoints);
         return;
       }
 
-      _waypointFileService.DeleteAllFilesOfWaypoint(wp.Id);
-      _waypointRepository.DeleteWaypoint(wp);
+      _waypointFileService.DeleteAllFilesOfWaypoint(waypoint.Id);
+      _waypointRepository.DeleteWaypoint(waypoint);
       var toMove = _waypointRepository.GetWaypoints()
-        .Where(w => w.TripId == wp.TripId && w.Order > wp.Order)
+        .Where(w => w.TripId == waypoint.TripId && w.Order > waypoint.Order)
         .ToList();
 
       toMove.ForEach(w => w.Order--);

@@ -1,6 +1,6 @@
 <div class="path-info">
   <div class="vertical-line"></div>
-  <v-icon class="transport-icon" :class="{'rotate-180': transfer.transport === 0}">{{iconMap[transfer.transport]}}
+  <v-icon class="transport-icon" color="success" :class="{'rotate-180': transfer.transport === 0}">{{iconMap[transfer.transport]}}
   </v-icon>
   <div class="text-content">
     {{transfer.pathLength}} {{$t('tripHistory.km')}} |

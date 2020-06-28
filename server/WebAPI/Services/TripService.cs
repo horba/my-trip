@@ -15,10 +15,10 @@ namespace WebAPI.Services
   {
     private readonly IMapper _mapper;
     private readonly TripRepository _tripRepository;
-    private readonly GooglePlacePhotoService _photoService;
+    private readonly IGooglePlacePhotoService _photoService;
 
 
-    public TripService(IMapper mapper, TripRepository tripRepository, GooglePlacePhotoService photoService)
+    public TripService(IMapper mapper, TripRepository tripRepository, IGooglePlacePhotoService photoService)
     {
       _mapper = mapper;
       _tripRepository = tripRepository;

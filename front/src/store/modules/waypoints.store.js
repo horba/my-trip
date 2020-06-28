@@ -74,21 +74,11 @@ export default {
       api.delete(`/waypointFile/${waypointId}/${fileName}`);
     },
     addFile ({ commit }, [formData, fileName, waypointId]) {
-      api.post(`/waypointFile/${waypointId}`, formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        })
+      api.postFile(`/waypointFile/${waypointId}`, formData)
         .then(({ data }) => commit('ADD_FILE', [fileName, data, waypointId]));
     },
     sendMultipleFiles (_, [formData, waypointId]) {
-      return api.post(`/waypointFile/multiple/${waypointId}`, formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
+      return api.postFile(`/waypointFile/multiple/${waypointId}`, formData);
     }
   }
 };

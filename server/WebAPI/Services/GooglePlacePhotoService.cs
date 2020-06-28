@@ -5,7 +5,12 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Services
 {
-  public class GooglePlacePhotoService
+  public interface IGooglePlacePhotoService
+  {
+    Task<string> GetPlaceImage(string placeName);
+  }
+
+  public class GooglePlacePhotoService : IGooglePlacePhotoService
   {
     private async Task<string> GetPhotoReference(string placeName)
     {

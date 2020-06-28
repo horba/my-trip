@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Entities.Models.Enums;
@@ -9,18 +10,25 @@ namespace WebAPI.DTO.Waypoint
 {
   public class WaypointRequestDTO
   {
+    [Required]
     public string DepartureCity { get; set; }
-    public DateTime DepartureDate { get; set; }
+    [Required]
+    public DateTime? DepartureDate { get; set; }
 
+    [Required]
     public string ArrivalCity { get; set; }
-    public DateTime ArrivalDate { get; set; }
+    [Required]
+    public DateTime? ArrivalDate { get; set; }
 
+    [Required]
     public string PathTime { get; set; }
-    public int PathLength { get; set; }
+    [Required]
+    public int? PathLength { get; set; }
 
     public string Details { get; set; }
 
-    public int TripId { get; set; }
+    [Required]
+    public int? TripId { get; set; }
     public int NewId { get; set; }
 
     [ValidEnum]

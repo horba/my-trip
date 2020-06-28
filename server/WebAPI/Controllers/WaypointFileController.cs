@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
     [HttpPost]
     [Route("{id}")]
     [Consumes("multipart/form-data")]
-    public async Task<IActionResult> UploadFile(int id, [FromForm] IFormFile file)
+    public async Task<IActionResult> UploadFile([FromRoute] int id, [FromForm] IFormFile file)
     {
       if (!_waypointService.IsWaypointAllowed(HttpContext.GetUserIdFromClaim(), id))
         return Forbid();
@@ -49,7 +49,7 @@ namespace WebAPI.Controllers
     [HttpPost]
     [Route("multiple/{id}")]
     [Consumes("multipart/form-data")]
-    public async Task<IActionResult> UploadFiles(int id, [FromForm] IFormFileCollection files)
+    public async Task<IActionResult> UploadFiles([FromRoute] int id, [FromForm] IFormFileCollection files)
     {
       if (!_waypointService.IsWaypointAllowed(HttpContext.GetUserIdFromClaim(), id))
         return Forbid();

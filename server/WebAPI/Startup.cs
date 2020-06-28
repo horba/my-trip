@@ -69,7 +69,7 @@ namespace WebAPI
       services.AddSingleton(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
       services.AddScoped<IEmailSender, EmailSender>();
       services.AddScoped<GoogleOauthService>();
-      services.AddScoped<GooglePlacePhotoService>();
+      services.AddScoped<IGooglePlacePhotoService, GooglePlacePhotoService>();
       services.AddScoped<AssetsService>();
 
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

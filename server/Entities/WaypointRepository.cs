@@ -11,11 +11,11 @@ namespace Entities
   public interface IWaypointRepository
   {
     IQueryable<Waypoint> GetWaypoints();
-    void UpdateWaypoint(Waypoint wp);
-    void DeleteWaypoint(Waypoint wp);
-    void DeleteRange(IEnumerable<Waypoint> wps);
-    void UpdateRange(IEnumerable<Waypoint> wps);
-    void AddWaypoint(Waypoint wp);
+    void UpdateWaypoint(Waypoint waypoint);
+    void DeleteWaypoint(Waypoint waypoint);
+    void DeleteRange(IEnumerable<Waypoint> waypoints);
+    void UpdateRange(IEnumerable<Waypoint> waypoints);
+    void AddWaypoint(Waypoint waypoint);
   }
 
   public class WaypointRepository : IWaypointRepository
@@ -32,33 +32,33 @@ namespace Entities
       return _repositoryContext.Waypoints.AsNoTracking();
     }
 
-    public void UpdateWaypoint(Waypoint wp)
+    public void UpdateWaypoint(Waypoint waypoint)
     {
-      _repositoryContext.Waypoints.Update(wp);
+      _repositoryContext.Waypoints.Update(waypoint);
       _repositoryContext.SaveChanges();
     }
 
-    public void DeleteWaypoint(Waypoint wp)
+    public void DeleteWaypoint(Waypoint waypoint)
     {
-      _repositoryContext.Waypoints.Remove(wp);
+      _repositoryContext.Waypoints.Remove(waypoint);
       _repositoryContext.SaveChanges();
     }
 
-    public void DeleteRange(IEnumerable<Waypoint> wps)
+    public void DeleteRange(IEnumerable<Waypoint> waypoints)
     {
-      _repositoryContext.Waypoints.RemoveRange(wps);
+      _repositoryContext.Waypoints.RemoveRange(waypoints);
       _repositoryContext.SaveChanges();
     }
 
-    public void UpdateRange(IEnumerable<Waypoint> wps)
+    public void UpdateRange(IEnumerable<Waypoint> waypoints)
     {
-      _repositoryContext.Waypoints.UpdateRange(wps);
+      _repositoryContext.Waypoints.UpdateRange(waypoints);
       _repositoryContext.SaveChanges();
     }
 
-    public void AddWaypoint(Waypoint wp)
+    public void AddWaypoint(Waypoint waypoint)
     {
-      _repositoryContext.Waypoints.Add(wp);
+      _repositoryContext.Waypoints.Add(waypoint);
       _repositoryContext.SaveChanges();
     }
 
