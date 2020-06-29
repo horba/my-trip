@@ -23,9 +23,9 @@ namespace WebAPI.Controllers
   {
 
     private readonly IWaypointService _waypointService;
-    private readonly TripService _tripService;
+    private readonly ITripService _tripService;
 
-    public WaypointsController(IWaypointService waypointService, TripService tripService)
+    public WaypointsController(IWaypointService waypointService, ITripService tripService)
     {
       _tripService = tripService;
       _waypointService = waypointService;

@@ -62,8 +62,8 @@ namespace WebAPI
       services.AddScoped<IWaypointFileService, WaypointFileService>();
       services.AddScoped<UserService>();
       services.AddSingleton<AuthService>();
-      services.AddScoped<TripRepository>();
-      services.AddScoped<TripService>();
+      services.AddScoped<ITripRepository, TripRepository>();
+      services.AddScoped<ITripService, TripService>();
       services.AddSingleton(frontConfiguration);
       services.AddScoped<RecoveryPasswordService>();
       services.AddSingleton(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());

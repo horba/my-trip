@@ -4,7 +4,13 @@ using System.Linq;
 
 namespace Entities
 {
-  public class TripRepository
+  public interface ITripRepository
+  {
+    IQueryable<Trip> GetUserTrips(int userId);
+    void CreateTrip(Trip trip);
+  }
+
+  public class TripRepository : ITripRepository
   {
     private readonly IRepositoryContext RepositoryContext;
 

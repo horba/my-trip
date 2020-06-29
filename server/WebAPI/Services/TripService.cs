@@ -11,14 +11,22 @@ using WebAPI.DTO.Trip;
 
 namespace WebAPI.Services
 {
-  public class TripService
+  public interface ITripService
+  {
+    IEnumerable<TripDTO> GetTripsHistory(int userId, string searchQuery);
+    IEnumerable<TripDTO> GetUpcomingTrips(int userId);
+    bool IsTripAllowed(int userId, int tripId);
+    Task CreateTrip(int userId, TripRequestDTO trip);
+  }
+
+  public class TripService : ITripService
   {
     private readonly IMapper _mapper;
-    private readonly TripRepository _tripRepository;
+    private readonly ITripRepository _tripRepository;
     private readonly IGooglePlacePhotoService _photoService;
 
 
-    public TripService(IMapper mapper, TripRepository tripRepository, IGooglePlacePhotoService photoService)
+    public TripService(IMapper mapper, ITripRepository tripRepository, IGooglePlacePhotoService photoService)
     {
       _mapper = mapper;
       _tripRepository = tripRepository;
