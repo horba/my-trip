@@ -25,12 +25,7 @@ export default {
         .then(() => commit('SET_USER_SETTINGS', formData));
     },
     uploadUserAvatarFile ({ commit }, formData) {
-      return api.post('/assets/useravatar', formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
+      return api.postFile('/assets/useravatar', formData);
     },
     deleteUserAvatarFile ({ commit }, fileName) {
       return api.delete(`/assets/useravatar/${fileName}`);

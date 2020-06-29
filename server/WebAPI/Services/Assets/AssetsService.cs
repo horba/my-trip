@@ -48,6 +48,8 @@ namespace WebAPI.Services.Assets
           return Consts.UsersAvatarsPath;
         case AssetType.FileEating:
           return Consts.FileEatingPath;
+        case AssetType.WaypointFile:
+          return Consts.WaypointsFilesPath;
         default:
           break;
       }

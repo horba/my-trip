@@ -1,0 +1,15 @@
+<div class="path-info">
+  <div class="vertical-line"></div>
+  <v-icon class="transport-icon" color="success" :class="{'rotate-180': transfer.transport === 0}">{{iconMap[transfer.transport]}}
+  </v-icon>
+  <div class="text-content">
+    {{transfer.pathLength}} {{$t('tripHistory.km')}} |
+    <template v-if="transfer.pathTime.hours">{{transfer.pathTime.hours}} {{$t('tripHistory.hoursShort')}} </template>
+    <template v-if="transfer.pathTime.minutes || !transfer.pathTime.hours">{{transfer.pathTime.minutes}}
+      {{$t('tripHistory.minutesShort')}}</template>
+  </div>
+  <div class="vertical-line"></div>
+  <router-link :to="{name:'MyHistoryEditRoute', params: {waypointId: transfer.id}}">
+    <v-icon class="pencil">mdi-pencil</v-icon>
+  </router-link>
+</div>

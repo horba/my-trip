@@ -746,6 +746,24 @@ namespace Entities.Migrations
                         .HasForeignKey("LanguageId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
+
+            modelBuilder.Entity("Entities.Models.Waypoint", b =>
+                {
+                    b.HasOne("Entities.Models.Trip", "Trip")
+                        .WithMany()
+                        .HasForeignKey("TripId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Entities.Models.WaypointFile", b =>
+                {
+                    b.HasOne("Entities.Models.Waypoint", null)
+                        .WithMany("Files")
+                        .HasForeignKey("WaypointId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
 #pragma warning restore 612, 618
         }
     }

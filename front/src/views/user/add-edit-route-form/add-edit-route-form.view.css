@@ -1,0 +1,58 @@
+.v-form {
+  width: 248px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mmt-select,
+.input-field,
+.date-input {
+  width: 100%;
+}
+
+.input-field {
+  margin-bottom: 6px;
+}
+
+.mmt-select >>> .v-select__selection {
+  font-size: 12px;
+}
+
+.input-field >>> label {
+  margin: 0;
+}
+
+.input-field >>> * {
+  font-size: 12px;
+}
+
+.input-field >>> .v-messages__message {
+  font-size: 9px;
+}
+
+.files-card.v-card.v-sheet {
+  border-radius: 20px;
+}
+
+.input-field >>> .v-icon {
+  font-size: 32px;
+}
+
+.files-card .img-container {
+  background-color: var(--files-image-container-background-color);
+  padding: 7px;
+  border-radius: 10px;
+  max-width: 100%;
+  position: relative;
+}
+
+.files-card .img-container >>> .v-image {
+  border-radius: 10px;
+}
+
+.files-card .img-container >>> .v-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

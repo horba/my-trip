@@ -3,6 +3,7 @@
   public enum AssetType
   {
     UserAvatar = 1,
-    FileEating = 2
+    WaypointFile = 2,
+    FileEating = 3
   }
 }

@@ -3,6 +3,7 @@ using Entities.Models;
 using Entities.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Entities
@@ -18,6 +19,8 @@ namespace Entities
     public DbSet<Trip> Trips { get; set; }
     public DbSet<ScheduledPlaceToEat> ScheduledPlacesToEat { get; set; }
     public DbSet<AttachmentFileEating> AttachmentFilesEating { get; set; }
+    public DbSet<Waypoint> Waypoints { get; set; }
+    public DbSet<WaypointFile> WaypointFiles { get; set; }
 
     public RepositoryContext(DbContextOptions options) : base(options)
     {
@@ -123,6 +126,41 @@ namespace Entities
                    });
 
       modelBuilder.Entity<Trip>().HasData(moqTrips);
+
+      var moqUpcomingTrips = moqTrips
+        .Select((trip, i) =>
+        {
+          trip.StartDate = DateTime.Now.AddYears(i / 3).AddMonths(i + 3).AddDays(2 * i);
+          trip.EndDate = trip.StartDate.AddDays(15);
+          trip.Id = i + 1;
+          return trip;
+        });
+
+      modelBuilder.Entity<Trip>().HasData(moqUpcomingTrips);
+
+      var waypoints = new List<Waypoint>();
+      for (int i = 0; i < 10; i++)
+      {
+        waypoints.Add(new Waypoint
+        {
+          Id = i + 1,
+          Order = i,
+          TripId = i < 5 ? 1 : -1,
+          City = $"{i}CitY{i}",
+          DepartureDate = new DateTime(2021, i + 1, i + 1, i % 3, 3 * i, 0),
+          ArrivalDate = new DateTime(2021, i + 1, i + 15, i % 4 + 1, 5 * i, 0),
+          Details = "Купить зарядку для телефона",
+          IsCompleted = i % 2 == 0,
+          IsDetails = i % 3 == 0,
+          PathLength = 78 * i + 43,
+          PathTime = new TimeSpan(i + 2, i * 14 % 60, 0),
+          Transport = (TransportTypes)(i % 5),
+          ImageUrl = i % 2 == 0 ? "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg" : "https://cdn.vuetifyjs.com/images/cards/plane.jpg"
+        });
+      }
+
+      modelBuilder.Entity<Waypoint>().HasData(waypoints);
+
 
       modelBuilder.Entity<Ticket>()
        .HasOne(t => t.User)

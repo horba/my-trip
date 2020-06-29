@@ -15,6 +15,7 @@ using WebAPI.DTO;
 using WebAPI.Services;
 using WebAPI.Interfaces;
 using System.IO;
+using Entities.Models;
 using Microsoft.Extensions.FileProviders;
 using WebAPI.Services.Assets;
 using Entities.Interfaces;
@@ -56,15 +57,20 @@ namespace WebAPI
       services.AddScoped<LanguageRepository>();
       services.AddScoped<TicketsRepository>();
       services.AddScoped<TicketsService>();
+      services.AddScoped<IWaypointRepository, WaypointRepository>();
+      services.AddScoped<IWaypointFileRepository, WaypointFileRepository>();
+      services.AddScoped<IWaypointService, WaypointService>();
+      services.AddScoped<IWaypointFileService, WaypointFileService>();
       services.AddScoped<UserService>();
       services.AddSingleton<AuthService>();
-      services.AddScoped<TripRepository>();
-      services.AddScoped<TripService>();
+      services.AddScoped<ITripRepository, TripRepository>();
+      services.AddScoped<ITripService, TripService>();
       services.AddSingleton(frontConfiguration);
       services.AddScoped<RecoveryPasswordService>();
       services.AddSingleton(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
       services.AddScoped<IEmailSender, EmailSender>();
-      services.AddScoped<GoogleOauthService>();
+      services.AddScoped<IGoogleOauthService, GoogleOauthService>();
+      services.AddScoped<IGooglePlacePhotoService, GooglePlacePhotoService>();
       services.AddScoped<AssetsService>();
       services.AddTransient<IAttachmentFileEatingRepository, AttachmentFileEatingRepository>();
       services.AddTransient<IAttachmentFileEatingService, AttachmentFileEatingService>();
@@ -143,9 +149,9 @@ namespace WebAPI
       {
         FileProvider = new PhysicalFileProvider(
                     Path.Combine(Directory.GetCurrentDirectory(), Consts.AssetsPath)),
-        RequestPath = "/avatars",
+        RequestPath = "/assets",
         EnableDirectoryBrowsing = true,
-        StaticFileOptions = { ServeUnknownFileTypes = true }
+        StaticFileOptions = { ServeUnknownFileTypes = true}
       });
     }
   }

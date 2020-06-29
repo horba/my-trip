@@ -5,7 +5,13 @@ using System.Linq;
 
 namespace Entities
 {
-  public class TripRepository
+  public interface ITripRepository
+  {
+    IQueryable<Trip> GetUserTrips(int userId);
+    void CreateTrip(Trip trip);
+  }
+
+  public class TripRepository : ITripRepository
   {
     private readonly IRepositoryContext RepositoryContext;
 
@@ -21,5 +27,12 @@ namespace Entities
         .Include(i => i.ArrivalCountry)
         .Where(u => u.UserId.Equals(userId));
     }
+
+    public void CreateTrip(Trip trip)
+    {
+      RepositoryContext.Trips.Add(trip);
+      RepositoryContext.SaveChanges();
+    }
+
   }
 }
