@@ -68,7 +68,7 @@ namespace WebAPI
       services.AddScoped<RecoveryPasswordService>();
       services.AddSingleton(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
       services.AddScoped<IEmailSender, EmailSender>();
-      services.AddScoped<GoogleOauthService>();
+      services.AddScoped<IGoogleOauthService, GoogleOauthService>();
       services.AddScoped<IGooglePlacePhotoService, GooglePlacePhotoService>();
       services.AddScoped<AssetsService>();
 
