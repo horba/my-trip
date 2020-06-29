@@ -79,7 +79,7 @@
       <v-card-text class="my-n5">
         <v-chip-group column>
           <template v-for="file of files">
-            <a class="img-container my-1" v-if="/.(jpg|jpeg|png|gif|svg|bmp)$/is.test(file.userFileName)"
+            <a class="img-container my-1" v-if="/.(jpg|jpeg|png|gif|svg|bmp)$/i.test(file.userFileName)"
               :href="`${baseUrl}/${waypointFilesSuffix}/${file.actualFileName}`" target="_blank">
               <v-img max-height="200" :src="`${baseUrl}/${waypointFilesSuffix}/${file.actualFileName}`">
               </v-img>
