@@ -26,7 +26,7 @@ p {
 
 .title-wrapper {
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
 }
 
 .title {
@@ -69,6 +69,10 @@ p {
   font-weight: bold;
 }
 
+.star {
+  margin: 0 2px;
+}
+
 .place-state > span {
   margin: 0 5px;
   font-size: 12px;
@@ -91,4 +95,36 @@ p {
   -webkit-box-shadow: 0px 0px 30px -14px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 30px -14px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 30px -14px rgba(0,0,0,0.75);
+}
+
+.text-title-wrapper {
+  height: 30px;
+}
+
+.text-title-wrapper::after {
+  width: 45%;
+  height: 30px;
+}
+
+.decription { 
+  height: 20px;
+}
+
+.decription::after {
+  width: 45%;
+  height: 20px;
+}
+
+.text-title-wrapper, .decription {
+  position: relative;
+  overflow: hidden;
+}
+
+.fade:after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
 }

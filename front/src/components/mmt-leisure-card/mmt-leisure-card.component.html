@@ -19,13 +19,20 @@
   <div class="place-info">
     <div class="place-body-wrapper">
       <div class="title-wrapper">
-        <h6
-          class="title"
-          :title="place.title"
-        >
-          {{ place.title |  trimString(20) }}
-        </h6>
+        <div class="text-title-wrapper fade">
+          <h6
+            class="title"
+            :title="place.title"
+          >
+            {{ place.title }}
+          </h6>
+        </div>
         <div class="rating-wrapper" v-if="place.rating">
+          <v-icon
+            class="star"
+            medium
+            color="var(--leisure-place-star-color)"
+          >mdi-star</v-icon>
           <p class="rating">{{ place.rating }}</p>
         </div>
       </div>
@@ -54,10 +61,10 @@
       </div>
       <div
         v-if="place.types"
-        class="decription"
+        class="decription fade"
         :title="place.types | splitTypes"
       >
-        {{ place.types | splitTypes | trimString(25) }}
+        {{ place.types | splitTypes }}
       </div>
     </div>
   </div>
