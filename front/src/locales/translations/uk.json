@@ -69,6 +69,18 @@
   "mmtLeisureCard": {
     "schedule": "Графік роботи"
   },
+  "entertainmentType": {
+    "museum": "музей",
+    "tourist_attraction": "туристична достовірність",
+    "amusement_park": "парк культури і віддиха",
+    "point_of_interest": "достовірність",
+    "establishment": "заведение",
+    "laundry": "прачечная",
+    "lodging": "жилье",
+    "real_estate_agency": "агентство нерухомості",
+    "airport": "аеропорт",
+    "travel_agency": "туристичне агентство"
+  },
   "footer": {
     "join": "Приєднатися",
     "subscribeToNews": "Підписатися на новини",

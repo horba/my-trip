@@ -69,6 +69,18 @@
   "mmtLeisureCard": {
     "schedule": "schedule"
   },
+  "entertainmentType": {
+    "museum": "museum",
+    "tourist_attraction": "tourist attraction",
+    "amusement_park": "amusement park",
+    "point_of_interest": "point of interest",
+    "establishment": "establishment",
+    "laundry": "laundry",
+    "lodging": "lodging",
+    "real_estate_agency": "real estate agency",
+    "airport": "airport",
+    "travel_agency": "travel agency"
+  },
   "footer": {
     "join": "Join",
     "subscribeToNews": "Subscribe to news",

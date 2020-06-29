@@ -5,7 +5,7 @@ const SERVER_AVATARS_PATH = 'assets/avatars',
       MAX_WAYPOINT_SIZE_MB = 5,
       MAX_WAYPOINT_FILE_COUNT = 5;
 
-export { 
+export {
   SERVER_AVATARS_PATH,
   MAX_AVATAR_SIZE_MB,
   MAX_WAYPOINT_SIZE_MB,
