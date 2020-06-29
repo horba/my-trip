@@ -8,7 +8,13 @@ using System.Text.Json;
 
 namespace WebAPI.Services
 {
-  public class GoogleOauthService
+  public interface IGoogleOauthService
+  {
+    Task<KeyValuePair<string, string>> GetGoogleUserData(string bearer);
+    Task<string> GetToken(string code);
+  }
+
+  public class GoogleOauthService : IGoogleOauthService
   {
     private readonly FrontConfiguration _configuration;
 

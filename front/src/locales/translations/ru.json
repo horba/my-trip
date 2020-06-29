@@ -69,7 +69,7 @@
     "save": "Сохранить",
     "repeatPassword": "Повторите пароль",
     "passwordMustIdentity": "Пароли должны совпадать",
-    "thisNoEmail": "Не действительный e-mail",    
+    "thisNoEmail": "Не действительный e-mail",
     "successfulСhange": "Пароль успешно изменен! Вы получите подтверждение об изменении пароля на Ваш электронный адрес."
   },
   "locale": {
@@ -85,7 +85,7 @@
     "firstName": "Имя",
     "enterFirstName": "Введите имя",
     "email": "Почта",
-    "emailExample": "Пример: bereznievatiy@gmail.com",    
+    "emailExample": "Пример: bereznievatiy@gmail.com",
     "emailIsAlreadyTaken": "Данная почта уже занята",
     "genderIsNotSpecified": "Пол не указан",
     "male": "Мужской",
@@ -107,6 +107,17 @@
     "France": "Франция",
     "Ukraine": "Украина"
   },
+  "cities": {
+    "kyiv": "Киев",
+    "krakow": "Краков"
+  },
+  "transportTypes": {
+    "plane": "Самолет",
+    "train": "Поезд",
+    "bus": "Автобус",
+    "car": "Автомобиль",
+    "bicycle": "Велосипед"
+  },
   "tripHistory": {
     "trip": "Поездка",
     "previousTrips": "Предыдущие поездки",
@@ -115,7 +126,36 @@
     "departure": "Вылет",
     "flightTime": "Время полета",
     "differenceInTime": "Разница во времени",
-    "details": "Подробнее"
+    "details": "Подробнее",
+    "planNewTrip": "Спланировать будущую поездку",
+    "createNewTrip": "Создать новое путешествие",
+    "addNewWaypoint": "Добавить новый пункт маршрута",
+    "isCompleted": "Выполнено",
+    "arrival": "Прибытие:",
+    "goingTo": "Собираюсь в",
+    "departurefromCity": "Отъезд из города",
+    "date": "Дата",
+    "time": "Время",
+    "startTripFrom": "Начало путешествия из",
+    "returnTo": "Вернутся в",
+    "km": "км",
+    "hoursShort": "ч",
+    "minutesShort": "мин",
+    "departureCountry": "Страна отправления",
+    "departureCity": "Город отправления",
+    "departureDate": "Дата отправления",
+    "departureTime": "Время отправления",
+    "transplantTime": "Время пересадки",
+    "arrivalCountry": "Страна прибытия",
+    "arrivalCity": "Город прибытия",
+    "arrivalDate": "Дата прибытия",
+    "arrivalTime": "Время прибытия",
+    "distanceBetweenPoints": "Расстояние между точками",
+    "tripDuration": "Длительность поездки",
+    "changeCurrencyOnArrival": "Изменить валюту по прибытии",
+    "currency": "Валюта",
+    "totalPrice": "Итоговая цена",
+    "hours": "часов"
   },
   "tickets": {
     "ticketItem": {
@@ -129,7 +169,11 @@
     "fileIsEmpty": "Пожалуйста, выберите файл",
     "fileIsToBig": "Файл слишком большой",
     "correctFileSize": "Верный размер файла",
-    "notAllowedContentType": "Пожалуйста, выберите файл .png, .jpeg или .bmp"
+    "notAllowedContentType": "Пожалуйста, выберите файл .png, .jpeg или .bmp",
+    "files": "Файлы",
+    "addFiles": "Добавьте файлы...",
+    "maxFileLength": "Максимальный размер файла",
+    "close": "Закрыть"
   },
   "signIn": {
     "welcome": "Добро пожаловать!",
@@ -162,6 +206,8 @@
   },
   "validationRules": {
     "noEmpty": "Заполните поле.",
-    "enterCorrectEmail": "Введите корректный email"
+    "enterCorrectEmail": "Введите корректный email",
+    "enterCorrectDate": "Введите корректную дату",
+    "enterCorrectTime": "Введите корректное время"
   }
 }

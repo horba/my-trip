@@ -1,0 +1,122 @@
+.card-wrapper {
+  width: 910px;
+  position: relative;
+  flex-grow: 1;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.card {
+  margin: 8px 40px 8px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card > * {
+  width: 200px;
+}
+
+.card .arrival,
+.card .departure,
+.card .return-to-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.details >>> .v-icon::before {
+  font-size: 32px;
+}
+
+.details >>> .v-input--checkbox {
+  margin-top: 0;
+}
+
+.card .arrival .date {
+  font-size: 12px;
+  color: var(--mmt-color-gray);
+}
+
+.card .departure .city {
+  text-transform: uppercase;
+  color: var(--mmt-color-gray);
+  font-size: 12px;
+}
+
+.card .return-to-home .trip-start .subtitle,
+.card .arrival .city .subtitle {
+  color: var(--mmt-color-gray);
+  text-transform: uppercase;
+}
+
+.card .departure .datetime .subtitle {
+  color: var(--mmt-color-gray);
+}
+
+.card .return-to-home .trip-start .content,
+.card .departure .datetime .date .content,
+.card .arrival .city .content {
+  text-decoration: underline;
+}
+
+.card .departure .datetime .date {
+  margin-right: 20px;
+}
+
+.card .departure .datetime {
+  display: flex;
+}
+
+.card .details {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.card .details .subtitle {
+  color: var(--user-menu-active-color);
+}
+
+.card img {
+  width: 156px;
+  height: 84px;
+}
+
+.card-button-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.completed-btn {
+  margin-left: 20px;
+  text-transform: none;
+  letter-spacing: normal;
+  border-radius: 10px;
+}
+
+.completed-btn >>> .v-icon {
+  font-size: 32px;
+  color: white;
+}
+
+.completed-btn >>> .v-input--selection-controls {
+  margin-top: 20px;
+}
+
+.completed-btn >>> .mdi-checkbox-blank-outline::before {
+  content: "\F012E";
+}
+
+.completed-btn >>> .mdi-checkbox-marked::before {
+  content: "\F012C";
+}
+
+.completed-btn .button-text {
+  margin-left: 14px;
+}

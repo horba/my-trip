@@ -40,7 +40,7 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-btn rounded small>
+        <v-btn rounded small :to="{name: ($route.name === 'MyHistoryNext' ? 'MyHistoryFututeRoute' : 'MyHistoryPrevRoute'), params: {id: trip.id }}">
           <span class="small">{{ $t('tripHistory.details') }}</span>
         </v-btn>
       </v-card-actions>

@@ -23,6 +23,21 @@ export { default as UserSettings } from './user/user-settings/user-settings.view
 export { default as UserCabinet } from '@views/user/UserCabinet.vue';
 export { default as RecoveryPassword } from '@views/recovery-password/recovery-password.view.vue';
 export {
-  default as MyHistoryPreviousTrips
+  default as MyHistoryTripList
 }
-  from '@views/user/history-previous-trips/history-previous-trips.view.vue';
+  from '@views/user/history-trip-list/history-trip-list.view.vue';
+
+export {
+  default as MyHistoryTripRoute
+}
+  from '@views/user/history-trip-route/history-trip-route.view.vue';
+
+export {
+  default as AddEditRouteForm
+}
+  from '@views/user/add-edit-route-form/add-edit-route-form.view.vue';
+
+export {
+  default as AddTripForm
+}
+  from '@views/user/add-trip-form/add-trip-form.view.vue';

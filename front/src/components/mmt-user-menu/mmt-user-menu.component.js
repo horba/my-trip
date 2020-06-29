@@ -72,7 +72,7 @@ export default {
       {
         title: 'menu.historyNext',
         icon: 'mdi-rotate-right',
-        link: '/my/history/next',
+        link: '/my/history/future',
         isChild: true
       },
       {

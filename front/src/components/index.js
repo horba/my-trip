@@ -8,6 +8,10 @@ export { default as MmtTicketsList } from './mmt-tickets-list.component.vue';
 export { default as MmtTicketItem } from './mmt-ticket-item.component.vue';
 export { default as MmtTicketRoute } from './mmt-ticket-route.component.vue';
 export { default as MmtTripCard } from './mmt-trip-card/mmt-trip-card.component.vue';
+export { default as MmtWaypointCard } from './mmt-waypoint-card/mmt-waypoint-card.component.vue';
+export {
+  default as MmtWaypointTransferCard
+} from './mmt-waypoint-transfer-card/mmt-waypoint-transfer-card.component.vue';
 export { default as MmtTextInput } from './controls/mmt-text-input/mmt-text-input.component.vue';
 export {
   default as MmtLocaleSwitcher
