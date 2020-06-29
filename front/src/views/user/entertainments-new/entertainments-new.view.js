@@ -1,9 +1,24 @@
 import { MmtLeisureCard, MmtTextInput } from '@components';
-import { VBtn, VDatePicker, VIcon, VMenu, VTextField, VTextarea } from 'vuetify/lib';
+import {
+  VBtn,
+  VDatePicker,
+  VFileInput,
+  VIcon,
+  VImg,
+  VMenu,
+  VTextField,
+  VTextarea,
+  VTimePicker
+} from 'vuetify/lib';
 
 import { gmapApi } from 'vue2-google-maps';
+import { requiredValidationMixin } from '@mixins';
+
+const { baseUrl } = require('@/config/config.dev.json');
+const { SERVER_ENTERTAINMENT_PATH } = require('@constants');
 
 export default {
+  mixins: [ requiredValidationMixin ],
   computed: {
     google: gmapApi,
     entertainmentsList () {
@@ -12,12 +27,15 @@ export default {
   },
   components: {
     VDatePicker,
+    VFileInput,
+    VTimePicker,
     VMenu,
     VTextField,
     VBtn,
+    VImg,
     VIcon,
-    MmtLeisureCard,
     VTextarea,
+    MmtLeisureCard,
     MmtTextInput
   },
   data () {
@@ -28,17 +46,37 @@ export default {
       },
       markerPos: null,
       placeTitle: '',
-      peopleCount: '',
+      placeId: null,
+      peopleCount: 2,
       note: '',
       place: null,
       menu: false,
-      visitDate: new Date().toISOString().substr(0, 10)
+      menu2: false,
+      photos: [],
+      visitDate: new Date().toISOString().substr(0, 10),
+      visitTime: new Date().toTimeString().substr(0, 5)
     };
   },
-  mounted () {
+  async mounted () {
     this.geolocate();
     this.initMapClickEvent();
     this.initMarkerDragendEvent();
+    if (this.$route.params.id) {
+      await this.$store.dispatch('entertainment/getEntertainment', this.$route.params.id)
+        .then((response) => {
+          const place = response.data;
+          this.placeTitle = place.title;
+          this.placeId = place.placeId;
+          this.peopleCount = place.peopleCount;
+          this.note = place.note;
+          this.visitDate = place.visitDate.split('T')[0];
+          this.visitTime = place.visitDate.split('T')[1].substr(0, 5);
+          this.markerPos = {
+            lat: place.locationLat,
+            lng: place.locationLng
+          };
+        });
+    }
   },
   methods: {
     initMapClickEvent () {
@@ -72,9 +110,10 @@ export default {
         this.setMapCenter(this.mapCenter);
       });
     },
-    setPlace (place, status) {
+    setPlace (place) {
       this.place = place;
       this.placeTitle = place.name;
+      this.placeId = place.place_id;
     },
     findPlace (place) {
       if (place.geometry) {
@@ -93,6 +132,24 @@ export default {
         lng: place.geometry.location.lng()
       };
     },
+    getFilePath (fileName) {
+      return !fileName.startsWith('http')
+        ? `${baseUrl}/${SERVER_ENTERTAINMENT_PATH}/${fileName}`
+        : fileName;
+    },
+    fileUpload (files) {
+      if (files && files.length) {
+        files.forEach(file => {
+          const formData = new FormData();
+          formData.append('file', file);
+
+          this.$store.dispatch('entertainment/uploadFile', formData)
+            .then(r => {
+              this.photos.push(r.data);
+            });
+        });
+      }
+    },
     setCenterMarker () {
       const mapCenter = {
         lat: this.map.getCenter().lat(),
@@ -105,47 +162,44 @@ export default {
           lat: mapCenter.lat,
           lng: mapCenter.lng
         };
-        this.place = null;
-        this.placeTitle = '';
+        if (this.place) {
+          this.placeTitle = '';
+          this.place = null;
+        }
       } else {
         this.markerPos = null;
       }
     },
     clearPlaceFields () {
-      this.place = null;
-      this.placeTitle = '';
-      this.note = '';
+      if (this.place) {
+        this.place = null;
+        this.placeTitle = '';
+        this.note = '';
+      }
     },
     async savePlace () {
       let body = {};
       if (this.place) {
         body = {
-          placeId: this.place.place_id,
-          title: this.placeTitle,
-          note: this.note,
-          peopleCount: parseInt(this.peopleCount),
-          visitDate: this.visitDate,
           locationLat: this.place.geometry.location.lat(),
-          locationLng: this.place.geometry.location.lng(),
-          EntertainmentFilePath: ''
+          locationLng: this.place.geometry.location.lng()
         };
       } else if (this.markerPos) {
         body = {
-          title: this.placeTitle,
-          note: this.note,
-          peopleCount: parseInt(this.peopleCount),
-          visitDate: this.visitDate,
           locationLat: this.markerPos.lat,
           locationLng: this.markerPos.lng
         };
-      } else {
-        body = {
-          title: this.placeTitle,
-          note: this.note,
-          peopleCount: parseInt(this.peopleCount),
-          visitDate: this.visitDate
-        };
       }
+      body.placeId = this.placeId;
+      body.title = this.placeTitle;
+      body.visitDate = `${this.visitDate}T${this.visitTime}`;
+      body.note = this.note;
+      body.peopleCount = parseInt(this.peopleCount);
+
+      if (this.$route.params.id) {
+        body.id = parseInt(this.$route.params.id);
+      }
+
       await this.$store.dispatch('entertainment/addOrUpdateEntertainment', body)
         .then(() => {
           this.$router.push('/my/entertainments');

@@ -1,5 +1,7 @@
-<div :class="`${ isActive ? 'active' : '' } place`">
-  <div class="photo-wrap">
+<div
+  class="place-card"
+  :class="`${ isActive ? 'active' : '' }`">
+  <div class="photo-wrapper">
     <img
       v-if="place.photo"
       class="photo"
@@ -8,33 +10,33 @@
     <img
       v-else
       class="photo"
-      src="http://www.rangerwoodperiyar.com/images/joomlart/demo/default.jpg"
+      src="@/assets/default-leisure-photo.jpg"
     >
+    <router-link :to="`/my/entertainments/schedule/${place.id}`" class="icon-wrapper">
+      <v-icon class="icon" small>mdi-lead-pencil</v-icon>
+    </router-link>
   </div>
   <div class="place-info">
-    <router-link :to="`/my/entertainments/manage/${place.id}`" class="icon">
-      <v-icon small>mdi-lead-pencil</v-icon>
-    </router-link>
-    <div class="place-body-wrap">
-      <div class="title-wrap">
+    <div class="place-body-wrapper">
+      <div class="title-wrapper">
         <h6
           class="title"
           :title="place.title"
         >
           {{ place.title |  trimString(20) }}
         </h6>
-        <div class="rating-wrap" v-if="place.rating">
+        <div class="rating-wrapper" v-if="place.rating">
           <p class="rating">{{ place.rating }}</p>
         </div>
       </div>
     </div>
-    <div class="place-footer-wrap">
-      <div class="schedule-wrap">
+    <div class="place-footer-wrapper">
+      <div class="schedule-wrapper">
         <div 
           v-if="place.opening_hours && place.utc_offset_minutes"
           class="place-state"
         >
-          <p class="schedule">График работы</p>
+          <p class="schedule">{{ $t('mmtLeisureCard.schedule') }}</p>
           <span>•</span>
           <p
             class="open"

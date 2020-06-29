@@ -10,7 +10,6 @@ import {
   Home,
   HotTours,
   Leisure,
-  ManageEntertainments,
   MyAccommodation,
   MyFood,
   MyHistoryPreviousTrips,
@@ -19,6 +18,7 @@ import {
   PrivacyPolicy,
   RecoveryPassword,
   ReviewNew,
+  ScheduleEntertainments,
   SignIn,
   SignUp,
   TermsOfUse,
@@ -154,9 +154,9 @@ const routes = [
         meta: { layout: 'authorize' }
       },
       {
-        path: 'entertainments/manage/:id?',
+        path: 'entertainments/schedule/:id?',
         name: 'EntertainmentsNew',
-        component: ManageEntertainments,
+        component: ScheduleEntertainments,
         meta: { layout: 'authorize' }
       },
       {

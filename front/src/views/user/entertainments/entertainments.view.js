@@ -62,6 +62,7 @@ export default {
     },
     getDetailsCallback (place, entertainment) {
       this.places.push({
+        id: entertainment.id,
         title: place.name,
         rating: place.rating,
         locationLat: place.geometry.location.lat(),
@@ -85,7 +86,7 @@ export default {
             placeId: e.placeId,
             language: 'ru',
             region: 'ru'
-          }, this.getDetailsCallback);
+          }, p => this.getDetailsCallback(p, e));
         } else {
           this.places.push(e);
         }

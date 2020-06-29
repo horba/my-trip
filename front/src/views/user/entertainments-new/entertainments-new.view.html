@@ -1,10 +1,11 @@
 <div class="new-entertainments">
   <div class="manage-container">
-    <h4 class="title">Добавить досуг</h4>
+    <h4 class="title">{{ $t('newEntertainment.addLeisure')}}</h4>
     <mmt-text-input
       class="sign-up-text-field"
-      placeholder="Введите название"
-      mmt-label="Название"
+      :placeholder="$t('newEntertainment.enterTitle')"
+      :mmt-label="$t('newEntertainment.title')"
+      :rules="[rules.required]"
       rounded
       filled
       dense
@@ -13,8 +14,10 @@
     />
     <mmt-text-input
       class="person-count-field"
-      placeholder="Введите количество человек"
-      mmt-label="Количество человек"
+      :placeholder="$t('newEntertainment.enterPeopleCount')"
+      :mmt-label="$t('newEntertainment.peopleCount')"
+      type="number"
+      :rules="[rules.required, rules.greaterThenZero]"
       rounded
       filled
       dense
@@ -34,11 +37,11 @@
           <v-text-field
             prepend-inner-icon="mdi-calendar-check"
             v-model="visitDate"
-            label="Дата"
+            :label="$t('newEntertainment.date')"
             readonly
             v-bind="attrs"
             v-on="on"
-            background-color="white"
+            background-color="var(--filled-input-fill-color)"
             rounded
             filled
             dense
@@ -47,35 +50,73 @@
         </template>
         <v-date-picker v-model="visitDate" @input="menu = false"></v-date-picker>
       </v-menu>
-      <v-textarea
-        class="note-field"
-        label="Заметки"
-        placeholder="Введите заметки"
-        filled
-        background-color="white"
-        no-resize
-        counter
-        rounded
-        v-model="note"
-      ></v-textarea>
     </div>
-    <v-btn
-      class="add-file mmt-btn"
+    <div class="timepicker">
+      <v-menu
+        v-model="menu2"
+        :close-on-content-click="false"
+        transition="scale-transition"
+        offset-y
+        max-width="290px"
+        min-width="290px"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-text-field
+            prepend-inner-icon="mdi-calendar-check"
+            v-model="visitTime"
+            :label="$t('newEntertainment.time')"
+            readonly
+            v-bind="attrs"
+            v-on="on"
+            background-color="var(--filled-input-fill-color)"
+            rounded
+            filled
+            dense
+            hideDetails
+          ></v-text-field>
+        </template>
+        <v-time-picker v-model="visitTime" format="24hr"></v-time-picker>
+      </v-menu>
+    </div>
+    <v-textarea
+      class="note-field"
+      :label="$t('newEntertainment.note')"
+      :placeholder="$t('newEntertainment.enterNotes')"
+      filled
+      background-color="var(--filled-input-fill-color)"
+      no-resize
+      counter
       rounded
-      elevation="0"
-    >Добавить файл</v-btn>
-    <v-btn
-      class="add-file mmt-btn"
-      rounded
-      elevation="0"
-      @click="savePlace"
-    >Запланировать</v-btn>
+      v-model="note"
+    ></v-textarea>
+    <div class="btn-wrap">
+      <v-file-input
+        multiple
+        counter
+        small-chips
+        clear-icon
+        prepend-icon=""
+        show-size
+        filled
+        background-color="var(--filled-input-fill-color)"
+        :label="$t('newEntertainment.addFile')"
+        @change="fileUpload"
+        rounded
+        dense
+      ></v-file-input>
+      <v-btn
+        class="mmt-btn"
+        rounded
+        elevation="0"
+        @click="savePlace"
+      >{{ $t('newEntertainment.toPlan') }}</v-btn>
+    </div>
   </div>
   <div class="gmap-container">
     <div class="autocomplete-container">
       <v-btn
         class="set-marker"
-        title="Выбрать место вручную"
+        :title="$t('newEntertainment.choosePlaceManually')"
         color="white"
         x-large
         @click="setCenterMarker"
@@ -119,5 +160,15 @@
         />
       </div>
     </GmapMap>
+    <div class="images-wrap">
+      <v-img
+        v-for="(photo, index) in photos"
+        :key="index"
+        :src="getFilePath(photo)"
+        height="160px"
+        width="160px"
+        contain
+      ></v-img>
+    </div>
   </div>
 </div>

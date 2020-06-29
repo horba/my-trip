@@ -27,6 +27,6 @@ export {
 }
   from '@views/user/history-previous-trips/history-previous-trips.view.vue';
 export {
-  default as ManageEntertainments
+  default as ScheduleEntertainments
 }
   from '@views/user/entertainments-new/entertainments-new.view.vue';

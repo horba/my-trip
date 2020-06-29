@@ -143,6 +143,13 @@ namespace WebAPI
         RequestPath = "/avatars",
         EnableDirectoryBrowsing = true
       });
+      app.UseFileServer(new FileServerOptions
+      {
+        FileProvider = new PhysicalFileProvider(
+                          Path.Combine(Directory.GetCurrentDirectory(), Consts.EntertainmentsPath)),
+        RequestPath = "/entertainment",
+        EnableDirectoryBrowsing = true
+      });
     }
   }
 }

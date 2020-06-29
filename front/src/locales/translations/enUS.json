@@ -48,7 +48,26 @@
   },
   "entertainments": {
     "search": "Search on map",
-    "placesCount": "RESULTS"
+    "placesCount": "RESULTS",
+    "add": "Add",
+    "filter": "Filter"
+  },
+  "newEntertainment": {
+    "addLeisure": "Add leisure",
+    "choosePlaceManually": "Choose a place manually",
+    "toPlan": "To plan",
+    "addFile": "Add file",
+    "enterTitle": "Enter the title",
+    "title": "Title",
+    "enterPeopleCount": "Enter people count",
+    "peopleCount": "People count",
+    "date": "Date",
+    "time": "Time",
+    "note": "Note",
+    "enterNotes": "Enter notes"
+  },
+  "mmtLeisureCard": {
+    "schedule": "schedule"
   },
   "footer": {
     "join": "Join",
@@ -166,6 +185,7 @@
   },
   "validationRules": {
     "noEmpty": "Fill in the field.",
-    "enterCorrectEmail": "Enter valid email"
+    "enterCorrectEmail": "Enter valid email",
+    "greaterThanZero": "Value must be greater than 0"
   }
 }
