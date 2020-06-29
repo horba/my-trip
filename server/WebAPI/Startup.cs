@@ -71,8 +71,8 @@ namespace WebAPI
       services.AddScoped<IGoogleOauthService, GoogleOauthService>();
       services.AddScoped<IGooglePlacePhotoService, GooglePlacePhotoService>();
       services.AddScoped<AssetsService>();
-      services.AddScoped<EntertainmentService>();
-      services.AddScoped<EntertainmentRepository>();
+      services.AddScoped<IEntertainmentService, EntertainmentService>();
+      services.AddScoped<IEntertainmentRepository, EntertainmentRepository>();
 
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
           .AddJwtBearer(x =>

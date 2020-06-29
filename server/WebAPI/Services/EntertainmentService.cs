@@ -7,13 +7,20 @@ using WebAPI.DTO;
 
 namespace WebAPI.Services
 {
-  public class EntertainmentService
+  public interface IEntertainmentService
+  {
+    IEnumerable<EntertainmentDTO> GetEntertainments(int userId);
+    void CreateOrUpdateEntertainment(EntertainmentDTO model);
+    EntertainmentDTO GetEntertainment(int id);
+  }
+
+  public class EntertainmentService: IEntertainmentService
   {
 
     private readonly IMapper _mapper;
-    private readonly EntertainmentRepository _entertainmentRepository;
+    private readonly IEntertainmentRepository _entertainmentRepository;
 
-    public EntertainmentService(IMapper mapper, EntertainmentRepository entertainmentRepository)
+    public EntertainmentService(IMapper mapper, IEntertainmentRepository entertainmentRepository)
     {
       _mapper = mapper;
       _entertainmentRepository = entertainmentRepository;

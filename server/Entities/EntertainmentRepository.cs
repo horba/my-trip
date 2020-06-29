@@ -3,11 +3,19 @@ using System.Linq;
 
 namespace Entities
 {
-  public class EntertainmentRepository
+  public interface IEntertainmentRepository
   {
-    private readonly RepositoryContext RepositoryContext;
+    IQueryable<Entertainment> GetUserEntertainments(int userId);
+    Entertainment GetEntertainmentById(int id);
+    void CreateEntertainment(Entertainment entertainment);
+    void UpdateEntertainment(Entertainment entertainment);
+  }
 
-    public EntertainmentRepository(RepositoryContext repositoryContext)
+  public class EntertainmentRepository: IEntertainmentRepository
+  {
+    private readonly IRepositoryContext RepositoryContext;
+
+    public EntertainmentRepository(IRepositoryContext repositoryContext)
     {
       RepositoryContext = repositoryContext;
     }
