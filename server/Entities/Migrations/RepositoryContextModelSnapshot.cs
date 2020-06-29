@@ -98,45 +98,6 @@ namespace Entities.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Entities.Models.Entertainment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("EntertainmentFilePath")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double?>("LocationLat")
-                        .HasColumnType("float");
-
-                    b.Property<double?>("LocationLng")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Note")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PeopleCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PlaceId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("VisitDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("entertainments");
-                });
-
             modelBuilder.Entity("Entities.Models.Language", b =>
                 {
                     b.Property<int>("Id")
@@ -425,10 +386,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "1 час",
-                            EndDate = new DateTime(2020, 6, 26, 23, 47, 36, 895, DateTimeKind.Local).AddTicks(2460),
+                            EndDate = new DateTime(2020, 7, 2, 5, 4, 14, 52, DateTimeKind.Local).AddTicks(3112),
                             FlightTime = "0 часов",
                             ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
-                            StartDate = new DateTime(2020, 6, 19, 23, 47, 36, 895, DateTimeKind.Local).AddTicks(2460),
+                            StartDate = new DateTime(2020, 6, 25, 5, 4, 14, 52, DateTimeKind.Local).AddTicks(3112),
                             TotalPrice = 100m,
                             TransplantTime = "+ время пересадки",
                             UserId = -1
@@ -441,10 +402,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "2 час",
-                            EndDate = new DateTime(2020, 5, 25, 23, 47, 36, 899, DateTimeKind.Local).AddTicks(6498),
+                            EndDate = new DateTime(2020, 5, 31, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(5895),
                             FlightTime = "2 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2020, 5, 18, 23, 47, 36, 899, DateTimeKind.Local).AddTicks(6498),
+                            StartDate = new DateTime(2020, 5, 24, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(5895),
                             TotalPrice = 102m,
                             TransplantTime = "- прямой",
                             UserId = -1
@@ -457,10 +418,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "3 час",
-                            EndDate = new DateTime(2018, 4, 24, 23, 47, 36, 899, DateTimeKind.Local).AddTicks(6917),
+                            EndDate = new DateTime(2018, 4, 30, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(6045),
                             FlightTime = "4 часов",
                             ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
-                            StartDate = new DateTime(2018, 4, 17, 23, 47, 36, 899, DateTimeKind.Local).AddTicks(6917),
+                            StartDate = new DateTime(2018, 4, 23, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(6045),
                             TotalPrice = 106m,
                             TransplantTime = "+ время пересадки",
                             UserId = -1
@@ -473,10 +434,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "4 час",
-                            EndDate = new DateTime(2018, 3, 23, 23, 47, 36, 899, DateTimeKind.Local).AddTicks(6947),
+                            EndDate = new DateTime(2018, 3, 29, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(6060),
                             FlightTime = "6 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2018, 3, 16, 23, 47, 36, 899, DateTimeKind.Local).AddTicks(6947),
+                            StartDate = new DateTime(2018, 3, 22, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(6060),
                             TotalPrice = 112m,
                             TransplantTime = "- прямой",
                             UserId = -1
@@ -489,10 +450,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "5 час",
-                            EndDate = new DateTime(2016, 2, 22, 23, 47, 36, 899, DateTimeKind.Local).AddTicks(6969),
+                            EndDate = new DateTime(2016, 2, 28, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(6066),
                             FlightTime = "8 часов",
                             ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
-                            StartDate = new DateTime(2016, 2, 15, 23, 47, 36, 899, DateTimeKind.Local).AddTicks(6969),
+                            StartDate = new DateTime(2016, 2, 21, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(6066),
                             TotalPrice = 120m,
                             TransplantTime = "+ время пересадки",
                             UserId = -1
@@ -505,10 +466,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "6 час",
-                            EndDate = new DateTime(2016, 1, 21, 23, 47, 36, 899, DateTimeKind.Local).AddTicks(6995),
+                            EndDate = new DateTime(2016, 1, 27, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(6076),
                             FlightTime = "10 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2016, 1, 14, 23, 47, 36, 899, DateTimeKind.Local).AddTicks(6995),
+                            StartDate = new DateTime(2016, 1, 20, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(6076),
                             TotalPrice = 130m,
                             TransplantTime = "- прямой",
                             UserId = -1
@@ -521,10 +482,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "7 час",
-                            EndDate = new DateTime(2013, 12, 20, 23, 47, 36, 899, DateTimeKind.Local).AddTicks(7013),
+                            EndDate = new DateTime(2013, 12, 26, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(6082),
                             FlightTime = "12 часов",
                             ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
-                            StartDate = new DateTime(2013, 12, 13, 23, 47, 36, 899, DateTimeKind.Local).AddTicks(7013),
+                            StartDate = new DateTime(2013, 12, 19, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(6082),
                             TotalPrice = 142m,
                             TransplantTime = "+ время пересадки",
                             UserId = -1
@@ -537,10 +498,138 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "8 час",
-                            EndDate = new DateTime(2013, 11, 19, 23, 47, 36, 899, DateTimeKind.Local).AddTicks(7031),
+                            EndDate = new DateTime(2013, 11, 25, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(6089),
                             FlightTime = "14 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2013, 11, 12, 23, 47, 36, 899, DateTimeKind.Local).AddTicks(7031),
+                            StartDate = new DateTime(2013, 11, 18, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(6089),
+                            TotalPrice = 156m,
+                            TransplantTime = "- прямой",
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = 1,
+                            ArrivalCountryId = 1,
+                            Currency = "$",
+                            DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
+                            DepartureCountryId = 8,
+                            DifferenceInTime = "1 час",
+                            EndDate = new DateTime(2020, 10, 10, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(7751),
+                            FlightTime = "0 часов",
+                            ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
+                            StartDate = new DateTime(2020, 9, 25, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(7751),
+                            TotalPrice = 100m,
+                            TransplantTime = "+ время пересадки",
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ArrivalCountryId = 2,
+                            Currency = "$",
+                            DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
+                            DepartureCountryId = 8,
+                            DifferenceInTime = "2 час",
+                            EndDate = new DateTime(2020, 11, 11, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(8234),
+                            FlightTime = "2 часов",
+                            ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
+                            StartDate = new DateTime(2020, 10, 27, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(8234),
+                            TotalPrice = 102m,
+                            TransplantTime = "- прямой",
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ArrivalCountryId = 3,
+                            Currency = "$",
+                            DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
+                            DepartureCountryId = 8,
+                            DifferenceInTime = "3 час",
+                            EndDate = new DateTime(2020, 12, 14, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(8254),
+                            FlightTime = "4 часов",
+                            ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
+                            StartDate = new DateTime(2020, 11, 29, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(8254),
+                            TotalPrice = 106m,
+                            TransplantTime = "+ время пересадки",
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ArrivalCountryId = 4,
+                            Currency = "$",
+                            DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
+                            DepartureCountryId = 8,
+                            DifferenceInTime = "4 час",
+                            EndDate = new DateTime(2022, 1, 15, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(8264),
+                            FlightTime = "6 часов",
+                            ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
+                            StartDate = new DateTime(2021, 12, 31, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(8264),
+                            TotalPrice = 112m,
+                            TransplantTime = "- прямой",
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ArrivalCountryId = 5,
+                            Currency = "$",
+                            DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
+                            DepartureCountryId = 8,
+                            DifferenceInTime = "5 час",
+                            EndDate = new DateTime(2022, 2, 17, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(8274),
+                            FlightTime = "8 часов",
+                            ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
+                            StartDate = new DateTime(2022, 2, 2, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(8274),
+                            TotalPrice = 120m,
+                            TransplantTime = "+ время пересадки",
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ArrivalCountryId = 6,
+                            Currency = "$",
+                            DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
+                            DepartureCountryId = 8,
+                            DifferenceInTime = "6 час",
+                            EndDate = new DateTime(2022, 3, 22, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(8283),
+                            FlightTime = "10 часов",
+                            ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
+                            StartDate = new DateTime(2022, 3, 7, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(8283),
+                            TotalPrice = 130m,
+                            TransplantTime = "- прямой",
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ArrivalCountryId = 7,
+                            Currency = "$",
+                            DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
+                            DepartureCountryId = 8,
+                            DifferenceInTime = "7 час",
+                            EndDate = new DateTime(2023, 4, 21, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(8293),
+                            FlightTime = "12 часов",
+                            ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
+                            StartDate = new DateTime(2023, 4, 6, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(8293),
+                            TotalPrice = 142m,
+                            TransplantTime = "+ время пересадки",
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ArrivalCountryId = 8,
+                            Currency = "$",
+                            DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
+                            DepartureCountryId = 8,
+                            DifferenceInTime = "8 час",
+                            EndDate = new DateTime(2023, 5, 24, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(8302),
+                            FlightTime = "14 часов",
+                            ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
+                            StartDate = new DateTime(2023, 5, 9, 5, 4, 14, 54, DateTimeKind.Local).AddTicks(8302),
                             TotalPrice = 156m,
                             TransplantTime = "- прямой",
                             UserId = -1
@@ -600,7 +689,7 @@ namespace Entities.Migrations
                             FirstName = "Fn1",
                             Gender = 0,
                             LastName = "Ln1",
-                            Password = "RMCQ3GdeWeGABRjWOyys3yo91y9PCKYJ0ZXIj0JZCYTsC8+SHVp2ovB2CWyLYRF/"
+                            Password = "3LsjzeN7ieyDP/lwjRz6i7Kwnon06dyhin8XwDub/0qUqahl38+oCExIURLjB3f5"
                         },
                         new
                         {
@@ -609,7 +698,7 @@ namespace Entities.Migrations
                             FirstName = "FirstName2",
                             Gender = 2,
                             LastName = "LastName2",
-                            Password = "2+3Uaa7IhkiHA3yc6P2AO7NrfnKsqHjKE7o3mGH7aK/RCnIijrGgnJlEOLegNljg"
+                            Password = "hyezt/32jRZIHyvgKENFUeShUIugFFmh34R5ye3JBnWSsRxijIBIl6vbMYs5gU7I"
                         },
                         new
                         {
@@ -618,7 +707,7 @@ namespace Entities.Migrations
                             FirstName = "FFFF3",
                             Gender = 3,
                             LastName = "LLLL3",
-                            Password = "hwKqDwMsjC6/T0m7YT5bPVzOShzCL2jdwZj14aLtzLBF6hYg8XgQlYmoRJ3FcVoq"
+                            Password = "MKbrLGgtpXx0I8xVsLX328qeLTf3qOJrHMsu+pKLKwQqZdV/xw2t4eT0Usbefc0+"
                         },
                         new
                         {
@@ -627,7 +716,7 @@ namespace Entities.Migrations
                             FirstName = "LongFirstName4",
                             Gender = 2,
                             LastName = "LongLastName4",
-                            Password = "aNOYDuShuwLjerCMT8bBPGSfACVc8Snv+lffOF5IObVcqchHcmKonZzo/2pCTz4S"
+                            Password = "23A7MakXq28tty4wfWJvN1we0s9TLmU1Wki5xLIaTdOoIggOnkSITxvjlt2MF7ZY"
                         },
                         new
                         {
@@ -635,8 +724,243 @@ namespace Entities.Migrations
                             Email = "test5@users.com",
                             Gender = 0,
                             LastName = "Last5",
-                            Password = "ip/5RFPRddlJ3rxtE5gydieWTtuLmdzJie2f7bnsi/ZrWQGmTToXi1NrPk9MN65J"
+                            Password = "NkV3Pcykz4fCxyH/whl3Sib3mOUjRcdeq5hNXqgBajoRNBi6jjfyo37j3cdFCWdH"
                         });
+                });
+
+            modelBuilder.Entity("Entities.Models.Waypoint", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("ArrivalDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DepartureDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Details")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDetails")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PathLength")
+                        .HasColumnType("int");
+
+                    b.Property<TimeSpan>("PathTime")
+                        .HasColumnType("time");
+
+                    b.Property<int>("Transport")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TripId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TripId");
+
+                    b.ToTable("Waypoints");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ArrivalDate = new DateTime(2021, 1, 15, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            City = "0CitY0",
+                            DepartureDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Details = "Купить зарядку для телефона",
+                            ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
+                            IsCompleted = true,
+                            IsDetails = true,
+                            Order = 0,
+                            PathLength = 43,
+                            PathTime = new TimeSpan(0, 2, 0, 0, 0),
+                            Transport = 0,
+                            TripId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ArrivalDate = new DateTime(2021, 2, 16, 2, 5, 0, 0, DateTimeKind.Unspecified),
+                            City = "1CitY1",
+                            DepartureDate = new DateTime(2021, 2, 2, 1, 3, 0, 0, DateTimeKind.Unspecified),
+                            Details = "Купить зарядку для телефона",
+                            ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
+                            IsCompleted = false,
+                            IsDetails = false,
+                            Order = 1,
+                            PathLength = 121,
+                            PathTime = new TimeSpan(0, 3, 14, 0, 0),
+                            Transport = 1,
+                            TripId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ArrivalDate = new DateTime(2021, 3, 17, 3, 10, 0, 0, DateTimeKind.Unspecified),
+                            City = "2CitY2",
+                            DepartureDate = new DateTime(2021, 3, 3, 2, 6, 0, 0, DateTimeKind.Unspecified),
+                            Details = "Купить зарядку для телефона",
+                            ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
+                            IsCompleted = true,
+                            IsDetails = false,
+                            Order = 2,
+                            PathLength = 199,
+                            PathTime = new TimeSpan(0, 4, 28, 0, 0),
+                            Transport = 2,
+                            TripId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ArrivalDate = new DateTime(2021, 4, 18, 4, 15, 0, 0, DateTimeKind.Unspecified),
+                            City = "3CitY3",
+                            DepartureDate = new DateTime(2021, 4, 4, 0, 9, 0, 0, DateTimeKind.Unspecified),
+                            Details = "Купить зарядку для телефона",
+                            ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
+                            IsCompleted = false,
+                            IsDetails = true,
+                            Order = 3,
+                            PathLength = 277,
+                            PathTime = new TimeSpan(0, 5, 42, 0, 0),
+                            Transport = 3,
+                            TripId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ArrivalDate = new DateTime(2021, 5, 19, 1, 20, 0, 0, DateTimeKind.Unspecified),
+                            City = "4CitY4",
+                            DepartureDate = new DateTime(2021, 5, 5, 1, 12, 0, 0, DateTimeKind.Unspecified),
+                            Details = "Купить зарядку для телефона",
+                            ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
+                            IsCompleted = true,
+                            IsDetails = false,
+                            Order = 4,
+                            PathLength = 355,
+                            PathTime = new TimeSpan(0, 6, 56, 0, 0),
+                            Transport = 4,
+                            TripId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ArrivalDate = new DateTime(2021, 6, 20, 2, 25, 0, 0, DateTimeKind.Unspecified),
+                            City = "5CitY5",
+                            DepartureDate = new DateTime(2021, 6, 6, 2, 15, 0, 0, DateTimeKind.Unspecified),
+                            Details = "Купить зарядку для телефона",
+                            ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
+                            IsCompleted = false,
+                            IsDetails = false,
+                            Order = 5,
+                            PathLength = 433,
+                            PathTime = new TimeSpan(0, 7, 10, 0, 0),
+                            Transport = 0,
+                            TripId = -1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ArrivalDate = new DateTime(2021, 7, 21, 3, 30, 0, 0, DateTimeKind.Unspecified),
+                            City = "6CitY6",
+                            DepartureDate = new DateTime(2021, 7, 7, 0, 18, 0, 0, DateTimeKind.Unspecified),
+                            Details = "Купить зарядку для телефона",
+                            ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
+                            IsCompleted = true,
+                            IsDetails = true,
+                            Order = 6,
+                            PathLength = 511,
+                            PathTime = new TimeSpan(0, 8, 24, 0, 0),
+                            Transport = 1,
+                            TripId = -1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ArrivalDate = new DateTime(2021, 8, 22, 4, 35, 0, 0, DateTimeKind.Unspecified),
+                            City = "7CitY7",
+                            DepartureDate = new DateTime(2021, 8, 8, 1, 21, 0, 0, DateTimeKind.Unspecified),
+                            Details = "Купить зарядку для телефона",
+                            ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
+                            IsCompleted = false,
+                            IsDetails = false,
+                            Order = 7,
+                            PathLength = 589,
+                            PathTime = new TimeSpan(0, 9, 38, 0, 0),
+                            Transport = 2,
+                            TripId = -1
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ArrivalDate = new DateTime(2021, 9, 23, 1, 40, 0, 0, DateTimeKind.Unspecified),
+                            City = "8CitY8",
+                            DepartureDate = new DateTime(2021, 9, 9, 2, 24, 0, 0, DateTimeKind.Unspecified),
+                            Details = "Купить зарядку для телефона",
+                            ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
+                            IsCompleted = true,
+                            IsDetails = false,
+                            Order = 8,
+                            PathLength = 667,
+                            PathTime = new TimeSpan(0, 10, 52, 0, 0),
+                            Transport = 3,
+                            TripId = -1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ArrivalDate = new DateTime(2021, 10, 24, 2, 45, 0, 0, DateTimeKind.Unspecified),
+                            City = "9CitY9",
+                            DepartureDate = new DateTime(2021, 10, 10, 0, 27, 0, 0, DateTimeKind.Unspecified),
+                            Details = "Купить зарядку для телефона",
+                            ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
+                            IsCompleted = false,
+                            IsDetails = true,
+                            Order = 9,
+                            PathLength = 745,
+                            PathTime = new TimeSpan(0, 11, 6, 0, 0),
+                            Transport = 4,
+                            TripId = -1
+                        });
+                });
+
+            modelBuilder.Entity("Entities.Models.WaypointFile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ActualFileName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserFileName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("WaypointId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WaypointId");
+
+                    b.ToTable("WaypointFiles");
                 });
 
             modelBuilder.Entity("Entities.Models.Ticket", b =>
@@ -689,6 +1013,24 @@ namespace Entities.Migrations
                         .WithMany()
                         .HasForeignKey("LanguageId")
                         .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("Entities.Models.Waypoint", b =>
+                {
+                    b.HasOne("Entities.Models.Trip", "Trip")
+                        .WithMany()
+                        .HasForeignKey("TripId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Entities.Models.WaypointFile", b =>
+                {
+                    b.HasOne("Entities.Models.Waypoint", null)
+                        .WithMany("Files")
+                        .HasForeignKey("WaypointId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

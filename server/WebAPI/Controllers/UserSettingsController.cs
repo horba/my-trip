@@ -1,5 +1,5 @@
-using Entities;
 using Microsoft.AspNetCore.Authorization;
+using Entities;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.DTO.UserSettings;
 using WebAPI.Extension;

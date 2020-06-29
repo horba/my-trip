@@ -1,30 +1,14 @@
 import {
-  AboutUs,
-  Accommodation,
-  Articles,
-  Contacts,
-  CookiePolicy,
-  Entertainments,
-  Food,
-  ForTourOperators,
-  Home,
-  HotTours,
-  Leisure,
-  MyAccommodation,
-  MyFood,
-  MyHistoryPreviousTrips,
-  MyTickets,
-  MyTransport,
-  PrivacyPolicy,
-  RecoveryPassword,
-  ReviewNew,
-  ScheduleEntertainments,
-  SignIn,
-  SignUp,
-  TermsOfUse,
-  Transport,
-  UserCabinet,
-  UserSettings
+  Home, Accommodation, Transport,
+  Leisure, Food, HotTours,
+  Articles, AboutUs, PrivacyPolicy,
+  CookiePolicy, TermsOfUse, ForTourOperators,
+  Contacts, ReviewNew, MyTickets,
+  MyAccommodation, MyFood, MyTransport, Entertainments,
+  ScheduleEntertainments, SignIn, SignUp,
+  UserSettings, UserCabinet, MyHistoryTripList,
+  MyHistoryTripRoute, RecoveryPassword,
+  AddEditRouteForm, AddTripForm
 } from '@views';
 
 import Vue from 'vue';
@@ -186,14 +170,48 @@ const routes = [
       {
         path: 'history/prev',
         name: 'MyHistoryPrev',
-        component: MyHistoryPreviousTrips,
+        component: MyHistoryTripList,
         meta: { layout: 'authorize' }
       },
       {
-        path: 'history/next',
+        path: 'history/future',
         name: 'MyHistoryNext',
-        component: PrivacyPolicy,
+        component: MyHistoryTripList,
         meta: { layout: 'authorize' }
+      },
+      {
+        path: 'history/future/add',
+        name: 'MyHistoryAdd',
+        component: AddTripForm,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'history/future/:id/route',
+        name: 'MyHistoryFututeRoute',
+        component: MyHistoryTripRoute,
+        meta: { layout: 'authorize' },
+        props: true
+      },
+      {
+        path: 'history/prev/:id/route',
+        name: 'MyHistoryPrevRoute',
+        component: MyHistoryTripRoute,
+        meta: { layout: 'authorize' },
+        props: true
+      },
+      {
+        path: 'history/future/:id/route/add',
+        name: 'MyHistoryAddRoute',
+        component: AddEditRouteForm,
+        meta: { layout: 'authorize' },
+        props: true
+      },
+      {
+        path: 'history/future/:id/route/:waypointId/edit',
+        name: 'MyHistoryEditRoute',
+        component: AddEditRouteForm,
+        meta: { layout: 'authorize' },
+        props: true
       },
       {
         path: 'settings',

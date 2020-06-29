@@ -7,9 +7,9 @@ namespace Entities
 {
   public class UserRepository
   {
-    private readonly RepositoryContext RepositoryContext;
+    private readonly IRepositoryContext RepositoryContext;
 
-    public UserRepository(RepositoryContext repositoryContext)
+    public UserRepository(IRepositoryContext repositoryContext)
     {
       this.RepositoryContext = repositoryContext;
     }

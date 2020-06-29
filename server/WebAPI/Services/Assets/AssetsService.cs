@@ -48,6 +48,8 @@ namespace WebAPI.Services.Assets
           return Consts.UsersAvatarsPath;
         case AssetType.Entertainment:
           return Consts.EntertainmentsPath;
+        case AssetType.WaypointFile:
+          return Consts.WaypointsFilesPath;
         default:
           break;
       }

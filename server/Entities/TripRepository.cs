@@ -4,11 +4,17 @@ using System.Linq;
 
 namespace Entities
 {
-  public class TripRepository
+  public interface ITripRepository
   {
-    private readonly RepositoryContext RepositoryContext;
+    IQueryable<Trip> GetUserTrips(int userId);
+    void CreateTrip(Trip trip);
+  }
 
-    public TripRepository(RepositoryContext repositoryContext)
+  public class TripRepository : ITripRepository
+  {
+    private readonly IRepositoryContext RepositoryContext;
+
+    public TripRepository(IRepositoryContext repositoryContext)
     {
       this.RepositoryContext = repositoryContext;
     }
@@ -20,5 +26,12 @@ namespace Entities
         .Include(i => i.ArrivalCountry)
         .Where(u => u.UserId.Equals(userId));
     }
+
+    public void CreateTrip(Trip trip)
+    {
+      RepositoryContext.Trips.Add(trip);
+      RepositoryContext.SaveChanges();
+    }
+
   }
 }

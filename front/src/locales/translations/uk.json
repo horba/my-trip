@@ -130,6 +130,17 @@
     "France": "Франція",
     "Ukraine": "Україна"
   },
+  "cities": {
+    "kyiv": "Київ",
+    "krakow": "Краков" 
+  },
+  "transportTypes": {
+    "plane": "Літак",
+    "train": "Потяг",
+    "bus": "Автобус",
+    "car": "Автомобіль",
+    "bicycle": "Велосіпед"
+  },
   "tripHistory": {
     "trip": "Поїздка",
     "previousTrips": "Попередні поїздки",
@@ -138,7 +149,36 @@
     "departure": "Виліт",
     "flightTime": "Час польоту",
     "differenceInTime": "Різниця в часі",
-    "details": "Докладніше"
+    "details": "Докладніше",
+    "planNewTrip": "Спланувати майбутню поїздку",
+    "createNewTrip": "Створити нову подорож",
+    "addNewWaypoint": "Додати новий пункт маршруту",
+    "isCompleted": "Виконано",
+    "arrival": "Прибуття:",
+    "goingTo": "Збираюсь до",
+    "departurefromCity": "Від'їзд з міста",
+    "date": "Дата",
+    "time": "Час",
+    "startTripFrom": "Початок подорожі з",
+    "returnTo": "Повернутися до",
+    "km": "км",
+    "hoursShort": "ч",
+    "minutesShort": "мин",
+    "departureCountry": "Країна відправлення",
+    "departureCity": "Місто відправлення",
+    "departureDate": "Дата відправлення",
+    "departureTime": "Час відправлення",
+    "transplantTime": "Час пересадки",
+    "arrivalCountry": "Країна прибуття",
+    "arrivalCity": "Місто прибуття",
+    "arrivalDate": "Дата прибуття",
+    "arrivalTime": "Час прибуття",
+    "distanceBetweenPoints": "Відстань між пунктами",
+    "tripDuration": "Тривалість поїздки",
+    "changeCurrencyOnArrival": "Обміняти валюту по прибуттю",
+    "currency": "Валюта",
+    "totalPrice": "Загальна ціна",
+    "hours": "годин"
   },
   "tickets": {
     "ticketItem": {
@@ -152,7 +192,11 @@
     "fileIsEmpty": "Виберіть файл",
     "fileIsToBig": "Файл занадто великий",
     "correctFileSize": "Правильний розмір файлу",
-    "notAllowedContentType": "Виберіть .png, .jpeg або .bmp файл"
+    "notAllowedContentType": "Виберіть .png, .jpeg або .bmp файл",
+    "files": "Файли",
+    "addFiles": "Додати файли...",
+    "maxFileLength": "Максимальна вага файла",
+    "close": "Зачинити"
   },
   "signIn": {
     "welcome": "Ласкаво просимо!",
@@ -186,6 +230,8 @@
   "validationRules": {
     "noEmpty": "Заповніть поле.",
     "enterCorrectEmail": "Введіть дійсний email",
-    "greaterThanZero": "значення має бути більше 0"
+    "greaterThanZero": "значення має бути більше 0",
+    "enterCorrectDate": "Введіть дійсну дату",
+    "enterCorrectTime": "Введіть дійсний час"
   }
 }

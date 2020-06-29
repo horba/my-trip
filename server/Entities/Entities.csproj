@@ -17,6 +17,20 @@
       <Compile Remove="Migrations\20200521132358_Trips.Designer.cs" />
       <Compile Remove="Migrations\20200529192154_AddUserOauthField.cs" />
       <Compile Remove="Migrations\20200529192154_AddUserOauthField.Designer.cs" />
+      <Compile Remove="Migrations\20200613153231_Waypoints.cs" />
+      <Compile Remove="Migrations\20200613153231_Waypoints.Designer.cs" />
+      <Compile Remove="Migrations\20200614000038_Waypoints.cs" />
+      <Compile Remove="Migrations\20200614000038_Waypoints.Designer.cs" />
+      <Compile Remove="Migrations\20200614000823_Waypoints.cs" />
+      <Compile Remove="Migrations\20200614000823_Waypoints.Designer.cs" />
+      <Compile Remove="Migrations\20200618181811_Waypoints.cs" />
+      <Compile Remove="Migrations\20200618181811_Waypoints.Designer.cs" />
+      <Compile Remove="Migrations\20200621142455_Waypoints.cs" />
+      <Compile Remove="Migrations\20200621142455_Waypoints.Designer.cs" />
+      <Compile Remove="Migrations\20200622013445_Waypoint.cs" />
+      <Compile Remove="Migrations\20200622013445_Waypoint.Designer.cs" />
+      <Compile Remove="Migrations\20200623002808_Waypoints.cs" />
+      <Compile Remove="Migrations\20200623002808_Waypoints.Designer.cs" />
     </ItemGroup>
 
     <ItemGroup>

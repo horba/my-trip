@@ -92,7 +92,7 @@
     "save": "Save",
     "repeatPassword": "Repeat password",
     "passwordMustIdentity": "Passwords must match",
-    "thisNoEmail": "Invalid email address",    
+    "thisNoEmail": "Invalid email address",
     "successfulСhange": "The password was successfully changed! You will receive a confirmation of your password change to Your email address."
   },
   "locale": {
@@ -108,7 +108,7 @@
     "firstName": "First name",
     "enterFirstName": "Enter first name",
     "email": "Email",
-    "emailExample": "Example: bereznievatiy@gmail.com",    
+    "emailExample": "Example: bereznievatiy@gmail.com",
     "emailIsAlreadyTaken": "This email is already taken",
     "genderIsNotSpecified": "Gender is not specified",
     "male": "Male",
@@ -130,6 +130,17 @@
     "France": "France",
     "Ukraine": "Ukraine"
   },
+  "cities": {
+    "kyiv": "Kyiv",
+    "krakow": "Krakow"
+  },
+  "transportTypes": {
+    "plane": "Plane",
+    "train": "Train",
+    "bus": "Bus",
+    "car": "Car",
+    "bicycle": "Bicycle"
+  },
   "tripHistory": {
     "trip": "Trip",
     "previousTrips": "Previous Trips",
@@ -138,7 +149,36 @@
     "departure": "Departure",
     "flightTime": "Flight time",
     "differenceInTime": "Difference in time",
-    "details": "Details"
+    "details": "Details",
+    "planNewTrip": "Plan your future trip",
+    "createNewTrip": "Create a new journey",
+    "addNewWaypoint": "Add new waypoint",
+    "isCompleted": "Completed",
+    "arrival": "Arrival:",
+    "goingTo": "Going to",
+    "departurefromCity": "Departure from city",
+    "date": "Date",
+    "time": "Time",
+    "startTripFrom": "Start trip from",
+    "returnTo": "Return to",
+    "km": "km",
+    "hoursShort": "h",
+    "minutesShort": "min",
+    "departureCountry": "Departure country",
+    "departureCity": "Departure city",
+    "departureDate": "Departure date",
+    "departureTime": "Departure time",
+    "transplantTime": "Transplant time",
+    "arrivalCountry": "Arrival country",
+    "arrivalCity": "Arrival city",
+    "arrivalDate": "Arrival date",
+    "arrivalTime": "Arrival time",
+    "distanceBetweenPoints": "Distance between points",
+    "tripDuration": "Trip duration",
+    "changeCurrencyOnArrival": "Change currency on arrival",
+    "currency": "Currency",
+    "totalPrice": "Total price",
+    "hours": "hours"
   },
   "tickets": {
     "ticketItem": {
@@ -152,7 +192,11 @@
     "fileIsEmpty": "Please select file",
     "fileIsToBig": "File is too large",
     "correctFileSize": "The correct file size",
-    "notAllowedContentType": "Please select .png, .jpeg or .bmp file"
+    "notAllowedContentType": "Please select .png, .jpeg or .bmp file",
+    "files": "Files",
+    "addFiles": "Add files...",
+    "maxFileLength": "Max file size is",
+    "close": "Close"
   },
   "signIn": {
     "welcome": "Welcome!",
@@ -186,6 +230,8 @@
   "validationRules": {
     "noEmpty": "Fill in the field.",
     "enterCorrectEmail": "Enter valid email",
-    "greaterThanZero": "Value must be greater than 0"
+    "greaterThanZero": "Value must be greater than 0",
+    "enterCorrectDate": "Enter valid date",
+    "enterCorrectTime": "Enter valid time"
   }
 }

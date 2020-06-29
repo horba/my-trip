@@ -26,6 +26,18 @@ const api = {
       url: path,
       method: 'DELETE'
     });
+  },
+  postFile (path, formData) {
+    return instance({
+      url: path,
+      method: 'POST',
+      data: formData,
+      headers: {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }
+    });
   }
 };
 
