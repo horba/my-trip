@@ -19,6 +19,7 @@ namespace WebAPI.DTO
     [MaxLength(280)]
     public string Note { get; set; }
 
+    [Required]
     [Range(0, 30)]
     public int PeopleCount { get; set; }
 

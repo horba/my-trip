@@ -17,9 +17,9 @@ namespace WebAPI.Controllers
   public class EntertainmentController : ControllerBase
   {
 
-    private readonly EntertainmentService _entertainmentService;
+    private readonly IEntertainmentService _entertainmentService;
 
-    public EntertainmentController(EntertainmentService entertainmentService)
+    public EntertainmentController(IEntertainmentService entertainmentService)
     {
       _entertainmentService = entertainmentService;
     }

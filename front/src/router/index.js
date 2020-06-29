@@ -1,10 +1,10 @@
 import {
   Home, Accommodation, Transport,
-  Leisure, Food, HotTours,
+  Entertainments, Food, HotTours,
   Articles, AboutUs, PrivacyPolicy,
   CookiePolicy, TermsOfUse, ForTourOperators,
   Contacts, ReviewNew, MyTickets,
-  MyAccommodation, MyFood, MyTransport, Entertainments,
+  MyAccommodation, MyFood, MyTransport,
   ScheduleEntertainments, SignIn, SignUp,
   UserSettings, UserCabinet, MyHistoryTripList,
   MyHistoryTripRoute, RecoveryPassword,
@@ -46,11 +46,6 @@ const routes = [
     path: '/transport',
     name: 'Transport',
     component: Transport
-  },
-  {
-    path: '/leisure',
-    name: 'Leisure',
-    component: Leisure
   },
   {
     path: '/food',
