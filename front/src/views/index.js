@@ -1,4 +1,3 @@
-export { default as Home } from '@views/Home.vue';
 export { default as Accommodation } from '@views/Accommodation.vue';
 export { default as Food } from '@views/Food.vue';
 export { default as AboutUs } from '@views/AboutUs.vue';

@@ -1,5 +1,5 @@
 import {
-  Home, Accommodation, Leisure,
+  Accommodation, Leisure,
   Entertainments, Food,
   AboutUs, PrivacyPolicy, CookiePolicy,
   TermsOfUse, ForTourOperators, Contacts,
@@ -17,11 +17,6 @@ import store from '@store';
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
   {
     path: '/signup',
     name: 'SignUp',
