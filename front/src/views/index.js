@@ -10,7 +10,6 @@ export { default as Contacts } from '@views/Contacts.vue';
 export { default as ReviewNew } from '@views/ReviewNew.vue';
 export { default as MyTickets } from '@views/profile/Tickets.vue';
 export { default as MyAccommodation } from '@views/profile/Accommodation.vue';
-export { default as MyFood } from '@views/profile/Food.vue';
 export { default as Leisure } from '@views/leisure/leisure.view.vue';
 export { default as SignIn } from './sign-in/sign-in.view.vue';
 export { default as SignUp } from './sign-up/sign-up.view.vue';

@@ -1,10 +1,9 @@
 import {
   Home, Accommodation, Leisure,
   Entertainments, Food,
-  AboutUs, PrivacyPolicy,
-  CookiePolicy, TermsOfUse, ForTourOperators,
-  Contacts, ReviewNew, MyTickets,
-  MyAccommodation, MyFood,
+  AboutUs, PrivacyPolicy, CookiePolicy,
+  TermsOfUse, ForTourOperators, Contacts,
+  ReviewNew, MyTickets, MyAccommodation,
   ScheduleEntertainments, SignIn, SignUp,
   UserSettings, UserCabinet, MyHistoryTripList,
   MyHistoryTripRoute, RecoveryPassword,
@@ -103,12 +102,6 @@ const routes = [
         path: 'accommodation',
         name: 'MyAccommodation',
         component: MyAccommodation,
-        meta: { layout: 'authorize' }
-      },
-      {
-        path: 'food',
-        name: 'MyFood',
-        component: MyFood,
         meta: { layout: 'authorize' }
       },
       {
