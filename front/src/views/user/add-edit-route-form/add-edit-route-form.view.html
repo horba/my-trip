@@ -79,15 +79,15 @@
       <v-card-text class="my-n5">
         <v-chip-group column>
           <template v-for="file of files">
-            <a class="img-container my-1" v-if="/.(jpg|jpeg|png|gif|svg|bmp)$/is.test(file.userFileName)"
-              :href="`${baseUrl}/${waypointFilesSuffix}/${file.actualFileName}`" target="_blank">
+            <a class="img-container my-1" v-if="/.(jpg|jpeg|png|gif|svg|bmp)$/i.test(file.userFileName)"
+              :href="`${baseUrl}/${waypointFilesSuffix}/${file.actualFileName}`" target="_blank" :key="file.actualFileName">
               <v-img max-height="200" :src="`${baseUrl}/${waypointFilesSuffix}/${file.actualFileName}`">
               </v-img>
               <v-icon @click.prevent="deleteFile(file.actualFileName)">mdi-delete</v-icon>
             </a>
             <v-chip close v-else close-icon="mdi-delete"
               :href="`${baseUrl}/${waypointFilesSuffix}/${file.actualFileName}`" target="_blank"
-              @click:close="deleteFile(file.actualFileName)">
+              @click:close="deleteFile(file.actualFileName)" :key="file.actualFileName">
               <div class="text-truncate">
                 {{file.userFileName}}
               </div>
@@ -114,7 +114,7 @@
       <v-card-text class="my-n5">
         <v-chip-group column>
           <v-chip v-for="(file, index) of tempFiles" close close-icon="mdi-delete"
-            @click:close="tempFiles.splice(index, 1)">
+            @click:close="tempFiles.splice(index, 1)" :key="file.name + index">
             <div class="text-truncate">
               {{file.name}}
             </div>
