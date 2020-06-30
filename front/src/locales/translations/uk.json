@@ -46,6 +46,41 @@
       "Ігрові клуби, квести"
     ]
   },
+  "entertainments": {
+    "search": "Шукати на мапі",
+    "placesCount": "Результати",
+    "add": "Додати",
+    "filter": "Фільтр"
+  },
+  "newEntertainment": {
+    "addLeisure": "Додати",
+    "enterTitle": "Введіть назву",
+    "title": "Назва",
+    "enterPeopleCount": "Введіть кількість осіб",
+    "peopleCount": "Кількість осіб",
+    "date": "Дата",
+    "time": "Час",
+    "note": "Замітки",
+    "enterNotes": "Введіть замітки",
+    "addFile": "Додати файл",
+    "toPlan": "Запланувати",
+    "choosePlaceManually": "Вибрати місце вручну"
+  },
+  "mmtLeisureCard": {
+    "schedule": "Графік роботи"
+  },
+  "entertainmentType": {
+    "museum": "музей",
+    "tourist_attraction": "туристична достовірність",
+    "amusement_park": "парк культури і віддиха",
+    "point_of_interest": "достовірність",
+    "establishment": "заведение",
+    "laundry": "прачечная",
+    "lodging": "жилье",
+    "real_estate_agency": "агентство нерухомості",
+    "airport": "аеропорт",
+    "travel_agency": "туристичне агентство"
+  },
   "footer": {
     "join": "Приєднатися",
     "subscribeToNews": "Підписатися на новини",
@@ -207,6 +242,7 @@
   "validationRules": {
     "noEmpty": "Заповніть поле.",
     "enterCorrectEmail": "Введіть дійсний email",
+    "greaterThanZero": "значення має бути більше 0",
     "enterCorrectDate": "Введіть дійсну дату",
     "enterCorrectTime": "Введіть дійсний час"
   }

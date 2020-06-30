@@ -46,6 +46,41 @@
       "Game clubs, quests"
     ]
   },
+  "entertainments": {
+    "search": "Search on map",
+    "placesCount": "RESULTS",
+    "add": "Add",
+    "filter": "Filter"
+  },
+  "newEntertainment": {
+    "addLeisure": "Add leisure",
+    "choosePlaceManually": "Choose a place manually",
+    "toPlan": "To plan",
+    "addFile": "Add file",
+    "enterTitle": "Enter the title",
+    "title": "Title",
+    "enterPeopleCount": "Enter people count",
+    "peopleCount": "People count",
+    "date": "Date",
+    "time": "Time",
+    "note": "Note",
+    "enterNotes": "Enter notes"
+  },
+  "mmtLeisureCard": {
+    "schedule": "schedule"
+  },
+  "entertainmentType": {
+    "museum": "museum",
+    "tourist_attraction": "tourist attraction",
+    "amusement_park": "amusement park",
+    "point_of_interest": "point of interest",
+    "establishment": "establishment",
+    "laundry": "laundry",
+    "lodging": "lodging",
+    "real_estate_agency": "real estate agency",
+    "airport": "airport",
+    "travel_agency": "travel agency"
+  },
   "footer": {
     "join": "Join",
     "subscribeToNews": "Subscribe to news",
@@ -207,6 +242,7 @@
   "validationRules": {
     "noEmpty": "Fill in the field.",
     "enterCorrectEmail": "Enter valid email",
+    "greaterThanZero": "Value must be greater than 0",
     "enterCorrectDate": "Enter valid date",
     "enterCorrectTime": "Enter valid time"
   }

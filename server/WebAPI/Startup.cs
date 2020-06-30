@@ -71,6 +71,8 @@ namespace WebAPI
       services.AddScoped<IGoogleOauthService, GoogleOauthService>();
       services.AddScoped<IGooglePlacePhotoService, GooglePlacePhotoService>();
       services.AddScoped<AssetsService>();
+      services.AddScoped<IEntertainmentService, EntertainmentService>();
+      services.AddScoped<IEntertainmentRepository, EntertainmentRepository>();
 
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
           .AddJwtBearer(x =>
@@ -147,6 +149,13 @@ namespace WebAPI
         RequestPath = "/assets",
         EnableDirectoryBrowsing = true,
         StaticFileOptions = { ServeUnknownFileTypes = true}
+      });
+      app.UseFileServer(new FileServerOptions
+      {
+        FileProvider = new PhysicalFileProvider(
+                          Path.Combine(Directory.GetCurrentDirectory(), Consts.EntertainmentsPath)),
+        RequestPath = "/entertainment",
+        EnableDirectoryBrowsing = true
       });
     }
   }

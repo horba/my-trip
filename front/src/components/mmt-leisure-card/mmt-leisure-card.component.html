@@ -1,0 +1,71 @@
+<div
+  class="place-card"
+  :class="`${ isActive ? 'active' : '' }`">
+  <div class="photo-wrapper">
+    <img
+      v-if="place.photo"
+      class="photo"
+      :src="place.photo"
+    >
+    <img
+      v-else
+      class="photo"
+      src="@/assets/default-leisure-photo.jpg"
+    >
+    <router-link :to="`/my/entertainments/schedule/${place.id}`" class="icon-wrapper">
+      <v-icon class="icon" small>mdi-lead-pencil</v-icon>
+    </router-link>
+  </div>
+  <div class="place-info">
+    <div class="place-body-wrapper">
+      <div class="title-wrapper">
+        <div class="text-title-wrapper fade">
+          <h6
+            class="title"
+            :title="place.title"
+          >
+            {{ place.title }}
+          </h6>
+        </div>
+        <div class="rating-wrapper" v-if="place.rating">
+          <v-icon
+            class="star"
+            medium
+            color="var(--leisure-place-star-color)"
+          >mdi-star</v-icon>
+          <p class="rating">{{ place.rating }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="place-footer-wrapper">
+      <div class="schedule-wrapper">
+        <div 
+          v-if="place.opening_hours && place.utc_offset_minutes"
+          class="place-state"
+        >
+          <p class="schedule">{{ $t('mmtLeisureCard.schedule') }}</p>
+          <span>•</span>
+          <p
+            class="open"
+            v-if="place.opening_hours.isOpen()"
+          >
+            {{ $t('leisure.placeOpenState') }}
+          </p>
+          <p
+            class="close"
+            v-else
+          >
+            {{ $t('leisure.placeCloseState') }}
+          </p>
+        </div>
+      </div>
+      <div
+        v-if="place.types"
+        class="decription fade"
+        :title="place.types | splitTypes"
+      >
+        {{ place.types | splitTypes }}
+      </div>
+    </div>
+  </div>
+</div>

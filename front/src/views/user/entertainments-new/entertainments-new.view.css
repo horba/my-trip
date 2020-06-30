@@ -1,0 +1,100 @@
+.new-entertainments, .autocomplete-container,
+.manage-container, .btn-wrap, .images-wrapper {
+  display: flex;
+}
+
+.title {
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+
+.new-entertainments {
+  max-width: 1095px;
+  height: 70vh;
+  justify-content: space-between;
+}
+
+.gmap-container {
+  width: 100%;
+  height: 100%;
+  margin: 0 20px 0 40px;
+}
+
+.new-entertainments-map {
+  width: 100%;
+  height: 100%;
+}
+
+.new-entertainments-autocomplete {
+  flex:2;
+  height: 50px;
+  background-color: var(--filled-input-fill-color);
+  padding:0 20px;
+}
+
+.autocomplete-container >>> .set-marker {
+  border-radius: 0;
+  min-width: 60px;
+  padding:0;
+  box-shadow:none;
+  height: 50px;
+}
+
+.note-field {
+  margin-top: 40px;
+}
+
+.person-count-field {
+  margin-bottom: 10px;
+}
+
+.mmt-btn.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+  background-color: var(--continue-button-background-color);
+}
+
+.mmt-btn.v-btn:not(.v-btn--disabled):not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) >>> .v-btn__content {
+  color: var(--continue-button-active-color);
+}
+
+.mmt-btn {
+  padding:10px 48px;
+  margin: 14px 0;
+  color: var(--continue-button-active-color);
+}
+
+.manage-container {
+  flex-direction: column;
+  width: 300px;
+  height: 95vh;
+  justify-content: start;
+}
+
+.datepicker {
+  margin-bottom: 40px;
+}
+
+.btn-wrap {
+  flex-direction: column;
+}
+
+.images-wrapper {
+  height: 20vh;
+  width: 100%;
+  align-items: center;
+}
+
+.photo {
+  width: 45px;
+}
+
+.photo-wrapper {
+  position: relative;
+  top:0;
+  left:0;
+}
+
+.remove-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

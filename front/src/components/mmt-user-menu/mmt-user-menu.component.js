@@ -1,4 +1,5 @@
-import { VNavigationDrawer, VList, VBtn, VSwitch, VIcon } from 'vuetify/lib';
+import { VBtn, VIcon, VList, VNavigationDrawer, VSwitch } from 'vuetify/lib';
+
 import MmtAvatar from '../controls/mmt-avatar/mmt-avatar.component.vue';
 
 export default {
@@ -41,7 +42,7 @@ export default {
       {
         title: 'menu.leisure',
         icon: 'mdi-airballoon',
-        link: '/my/leisure'
+        link: '/my/entertainments'
       },
       {
         title: 'menu.travelRoute',

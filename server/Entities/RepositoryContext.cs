@@ -17,6 +17,7 @@ namespace Entities
     DbSet<Trip> Trips { get; set; }
     DbSet<Waypoint> Waypoints { get; set; }
     DbSet<WaypointFile> WaypointFiles { get; set; }
+    DbSet<Entertainment> Entertainments { get; set; }
 
     int SaveChanges();
   }
@@ -32,7 +33,7 @@ namespace Entities
     public DbSet<Trip> Trips { get; set; }
     public DbSet<Waypoint> Waypoints { get; set; }
     public DbSet<WaypointFile> WaypointFiles { get; set; }
-
+    public DbSet<Entertainment> Entertainments { get; set; }
     public RepositoryContext(DbContextOptions options) : base(options)
     {
     }
@@ -299,6 +300,7 @@ namespace Entities
             DepartureDateTime = moqDate.AddDays(1)
           }
       );
+      modelBuilder.Entity<Entertainment>();
     }
   }
 }

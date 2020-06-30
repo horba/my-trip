@@ -46,6 +46,41 @@
       "Игровые клубы, квесты"
     ]
   },
+  "entertainments": {
+    "search": "Искать на карте",
+    "placesCount": "Результаты",
+    "add": "Добавить",
+    "filter": "Фильтр"
+  },
+  "newEntertainment": {
+    "addLeisure": "Добавить",
+    "enterTitle": "Введите название",
+    "title": "Название",
+    "enterPeopleCount": "Введите количество человек",
+    "peopleCount": "Количество человек",
+    "date": "Дата",
+    "time": "Время",
+    "note": "Заметки",
+    "enterNotes": "Введите заметки",
+    "addFile": "Добавить файл",
+    "toPlan": "Запланировать",
+    "choosePlaceManually": "Выбрать место вручную"
+  },
+  "mmtLeisureCard": {
+    "schedule": "График работы"
+  },
+  "entertainmentType": {
+    "museum": "музей",
+    "tourist_attraction": "туристическая достопримечательность",
+    "amusement_park": "парк культуры и отдыха",
+    "point_of_interest": "достопримечательность",
+    "establishment": "заведение",
+    "laundry": "прачечная",
+    "lodging": "жилье",
+    "real_estate_agency": "агентство недвижимости",
+    "airport": "аэропорт",
+    "travel_agency": "туристическое агенство"
+  },
   "footer": {
     "join": "Присоедениться",
     "subscribeToNews": "Подписаться на новости",
@@ -207,6 +242,7 @@
   "validationRules": {
     "noEmpty": "Заполните поле.",
     "enterCorrectEmail": "Введите корректный email",
+    "greaterThanZero": "Значение должно быть больше 0",
     "enterCorrectDate": "Введите корректную дату",
     "enterCorrectTime": "Введите корректное время"
   }

@@ -3,6 +3,7 @@
   public static class Consts
   {
     public const string UsersAvatarsPath = @"Assets\Avatars";
+    public const string EntertainmentsPath = @"Assets\Entertainments";
     public const string WaypointsFilesPath = @"Assets\Waypoints";
     public const string AssetsPath = @"Assets";
 

@@ -1,17 +1,18 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
 import {
   Home, Accommodation, Transport,
-  Leisure, Food, HotTours,
+  Entertainments, Food, HotTours,
   Articles, AboutUs, PrivacyPolicy,
   CookiePolicy, TermsOfUse, ForTourOperators,
   Contacts, ReviewNew, MyTickets,
   MyAccommodation, MyFood, MyTransport,
-  MyLeisure, SignIn, SignUp,
+  ScheduleEntertainments, SignIn, SignUp,
   UserSettings, UserCabinet, MyHistoryTripList,
   MyHistoryTripRoute, RecoveryPassword,
   AddEditRouteForm, AddTripForm
 } from '@views';
+
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 import store from '@store';
 
 Vue.use(VueRouter);
@@ -45,11 +46,6 @@ const routes = [
     path: '/transport',
     name: 'Transport',
     component: Transport
-  },
-  {
-    path: '/leisure',
-    name: 'Leisure',
-    component: Leisure
   },
   {
     path: '/food',
@@ -131,9 +127,15 @@ const routes = [
         meta: { layout: 'authorize' }
       },
       {
-        path: 'leisure',
-        name: 'MyLeisure',
-        component: MyLeisure,
+        path: 'entertainments',
+        name: 'Entertainments',
+        component: Entertainments,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'entertainments/schedule/:id?',
+        name: 'EntertainmentsNew',
+        component: ScheduleEntertainments,
         meta: { layout: 'authorize' }
       },
       {

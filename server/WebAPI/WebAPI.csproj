@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <Folder Include="Assets\Avatars\" />
+    <Folder Include="Assets\Entertainments\" />
     <Folder Include="Assets\Waypoints\" />
   </ItemGroup>
 

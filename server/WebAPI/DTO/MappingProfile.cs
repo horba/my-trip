@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+using System;
 using AutoMapper;
 using Entities.Models;
 using WebAPI.DTO.Trip;
@@ -14,6 +13,9 @@ namespace WebAPI.DTO
       CreateMap<Entities.Models.Country, CountryDTO>();
 
       CreateMap<Entities.Models.Trip, TripDTO>();
+
+      CreateMap<Entertainment, EntertainmentDTO>();
+      CreateMap<EntertainmentDTO, Entertainment>();
 
       CreateMap<Entities.Models.Waypoint, WaypointDTO>()
         .ForMember(wp => wp.ArrivalDate, 
