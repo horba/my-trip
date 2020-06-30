@@ -52,7 +52,7 @@ export default {
       place: null,
       menu: false,
       menu2: false,
-      photos: [],
+      photo: '',
       visitDate: new Date().toISOString().substr(0, 10),
       visitTime: new Date().toTimeString().substr(0, 5)
     };
@@ -69,12 +69,15 @@ export default {
           this.placeId = place.placeId;
           this.peopleCount = place.peopleCount;
           this.note = place.note;
+          this.photo = place.entertainmentFilePath;
           this.visitDate = place.visitDate.split('T')[0];
           this.visitTime = place.visitDate.split('T')[1].substr(0, 5);
-          this.markerPos = {
-            lat: place.locationLat,
-            lng: place.locationLng
-          };
+          if (place.locationLat) {
+            this.markerPos = {
+              lat: place.locationLat,
+              lng: place.locationLng
+            };
+          }
         });
     }
   },
@@ -145,7 +148,7 @@ export default {
 
           this.$store.dispatch('entertainment/uploadFile', formData)
             .then(r => {
-              this.photos.push(r.data);
+              this.photo = r.data;
             });
         });
       }
@@ -195,7 +198,9 @@ export default {
       body.visitDate = `${this.visitDate}T${this.visitTime}`;
       body.note = this.note;
       body.peopleCount = parseInt(this.peopleCount);
-
+      if (this.photo) {
+        body.entertainmentFilePath = this.photo;
+      }
       if (this.$route.params.id) {
         body.id = parseInt(this.$route.params.id);
       }
@@ -204,6 +209,11 @@ export default {
         .then(() => {
           this.$router.push('/my/entertainments');
         });
+    },
+    removePhoto () {
+      this.photo = '';
+      this.$store.dispatch('entertainment/deleteFile', this.photo);
+      this.$store.dispatch('entertainment/deleteFilePath', this.$route.params.id);
     }
   }
 };

@@ -14,11 +14,8 @@ namespace WebAPI.DTO
 
       CreateMap<Entities.Models.Trip, TripDTO>();
 
-      CreateMap<Entities.Models.Entertainment, EntertainmentDTO>()
-              .ForMember(dest => dest.EntertainmentFilePath, opt => opt.MapFrom(src => src.EntertainmentFilePath.Split(';', System.StringSplitOptions.RemoveEmptyEntries)));
-
-      CreateMap<EntertainmentDTO, Entities.Models.Entertainment>()
-        .ForMember(dest => dest.EntertainmentFilePath, opt => opt.MapFrom(src => string.Join(';', src.EntertainmentFilePath)));
+      CreateMap<Entertainment, EntertainmentDTO>();
+      CreateMap<EntertainmentDTO, Entertainment>();
 
       CreateMap<Entities.Models.Waypoint, WaypointDTO>()
         .ForMember(wp => wp.ArrivalDate, 

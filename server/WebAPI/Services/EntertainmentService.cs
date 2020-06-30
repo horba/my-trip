@@ -12,6 +12,7 @@ namespace WebAPI.Services
     IEnumerable<EntertainmentDTO> GetEntertainments(int userId);
     void CreateOrUpdateEntertainment(EntertainmentDTO model);
     EntertainmentDTO GetEntertainment(int id);
+    void RemoveFilePath(int id);
   }
 
   public class EntertainmentService: IEntertainmentService
@@ -48,6 +49,12 @@ namespace WebAPI.Services
     {
       var entertainment = _entertainmentRepository.GetEntertainmentById(id);
       return _mapper.Map<EntertainmentDTO>(entertainment);
+    }
+    
+    public void RemoveFilePath(int id) {
+      var entertainment = _entertainmentRepository.GetEntertainmentById(id);
+      entertainment.EntertainmentFilePath = null;
+      _entertainmentRepository.UpdateEntertainment(entertainment);
     }
 
   }

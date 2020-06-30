@@ -52,6 +52,14 @@ namespace WebAPI.Controllers
 
       return Ok();
     }
+    
+    [HttpDelete]
+    [Route("{id}")]
+    public IActionResult RemoveFilePath([FromRoute] int id) {
+      _entertainmentService.RemoveFilePath(id);
+
+      return Ok();
+    }
 
   }
 }

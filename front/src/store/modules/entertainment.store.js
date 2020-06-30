@@ -24,15 +24,13 @@ export default {
       return api.post('/entertainment', formData);
     },
     uploadFile ({ commit }, formData) {
-      return api.post('/assets/entertainment', formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
+      return api.postFile('/assets/entertainment', formData);
     },
     deleteFile ({ commit }, fileName) {
       return api.delete(`/assets/entertainment/${fileName}`);
+    },
+    deleteFilePath ({ commit }, id) {
+      return api.delete(`/entertainment/${id}`);
     }
   }
 };

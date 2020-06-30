@@ -1,5 +1,5 @@
 .new-entertainments, .autocomplete-container,
-.manage-container, .btn-wrap, .images-wrap {
+.manage-container, .btn-wrap, .images-wrapper {
   display: flex;
 }
 
@@ -77,8 +77,24 @@
   flex-direction: column;
 }
 
-.images-wrap {
+.images-wrapper {
   height: 20vh;
   width: 100%;
   align-items: center;
+}
+
+.photo {
+  width: 45px;
+}
+
+.photo-wrapper {
+  position: relative;
+  top:0;
+  left:0;
+}
+
+.remove-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
