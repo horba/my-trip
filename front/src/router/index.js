@@ -1,10 +1,10 @@
 import {
-  Home, Accommodation, Transport,
-  Entertainments, Food, HotTours,
-  Articles, AboutUs, PrivacyPolicy,
+  Home, Accommodation, Leisure,
+  Entertainments, Food,
+  AboutUs, PrivacyPolicy,
   CookiePolicy, TermsOfUse, ForTourOperators,
   Contacts, ReviewNew, MyTickets,
-  MyAccommodation, MyFood, MyTransport,
+  MyAccommodation, MyFood,
   ScheduleEntertainments, SignIn, SignUp,
   UserSettings, UserCabinet, MyHistoryTripList,
   MyHistoryTripRoute, RecoveryPassword,
@@ -43,24 +43,14 @@ const routes = [
     component: Accommodation
   },
   {
-    path: '/transport',
-    name: 'Transport',
-    component: Transport
+    path: '/leisure',
+    name: 'Leisure',
+    component: Leisure
   },
   {
     path: '/food',
     name: 'Food',
     component: Food
-  },
-  {
-    path: '/hot-tours',
-    name: 'HotTours',
-    component: HotTours
-  },
-  {
-    path: '/articles',
-    name: 'Articles',
-    component: Articles
   },
   {
     path: '/about-us',
@@ -101,6 +91,7 @@ const routes = [
     path: '/my',
     name: 'My',
     component: UserCabinet,
+    meta: { layout: 'authorize' },
     children: [
       {
         path: 'tickets',
@@ -121,12 +112,6 @@ const routes = [
         meta: { layout: 'authorize' }
       },
       {
-        path: 'transport',
-        name: 'MyTransport',
-        component: MyTransport,
-        meta: { layout: 'authorize' }
-      },
-      {
         path: 'entertainments',
         name: 'Entertainments',
         component: Entertainments,
@@ -141,12 +126,6 @@ const routes = [
       {
         path: 'travel-route',
         name: 'MyTravelRoute',
-        component: MyTickets,
-        meta: { layout: 'authorize' }
-      },
-      {
-        path: 'bookmarks',
-        name: 'MyBookmarks',
         component: MyTickets,
         meta: { layout: 'authorize' }
       },
@@ -216,12 +195,6 @@ const routes = [
           layout: 'authorize',
           allowUnknownUsers: false
         }
-      },
-      {
-        path: 'notifications',
-        name: 'MyNotifications',
-        component: MyTickets,
-        meta: { layout: 'authorize' }
       }
     ]
   },

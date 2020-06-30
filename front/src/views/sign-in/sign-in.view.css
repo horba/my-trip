@@ -36,6 +36,10 @@
   color: var(--continue-button-active-color);
 }
 
+.input-field >>> .v-icon {
+  top: -5px;
+}
+
 .forget-password{
   font-weight: 600;
   font-size: 14px;
