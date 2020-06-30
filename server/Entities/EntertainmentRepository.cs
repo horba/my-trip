@@ -13,35 +13,35 @@ namespace Entities
 
   public class EntertainmentRepository: IEntertainmentRepository
   {
-    private readonly IRepositoryContext RepositoryContext;
+    private readonly IRepositoryContext _repositoryContext;
 
     public EntertainmentRepository(IRepositoryContext repositoryContext)
     {
-      RepositoryContext = repositoryContext;
+      _repositoryContext = repositoryContext;
     }
 
     public IQueryable<Entertainment> GetUserEntertainments(int userId)
     {
-      return RepositoryContext.Entertainments
+      return _repositoryContext.Entertainments
         .Where(e => e.UserId.Equals(userId));
     }
 
     public Entertainment GetEntertainmentById(int id)
     {
-      return RepositoryContext.Entertainments
+      return _repositoryContext.Entertainments
         .FirstOrDefault(e => e.Id.Equals(id));
     }
 
     public void CreateEntertainment(Entertainment entertainment)
     {
-      RepositoryContext.Entertainments.Add(entertainment);
-      RepositoryContext.SaveChanges();
+      _repositoryContext.Entertainments.Add(entertainment);
+      _repositoryContext.SaveChanges();
     }
 
     public void UpdateEntertainment(Entertainment entertainment)
     {
-      RepositoryContext.Entertainments.Update(entertainment);
-      RepositoryContext.SaveChanges();
+      _repositoryContext.Entertainments.Update(entertainment);
+      _repositoryContext.SaveChanges();
     }
   }
 }
