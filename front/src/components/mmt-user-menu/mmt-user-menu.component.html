@@ -19,6 +19,10 @@
       </v-list-item-content>
     </v-list-item>
 
+    <router-link to="/" class="d-flex justify-center my-7">
+      <img src="@/assets/mmt-logo.svg" height="60">
+    </router-link>
+
     <v-list-item v-for="item in items"
                  :key="item.title"
                  :to="item.link"
