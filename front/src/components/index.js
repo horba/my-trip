@@ -19,3 +19,6 @@ export { default as MmtAvatar } from './controls/mmt-avatar/mmt-avatar.component
 export {
   default as MmtAccommodationCard
 } from './mmt-accommodation-card/mmt-accommodation-card.component.vue';
+export {
+  default as MmtDatetimePicker
+} from './controls/mmt-datetime-picker/mmt-datetime-picker.component.vue';

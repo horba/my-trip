@@ -131,7 +131,7 @@
     "correctFileSize": "Верный размер файла",
     "notAllowedContentType": "Пожалуйста, выберите файл .png, .jpeg или .bmp",
     "selecFiles": "Выберите файлы",
-    "addFiles":  "Добавить файлы"
+    "addFiles": "Добавить файлы"
   },
   "signIn": {
     "welcome": "Добро пожаловать!",
@@ -164,7 +164,11 @@
   },
   "validationRules": {
     "noEmpty": "Заполните поле.",
-    "enterCorrectEmail": "Введите корректный email"
+    "enterCorrectEmail": "Введите корректный email",
+    "enterCorrectURL": "Введите корректный URL",
+    "maxLength": "Максимальная длина {0} символов",
+    "minValue": "Минимальное значение: {0}",
+    "maxValue": "Максимальное значение: {0}"
   },
   "accommodations": {
     "results": "Результаты",
@@ -188,6 +192,12 @@
     "address": "Адрес",
     "link": "Ссылка",
     "note": "Заметки",
-    "save": "Сохранить"
+    "pricePerNight": "Стоимость за ночь",
+    "departureArrivalDateValidation": "Дата выезда должна быть больше даты заезда",
+    "plan": "Запланировать"
+  },
+  "datetimePicker": {
+    "ok": "Выбрать",
+    "clear":  "Очистить"
   }
 }

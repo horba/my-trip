@@ -164,12 +164,16 @@
   },
   "validationRules": {
     "noEmpty": "Fill in the field.",
-    "enterCorrectEmail": "Enter valid email"
+    "enterCorrectEmail": "Enter valid email",
+    "enterCorrectURL": "Enter valid URL",
+    "maxLength": "Maximum length is {0} symbols",
+    "minValue": "Minimum value is: {0}",
+    "maxValue": "Maximum value is: {0}"
   },
   "accommodations": {
     "results": "Results",
-    "addAccommodation": "Add Housing",
-    "editAccommodation": "Change Housing",
+    "addAccommodation": "Add Accommodation",
+    "editAccommodation": "Change Accommodation",
     "filter": "Filter",
     "notFound": "Nothing found",
     "subtitle": "Hotel room",
@@ -188,6 +192,12 @@
     "address": "Address",
     "link": "Link",
     "note": "Notes",
-    "save": "Save"
+    "pricePerNight": "Price per night",
+    "departureArrivalDateValidation": "Departure date must be greater than arrival date",
+    "plan": "To Plan"
+  },
+  "datetimePicker": {
+    "ok": "OK",
+    "clear": "Clear"
   }
 }

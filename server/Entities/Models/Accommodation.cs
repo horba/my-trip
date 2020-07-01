@@ -33,13 +33,10 @@ namespace Entities.Models
 
     public decimal? RatingTotal { get; set; }
 
-    public int? PriceLevel { get; set; }
+    public decimal Price { get; set; }
 
-    public decimal? LocationLat { get; set; }
-    public decimal? LocationLng { get; set; }
+    public string Currency { get; set; }
 
     public string Photos { get; set; }
-
-    public string GooglePlaceId { get; set; }
   }
 }

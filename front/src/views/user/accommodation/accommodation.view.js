@@ -25,7 +25,7 @@ export default {
   methods: {
     viewAccommodation (accommodation) {
       if (this.selectedAccommodation?.id !== accommodation.id) {
-        this.getPlaceDetails(accommodation.placeId, accommodation.name);
+        this.findPlace(accommodation.address);
         this.selectedAccommodation = accommodation;
       }
     }

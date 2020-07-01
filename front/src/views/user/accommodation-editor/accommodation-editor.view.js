@@ -1,24 +1,33 @@
-import { MmtTextInput } from '@components';
-import { VFileInput, VIcon, VAutocomplete, VMenu, VDatePicker } from 'vuetify/lib';
-import { requiredValidationMixin, accommodationGoogleApiMixin } from '@mixins';
+import { MmtTextInput, MmtDatetimePicker } from '@components';
+import {
+  VFileInput,
+  VIcon,
+  VAutocomplete,
+  VTextarea
+} from 'vuetify/lib';
+import {
+  requiredValidationMixin,
+  urlValidationMixin,
+  accommodationGoogleApiMixin
+} from '@mixins';
 const { baseUrl } = require('@/config/config.dev.json');
 const { MAX_ACCOMODATION_SIZE_MB, SERVER_ACCOMODATIONS_PATH } = require('@constants'),
       MAX_ACCOMODATION_SIZE_KB = 1024 * 1024 * MAX_ACCOMODATION_SIZE_MB;
 
 export default {
-  mixins: [requiredValidationMixin, accommodationGoogleApiMixin],
+  mixins: [requiredValidationMixin, urlValidationMixin, accommodationGoogleApiMixin],
   components: {
     MmtTextInput,
+    MmtDatetimePicker,
     VFileInput,
     VIcon,
     VAutocomplete,
-    VMenu,
-    VDatePicker
+    VTextarea
   },
   data () {
     return {
-      accommodation: Object,
-      accommodationInit: Object,
+      accommodation: {},
+      accommodationInit: {},
       formValidity: true,
       menuArrivalDateTime: false,
       menuDepartureDateTime: false,
@@ -29,7 +38,34 @@ export default {
         value => !value || value.filter(f => f.size < MAX_ACCOMODATION_SIZE_KB).length
           || `${this.$t('fileUpload.fileIsToBig')}.
           ${this.$t('fileUpload.correctFileSize')}: ${MAX_ACCOMODATION_SIZE_MB} mb.`
-      ]
+      ],
+      nameRules: {
+        maxLength: value => !value || value.length <= 200 || this.$t('validationRules.maxLength')
+          .replace('{0}', 200)
+      },
+      notesRules: {
+        maxLength: value => !value || value.length <= 2000 || this.$t('validationRules.maxLength')
+          .replace('{0}', 2000)
+      },
+      guestRules: {
+        minValue: value => value >= 1 || this.$t('validationRules.minValue')
+          .replace('{0}', 1),
+        maxValue: value => value <= 30 || this.$t('validationRules.maxValue')
+          .replace('{0}', 30)
+      },
+      roomRules: {
+        minValue: value => value >= 1 || this.$t('validationRules.minValue')
+          .replace('{0}', 1),
+        maxValue: value => value <= 15 || this.$t('validationRules.maxValue')
+          .replace('{0}', 15)
+      },
+      priceRules: {
+        minValue: value => value >= 1 || this.$t('validationRules.minValue')
+          .replace('{0}', 1),
+        maxValue: value => value <= 1000000 || this.$t('validationRules.maxValue')
+          .replace('{0}', 1000000)
+      },
+      departureDateTimeValidation: () => true
     };
   },
   watch: {
@@ -45,13 +81,6 @@ export default {
           ? this.place.selected.rating : null;
         this.accommodation.ratingTotal = this.place.selected.user_ratings_total
           ? this.place.selected.user_ratings_total : null;
-        this.accommodation.priceLevel = this.place.selected.price_level
-          ? this.place.selected.price_level : null;
-        this.accommodation.locationLat = this.place.selected.geometry.location.lat
-          ? this.place.selected.geometry.location.lat : null;
-        this.accommodation.locationLng = this.place.selected.geometry.location.lng
-          ? this.place.selected.geometry.location.lng : null;
-        this.accommodation.googlePlaceId = this.place.selected.place_id;
         this.accommodation.photos
           .filter(photo => photo.startsWith('http'))
           .forEach(photo => {
@@ -73,19 +102,16 @@ export default {
           .then((response) => {
             this.accommodation = response.data;
             this.accommodation.place = this.accommodation.name;
-            this.accommodation.arrivalDateTime = this.accommodation.arrivalDateTime
-              .split('T')[0];
-            this.accommodation.departureDateTime = this.accommodation.departureDateTime
-              .split('T')[0];
             this.accommodationInit = this.accommodation;
+            this.findPlace(this.accommodation.address, this.initPlaceSuccessCallback);
           });
       } else {
         this.accommodation = {
           guestCount: 2,
           roomsCount: 1,
-          arrivalDateTime: new Date().toISOString().substr(0, 10),
-          departureDateTime: new Date().toISOString().substr(0, 10),
-          photos: []
+          photos: [],
+          arrivalDateTime: new Date(),
+          departureDateTime: new Date()
         };
         this.accommodationInit = this.accommodation;
       }
@@ -101,6 +127,15 @@ export default {
         .then(() => {
           this.$router.push('/my/accommodation');
         });
+    },
+    validateDepartureDateTime () {
+      const valid = new Date(this.accommodation.departureDateTime)
+        >= new Date(this.accommodation.arrivalDateTime);
+      if (valid) {
+        this.departureDateTimeValidation = true;
+        return;
+      }
+      this.departureDateTimeValidation = this.$t('accommodations.departureArrivalDateValidation');
     },
     getFilePath (fileName) {
       return !fileName.startsWith('http')
@@ -128,9 +163,25 @@ export default {
       this.accommodation.photos.forEach(fileName => {
         this.$store.dispatch('accommodations/deleteFile', fileName)
           .then(() => {
-            this.accommodation.photos.pop(fileName);
+            this.deleteByFileName(fileName);
           });
       });
+    },
+    deleteFile (fileName) {
+      if (!fileName.startsWith('http')) {
+        this.$store.dispatch('accommodations/deleteFile', fileName)
+          .then(() => {
+            this.deleteByFileName(fileName);
+          });
+      } else {
+        this.deleteByFileName(fileName);
+      }
+    },
+    deleteByFileName (fileName) {
+      const index = this.accommodation.photos.indexOf(fileName);
+      if (index > -1) {
+        this.accommodation.photos.splice(index, 1);
+      }
     }
   },
   async created () {

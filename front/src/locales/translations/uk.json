@@ -164,7 +164,11 @@
   },
   "validationRules": {
     "noEmpty": "Заповніть поле.",
-    "enterCorrectEmail": "Введіть дійсний email"
+    "enterCorrectEmail": "Введіть дійсний email",
+    "enterCorrectURL": "Введіть дійсний URL",
+    "maxLength": "Максимальна довжина {0} символів",
+    "minValue": "Мінімальне значення: {0}",
+    "maxValue": "Максимальне значення: {0}"
   },
   "accommodations": {
     "results": "Результати",
@@ -188,6 +192,12 @@
     "address": "Звідки",
     "link": "Посилання",
     "note": "Нотатки",
-    "save": "Зберегти"
+    "pricePerNight": "Ціна за добу",
+    "departureArrivalDateValidation": "Дата виїзду повинна бути більше дати заїзду",
+    "plan": "Запланувати"
+  },
+  "datetimePicker": {
+    "ok": "Вибрати",
+    "clear": "Очистити"
   }
 }

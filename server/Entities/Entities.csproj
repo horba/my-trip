@@ -25,6 +25,8 @@
       <Compile Remove="Migrations\20200613173621_Accommodations.Designer.cs" />
       <Compile Remove="Migrations\20200613180601_Accommodations.cs" />
       <Compile Remove="Migrations\20200613180601_Accommodations.Designer.cs" />
+      <Compile Remove="Migrations\20200615160942_Accommodations.cs" />
+      <Compile Remove="Migrations\20200615160942_Accommodations.Designer.cs" />
     </ItemGroup>
 
     <ItemGroup>

@@ -118,7 +118,13 @@ const routes = [
         meta: { layout: 'authorize' }
       },
       {
-        path: 'accommodation/manage/:id?',
+        path: 'accommodation/new',
+        name: 'AddAccommodation',
+        component: AccommodationEditor,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'accommodation/:id',
         name: 'ManageAccommodation',
         component: AccommodationEditor,
         meta: { layout: 'authorize' }

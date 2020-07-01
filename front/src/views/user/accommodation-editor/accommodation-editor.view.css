@@ -1,10 +1,14 @@
-.map {
-  width: 500px;
-  height: 500px;
+.form {
+  width: 300px;
 }
 
 .side {
   max-width: 500px;
+}
+
+.map {
+  width: 500px;
+  height: 500px;
 }
 
 label {

@@ -1,5 +1,5 @@
 .theme--light.accommodation {
-  min-width: 500px;
+  width: 500px;
 }
 
   .theme--light.accommodation:hover {
@@ -9,6 +9,12 @@
   .theme--light.accommodation .carousel {
     width: 150px;
     height: 150px;
+  }
+
+  .theme--light.accommodation .details.v-card__subtitle {
+    font-size: 12px;
+    padding-right: 0;
+    padding-top: 5px;
   }
 
   .theme--light.accommodation .details * {
@@ -26,9 +32,23 @@
     text-align: end;
   }
 
-    .theme--light.accommodation .side a {
-      text-decoration: none;
-    }
+  .theme--light.accommodation a {
+    text-decoration: none;
+  }
+
+  .theme--light.accommodation .side .rating .v-card__subtitle {
+    font-size: 12px;
+    margin-top: -10px;
+  }
+
+  .theme--light.accommodation .side .price {
+    font-weight: 600;
+    color: initial;
+  }
+
+  .theme--light.accommodation .side .rating .v-rating .v-icon {
+    padding-bottom: 0;
+  }
 
 .theme--light .active .accommodation {
   border: 1px solid var(--social-network-button-background-color);

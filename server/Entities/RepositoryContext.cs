@@ -200,6 +200,8 @@ namespace Entities
                         GuestCount = 1,
                         RoomsCount = 1,
                         Link = "http://www.grand-hotel-ukraine.dp.ua",
+                        Price = 100,
+                        Currency = "USD",
                         Note = "056 790 1441",
                         UserId = -1
                       },
@@ -213,6 +215,8 @@ namespace Entities
                         GuestCount = 2,
                         RoomsCount = 2,
                         Link = "http://menorah-center.com",
+                        Price = 90,
+                        Currency = "USD",
                         Note = "056 717 7000",
                         UserId = -1
                       }

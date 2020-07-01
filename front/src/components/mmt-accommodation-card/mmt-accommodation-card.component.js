@@ -22,9 +22,7 @@ export default {
   props: [ 'accommodation' ],
   methods: {
     getFilePath (fileName) {
-      return !fileName.startsWith('http')
-        ? `${baseUrl}/${SERVER_ACCOMODATIONS_PATH}/${fileName}`
-        : fileName;
+      return `${baseUrl}/${SERVER_ACCOMODATIONS_PATH}/${fileName}`;
     }
   }
 };

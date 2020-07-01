@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WebAPI.DTO
@@ -29,6 +30,7 @@ namespace WebAPI.DTO
     [Range(0, 15)]
     public int RoomsCount { get; set; }
 
+    [RegularExpression("^(https?|http)://[^\\s/$.?#].[^\\s]*$")]
     public string Link { get; set; }
 
     [MaxLength(2000)]
@@ -38,13 +40,13 @@ namespace WebAPI.DTO
 
     public decimal? RatingTotal { get; set; }
 
-    public int? PriceLevel { get; set; }
+    [Range(1, 1000000)]
+    public decimal Price { get; set; }
 
-    public decimal? LocationLat { get; set; }
-    public decimal? LocationLng { get; set; }
+    public string Currency { get; set; }
 
-    public string[] Photos { get; set; }
+    public List<string> Photos { get; set; }
 
-    public string GooglePlaceId { get; set; }
+    public decimal TotalPrice => (int)(DepartureDateTime - ArrivalDateTime).TotalDays * Price * RoomsCount;
   }
 }

@@ -4,6 +4,7 @@ using Entities.Models;
 using System.Collections.Generic;
 using System.Linq;
 using WebAPI.DTO;
+using WebAPI.Services.Assets;
 
 namespace WebAPI.Services
 {
@@ -11,11 +12,17 @@ namespace WebAPI.Services
   {
     private readonly IMapper _mapper;
     private readonly AccommodationRepository _accommodationRepository;
+    private readonly AssetsService _assetsService;
 
-    public AccommodationService(IMapper mapper, AccommodationRepository accommodationRepository)
+    public AccommodationService(
+      IMapper mapper,
+      AccommodationRepository accommodationRepository,
+      AssetsService assetsService
+      )
     {
       _mapper = mapper;
       _accommodationRepository = accommodationRepository;
+      _assetsService = assetsService;
     }
 
     public IEnumerable<AccommodationDTO> GetAccommodations(int userId)
@@ -26,6 +33,14 @@ namespace WebAPI.Services
 
     public void CreateOrUpdateAccommodation(AccommodationDTO model)
     {
+      var photoUrls = model.Photos.Where(p => p.StartsWith("http")).ToList();
+      if (photoUrls.Any())
+      {
+        model.Photos = model.Photos.Except(photoUrls).ToList();
+        var fileNames = _assetsService.DownloadFilesAsync(photoUrls, AssetType.Accommodation);        
+        model.Photos.AddRange(fileNames);
+      }
+
       if (model.Id != 0)
       {
         var accommodation = _accommodationRepository.GetAccommodationById(model.Id);

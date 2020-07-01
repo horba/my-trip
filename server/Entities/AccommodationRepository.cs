@@ -1,40 +1,39 @@
 ﻿using Entities.Models;
-using System;
 using System.Linq;
 
 namespace Entities
 {
   public class AccommodationRepository
   {
-    private readonly RepositoryContext RepositoryContext;
+    private readonly RepositoryContext _repositoryContext;
 
     public AccommodationRepository(RepositoryContext repositoryContext)
     {
-      this.RepositoryContext = repositoryContext;
+      _repositoryContext = repositoryContext;
     }
 
     public IQueryable<Accommodation> GetUserAccommodations(int userId)
     {
-      return RepositoryContext.Accommodations
+      return _repositoryContext.Accommodations
         .Where(a => a.UserId.Equals(userId));
     }
 
     public Accommodation GetAccommodationById(int id)
     {
-      return RepositoryContext.Accommodations
+      return _repositoryContext.Accommodations
         .FirstOrDefault(a => a.Id.Equals(id));
     }
 
     public void CreateAccommodation(Accommodation accommodation)
     {
-      RepositoryContext.Accommodations.Add(accommodation);
-      RepositoryContext.SaveChanges();
+      _repositoryContext.Accommodations.Add(accommodation);
+      _repositoryContext.SaveChanges();
     }
 
     public void UpdateAccommodation(Accommodation accommodation)
     {
-      RepositoryContext.Accommodations.Update(accommodation);
-      RepositoryContext.SaveChanges();
+      _repositoryContext.Accommodations.Update(accommodation);
+      _repositoryContext.SaveChanges();
     }
   }
 }

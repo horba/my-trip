@@ -24,11 +24,9 @@ namespace Entities.Migrations
                     Note = table.Column<string>(nullable: true),
                     Rating = table.Column<decimal>(nullable: true),
                     RatingTotal = table.Column<decimal>(nullable: true),
-                    PriceLevel = table.Column<int>(nullable: true),
-                    LocationLat = table.Column<decimal>(nullable: true),
-                    LocationLng = table.Column<decimal>(nullable: true),
-                    Photos = table.Column<string>(nullable: true),
-                    GooglePlaceId = table.Column<string>(nullable: true)
+                    Price = table.Column<decimal>(nullable: false),
+                    Currency = table.Column<string>(nullable: true),
+                    Photos = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -37,11 +35,11 @@ namespace Entities.Migrations
 
             migrationBuilder.InsertData(
                 table: "accommodations",
-                columns: new[] { "Id", "Address", "ArrivalDateTime", "DepartureDateTime", "GooglePlaceId", "GuestCount", "Link", "LocationLat", "LocationLng", "Name", "Note", "Photos", "PriceLevel", "Rating", "RatingTotal", "RoomsCount", "UserId" },
+                columns: new[] { "Id", "Address", "ArrivalDateTime", "Currency", "DepartureDateTime", "GuestCount", "Link", "Name", "Note", "Photos", "Price", "Rating", "RatingTotal", "RoomsCount", "UserId" },
                 values: new object[,]
                 {
-                    { -1, "Dmytra Yavornytskoho Avenue, 67К, Dnipro", new DateTime(2020, 6, 20, 19, 9, 41, 779, DateTimeKind.Local).AddTicks(2658), new DateTime(2020, 6, 22, 19, 9, 41, 779, DateTimeKind.Local).AddTicks(3496), null, 1, "http://www.grand-hotel-ukraine.dp.ua", null, null, "Grand Hotel Ukraine", "056 790 1441", null, null, null, null, 1, -1 },
-                    { -2, "Sholom-Aleikhema Street, 4/26, Dnipro", new DateTime(2020, 6, 27, 19, 9, 41, 779, DateTimeKind.Local).AddTicks(8635), new DateTime(2020, 7, 2, 19, 9, 41, 779, DateTimeKind.Local).AddTicks(8673), null, 2, "http://menorah-center.com", null, null, "Menorah", "056 717 7000", null, null, null, null, 2, -1 }
+                    { -1, "Dmytra Yavornytskoho Avenue, 67К, Dnipro", new DateTime(2020, 6, 27, 12, 43, 59, 430, DateTimeKind.Local).AddTicks(1665), "USD", new DateTime(2020, 6, 29, 12, 43, 59, 430, DateTimeKind.Local).AddTicks(2445), 1, "http://www.grand-hotel-ukraine.dp.ua", "Grand Hotel Ukraine", "056 790 1441", null, 100m, null, null, 1, -1 },
+                    { -2, "Sholom-Aleikhema Street, 4/26, Dnipro", new DateTime(2020, 7, 4, 12, 43, 59, 430, DateTimeKind.Local).AddTicks(9011), "USD", new DateTime(2020, 7, 9, 12, 43, 59, 430, DateTimeKind.Local).AddTicks(9049), 2, "http://menorah-center.com", "Menorah", "056 717 7000", null, 90m, null, null, 2, -1 }
                 });
 
             migrationBuilder.UpdateData(
@@ -49,91 +47,91 @@ namespace Entities.Migrations
                 keyColumn: "Id",
                 keyValue: -8,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2013, 11, 15, 19, 9, 41, 761, DateTimeKind.Local).AddTicks(2322), new DateTime(2013, 11, 8, 19, 9, 41, 761, DateTimeKind.Local).AddTicks(2322) });
+                values: new object[] { new DateTime(2013, 11, 22, 12, 43, 59, 412, DateTimeKind.Local).AddTicks(7099), new DateTime(2013, 11, 15, 12, 43, 59, 412, DateTimeKind.Local).AddTicks(7099) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -7,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2013, 12, 16, 19, 9, 41, 761, DateTimeKind.Local).AddTicks(2309), new DateTime(2013, 12, 9, 19, 9, 41, 761, DateTimeKind.Local).AddTicks(2309) });
+                values: new object[] { new DateTime(2013, 12, 23, 12, 43, 59, 412, DateTimeKind.Local).AddTicks(7087), new DateTime(2013, 12, 16, 12, 43, 59, 412, DateTimeKind.Local).AddTicks(7087) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -6,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2016, 1, 17, 19, 9, 41, 761, DateTimeKind.Local).AddTicks(2294), new DateTime(2016, 1, 10, 19, 9, 41, 761, DateTimeKind.Local).AddTicks(2294) });
+                values: new object[] { new DateTime(2016, 1, 24, 12, 43, 59, 412, DateTimeKind.Local).AddTicks(7073), new DateTime(2016, 1, 17, 12, 43, 59, 412, DateTimeKind.Local).AddTicks(7073) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -5,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2016, 2, 18, 19, 9, 41, 761, DateTimeKind.Local).AddTicks(2274), new DateTime(2016, 2, 11, 19, 9, 41, 761, DateTimeKind.Local).AddTicks(2274) });
+                values: new object[] { new DateTime(2016, 2, 25, 12, 43, 59, 412, DateTimeKind.Local).AddTicks(7052), new DateTime(2016, 2, 18, 12, 43, 59, 412, DateTimeKind.Local).AddTicks(7052) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -4,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2018, 3, 19, 19, 9, 41, 761, DateTimeKind.Local).AddTicks(2258), new DateTime(2018, 3, 12, 19, 9, 41, 761, DateTimeKind.Local).AddTicks(2258) });
+                values: new object[] { new DateTime(2018, 3, 26, 12, 43, 59, 412, DateTimeKind.Local).AddTicks(7036), new DateTime(2018, 3, 19, 12, 43, 59, 412, DateTimeKind.Local).AddTicks(7036) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -3,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2018, 4, 20, 19, 9, 41, 761, DateTimeKind.Local).AddTicks(2227), new DateTime(2018, 4, 13, 19, 9, 41, 761, DateTimeKind.Local).AddTicks(2227) });
+                values: new object[] { new DateTime(2018, 4, 27, 12, 43, 59, 412, DateTimeKind.Local).AddTicks(7004), new DateTime(2018, 4, 20, 12, 43, 59, 412, DateTimeKind.Local).AddTicks(7004) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -2,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2020, 5, 21, 19, 9, 41, 761, DateTimeKind.Local).AddTicks(1936), new DateTime(2020, 5, 14, 19, 9, 41, 761, DateTimeKind.Local).AddTicks(1936) });
+                values: new object[] { new DateTime(2020, 5, 28, 12, 43, 59, 412, DateTimeKind.Local).AddTicks(6608), new DateTime(2020, 5, 21, 12, 43, 59, 412, DateTimeKind.Local).AddTicks(6608) });
 
             migrationBuilder.UpdateData(
                 table: "trips",
                 keyColumn: "Id",
                 keyValue: -1,
                 columns: new[] { "EndDate", "StartDate" },
-                values: new object[] { new DateTime(2020, 6, 22, 19, 9, 41, 756, DateTimeKind.Local).AddTicks(4078), new DateTime(2020, 6, 15, 19, 9, 41, 756, DateTimeKind.Local).AddTicks(4078) });
+                values: new object[] { new DateTime(2020, 6, 29, 12, 43, 59, 408, DateTimeKind.Local).AddTicks(1869), new DateTime(2020, 6, 22, 12, 43, 59, 408, DateTimeKind.Local).AddTicks(1869) });
 
             migrationBuilder.UpdateData(
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -5,
                 column: "Password",
-                value: "5s8yoYG+M5Zt6H6UpFvV8nRJqzd3hL9irOsrD4V6hGWEiX5VvRobMa3tM9IOTWc4");
+                value: "FvIy3eq/6UrgQ/ZgY8xPrT74v7Trv93JMUQsExW4yw2dCe+jQvJ6NpL38FT9xzQF");
 
             migrationBuilder.UpdateData(
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -4,
                 column: "Password",
-                value: "+KJx/EMtPDY+klpZUuGvW7MpgFbsd0J9rPBq2cCM/mYJ3SNYzoyMHTOuuX2hyoK5");
+                value: "AkMyjm6WiiTT0iWKOOeeXEockb0NIuBCv0Q+68PcjIbHd9nnuxtIuh6mbxEZt6TD");
 
             migrationBuilder.UpdateData(
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -3,
                 column: "Password",
-                value: "vUE5W3xsNixsMFUFiNHBU4eRx1Gs/W9EmAGCwEHX9BgxUTFsf1j16m566rUn1D72");
+                value: "hRy420Z1WBEHdzBH9mrSJaJCq2dnz26adbjoRur0VLs6kPDQKTrQ5NqjuZ5bp2V0");
 
             migrationBuilder.UpdateData(
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -2,
                 column: "Password",
-                value: "HZKwKRu4zDy9HVkhjtKzcPbE7KQ9H0mtcLGBIfA9mdKZHkH3meL1rzkRC+2IOhzj");
+                value: "7qXfsOnq+O9yk+mmYfipMWNsmK3yNMTrDOOohKAud8iqhwh4DMJOc7j92PttqGjV");
 
             migrationBuilder.UpdateData(
                 table: "users",
                 keyColumn: "Id",
                 keyValue: -1,
                 column: "Password",
-                value: "GCc8EqSTrGRi0m4xzisaRuJW5LGU30L5SnviXJzW6eVxG5aVnmGShPj2vRwGAUVX");
+                value: "AYHMYUQfxguKGVpbF2xYsg6eI/MM3x6Y798UbFYtGfD4GO7up9CSo+AL/ktBrtgm");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -68,8 +68,9 @@ export const accommodationGoogleApiMixin = {
         query: query,
         fields: [
           'geometry',
-          'rating',
-          'price_level'
+          'name',
+          'formatted_address',
+          'rating'
         ]
       };
 
@@ -84,13 +85,22 @@ export const accommodationGoogleApiMixin = {
       });
     },
     searchSuccessCallback (places) {
-      this.place = {
-        results: places,
-        selected: places[0]
-      };
-      this.map.setCenter(this.place.selected.geometry.location);
-      this.map.setZoom(15);
-      this.refreshMapMarkers(places);
+      if (places && places[0].geometry) {
+        this.place = {
+          results: places,
+          selected: places[0]
+        };
+        this.map.setCenter(this.place.selected.geometry.location);
+        this.map.setZoom(16);
+        this.refreshMapMarkers(places);
+      }
+    },
+    initPlaceSuccessCallback (places) {
+      if (places && places[0].geometry) {
+        this.map.setCenter(places[0].geometry.location);
+        this.map.setZoom(16);
+        this.refreshMapMarkers(places);
+      }
     },
     refreshMapMarkers (results) {
       this.markers.forEach((marker) => {
@@ -123,15 +133,17 @@ export const accommodationGoogleApiMixin = {
       }
     },
     selectPlace (selectedPlace) {
-      this.getPlaceDetails(selectedPlace.place_id, null, (places) => {
-        this.place.selected = places[0];
-        this.map.setCenter(this.place.selected.geometry.location);
-        this.map.setZoom(15);
-        this.refreshMapMarkers(places);
-      });
+      if (selectedPlace.place_id) {
+        this.getPlaceDetails(selectedPlace.place_id, null, (places) => {
+          this.place.selected = places[0];
+          this.map.setCenter(this.place.selected.geometry.location);
+          this.map.setZoom(15);
+          this.refreshMapMarkers(places);
+        });
+      }
     },
     async initialize () {
-      if (this.mapSelector) {
+      if (this.mapSelector && this.$refs[this.mapSelector]) {
         this.google = await GoogleMapsApiLoader({
           libraries: this.libraries,
           apiKey: this.apiKey
