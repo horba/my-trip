@@ -1,0 +1,14 @@
+<div>
+  <div class="d-flex flex-wrap align-stretch justify-space-between mb-10" v-if="$route.name === 'MyHistoryFututeRoute'">
+    <div>
+      <h4 class="accent--text text--lighten-2 header">{{ $t('tripHistory.planNewTrip') }}</h4>
+    </div>
+    <v-btn class="mmt-btn mmt-continue-button" height="39" rounded depressed large :to="{name: 'MyHistoryAddRoute'}">
+      {{ $t('tripHistory.addNewWaypoint') }}</v-btn>
+  </div>
+  <template v-for='(waypoint, index) of waypoints'>
+    <mmt-waypoint-card :hideArrival="index === 0" :hideDeparture="index === waypoints.length - 1"
+      :waypoint="waypoint" :prevWaypoint="waypoints[index - 1] || {}"/>
+    <mmt-waypoint-transfer-card v-if="index !== waypoints.length - 1" :transfer="waypoint" />
+  </template>
+</div>

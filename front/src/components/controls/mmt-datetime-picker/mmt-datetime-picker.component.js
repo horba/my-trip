@@ -112,7 +112,8 @@ export default {
       if (this.datetime instanceof Date) {
         initDateTime = this.datetime;
       } else if (typeof this.datetime === 'string' || this.datetime instanceof String) {
-        initDateTime = parse(this.datetime.replace('T', ' '),
+        const rawDateStr = this.datetime.replace('T', ' ').split('.')[0];
+        initDateTime = parse(rawDateStr,
           DEFAULT_DATE_FORMAT + ' ' + DEFAULT_TIME_FORMAT,
           new Date());
       }

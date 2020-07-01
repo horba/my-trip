@@ -1,0 +1,81 @@
+<div id="entertainments" class="entertainments">
+  <mmt-stepper></mmt-stepper>
+  <nav>
+    <div class="results-wrap">
+      <span class="results">
+        {{ $t('entertainments.placesCount') }}
+      </span>
+      <span class="results-count">
+        ({{ places.length }})
+      </span>
+    </div>
+    <div class="buttons-container">
+      <v-btn
+        rounded
+        depressed
+        class="details accent lighten-1 mr-5"
+        to="/my/entertainments/schedule">
+        <span class="text-capitalize">
+          {{ $t('entertainments.add') }}
+        </span>
+      </v-btn>
+      <v-btn
+        rounded
+        depressed
+        class="details accent lighten-1"
+      >
+        <span class="text-capitalize">
+          {{ $t('entertainments.filter') }}
+          <v-icon right class="white--text">mdi-filter-variant</v-icon>
+        </span>
+      </v-btn>
+    </div>
+  </nav>
+  <div class="body-wrap">
+    <div class="places">
+      <div class="place-wrap"
+        v-for="(place, index) in places"
+        :key="index"
+        @click="setActive(index)"
+      >
+        <mmt-leisure-card
+          :place="place"
+          :isActive="selectedPlaceIndex && selectedPlaceIndex === index + 1 ? true : false"
+        />
+      </div>
+    </div>
+    <div class="my-entertainments-map-wrap">
+      <gmap-autocomplete
+        class="entertainments-autocomplete"
+        :placeholder="$t('entertainments.search')"
+        @place_changed="setPlace">
+      </gmap-autocomplete>
+      <GmapMap
+        id="my-entertainments-map"
+        class="my-entertainments-map"
+        ref="entertainmentMap"
+        :center="mapCenter"
+        :zoom="17"
+        style="width: 100%; height: 100%"
+        :options="{
+          mapTypeControl: false,
+          styles: [
+            {
+              featureType: 'poi',
+              stylers: [{ visibility: 'off' }]
+            },
+            {
+              featureType: 'poi.attraction',
+              stylers: [{ visibility: 'on' }]
+            }
+          ]
+        }"
+      >
+        <GmapMarker
+          v-if="markerPos"
+          :position="markerPos"
+        />
+      </GmapMap>
+    </div>
+  </div>
+</div>

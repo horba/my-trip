@@ -15,9 +15,9 @@ namespace WebAPI.Controllers
   {
     private readonly UserService _userService;
     private readonly AuthService _authService;
-    private readonly GoogleOauthService _googleOauthService;
+    private readonly IGoogleOauthService _googleOauthService;
 
-    public AuthController(UserService userService, AuthService authService, GoogleOauthService googleOauthService)
+    public AuthController(UserService userService, AuthService authService, IGoogleOauthService googleOauthService)
     {
       _userService = userService;
       _authService = authService;

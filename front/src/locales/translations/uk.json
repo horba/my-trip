@@ -46,6 +46,41 @@
       "Ігрові клуби, квести"
     ]
   },
+  "entertainments": {
+    "search": "Шукати на мапі",
+    "placesCount": "Результати",
+    "add": "Додати",
+    "filter": "Фільтр"
+  },
+  "newEntertainment": {
+    "addLeisure": "Додати",
+    "enterTitle": "Введіть назву",
+    "title": "Назва",
+    "enterPeopleCount": "Введіть кількість осіб",
+    "peopleCount": "Кількість осіб",
+    "date": "Дата",
+    "time": "Час",
+    "note": "Замітки",
+    "enterNotes": "Введіть замітки",
+    "addFile": "Додати файл",
+    "toPlan": "Запланувати",
+    "choosePlaceManually": "Вибрати місце вручну"
+  },
+  "mmtLeisureCard": {
+    "schedule": "Графік роботи"
+  },
+  "entertainmentType": {
+    "museum": "музей",
+    "tourist_attraction": "туристична достовірність",
+    "amusement_park": "парк культури і віддиха",
+    "point_of_interest": "достовірність",
+    "establishment": "заведение",
+    "laundry": "прачечная",
+    "lodging": "жилье",
+    "real_estate_agency": "агентство нерухомості",
+    "airport": "аеропорт",
+    "travel_agency": "туристичне агентство"
+  },
   "footer": {
     "join": "Приєднатися",
     "subscribeToNews": "Підписатися на новини",
@@ -107,6 +142,17 @@
     "France": "Франція",
     "Ukraine": "Україна"
   },
+  "cities": {
+    "kyiv": "Київ",
+    "krakow": "Краков" 
+  },
+  "transportTypes": {
+    "plane": "Літак",
+    "train": "Потяг",
+    "bus": "Автобус",
+    "car": "Автомобіль",
+    "bicycle": "Велосіпед"
+  },
   "tripHistory": {
     "trip": "Поїздка",
     "previousTrips": "Попередні поїздки",
@@ -115,7 +161,36 @@
     "departure": "Виліт",
     "flightTime": "Час польоту",
     "differenceInTime": "Різниця в часі",
-    "details": "Докладніше"
+    "details": "Докладніше",
+    "planNewTrip": "Спланувати майбутню поїздку",
+    "createNewTrip": "Створити нову подорож",
+    "addNewWaypoint": "Додати новий пункт маршруту",
+    "isCompleted": "Виконано",
+    "arrival": "Прибуття:",
+    "goingTo": "Збираюсь до",
+    "departurefromCity": "Від'їзд з міста",
+    "date": "Дата",
+    "time": "Час",
+    "startTripFrom": "Початок подорожі з",
+    "returnTo": "Повернутися до",
+    "km": "км",
+    "hoursShort": "ч",
+    "minutesShort": "мин",
+    "departureCountry": "Країна відправлення",
+    "departureCity": "Місто відправлення",
+    "departureDate": "Дата відправлення",
+    "departureTime": "Час відправлення",
+    "transplantTime": "Час пересадки",
+    "arrivalCountry": "Країна прибуття",
+    "arrivalCity": "Місто прибуття",
+    "arrivalDate": "Дата прибуття",
+    "arrivalTime": "Час прибуття",
+    "distanceBetweenPoints": "Відстань між пунктами",
+    "tripDuration": "Тривалість поїздки",
+    "changeCurrencyOnArrival": "Обміняти валюту по прибуттю",
+    "currency": "Валюта",
+    "totalPrice": "Загальна ціна",
+    "hours": "годин"
   },
   "tickets": {
     "ticketItem": {
@@ -130,8 +205,11 @@
     "fileIsToBig": "Файл занадто великий",
     "correctFileSize": "Правильний розмір файлу",
     "notAllowedContentType": "Виберіть .png, .jpeg або .bmp файл",
-    "selecFiles": "Виберіть файли",
-    "addFiles": "Додати файли"
+    "files": "Файли",
+    "addFiles": "Додати файли...",
+    "maxFileLength": "Максимальна вага файла",
+    "close": "Зачинити",
+    "selecFiles": "Виберіть файли"
   },
   "signIn": {
     "welcome": "Ласкаво просимо!",
@@ -165,6 +243,9 @@
   "validationRules": {
     "noEmpty": "Заповніть поле.",
     "enterCorrectEmail": "Введіть дійсний email",
+    "greaterThanZero": "значення має бути більше 0",
+    "enterCorrectDate": "Введіть дійсну дату",
+    "enterCorrectTime": "Введіть дійсний час",
     "enterCorrectURL": "Введіть дійсний URL",
     "maxLength": "Максимальна довжина {0} символів",
     "minValue": "Мінімальне значення: {0}",

@@ -1,0 +1,82 @@
+<div>
+  <h4 class="accent--text text--lighten-2 font-weight-regular">{{$t('tripHistory.createNewTrip')}}</h4>
+  <v-form v-model="formValidity" ref="form">
+    <v-select persistent-hint rounded filled dense :hint="$t('tripHistory.departureCountry')"
+      class="mmt-select mb-1 mt-4 select-field" :items="countries" v-model="newTripValues.departureCountryId"
+      append-icon="mdi-chevron-down" :rules="[rules.required]" />
+
+    <mmt-text-input class="input-field" :placeholder="$t('cities.kyiv')" :hint="$t('tripHistory.departureCity')"
+      persistent-hint rounded filled single-line dense v-model="newTripValues.departureCity"
+      :rules="[rules.required]" />
+
+    <div class="date-input">
+      <v-menu offset-y :close-on-content-click="false">
+        <template v-slot:activator="{ on }">
+          <mmt-text-input class="input-field" placeholder="2020-04-22" :hint="$t('tripHistory.departureDate')"
+            persistent-hint rounded filled single-line dense v-model="newTripValues.departureDate"
+            :rules="[rules.required, rules.date]" v-on="on" prepend-icon="mdi-calendar-check" />
+        </template>
+        <v-date-picker first-day-of-week="1" v-bind="calendarLocale" color="accent lighten-1" width="248"
+          v-model="newTripValues.departureDate" />
+      </v-menu>
+    </div>
+    <div class="date-input">
+      <v-menu offset-y :close-on-content-click="false">
+        <template v-slot:activator="{ on }">
+          <mmt-text-input class="input-field" placeholder="11:02" :hint="$t('tripHistory.departureTime')"
+            persistent-hint rounded filled single-line dense v-model="newTripValues.departureTime"
+            :rules="[rules.required, rules.time]" v-on="on" prepend-icon="mdi-clock" />
+        </template>
+        <v-time-picker color="accent lighten-1" width="248" format="24hr" v-model="newTripValues.departureTime" />
+      </v-menu>
+    </div>
+
+    <v-select persistent-hint rounded filled dense :hint="$t('tripHistory.arrivalCountry')"
+      class="mmt-select mb-1 select-field" :items="countries" v-model="newTripValues.arrivalCountryId"
+      append-icon="mdi-chevron-down" :rules="[rules.required]" />
+
+    <div class="date-input">
+      <v-menu offset-y :close-on-content-click="false">
+        <template v-slot:activator="{ on }">
+          <mmt-text-input class="input-field" placeholder="2020-05-12" :hint="$t('tripHistory.arrivalDate')"
+            persistent-hint rounded filled single-line dense v-model="newTripValues.arrivalDate"
+            :rules="[rules.required, rules.date]" v-on="on" prepend-icon="mdi-calendar-check" />
+        </template>
+        <v-date-picker first-day-of-week="1" v-bind="calendarLocale" color="accent lighten-1" width="248"
+          v-model="newTripValues.arrivalDate" />
+      </v-menu>
+    </div>
+    <div class="date-input">
+      <v-menu offset-y :close-on-content-click="false">
+        <template v-slot:activator="{ on }">
+          <mmt-text-input class="input-field" placeholder="15:43" :hint="$t('tripHistory.arrivalTime')" persistent-hint
+            rounded filled single-line dense v-model="newTripValues.arrivalTime" :rules="[rules.required, rules.time]"
+            v-on="on" prepend-icon="mdi-clock" />
+        </template>
+        <v-time-picker color="accent lighten-1" width="248" format="24hr" v-model="newTripValues.arrivalTime" />
+      </v-menu>
+    </div>
+
+    <mmt-text-input class="input-field" v-model="newTripValues.totalPrice" placeholder="845"
+      :hint="$t('tripHistory.totalPrice')" :suffix="newTripValues.currency" step="0.01" persistent-hint rounded filled
+      single-line dense type="number" :rules="[rules.required]" />
+
+    <mmt-text-input class="input-field" placeholder="RUB" persistent-hint rounded filled single-line dense
+      :hint="$t('tripHistory.currency')" v-model="newTripValues.currency" :rules="[rules.required]" />
+
+    <mmt-text-input class="input-field" :placeholder="'9 ' + $t('tripHistory.hours')" persistent-hint rounded filled
+      single-line dense :hint="$t('tripHistory.flightTime')" v-model="newTripValues.flightTime"
+      :rules="[rules.required]" />
+
+    <mmt-text-input class="input-field" :placeholder="'5 ' + $t('tripHistory.hours')" persistent-hint rounded filled
+      single-line dense :hint="$t('tripHistory.transplantTime')" v-model="newTripValues.transplantTime"
+      :rules="[rules.required]" />
+
+    <mmt-text-input class="input-field" placeholder="03:30" persistent-hint rounded filled single-line dense
+      :hint="$t('tripHistory.differenceInTime')" v-model="newTripValues.differenceInTime" :rules="[rules.required]" />
+
+    <v-btn height="39" width="173" class="input-field mmt-continue-button mt-2" rounded depressed large
+      @click.prevent="createNewTrip">
+      {{$t('userSettings.save')}}</v-btn>
+  </v-form>
+</div>

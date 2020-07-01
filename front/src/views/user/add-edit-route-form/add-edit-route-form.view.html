@@ -1,0 +1,145 @@
+<div>
+  <h4 class="accent--text text--lighten-2 font-weight-regular">{{$t('tripHistory.addNewWaypoint')}}</h4>
+  <div class="d-flex justify-space-between align-start flex-wrap">
+
+    <v-form v-model="formValidity" class="mt-3 d-flex flex-column align-center" ref="form" width="248">
+      <mmt-text-input class="input-field" :placeholder="$t('cities.kyiv')" :hint="$t('tripHistory.departureCity')"
+        persistent-hint rounded filled single-line dense v-model="newWaypointValues.departureCity"
+        :rules="[rules.required]" />
+      <div class="date-input">
+        <v-menu offset-y :close-on-content-click="false">
+          <template v-slot:activator="{ on }">
+            <mmt-text-input class="input-field" placeholder="2020-04-22" :hint="$t('tripHistory.departureDate')"
+              persistent-hint rounded filled single-line dense v-model="newWaypointValues.departureDate"
+              :rules="[rules.required, rules.date]" v-on="on" prepend-icon="mdi-calendar-check" />
+          </template>
+          <v-date-picker first-day-of-week="1" v-bind="calendarLocale" color="accent lighten-1" width="248"
+            v-model="newWaypointValues.departureDate" />
+        </v-menu>
+      </div>
+      <div class="date-input">
+        <v-menu offset-y :close-on-content-click="false">
+          <template v-slot:activator="{ on }">
+            <mmt-text-input class="input-field" placeholder="11:02" :hint="$t('tripHistory.departureTime')"
+              persistent-hint rounded filled single-line dense v-model="newWaypointValues.departureTime"
+              :rules="[rules.required, rules.time]" v-on="on" prepend-icon="mdi-clock" />
+          </template>
+          <v-time-picker color="accent lighten-1" width="248" format="24hr" v-model="newWaypointValues.departureTime" />
+        </v-menu>
+      </div>
+      <mmt-text-input class="input-field" :placeholder="$t('cities.krakow')" :hint="$t('tripHistory.arrivalCity')"
+        persistent-hint rounded filled single-line dense :rules="[rules.required]"
+        v-model="newWaypointValues.arrivalCity" />
+      <div class="date-input">
+        <v-menu offset-y :close-on-content-click="false">
+          <template v-slot:activator="{ on }">
+            <mmt-text-input class="input-field" placeholder="2020-05-12" :hint="$t('tripHistory.arrivalDate')"
+              persistent-hint rounded filled single-line dense v-model="newWaypointValues.arrivalDate"
+              :rules="[rules.required, rules.date]" v-on="on" prepend-icon="mdi-calendar-check" />
+          </template>
+          <v-date-picker first-day-of-week="1" v-bind="calendarLocale" color="accent lighten-1" width="248"
+            v-model="newWaypointValues.arrivalDate" />
+        </v-menu>
+      </div>
+      <div class="date-input">
+        <v-menu offset-y :close-on-content-click="false">
+          <template v-slot:activator="{ on }">
+            <mmt-text-input class="input-field" placeholder="15:43" :hint="$t('tripHistory.arrivalTime')"
+              persistent-hint rounded filled single-line dense v-model="newWaypointValues.arrivalTime"
+              :rules="[rules.required, rules.time]" v-on="on" prepend-icon="mdi-clock" />
+          </template>
+          <v-time-picker color="accent lighten-1" width="248" format="24hr" v-model="newWaypointValues.arrivalTime" />
+        </v-menu>
+      </div>
+      <mmt-text-input class="input-field" v-model="newWaypointValues.pathLength" placeholder="845"
+        :hint="$t('tripHistory.distanceBetweenPoints')" :suffix="$t('tripHistory.km')" persistent-hint rounded filled
+        single-line dense :rules="[rules.required]" type="number" />
+      <v-menu offset-y :close-on-content-click="false">
+        <template v-slot:activator="{ on }">
+          <mmt-text-input class="input-field" placeholder="00:00" :hint="$t('tripHistory.tripDuration')" persistent-hint
+            rounded filled single-line dense v-model="newWaypointValues.pathTime" v-on="on"
+            :rules="[rules.required, rules.time]" />
+        </template>
+        <v-time-picker color="accent lighten-1" width="248" format="24hr" v-model="newWaypointValues.pathTime" />
+      </v-menu>
+      <mmt-text-input class="input-field" v-model="newWaypointValues.details"
+        :placeholder="$t('tripHistory.changeCurrencyOnArrival')" :hint="$t('tripHistory.details')" persistent-hint
+        rounded filled single-line dense />
+      <v-select persistent-hint rounded filled dense hide-details class="mmt-select mt-3" :items="transportTypes"
+        v-model="newWaypointValues.transport" append-icon="mdi-chevron-down" />
+      <v-btn height="39" width="173" class="input-field mmt-continue-button mt-5" rounded depressed large
+        @click.prevent="createWaypoint" :disabled="sendBtnDisable">
+        {{$t('userSettings.save')}}</v-btn>
+    </v-form>
+
+    <v-card flat class="files-card mt-5" v-if="isEditForm" width="248">
+      <v-card-title>
+        {{$t('fileUpload.files')}}
+      </v-card-title>
+      <v-card-text class="my-n5">
+        <v-chip-group column>
+          <template v-for="file of files">
+            <a class="img-container my-1" v-if="/.(jpg|jpeg|png|gif|svg|bmp)$/i.test(file.userFileName)"
+              :href="`${baseUrl}/${waypointFilesSuffix}/${file.actualFileName}`" target="_blank" :key="file.actualFileName">
+              <v-img max-height="200" :src="`${baseUrl}/${waypointFilesSuffix}/${file.actualFileName}`">
+              </v-img>
+              <v-icon @click.prevent="deleteFile(file.actualFileName)">mdi-delete</v-icon>
+            </a>
+            <v-chip close v-else close-icon="mdi-delete"
+              :href="`${baseUrl}/${waypointFilesSuffix}/${file.actualFileName}`" target="_blank"
+              @click:close="deleteFile(file.actualFileName)" :key="file.actualFileName">
+              <div class="text-truncate">
+                {{file.userFileName}}
+              </div>
+            </v-chip>
+          </template>
+        </v-chip-group>
+        <template v-if="files.length === 0">
+          {{$t('fileUpload.addFiles')}}
+        </template>
+      </v-card-text>
+      <v-card-actions>
+        <v-btn class="ml-auto" fab small dark depressed color="accent lighten-1" @click="onPickFile"
+          v-if="files.length < MAX_WAYPOINT_FILE_COUNT">
+          <input type="file" style="display: none" ref="fileInput" @change="onFilePicked($event.target.files[0])" />
+          <v-icon>mdi-plus</v-icon>
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+
+    <v-card flat class="files-card mt-5" v-else width="248">
+      <v-card-title>
+        {{$t('fileUpload.files')}}
+      </v-card-title>
+      <v-card-text class="my-n5">
+        <v-chip-group column>
+          <v-chip v-for="(file, index) of tempFiles" close close-icon="mdi-delete"
+            @click:close="tempFiles.splice(index, 1)" :key="file.name + index">
+            <div class="text-truncate">
+              {{file.name}}
+            </div>
+          </v-chip>
+        </v-chip-group>
+        <template v-if="tempFiles.length === 0">
+          {{$t('fileUpload.addFiles')}}
+        </template>
+      </v-card-text>
+      <v-card-actions>
+        <v-btn class="ml-auto" fab small dark depressed color="accent lighten-1" @click="onPickFile"
+          v-if="tempFiles.length < MAX_WAYPOINT_FILE_COUNT">
+          <input type="file" style="display: none" ref="fileInput" @change="onTempFilePicked($event.target.files[0])" />
+          <v-icon>mdi-plus</v-icon>
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+
+  </div>
+
+  <v-snackbar v-model="fileSizeError" :timeout="3500">
+    {{$t('fileUpload.maxFileLength')}} {{MAX_WAYPOINT_SIZE_MB}} Mb
+    <v-btn color="red" text @click="fileSizeError = false">
+      {{$t('fileUpload.close')}}
+    </v-btn>
+  </v-snackbar>
+
+</div>

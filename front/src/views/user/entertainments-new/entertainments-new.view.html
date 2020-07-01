@@ -1,0 +1,179 @@
+<div class="new-entertainments">
+  <div class="manage-container">
+    <h4 class="title">{{ $t('newEntertainment.addLeisure')}}</h4>
+    <mmt-text-input
+      class="sign-up-text-field"
+      :placeholder="$t('newEntertainment.enterTitle')"
+      :mmt-label="$t('newEntertainment.title')"
+      :rules="[rules.required]"
+      rounded
+      filled
+      dense
+      mmt-dense
+      v-model="placeTitle"
+    />
+    <mmt-text-input
+      class="person-count-field"
+      :placeholder="$t('newEntertainment.enterPeopleCount')"
+      :mmt-label="$t('newEntertainment.peopleCount')"
+      type="number"
+      :rules="[rules.required, rules.greaterThenZero]"
+      rounded
+      filled
+      dense
+      mmt-dense
+      v-model="peopleCount"
+    />
+    <div class="datepicker">
+      <v-menu
+        v-model="menu"
+        :close-on-content-click="false"
+        transition="scale-transition"
+        offset-y
+        max-width="290px"
+        min-width="290px"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-text-field
+            prepend-inner-icon="mdi-calendar-check"
+            v-model="visitDate"
+            :label="$t('newEntertainment.date')"
+            readonly
+            v-bind="attrs"
+            v-on="on"
+            background-color="var(--filled-input-fill-color)"
+            rounded
+            filled
+            dense
+            hideDetails
+          ></v-text-field>
+        </template>
+        <v-date-picker v-model="visitDate" @input="menu = false"></v-date-picker>
+      </v-menu>
+    </div>
+    <div class="timepicker">
+      <v-menu
+        v-model="menu2"
+        :close-on-content-click="false"
+        transition="scale-transition"
+        offset-y
+        max-width="290px"
+        min-width="290px"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-text-field
+            prepend-inner-icon="mdi-calendar-check"
+            v-model="visitTime"
+            :label="$t('newEntertainment.time')"
+            readonly
+            v-bind="attrs"
+            v-on="on"
+            background-color="var(--filled-input-fill-color)"
+            rounded
+            filled
+            dense
+            hideDetails
+          ></v-text-field>
+        </template>
+        <v-time-picker v-model="visitTime" format="24hr"></v-time-picker>
+      </v-menu>
+    </div>
+    <v-textarea
+      class="note-field"
+      :label="$t('newEntertainment.note')"
+      :placeholder="$t('newEntertainment.enterNotes')"
+      filled
+      background-color="var(--filled-input-fill-color)"
+      no-resize
+      counter
+      rounded
+      v-model="note"
+    ></v-textarea>
+    <div class="btn-wrap">
+      <v-file-input
+        multiple
+        counter
+        small-chips
+        clear-icon
+        prepend-icon=""
+        show-size
+        filled
+        background-color="var(--filled-input-fill-color)"
+        :label="$t('newEntertainment.addFile')"
+        @change="fileUpload"
+        rounded
+        dense
+      ></v-file-input>
+      <v-btn
+        class="mmt-btn"
+        rounded
+        elevation="0"
+        @click="savePlace"
+      >{{ $t('newEntertainment.toPlan') }}</v-btn>
+    </div>
+  </div>
+  <div class="gmap-container">
+    <div class="autocomplete-container">
+      <v-btn
+        class="set-marker"
+        :title="$t('newEntertainment.choosePlaceManually')"
+        color="white"
+        x-large
+        @click="setCenterMarker"
+      >
+        <v-icon>mdi-map-marker</v-icon>
+      </v-btn>
+      <gmap-autocomplete
+        class="new-entertainments-autocomplete"
+        :placeholder="$t('entertainments.search')"
+        :select-first-on-enter="true"
+        @place_changed="findPlace"
+      >
+      </gmap-autocomplete>
+    </div>
+    <GmapMap
+      id="new-entertainments-map"
+      class="new-entertainments-map"
+      ref="entertainmentsMap"
+      :center="mapCenter"
+      :zoom="13"
+      :options="{
+        mapTypeControl: false,
+        styles: [
+          {
+            featureType: 'poi',
+            stylers: [{ visibility: 'off' }]
+          },
+          {
+            featureType: 'poi.attraction',
+            stylers: [{ visibility: 'on' }]
+          }
+        ]
+      }"
+    >
+      <div class="markerWrap" v-if="markerPos">
+        <GmapMarker
+          ref="placeMarker"
+          :position="markerPos"
+          :draggable="true"
+          v-model="markerPos"
+        />
+      </div>
+    </GmapMap>
+    <div class="images-wrapper" v-if="photo">
+      <div class="photo-wrapper">
+        <img
+          class="photo"
+          :src="getFilePath(photo)"
+        />
+        <v-icon
+          small
+          class="remove-icon"
+          @click="removePhoto"
+        >
+          mdi-close-box
+        </v-icon>
+      </div>
+    </div>
+  </div>
+</div>

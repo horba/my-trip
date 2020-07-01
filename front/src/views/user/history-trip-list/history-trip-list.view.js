@@ -1,4 +1,5 @@
 import { MmtTripCard, MmtTextInput } from '@components';
+import { mapState } from 'vuex';
 
 export default {
   components: {
@@ -13,10 +14,17 @@ export default {
     }
   }),
   computed: {
+    isPrevTripsPage () {
+      return this.$route.name === 'MyHistoryPrev';
+    },
+    ...mapState('trip', [ 'upcomingTrips' ]),
     trips () {
-      return this.period.year || this.period.month
-        ? this.$store.getters['trip/getTripsHistoryByPeriod'](this.period)
-        : this.$store.state.trip.tripsHistory;
+      if (this.isPrevTripsPage) {
+        return this.period.year || this.period.month
+          ? this.$store.getters['trip/getTripsHistoryByPeriod'](this.period)
+          : this.$store.state.trip.tripsHistory;
+      }
+      return this.$store.state.trip.upcomingTrips;
     },
     years () {
       return this.trips.map((trip) => {
@@ -54,5 +62,6 @@ export default {
   },
   async mounted () {
     await this.$store.dispatch('trip/initTripsHistory');
+    this.$store.dispatch('trip/initUpcomingTrips');
   }
 };

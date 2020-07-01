@@ -46,6 +46,41 @@
       "Game clubs, quests"
     ]
   },
+  "entertainments": {
+    "search": "Search on map",
+    "placesCount": "RESULTS",
+    "add": "Add",
+    "filter": "Filter"
+  },
+  "newEntertainment": {
+    "addLeisure": "Add leisure",
+    "choosePlaceManually": "Choose a place manually",
+    "toPlan": "To plan",
+    "addFile": "Add file",
+    "enterTitle": "Enter the title",
+    "title": "Title",
+    "enterPeopleCount": "Enter people count",
+    "peopleCount": "People count",
+    "date": "Date",
+    "time": "Time",
+    "note": "Note",
+    "enterNotes": "Enter notes"
+  },
+  "mmtLeisureCard": {
+    "schedule": "schedule"
+  },
+  "entertainmentType": {
+    "museum": "museum",
+    "tourist_attraction": "tourist attraction",
+    "amusement_park": "amusement park",
+    "point_of_interest": "point of interest",
+    "establishment": "establishment",
+    "laundry": "laundry",
+    "lodging": "lodging",
+    "real_estate_agency": "real estate agency",
+    "airport": "airport",
+    "travel_agency": "travel agency"
+  },
   "footer": {
     "join": "Join",
     "subscribeToNews": "Subscribe to news",
@@ -107,6 +142,17 @@
     "France": "France",
     "Ukraine": "Ukraine"
   },
+  "cities": {
+    "kyiv": "Kyiv",
+    "krakow": "Krakow"
+  },
+  "transportTypes": {
+    "plane": "Plane",
+    "train": "Train",
+    "bus": "Bus",
+    "car": "Car",
+    "bicycle": "Bicycle"
+  },
   "tripHistory": {
     "trip": "Trip",
     "previousTrips": "Previous Trips",
@@ -115,7 +161,36 @@
     "departure": "Departure",
     "flightTime": "Flight time",
     "differenceInTime": "Difference in time",
-    "details": "Details"
+    "details": "Details",
+    "planNewTrip": "Plan your future trip",
+    "createNewTrip": "Create a new journey",
+    "addNewWaypoint": "Add new waypoint",
+    "isCompleted": "Completed",
+    "arrival": "Arrival:",
+    "goingTo": "Going to",
+    "departurefromCity": "Departure from city",
+    "date": "Date",
+    "time": "Time",
+    "startTripFrom": "Start trip from",
+    "returnTo": "Return to",
+    "km": "km",
+    "hoursShort": "h",
+    "minutesShort": "min",
+    "departureCountry": "Departure country",
+    "departureCity": "Departure city",
+    "departureDate": "Departure date",
+    "departureTime": "Departure time",
+    "transplantTime": "Transplant time",
+    "arrivalCountry": "Arrival country",
+    "arrivalCity": "Arrival city",
+    "arrivalDate": "Arrival date",
+    "arrivalTime": "Arrival time",
+    "distanceBetweenPoints": "Distance between points",
+    "tripDuration": "Trip duration",
+    "changeCurrencyOnArrival": "Change currency on arrival",
+    "currency": "Currency",
+    "totalPrice": "Total price",
+    "hours": "hours"
   },
   "tickets": {
     "ticketItem": {
@@ -130,8 +205,11 @@
     "fileIsToBig": "File is too large",
     "correctFileSize": "The correct file size",
     "notAllowedContentType": "Please select .png, .jpeg or .bmp file",
-    "selecFiles": "Select files",
-    "addFiles": "Add files"
+    "files": "Files",
+    "addFiles": "Add files...",
+    "maxFileLength": "Max file size is",
+    "close": "Close",
+    "selecFiles": "Select files"
   },
   "signIn": {
     "welcome": "Welcome!",
@@ -165,6 +243,9 @@
   "validationRules": {
     "noEmpty": "Fill in the field.",
     "enterCorrectEmail": "Enter valid email",
+    "greaterThanZero": "Value must be greater than 0",
+    "enterCorrectDate": "Enter valid date",
+    "enterCorrectTime": "Enter valid time",
     "enterCorrectURL": "Enter valid URL",
     "maxLength": "Maximum length is {0} symbols",
     "minValue": "Minimum value is: {0}",

@@ -5,9 +5,9 @@ namespace Entities
 {
   public class AccommodationRepository
   {
-    private readonly RepositoryContext _repositoryContext;
+    private readonly IRepositoryContext _repositoryContext;
 
-    public AccommodationRepository(RepositoryContext repositoryContext)
+    public AccommodationRepository(IRepositoryContext repositoryContext)
     {
       _repositoryContext = repositoryContext;
     }

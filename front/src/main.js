@@ -1,5 +1,7 @@
 import '@filters';
 
+import * as VueGoogleMaps from 'vue2-google-maps';
+
 import { Authorize, Default } from '@layout';
 
 import App from './App.vue';
@@ -12,6 +14,14 @@ import vuetify from './plugins/vuetify';
 
 Vue.component('default-layout', Default);
 Vue.component('authorize-layout', Authorize);
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: process.env.VUE_APP_GOOGLE_MAP_API,
+    libraries: 'places'
+  },
+  installComponents: true
+});
 
 new Vue({
   router,

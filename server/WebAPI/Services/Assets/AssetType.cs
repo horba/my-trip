@@ -3,6 +3,8 @@
   public enum AssetType
   {
     UserAvatar = 1,
-    Accommodation = 2
+    WaypointFile = 2,
+    Entertainment = 3,
+    Accommodation = 4
   }
 }

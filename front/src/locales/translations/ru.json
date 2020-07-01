@@ -46,6 +46,41 @@
       "Игровые клубы, квесты"
     ]
   },
+  "entertainments": {
+    "search": "Искать на карте",
+    "placesCount": "Результаты",
+    "add": "Добавить",
+    "filter": "Фильтр"
+  },
+  "newEntertainment": {
+    "addLeisure": "Добавить",
+    "enterTitle": "Введите название",
+    "title": "Название",
+    "enterPeopleCount": "Введите количество человек",
+    "peopleCount": "Количество человек",
+    "date": "Дата",
+    "time": "Время",
+    "note": "Заметки",
+    "enterNotes": "Введите заметки",
+    "addFile": "Добавить файл",
+    "toPlan": "Запланировать",
+    "choosePlaceManually": "Выбрать место вручную"
+  },
+  "mmtLeisureCard": {
+    "schedule": "График работы"
+  },
+  "entertainmentType": {
+    "museum": "музей",
+    "tourist_attraction": "туристическая достопримечательность",
+    "amusement_park": "парк культуры и отдыха",
+    "point_of_interest": "достопримечательность",
+    "establishment": "заведение",
+    "laundry": "прачечная",
+    "lodging": "жилье",
+    "real_estate_agency": "агентство недвижимости",
+    "airport": "аэропорт",
+    "travel_agency": "туристическое агенство"
+  },
   "footer": {
     "join": "Присоедениться",
     "subscribeToNews": "Подписаться на новости",
@@ -107,6 +142,17 @@
     "France": "Франция",
     "Ukraine": "Украина"
   },
+  "cities": {
+    "kyiv": "Киев",
+    "krakow": "Краков"
+  },
+  "transportTypes": {
+    "plane": "Самолет",
+    "train": "Поезд",
+    "bus": "Автобус",
+    "car": "Автомобиль",
+    "bicycle": "Велосипед"
+  },
   "tripHistory": {
     "trip": "Поездка",
     "previousTrips": "Предыдущие поездки",
@@ -115,7 +161,36 @@
     "departure": "Вылет",
     "flightTime": "Время полета",
     "differenceInTime": "Разница во времени",
-    "details": "Подробнее"
+    "details": "Подробнее",
+    "planNewTrip": "Спланировать будущую поездку",
+    "createNewTrip": "Создать новое путешествие",
+    "addNewWaypoint": "Добавить новый пункт маршрута",
+    "isCompleted": "Выполнено",
+    "arrival": "Прибытие:",
+    "goingTo": "Собираюсь в",
+    "departurefromCity": "Отъезд из города",
+    "date": "Дата",
+    "time": "Время",
+    "startTripFrom": "Начало путешествия из",
+    "returnTo": "Вернутся в",
+    "km": "км",
+    "hoursShort": "ч",
+    "minutesShort": "мин",
+    "departureCountry": "Страна отправления",
+    "departureCity": "Город отправления",
+    "departureDate": "Дата отправления",
+    "departureTime": "Время отправления",
+    "transplantTime": "Время пересадки",
+    "arrivalCountry": "Страна прибытия",
+    "arrivalCity": "Город прибытия",
+    "arrivalDate": "Дата прибытия",
+    "arrivalTime": "Время прибытия",
+    "distanceBetweenPoints": "Расстояние между точками",
+    "tripDuration": "Длительность поездки",
+    "changeCurrencyOnArrival": "Изменить валюту по прибытии",
+    "currency": "Валюта",
+    "totalPrice": "Итоговая цена",
+    "hours": "часов"
   },
   "tickets": {
     "ticketItem": {
@@ -130,8 +205,11 @@
     "fileIsToBig": "Файл слишком большой",
     "correctFileSize": "Верный размер файла",
     "notAllowedContentType": "Пожалуйста, выберите файл .png, .jpeg или .bmp",
-    "selecFiles": "Выберите файлы",
-    "addFiles": "Добавить файлы"
+    "files": "Файлы",
+    "addFiles": "Добавьте файлы...",
+    "maxFileLength": "Максимальный размер файла",
+    "close": "Закрыть",
+    "selecFiles": "Выберите файлы"
   },
   "signIn": {
     "welcome": "Добро пожаловать!",
@@ -165,6 +243,9 @@
   "validationRules": {
     "noEmpty": "Заполните поле.",
     "enterCorrectEmail": "Введите корректный email",
+    "greaterThanZero": "Значение должно быть больше 0",
+    "enterCorrectDate": "Введите корректную дату",
+    "enterCorrectTime": "Введите корректное время",
     "enterCorrectURL": "Введите корректный URL",
     "maxLength": "Максимальная длина {0} символов",
     "minValue": "Минимальное значение: {0}",

@@ -15,6 +15,7 @@ using WebAPI.DTO;
 using WebAPI.Services;
 using WebAPI.Interfaces;
 using System.IO;
+using Entities.Models;
 using Microsoft.Extensions.FileProviders;
 using WebAPI.Services.Assets;
 
@@ -47,26 +48,33 @@ namespace WebAPI
                             });
       });
 
-      services.AddDbContext<RepositoryContext>(options =>
+      services.AddDbContext<IRepositoryContext, RepositoryContext>(options =>
           options.UseSqlServer(Configuration.GetConnectionString("mssqlConnection")));
       services.AddSingleton(Configuration);
       services.AddScoped<UserRepository>();
       services.AddScoped<CountryRepository>();
       services.AddScoped<LanguageRepository>();
-      services.AddScoped<TicketsRepository>();
-      services.AddScoped<AccommodationRepository>();
+      services.AddScoped<TicketsRepository>();      
       services.AddScoped<TicketsService>();
+      services.AddScoped<IWaypointRepository, WaypointRepository>();
+      services.AddScoped<IWaypointFileRepository, WaypointFileRepository>();
+      services.AddScoped<IWaypointService, WaypointService>();
+      services.AddScoped<IWaypointFileService, WaypointFileService>();
       services.AddScoped<UserService>();
       services.AddSingleton<AuthService>();
-      services.AddScoped<TripRepository>();
-      services.AddScoped<TripService>();
+      services.AddScoped<ITripRepository, TripRepository>();
+      services.AddScoped<ITripService, TripService>();
       services.AddSingleton(frontConfiguration);
       services.AddScoped<RecoveryPasswordService>();
       services.AddSingleton(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
       services.AddScoped<IEmailSender, EmailSender>();
-      services.AddScoped<GoogleOauthService>();
+      services.AddScoped<IGoogleOauthService, GoogleOauthService>();
+      services.AddScoped<IGooglePlacePhotoService, GooglePlacePhotoService>();
       services.AddScoped<AssetsService>();
+      services.AddScoped<IEntertainmentService, EntertainmentService>();
+      services.AddScoped<IEntertainmentRepository, EntertainmentRepository>();
       services.AddScoped<AccommodationService>();
+      services.AddScoped<AccommodationRepository>();
 
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
           .AddJwtBearer(x =>
@@ -139,8 +147,16 @@ namespace WebAPI
       app.UseFileServer(new FileServerOptions
       {
         FileProvider = new PhysicalFileProvider(
-                    Path.Combine(Directory.GetCurrentDirectory(), Consts.UsersAvatarsPath)),
-        RequestPath = "/avatars",
+                    Path.Combine(Directory.GetCurrentDirectory(), Consts.AssetsPath)),
+        RequestPath = "/assets",
+        EnableDirectoryBrowsing = true,
+        StaticFileOptions = { ServeUnknownFileTypes = true}
+      });
+      app.UseFileServer(new FileServerOptions
+      {
+        FileProvider = new PhysicalFileProvider(
+                          Path.Combine(Directory.GetCurrentDirectory(), Consts.EntertainmentsPath)),
+        RequestPath = "/entertainment",
         EnableDirectoryBrowsing = true
       });
       app.UseFileServer(new FileServerOptions

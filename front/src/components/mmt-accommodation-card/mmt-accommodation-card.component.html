@@ -13,7 +13,7 @@
                            transition="fade-transition"></v-carousel-item>
         </v-carousel>
         <v-img v-else
-               src="@/assets/empty-imgage.png"
+               src="@/assets/empty-image.jpg"
                height="150px"></v-img>
       </div>
       <div class="d-flex flex-column justify-space-between pb-2">
@@ -27,7 +27,7 @@
           <span>{{ accommodation.name }}</span>
         </v-card-title>
         <v-card-subtitle class="details justify-end pb-0">
-          <div>{{ accommodation.arrivalDateTime | date }} - {{ accommodation.departureDateTime | date }}</div>
+          <div>{{ accommodation.arrivalDateTime | date('d MMM y, HH:mm') }} - {{ accommodation.departureDateTime | date('d MMM y, HH:mm') }}</div>
           <div>
             <span v-if="accommodation.guestCount">{{ accommodation.guestCount }} {{ $t('accommodations.guest') }}, </span>
             <span v-if="accommodation.roomsCount">{{ accommodation.roomsCount }} {{ $t('accommodations.room') }}</span>
