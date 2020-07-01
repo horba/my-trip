@@ -31,6 +31,16 @@
       <Compile Remove="Migrations\20200622013445_Waypoint.Designer.cs" />
       <Compile Remove="Migrations\20200623002808_Waypoints.cs" />
       <Compile Remove="Migrations\20200623002808_Waypoints.Designer.cs" />
+      <Compile Remove="Migrations\20200613124517_Accommodations.cs" />
+      <Compile Remove="Migrations\20200613124517_Accommodations.Designer.cs" />
+      <Compile Remove="Migrations\20200613173258_Accommodations.cs" />
+      <Compile Remove="Migrations\20200613173258_Accommodations.Designer.cs" />
+      <Compile Remove="Migrations\20200613173621_Accommodations.cs" />
+      <Compile Remove="Migrations\20200613173621_Accommodations.Designer.cs" />
+      <Compile Remove="Migrations\20200613180601_Accommodations.cs" />
+      <Compile Remove="Migrations\20200613180601_Accommodations.Designer.cs" />
+      <Compile Remove="Migrations\20200615160942_Accommodations.cs" />
+      <Compile Remove="Migrations\20200615160942_Accommodations.Designer.cs" />
     </ItemGroup>
 
     <ItemGroup>

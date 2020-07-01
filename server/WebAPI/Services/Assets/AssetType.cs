@@ -4,6 +4,7 @@
   {
     UserAvatar = 1,
     WaypointFile = 2,
-    Entertainment = 3
+    Entertainment = 3,
+    Accommodation = 4
   }
 }

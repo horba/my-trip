@@ -208,7 +208,8 @@
     "files": "Files",
     "addFiles": "Add files...",
     "maxFileLength": "Max file size is",
-    "close": "Close"
+    "close": "Close",
+    "selecFiles": "Select files"
   },
   "signIn": {
     "welcome": "Welcome!",
@@ -244,6 +245,40 @@
     "enterCorrectEmail": "Enter valid email",
     "greaterThanZero": "Value must be greater than 0",
     "enterCorrectDate": "Enter valid date",
-    "enterCorrectTime": "Enter valid time"
+    "enterCorrectTime": "Enter valid time",
+    "enterCorrectURL": "Enter valid URL",
+    "maxLength": "Maximum length is {0} symbols",
+    "minValue": "Minimum value is: {0}",
+    "maxValue": "Maximum value is: {0}"
+  },
+  "accommodations": {
+    "results": "Results",
+    "addAccommodation": "Add Accommodation",
+    "editAccommodation": "Change Accommodation",
+    "filter": "Filter",
+    "notFound": "Nothing found",
+    "subtitle": "Hotel room",
+    "guest": "guest",
+    "guests": "guests",
+    "room": "room",
+    "rooms": "rooms",
+    "perNight": "per night",
+    "total": "Total",
+    "place": "Place",
+    "name": "Name of the object",
+    "arrivalDateTime": "Arrival date",
+    "departureDateTime": "Departure Date",
+    "guestCount": "Number of guests",
+    "roomsCount": "Number of rooms",
+    "address": "Address",
+    "link": "Link",
+    "note": "Notes",
+    "pricePerNight": "Price per night",
+    "departureArrivalDateValidation": "Departure date must be greater than arrival date",
+    "plan": "To Plan"
+  },
+  "datetimePicker": {
+    "ok": "OK",
+    "clear": "Clear"
   }
 }

@@ -12,7 +12,7 @@ export { default as ForTourOperators } from '@views/ForTourOperators.vue';
 export { default as Contacts } from '@views/Contacts.vue';
 export { default as ReviewNew } from '@views/ReviewNew.vue';
 export { default as MyTickets } from '@views/user/Tickets.vue';
-export { default as MyAccommodation } from '@views/user/Accommodation.vue';
+export { default as MyAccommodation } from '@views/user/accommodation/accommodation.view.vue';
 export { default as MyFood } from '@views/user/Food.vue';
 export { default as MyTransport } from '@views/user/Transport.vue';
 export { default as SignIn } from './sign-in/sign-in.view.vue';
@@ -44,3 +44,7 @@ export {
   default as ScheduleEntertainments
 }
   from '@views/user/entertainments-new/entertainments-new.view.vue';
+export {
+  default as AccommodationEditor
+}
+  from '@views/user/accommodation-editor/accommodation-editor.view.vue';

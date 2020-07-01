@@ -7,6 +7,8 @@
     public const string WaypointsFilesPath = @"Assets\Waypoints";
     public const string AssetsPath = @"Assets";
 
+    public const string AccommodationsPath = @"Assets\Accommodations";
+
     public static string[] AllowedImageContentTypes = new[] { "image/png", "image/jpeg", "image/jpg",  "image/bmp" };
 
     public const int MaxImageFileSize = 1024 * 1024 * 2;
