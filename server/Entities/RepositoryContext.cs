@@ -304,38 +304,28 @@ namespace Entities
       );
       modelBuilder.Entity<Entertainment>();
 
-      var moqAccommodations = new[] {
-                      new Accommodation
-                      {
-                        Id = -1,
-                        Name = "Grand Hotel Ukraine",
-                        ArrivalDateTime = DateTime.Now.AddDays(5),
-                        DepartureDateTime = DateTime.Now.AddDays(7),
-                        Address = "Dmytra Yavornytskoho Avenue, 67К, Dnipro",
-                        GuestCount = 1,
-                        RoomsCount = 1,
-                        Link = "http://www.grand-hotel-ukraine.dp.ua",
-                        Price = 100,
-                        Currency = "USD",
-                        Note = "056 790 1441",
-                        UserId = -1
-                      },
-                      new Accommodation
-                      {
-                        Id = -2,
-                        Name = "Menorah",
-                        ArrivalDateTime = DateTime.Now.AddDays(12),
-                        DepartureDateTime = DateTime.Now.AddDays(17),
-                        Address = "Sholom-Aleikhema Street, 4/26, Dnipro",
-                        GuestCount = 2,
-                        RoomsCount = 2,
-                        Link = "http://menorah-center.com",
-                        Price = 90,
-                        Currency = "USD",
-                        Note = "056 717 7000",
-                        UserId = -1
-                      }
-                   };
+      var random = new Random();
+
+      var moqAccommodations = Enumerable.Range(1, 70)
+        .Select(i =>
+        {
+          var randomDateTime = DateTime.Now.AddDays(random.Next(5, 1_000));
+          return new Accommodation
+          {
+            Id = -i,
+            Name = $"Moq Hotel #{random.Next(10_000, 100_000)}",
+            ArrivalDateTime = randomDateTime,
+            DepartureDateTime = randomDateTime.AddDays(random.Next(1, 7)),
+            Address = $"Moq address #{random.Next(10_000, 100_000)}",
+            GuestCount = random.Next(0, 31),
+            RoomsCount = random.Next(0, 16),
+            Link = "http://www.grand-hotel-ukraine.dp.ua",
+            Price = 50 * random.Next(1, 100),
+            Currency = "USD",
+            Note = "056 790 1441",
+            UserId = -1
+          };
+        });
 
       modelBuilder.Entity<Accommodation>().HasData(moqAccommodations);
     }

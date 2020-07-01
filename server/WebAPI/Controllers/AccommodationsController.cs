@@ -22,9 +22,9 @@ namespace WebAPI.Controllers
 
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<AccommodationDTO>), StatusCodes.Status200OK)]
-    public IActionResult GetAccommodations()
+    public IActionResult GetPagedAccommodations([FromQuery] PaginationRequestQueryDTO paginationRequestQuery)
     {
-      return Ok(_accommodationService.GetAccommodations(HttpContext.GetUserIdFromClaim()));
+      return Ok(_accommodationService.GetAccommodations(HttpContext.GetUserIdFromClaim(), paginationRequestQuery));
     }
 
     [HttpGet]

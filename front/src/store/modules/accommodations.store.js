@@ -1,20 +1,27 @@
 import api from '@api';
+import { PAGINTAION_ACCOMMODATION_PAGE_SIZE } from '@constants';
 
 export default {
   namespaced: true,
   state: {
-    accommodations: []
+    accommodations: [],
+    paginationInfo: {}
   },
   mutations: {
-    INIT_ACCOMODATIONS (state, accommodations) {
+    SET_ACCOMODATIONS (state, accommodations) {
       state.accommodations = accommodations;
+    },
+    SET_PAGINATION_INFO (state, paginationInfo) {
+      state.paginationInfo = paginationInfo;
     }
   },
   actions: {
-    async initAccommodations ({ commit }) {
-      await api.get('/accommodations')
+    async fetchAccommodations ({ commit }, pageNumber) {
+      await api.get('/accommodations', { pageNumber, pageSize: PAGINTAION_ACCOMMODATION_PAGE_SIZE })
         .then(r => {
-          commit('INIT_ACCOMODATIONS', r.data);
+          const { data, ...rest } = r.data;
+          commit('SET_ACCOMODATIONS', data);
+          commit('SET_PAGINATION_INFO', rest);
         });
     },
     getAccommodation ({ commit }, id) {

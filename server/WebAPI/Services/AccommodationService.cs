@@ -1,8 +1,10 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using Entities;
 using Entities.Models;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper.Configuration.Conventions;
 using WebAPI.DTO;
 using WebAPI.Services.Assets;
 
@@ -25,10 +27,25 @@ namespace WebAPI.Services
       _assetsService = assetsService;
     }
 
-    public IEnumerable<AccommodationDTO> GetAccommodations(int userId)
+    private IQueryable<Accommodation> PaginateAccommodations(IQueryable<Accommodation> accommodations, PaginationRequestQueryDTO paginationRequestQueryDto)
+    {
+      return accommodations
+        .Skip((int)(paginationRequestQueryDto.PageNumber * paginationRequestQueryDto.PageSize))
+        .Take((int)paginationRequestQueryDto.PageSize);
+    }
+
+    public PagedResponse<AccommodationDTO> GetAccommodations(int userId, PaginationRequestQueryDTO paginationRequestQueryDto)
     {
       var accommodations = _accommodationRepository.GetUserAccommodations(userId);
-      return _mapper.Map<IEnumerable<AccommodationDTO>>(accommodations.OrderBy(t => t.DepartureDateTime).ToList());
+      int totalCount = (int)Math.Ceiling(accommodations.Count() / (double)paginationRequestQueryDto.PageSize);
+      accommodations = PaginateAccommodations(accommodations, paginationRequestQueryDto);
+      return new PagedResponse<AccommodationDTO>
+      {
+        Data = _mapper.Map<IEnumerable<AccommodationDTO>>(accommodations.ToList()),
+        PageSize = paginationRequestQueryDto.PageSize,
+        PageNumber = paginationRequestQueryDto.PageNumber,
+        TotalCount = totalCount
+      };
     }
 
     public void CreateOrUpdateAccommodation(AccommodationDTO model)
@@ -37,7 +54,7 @@ namespace WebAPI.Services
       if (photoUrls.Any())
       {
         model.Photos = model.Photos.Except(photoUrls).ToList();
-        var fileNames = _assetsService.DownloadFilesAsync(photoUrls, AssetType.Accommodation);        
+        var fileNames = _assetsService.DownloadFilesAsync(photoUrls, AssetType.Accommodation);
         model.Photos.AddRange(fileNames);
       }
 

@@ -7,16 +7,12 @@
       </h6>
     </div>
     <div>
-      <v-btn rounded
-             class="details accent lighten-1 mr-5"
-             to="/my/accommodation/new">
+      <v-btn rounded class="details accent lighten-1 mr-5" to="/my/accommodation/new">
         <span class="text-capitalize">
           {{ $t('accommodations.addAccommodation') }}
         </span>
       </v-btn>
-      <v-btn v-if="accommodations.length"
-             rounded
-             class="details accent lighten-1">
+      <v-btn v-if="accommodations.length" rounded class="details accent lighten-1">
         <span class="text-capitalize">
           {{ $t('accommodations.filter') }}
           <v-icon right class="white--text">mdi-filter-variant</v-icon>
@@ -26,13 +22,11 @@
   </div>
   <div class="d-flex flex-row align-stretch justify-space-between py-5">
     <div class="align-self-stretch">
-      <div class="d-flex flex-wrap justify-space-between"
-           v-if="accommodations.length">
+      <div class="d-flex flex-wrap justify-space-between" v-if="accommodations.length">
         <template v-for="(accommodation,n) in accommodations">
-          <mmt-accommodation-card :key="`accommodation-${n}`"
-                                  :accommodation="accommodation"
-                                  :class="`${ selectedAccommodation && accommodation.id === selectedAccommodation.id ? 'active' : ''} mb-5`"
-                                  v-on:click.native="viewAccommodation(accommodation, $event)" />
+          <mmt-accommodation-card :key="`accommodation-${n}`" :accommodation="accommodation"
+            :class="`${ selectedAccommodation && accommodation.id === selectedAccommodation.id ? 'active' : ''} mb-5`"
+            v-on:click.native="viewAccommodation(accommodation, $event)" />
         </template>
       </div>
       <p v-else>
@@ -43,4 +37,5 @@
       <div class="map" ref="map-holder"></div>
     </div>
   </div>
+  <v-pagination :length="paginationInfo.totalCount" :value="paginationInfo.pageNumber + 1" color="accent lighten-1" @input="onPaginationChange"/>
 </div>

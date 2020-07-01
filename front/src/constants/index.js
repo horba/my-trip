@@ -14,3 +14,5 @@ export {
   EMAIL_REGEX,
   URL_REGEX
 } from './validation.js';
+
+export { PAGINTAION_ACCOMMODATION_PAGE_SIZE } from './paginationSettings.js';

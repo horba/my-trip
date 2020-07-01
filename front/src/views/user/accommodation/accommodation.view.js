@@ -1,6 +1,7 @@
 import { VBtn, VIcon } from 'vuetify/lib';
 import { MmtTextInput, MmtStepper, MmtAccommodationCard } from '@components';
 import { accommodationGoogleApiMixin } from '@mixins';
+import { mapState } from 'vuex';
 
 export default {
   mixins: [ accommodationGoogleApiMixin ],
@@ -18,6 +19,7 @@ export default {
     };
   },
   computed: {
+    ...mapState('accommodations', [ 'paginationInfo' ]),
     accommodations () {
       return this.$store.state.accommodations.accommodations;
     }
@@ -28,9 +30,12 @@ export default {
         this.findPlace(accommodation.address);
         this.selectedAccommodation = accommodation;
       }
+    },
+    onPaginationChange (page) {
+      this.$store.dispatch('accommodations/fetchAccommodations', page - 1);
     }
   },
   async mounted () {
-    await this.$store.dispatch('accommodations/initAccommodations');
+    await this.$store.dispatch('accommodations/fetchAccommodations', 0);
   }
 };
