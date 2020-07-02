@@ -22,12 +22,7 @@ export default {
       {
         title: 'menu.food',
         icon: 'mdi-food',
-        link: '/my/food'
-      },
-      {
-        title: 'menu.transport',
-        icon: 'mdi-car',
-        link: '/my/transport'
+        link: '/my/eating'
       },
       {
         title: 'menu.leisure',

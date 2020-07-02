@@ -14,11 +14,8 @@ export default {
   data: () => ({
     links1: [
       { title: 'menu.accommodation', route: '/accommodation' },
-      { title: 'menu.transport', route: '/transport' },
       { title: 'menu.leisure', route: 'leisure' },
-      { title: 'menu.food', route: '/food' },
-      { title: 'menu.hotTours', route: '/hot-tours' },
-      { title: 'menu.articles', route: '/articles' }
+      { title: 'menu.food', route: '/food' }
     ],
     links2: [
       { title: 'menu.privacyPolicy', route: '/privacy-policy' },

@@ -35,11 +35,6 @@ export default {
         link: '/my/food'
       },
       {
-        title: 'menu.transport',
-        icon: 'mdi-car',
-        link: '/my/transport'
-      },
-      {
         title: 'menu.leisure',
         icon: 'mdi-airballoon',
         link: '/my/entertainments'
@@ -48,11 +43,6 @@ export default {
         title: 'menu.travelRoute',
         icon: 'mdi-bag-personal',
         link: '/my/travel-route'
-      },
-      {
-        title: 'menu.bookmarks',
-        icon: 'mdi-heart',
-        route: '/my/bookmarks'
       },
       {
         title: 'menu.scheduler',
@@ -80,12 +70,6 @@ export default {
         title: 'menu.settings',
         icon: 'mdi-cog',
         link: '/my/settings'
-      },
-      {
-        title: 'menu.notifications',
-        icon: 'mdi-bell',
-        link: '/my/notifications',
-        switch: false
       },
       {
         title: 'menu.signout',

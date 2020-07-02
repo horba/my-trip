@@ -27,6 +27,7 @@
                  :key="item.title"
                  :to="item.link"
                  link
+                 class="items-list"
                  :class="`link ${!$vuetify.breakpoint.smAndDown && item.isChild ? 'child' : ''}`"
                  active-class="active"
                  @click="itemSelected(item)">
