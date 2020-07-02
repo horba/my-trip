@@ -9,6 +9,7 @@ import trip from './modules/trip.store';
 import userSettings from './modules/userSettings.store';
 import userTickets from './modules/userTickets.store';
 import waypoints from './modules/waypoints.store';
+import accommodations from './modules/accommodations.store';
 
 Vue.use(Vuex);
 
@@ -22,6 +23,7 @@ export default new Vuex.Store({
     recoveryPassword,
     entertainment,
     waypoints,
-    dictionaries
+    dictionaries,
+    accommodations
   }
 });

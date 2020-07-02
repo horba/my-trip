@@ -7,7 +7,8 @@ import {
   ScheduleEntertainments, SignIn, SignUp,
   UserSettings, UserCabinet, MyHistoryTripList,
   MyHistoryTripRoute, RecoveryPassword,
-  AddEditRouteForm, AddTripForm
+  AddEditRouteForm, AddTripForm,
+  AccommodationEditor
 } from '@views';
 
 import Vue from 'vue';
@@ -97,6 +98,18 @@ const routes = [
         path: 'accommodation',
         name: 'MyAccommodation',
         component: MyAccommodation,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'accommodation/new',
+        name: 'AddAccommodation',
+        component: AccommodationEditor,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'accommodation/:id',
+        name: 'ManageAccommodation',
+        component: AccommodationEditor,
         meta: { layout: 'authorize' }
       },
       {

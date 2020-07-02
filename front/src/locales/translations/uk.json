@@ -203,7 +203,8 @@
     "files": "Файли",
     "addFiles": "Додати файли...",
     "maxFileLength": "Максимальна вага файла",
-    "close": "Зачинити"
+    "close": "Зачинити",
+    "selecFiles": "Виберіть файли"
   },
   "signIn": {
     "welcome": "Ласкаво просимо!",
@@ -239,6 +240,40 @@
     "enterCorrectEmail": "Введіть дійсний email",
     "greaterThanZero": "значення має бути більше 0",
     "enterCorrectDate": "Введіть дійсну дату",
-    "enterCorrectTime": "Введіть дійсний час"
+    "enterCorrectTime": "Введіть дійсний час",
+    "enterCorrectURL": "Введіть дійсний URL",
+    "maxLength": "Максимальна довжина {0} символів",
+    "minValue": "Мінімальне значення: {0}",
+    "maxValue": "Максимальне значення: {0}"
+  },
+  "accommodations": {
+    "results": "Результати",
+    "addAccommodation": "Додати житло",
+    "editAccommodation": "Змінити житло",
+    "filter": "Фільтр",
+    "notFound": "Нічого не знайдено",
+    "subtitle": "Кімната в готелі",
+    "guest": "гість",
+    "guests": "гостей",
+    "room": "кімната",
+    "rooms": "кімнати",
+    "perNight": "за ніч",
+    "total": "Всього",
+    "place": "Місце",
+    "name": "Назва об'єкта",
+    "arrivalDateTime": "Дата заїзду",
+    "departureDateTime": "Дата від'їзду",
+    "guestCount": "Кількість гостей",
+    "roomsCount": "Кількість номерів",
+    "address": "Звідки",
+    "link": "Посилання",
+    "note": "Нотатки",
+    "pricePerNight": "Ціна за добу",
+    "departureArrivalDateValidation": "Дата виїзду повинна бути більше дати заїзду",
+    "plan": "Запланувати"
+  },
+  "datetimePicker": {
+    "ok": "Вибрати",
+    "clear": "Очистити"
   }
 }

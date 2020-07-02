@@ -39,6 +39,12 @@ namespace WebAPI.DTO
         .ForMember(tr => tr.EndDate, 
         opt => opt.MapFrom(tr => tr.ArrivalDate));
 
+
+      CreateMap<Entities.Models.Accommodation, AccommodationDTO>()
+        .ForMember(dest => dest.Photos, opt => opt.MapFrom(src => src.Photos.Split(';', System.StringSplitOptions.RemoveEmptyEntries)));
+
+      CreateMap<AccommodationDTO, Entities.Models.Accommodation>()
+        .ForMember(dest => dest.Photos, opt => opt.MapFrom(src => string.Join(';', src.Photos)));
     }
   }
 }

@@ -1,14 +1,15 @@
 <div class="input-wrapper">
-  <label
-    :class="{'error--text': isLabelError || $attrs['error-messages'] || $attrs.error != undefined}"
-  >{{mmtLabel}}
-    <v-text-field
-      class="mmt-text-input"
-      :class="{'mmt-text-input--dense': mmtDense}"
-      v-bind="$attrs"
-      v-on="$listeners"
-      @input = "validateLabel($event)"
-      @blur = "validateLabel($event.target.value)"
-    />
+  <label :class="{'error--text': isLabelError || $attrs['error-messages'] || $attrs.error != undefined}">
+    {{mmtLabel}}
+    <template v-if="isRequired">
+      *
+    </template>
+    <v-text-field class="mmt-text-input"
+                  :class="{'mmt-text-input--dense': mmtDense}"
+                  v-bind="$attrs"
+                  v-on="$listeners"
+                  @input = "validateLabel($event)"
+                  @blur = "validateLabel($event.target.value)" 
+                  />
   </label>
 </div>

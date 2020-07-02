@@ -1,0 +1,171 @@
+<v-card class="user-settings-card"
+        color="primary lighten-3"
+        flat
+        tile>
+  <v-card-title>
+    <h5 class="form-header">
+      <span v-if="accommodation.id">
+        {{$t('accommodations.editAccommodation')}}
+      </span>
+      <span v-else>
+        {{$t('accommodations.addAccommodation')}}
+      </span>
+    </h5>
+  </v-card-title>
+  <v-card-text>
+    <div class="d-flex flex-row align-stretch justify-space-between">
+      <div class="align-self-start">
+        <v-form class="form"
+                v-model="formValidity">
+
+          <mmt-text-input id="placeAutocomplete"
+                          v-model="accommodation.place"
+                          class="input-field"
+                          :mmt-label="$t('accommodations.place')"
+                          :placeholder="$t('accommodations.place')"
+                          :rules="[rules.required, nameRules.maxLength]"
+                          persistent-hint
+                          rounded
+                          filled
+                          single-line
+                          dense />
+
+          <label v-if="place.results.length">
+            {{ $t('accommodations.name') }}
+            <v-autocomplete v-model="accommodation.name"
+                            :items="place.results"
+                            :placeholder="$t('accommodations.name')"
+                            @change="selectPlace"
+                            hide-no-data
+                            hide-selected
+                            return-object
+                            item-text="name"
+                            item-value="place_id"
+                            rounded
+                            filled
+                            single-line
+                            dense>
+            </v-autocomplete>
+          </label>
+
+          <mmt-datetime-picker v-model="accommodation.arrivalDateTime" 
+                               :datetime="accommodation.arrivalDateTime"
+                               class="input-field"
+                               :rules="[rules.required]"
+                               @input="validateDepartureDateTime"
+                               :label="$t('accommodations.arrivalDateTime')"
+                               dateFormat="d, MMMM" />
+
+          <mmt-datetime-picker v-model="accommodation.departureDateTime" 
+                               :datetime="accommodation.departureDateTime"
+                               class="input-field"
+                               :rules="[rules.required, departureDateTimeValidation]"
+                               @input="validateDepartureDateTime"
+                               :label="$t('accommodations.departureDateTime')"
+                               dateFormat="d, MMMM" />
+
+          <mmt-text-input class="input-field"
+                          v-model.number="accommodation.price"
+                          :mmt-label="$t('accommodations.pricePerNight')"
+                          :rules="[rules.required, priceRules.minValue, priceRules.maxValue]"
+                          prepend-inner-icon="mdi-cash-usd-outline"
+                          persistent-hint
+                          rounded
+                          filled
+                          single-line
+                          dense />
+
+          <mmt-text-input class="input-field"
+                          v-model.number="accommodation.guestCount"
+                          :mmt-label="$t('accommodations.guestCount')"
+                          :rules="[rules.required, guestRules.minValue, guestRules.maxValue]"
+                          persistent-hint
+                          rounded
+                          filled
+                          single-line
+                          dense />
+
+          <mmt-text-input class="input-field"
+                          v-model.number="accommodation.roomsCount"
+                          :mmt-label="$t('accommodations.roomsCount')"
+                          :rules="[rules.required, roomRules.minValue, roomRules.maxValue]"
+                          persistent-hint
+                          rounded
+                          filled
+                          single-line
+                          dense />
+
+          <mmt-text-input class="input-field"
+                          v-model.trim="accommodation.address"
+                          :mmt-label="$t('accommodations.address')"
+                          :rules="[rules.required]"
+                          persistent-hint
+                          rounded
+                          filled
+                          single-line
+                          dense />
+
+          <mmt-text-input class="input-field"
+                          v-model.trim="accommodation.link"
+                          :mmt-label="$t('accommodations.link')"
+                          :rules="[urlRules.validUrl]"
+                          persistent-hint
+                          rounded
+                          filled
+                          single-line
+                          dense />
+          <label>
+            {{ $t('accommodations.note') }}
+            <v-textarea class="input-field"
+                        v-model.trim="accommodation.note"
+                        :rules="[notesRules.maxLength]"
+                        background-color="white"
+                        persistent-hint
+                        rounded
+                        filled
+                        single-line
+                        dense />
+          </label>
+
+          <v-btn height="39"
+                 width="173"
+                 class="mmt-continue-button mt-5"
+                 @click.prevent="saveAccommodation"
+                 :disabled="!formValidity"
+                 rounded
+                 depressed
+                 large>
+            {{$t('accommodations.plan')}}
+          </v-btn>
+
+        </v-form>
+      </div>
+      <div class="side align-self-stretch ml-5">
+        <div class="map" ref="map-holder"></div>
+        <div class="mt-5">
+          <v-file-input class="input-field"
+                        :rules="fileUploadRules"
+                        accept="image/png, image/jpeg, image/jpg, image/bmp"
+                        :show-size="true"
+                        multiple
+                        :placeholder="$t('fileUpload.selecFiles')"
+                        prepend-icon="mdi-camera"
+                        :label="$t('fileUpload.addFiles')"
+                        @change="fileUpload"
+                        @click:clear="fileUploadClear"
+                        :error-messages="fileUploadError ? $t(`fileUpload.${fileUploadError}`) : ''">
+          </v-file-input>
+        </div>
+        <div>
+          <template v-for="(photo,n) in accommodation.photos">
+            <img :key="`photo-${n}`"
+                 class="ma-5"
+                 :src="getFilePath(photo)"
+                 style="width: 100px; height:100px;" />
+            <a @click="deleteFile(photo)"><v-icon>mdi-window-close</v-icon></a>
+          </template>
+        </div>
+      </div>
+    </div>
+  </v-card-text>
+</v-card>

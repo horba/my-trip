@@ -203,7 +203,8 @@
     "files": "Файлы",
     "addFiles": "Добавьте файлы...",
     "maxFileLength": "Максимальный размер файла",
-    "close": "Закрыть"
+    "close": "Закрыть",
+    "selecFiles": "Выберите файлы"
   },
   "signIn": {
     "welcome": "Добро пожаловать!",
@@ -239,6 +240,40 @@
     "enterCorrectEmail": "Введите корректный email",
     "greaterThanZero": "Значение должно быть больше 0",
     "enterCorrectDate": "Введите корректную дату",
-    "enterCorrectTime": "Введите корректное время"
+    "enterCorrectTime": "Введите корректное время",
+    "enterCorrectURL": "Введите корректный URL",
+    "maxLength": "Максимальная длина {0} символов",
+    "minValue": "Минимальное значение: {0}",
+    "maxValue": "Максимальное значение: {0}"
+  },
+  "accommodations": {
+    "results": "Результаты",
+    "addAccommodation": "Добавить жилье",
+    "editAccommodation": "Изменить жилье",
+    "filter": "Фильтр",
+    "notFound": "Ничего не найдено",
+    "subtitle": "Комната в гостинице",
+    "guest": "гость",
+    "guests": "гостей",
+    "room": "комната",
+    "rooms": "комнаты",
+    "perNight": "за ночь",
+    "total": "Всего",
+    "place": "Место",
+    "name": "Название обьекта",
+    "arrivalDateTime": "Дата заезда",
+    "departureDateTime": "Дата отьезда",
+    "guestCount": "Количество гостей",
+    "roomsCount": "Количество номеров",
+    "address": "Адрес",
+    "link": "Ссылка",
+    "note": "Заметки",
+    "pricePerNight": "Стоимость за ночь",
+    "departureArrivalDateValidation": "Дата выезда должна быть больше даты заезда",
+    "plan": "Запланировать"
+  },
+  "datetimePicker": {
+    "ok": "Выбрать",
+    "clear":  "Очистить"
   }
 }

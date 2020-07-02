@@ -19,3 +19,9 @@ export { default as MmtRecoveryStep2 } from './recovery-password/mmt-recovery-st
 export { default as MmtRecoveryStep3 } from './recovery-password/mmt-recovery-step-3.vue';
 export { default as MmtAvatar } from './controls/mmt-avatar/mmt-avatar.component.vue';
 export { default as MmtLeisureCard } from './mmt-leisure-card/mmt-leisure-card.component.vue';
+export {
+  default as MmtAccommodationCard
+} from './mmt-accommodation-card/mmt-accommodation-card.component.vue';
+export {
+  default as MmtDatetimePicker
+} from './controls/mmt-datetime-picker/mmt-datetime-picker.component.vue';

@@ -4,8 +4,13 @@ export {
   SERVER_ENTERTAINMENT_PATH,
   MAX_ENTERTAINMENT_SIZE_MB,
   MAX_WAYPOINT_SIZE_MB,
-  MAX_WAYPOINT_FILE_COUNT
+  MAX_WAYPOINT_FILE_COUNT,
+  SERVER_ACCOMODATIONS_PATH,
+  MAX_ACCOMODATION_SIZE_MB
 } from './fileSettings.js';
 
 export { mapSettings, LINE_PATH_CONFIG, POINT_MARKER_ICON_CONFIG } from './mapSettings.js';
-export { EMAIL_REGEX } from './validation.js';
+export {
+  EMAIL_REGEX,
+  URL_REGEX
+} from './validation.js';

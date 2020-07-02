@@ -54,7 +54,7 @@ namespace WebAPI
       services.AddScoped<UserRepository>();
       services.AddScoped<CountryRepository>();
       services.AddScoped<LanguageRepository>();
-      services.AddScoped<TicketsRepository>();
+      services.AddScoped<TicketsRepository>();      
       services.AddScoped<TicketsService>();
       services.AddScoped<IWaypointRepository, WaypointRepository>();
       services.AddScoped<IWaypointFileRepository, WaypointFileRepository>();
@@ -73,6 +73,8 @@ namespace WebAPI
       services.AddScoped<AssetsService>();
       services.AddScoped<IEntertainmentService, EntertainmentService>();
       services.AddScoped<IEntertainmentRepository, EntertainmentRepository>();
+      services.AddScoped<AccommodationService>();
+      services.AddScoped<AccommodationRepository>();
 
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
           .AddJwtBearer(x =>
@@ -155,6 +157,13 @@ namespace WebAPI
         FileProvider = new PhysicalFileProvider(
                           Path.Combine(Directory.GetCurrentDirectory(), Consts.EntertainmentsPath)),
         RequestPath = "/entertainment",
+        EnableDirectoryBrowsing = true
+      });
+      app.UseFileServer(new FileServerOptions
+      {
+        FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), Consts.AccommodationsPath)),
+        RequestPath = "/accommodations",
         EnableDirectoryBrowsing = true
       });
     }
