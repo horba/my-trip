@@ -1,0 +1,130 @@
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.place-info, .place-state, .title-wrapper,
+.schedule-wrapper, .rating-wrapper {
+  display: flex;
+}
+
+.place-card {
+  box-sizing: content-box;
+  width: 260px;
+  height: 285px;
+  background-color: var(--leisure-containers-bgc);
+  cursor: pointer;
+  margin: 0 5px 5px 5px;
+}
+
+.place-info {
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px 20px 10px 20px;
+  height: 115px;
+}
+
+.title-wrapper {
+  justify-content: space-between;
+  align-items: start;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.photo-wrapper {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.icon-wrapper {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+}
+
+.icon-wrapper > .icon:hover {
+  color: var(--mmt-leisure-card-edit-pencil-color);
+}
+
+.photo {
+  height: 140px;
+  width: 100%;
+  user-select: none;
+}
+
+.place-state > p {
+  font-size: 12px;
+}
+
+.rating-wrapper {
+  width: 60px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.place-state > .schedule {
+  font-weight: bold;
+}
+
+.star {
+  margin: 0 2px;
+}
+
+.place-state > span {
+  margin: 0 5px;
+  font-size: 12px;
+}
+
+.open {
+  color: var(--leisure-place-open-state-color);
+}
+
+.close {
+  color: var(--leisure-place-close-state-color);
+}
+
+.decription {
+  margin-top: 6px;
+}
+
+.active {
+  border: 1px solid var(--mmt-leisure-card-active-border-color);
+  -webkit-box-shadow: 0px 0px 30px -14px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 30px -14px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 30px -14px rgba(0,0,0,0.75);
+}
+
+.text-title-wrapper {
+  height: 30px;
+}
+
+.text-title-wrapper::after {
+  width: 45%;
+  height: 30px;
+}
+
+.decription { 
+  height: 20px;
+}
+
+.decription::after {
+  width: 45%;
+  height: 20px;
+}
+
+.text-title-wrapper, .decription {
+  position: relative;
+  overflow: hidden;
+}
+
+.fade:after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+}

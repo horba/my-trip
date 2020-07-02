@@ -10,7 +10,6 @@ namespace Entities
 {
   public class RepositoryContext : DbContext, IRepositoryContext
   {
-
     public DbSet<User> Users { get; set; }
     public DbSet<Ticket> Tickets { get; set; }
     public DbSet<TicketRoute> TicketRoutes { get; set; }
@@ -21,6 +20,8 @@ namespace Entities
     public DbSet<AttachmentFileEating> AttachmentFilesEating { get; set; }
     public DbSet<Waypoint> Waypoints { get; set; }
     public DbSet<WaypointFile> WaypointFiles { get; set; }
+    public DbSet<Entertainment> Entertainments { get; set; }
+    public DbSet<Accommodation> Accommodations { get; set; }
 
     public RepositoryContext(DbContextOptions options) : base(options)
     {
@@ -298,6 +299,42 @@ namespace Entities
           Lng = -74.00189170000002
         }  
       );
+      modelBuilder.Entity<Entertainment>();
+
+      var moqAccommodations = new[] {
+                      new Accommodation
+                      {
+                        Id = -1,
+                        Name = "Grand Hotel Ukraine",
+                        ArrivalDateTime = DateTime.Now.AddDays(5),
+                        DepartureDateTime = DateTime.Now.AddDays(7),
+                        Address = "Dmytra Yavornytskoho Avenue, 67К, Dnipro",
+                        GuestCount = 1,
+                        RoomsCount = 1,
+                        Link = "http://www.grand-hotel-ukraine.dp.ua",
+                        Price = 100,
+                        Currency = "USD",
+                        Note = "056 790 1441",
+                        UserId = -1
+                      },
+                      new Accommodation
+                      {
+                        Id = -2,
+                        Name = "Menorah",
+                        ArrivalDateTime = DateTime.Now.AddDays(12),
+                        DepartureDateTime = DateTime.Now.AddDays(17),
+                        Address = "Sholom-Aleikhema Street, 4/26, Dnipro",
+                        GuestCount = 2,
+                        RoomsCount = 2,
+                        Link = "http://menorah-center.com",
+                        Price = 90,
+                        Currency = "USD",
+                        Note = "056 717 7000",
+                        UserId = -1
+                      }
+                   };
+
+      modelBuilder.Entity<Accommodation>().HasData(moqAccommodations);
     }
   }
 }

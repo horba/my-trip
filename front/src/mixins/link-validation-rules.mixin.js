@@ -5,7 +5,7 @@ const { LINK_REGEX } = require('@constants'),
             rules: {
               linkValid: v => {
                 if (v) {
-                  return RegExp(LINK_REGEX).test(v) || this.$t('validationRules.isNoLink');
+                  return RegExp(LINK_REGEX).test(v) || this.$t('validationRules.enterCorrectURL');
                 } else {
                   return true;
                 }

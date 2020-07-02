@@ -1,4 +1,5 @@
-import { VNavigationDrawer, VList, VBtn, VSwitch, VIcon } from 'vuetify/lib';
+import { VBtn, VIcon, VList, VNavigationDrawer, VSwitch } from 'vuetify/lib';
+
 import MmtAvatar from '../controls/mmt-avatar/mmt-avatar.component.vue';
 
 export default {
@@ -34,24 +35,14 @@ export default {
         link: '/my/eating'
       },
       {
-        title: 'menu.transport',
-        icon: 'mdi-car',
-        link: '/my/transport'
-      },
-      {
         title: 'menu.leisure',
         icon: 'mdi-airballoon',
-        link: '/my/leisure'
+        link: '/my/entertainments'
       },
       {
         title: 'menu.travelRoute',
         icon: 'mdi-bag-personal',
         link: '/my/travel-route'
-      },
-      {
-        title: 'menu.bookmarks',
-        icon: 'mdi-heart',
-        route: '/my/bookmarks'
       },
       {
         title: 'menu.scheduler',
@@ -79,12 +70,6 @@ export default {
         title: 'menu.settings',
         icon: 'mdi-cog',
         link: '/my/settings'
-      },
-      {
-        title: 'menu.notifications',
-        icon: 'mdi-bell',
-        link: '/my/notifications',
-        switch: false
       },
       {
         title: 'menu.signout',

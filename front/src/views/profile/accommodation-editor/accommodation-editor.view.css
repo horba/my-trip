@@ -1,0 +1,19 @@
+.form {
+  width: 300px;
+}
+
+.side {
+  max-width: 500px;
+}
+
+.map {
+  width: 500px;
+  height: 500px;
+}
+
+label {
+  font-size: var(--mmt-dense-input-label-font-size);
+  margin-left: 18px;
+  user-select: none;
+  line-height: 1.25em;
+}

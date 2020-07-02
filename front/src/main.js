@@ -23,6 +23,14 @@ Vue.use(VueGoogleMaps, {
 Vue.component('default-layout', Default);
 Vue.component('authorize-layout', Authorize);
 
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: process.env.VUE_APP_GOOGLE_MAP_API,
+    libraries: 'places'
+  },
+  installComponents: true
+});
+
 new Vue({
   router,
   store,

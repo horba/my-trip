@@ -25,9 +25,13 @@ namespace Entities.Interfaces
 
     DbSet<AttachmentFileEating> AttachmentFilesEating { get; set; }
 
-    public DbSet<Waypoint> Waypoints { get; set; }
+    DbSet<Waypoint> Waypoints { get; set; }
 
-    public DbSet<WaypointFile> WaypointFiles { get; set; }
+    DbSet<WaypointFile> WaypointFiles { get; set; }
+
+    DbSet<Entertainment> Entertainments { get; set; }
+
+    DbSet<Accommodation> Accommodations { get; set; }
 
     int SaveChanges();
   }

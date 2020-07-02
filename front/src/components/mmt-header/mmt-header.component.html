@@ -1,13 +1,15 @@
-<v-card flat tile class="accent lighten-1 header-wrapper">
+<v-card flat tile class="primary lighten-1 header-wrapper">
 
   <v-container class="py-0">
-    <v-app-bar flat class="accent lighten-1 white--text overflow-hidden">
+    <v-app-bar flat class="primary lighten-1 white--text overflow-hidden">
       <v-app-bar-nav-icon v-if="$vuetify.breakpoint.smAndDown"
                           @click="drawer = !drawer"
                           class="white--text"></v-app-bar-nav-icon>
 
       <v-toolbar-title text>
-        <router-link to="/">{{ $t('appTitle') }}</router-link>
+        <router-link to="/" class="d-flex">
+          <img src="@/assets/mmt-logo-header.svg" height="60">
+        </router-link>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -17,7 +19,7 @@
                :key="link.title"
                :to="`${link.route}`"
                text
-               class="white--text"
+               class="white--text header-item"
                v-if="link.isVisible">
           {{ $t(link.title) }}
         </v-btn>
@@ -32,7 +34,7 @@
       <v-btn icon class="white--text">
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
-    
+
     </v-app-bar>
   </v-container>
 

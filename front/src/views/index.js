@@ -1,10 +1,5 @@
-export { default as Home } from '@views/Home.vue';
 export { default as Accommodation } from '@views/Accommodation.vue';
-export { default as Transport } from '@views/Transport.vue';
-export { default as Leisure } from './leisure/leisure.view.vue';
 export { default as Food } from '@views/Food.vue';
-export { default as HotTours } from '@views/HotTours.vue';
-export { default as Articles } from '@views/Articles.vue';
 export { default as AboutUs } from '@views/AboutUs.vue';
 export { default as PrivacyPolicy } from '@views/PrivacyPolicy.vue';
 export { default as CookiePolicy } from '@views/CookiePolicy.vue';
@@ -12,33 +7,48 @@ export { default as TermsOfUse } from '@views/TermsOfUse.vue';
 export { default as ForTourOperators } from '@views/ForTourOperators.vue';
 export { default as Contacts } from '@views/Contacts.vue';
 export { default as ReviewNew } from '@views/ReviewNew.vue';
-export { default as MyTickets } from '@views/user/Tickets.vue';
-export { default as MyAccommodation } from '@views/user/Accommodation.vue';
-export { default as Eating } from '@views/user/eating/eating.view.vue';
-export { default as ScheduleEatingPlace } from '@views/user/eating/eating-new/eating-new.view.vue';
-export { default as MyTransport } from '@views/user/Transport.vue';
-export { default as MyLeisure } from '@views/user/Leisure.vue';
+export { default as MyTickets } from '@views/profile/Tickets.vue';
+export { default as MyAccommodation } from '@views/profile/accommodation/accommodation.view.vue';
+export { default as Leisure } from '@views/leisure/leisure.view.vue';
 export { default as SignIn } from './sign-in/sign-in.view.vue';
 export { default as SignUp } from './sign-up/sign-up.view.vue';
-export { default as UserSettings } from './user/user-settings/user-settings.view.vue';
-export { default as UserCabinet } from '@views/user/UserCabinet.vue';
+export { default as UserSettings } from './profile/user-settings/user-settings.view.vue';
+export { default as UserCabinet } from '@views/profile/UserCabinet.vue';
 export { default as RecoveryPassword } from '@views/recovery-password/recovery-password.view.vue';
+export { default as Entertainments } from '@views/profile/entertainments/entertainments.view.vue';
 export {
   default as MyHistoryTripList
 }
-  from '@views/user/history-trip-list/history-trip-list.view.vue';
+  from '@views/profile/history-trip-list/history-trip-list.view.vue';
 
 export {
   default as MyHistoryTripRoute
 }
-  from '@views/user/history-trip-route/history-trip-route.view.vue';
+  from '@views/profile/history-trip-route/history-trip-route.view.vue';
 
 export {
   default as AddEditRouteForm
 }
-  from '@views/user/add-edit-route-form/add-edit-route-form.view.vue';
+  from '@views/profile/add-edit-route-form/add-edit-route-form.view.vue';
 
 export {
   default as AddTripForm
 }
-  from '@views/user/add-trip-form/add-trip-form.view.vue';
+  from '@views/profile/add-trip-form/add-trip-form.view.vue';
+export {
+  default as ScheduleEntertainments
+}
+  from '@views/profile/entertainments-new/entertainments-new.view.vue';
+export {
+  default as AccommodationEditor
+}
+  from '@views/profile/accommodation-editor/accommodation-editor.view.vue';
+
+export {
+  default as Eating
+}
+  from '@views/profile/eating/eating.view.vue';
+export {
+  default as ScheduleEatingPlace
+}
+  from '@views/profile/eating/eating-new/eating-new.view.vue';

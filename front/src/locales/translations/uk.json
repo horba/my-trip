@@ -10,11 +10,8 @@
   "menu": {
     "aboutUs": "Про нас",
     "accommodation": "Житло",
-    "transport": "Транспорт",
     "leisure": "Дозвілля",
     "food": "Їжа",
-    "hotTours": "Гарячі тури",
-    "articles": "Статті",
     "privacyPolicy": "Політика конфіденційності",
     "cookiePolicy": "Політика використання Cookie",
     "termsOfUse": "Угода",
@@ -23,13 +20,11 @@
     "reviewNew": "Залишити відгук про сайт",
     "tickets": "Квитки",
     "travelRoute": "Маршрут",
-    "bookmarks": "Закладки",
     "scheduler": "Планер",
     "history": "Історія",
     "historyPrev": "Попередні",
     "historyNext": "Майбутні",
     "settings": "Налаштування",
-    "notifications": "Повідомлення",
     "editProfile": "Редагувати профіль",
     "signin": "Вхід",
     "signup": "Реєстрація",
@@ -52,6 +47,41 @@
       "Відпочинок для компанії",
       "Ігрові клуби, квести"
     ]
+  },
+  "entertainments": {
+    "search": "Шукати на мапі",
+    "placesCount": "Результати",
+    "add": "Додати",
+    "filter": "Фільтр"
+  },
+  "newEntertainment": {
+    "addLeisure": "Додати",
+    "enterTitle": "Введіть назву",
+    "title": "Назва",
+    "enterPeopleCount": "Введіть кількість осіб",
+    "peopleCount": "Кількість осіб",
+    "date": "Дата",
+    "time": "Час",
+    "note": "Замітки",
+    "enterNotes": "Введіть замітки",
+    "addFile": "Додати файл",
+    "toPlan": "Запланувати",
+    "choosePlaceManually": "Вибрати місце вручну"
+  },
+  "mmtLeisureCard": {
+    "schedule": "Графік роботи"
+  },
+  "entertainmentType": {
+    "museum": "музей",
+    "tourist_attraction": "туристична достовірність",
+    "amusement_park": "парк культури і віддиха",
+    "point_of_interest": "достовірність",
+    "establishment": "заведение",
+    "laundry": "прачечная",
+    "lodging": "жилье",
+    "real_estate_agency": "агентство нерухомості",
+    "airport": "аеропорт",
+    "travel_agency": "туристичне агентство"
   },
   "footer": {
     "join": "Приєднатися",
@@ -180,7 +210,8 @@
     "files": "Файли",
     "addFiles": "Додати файли...",
     "maxFileLength": "Максимальна вага файла",
-    "close": "Зачинити"
+    "close": "Зачинити",
+    "selecFiles": "Виберіть файли"
   },
   "signIn": {
     "welcome": "Ласкаво просимо!",
@@ -242,10 +273,45 @@
   "validationRules": {
     "noEmpty": "Заповніть поле.",
     "enterCorrectEmail": "Введіть дійсний email",
+    "greaterThanZero": "значення має бути більше 0",
     "enterCorrectDate": "Введіть дійсну дату",
     "enterCorrectTime": "Введіть дійсний час",
     "enterCorrectFiles": "Розмір одного файлу не повинен перевищувати {0} байт",
     "isNoLink": "Це не схоже на посилання",
-    "tooManyAttachments": "Кількість файлів повинно бути не більше {0}"
+    "tooManyAttachments": "Кількість файлів повинно бути не більше {0}",
+    "enterCorrectURL": "Введіть дійсний URL",
+    "maxLength": "Максимальна довжина {0} символів",
+    "minValue": "Мінімальне значення: {0}",
+    "maxValue": "Максимальне значення: {0}"
+  },
+  "accommodations": {
+    "results": "Результати",
+    "addAccommodation": "Додати житло",
+    "editAccommodation": "Змінити житло",
+    "filter": "Фільтр",
+    "notFound": "Нічого не знайдено",
+    "subtitle": "Кімната в готелі",
+    "guest": "гість",
+    "guests": "гостей",
+    "room": "кімната",
+    "rooms": "кімнати",
+    "perNight": "за ніч",
+    "total": "Всього",
+    "place": "Місце",
+    "name": "Назва об'єкта",
+    "arrivalDateTime": "Дата заїзду",
+    "departureDateTime": "Дата від'їзду",
+    "guestCount": "Кількість гостей",
+    "roomsCount": "Кількість номерів",
+    "address": "Звідки",
+    "link": "Посилання",
+    "note": "Нотатки",
+    "pricePerNight": "Ціна за добу",
+    "departureArrivalDateValidation": "Дата виїзду повинна бути більше дати заїзду",
+    "plan": "Запланувати"
+  },
+  "datetimePicker": {
+    "ok": "Вибрати",
+    "clear": "Очистити"
   }
 }

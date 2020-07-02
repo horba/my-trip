@@ -1,27 +1,23 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
 import {
-  Home, Accommodation, Transport,
-  Leisure, Food, HotTours,
-  Articles, AboutUs, PrivacyPolicy,
-  CookiePolicy, TermsOfUse, ForTourOperators,
-  Contacts, ReviewNew, MyTickets,
-  MyAccommodation, Eating, MyTransport,
-  MyLeisure, SignIn, SignUp,
+  Accommodation, Leisure,
+  Entertainments, Food, Eating,
+  AboutUs, PrivacyPolicy, CookiePolicy,
+  TermsOfUse, ForTourOperators, Contacts,
+  ReviewNew, MyTickets, MyAccommodation,
+  ScheduleEntertainments, SignIn, SignUp,
   UserSettings, UserCabinet, MyHistoryTripList,
   MyHistoryTripRoute, RecoveryPassword,
-  AddEditRouteForm, AddTripForm, ScheduleEatingPlace
+  AddEditRouteForm, AddTripForm,
+  AccommodationEditor, ScheduleEatingPlace
 } from '@views';
+
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 import store from '@store';
 
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
   {
     path: '/signup',
     name: 'SignUp',
@@ -42,11 +38,6 @@ const routes = [
     component: Accommodation
   },
   {
-    path: '/transport',
-    name: 'Transport',
-    component: Transport
-  },
-  {
     path: '/leisure',
     name: 'Leisure',
     component: Leisure
@@ -55,16 +46,6 @@ const routes = [
     path: '/food',
     name: 'Food',
     component: Food
-  },
-  {
-    path: '/hot-tours',
-    name: 'HotTours',
-    component: HotTours
-  },
-  {
-    path: '/articles',
-    name: 'Articles',
-    component: Articles
   },
   {
     path: '/about-us',
@@ -105,6 +86,7 @@ const routes = [
     path: '/my',
     name: 'My',
     component: UserCabinet,
+    meta: { layout: 'authorize' },
     children: [
       {
         path: 'tickets',
@@ -137,26 +119,32 @@ const routes = [
         meta: { layout: 'authorize' }
       },
       {
-        path: 'transport',
-        name: 'MyTransport',
-        component: MyTransport,
+        path: 'accommodation/new',
+        name: 'AddAccommodation',
+        component: AccommodationEditor,
         meta: { layout: 'authorize' }
       },
       {
-        path: 'leisure',
-        name: 'MyLeisure',
-        component: MyLeisure,
+        path: 'accommodation/:id',
+        name: 'ManageAccommodation',
+        component: AccommodationEditor,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'entertainments',
+        name: 'Entertainments',
+        component: Entertainments,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'entertainments/schedule/:id?',
+        name: 'EntertainmentsNew',
+        component: ScheduleEntertainments,
         meta: { layout: 'authorize' }
       },
       {
         path: 'travel-route',
         name: 'MyTravelRoute',
-        component: MyTickets,
-        meta: { layout: 'authorize' }
-      },
-      {
-        path: 'bookmarks',
-        name: 'MyBookmarks',
         component: MyTickets,
         meta: { layout: 'authorize' }
       },
@@ -226,12 +214,6 @@ const routes = [
           layout: 'authorize',
           allowUnknownUsers: false
         }
-      },
-      {
-        path: 'notifications',
-        name: 'MyNotifications',
-        component: MyTickets,
-        meta: { layout: 'authorize' }
       }
     ]
   },

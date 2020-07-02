@@ -25,14 +25,9 @@ export default {
         link: '/my/eating'
       },
       {
-        title: 'menu.transport',
-        icon: 'mdi-car',
-        link: '/my/transport'
-      },
-      {
         title: 'menu.leisure',
         icon: 'mdi-airballoon',
-        link: '/my/leisure'
+        link: '/my/entertainments'
       }
     ]
   }),

@@ -3,12 +3,13 @@
   public static class Consts
   {
     public const string UsersAvatarsPath = @"Assets\Avatars";
-
+    public const string EntertainmentsPath = @"Assets\Entertainments";
     public const string WaypointsFilesPath = @"Assets\Waypoints";
 
     public const string AssetsPath = @"Assets";
 
     public const string FileEatingPath = @"Assets\ScheduledPlaceToEatFiles";
+    public const string AccommodationsPath = @"Assets\Accommodations";
 
     public static string[] AllowedImageContentTypes = new[] { "image/png", "image/jpeg", "image/jpg",  "image/bmp" };
 

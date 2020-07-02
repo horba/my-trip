@@ -14,8 +14,14 @@ export default {
   inheritAttrs: false,
   data () {
     return {
-      isLabelError: false
+      isLabelError: false,
+      requiredAsterisk: true
     };
+  },
+  computed: {
+    isRequired () {
+      return this.requiredAsterisk && this.$attrs.rules.some(rule => rule.name === 'required');
+    }
   },
   methods: {
     validateLabel (value) {

@@ -10,11 +10,8 @@
   "menu": {
     "aboutUs": "О нас",
     "accommodation": "Жилье",
-    "transport": "Транспорт",
     "leisure": "Досуг",
     "food": "Еда",
-    "hotTours": "Горящие туры",
-    "articles": "Статьи",
     "privacyPolicy": "Политика конфиденциальности",
     "cookiePolicy": "Политика использования Cookie",
     "termsOfUse": "Пользовательское соглашение",
@@ -23,13 +20,11 @@
     "reviewNew": "Оставить отзыв о сайте",
     "tickets": "Билеты",
     "travelRoute": "Маршрут",
-    "bookmarks": "Закладки",
     "scheduler": "Планер",
     "history": "История",
     "historyPrev": "Предыдущие",
     "historyNext": "Предстоящие",
     "settings": "Настройки",
-    "notifications": "Уведомления",
     "editProfile": "Редактировать профиль",
     "signin": "Вход",
     "signup": "Регистрация",
@@ -52,6 +47,41 @@
       "Отдых для компании",
       "Игровые клубы, квесты"
     ]
+  },
+  "entertainments": {
+    "search": "Искать на карте",
+    "placesCount": "Результаты",
+    "add": "Добавить",
+    "filter": "Фильтр"
+  },
+  "newEntertainment": {
+    "addLeisure": "Добавить",
+    "enterTitle": "Введите название",
+    "title": "Название",
+    "enterPeopleCount": "Введите количество человек",
+    "peopleCount": "Количество человек",
+    "date": "Дата",
+    "time": "Время",
+    "note": "Заметки",
+    "enterNotes": "Введите заметки",
+    "addFile": "Добавить файл",
+    "toPlan": "Запланировать",
+    "choosePlaceManually": "Выбрать место вручную"
+  },
+  "mmtLeisureCard": {
+    "schedule": "График работы"
+  },
+  "entertainmentType": {
+    "museum": "музей",
+    "tourist_attraction": "туристическая достопримечательность",
+    "amusement_park": "парк культуры и отдыха",
+    "point_of_interest": "достопримечательность",
+    "establishment": "заведение",
+    "laundry": "прачечная",
+    "lodging": "жилье",
+    "real_estate_agency": "агентство недвижимости",
+    "airport": "аэропорт",
+    "travel_agency": "туристическое агенство"
   },
   "footer": {
     "join": "Присоедениться",
@@ -180,7 +210,8 @@
     "files": "Файлы",
     "addFiles": "Добавьте файлы...",
     "maxFileLength": "Максимальный размер файла",
-    "close": "Закрыть"
+    "close": "Закрыть",
+    "selecFiles": "Выберите файлы"
   },
   "signIn": {
     "welcome": "Добро пожаловать!",
@@ -242,10 +273,45 @@
   "validationRules": {
     "noEmpty": "Заполните поле.",
     "enterCorrectEmail": "Введите корректный email",
+    "greaterThanZero": "Значение должно быть больше 0",
     "enterCorrectDate": "Введите корректную дату",
     "enterCorrectTime": "Введите корректное время",
     "enterCorrectFiles": "Размер одного файла не должен превышать {0} байт",
     "isNoLink": "Это не похоже на ссылку",
-    "tooManyAttachments": "Количество вложений должно быть не больше {0}"
+    "tooManyAttachments": "Количество вложений должно быть не больше {0}",
+    "enterCorrectURL": "Введите корректный URL",
+    "maxLength": "Максимальная длина {0} символов",
+    "minValue": "Минимальное значение: {0}",
+    "maxValue": "Максимальное значение: {0}"
+  },
+  "accommodations": {
+    "results": "Результаты",
+    "addAccommodation": "Добавить жилье",
+    "editAccommodation": "Изменить жилье",
+    "filter": "Фильтр",
+    "notFound": "Ничего не найдено",
+    "subtitle": "Комната в гостинице",
+    "guest": "гость",
+    "guests": "гостей",
+    "room": "комната",
+    "rooms": "комнаты",
+    "perNight": "за ночь",
+    "total": "Всего",
+    "place": "Место",
+    "name": "Название обьекта",
+    "arrivalDateTime": "Дата заезда",
+    "departureDateTime": "Дата отьезда",
+    "guestCount": "Количество гостей",
+    "roomsCount": "Количество номеров",
+    "address": "Адрес",
+    "link": "Ссылка",
+    "note": "Заметки",
+    "pricePerNight": "Стоимость за ночь",
+    "departureArrivalDateValidation": "Дата выезда должна быть больше даты заезда",
+    "plan": "Запланировать"
+  },
+  "datetimePicker": {
+    "ok": "Выбрать",
+    "clear":  "Очистить"
   }
 }

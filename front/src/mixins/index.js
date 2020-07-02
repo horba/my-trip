@@ -5,3 +5,4 @@ export { timeValidationMixin } from './time-validation-rules.mixin.js';
 export { filesSizeValidMixin } from './files-size-validation-rules.mixin.js';
 export { linkValidMixin } from './link-validation-rules.mixin.js';
 export { filesCountValidMixin } from './file-count-validatoin-rules.mixin.js';
+export { accommodationGoogleApiMixin } from './accommodation-google-api.mixin.js';

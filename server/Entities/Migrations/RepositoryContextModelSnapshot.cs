@@ -119,6 +119,45 @@ namespace Entities.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Entities.Models.Entertainment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("EntertainmentFilePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double?>("LocationLat")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("LocationLng")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PeopleCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PlaceId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("VisitDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("entertainments");
+                });
+
             modelBuilder.Entity("Entities.Models.Language", b =>
                 {
                     b.Property<int>("Id")

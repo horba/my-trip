@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+using System;
 using AutoMapper;
 using Entities.Models;
 using WebAPI.DTO.Trip;
@@ -14,6 +13,9 @@ namespace WebAPI.DTO
       CreateMap<Entities.Models.Country, CountryDTO>();
 
       CreateMap<Entities.Models.Trip, TripDTO>();
+
+      CreateMap<Entertainment, EntertainmentDTO>();
+      CreateMap<EntertainmentDTO, Entertainment>();
 
       CreateMap<Entities.Models.Waypoint, WaypointDTO>()
         .ForMember(wp => wp.ArrivalDate, 
@@ -37,6 +39,12 @@ namespace WebAPI.DTO
         .ForMember(tr => tr.EndDate, 
         opt => opt.MapFrom(tr => tr.ArrivalDate));
 
+
+      CreateMap<Entities.Models.Accommodation, AccommodationDTO>()
+        .ForMember(dest => dest.Photos, opt => opt.MapFrom(src => src.Photos.Split(';', System.StringSplitOptions.RemoveEmptyEntries)));
+
+      CreateMap<AccommodationDTO, Entities.Models.Accommodation>()
+        .ForMember(dest => dest.Photos, opt => opt.MapFrom(src => string.Join(';', src.Photos)));
     }
   }
 }

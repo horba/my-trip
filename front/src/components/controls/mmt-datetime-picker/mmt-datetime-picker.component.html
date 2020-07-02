@@ -1,0 +1,65 @@
+<v-dialog v-model="display" :width="dialogWidth">
+  <template v-slot:activator="{ on }">
+    <mmt-text-input v-bind="textFieldProps"
+                    v-on="on"
+                    :mmt-label="label"
+                    :rules="rules"
+                    :value="formattedDatetime"
+                    persistent-hint
+                    rounded
+                    filled
+                    single-line
+                    dense
+                    prepend-inner-icon="mdi-calendar-check-outline"/>
+
+  </template>
+
+  <v-card>
+    <v-card-text class="px-0 py-0">
+      <v-tabs fixed-tabs v-model="activeTab">
+        <v-tab key="calendar">
+          <slot name="dateIcon">
+            <v-icon>mdi-calendar-check-outline</v-icon>
+          </slot>
+        </v-tab>
+        <v-tab key="timer" :disabled="dateSelected">
+          <slot name="timeIcon">
+            <v-icon>mdi-av-timer</v-icon>
+          </slot>
+        </v-tab>
+        <v-tab-item key="calendar">
+          <v-date-picker v-model="date"
+                         v-bind="datePickerProps"
+                         @input="showTimePicker"
+                         :locale="language"
+                         full-width>
+          </v-date-picker>
+        </v-tab-item>
+        <v-tab-item key="timer">
+          <v-time-picker ref="timer"
+                         class="v-time-picker-custom"
+                         v-model="time"
+                         v-bind="timePickerProps"
+                         :locale="language"
+                         full-width>
+          </v-time-picker>
+        </v-tab-item>
+      </v-tabs>
+    </v-card-text>
+    <v-card-actions>
+      <v-spacer></v-spacer>
+      <slot name="actions" :parent="this">
+        <v-btn color="grey lighten-1"
+               text
+               @click.native="clear">
+          {{ $t('datetimePicker.clear') }}
+        </v-btn>
+        <v-btn color="primary"
+               text
+               @click="select">
+          {{ $t('datetimePicker.ok') }}
+        </v-btn>
+      </slot>
+    </v-card-actions>
+  </v-card>
+</v-dialog>

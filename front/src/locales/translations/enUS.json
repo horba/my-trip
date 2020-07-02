@@ -10,11 +10,8 @@
   "menu": {
     "aboutUs": "About Us",
     "accommodation": "Accommodation",
-    "transport": "Transport",
     "leisure": "Lleisure",
     "food": "Food",
-    "hotTours": "Hot Tours",
-    "articles": "Articles",
     "privacyPolicy": "Privacy policy",
     "cookiePolicy": "Cookie Policy",
     "termsOfUse": "Terms of use",
@@ -23,13 +20,11 @@
     "reviewNew": "Leave a review about the site",
     "tickets": "Tickets",
     "travelRoute": "Travel Route",
-    "bookmarks": "Bookmarks",
     "scheduler": "Scheduler",
     "history": "History",
     "historyPrev": "Previous",
     "historyNext": "Upcoming",
     "settings": "Settings",
-    "notifications": "Notifications",
     "editProfile": "Edit Profile",
     "signin": "Login",
     "signup": "Register",
@@ -52,6 +47,41 @@
       "Rest for the company",
       "Game clubs, quests"
     ]
+  },
+  "entertainments": {
+    "search": "Search on map",
+    "placesCount": "RESULTS",
+    "add": "Add",
+    "filter": "Filter"
+  },
+  "newEntertainment": {
+    "addLeisure": "Add leisure",
+    "choosePlaceManually": "Choose a place manually",
+    "toPlan": "To plan",
+    "addFile": "Add file",
+    "enterTitle": "Enter the title",
+    "title": "Title",
+    "enterPeopleCount": "Enter people count",
+    "peopleCount": "People count",
+    "date": "Date",
+    "time": "Time",
+    "note": "Note",
+    "enterNotes": "Enter notes"
+  },
+  "mmtLeisureCard": {
+    "schedule": "schedule"
+  },
+  "entertainmentType": {
+    "museum": "museum",
+    "tourist_attraction": "tourist attraction",
+    "amusement_park": "amusement park",
+    "point_of_interest": "point of interest",
+    "establishment": "establishment",
+    "laundry": "laundry",
+    "lodging": "lodging",
+    "real_estate_agency": "real estate agency",
+    "airport": "airport",
+    "travel_agency": "travel agency"
   },
   "footer": {
     "join": "Join",
@@ -180,7 +210,8 @@
     "files": "Files",
     "addFiles": "Add files...",
     "maxFileLength": "Max file size is",
-    "close": "Close"
+    "close": "Close",
+    "selecFiles": "Select files"
   },
   "signIn": {
     "welcome": "Welcome!",
@@ -242,10 +273,46 @@
   "validationRules": {
     "noEmpty": "Fill in the field.",
     "enterCorrectEmail": "Enter valid email",
+    "greaterThanZero": "Value must be greater than 0",
     "enterCorrectDate": "Enter valid date",
     "enterCorrectTime": "Enter valid time",
+    
     "enterCorrectFiles": "File size should be less than {0} byte",
     "isNoLink": "It doesn't look like a link",
-    "tooManyAttachments": "The number of attachments should not be more than {0}"
+    "tooManyAttachments": "The number of attachments should not be more than {0}",
+    "enterCorrectURL": "Enter valid URL",
+    "maxLength": "Maximum length is {0} symbols",
+    "minValue": "Minimum value is: {0}",
+    "maxValue": "Maximum value is: {0}"
+  },
+  "accommodations": {
+    "results": "Results",
+    "addAccommodation": "Add Accommodation",
+    "editAccommodation": "Change Accommodation",
+    "filter": "Filter",
+    "notFound": "Nothing found",
+    "subtitle": "Hotel room",
+    "guest": "guest",
+    "guests": "guests",
+    "room": "room",
+    "rooms": "rooms",
+    "perNight": "per night",
+    "total": "Total",
+    "place": "Place",
+    "name": "Name of the object",
+    "arrivalDateTime": "Arrival date",
+    "departureDateTime": "Departure Date",
+    "guestCount": "Number of guests",
+    "roomsCount": "Number of rooms",
+    "address": "Address",
+    "link": "Link",
+    "note": "Notes",
+    "pricePerNight": "Price per night",
+    "departureArrivalDateValidation": "Departure date must be greater than arrival date",
+    "plan": "To Plan"
+  },
+  "datetimePicker": {
+    "ok": "OK",
+    "clear": "Clear"
   }
 }

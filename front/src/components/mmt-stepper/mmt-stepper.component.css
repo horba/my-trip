@@ -10,7 +10,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
-    flex-basis: 200px;
+    flex-basis: 260px;
   }
 
     .stepper .step .title {
