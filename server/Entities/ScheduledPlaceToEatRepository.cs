@@ -6,40 +6,40 @@ namespace Entities
 {
   public class ScheduledPlaceToEatRepository: IScheduledPlaceToEatRepository
   {
-    private readonly IRepositoryContext RepositoryContext;
+    private readonly IRepositoryContext _repositoryContext;
 
     public ScheduledPlaceToEatRepository(IRepositoryContext repositoryContext)
     {
-      RepositoryContext = repositoryContext;
+      _repositoryContext = repositoryContext;
     }
 
     public IQueryable<ScheduledPlaceToEat> GetScheduledPlaceToEatByUserId(int UserId)
     {
-      return RepositoryContext.ScheduledPlacesToEat.Where(u => u.UserId.Equals(UserId));
+      return _repositoryContext.ScheduledPlacesToEat.Where(u => u.UserId.Equals(UserId));
     }
 
     public ScheduledPlaceToEat GetScheduledPlaceToEatById(int Id)
     {
-      return RepositoryContext.ScheduledPlacesToEat.FirstOrDefault(u => u.Id.Equals(Id));
+      return _repositoryContext.ScheduledPlacesToEat.FirstOrDefault(u => u.Id.Equals(Id));
     }
 
     public int CreateScheduledPlaceToEat(ScheduledPlaceToEat scheduledPlaceToEat)
     {
-      RepositoryContext.ScheduledPlacesToEat.Add(scheduledPlaceToEat);
-      RepositoryContext.SaveChanges();
+      _repositoryContext.ScheduledPlacesToEat.Add(scheduledPlaceToEat);
+      _repositoryContext.SaveChanges();
       return scheduledPlaceToEat.Id;
     }
 
     public void UptateScheduledPlaceToEat(ScheduledPlaceToEat scheduledPlaceToEat)
     {
-      RepositoryContext.ScheduledPlacesToEat.Update(scheduledPlaceToEat);
-      RepositoryContext.SaveChanges();
+      _repositoryContext.ScheduledPlacesToEat.Update(scheduledPlaceToEat);
+      _repositoryContext.SaveChanges();
     }
 
     public void DeleteScheduledPlaceToEat(ScheduledPlaceToEat scheduledPlaceToEat)
     {
-      RepositoryContext.ScheduledPlacesToEat.Remove(scheduledPlaceToEat);
-      RepositoryContext.SaveChanges();
+      _repositoryContext.ScheduledPlacesToEat.Remove(scheduledPlaceToEat);
+      _repositoryContext.SaveChanges();
     }
 
     public void DeleteScheduledPlaceToEat(int id)

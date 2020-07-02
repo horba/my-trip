@@ -1,5 +1,5 @@
 import api from '@api';
-import router from './../../router/index.js';
+import router from '@router/index.js';
 
 export default {
   namespaced: true,

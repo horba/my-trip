@@ -20,24 +20,29 @@
   </v-row>
   <v-row>
     <v-col class="d-flex flex-wrap">
-      <v-card :key="index" v-for="(place, index) in scheduledPlacesList"
-        :flat="place.serverInfo.id!==selectedId"
+      <v-card :key="index" v-for="(place, index) in scheduledPlacesList" :flat="place.serverInfo.id!==selectedId"
         class="place-card" height="300" width="259" @click="onSelectPlace(place)"
         :class="{ 'active-card': place.serverInfo.id === selectedId }">
-        <v-img v-if="place.googleDetails && place.googleDetails.photos" 
+        <v-img
+          v-if="place.googleDetails && place.googleDetails.photos"
           :aspect-ratio="16/9"
-          :lazy-src="defaultImage" :src="place.googleDetails.photos[0].getUrl(259)"
-          max-height="150" max-width="259" />
-        <v-img v-else :aspect-ratio="16/9" 
           :lazy-src="defaultImage"
-          src="../../../assets/default-image.jpg"
-          max-height="150" max-width="259" />
+          :src="place.googleDetails.photos[0].getUrl()"
+          max-height="150"
+        />
+        <v-img
+          v-else
+          :aspect-ratio="16/9"
+          :lazy-src="defaultImage"
+          src="@assets/default-image.jpg"
+          max-height="150"
+        />
         <div class="text-card">
           <div class="d-flex">
             <v-row>
               <v-col md="5" sm="12">
-                <h6 :title="place.serverInfo.namePlace" class="text-semi-bold d-flex justify-start align-center">
-                  {{ place.serverInfo.namePlace | trimString}}
+                <h6 :title="place.serverInfo.placeName" class="text-semi-bold d-flex justify-start align-center">
+                  {{ place.serverInfo.placeName | trimString}}
                 </h6>
               </v-col>
               <v-col md="7" sm="12">
@@ -70,16 +75,14 @@
             <div class="d-flex justify-space-between types" v-if="place.googleDetails">
               <div class="text-small text-semi-bold" :key="index"
                 v-for="(type, index) in place.googleDetails.types.slice(0, 3)">
-                {{type | replacementTypes}}
+                {{$t(type)}}
               </div>
             </div>
           </div>
           <div class="d-flex align-end">
             <v-row class="d-flex">
               <v-col md="2" class="trash-btn d-flex justify-start">
-                <v-btn :title="$t('eating.delete')" icon x-small depressed
-                  @click="deletePlace(place.serverInfo.id)"
-                >
+                <v-btn :title="$t('eating.delete')" icon x-small depressed @click="deletePlace(place.serverInfo.id)">
                   <v-icon>mdi-trash-can</v-icon>
                 </v-btn>
               </v-col>

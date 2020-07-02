@@ -10,14 +10,14 @@ namespace WebAPI.Interfaces
 
     public IEnumerable<OutputScheduledPlaceToEatDTO> GetEatingByUserId(int UserId);
 
-    public bool UpdateScheduledPlaceToEat(InputScheduledPlaceToEatForUpdateOrDeleteDTO scheduledPlaceToEatDTO);
+    public OutputScheduledPlaceToEatDTO GetEatingById(int id);
 
-    public bool DeleteScheduledPlaceToEat(InputScheduledPlaceToEatForUpdateOrDeleteDTO scheduledPlaceToEatDTO);
+    public bool UpdateScheduledPlaceToEat(InputScheduledPlaceToEatForUpdateDTO scheduledPlaceToEatDTO);
+
+    public bool DeleteScheduledPlaceToEat(int eatingId, int userId);
 
     public OutputScheduledPlaceToEatDTO ConvertScheduledPlaceToEatToOutputScheduletPlaceToEatDTO(ScheduledPlaceToEat scheduledPlaceToEat);
 
     public ScheduledPlaceToEat ConvertInputScheduledPlaceToEatForCreateDTOToScheduletPlaceToEat(InputScheduledPlaceToEatForCreateDTO inputScheduledPlaceToEatDTO);
-
-    public ScheduledPlaceToEat ConvertInputScheduledPlaceToEatForUpdateOrDeleteDTOToScheduletPlaceToEat(InputScheduledPlaceToEatForUpdateOrDeleteDTO inputScheduledPlaceToEatDTO);
   }
 }

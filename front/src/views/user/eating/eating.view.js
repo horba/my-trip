@@ -28,8 +28,8 @@ export default {
       options: {
         zoom: 10,
         center: {
-          lat: 48.459286,
-          lng: 35.052698
+          lat: 0,
+          lng: 0
         },
         mapTypeId: 'roadmap',
         ref: 'mapRef'
@@ -53,9 +53,6 @@ export default {
       this.$store.dispatch('eating/getEatingUser')
         .then(response => {
           this.scheduledPlacesList = response.data
-          /// scheduledPlacesList: [{serverInfo, googleDetails}]
-          /// for [{...serverPlaceInfo, googleDetails}] change into
-          /// .map(serverPlaceInfo => { return { ..., googleDetails: null }; });
             .map(serverPlaceInfo => {
               return {
                 serverInfo: serverPlaceInfo, googleDetails: null
@@ -110,7 +107,7 @@ export default {
           this.text = this.$t('eating.successfullyDelete');
           this.snackbar = true;
           this.color = 'success';
-          setTimeout(() => this.responseDataFromServer(), 3000);
+          this.responseDataFromServer();
         })
         .catch(error => {
           this.text = error;
@@ -118,6 +115,12 @@ export default {
           this.color = 'error';
         });
     }
+  },
+  mounted () {
+    navigator.geolocation.getCurrentPosition(r => {
+      this.options.center.lat = r.coords.latitude;
+      this.options.center.lng = r.coords.longitude;
+    });
   },
   filters: {
     trimString (value) {

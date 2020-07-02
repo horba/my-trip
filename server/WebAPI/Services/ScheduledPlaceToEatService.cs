@@ -70,7 +70,12 @@ namespace WebAPI.Services
       }
     }
 
-    public bool UpdateScheduledPlaceToEat(InputScheduledPlaceToEatForUpdateOrDeleteDTO scheduledPlaceToEatDTO)
+    public OutputScheduledPlaceToEatDTO GetEatingById(int id)
+    {
+      return ConvertScheduledPlaceToEatToOutputScheduletPlaceToEatDTO(_scheduledPlaceToEatRepository.GetScheduledPlaceToEatById(id));
+    }
+
+    public bool UpdateScheduledPlaceToEat(InputScheduledPlaceToEatForUpdateDTO scheduledPlaceToEatDTO)
     {
       try
       {
@@ -86,7 +91,7 @@ namespace WebAPI.Services
             throw new ArgumentException();
           }
           oldEating.Notes = scheduledPlaceToEatDTO.Notes;
-          oldEating.NamePlace = scheduledPlaceToEatDTO.NamePlace;
+          oldEating.NamePlace = scheduledPlaceToEatDTO.PlaceName;
           oldEating.Lng = scheduledPlaceToEatDTO.Lng;
           oldEating.Lat = scheduledPlaceToEatDTO.Lat;
           oldEating.Link = scheduledPlaceToEatDTO.Link;
@@ -96,39 +101,21 @@ namespace WebAPI.Services
           return true;
         }
       }
-      catch(Exception e)
+      catch(Exception)
       {
-        Console.WriteLine(e);
         return false;
       }
     }
 
-    public bool DeleteScheduledPlaceToEat(InputScheduledPlaceToEatForUpdateOrDeleteDTO scheduledPlaceToEatDTO)
+    public bool DeleteScheduledPlaceToEat(int eatingId, int userId)
     {
       try
       {
-        if(!Valid(scheduledPlaceToEatDTO))
-        {
-          throw new ArgumentException();
-        }
-        else
-        {
-          var attachments = _attachmentFileEatingRepository.GetAttachmentFileEatingByScheduledPlaceId(scheduledPlaceToEatDTO.Id);
-          if(attachments != null)
-          {
-            foreach(var file in attachments)
-            {
-              File.Delete(file.Path);
-              _attachmentFileEatingRepository.DeleteAttachmentFileEating(file);
-            }
-          }
-          _scheduledPlaceToEatRepository.DeleteScheduledPlaceToEat(scheduledPlaceToEatDTO.Id);
-          return true;
-        }
+        _scheduledPlaceToEatRepository.DeleteScheduledPlaceToEat(eatingId);
+        return true;
       }
-      catch(Exception e)
+      catch(Exception)
       {
-        Console.WriteLine(e);
         return false;
       }
     }
@@ -157,7 +144,7 @@ namespace WebAPI.Services
         Lat = scheduledPlaceToEat.Lat,
         Lng = scheduledPlaceToEat.Lng,
         Link = scheduledPlaceToEat.Link,
-        NamePlace = scheduledPlaceToEat.NamePlace,
+        PlaceName = scheduledPlaceToEat.NamePlace,
         Notes = scheduledPlaceToEat.Notes
       };
     }
@@ -175,33 +162,13 @@ namespace WebAPI.Services
         Lat = inputScheduledPlaceToEatDTO.Lat,
         Lng = inputScheduledPlaceToEatDTO.Lng,
         Link = inputScheduledPlaceToEatDTO.Link,
-        NamePlace = inputScheduledPlaceToEatDTO.NamePlace,
+        NamePlace = inputScheduledPlaceToEatDTO.PlaceName,
         Notes = inputScheduledPlaceToEatDTO.Notes,
         UserId = inputScheduledPlaceToEatDTO.UserId
       };
     }
 
-    public ScheduledPlaceToEat ConvertInputScheduledPlaceToEatForUpdateOrDeleteDTOToScheduletPlaceToEat(InputScheduledPlaceToEatForUpdateOrDeleteDTO inputScheduledPlaceToEatDTO)
-    {
-      if(inputScheduledPlaceToEatDTO is null)
-      {
-        throw new ArgumentNullException(nameof(inputScheduledPlaceToEatDTO));
-      }
-      return new ScheduledPlaceToEat
-      {
-        Id = inputScheduledPlaceToEatDTO.Id,
-        DateTime = inputScheduledPlaceToEatDTO.DateTime,
-        GooglePlaceId = inputScheduledPlaceToEatDTO.GooglePlaceId,
-        Lat = inputScheduledPlaceToEatDTO.Lat,
-        Lng = inputScheduledPlaceToEatDTO.Lng,
-        Link = inputScheduledPlaceToEatDTO.Link,
-        NamePlace = inputScheduledPlaceToEatDTO.NamePlace,
-        Notes = inputScheduledPlaceToEatDTO.Notes,
-        UserId = inputScheduledPlaceToEatDTO.UserId
-      };
-    }
-
-    private bool Valid(InputScheduledPlaceToEatForUpdateOrDeleteDTO scheduledPlaceToEatDTO)
+    private bool Valid(InputScheduledPlaceToEatForUpdateDTO scheduledPlaceToEatDTO)
     {
       var results = new List<ValidationResult>();
       var context = new ValidationContext(scheduledPlaceToEatDTO);

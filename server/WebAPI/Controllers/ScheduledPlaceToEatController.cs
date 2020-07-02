@@ -8,6 +8,8 @@ using WebAPI.DTO.ScheduledPlaceToEat;
 using WebAPI.Extension;
 using WebAPI.Interfaces;
 using WebAPI.Services.Assets;
+using AutoMapper;
+using WebAPI.Validators;
 
 namespace WebAPI.Controllers
 {
@@ -32,12 +34,12 @@ namespace WebAPI.Controllers
     [ProducesResponseType(typeof(InputScheduledPlaceToEatForCreateDTO), StatusCodes.Status200OK)]
     public IActionResult GetById([FromRoute] int id)
     {
-      return Ok(_scheduledPlaceToEatService.GetEatingByUserId(HttpContext.GetUserIdFromClaim()).Where(r => r.Id.Equals(id)).FirstOrDefault());
+      return Ok(_scheduledPlaceToEatService.GetEatingById(id));
     }
 
     // GET: api/ScheduledPlaceToEat
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<InputScheduledPlaceToEatForCreateDTO>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IEnumerable<OutputScheduledPlaceToEatDTO>), StatusCodes.Status200OK)]
     public IActionResult Get()
     {
       return Ok(_scheduledPlaceToEatService.GetEatingByUserId(HttpContext.GetUserIdFromClaim()));
@@ -45,25 +47,17 @@ namespace WebAPI.Controllers
 
     [HttpPost("UploadEatingMultiFile/{id}")]
     [Consumes("multipart/form-data")]
-    public IActionResult UploadEatingMultiFile([FromForm] IFormFileCollection files, int id)
+    // [ValidFileType(Consts.AllowedImageContentTypes)]
+    public IActionResult UploadEatingMultiFile([FromForm, ValidFilesCount(Consts.MaxEatingFileCount)] IEnumerable<IFormFile> files, int id)
     {
-      if(files.Count <= Consts.MaxEatingFileCount && files.Count > 0)
-      {
         foreach(var file in files)
         {
           if(!Consts.AllowedImageContentTypes.Contains(file.ContentType, StringComparer.OrdinalIgnoreCase) && !Consts.AllowedTextContentTypes.Contains(file.ContentType, StringComparer.OrdinalIgnoreCase))
           {
             return BadRequest("notAllowedContentType");
           }
-
-          if(file.Length > Consts.MaxEatingFileSize)
-          {
-            return BadRequest("fileIsToBig");
-          }
-
-          _attachmentFileEatingService.Create(file, id, HttpContext.GetUserIdFromClaim());
+            _attachmentFileEatingService.Create(file, id, HttpContext.GetUserIdFromClaim());
         }
-      }
       return Ok();
     }
 
@@ -76,43 +70,28 @@ namespace WebAPI.Controllers
 
     // POST: api/ScheduledPlaceToEat/Create
     [HttpPost("Create")]
-    public int Create([FromBody] InputScheduledPlaceToEatForCreateDTO ScheduledPlaceToEatDTO)
+    [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
+    public IActionResult Create([FromBody] InputScheduledPlaceToEatForCreateDTO ScheduledPlaceToEatDTO)
     {
       ScheduledPlaceToEatDTO.UserId = HttpContext.GetUserIdFromClaim();
-      return _scheduledPlaceToEatService.CreateNewEating(ScheduledPlaceToEatDTO);
+      return Ok(_scheduledPlaceToEatService.CreateNewEating(ScheduledPlaceToEatDTO));
     }
 
     // POST: api/ScheduledPlaceToEat/Update
     [HttpPost("Update")]
-    public IActionResult Update([FromBody] InputScheduledPlaceToEatForUpdateOrDeleteDTO ScheduledPlaceToEatDTO)
+    public IActionResult Update([FromBody] InputScheduledPlaceToEatForUpdateDTO ScheduledPlaceToEatDTO)
     {
       ScheduledPlaceToEatDTO.UserId = HttpContext.GetUserIdFromClaim();
       return _scheduledPlaceToEatService.UpdateScheduledPlaceToEat(ScheduledPlaceToEatDTO) ? Ok() : (IActionResult)BadRequest();
     }
 
-    // DELETE: api/ScheduledPlaceToEat/Delete
-    [HttpPost("Delete")]
-    public IActionResult Delete([FromBody] InputScheduledPlaceToEatForUpdateOrDeleteDTO ScheduledPlaceToEatDTO)
-    {
-      ScheduledPlaceToEatDTO.UserId = HttpContext.GetUserIdFromClaim();
-      return _scheduledPlaceToEatService.DeleteScheduledPlaceToEat(ScheduledPlaceToEatDTO) ? Ok() : (IActionResult)BadRequest();
-    }
-
     // DELETE: api/ScheduledPlaceToEat/DeleteById/id
     [HttpPost("DeleteById/{id}")]
-    public IActionResult Delete( int id)
+    public IActionResult Delete(int id)
     {
-      var scheduledPlaceToEatDTO = _scheduledPlaceToEatService.GetEatingByUserId(HttpContext.GetUserIdFromClaim()).Where(r => r.Id.Equals(id)).FirstOrDefault();
-      return Delete(new InputScheduledPlaceToEatForUpdateOrDeleteDTO {
-      Id = scheduledPlaceToEatDTO.Id,
-      DateTime = scheduledPlaceToEatDTO.DateTime,
-      GooglePlaceId = scheduledPlaceToEatDTO.GooglePlaceId,
-      Lat = scheduledPlaceToEatDTO.Lat,
-      Link = scheduledPlaceToEatDTO.Link,
-      Lng = scheduledPlaceToEatDTO.Lng,
-      NamePlace = scheduledPlaceToEatDTO.NamePlace,
-      Notes = scheduledPlaceToEatDTO.Notes
-      });
+      var userId = HttpContext.GetUserIdFromClaim();
+      _attachmentFileEatingService.DeleteFilesEating(id, userId);
+      return _scheduledPlaceToEatService.DeleteScheduledPlaceToEat(id, userId) ? Ok() : (IActionResult)BadRequest();
     }
   }
 }

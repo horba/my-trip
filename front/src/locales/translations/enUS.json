@@ -1,4 +1,11 @@
 {
+  "cafe": "Cafe",
+  "restaurant": "Restourant",
+  "bar": "Bar",
+  "establishment": "Establishment",
+  "meal_delivery": "Meal delivery",
+  "meal_takeaway": "Meal takeawey",
+  "food": "Food",
   "appTitle": "MakeMeTrip",
   "menu": {
     "aboutUs": "About Us",
@@ -189,13 +196,6 @@
     "open": "Open",
     "close": "Close",
     "menu": "Menu",
-    "cafe": "Cafe",
-    "restaurant": "Restourant",
-    "bar": "Bar",
-    "establishment": "Establishment",
-    "meal_delivery": "Meal delivery",
-    "meal_takeaway": "Meal takeawey",
-    "food": "Food",
     "results": "Results",
     "add": "Add",
     "filter": "Filter",
@@ -203,9 +203,10 @@
     "delete": "Delete",
     "successfullyDelete": "Successfully delete"
   },
-  "eatingNew": {
+  "scheduledPlaceToEatCreateOrEdit": {
     "addCafe": "Add cafe",
-    "namePlace": "Name object",
+    "edit": "Edit",
+    "placeName": "Name object",
     "addressPlace": "Address object",
     "addFile": "Add file",
     "date": "Date",
@@ -214,7 +215,6 @@
     "notes": "Notes",
     "maxLengthName": "Maximum name length = 200 characters",
     "maxLengthNotes": "Maximum note length = 2000 characters",
-    "isNoLink": "It doesn't look like a link",
     "save": "Save",
     "close": "Close",
     "successfullySaved": "Successfully saved",
@@ -243,6 +243,9 @@
     "noEmpty": "Fill in the field.",
     "enterCorrectEmail": "Enter valid email",
     "enterCorrectDate": "Enter valid date",
-    "enterCorrectTime": "Enter valid time"
+    "enterCorrectTime": "Enter valid time",
+    "enterCorrectFiles": "File size should be less than {0} byte",
+    "isNoLink": "It doesn't look like a link",
+    "tooManyAttachments": "The number of attachments should not be more than {0}"
   }
 }

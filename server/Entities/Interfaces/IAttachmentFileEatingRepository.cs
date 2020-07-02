@@ -13,8 +13,6 @@ namespace Entities.Interfaces
 
     public void UpdateAttachmentFileEating(AttachmentFileEating attachmentFileEating);
 
-    public void DeleteAttachmentFileEating(AttachmentFileEating attachmentFileEating);
-
     public void DeleteAttachmentFileEating(int id);
   }
 }

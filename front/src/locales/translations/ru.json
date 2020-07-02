@@ -1,4 +1,11 @@
 {
+  "cafe": "Кафе",
+  "restaurant": "Ресторан",
+  "bar": "Бар",
+  "establishment": "Заведение",
+  "meal_delivery": "Доставка еды",
+  "meal_takeaway": "Еда на вынос",
+  "food": "Еда",
   "appTitle": "MakeMeTrip",
   "menu": {
     "aboutUs": "О нас",
@@ -189,13 +196,6 @@
     "open": "Открыто",
     "close": "Закрыто",
     "menu": "Меню",
-    "cafe": "Кафе",
-    "restaurant": "Ресторан",
-    "bar": "Бар",
-    "establishment": "Заведение",
-    "meal_delivery": "Доставка еды",
-    "meal_takeaway": "Еда на вынос",
-    "food": "Еда",
     "results": "Результаты",
     "add": "Добавить",
     "filter": "Фильтр",
@@ -203,9 +203,10 @@
     "delete": "Удалить",
     "successfullyDelete": "Успешное удаление"
   },
-  "eatingNew": {
+  "scheduledPlaceToEatCreateOrEdit": {
     "addCafe": "Добавить кафе",
-    "namePlace": "Название объекта",
+    "edit": "Отредактировать",
+    "placeName": "Название объекта",
     "addressPlace": "Адрес объекта",
     "addFile": "Добавить файл",
     "date": "Дата",
@@ -214,7 +215,6 @@
     "notes": "Заметки",
     "maxLengthName": "Максимальная длинна названия = 200 символов",
     "maxLengthNotes": "Максимальная длинна заметки = 2000 символов",
-    "isNoLink": "Это не похоже на ссылку",
     "save": "Сохранить",
     "close": "Закрыть",
     "successfullySaved": "Успешно сохранено",
@@ -243,6 +243,9 @@
     "noEmpty": "Заполните поле.",
     "enterCorrectEmail": "Введите корректный email",
     "enterCorrectDate": "Введите корректную дату",
-    "enterCorrectTime": "Введите корректное время"
+    "enterCorrectTime": "Введите корректное время",
+    "enterCorrectFiles": "Размер одного файла не должен превышать {0} байт",
+    "isNoLink": "Это не похоже на ссылку",
+    "tooManyAttachments": "Количество вложений должно быть не больше {0}"
   }
 }

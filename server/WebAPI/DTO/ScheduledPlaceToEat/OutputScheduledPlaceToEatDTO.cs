@@ -10,7 +10,7 @@ namespace WebAPI.DTO.ScheduledPlaceToEat
 
     public DateTime DateTime { get; set; }
 
-    public string NamePlace { get; set; }
+    public string PlaceName { get; set; }
 
     public string Notes { get; set; }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebAPI.DTO.ScheduledPlaceToEat
 {
-  public class InputScheduledPlaceToEatForUpdateOrDeleteDTO
+  public class InputScheduledPlaceToEatForUpdateDTO
   {
     [Required(ErrorMessage = "{0} is required")]
     public int Id { get; set; }
@@ -18,7 +18,7 @@ namespace WebAPI.DTO.ScheduledPlaceToEat
 
     [Required(ErrorMessage = "{0} is required")]
     [StringLength(200, ErrorMessage = "{0} length must be up to {1}.")]
-    public string NamePlace { get; set; }
+    public string PlaceName { get; set; }
 
     [StringLength(2000, ErrorMessage = "{0} length must be up to {1}.")]
     public string Notes { get; set; }

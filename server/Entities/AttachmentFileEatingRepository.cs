@@ -7,44 +7,43 @@ namespace Entities
 {
   public class AttachmentFileEatingRepository: IAttachmentFileEatingRepository
   {
-    private readonly IRepositoryContext RepositoryContext;
+    private readonly IRepositoryContext _repositoryContext;
 
     public AttachmentFileEatingRepository(IRepositoryContext repositoryContext)
     {
-      RepositoryContext = repositoryContext;
+      _repositoryContext = repositoryContext;
     }
 
     public AttachmentFileEating GetAttachmentFileEatingById(int Id)
     {
-      return RepositoryContext.AttachmentFilesEating.FirstOrDefault(u => u.Id.Equals(Id));
+      return _repositoryContext.AttachmentFilesEating.FirstOrDefault(u => u.Id.Equals(Id));
     }
 
     public IEnumerable<AttachmentFileEating> GetAttachmentFileEatingByScheduledPlaceId(int ScheduledPlaceId)
     {
-      return RepositoryContext.AttachmentFilesEating.Where(u => u.ScheduledPlaceToEatId.Equals(ScheduledPlaceId));
+      return _repositoryContext.AttachmentFilesEating.Where(u => u.ScheduledPlaceToEatId.Equals(ScheduledPlaceId));
     }
 
     public void CreateAttachmentFileEating(AttachmentFileEating attachmentFileEating)
     {
-      RepositoryContext.AttachmentFilesEating.Add(attachmentFileEating);
-      RepositoryContext.SaveChanges();
+      _repositoryContext.AttachmentFilesEating.Add(attachmentFileEating);
+      _repositoryContext.SaveChanges();
     }
 
     public void UpdateAttachmentFileEating(AttachmentFileEating attachmentFileEating)
     {
-      RepositoryContext.AttachmentFilesEating.Update(attachmentFileEating);
-      RepositoryContext.SaveChanges();
-    }
-
-    public void DeleteAttachmentFileEating(AttachmentFileEating attachmentFileEating)
-    {
-      RepositoryContext.AttachmentFilesEating.Remove(attachmentFileEating);
-      RepositoryContext.SaveChanges();
+      _repositoryContext.AttachmentFilesEating.Update(attachmentFileEating);
+      _repositoryContext.SaveChanges();
     }
 
     public void DeleteAttachmentFileEating(int id)
     {
-      DeleteAttachmentFileEating(RepositoryContext.AttachmentFilesEating.FirstOrDefault(r => r.Id.Equals(id)));
+      var attachmentFileEating = _repositoryContext.AttachmentFilesEating.FirstOrDefault(r => r.Id.Equals(id));
+      if(attachmentFileEating != null)
+      {
+        _repositoryContext.AttachmentFilesEating.Remove(attachmentFileEating);
+        _repositoryContext.SaveChanges();
+      }
     }
   }
 }

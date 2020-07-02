@@ -1,4 +1,11 @@
 {
+  "cafe": "Кафе",
+  "restaurant": "Ресторан",
+  "bar": "Бар",
+  "establishment": "Установа",
+  "meal_delivery": "Доставка їжі",
+  "meal_takeaway": "Їжа на виніс",
+  "food": "Їжа",
   "appTitle": "MakeMeTrip",
   "menu": {
     "aboutUs": "Про нас",
@@ -109,7 +116,7 @@
   },
   "cities": {
     "kyiv": "Київ",
-    "krakow": "Краков" 
+    "krakow": "Краков"
   },
   "transportTypes": {
     "plane": "Літак",
@@ -189,13 +196,6 @@
     "open": "Відчинено",
     "close": "Зачинено",
     "menu": "Меню",
-    "cafe": "Кафе",
-    "restaurant": "Ресторан",
-    "bar": "Бар",
-    "establishment": "Установа",
-    "meal_delivery": "Доставка їжі",
-    "meal_takeaway": "Їжа на винесення",
-    "food": "Їжа",
     "results": "Результати",
     "add": "Додати",
     "filter": "Фільтр",
@@ -203,9 +203,10 @@
     "delete": "Видалити",
     "successfullyDelete": "Успішне видалення"
   },
-  "eatingNew": {
+  "scheduledPlaceToEatCreateOrEdit": {
     "addCafe": "Додати кафе",
-    "namePlace": "Назва об'єкту",
+    "edit": "Відредагувати",
+    "placeName": "Назва об'єкту",
     "addressPlace": "Адреса об'єкту",
     "addFile": "Додати файл",
     "date": "Дата",
@@ -214,7 +215,6 @@
     "notes": "Нотатки",
     "maxLengthName": "Максимальна довжина назви = 200 символів",
     "maxLengthNotes": "Максимальна довжина замітки = 2000 символів",
-    "isNoLink": "Це не схоже на посилання",
     "save": "Зберегти",
     "close": "Закрити",
     "successfullySaved": "Успішно збережено",
@@ -243,6 +243,9 @@
     "noEmpty": "Заповніть поле.",
     "enterCorrectEmail": "Введіть дійсний email",
     "enterCorrectDate": "Введіть дійсну дату",
-    "enterCorrectTime": "Введіть дійсний час"
+    "enterCorrectTime": "Введіть дійсний час",
+    "enterCorrectFiles": "Розмір одного файлу не повинен перевищувати {0} байт",
+    "isNoLink": "Це не схоже на посилання",
+    "tooManyAttachments": "Кількість файлів повинно бути не більше {0}"
   }
 }
