@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.DTO;
+using WebAPI.DTO.Accommodation;
 using WebAPI.Extension;
 using WebAPI.Services;
 
@@ -22,9 +23,9 @@ namespace WebAPI.Controllers
 
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<AccommodationDTO>), StatusCodes.Status200OK)]
-    public IActionResult GetPagedAccommodations([FromQuery] PaginationRequestQueryDTO paginationRequestQuery)
+    public IActionResult GetAccommodations([FromQuery] PaginationRequestQueryDTO paginationRequestQuery, [FromQuery] AccommodationSortingQueryDTO accommodationSortingQuery)
     {
-      return Ok(_accommodationService.GetAccommodations(HttpContext.GetUserIdFromClaim(), paginationRequestQuery));
+      return Ok(_accommodationService.GetAccommodations(HttpContext.GetUserIdFromClaim(), paginationRequestQuery, accommodationSortingQuery));
     }
 
     [HttpGet]

@@ -16,8 +16,8 @@ export default {
     }
   },
   actions: {
-    async fetchAccommodations ({ commit }, pageNumber) {
-      await api.get('/accommodations', { pageNumber, pageSize: PAGINTAION_ACCOMMODATION_PAGE_SIZE })
+    async fetchAccommodations ({ commit }, uiQuery) {
+      await api.get('/accommodations', { ...uiQuery, pageSize: PAGINTAION_ACCOMMODATION_PAGE_SIZE })
         .then(r => {
           const { data, ...rest } = r.data;
           commit('SET_ACCOMODATIONS', data);

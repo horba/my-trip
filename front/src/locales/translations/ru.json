@@ -275,7 +275,10 @@
     "note": "Заметки",
     "pricePerNight": "Стоимость за ночь",
     "departureArrivalDateValidation": "Дата выезда должна быть больше даты заезда",
-    "plan": "Запланировать"
+    "plan": "Запланировать",
+    "byReservationDate": "По дате бронирования",
+    "byCostPerNight": "По стоимости за ночь",
+    "byName": "По названию"
   },
   "datetimePicker": {
     "ok": "Выбрать",

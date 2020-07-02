@@ -3,3 +3,7 @@
   height: 100%;
   min-height: 650px;
 }
+
+.accommodation-sorting-select {
+  width: 250px;
+}

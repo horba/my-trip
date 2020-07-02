@@ -1,7 +1,7 @@
 import { VBtn, VIcon } from 'vuetify/lib';
 import { MmtTextInput, MmtStepper, MmtAccommodationCard } from '@components';
 import { accommodationGoogleApiMixin } from '@mixins';
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   mixins: [ accommodationGoogleApiMixin ],
@@ -15,11 +15,17 @@ export default {
   data () {
     return {
       selectedAccommodation: null,
-      mapSelector: 'map-holder'
+      mapSelector: 'map-holder',
+      sortInfo: {
+        sortBy: 0,
+        sortDirection: 0
+      },
+      changedPage: 1
     };
   },
   computed: {
     ...mapState('accommodations', [ 'paginationInfo' ]),
+    ...mapGetters('dictionaries', [ 'accommodationSorting' ]),
     accommodations () {
       return this.$store.state.accommodations.accommodations;
     }
@@ -31,11 +37,12 @@ export default {
         this.selectedAccommodation = accommodation;
       }
     },
-    onPaginationChange (page) {
-      this.$store.dispatch('accommodations/fetchAccommodations', page - 1);
+    onQueryCange () {
+      this.$store.dispatch('accommodations/fetchAccommodations',
+        { pageNumber: this.changedPage - 1, ...this.sortInfo });
     }
   },
   async mounted () {
-    await this.$store.dispatch('accommodations/fetchAccommodations', 0);
+    this.onQueryCange();
   }
 };

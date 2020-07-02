@@ -6,12 +6,24 @@
         {{ $t('accommodations.results') }} ({{ accommodations.length }})
       </h6>
     </div>
-    <div>
+    <div class="d-flex">
       <v-btn rounded class="details accent lighten-1 mr-5" to="/my/accommodation/new">
         <span class="text-capitalize">
           {{ $t('accommodations.addAccommodation') }}
         </span>
       </v-btn>
+      <v-select :items="accommodationSorting" v-model="sortInfo.sortBy" class="mr-5 accommodation-sorting-select"
+        background-color="accent lighten-1" rounded filled dense dark hide-details solo append-icon="mdi-sort"
+        @change="onQueryCange" />
+      <v-btn-toggle v-model="sortInfo.sortDirection" mandatory rounded height="40" class="mr-5" dark
+        background-color="accent lighten-1" @change="onQueryCange">
+        <v-btn height="40" color="accent lighten-1">
+          <v-icon>mdi-arrow-down</v-icon>
+        </v-btn>
+        <v-btn height="40" color="accent lighten-1">
+          <v-icon>mdi-arrow-up</v-icon>
+        </v-btn>
+      </v-btn-toggle>
       <v-btn v-if="accommodations.length" rounded class="details accent lighten-1">
         <span class="text-capitalize">
           {{ $t('accommodations.filter') }}
@@ -37,5 +49,6 @@
       <div class="map" ref="map-holder"></div>
     </div>
   </div>
-  <v-pagination :length="paginationInfo.totalCount" :value="paginationInfo.pageNumber + 1" color="accent lighten-1" @input="onPaginationChange"/>
+  <v-pagination :length="paginationInfo.totalCount" v-model="changedPage" color="accent lighten-1"
+    @input="onQueryCange" />
 </div>

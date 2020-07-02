@@ -5,7 +5,9 @@ using Entities.Models;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper.Configuration.Conventions;
+using Entities.Models.Enums;
 using WebAPI.DTO;
+using WebAPI.DTO.Accommodation;
 using WebAPI.Services.Assets;
 
 namespace WebAPI.Services
@@ -34,16 +36,45 @@ namespace WebAPI.Services
         .Take((int)paginationRequestQueryDto.PageSize);
     }
 
-    public PagedResponse<AccommodationDTO> GetAccommodations(int userId, PaginationRequestQueryDTO paginationRequestQueryDto)
+    private IQueryable<Accommodation> SortAccommodations(IQueryable<Accommodation> accommodations, AccommodationSortingQueryDTO accommodationSortingQuery)
+    {
+      Func<System.Linq.Expressions.Expression<Func<Accommodation, object>>, IOrderedQueryable<Accommodation>> orderFunc;
+
+      if (accommodationSortingQuery.SortDirection == SortDirection.Ascending)
+      {
+        orderFunc = accommodations.OrderBy;
+      }
+      else
+      {
+        orderFunc = accommodations.OrderByDescending;
+      }
+
+      if (accommodationSortingQuery.SortByBy == AccommodationSortBy.ByReservationDate)
+      {
+        return orderFunc(accommodation => accommodation.ArrivalDateTime);
+      }
+
+      if (accommodationSortingQuery.SortByBy == AccommodationSortBy.ByCostPerNight)
+      {
+        return orderFunc(accommodation => accommodation.Price);
+      }
+
+      return orderFunc(accommodation => accommodation.Name);
+    }
+
+    public PagedResponse<AccommodationDTO> GetAccommodations(int userId,
+      PaginationRequestQueryDTO paginationRequestQuery, AccommodationSortingQueryDTO accommodationSortingQuery)
     {
       var accommodations = _accommodationRepository.GetUserAccommodations(userId);
-      int totalCount = (int)Math.Ceiling(accommodations.Count() / (double)paginationRequestQueryDto.PageSize);
-      accommodations = PaginateAccommodations(accommodations, paginationRequestQueryDto);
+      int totalCount = (int)Math.Ceiling(accommodations.Count() / (double)paginationRequestQuery.PageSize);
+      accommodations = SortAccommodations(accommodations, accommodationSortingQuery);
+      accommodations = PaginateAccommodations(accommodations, paginationRequestQuery);
+
       return new PagedResponse<AccommodationDTO>
       {
         Data = _mapper.Map<IEnumerable<AccommodationDTO>>(accommodations.ToList()),
-        PageSize = paginationRequestQueryDto.PageSize,
-        PageNumber = paginationRequestQueryDto.PageNumber,
+        PageSize = paginationRequestQuery.PageSize,
+        PageNumber = paginationRequestQuery.PageNumber,
         TotalCount = totalCount
       };
     }
