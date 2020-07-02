@@ -8,6 +8,7 @@ export default {
   },
   data () {
     return {
+      showFirstPassword: false,
       email: '',
       password: '',
       serverError: '',

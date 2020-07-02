@@ -19,7 +19,7 @@
                :key="link.title"
                :to="`${link.route}`"
                text
-               class="white--text"
+               class="white--text header-item"
                v-if="link.isVisible">
           {{ $t(link.title) }}
         </v-btn>
@@ -34,7 +34,7 @@
       <v-btn icon class="white--text">
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
-    
+
     </v-app-bar>
   </v-container>
 

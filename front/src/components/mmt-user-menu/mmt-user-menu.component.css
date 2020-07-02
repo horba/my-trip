@@ -71,3 +71,14 @@
   min-width: 300px;
   height: 100vh;
 }
+
+aside >>> .v-navigation-drawer__content {
+  height: 100vh;
+  position: relative;
+}
+
+.items-list:last-child {
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+}

@@ -18,3 +18,7 @@
     .header-wrapper header .v-btn {
       text-transform: capitalize;
     }
+
+.header-item {
+  margin: 0 10px;
+}

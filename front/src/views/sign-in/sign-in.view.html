@@ -15,6 +15,9 @@
         :placeholder="$t('signIn.passwordPlease')" type="password" v-model="password" 
         :rules="[rules.required]" 
         :error-messages="serverError"
+        :type="showFirstPassword ? 'text' : 'password'"
+        :append-icon="showFirstPassword ? 'mdi-eye' : 'mdi-eye-off'"
+        @click:append="showFirstPassword = !showFirstPassword"
         @input="onInput" />
       <v-btn class="continue-button mmt-btn" rounded depressed large :disabled="!formValidity" @click="login">{{$t('signIn.continue')}}
       </v-btn>
