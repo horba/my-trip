@@ -1,4 +1,5 @@
 import { MmtTextInput } from '@/components';
+import { format } from 'date-fns';
 import {
   requiredValidationMixin,
   filesSizeValidMixin,
@@ -22,6 +23,7 @@ import {
 } from 'vuetify/lib';
 
 import { gmapApi } from 'vue2-google-maps';
+const SNACK_BAR_TIMEOUT = 4000;
 export default {
   mixins: [
     requiredValidationMixin,
@@ -46,7 +48,7 @@ export default {
     return {
       menuDatePicker: false,
       menuTimePicker: false,
-      formValid: false,
+      isValid: false,
       rules: {
         maxLengthName: v => v.length <= 200
           || this.$t('scheduledPlaceToEatCreateOrEdit.maxLengthName'),
@@ -62,17 +64,17 @@ export default {
       lat: 0,
       lng: 0,
       files: new FormData(),
-      textForSnackbar: '',
-      showSnackbar: false,
-      colorForSnackbar: ''
+      snackBarMessage: '',
+      showSnackBar: false,
+      snackBarColor: ''
     };
   },
   computed: {
     google: gmapApi,
-    isEditMode: vm => !vm.$route.params.id,
+    isEditMode: vm => !!vm.$route.params.id,
     header: vm => vm.isEditMode
-      ? vm.$t('scheduledPlaceToEatCreateOrEdit.addCafe')
-      : vm.$t('scheduledPlaceToEatCreateOrEdit.edit')
+      ? vm.$t('scheduledPlaceToEatCreateOrEdit.edit')
+      : vm.$t('scheduledPlaceToEatCreateOrEdit.addCafe')
   },
   methods: {
     findPlace (place) {
@@ -86,25 +88,21 @@ export default {
       if (!date) {
         return null;
       }
-
-      const [month, day, year] = date.split('/');
-      return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+      return format(new Date(date), 'yyyy-mm-dd');
     },
     onSaveSuccess () {
-      this.textForSnackbar = this.isEditMode
+      const textForSnackbar = this.isEditMode
         ? this.$t('scheduledPlaceToEatCreateOrEdit.successfullySaved')
-        : this.$t('scheduledPlaceToEatCreateOrEdit.successfullyEdited');
-      this.showSnackbar = true;
-      this.colorForSnackbar = 'success';
-      this.$nextTick(() => this.$router.push({ name: 'ScheduleEatingPlace' }));
+        : this.$t('scheduledPlaceToEatCreateOrEdit.successfullyEdited'),
+            colorForSnackbar = 'success';
+      this.showSnackbar(colorForSnackbar, textForSnackbar)
+        .then(() => this.$router.push({ name: 'ScheduleEatingPlace' }));
     },
     onSaveError (error) {
-      this.textForSnackbar = error;
-      this.showSnackbar = true;
-      this.colorForSnackbar = 'error';
+      this.showSnackbar('error', error);
     },
     save () {
-      if (this.formValid) {
+      if (this.isValid) {
         const payload = {
           dateTime: `${this.date}T${this.time}`,
           placeName: this.placeName,
@@ -114,17 +112,16 @@ export default {
           lat: this.lat,
           lng: this.lng
         };
-        if (this.$route.params.id) {
+        if (this.isEditMode) {
           payload.id = Number(this.$route.params.id);
           this.$store.dispatch('eating/updateEating', payload)
             .then(() => {
-              this.onSaveSuccess();
               return this.$store.dispatch('eating/uploadNewFilesEating', {
                 files: this.files,
                 eatingId: payload.id
               });
-            }).then(() => this.$router.push({ name: 'ScheduleEatingPlace' })
-              .catch(error => this.onSaveError(error)));
+            }).then(() => this.onSaveSuccess())
+            .catch(error => this.onSaveError(error));
         } else {
           this.$store.dispatch('eating/createNewEating', payload)
             .then(r => {
@@ -134,9 +131,11 @@ export default {
                 eatingId: r.data
               });
             })
-            .then(() => this.$router.push({ name: 'ScheduleEatingPlace' }))
+            .then(() => this.onSaveSuccess())
             .catch(error => this.onSaveError(error));
         }
+      } else {
+        this.$refs.form.validate();
       }
     },
     uploadFiles (files) {
@@ -147,6 +146,14 @@ export default {
         }
       });
       this.files = tempFiles;
+    },
+    showSnackbar (color, message) {
+      this.snackBarColor = color;
+      this.snackBarMessage = message;
+      this.showSnackBar = true;
+      return new Promise(function (resolve, reject) {
+        setTimeout(() => resolve(true), SNACK_BAR_TIMEOUT);
+      });
     }
   },
   mounted () {

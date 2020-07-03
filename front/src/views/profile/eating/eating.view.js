@@ -35,7 +35,7 @@ export default {
         ref: 'mapRef'
       },
       scheduledPlacesList: [],
-      defaultImage: '@/assets/default-image.jpg',
+      defaultImage: '@/assets/default-sheduled-place-to-eat-image.jpg',
       selectedId: 0,
       text: '',
       snackbar: false,
@@ -86,13 +86,7 @@ export default {
       });
     },
     isOpen (place) {
-      let isOpen;
-      try {
-        isOpen = place.opening_hours.isOpen();
-      } catch (e) {
-        isOpen = true;
-      }
-      return isOpen;
+      place.opening_hours && place.opening_hours.isOpen();
     },
     onSelectPlace (selectedPlace) {
       if (selectedPlace.googleDetails !== null) {
@@ -121,10 +115,5 @@ export default {
       this.options.center.lat = r.coords.latitude;
       this.options.center.lng = r.coords.longitude;
     });
-  },
-  filters: {
-    trimString (value) {
-      return value.length > 10 ? value.substr(0, 10) + '...' : value;
-    }
   }
 };

@@ -10,7 +10,7 @@ namespace Entities
 
     public LanguageRepository(IRepositoryContext repositoryContext)
     {
-      RepositoryContext = repositoryContext;
+      this.RepositoryContext = repositoryContext;
     }
 
     public Language FindLanguageById(int id)

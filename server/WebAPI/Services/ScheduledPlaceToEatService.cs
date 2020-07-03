@@ -176,10 +176,6 @@ namespace WebAPI.Services
       {
         if(!Validator.TryValidateObject(scheduledPlaceToEatDTO, context, results, true))
         {
-          foreach(var error in results)
-          {
-            Console.WriteLine(error.ErrorMessage);
-          }
           throw new ArgumentException();
         }
         else
@@ -201,10 +197,6 @@ namespace WebAPI.Services
       {
         if(!Validator.TryValidateObject(scheduledPlaceToEatDTO, context, results, true))
         {
-          foreach(var error in results)
-          {
-            Console.WriteLine(error.ErrorMessage);
-          }
           throw new ArgumentException();
         }
         else

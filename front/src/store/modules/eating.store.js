@@ -21,12 +21,7 @@ export default {
       }
     },
     uploadNewFilesEating (_context, { eatingId, files }) {
-      return api.post('/ScheduledPlaceToEat/uploadEatingMultiFile/' + eatingId, files,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
+      return api.postFile('/ScheduledPlaceToEat/uploadEatingMultiFile/' + eatingId, files);
     }
   }
 };

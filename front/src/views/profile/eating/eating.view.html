@@ -24,7 +24,7 @@
         class="place-card" height="300" width="259" @click="onSelectPlace(place)"
         :class="{ 'active-card': place.serverInfo.id === selectedId }">
         <v-img
-          v-if="place.googleDetails && place.googleDetails.photos"
+          v-if="place.googleDetails && place.googleDetails.photos && place.googleDetails.photos.length > 0"
           :aspect-ratio="16/9"
           :lazy-src="defaultImage"
           :src="place.googleDetails.photos[0].getUrl()"
@@ -34,7 +34,7 @@
           v-else
           :aspect-ratio="16/9"
           :lazy-src="defaultImage"
-          src="@assets/default-image.jpg"
+          src="@assets/default-sheduled-place-to-eat-image.jpg"
           max-height="150"
         />
         <div class="text-card">
@@ -42,7 +42,7 @@
             <v-row>
               <v-col md="5" sm="12">
                 <h6 :title="place.serverInfo.placeName" class="text-semi-bold d-flex justify-start align-center">
-                  {{ place.serverInfo.placeName | trimString}}
+                  {{ place.serverInfo.placeName | trim(10)}}
                 </h6>
               </v-col>
               <v-col md="7" sm="12">

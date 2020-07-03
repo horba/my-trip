@@ -10,6 +10,7 @@ using WebAPI.Interfaces;
 using WebAPI.Services.Assets;
 using AutoMapper;
 using WebAPI.Validators;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebAPI.Controllers
 {
@@ -47,18 +48,27 @@ namespace WebAPI.Controllers
 
     [HttpPost("UploadEatingMultiFile/{id}")]
     [Consumes("multipart/form-data")]
-    // [ValidFileType(Consts.AllowedImageContentTypes)]
     public IActionResult UploadEatingMultiFile([FromForm, ValidFilesCount(Consts.MaxEatingFileCount)] IEnumerable<IFormFile> files, int id)
     {
-        foreach(var file in files)
+      var results = new List<ValidationResult>();
+      var validationAttributes = new List<ValidationAttribute>
+      {
+        new ValidFileType(new string[] { "image/png", ".jpeg", ".jpg", ".bmp", ".txt", ".doc", ".docx", ".pdf" })
+      };
+      var notValidFiles = new List<string>();
+      foreach(var file in files)
+      {
+        var context = new System.ComponentModel.DataAnnotations.ValidationContext(file);
+        if(Validator.TryValidateValue(file, context, results, validationAttributes))
         {
-          if(!Consts.AllowedImageContentTypes.Contains(file.ContentType, StringComparer.OrdinalIgnoreCase) && !Consts.AllowedTextContentTypes.Contains(file.ContentType, StringComparer.OrdinalIgnoreCase))
-          {
-            return BadRequest("notAllowedContentType");
-          }
-            _attachmentFileEatingService.Create(file, id, HttpContext.GetUserIdFromClaim());
+          _attachmentFileEatingService.Create(file, id, HttpContext.GetUserIdFromClaim());
         }
-      return Ok();
+        else
+        {
+          notValidFiles.Add(file.FileName);
+        }
+      }
+      return Ok(notValidFiles);
     }
 
     [HttpPost("DeleteEatingFile")]
