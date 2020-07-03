@@ -22,7 +22,8 @@
     }
 
   .link.link:last-child {
-    margin-top: 50px;
+    display: flex;
+    margin: auto 0 0 0;
   }
 
   .link:last-child * {
@@ -74,11 +75,16 @@
 
 aside >>> .v-navigation-drawer__content {
   height: 100vh;
-  position: relative;
 }
 
-.items-list:last-child {
-  position: absolute;
-  bottom: 3px;
-  left: 0;
+.items-list {
+  min-height: 1050px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  align-self: center;
 }
