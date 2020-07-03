@@ -19,6 +19,16 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path: '/accommodation',
+    name: 'Accommodation',
+    component: Accommodation
+  },
+  {
+    path: '/',
+    name: 'Home',
+    component: Accommodation
+  },
+  {
     path: '/signup',
     name: 'SignUp',
     component: SignUp
@@ -31,11 +41,6 @@ const routes = [
       allowUnknownUsers: true, // default is true
       allowLoggedUsers: false // default is true
     }
-  },
-  {
-    path: '/accommodation',
-    name: 'Accommodation',
-    component: Accommodation
   },
   {
     path: '/leisure',
