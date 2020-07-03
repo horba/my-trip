@@ -1,6 +1,6 @@
 import {
-  Accommodation, Leisure,
-  Entertainments, Food,
+  AccommodationSearch, EntertainmentsSearch,
+  Entertainments, PlaceToEatSearch,
   AboutUs, PrivacyPolicy, CookiePolicy,
   TermsOfUse, ForTourOperators, Contacts,
   ReviewNew, MyTickets, MyAccommodation,
@@ -19,6 +19,15 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path: '/',
+    redirect: '/accommodation'
+  },
+  {
+    path: '/accommodation',
+    name: 'Accommodation',
+    component: AccommodationSearch
+  },
+  {
     path: '/signup',
     name: 'SignUp',
     component: SignUp
@@ -33,19 +42,14 @@ const routes = [
     }
   },
   {
-    path: '/accommodation',
-    name: 'Accommodation',
-    component: Accommodation
+    path: '/entertainments',
+    name: 'Entertainments',
+    component: EntertainmentsSearch
   },
   {
-    path: '/leisure',
-    name: 'Leisure',
-    component: Leisure
-  },
-  {
-    path: '/food',
-    name: 'Food',
-    component: Food
+    path: '/eating',
+    name: 'eating',
+    component: PlaceToEatSearch
   },
   {
     path: '/about-us',
