@@ -1,5 +1,5 @@
-export { default as Accommodation } from '@views/Accommodation.vue';
-export { default as Food } from '@views/Food.vue';
+export { default as AccommodationSearch } from '@views/Accommodation.vue';
+export { default as PlaceToEatSearch } from '@views/Food.vue';
 export { default as AboutUs } from '@views/AboutUs.vue';
 export { default as PrivacyPolicy } from '@views/PrivacyPolicy.vue';
 export { default as CookiePolicy } from '@views/CookiePolicy.vue';
@@ -9,7 +9,7 @@ export { default as Contacts } from '@views/Contacts.vue';
 export { default as ReviewNew } from '@views/ReviewNew.vue';
 export { default as MyTickets } from '@views/profile/Tickets.vue';
 export { default as MyAccommodation } from '@views/profile/accommodation/accommodation.view.vue';
-export { default as Leisure } from '@views/leisure/leisure.view.vue';
+export { default as EntertainmentsSearch } from '@views/leisure/leisure.view.vue';
 export { default as SignIn } from './sign-in/sign-in.view.vue';
 export { default as SignUp } from './sign-up/sign-up.view.vue';
 export { default as UserSettings } from './profile/user-settings/user-settings.view.vue';

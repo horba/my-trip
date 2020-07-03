@@ -1,7 +1,7 @@
 <v-navigation-drawer permanent overflow :mini-variant="$vuetify.breakpoint.smAndDown">
-  <v-list dense flat tile align="center" justify="center" class="overflow-hidden py-3">
+  <v-list dense flat tile align="center" justify="center" class="overflow-hidden py-3 items-list">
         
-    <mmt-avatar :src="user.avatar" :size="`${$vuetify.breakpoint.smAndDown ? 48 : 130}`" />    
+    <mmt-avatar :src="user.avatar" :size="`${$vuetify.breakpoint.smAndDown ? 48 : 130}`" class="avatar"/>    
 
     <v-list-item v-if="!$vuetify.breakpoint.smAndDown" two-line>
       <v-list-item-content>
@@ -27,7 +27,6 @@
                  :key="item.title"
                  :to="item.link"
                  link
-                 class="items-list"
                  :class="`link ${!$vuetify.breakpoint.smAndDown && item.isChild ? 'child' : ''}`"
                  active-class="active"
                  @click="itemSelected(item)">
