@@ -84,7 +84,8 @@ namespace WebAPI.Controllers
     public IActionResult Create([FromBody] InputScheduledPlaceToEatForCreateDTO ScheduledPlaceToEatDTO)
     {
       ScheduledPlaceToEatDTO.UserId = HttpContext.GetUserIdFromClaim();
-      return Ok(_scheduledPlaceToEatService.CreateNewEating(ScheduledPlaceToEatDTO));
+      var resultId = _scheduledPlaceToEatService.CreateNewEating(ScheduledPlaceToEatDTO);
+      return resultId != -1 ? Ok(resultId) : (IActionResult)BadRequest();
     }
 
     // POST: api/ScheduledPlaceToEat/Update

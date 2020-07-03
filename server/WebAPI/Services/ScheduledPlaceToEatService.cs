@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.IO;
-using System.Linq;
+using AutoMapper;
 using Entities.Interfaces;
 using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 using WebAPI.DTO.ScheduledPlaceToEat;
 using WebAPI.Interfaces;
+using WebAPI.Mappers;
 
 namespace WebAPI.Services
 {
@@ -15,6 +16,7 @@ namespace WebAPI.Services
     private readonly UserService _userService;
     private readonly IScheduledPlaceToEatRepository _scheduledPlaceToEatRepository;
     private readonly IAttachmentFileEatingRepository _attachmentFileEatingRepository;
+    private readonly IMapper _mapper;
 
     public ScheduledPlaceToEatService(
       UserService userService,
@@ -24,13 +26,16 @@ namespace WebAPI.Services
       _userService = userService;
       _scheduledPlaceToEatRepository = scheduledPlaceToEatRepository;
       _attachmentFileEatingRepository = attachmentFileEatingRepository;
+      _mapper = new MapperConfiguration(
+                    mc => { mc.AddProfile(new SheduledPlaceToEatMappingProfile()); }
+            ).CreateMapper();
     }
 
     public int CreateNewEating(InputScheduledPlaceToEatForCreateDTO scheduledPlaceToEatDTO)
     {
       try
       {
-        if(!Valid(scheduledPlaceToEatDTO))
+        if(!IsValid(scheduledPlaceToEatDTO))
         {
           throw new ArgumentException();
         }
@@ -38,7 +43,7 @@ namespace WebAPI.Services
         {
           if(_userService.GetUser(scheduledPlaceToEatDTO.UserId) != null)
           {
-            return _scheduledPlaceToEatRepository.CreateScheduledPlaceToEat(ConvertInputScheduledPlaceToEatForCreateDTOToScheduletPlaceToEat(scheduledPlaceToEatDTO));
+            return _scheduledPlaceToEatRepository.CreateScheduledPlaceToEat(_mapper.Map<ScheduledPlaceToEat>(scheduledPlaceToEatDTO));
           }
           else
           {
@@ -60,7 +65,7 @@ namespace WebAPI.Services
         List<OutputScheduledPlaceToEatDTO> result = new List<OutputScheduledPlaceToEatDTO>();
         foreach(var eating in eatings)
         {
-          result.Add(ConvertScheduledPlaceToEatToOutputScheduletPlaceToEatDTO(eating));
+          result.Add(AddFileNames(eating));
         }
         return result;
       }
@@ -72,14 +77,14 @@ namespace WebAPI.Services
 
     public OutputScheduledPlaceToEatDTO GetEatingById(int id)
     {
-      return ConvertScheduledPlaceToEatToOutputScheduletPlaceToEatDTO(_scheduledPlaceToEatRepository.GetScheduledPlaceToEatById(id));
+      return AddFileNames(_scheduledPlaceToEatRepository.GetScheduledPlaceToEatById(id));
     }
 
     public bool UpdateScheduledPlaceToEat(InputScheduledPlaceToEatForUpdateDTO scheduledPlaceToEatDTO)
     {
       try
       {
-        if(!Valid(scheduledPlaceToEatDTO))
+        if(!IsValid(scheduledPlaceToEatDTO))
         {
           throw new ArgumentException();
         }
@@ -120,9 +125,9 @@ namespace WebAPI.Services
       }
     }
 
-    public OutputScheduledPlaceToEatDTO ConvertScheduledPlaceToEatToOutputScheduletPlaceToEatDTO(ScheduledPlaceToEat scheduledPlaceToEat)
+    public OutputScheduledPlaceToEatDTO AddFileNames(ScheduledPlaceToEat scheduledPlaceToEat)
     {
-      if(scheduledPlaceToEat is null)
+      if(scheduledPlaceToEat == null)
       {
         throw new ArgumentNullException(nameof(scheduledPlaceToEat));
       }
@@ -130,48 +135,17 @@ namespace WebAPI.Services
       var attachmentFileEatings = _attachmentFileEatingRepository.GetAttachmentFileEatingByScheduledPlaceId(scheduledPlaceToEat.Id);
       if(attachmentFileEatings != null)
       {
-        foreach(var file in attachmentFileEatings)
-        {
-          fileNames.Add(file.Path);
-        }
+        attachmentFileEatings.ForEachAsync(file => fileNames.Add(file.Path));
       }
-      return new OutputScheduledPlaceToEatDTO
-      {
-        Id = scheduledPlaceToEat.Id,
-        DateTime = scheduledPlaceToEat.DateTime,
-        FileNames = fileNames,
-        GooglePlaceId = scheduledPlaceToEat.GooglePlaceId,
-        Lat = scheduledPlaceToEat.Lat,
-        Lng = scheduledPlaceToEat.Lng,
-        Link = scheduledPlaceToEat.Link,
-        PlaceName = scheduledPlaceToEat.NamePlace,
-        Notes = scheduledPlaceToEat.Notes
-      };
+      var outputScheduledPlaceToEatDTO = _mapper.Map<OutputScheduledPlaceToEatDTO>(scheduledPlaceToEat);
+      outputScheduledPlaceToEatDTO.FileNames = fileNames;
+      return outputScheduledPlaceToEatDTO;
     }
 
-    public ScheduledPlaceToEat ConvertInputScheduledPlaceToEatForCreateDTOToScheduletPlaceToEat(InputScheduledPlaceToEatForCreateDTO inputScheduledPlaceToEatDTO)
-    {
-      if(inputScheduledPlaceToEatDTO is null)
-      {
-        throw new ArgumentNullException(nameof(inputScheduledPlaceToEatDTO));
-      }
-      return new ScheduledPlaceToEat
-      {
-        DateTime = inputScheduledPlaceToEatDTO.DateTime,
-        GooglePlaceId = inputScheduledPlaceToEatDTO.GooglePlaceId,
-        Lat = inputScheduledPlaceToEatDTO.Lat,
-        Lng = inputScheduledPlaceToEatDTO.Lng,
-        Link = inputScheduledPlaceToEatDTO.Link,
-        NamePlace = inputScheduledPlaceToEatDTO.PlaceName,
-        Notes = inputScheduledPlaceToEatDTO.Notes,
-        UserId = inputScheduledPlaceToEatDTO.UserId
-      };
-    }
-
-    private bool Valid(InputScheduledPlaceToEatForUpdateDTO scheduledPlaceToEatDTO)
+    private bool IsValid(InputScheduledPlaceToEatForUpdateDTO scheduledPlaceToEatDTO)
     {
       var results = new List<ValidationResult>();
-      var context = new ValidationContext(scheduledPlaceToEatDTO);
+      var context = new System.ComponentModel.DataAnnotations.ValidationContext(scheduledPlaceToEatDTO);
       try
       {
         if(!Validator.TryValidateObject(scheduledPlaceToEatDTO, context, results, true))
@@ -189,10 +163,10 @@ namespace WebAPI.Services
       }
     }
 
-    private bool Valid(InputScheduledPlaceToEatForCreateDTO scheduledPlaceToEatDTO)
+    private bool IsValid(InputScheduledPlaceToEatForCreateDTO scheduledPlaceToEatDTO)
     {
       var results = new List<ValidationResult>();
-      var context = new ValidationContext(scheduledPlaceToEatDTO);
+      var context = new System.ComponentModel.DataAnnotations.ValidationContext(scheduledPlaceToEatDTO);
       try
       {
         if(!Validator.TryValidateObject(scheduledPlaceToEatDTO, context, results, true))

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using Entities.Models;
 
 namespace Entities.Interfaces
@@ -7,7 +7,7 @@ namespace Entities.Interfaces
   {
     public AttachmentFileEating GetAttachmentFileEatingById(int Id);
 
-    public IEnumerable<AttachmentFileEating> GetAttachmentFileEatingByScheduledPlaceId(int ScheduledPlaceId);
+    public IQueryable<AttachmentFileEating> GetAttachmentFileEatingByScheduledPlaceId(int ScheduledPlaceId);
 
     public void CreateAttachmentFileEating(AttachmentFileEating attachmentFileEating);
 

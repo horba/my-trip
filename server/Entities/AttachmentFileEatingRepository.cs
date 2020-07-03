@@ -19,7 +19,7 @@ namespace Entities
       return _repositoryContext.AttachmentFilesEating.FirstOrDefault(u => u.Id.Equals(Id));
     }
 
-    public IEnumerable<AttachmentFileEating> GetAttachmentFileEatingByScheduledPlaceId(int ScheduledPlaceId)
+    public IQueryable<AttachmentFileEating> GetAttachmentFileEatingByScheduledPlaceId(int ScheduledPlaceId)
     {
       return _repositoryContext.AttachmentFilesEating.Where(u => u.ScheduledPlaceToEatId.Equals(ScheduledPlaceId));
     }

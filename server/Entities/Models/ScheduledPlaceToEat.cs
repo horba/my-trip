@@ -21,16 +21,16 @@ namespace Entities.Models
     public DateTime DateTime { get; set; }
 
     [Required(ErrorMessage = "{0} is required")]
-    [StringLength(200, ErrorMessage = "{0} length must be up to {1}.")]
+    [StringLength(200, ErrorMessage = "The length {0} must be from 1 to {1}.")]
     public string NamePlace { get; set; }
 
-    [StringLength(2000, ErrorMessage = "{0} length must be up to {1}.")]
+    [StringLength(2000, ErrorMessage = "The length {0} must be from 0 to {1}.")]
     public string Notes { get; set; }
 
-    [DataType(DataType.Url, ErrorMessage = "It doesn't look like a link")]
+    [DataType(DataType.Url, ErrorMessage = "It doesn't look like a url")]
     public string Link { get; set; }
 
-    [StringLength(50, ErrorMessage = "{0} length must be up to {1}.")]
+    [StringLength(50, ErrorMessage = "The length {0} must be from 0 to {1}.")]
     public string GooglePlaceId { get; set; }
 
     public double Lat { get; set; }

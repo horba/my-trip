@@ -171,6 +171,13 @@ namespace WebAPI
         RequestPath = "/accommodations",
         EnableDirectoryBrowsing = true
       });
+      app.UseFileServer(new FileServerOptions
+      {
+        FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), Consts.FileEatingPath)),
+        RequestPath = "/scheduledPlaceToEat",
+        EnableDirectoryBrowsing = true
+      });
     }
   }
 }

@@ -16,8 +16,6 @@ namespace WebAPI.Interfaces
 
     public bool DeleteScheduledPlaceToEat(int eatingId, int userId);
 
-    public OutputScheduledPlaceToEatDTO ConvertScheduledPlaceToEatToOutputScheduletPlaceToEatDTO(ScheduledPlaceToEat scheduledPlaceToEat);
-
-    public ScheduledPlaceToEat ConvertInputScheduledPlaceToEatForCreateDTOToScheduletPlaceToEat(InputScheduledPlaceToEatForCreateDTO inputScheduledPlaceToEatDTO);
+    public OutputScheduledPlaceToEatDTO AddFileNames(ScheduledPlaceToEat scheduledPlaceToEat);
   }
 }

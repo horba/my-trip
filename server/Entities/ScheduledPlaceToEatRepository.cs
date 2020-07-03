@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Entities.Interfaces;
 using Entities.Models;
 
@@ -13,9 +14,9 @@ namespace Entities
       _repositoryContext = repositoryContext;
     }
 
-    public IQueryable<ScheduledPlaceToEat> GetScheduledPlaceToEatByUserId(int UserId)
+    public List<ScheduledPlaceToEat> GetScheduledPlaceToEatByUserId(int UserId)
     {
-      return _repositoryContext.ScheduledPlacesToEat.Where(u => u.UserId.Equals(UserId));
+      return _repositoryContext.ScheduledPlacesToEat.Where(u => u.UserId.Equals(UserId)).ToList();
     }
 
     public ScheduledPlaceToEat GetScheduledPlaceToEatById(int Id)
