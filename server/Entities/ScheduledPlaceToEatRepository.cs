@@ -37,15 +37,11 @@ namespace Entities
       _repositoryContext.SaveChanges();
     }
 
-    public void DeleteScheduledPlaceToEat(ScheduledPlaceToEat scheduledPlaceToEat)
-    {
-      _repositoryContext.ScheduledPlacesToEat.Remove(scheduledPlaceToEat);
-      _repositoryContext.SaveChanges();
-    }
-
     public void DeleteScheduledPlaceToEat(int id)
     {
-      DeleteScheduledPlaceToEat(GetScheduledPlaceToEatById(id));
+      var scheduledPlaceToEat = GetScheduledPlaceToEatById(id);
+      _repositoryContext.ScheduledPlacesToEat.Remove(scheduledPlaceToEat);
+      _repositoryContext.SaveChanges();
     }
   }
 }

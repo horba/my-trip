@@ -53,7 +53,8 @@ namespace WebAPI.Controllers
       var results = new List<ValidationResult>();
       var validationAttributes = new List<ValidationAttribute>
       {
-        new ValidFileType(new string[] { "image/png", ".jpeg", ".jpg", ".bmp", ".txt", ".doc", ".docx", ".pdf" })
+        new ValidFileType(new string[] { "png", ".jpeg", ".jpg", ".bmp", ".txt", ".doc", ".docx", ".pdf" }),
+        new ValidFileSize(Consts.MaxEatingFileSize)
       };
       var notValidFiles = new List<string>();
       foreach(var file in files)

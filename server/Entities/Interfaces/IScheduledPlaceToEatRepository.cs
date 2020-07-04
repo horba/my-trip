@@ -15,8 +15,6 @@ namespace Entities.Interfaces
 
     public void UptateScheduledPlaceToEat(ScheduledPlaceToEat scheduledPlaceToEat);
 
-    public void DeleteScheduledPlaceToEat(ScheduledPlaceToEat scheduledPlaceToEat);
-
     public void DeleteScheduledPlaceToEat(int id);
   }
 }
