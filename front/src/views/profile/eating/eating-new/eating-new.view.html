@@ -1,0 +1,113 @@
+<v-form v-model="isValid" ref="form">
+  <h4>{{header}}</h4>
+  <v-row>
+    <v-col md="4" sm="12" class="d-flex justify-start">
+      <div class="name">
+        <v-text-field rounded filled background-color="white" dense
+          :label="$t('scheduledPlaceToEatCreateOrEdit.placeName')" :rules="[rules.required, rules.maxLengthName]"
+          v-model="placeName" />
+      </div>
+    </v-col>
+    <v-col md="4" sm="12" class="d-flex justify-start">
+      <gmap-autocomplete class="eating-new-autocomplete"
+        :placeholder="$t('scheduledPlaceToEatCreateOrEdit.addressPlace')" @place_changed="findPlace" />
+    </v-col>
+    <v-col md="4" sm="12" class="d-flex justify-start">
+      <v-file-input color="primary" rounded filled background-color="white" dense
+        :label="$t('scheduledPlaceToEatCreateOrEdit.addFile')" accept="image/*, .txt, .doc, .docx, .pdf" multiple
+        :rules="[rules.filesSizeValid, rules.filesCountValid]" @change="uploadFiles" showSize />
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col md="4" sm="12" class="d-flex justify-start">
+      <div class="date-picker">
+        <v-menu v-model="menuDatePicker" :close-on-content-click="false" transition="scale-transition" offset-y
+          ref="refMenu" min-width="290px">
+          <template v-slot:activator="{ on, attrs }">
+            <v-text-field
+              prepend-inner-icon="mdi-calendar-check"
+              v-model="date"
+              :label="$t('scheduledPlaceToEatCreateOrEdit.date')"
+              readonly
+              v-bind="attrs"
+              v-on="on"
+              rounded
+              filled
+              dense
+              background-color="white"
+              :rules="[rules.required]"
+            />
+          </template>
+          <v-date-picker
+            v-model="date"
+            @input="menuDatePicker=false"
+            scrollable color="primary"
+            v-if="menuDatePicker"
+          >
+            <v-spacer></v-spacer>
+            <v-btn
+              text
+              color="primary"
+              @click="menuDatePicker=false"
+              class="mmt-btn"
+            >Cancel</v-btn>
+            <v-btn
+              text
+              color="primary"
+              @click="$refs.refMenu.save(date|date('yyyy-mm-dd'))"
+              class="mmt-btn"
+            >OK</v-btn>
+          </v-date-picker>
+        </v-menu>
+      </div>
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col md="4" sm="12" class="d-flex justify-start">
+      <div class="time-picker">
+        <v-menu ref="menuTime" v-model="menuTimePicker" :close-on-content-click="false" :nudge-right="40"
+          :return-value.sync="time" transition="scale-transition" offset-y min-width="290px">
+          <template v-slot:activator="{ on, attrs }">
+            <v-text-field dense v-model="time" :label="$t('scheduledPlaceToEatCreateOrEdit.time')"
+              prepend-inner-icon="mdi-clock" readonly v-bind="attrs" v-on="on" rounded filled dense
+              background-color="white" :rules="[rules.required]">
+            </v-text-field>
+          </template>
+          <v-time-picker v-if="menuTimePicker" v-model="time" full-width @click:minute="$refs.menuTime.save(time)"
+            format="24hr" color="primary"></v-time-picker>
+        </v-menu>
+      </div>
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col md="4" sm="12" class="d-flex justify-start">
+      <div class="link">
+        <v-text-field rounded filled background-color="white" dense :label="$t('scheduledPlaceToEatCreateOrEdit.link')"
+          v-model="link" :rules="[rules.linkValid]" />
+      </div>
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col md="4" sm="12" class="d-flex justify-start">
+      <div class="link">
+        <v-text-field rounded filled background-color="white" dense :label="$t('scheduledPlaceToEatCreateOrEdit.notes')"
+          v-model="notes" :rules="[rules.maxLengthNotes]" />
+      </div>
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col md="4" sm="12" class="d-flex justify-start">
+      <div class="save-btn">
+        <v-btn rounded color="primary" depressed class="mmt-btn" width="206" @click="save">
+          {{$t('scheduledPlaceToEatCreateOrEdit.save')}}
+        </v-btn>
+      </div>
+    </v-col>
+  </v-row>
+  <v-snackbar v-model="showSnackBar" :color="snackBarColor" multi-line :timeout="3000" top>
+    {{ snackBarMessage }}
+    <v-btn text @click="snackbar = false; $router.push({name: 'ScheduleEatingPlace'})">
+      {{$t('scheduledPlaceToEatCreateOrEdit.close')}}
+    </v-btn>
+  </v-snackbar>
+</v-form>

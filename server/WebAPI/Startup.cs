@@ -18,6 +18,7 @@ using System.IO;
 using Entities.Models;
 using Microsoft.Extensions.FileProviders;
 using WebAPI.Services.Assets;
+using Entities.Interfaces;
 
 namespace WebAPI
 {
@@ -40,12 +41,12 @@ namespace WebAPI
         options.AddPolicy(name: VueCorsPolicy,
                                 builder =>
                                 {
-                              builder
-                                      .AllowAnyHeader()
-                                      .AllowAnyMethod()
-                                      .AllowCredentials()
-                                      .WithOrigins(frontConfiguration.AddressFront);
-                            });
+                                  builder
+                                          .AllowAnyHeader()
+                                          .AllowAnyMethod()
+                                          .AllowCredentials()
+                                          .WithOrigins(frontConfiguration.AddressFront);
+                                });
       });
 
       services.AddDbContext<IRepositoryContext, RepositoryContext>(options =>
@@ -71,6 +72,10 @@ namespace WebAPI
       services.AddScoped<IGoogleOauthService, GoogleOauthService>();
       services.AddScoped<IGooglePlacePhotoService, GooglePlacePhotoService>();
       services.AddScoped<AssetsService>();
+      services.AddTransient<IAttachmentFileEatingRepository, AttachmentFileEatingRepository>();
+      services.AddTransient<IAttachmentFileEatingService, AttachmentFileEatingService>();
+      services.AddTransient<IScheduledPlaceToEatRepository, ScheduledPlaceToEatRepository>();
+      services.AddTransient<IScheduledPlaceToEatService, ScheduledPlaceToEatService>();
       services.AddScoped<IEntertainmentService, EntertainmentService>();
       services.AddScoped<IEntertainmentRepository, EntertainmentRepository>();
       services.AddScoped<AccommodationService>();
@@ -164,6 +169,13 @@ namespace WebAPI
         FileProvider = new PhysicalFileProvider(
                     Path.Combine(Directory.GetCurrentDirectory(), Consts.AccommodationsPath)),
         RequestPath = "/accommodations",
+        EnableDirectoryBrowsing = true
+      });
+      app.UseFileServer(new FileServerOptions
+      {
+        FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), Consts.FileEatingPath)),
+        RequestPath = "/scheduledPlaceToEat",
         EnableDirectoryBrowsing = true
       });
     }

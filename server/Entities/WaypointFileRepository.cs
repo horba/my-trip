@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
+using Entities.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Entities.Models

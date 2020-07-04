@@ -1,4 +1,5 @@
 import api from '@api';
+import router from '@router/index.js';
 
 export default {
   namespaced: true,
@@ -12,7 +13,7 @@ export default {
     },
     CLEAR_USER_DATA (state) {
       localStorage.removeItem('user');
-      location.reload();
+      router.push('/');
     }
   },
   actions: {

@@ -1,3 +1,4 @@
+using Entities.Interfaces;
 using Entities.Models;
 using Entities.Models.Enums;
 using Microsoft.EntityFrameworkCore;
@@ -7,22 +8,6 @@ using System.Linq;
 
 namespace Entities
 {
-  public interface IRepositoryContext
-  {
-    DbSet<User> Users { get; set; }
-    DbSet<Ticket> Tickets { get; set; }
-    DbSet<TicketRoute> TicketRoutes { get; set; }
-    DbSet<Country> Countries { get; set; }
-    DbSet<Language> Languages { get; set; }
-    DbSet<Trip> Trips { get; set; }
-    DbSet<Waypoint> Waypoints { get; set; }
-    DbSet<WaypointFile> WaypointFiles { get; set; }
-    DbSet<Entertainment> Entertainments { get; set; }
-    public DbSet<Accommodation> Accommodations { get; set; }
-
-    int SaveChanges();
-  }
-
   public class RepositoryContext : DbContext, IRepositoryContext
   {
     public DbSet<User> Users { get; set; }
@@ -31,6 +16,8 @@ namespace Entities
     public DbSet<Country> Countries { get; set; }
     public DbSet<Language> Languages { get; set; }
     public DbSet<Trip> Trips { get; set; }
+    public DbSet<ScheduledPlaceToEat> ScheduledPlacesToEat { get; set; }
+    public DbSet<AttachmentFileEating> AttachmentFilesEating { get; set; }
     public DbSet<Waypoint> Waypoints { get; set; }
     public DbSet<WaypointFile> WaypointFiles { get; set; }
     public DbSet<Entertainment> Entertainments { get; set; }
@@ -42,7 +29,7 @@ namespace Entities
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-      foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+      foreach(var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
       {
         relationship.DeleteBehavior = DeleteBehavior.Restrict;
       }
@@ -206,7 +193,6 @@ namespace Entities
             DepartureCode = "KBK",
             DepartureDateTime = moqDate.AddDays(1)
           },
-
           new TicketRoute
           {
             Id = -2,
@@ -217,7 +203,6 @@ namespace Entities
             DepartureCode = "KBK",
             DepartureDateTime = moqDate.AddDays(1)
           },
-
           new TicketRoute
           {
             Id = -3,
@@ -238,7 +223,6 @@ namespace Entities
             DepartureCode = "KBK",
             DepartureDateTime = moqDate.AddDays(1)
           },
-
           new TicketRoute
           {
             Id = -5,
@@ -259,7 +243,6 @@ namespace Entities
             DepartureCode = "KBK",
             DepartureDateTime = moqDate.AddDays(1)
           },
-
           new TicketRoute
           {
             Id = -7,
@@ -280,7 +263,6 @@ namespace Entities
             DepartureCode = "KBK",
             DepartureDateTime = moqDate.AddDays(1)
           },
-
           new TicketRoute
           {
             Id = -9,
@@ -301,6 +283,21 @@ namespace Entities
             DepartureCode = "KBK",
             DepartureDateTime = moqDate.AddDays(1)
           }
+      );
+
+      modelBuilder.Entity<ScheduledPlaceToEat>().HasData(
+        new ScheduledPlaceToEat
+        {
+          Id = -1,
+          UserId = -1,
+          DateTime = DateTime.Parse("2022-01-01T12:00:00.0000000Z"),
+          NamePlace = "New York City Police Department",
+          Notes = "Get as close to the station as possible and pray that the cops don't take you in",
+          Link = "http://www.nyc.gov/nypd",
+          GooglePlaceId = "ChIJYcHoGyRawokR9rSZ9FTdFMk",
+          Lat = 40.71211479999999,
+          Lng = -74.00189170000002
+        }  
       );
       modelBuilder.Entity<Entertainment>();
 

@@ -1,4 +1,11 @@
 {
+  "cafe": "Кафе",
+  "restaurant": "Ресторан",
+  "bar": "Бар",
+  "establishment": "Установа",
+  "meal_delivery": "Доставка їжі",
+  "meal_takeaway": "Їжа на виніс",
+  "food": "Їжа",
   "appTitle": "MakeMeTrip",
   "menu": {
     "aboutUs": "Про нас",
@@ -139,7 +146,7 @@
   },
   "cities": {
     "kyiv": "Київ",
-    "krakow": "Краков" 
+    "krakow": "Краков"
   },
   "transportTypes": {
     "plane": "Літак",
@@ -216,6 +223,34 @@
     "invalidCredentials": "Недійсні облікові дані",
     "unknownApiError": "Невідома помилка сервера"
   },
+  "eating": {
+    "open": "Відчинено",
+    "close": "Зачинено",
+    "menu": "Меню",
+    "results": "Результати",
+    "add": "Додати",
+    "filter": "Фільтр",
+    "edit": "Відредагувати",
+    "delete": "Видалити",
+    "successfullyDelete": "Успішне видалення"
+  },
+  "scheduledPlaceToEatCreateOrEdit": {
+    "addCafe": "Додати кафе",
+    "edit": "Відредагувати",
+    "placeName": "Назва об'єкту",
+    "addressPlace": "Адреса об'єкту",
+    "addFile": "Додати файл",
+    "date": "Дата",
+    "time": "Час",
+    "link": "Посилання",
+    "notes": "Нотатки",
+    "maxLengthName": "Максимальна довжина назви = 200 символів",
+    "maxLengthNotes": "Максимальна довжина замітки = 2000 символів",
+    "save": "Зберегти",
+    "close": "Закрити",
+    "successfullySaved": "Успішно збережено",
+    "successfullyEdited": "Успішно змінено"
+  },
   "signUp": {
     "welcome": "Ласкаво просимо!",
     "continue": "Продовжити",
@@ -241,6 +276,9 @@
     "greaterThanZero": "значення має бути більше 0",
     "enterCorrectDate": "Введіть дійсну дату",
     "enterCorrectTime": "Введіть дійсний час",
+    "enterCorrectFiles": "Розмір одного файлу не повинен перевищувати {0} байт",
+    "isNoLink": "Це не схоже на посилання",
+    "tooManyAttachments": "Кількість файлів повинно бути не більше {0}",
     "enterCorrectURL": "Введіть дійсний URL",
     "maxLength": "Максимальна довжина {0} символів",
     "minValue": "Мінімальне значення: {0}",

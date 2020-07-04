@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Entities.Interfaces;
+using Entities.Models;
 using System.Linq;
 
 namespace Entities

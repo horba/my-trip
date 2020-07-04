@@ -1,6 +1,6 @@
 import {
   AccommodationSearch, EntertainmentsSearch,
-  Entertainments, PlaceToEatSearch,
+  Entertainments, PlaceToEatSearch, Eating,
   AboutUs, PrivacyPolicy, CookiePolicy,
   TermsOfUse, ForTourOperators, Contacts,
   ReviewNew, MyTickets, MyAccommodation,
@@ -8,7 +8,7 @@ import {
   UserSettings, UserCabinet, MyHistoryTripList,
   MyHistoryTripRoute, RecoveryPassword,
   AddEditRouteForm, AddTripForm,
-  AccommodationEditor
+  AccommodationEditor, ScheduleEatingPlace
 } from '@views';
 
 import Vue from 'vue';
@@ -102,6 +102,24 @@ const routes = [
         path: 'accommodation',
         name: 'MyAccommodation',
         component: MyAccommodation,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'eating',
+        name: 'ScheduleEatingPlace',
+        component: Eating,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'eating/new',
+        name: 'ScheduleEatingPlaceNew',
+        component: ScheduleEatingPlace,
+        meta: { layout: 'authorize' }
+      },
+      {
+        path: 'eating/:id',
+        name: 'EditScheduleEatingPlace',
+        component: ScheduleEatingPlace,
         meta: { layout: 'authorize' }
       },
       {

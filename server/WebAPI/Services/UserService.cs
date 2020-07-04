@@ -133,5 +133,25 @@ namespace WebAPI.Services
     {
       return _userRepository.FindUserByRecoveryPasswordToken(token);
     }
+
+    public void UpdateUserAvatar(int userId, string fileName)
+    {
+      var user = GetUser(userId);
+      if(user != null && !string.IsNullOrWhiteSpace(fileName))
+      {
+        user.AvatarFileName = fileName;
+        _userRepository.UpdateUser(user);
+      }
+    }
+    public void DeleteUserAvatar(int userId)
+    {
+      var user = GetUser(userId);
+      if(user != null)
+      {
+        user.AvatarFileName = null;
+        _userRepository.UpdateUser(user);
+      }
+    }
+
   }
 }
