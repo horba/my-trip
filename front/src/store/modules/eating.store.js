@@ -3,8 +3,8 @@ import api from '@api';
 export default {
   namespaced: true,
   actions: {
-    getEatingUser () {
-      return api.get('/scheduledPlaceToEat');
+    getEatingUser (_context, payload) {
+      return api.get(`/scheduledPlaceToEat?Page=${payload.page}&PageSize=${payload.pageSize}`);
     },
     getEatingUserByEatingId (_context, payload) {
       return api.get('/scheduledPlaceToEat/' + payload.id);

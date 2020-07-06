@@ -39,7 +39,7 @@ namespace WebAPI.Controllers
         new ValidFileSize(Consts.MaxImageFileSize)
       };
       var context = new ValidationContext(file);
-
+ 
       if(Validator.TryValidateValue(file, context, results, validationAttributes))
       {
 

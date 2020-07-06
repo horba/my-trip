@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using AutoMapper;
 using Entities.Interfaces;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using WebAPI.DTO;
 using WebAPI.DTO.ScheduledPlaceToEat;
 using WebAPI.Interfaces;
 using WebAPI.Mappers;
@@ -57,17 +59,26 @@ namespace WebAPI.Services
       }
     }
 
-    public IEnumerable<OutputScheduledPlaceToEatDTO> GetEatingByUserId(int UserId)
+    public IPagedResponse<OutputScheduledPlaceToEatDTO> GetEatingByUserId(int UserId, int page, int pageSize)
     {
       if(_userService.GetUser(UserId) != null)
       {
         var eatings = _scheduledPlaceToEatRepository.GetScheduledPlaceToEatByUserId(UserId);
+        var TotalCount = eatings.Count();
+        eatings = eatings.Skip(page * pageSize).Take(pageSize);
         List<OutputScheduledPlaceToEatDTO> result = new List<OutputScheduledPlaceToEatDTO>();
         foreach(var eating in eatings)
         {
           result.Add(AddFileNames(eating));
         }
-        return result;
+        return new IPagedResponse<OutputScheduledPlaceToEatDTO>()
+        {
+          Data = result,
+          PageNumber = page,
+          PageSize = pageSize,
+          PageCount = TotalCount / pageSize,
+          TotalCount = TotalCount
+        };
       }
       else
       {
@@ -75,7 +86,7 @@ namespace WebAPI.Services
       }
     }
 
-    public OutputScheduledPlaceToEatDTO GetEatingById(int id)
+    public async System.Threading.Tasks.Task<OutputScheduledPlaceToEatDTO> GetEatingByIdAsync(int id)
     {
       return AddFileNames(_scheduledPlaceToEatRepository.GetScheduledPlaceToEatById(id));
     }
@@ -132,10 +143,13 @@ namespace WebAPI.Services
         throw new ArgumentNullException(nameof(scheduledPlaceToEat));
       }
       var fileNames = new List<string>();
-      var attachmentFileEatings = _attachmentFileEatingRepository.GetAttachmentFileEatingByScheduledPlaceId(scheduledPlaceToEat.Id);
+      var attachmentFileEatings = _attachmentFileEatingRepository.GetAttachmentFileEatingByScheduledPlaceId(scheduledPlaceToEat.Id).AsNoTracking();
       if(attachmentFileEatings != null)
       {
-        attachmentFileEatings.ForEachAsync(file => fileNames.Add(file.Path));
+        foreach(var file in attachmentFileEatings)
+        {
+          fileNames.Add(file.Path);
+        }
       }
       var outputScheduledPlaceToEatDTO = _mapper.Map<OutputScheduledPlaceToEatDTO>(scheduledPlaceToEat);
       outputScheduledPlaceToEatDTO.FileNames = fileNames;

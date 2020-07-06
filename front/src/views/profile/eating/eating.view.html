@@ -2,7 +2,7 @@
   <mmt-stepper></mmt-stepper>
   <v-row>
     <v-col md="2" sm="12" class="d-flex justify-center align-center">
-      {{$t('eating.results')}} ({{scheduledPlacesList.length}})
+      {{$t('eating.results')}} ({{totalCount}})
     </v-col>
     <v-col md="6" sm="12" />
     <v-col md="2" sm="12" class="d-flex justify-center align-center">
@@ -106,6 +106,16 @@
       </GmapMap>
     </v-col>
   </v-row>
+  <v-pagination
+    circle
+    color="primary"
+    totalVisible="5"
+    :length="totalPageCount+1"
+    v-model="pageNumber"
+    @input="responseDataFromServer(pageNumber-1)"
+  >
+
+  </v-pagination>
   <v-snackbar v-model="snackbar" :color="color" multi-line :timeout="3000" top>
     {{ text }}
   </v-snackbar>
