@@ -5,7 +5,8 @@ export default {
   namespaced: true,
   state: {
     accommodations: [],
-    paginationInfo: {}
+    paginationInfo: {},
+    maxPrice: null
   },
   mutations: {
     SET_ACCOMODATIONS (state, accommodations) {
@@ -13,6 +14,9 @@ export default {
     },
     SET_PAGINATION_INFO (state, paginationInfo) {
       state.paginationInfo = paginationInfo;
+    },
+    SET_MAX_PRICE (state, maxPrice) {
+      state.maxPrice = maxPrice;
     }
   },
   actions: {
@@ -40,6 +44,10 @@ export default {
     },
     deleteFile ({ commit }, fileName) {
       return api.delete(`/assets/accommodation/${fileName}`);
+    },
+    loadMaxPrice ({ commit }) {
+      api.get('/accommodations/max-price')
+        .then(({ data }) => commit('SET_MAX_PRICE', data.price));
     }
   }
 };

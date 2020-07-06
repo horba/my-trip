@@ -114,6 +114,18 @@
                           filled
                           single-line
                           dense />
+
+          <v-select class="mmt-select"
+                    persistent-hint
+                    rounded
+                    filled
+                    dense
+                    v-model="accommodation.countryId"
+                    :items="countries"
+                    :rules="[rules.required]"
+                    :placeholder="$t('accommodations.country')"
+                    append-icon="mdi-chevron-down" />
+
           <label>
             {{ $t('accommodations.note') }}
             <v-textarea class="input-field"

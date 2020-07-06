@@ -20,12 +20,22 @@ export default {
         sortBy: 0,
         sortDirection: 0
       },
-      changedPage: 1
+      changedPage: 1,
+      filters: {
+        countries: [],
+        year: null,
+        price: [0, Number.MAX_VALUE],
+        isPriceChosen: false
+      }
     };
   },
   computed: {
-    ...mapState('accommodations', [ 'paginationInfo' ]),
+    ...mapState('accommodations', ['paginationInfo', 'maxPrice']),
     ...mapGetters('dictionaries', [ 'accommodationSorting' ]),
+    countries () {
+      return this.$store.getters['dictionaries/countries']
+        .filter(country => country.value !== null);
+    },
     accommodations () {
       return this.$store.state.accommodations.accommodations;
     }
@@ -37,12 +47,24 @@ export default {
         this.selectedAccommodation = accommodation;
       }
     },
-    onQueryCange () {
+    onFilterUpdate () {
+      this.changedPage = 1;
+      this.updateQuery();
+    },
+    updateQuery () {
       this.$store.dispatch('accommodations/fetchAccommodations',
-        { pageNumber: this.changedPage - 1, ...this.sortInfo });
+        {
+          pageNumber: this.changedPage - 1,
+          ...this.sortInfo,
+          minPrice: this.filters.isPriceChosen ? this.filters.price[0] : undefined,
+          maxPrice: this.filters.isPriceChosen ? this.filters.price[1] : undefined,
+          year: this.filters.year,
+          countries: this.filters.countries.reduce((acc, id) => `${acc}${id};`, '')
+        });
     }
   },
   async mounted () {
-    this.onQueryCange();
+    this.updateQuery();
+    this.$store.dispatch('accommodations/loadMaxPrice');
   }
 };

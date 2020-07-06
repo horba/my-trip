@@ -273,7 +273,9 @@
     "plan": "To Plan",
     "byReservationDate": "By reservation date",
     "byCostPerNight": "By cost per night",
-    "byName": "By name"
+    "byName": "By name",
+    "country": "Country",
+    "year": "Year"
   },
   "datetimePicker": {
     "ok": "OK",

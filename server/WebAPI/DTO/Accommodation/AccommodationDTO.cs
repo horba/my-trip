@@ -21,6 +21,9 @@ namespace WebAPI.DTO
     public DateTime ArrivalDateTime { get; set; }
 
     [Required]
+    public int? CountryId { get; set; }
+
+    [Required]
     [MaxLength(500)]
     public string Address { get; set; }
 

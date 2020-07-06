@@ -1,9 +1,21 @@
 <div>
   <mmt-stepper></mmt-stepper>
+  <div class="d-flex flex-wrap mt-10" v-if="filters.isPriceChosen || filters.year || filters.countries.length">
+    <h5 class="mr-3">{{ $t('accommodations.filter') }}:</h5>
+    <v-chip v-for="countryId of filters.countries" :key="'country-' + countryId" class="mx-1 mb-3" color="accent" close
+      @click:close="filters.countries = filters.countries.filter(country => country !== countryId ); onFilterUpdate();">
+      {{countries.find(country => country.value === countryId).text}}</v-chip>
+    <v-chip v-if="filters.year" class="mx-1 mb-3" color="accent" close
+      @click:close="filters.year = null; onFilterUpdate();">
+      {{$t('accommodations.year')}}: {{filters.year}}</v-chip>
+    <v-chip v-if="filters.isPriceChosen" class="mx-1 mb-3" color="accent" close
+      @click:close="filters.isPriceChosen = false; onFilterUpdate();">
+      {{filters.price[0]}} $ - {{filters.price[1]}} $ </v-chip>
+  </div>
   <div class="d-flex flex-wrap align-stretch justify-space-between mb-5 mt-10">
     <div>
       <h6 class="accent--text text--lighten-2 text-uppercase">
-        {{ $t('accommodations.results') }} ({{ accommodations.length }})
+        {{ $t('accommodations.results') }} ({{ paginationInfo.totalCount }})
       </h6>
     </div>
     <div class="d-flex">
@@ -14,9 +26,9 @@
       </v-btn>
       <v-select :items="accommodationSorting" v-model="sortInfo.sortBy" class="mr-5 accommodation-sorting-select"
         background-color="accent lighten-1" rounded filled dense dark hide-details solo append-icon="mdi-sort"
-        @change="onQueryCange" />
+        @change="updateQuery" />
       <v-btn-toggle v-model="sortInfo.sortDirection" mandatory rounded height="40" class="mr-5" dark
-        background-color="accent lighten-1" @change="onQueryCange">
+        background-color="accent lighten-1" @change="updateQuery">
         <v-btn height="40" color="accent lighten-1">
           <v-icon>mdi-arrow-down</v-icon>
         </v-btn>
@@ -24,12 +36,30 @@
           <v-icon>mdi-arrow-up</v-icon>
         </v-btn>
       </v-btn-toggle>
-      <v-btn v-if="accommodations.length" rounded class="details accent lighten-1">
-        <span class="text-capitalize">
-          {{ $t('accommodations.filter') }}
-          <v-icon right class="white--text">mdi-filter-variant</v-icon>
-        </span>
-      </v-btn>
+      <v-menu offset-y :close-on-content-click="false" nudge-bottom="20">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn v-bind="attrs" v-on="on" rounded class="details accent lighten-1">
+            <span class="text-capitalize">
+              {{ $t('accommodations.filter') }}
+              <v-icon right class="white--text">mdi-filter-variant</v-icon>
+            </span>
+          </v-btn>
+        </template>
+        <v-sheet class="px-5 pb-10 pb-3 d-flex flex-wrap">
+          <v-select class="filter-countries mr-5 mt-10" persistent-hint rounded filled dense hide-details multiple
+            :items="countries" append-icon="mdi-chevron-down" color="accent lighten-1"
+            :placeholder="$t('accommodations.country')" v-model="filters.countries" />
+          <v-text-field class="filter-year mr-5 mt-10" filled dense :prefix="$t('accommodations.year') + ': '"
+            hide-details rounded filled single-line dense type="number" color="accent lighten-1"
+            v-model="filters.year" />
+          <v-range-slider :max="maxPrice" :min="0" hide-details class="filter-price mr-5 mt-10" thumb-label="always"
+            color="accent lighten-1" prepend-icon="mdi-currency-usd" v-model="filters.price"
+            @mousedown="filters.isPriceChosen = true" />
+          <v-btn rounded class="details accent lighten-1 mt-10 mr-5" @click="onFilterUpdate">
+            {{ $t('tripHistory.search') }}
+          </v-btn>
+        </v-sheet>
+      </v-menu>
     </div>
   </div>
   <div class="d-flex flex-row align-stretch justify-space-between py-5">
@@ -49,6 +79,6 @@
       <div class="map" ref="map-holder"></div>
     </div>
   </div>
-  <v-pagination :length="paginationInfo.totalCount" v-model="changedPage" color="accent lighten-1"
-    @input="onQueryCange" />
+  <v-pagination :length="Math.ceil(paginationInfo.totalCount / paginationInfo.pageSize) || 0" v-model="changedPage"
+    color="accent lighten-1" @input="updateQuery" />
 </div>

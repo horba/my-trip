@@ -6,7 +6,7 @@ namespace WebAPI.DTO.Accommodation
   public class AccommodationSortingQueryDTO
   {
     [ValidEnum]
-    public AccommodationSortBy SortByBy { get; set; }
+    public AccommodationSortBy SortBy { get; set; }
     
     [ValidEnum]
     public SortDirection SortDirection { get; set; }

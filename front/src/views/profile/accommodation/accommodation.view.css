@@ -7,3 +7,15 @@
 .accommodation-sorting-select {
   width: 250px;
 }
+
+.filter-countries {
+  width: 350px;
+}
+
+.filter-year {
+  width: 150px;
+}
+
+.filter-price {
+  width: 600px;
+}

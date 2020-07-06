@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper.Configuration.Conventions;
 using Entities.Models.Enums;
+using Microsoft.EntityFrameworkCore.Internal;
 using WebAPI.DTO;
 using WebAPI.DTO.Accommodation;
 using WebAPI.Services.Assets;
@@ -49,12 +50,12 @@ namespace WebAPI.Services
         orderFunc = accommodations.OrderByDescending;
       }
 
-      if (accommodationSortingQuery.SortByBy == AccommodationSortBy.ByReservationDate)
+      if (accommodationSortingQuery.SortBy == AccommodationSortBy.ByReservationDate)
       {
         return orderFunc(accommodation => accommodation.ArrivalDateTime);
       }
 
-      if (accommodationSortingQuery.SortByBy == AccommodationSortBy.ByCostPerNight)
+      if (accommodationSortingQuery.SortBy == AccommodationSortBy.ByCostPerNight)
       {
         return orderFunc(accommodation => accommodation.Price);
       }
@@ -62,11 +63,48 @@ namespace WebAPI.Services
       return orderFunc(accommodation => accommodation.Name);
     }
 
-    public PagedResponse<AccommodationDTO> GetAccommodations(int userId,
-      PaginationRequestQueryDTO paginationRequestQuery, AccommodationSortingQueryDTO accommodationSortingQuery)
+    private IQueryable<Accommodation> FilterAccommodations(IQueryable<Accommodation> accommodations, AccommodationFilterQueryDTO accommodationFilterQuery)
+    {
+      if (accommodationFilterQuery.MinPrice.HasValue)
+      {
+        accommodations =
+          accommodations.Where(accommodation => accommodation.Price >= accommodationFilterQuery.MinPrice);
+      }
+
+      if (accommodationFilterQuery.MaxPrice.HasValue)
+      {
+        accommodations =
+          accommodations.Where(accommodation => accommodation.Price <= accommodationFilterQuery.MaxPrice);
+      }
+
+      if (accommodationFilterQuery.Year.HasValue)
+      {
+        accommodations = accommodations.Where(accommodation =>
+          accommodation.ArrivalDateTime.Year == accommodationFilterQuery.Year);
+      }
+
+      try
+      {
+        var countries = Array.ConvertAll(accommodationFilterQuery.Countries.Split(';', StringSplitOptions.RemoveEmptyEntries), int.Parse);
+        accommodations = accommodations.Where(accommodation => countries.Any(id => id == accommodation.CountryId));
+      }
+      catch (Exception e)
+      {
+        //Console.WriteLine(e);
+      }
+
+      return accommodations;
+    }
+
+    public PagedResponse<AccommodationDTO> GetAccommodations(
+      int userId,
+      PaginationRequestQueryDTO paginationRequestQuery,
+      AccommodationSortingQueryDTO accommodationSortingQuery,
+      AccommodationFilterQueryDTO accommodationFilterQuery)
     {
       var accommodations = _accommodationRepository.GetUserAccommodations(userId);
-      int totalCount = (int)Math.Ceiling(accommodations.Count() / (double)paginationRequestQuery.PageSize);
+      accommodations = FilterAccommodations(accommodations, accommodationFilterQuery);
+      int totalCount = accommodations.Count();
       accommodations = SortAccommodations(accommodations, accommodationSortingQuery);
       accommodations = PaginateAccommodations(accommodations, paginationRequestQuery);
 
@@ -77,6 +115,11 @@ namespace WebAPI.Services
         PageNumber = paginationRequestQuery.PageNumber,
         TotalCount = totalCount
       };
+    }
+
+    public int GetMaxPrice(int userId)
+    {
+      return (int)Math.Ceiling(_accommodationRepository.GetUserAccommodations(userId).Max(field => field.Price));
     }
 
     public void CreateOrUpdateAccommodation(AccommodationDTO model)

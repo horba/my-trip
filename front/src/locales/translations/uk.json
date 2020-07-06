@@ -273,7 +273,9 @@
     "plan": "Запланувати",
     "byReservationDate": "За датою бронювання",
     "byCostPerNight": "За вартістю за ніч",
-    "byName": "За назвою"
+    "byName": "За назвою",
+    "country": "Країна",
+    "year": "Рік"
   },
   "datetimePicker": {
     "ok": "Вибрати",

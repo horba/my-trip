@@ -23,9 +23,12 @@ namespace WebAPI.Controllers
 
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<AccommodationDTO>), StatusCodes.Status200OK)]
-    public IActionResult GetAccommodations([FromQuery] PaginationRequestQueryDTO paginationRequestQuery, [FromQuery] AccommodationSortingQueryDTO accommodationSortingQuery)
+    public IActionResult GetAccommodations(
+      [FromQuery] PaginationRequestQueryDTO paginationRequestQuery, 
+      [FromQuery] AccommodationSortingQueryDTO accommodationSortingQuery, 
+      [FromQuery] AccommodationFilterQueryDTO accommodationFilterQuery )
     {
-      return Ok(_accommodationService.GetAccommodations(HttpContext.GetUserIdFromClaim(), paginationRequestQuery, accommodationSortingQuery));
+      return Ok(_accommodationService.GetAccommodations(HttpContext.GetUserIdFromClaim(), paginationRequestQuery, accommodationSortingQuery, accommodationFilterQuery));
     }
 
     [HttpGet]
@@ -39,6 +42,13 @@ namespace WebAPI.Controllers
         return Forbid();
 
       return Ok(accommodation);
+    }
+
+    [HttpGet]
+    [Route(("max-price"))]
+    public IActionResult GetMaxPrice()
+    {
+      return Ok(new {price = _accommodationService.GetMaxPrice(HttpContext.GetUserIdFromClaim())});
     }
 
     [HttpPost]

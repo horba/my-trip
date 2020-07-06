@@ -317,13 +317,14 @@ namespace Entities
             ArrivalDateTime = randomDateTime,
             DepartureDateTime = randomDateTime.AddDays(random.Next(1, 7)),
             Address = $"Moq address #{random.Next(10_000, 100_000)}",
-            GuestCount = random.Next(0, 31),
-            RoomsCount = random.Next(0, 16),
+            GuestCount = random.Next(1, 11),
+            RoomsCount = random.Next(1, 5),
             Link = "http://www.grand-hotel-ukraine.dp.ua",
-            Price = 50 * random.Next(1, 100),
+            Price = 50 * random.Next(1, 101),
             Currency = "USD",
             Note = "056 790 1441",
-            UserId = -1
+            UserId = -1,
+            CountryId = random.Next(1, 9)
           };
         });
 

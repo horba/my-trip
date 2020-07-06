@@ -273,7 +273,9 @@
     "plan": "Запланировать",
     "byReservationDate": "По дате бронирования",
     "byCostPerNight": "По стоимости за ночь",
-    "byName": "По названию"
+    "byName": "По названию",
+    "country": "Страна",
+    "year": "Год"
   },
   "datetimePicker": {
     "ok": "Выбрать",
