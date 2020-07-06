@@ -8,7 +8,7 @@ import {
 } from 'vuetify/lib';
 import {
   requiredValidationMixin,
-  urlValidationMixin,
+  linkValidMixin,
   accommodationGoogleApiMixin
 } from '@mixins';
 const { baseUrl } = require('@/config/config.dev.json');
@@ -16,7 +16,7 @@ const { MAX_ACCOMODATION_SIZE_MB, SERVER_ACCOMODATIONS_PATH } = require('@consta
       MAX_ACCOMODATION_SIZE_KB = 1024 * 1024 * MAX_ACCOMODATION_SIZE_MB;
 
 export default {
-  mixins: [requiredValidationMixin, urlValidationMixin, accommodationGoogleApiMixin],
+  mixins: [requiredValidationMixin, linkValidMixin, accommodationGoogleApiMixin],
   components: {
     MmtTextInput,
     MmtDatetimePicker,

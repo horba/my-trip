@@ -1,0 +1,112 @@
+<div>
+  <mmt-stepper></mmt-stepper>
+  <v-row>
+    <v-col md="2" sm="12" class="d-flex justify-center align-center">
+      {{$t('eating.results')}} ({{scheduledPlacesList.length}})
+    </v-col>
+    <v-col md="6" sm="12" />
+    <v-col md="2" sm="12" class="d-flex justify-center align-center">
+      <v-btn rounded small color="accent lighten-1" class="mmt-btn" width="165" height="39"
+        @click="$router.push({name: 'ScheduleEatingPlaceNew'})">
+        {{$t('eating.add')}}
+      </v-btn>
+    </v-col>
+    <v-col md="2" sm="12" class="d-flex justify-center align-center">
+      <v-btn rounded small color="accent lighten-1" class="mmt-btn" width="110" height="39">
+        {{$t('eating.filter')}}
+        <v-icon dense right>mdi-tune</v-icon>
+      </v-btn>
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col class="d-flex flex-wrap">
+      <v-card :key="index" v-for="(place, index) in scheduledPlacesList" :flat="place.serverInfo.id!==selectedId"
+        class="place-card" height="300" width="259" @click="onSelectPlace(place)"
+        :class="{ 'active-card': place.serverInfo.id === selectedId }">
+        <v-img
+          v-if="place.googleDetails && place.googleDetails.photos && place.googleDetails.photos.length > 0"
+          :aspect-ratio="16/9"
+          :lazy-src="defaultImage"
+          :src="place.googleDetails.photos[0].getUrl()"
+          max-height="150"
+        />
+        <v-img
+          v-else
+          :aspect-ratio="16/9"
+          :lazy-src="defaultImage"
+          src="@assets/default-sheduled-place-to-eat-image.jpg"
+          max-height="150"
+        />
+        <div class="text-card">
+          <div class="d-flex">
+            <v-row>
+              <v-col md="5" sm="12">
+                <h6 :title="place.serverInfo.placeName" class="text-semi-bold d-flex justify-start align-center">
+                  {{ place.serverInfo.placeName | trim(10)}}
+                </h6>
+              </v-col>
+              <v-col md="7" sm="12">
+                <div class="d-flex justify-center align-center"
+                  v-if="place.googleDetails && place.googleDetails.rating">
+                  <v-rating readonly half-increments dense color="accent" length="1"
+                    :value="place.googleDetails.rating" />
+                  <div>
+                    {{place.googleDetails.rating}} ({{place.googleDetails.user_ratings_total}})
+                  </div>
+                </div>
+              </v-col>
+            </v-row>
+          </div>
+          <div class="d-flex flex-column" v-if="place.googleDetails">
+            <div class="d-flex flex-row">
+              <div class="text-small text-semi-bold">
+                {{$t('eating.menu')}}
+              </div>
+              <div class="d-flex" v-if="place.googleDetails && place.googleDetails.opening_hours">
+                <div class="text-small text-semi-bold separator">•</div>
+                <div class="text-small text-semi-bold success--text" v-if="isOpen(place.googleDetails)">
+                  {{$t('eating.open')}}
+                </div>
+                <div class="text-small text-semi-bold error--text" v-else>
+                  {{$t('eating.close')}}
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-space-between types" v-if="place.googleDetails">
+              <div class="text-small text-semi-bold" :key="index"
+                v-for="(type, index) in place.googleDetails.types.slice(0, 3)">
+                {{$t(type)}}
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-end">
+            <v-row class="d-flex">
+              <v-col md="2" class="trash-btn d-flex justify-start">
+                <v-btn :title="$t('eating.delete')" icon x-small depressed @click="deletePlace(place.serverInfo.id)">
+                  <v-icon>mdi-trash-can</v-icon>
+                </v-btn>
+              </v-col>
+              <v-col md="7"></v-col>
+              <v-col md="2" class="pencil-btn d-flex justify-end">
+                <v-btn :title="$t('eating.edit')" icon x-small depressed
+                  @click="$router.push({name: 'EditScheduleEatingPlace', params: { id: place.serverInfo.id } })">
+                  <v-icon color="primary">mdi-pencil</v-icon>
+                </v-btn>
+              </v-col>
+            </v-row>
+          </div>
+        </div>
+      </v-card>
+    </v-col>
+    <v-col width="538">
+      <GmapMap v-bind='options' id='map' ref="mapRef">
+        <GmapMarker :key="index" v-for="(m, index) in scheduledPlacesList" v-if="m.googleDetails"
+          :position="m.googleDetails.geometry.location">
+        </GmapMarker>
+      </GmapMap>
+    </v-col>
+  </v-row>
+  <v-snackbar v-model="snackbar" :color="color" multi-line :timeout="3000" top>
+    {{ text }}
+  </v-snackbar>
+</div>

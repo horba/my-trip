@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Entities;
 using Entities.Models;
-using MailKit;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.DTO;
 using WebAPI.DTO.Waypoint;
-using WebAPI.Services.Assets;
 
 namespace WebAPI.Services
 {

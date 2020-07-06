@@ -1,4 +1,11 @@
 {
+  "cafe": "Кафе",
+  "restaurant": "Ресторан",
+  "bar": "Бар",
+  "establishment": "Заведение",
+  "meal_delivery": "Доставка еды",
+  "meal_takeaway": "Еда на вынос",
+  "food": "Еда",
   "appTitle": "MakeMeTrip",
   "menu": {
     "aboutUs": "О нас",
@@ -216,6 +223,34 @@
     "invalidCredentials": "Неверные учетные данные",
     "unknownApiError": "Неизвестная ошибка сервера"
   },
+  "eating": {
+    "open": "Открыто",
+    "close": "Закрыто",
+    "menu": "Меню",
+    "results": "Результаты",
+    "add": "Добавить",
+    "filter": "Фильтр",
+    "edit": "Отредактировать",
+    "delete": "Удалить",
+    "successfullyDelete": "Успешное удаление"
+  },
+  "scheduledPlaceToEatCreateOrEdit": {
+    "addCafe": "Добавить кафе",
+    "edit": "Отредактировать",
+    "placeName": "Название объекта",
+    "addressPlace": "Адрес объекта",
+    "addFile": "Добавить файл",
+    "date": "Дата",
+    "time": "Время",
+    "link": "Ссылка",
+    "notes": "Заметки",
+    "maxLengthName": "Максимальная длинна названия = 200 символов",
+    "maxLengthNotes": "Максимальная длинна заметки = 2000 символов",
+    "save": "Сохранить",
+    "close": "Закрыть",
+    "successfullySaved": "Успешно сохранено",
+    "successfullyEdited": "Успешно изменено"
+  },
   "signUp": {
     "welcome": "Добро пожаловать!",
     "continue": "Продолжить",
@@ -241,6 +276,9 @@
     "greaterThanZero": "Значение должно быть больше 0",
     "enterCorrectDate": "Введите корректную дату",
     "enterCorrectTime": "Введите корректное время",
+    "enterCorrectFiles": "Размер одного файла не должен превышать {0} байт",
+    "isNoLink": "Это не похоже на ссылку",
+    "tooManyAttachments": "Количество вложений должно быть не больше {0}",
     "enterCorrectURL": "Введите корректный URL",
     "maxLength": "Максимальная длина {0} символов",
     "minValue": "Минимальное значение: {0}",

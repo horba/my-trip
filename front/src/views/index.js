@@ -43,3 +43,12 @@ export {
   default as AccommodationEditor
 }
   from '@views/profile/accommodation-editor/accommodation-editor.view.vue';
+
+export {
+  default as Eating
+}
+  from '@views/profile/eating/eating.view.vue';
+export {
+  default as ScheduleEatingPlace
+}
+  from '@views/profile/eating/eating-new/eating-new.view.vue';

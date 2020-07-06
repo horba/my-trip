@@ -75,6 +75,8 @@ namespace WebAPI.Services.Assets
       {
         case AssetType.UserAvatar:
           return Consts.UsersAvatarsPath;
+        case AssetType.FileEating:
+          return Consts.FileEatingPath;
         case AssetType.Entertainment:
           return Consts.EntertainmentsPath;
         case AssetType.WaypointFile:

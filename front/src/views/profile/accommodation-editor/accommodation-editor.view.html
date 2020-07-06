@@ -108,7 +108,7 @@
           <mmt-text-input class="input-field"
                           v-model.trim="accommodation.link"
                           :mmt-label="$t('accommodations.link')"
-                          :rules="[urlRules.validUrl]"
+                          :rules="[rules.linkValid]"
                           persistent-hint
                           rounded
                           filled

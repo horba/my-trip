@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Entities.Interfaces;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,21 +8,21 @@ namespace Entities
 {
   public class UserRepository
   {
-    private readonly IRepositoryContext RepositoryContext;
+    private readonly IRepositoryContext _repositoryContext;
 
     public UserRepository(IRepositoryContext repositoryContext)
     {
-      this.RepositoryContext = repositoryContext;
+      _repositoryContext = repositoryContext;
     }
 
     public User FindUserByEmail(string email)
     {
-      return RepositoryContext.Users.FirstOrDefault(u => u.Email.Equals(email));
+      return _repositoryContext.Users.FirstOrDefault(u => u.Email.Equals(email));
     }
 
     public User FindUserById(int id)
     {
-      return RepositoryContext.Users
+      return _repositoryContext.Users
         .Include(u => u.Country)
         .Include(u => u.Language)
         .FirstOrDefault(u => u.Id.Equals(id));
@@ -29,18 +30,18 @@ namespace Entities
 
     public void CreateUser(User user)
     {
-      RepositoryContext.Users.Add(user);
-      RepositoryContext.SaveChanges();
+      _repositoryContext.Users.Add(user);
+      _repositoryContext.SaveChanges();
     }
 
     public void UpdateUser(User user)
     {
-      RepositoryContext.Users.Update(user);
-      RepositoryContext.SaveChanges();
+      _repositoryContext.Users.Update(user);
+      _repositoryContext.SaveChanges();
     }
     public User FindUserByRecoveryPasswordToken(string token)
     {
-      return RepositoryContext.Users.FirstOrDefault(u => u.ResetPasswordToken.Equals(token));
+      return _repositoryContext.Users.FirstOrDefault(u => u.ResetPasswordToken.Equals(token));
     }
 
     public void CreateAndSetRecoveryPasswordToken(string email)

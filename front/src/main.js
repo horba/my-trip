@@ -1,7 +1,5 @@
 import '@filters';
 
-import * as VueGoogleMaps from 'vue2-google-maps';
-
 import { Authorize, Default } from '@layout';
 
 import App from './App.vue';
@@ -11,6 +9,16 @@ import i18n from './plugins/i18n';
 import router from '@router';
 import store from '@store';
 import vuetify from './plugins/vuetify';
+
+import * as VueGoogleMaps from 'vue2-google-maps';
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: process.env.VUE_APP_GOOGLE_MAP_API,
+    libraries: 'places',
+    region: 'uk,en,ru'
+  }
+});
 
 Vue.component('default-layout', Default);
 Vue.component('authorize-layout', Authorize);

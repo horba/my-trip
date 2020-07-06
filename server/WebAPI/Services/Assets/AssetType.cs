@@ -5,6 +5,7 @@
     UserAvatar = 1,
     WaypointFile = 2,
     Entertainment = 3,
-    Accommodation = 4
+    Accommodation = 4,
+    FileEating = 5
   }
 }

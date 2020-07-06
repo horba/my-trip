@@ -1,4 +1,11 @@
 {
+  "cafe": "Cafe",
+  "restaurant": "Restourant",
+  "bar": "Bar",
+  "establishment": "Establishment",
+  "meal_delivery": "Meal delivery",
+  "meal_takeaway": "Meal takeawey",
+  "food": "Food",
   "appTitle": "MakeMeTrip",
   "menu": {
     "aboutUs": "About Us",
@@ -216,6 +223,34 @@
     "invalidCredentials": "Invalid credentials",
     "unknownApiError": "Unknown server error"
   },
+  "eating": {
+    "open": "Open",
+    "close": "Close",
+    "menu": "Menu",
+    "results": "Results",
+    "add": "Add",
+    "filter": "Filter",
+    "edit": "Edit",
+    "delete": "Delete",
+    "successfullyDelete": "Successfully delete"
+  },
+  "scheduledPlaceToEatCreateOrEdit": {
+    "addCafe": "Add cafe",
+    "edit": "Edit",
+    "placeName": "Name object",
+    "addressPlace": "Address object",
+    "addFile": "Add file",
+    "date": "Date",
+    "time": "Time",
+    "link": "Link",
+    "notes": "Notes",
+    "maxLengthName": "Maximum name length = 200 characters",
+    "maxLengthNotes": "Maximum note length = 2000 characters",
+    "save": "Save",
+    "close": "Close",
+    "successfullySaved": "Successfully saved",
+    "successfullyEdited": "Successfully edited"
+  },
   "signUp": {
     "welcome": "Welcome!",
     "continue": "Continue",
@@ -241,6 +276,10 @@
     "greaterThanZero": "Value must be greater than 0",
     "enterCorrectDate": "Enter valid date",
     "enterCorrectTime": "Enter valid time",
+    
+    "enterCorrectFiles": "File size should be less than {0} byte",
+    "isNoLink": "It doesn't look like a link",
+    "tooManyAttachments": "The number of attachments should not be more than {0}",
     "enterCorrectURL": "Enter valid URL",
     "maxLength": "Maximum length is {0} symbols",
     "minValue": "Minimum value is: {0}",

@@ -6,7 +6,6 @@ using WebAPI.DTO;
 using System.Linq;
 using System.Threading.Tasks;
 using Entities.Models;
-using Org.BouncyCastle.Math.EC.Multiplier;
 using WebAPI.DTO.Trip;
 
 namespace WebAPI.Services

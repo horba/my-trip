@@ -8,6 +8,7 @@ import recoveryPassword from './modules/recoveryPassword.store';
 import trip from './modules/trip.store';
 import userSettings from './modules/userSettings.store';
 import userTickets from './modules/userTickets.store';
+import eating from './modules/eating.store';
 import waypoints from './modules/waypoints.store';
 import accommodations from './modules/accommodations.store';
 
@@ -21,6 +22,7 @@ export default new Vuex.Store({
     auth,
     userTickets,
     recoveryPassword,
+    eating,
     entertainment,
     waypoints,
     dictionaries,

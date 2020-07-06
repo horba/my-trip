@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Entities.Interfaces;
+using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
