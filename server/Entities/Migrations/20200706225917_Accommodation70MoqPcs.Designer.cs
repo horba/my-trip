@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entities.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20200706195140_Accommodation70MoqPcs")]
+    [Migration("20200706225917_Accommodation70MoqPcs")]
     partial class Accommodation70MoqPcs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -81,158 +81,254 @@ namespace Entities.Migrations
                         new
                         {
                             Id = -1,
-                            Address = "Moq address #76416",
-                            ArrivalDateTime = new DateTime(2021, 4, 21, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(5919),
-                            CountryId = 7,
+                            Address = "Moq address #30003",
+                            ArrivalDateTime = new DateTime(2022, 6, 17, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(2392),
+                            CountryId = 2,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 4, 24, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(5919),
-                            GuestCount = 6,
+                            DepartureDateTime = new DateTime(2022, 6, 18, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(2392),
+                            GuestCount = 4,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #63420",
+                            Name = "Moq Hotel #26747",
                             Note = "056 790 1441",
-                            Price = 1200m,
-                            RoomsCount = 3,
+                            Price = 3500m,
+                            RoomsCount = 1,
                             UserId = -1
                         },
                         new
                         {
                             Id = -2,
-                            Address = "Moq address #68967",
-                            ArrivalDateTime = new DateTime(2021, 4, 18, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9825),
+                            Address = "Moq address #58906",
+                            ArrivalDateTime = new DateTime(2021, 8, 29, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6171),
                             CountryId = 3,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 4, 20, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9825),
-                            GuestCount = 5,
+                            DepartureDateTime = new DateTime(2021, 9, 4, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6171),
+                            GuestCount = 2,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #80369",
+                            Name = "Moq Hotel #47712",
                             Note = "056 790 1441",
-                            Price = 3100m,
-                            RoomsCount = 4,
+                            Price = 3800m,
+                            RoomsCount = 1,
                             UserId = -1
                         },
                         new
                         {
                             Id = -3,
-                            Address = "Moq address #43458",
-                            ArrivalDateTime = new DateTime(2020, 11, 18, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9892),
-                            CountryId = 5,
+                            Address = "Moq address #98227",
+                            ArrivalDateTime = new DateTime(2023, 1, 10, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6225),
+                            CountryId = 6,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2020, 11, 19, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9892),
-                            GuestCount = 10,
+                            DepartureDateTime = new DateTime(2023, 1, 14, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6225),
+                            GuestCount = 8,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #76324",
+                            Name = "Moq Hotel #29383",
                             Note = "056 790 1441",
-                            Price = 3150m,
-                            RoomsCount = 4,
+                            Price = 4300m,
+                            RoomsCount = 2,
                             UserId = -1
                         },
                         new
                         {
                             Id = -4,
-                            Address = "Moq address #98645",
-                            ArrivalDateTime = new DateTime(2020, 11, 7, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9900),
-                            CountryId = 4,
+                            Address = "Moq address #21170",
+                            ArrivalDateTime = new DateTime(2020, 9, 11, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6233),
+                            CountryId = 6,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2020, 11, 8, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9900),
-                            GuestCount = 5,
+                            DepartureDateTime = new DateTime(2020, 9, 17, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6233),
+                            GuestCount = 9,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #42871",
+                            Name = "Moq Hotel #64468",
                             Note = "056 790 1441",
-                            Price = 2200m,
-                            RoomsCount = 4,
+                            Price = 1300m,
+                            RoomsCount = 2,
                             UserId = -1
                         },
                         new
                         {
                             Id = -5,
-                            Address = "Moq address #77184",
-                            ArrivalDateTime = new DateTime(2021, 7, 25, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9907),
-                            CountryId = 7,
+                            Address = "Moq address #58935",
+                            ArrivalDateTime = new DateTime(2022, 7, 21, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6239),
+                            CountryId = 5,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 7, 27, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9907),
-                            GuestCount = 1,
+                            DepartureDateTime = new DateTime(2022, 7, 23, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6239),
+                            GuestCount = 10,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #93836",
+                            Name = "Moq Hotel #75419",
                             Note = "056 790 1441",
-                            Price = 1400m,
+                            Price = 4450m,
                             RoomsCount = 3,
                             UserId = -1
                         },
                         new
                         {
                             Id = -6,
-                            Address = "Moq address #75127",
-                            ArrivalDateTime = new DateTime(2022, 2, 11, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9915),
-                            CountryId = 8,
+                            Address = "Moq address #65210",
+                            ArrivalDateTime = new DateTime(2021, 7, 1, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6248),
+                            CountryId = 5,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2022, 2, 15, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9915),
-                            GuestCount = 5,
+                            DepartureDateTime = new DateTime(2021, 7, 4, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6248),
+                            GuestCount = 6,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #49685",
+                            Name = "Moq Hotel #73473",
                             Note = "056 790 1441",
-                            Price = 1450m,
+                            Price = 5000m,
                             RoomsCount = 2,
                             UserId = -1
                         },
                         new
                         {
                             Id = -7,
-                            Address = "Moq address #44418",
-                            ArrivalDateTime = new DateTime(2023, 1, 3, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9922),
+                            Address = "Moq address #38684",
+                            ArrivalDateTime = new DateTime(2022, 10, 27, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6255),
                             CountryId = 3,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2023, 1, 5, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9922),
-                            GuestCount = 5,
+                            DepartureDateTime = new DateTime(2022, 10, 28, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6255),
+                            GuestCount = 9,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #26966",
+                            Name = "Moq Hotel #96973",
                             Note = "056 790 1441",
-                            Price = 750m,
-                            RoomsCount = 3,
+                            Price = 3750m,
+                            RoomsCount = 1,
                             UserId = -1
                         },
                         new
                         {
                             Id = -8,
-                            Address = "Moq address #28766",
-                            ArrivalDateTime = new DateTime(2023, 2, 25, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9928),
-                            CountryId = 4,
+                            Address = "Moq address #79874",
+                            ArrivalDateTime = new DateTime(2021, 6, 4, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6261),
+                            CountryId = 2,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2023, 3, 1, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9928),
-                            GuestCount = 6,
+                            DepartureDateTime = new DateTime(2021, 6, 5, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6261),
+                            GuestCount = 2,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #92523",
+                            Name = "Moq Hotel #53572",
                             Note = "056 790 1441",
-                            Price = 1950m,
-                            RoomsCount = 2,
+                            Price = 2000m,
+                            RoomsCount = 3,
                             UserId = -1
                         },
                         new
                         {
                             Id = -9,
-                            Address = "Moq address #56607",
-                            ArrivalDateTime = new DateTime(2021, 6, 19, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9934),
-                            CountryId = 6,
+                            Address = "Moq address #48829",
+                            ArrivalDateTime = new DateTime(2020, 12, 25, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6267),
+                            CountryId = 4,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 6, 21, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9934),
-                            GuestCount = 6,
+                            DepartureDateTime = new DateTime(2020, 12, 30, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6267),
+                            GuestCount = 8,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #93530",
+                            Name = "Moq Hotel #31122",
                             Note = "056 790 1441",
-                            Price = 1500m,
-                            RoomsCount = 4,
+                            Price = 1900m,
+                            RoomsCount = 1,
                             UserId = -1
                         },
                         new
                         {
                             Id = -10,
-                            Address = "Moq address #54335",
-                            ArrivalDateTime = new DateTime(2021, 10, 9, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9941),
+                            Address = "Moq address #17274",
+                            ArrivalDateTime = new DateTime(2021, 6, 6, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6274),
+                            CountryId = 5,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2021, 6, 10, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6274),
+                            GuestCount = 10,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #97463",
+                            Note = "056 790 1441",
+                            Price = 450m,
+                            RoomsCount = 1,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -11,
+                            Address = "Moq address #85920",
+                            ArrivalDateTime = new DateTime(2022, 3, 10, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6280),
+                            CountryId = 6,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2022, 3, 12, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6280),
+                            GuestCount = 2,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #31245",
+                            Note = "056 790 1441",
+                            Price = 4300m,
+                            RoomsCount = 4,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -12,
+                            Address = "Moq address #49176",
+                            ArrivalDateTime = new DateTime(2023, 3, 13, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6287),
                             CountryId = 7,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 10, 14, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9941),
+                            DepartureDateTime = new DateTime(2023, 3, 15, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6287),
+                            GuestCount = 4,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #91591",
+                            Note = "056 790 1441",
+                            Price = 1950m,
+                            RoomsCount = 1,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -13,
+                            Address = "Moq address #42228",
+                            ArrivalDateTime = new DateTime(2021, 5, 13, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6293),
+                            CountryId = 6,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2021, 5, 16, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6293),
+                            GuestCount = 7,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #35814",
+                            Note = "056 790 1441",
+                            Price = 4350m,
+                            RoomsCount = 3,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -14,
+                            Address = "Moq address #91102",
+                            ArrivalDateTime = new DateTime(2022, 2, 18, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6300),
+                            CountryId = 1,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2022, 2, 24, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6300),
                             GuestCount = 5,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #29455",
+                            Name = "Moq Hotel #79183",
+                            Note = "056 790 1441",
+                            Price = 2150m,
+                            RoomsCount = 3,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -15,
+                            Address = "Moq address #94280",
+                            ArrivalDateTime = new DateTime(2021, 8, 12, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6306),
+                            CountryId = 2,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2021, 8, 14, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6306),
+                            GuestCount = 3,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #63043",
+                            Note = "056 790 1441",
+                            Price = 150m,
+                            RoomsCount = 3,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -16,
+                            Address = "Moq address #86959",
+                            ArrivalDateTime = new DateTime(2021, 7, 29, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6312),
+                            CountryId = 2,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2021, 8, 1, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6312),
+                            GuestCount = 10,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #25056",
                             Note = "056 790 1441",
                             Price = 150m,
                             RoomsCount = 4,
@@ -240,415 +336,63 @@ namespace Entities.Migrations
                         },
                         new
                         {
-                            Id = -11,
-                            Address = "Moq address #33751",
-                            ArrivalDateTime = new DateTime(2020, 9, 28, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9947),
-                            CountryId = 7,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2020, 9, 29, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9947),
-                            GuestCount = 7,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #11786",
-                            Note = "056 790 1441",
-                            Price = 4450m,
-                            RoomsCount = 1,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -12,
-                            Address = "Moq address #17999",
-                            ArrivalDateTime = new DateTime(2022, 8, 27, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9953),
-                            CountryId = 3,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2022, 9, 1, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9953),
-                            GuestCount = 9,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #96359",
-                            Note = "056 790 1441",
-                            Price = 1500m,
-                            RoomsCount = 1,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -13,
-                            Address = "Moq address #59889",
-                            ArrivalDateTime = new DateTime(2020, 9, 3, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9990),
-                            CountryId = 1,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2020, 9, 6, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9990),
-                            GuestCount = 1,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #18573",
-                            Note = "056 790 1441",
-                            Price = 2450m,
-                            RoomsCount = 4,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -14,
-                            Address = "Moq address #34828",
-                            ArrivalDateTime = new DateTime(2022, 12, 20, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9997),
-                            CountryId = 1,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2022, 12, 26, 22, 51, 39, 744, DateTimeKind.Local).AddTicks(9997),
-                            GuestCount = 9,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #64154",
-                            Note = "056 790 1441",
-                            Price = 4550m,
-                            RoomsCount = 3,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -15,
-                            Address = "Moq address #56079",
-                            ArrivalDateTime = new DateTime(2022, 12, 14, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(16),
-                            CountryId = 3,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2022, 12, 15, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(16),
-                            GuestCount = 2,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #81715",
-                            Note = "056 790 1441",
-                            Price = 4150m,
-                            RoomsCount = 1,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -16,
-                            Address = "Moq address #58684",
-                            ArrivalDateTime = new DateTime(2020, 8, 18, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(23),
-                            CountryId = 4,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2020, 8, 23, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(23),
-                            GuestCount = 1,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #56860",
-                            Note = "056 790 1441",
-                            Price = 3700m,
-                            RoomsCount = 1,
-                            UserId = -1
-                        },
-                        new
-                        {
                             Id = -17,
-                            Address = "Moq address #39546",
-                            ArrivalDateTime = new DateTime(2023, 1, 17, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(29),
-                            CountryId = 3,
+                            Address = "Moq address #67916",
+                            ArrivalDateTime = new DateTime(2022, 2, 16, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6318),
+                            CountryId = 1,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2023, 1, 20, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(29),
-                            GuestCount = 6,
+                            DepartureDateTime = new DateTime(2022, 2, 21, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6318),
+                            GuestCount = 8,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #51204",
+                            Name = "Moq Hotel #85263",
                             Note = "056 790 1441",
-                            Price = 4000m,
-                            RoomsCount = 2,
+                            Price = 4400m,
+                            RoomsCount = 3,
                             UserId = -1
                         },
                         new
                         {
                             Id = -18,
-                            Address = "Moq address #11178",
-                            ArrivalDateTime = new DateTime(2021, 12, 22, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(36),
-                            CountryId = 1,
+                            Address = "Moq address #41229",
+                            ArrivalDateTime = new DateTime(2021, 7, 18, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6325),
+                            CountryId = 3,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 12, 25, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(36),
-                            GuestCount = 2,
+                            DepartureDateTime = new DateTime(2021, 7, 20, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6325),
+                            GuestCount = 10,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #12989",
+                            Name = "Moq Hotel #68868",
                             Note = "056 790 1441",
-                            Price = 4600m,
-                            RoomsCount = 3,
+                            Price = 750m,
+                            RoomsCount = 4,
                             UserId = -1
                         },
                         new
                         {
                             Id = -19,
-                            Address = "Moq address #18263",
-                            ArrivalDateTime = new DateTime(2020, 9, 6, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(42),
-                            CountryId = 8,
+                            Address = "Moq address #79908",
+                            ArrivalDateTime = new DateTime(2021, 11, 6, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6332),
+                            CountryId = 7,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2020, 9, 8, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(42),
+                            DepartureDateTime = new DateTime(2021, 11, 7, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6332),
                             GuestCount = 10,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #75227",
+                            Name = "Moq Hotel #21684",
                             Note = "056 790 1441",
-                            Price = 800m,
-                            RoomsCount = 4,
+                            Price = 2500m,
+                            RoomsCount = 2,
                             UserId = -1
                         },
                         new
                         {
                             Id = -20,
-                            Address = "Moq address #55449",
-                            ArrivalDateTime = new DateTime(2021, 4, 4, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(48),
+                            Address = "Moq address #57166",
+                            ArrivalDateTime = new DateTime(2021, 3, 29, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6338),
                             CountryId = 6,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 4, 8, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(48),
-                            GuestCount = 1,
+                            DepartureDateTime = new DateTime(2021, 4, 4, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6338),
+                            GuestCount = 2,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #17894",
-                            Note = "056 790 1441",
-                            Price = 4800m,
-                            RoomsCount = 4,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -21,
-                            Address = "Moq address #44375",
-                            ArrivalDateTime = new DateTime(2022, 11, 18, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(54),
-                            CountryId = 4,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2022, 11, 21, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(54),
-                            GuestCount = 3,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #58258",
-                            Note = "056 790 1441",
-                            Price = 2700m,
-                            RoomsCount = 3,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -22,
-                            Address = "Moq address #23058",
-                            ArrivalDateTime = new DateTime(2020, 7, 12, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(60),
-                            CountryId = 4,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2020, 7, 18, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(60),
-                            GuestCount = 8,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #83400",
-                            Note = "056 790 1441",
-                            Price = 850m,
-                            RoomsCount = 4,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -23,
-                            Address = "Moq address #42626",
-                            ArrivalDateTime = new DateTime(2022, 3, 7, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(66),
-                            CountryId = 2,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2022, 3, 10, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(66),
-                            GuestCount = 1,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #65059",
-                            Note = "056 790 1441",
-                            Price = 2250m,
-                            RoomsCount = 3,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -24,
-                            Address = "Moq address #49582",
-                            ArrivalDateTime = new DateTime(2021, 5, 10, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(72),
-                            CountryId = 5,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 5, 11, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(72),
-                            GuestCount = 10,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #55453",
-                            Note = "056 790 1441",
-                            Price = 1450m,
-                            RoomsCount = 2,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -25,
-                            Address = "Moq address #63452",
-                            ArrivalDateTime = new DateTime(2020, 9, 28, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(78),
-                            CountryId = 4,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2020, 9, 29, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(78),
-                            GuestCount = 3,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #70548",
-                            Note = "056 790 1441",
-                            Price = 4550m,
-                            RoomsCount = 3,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -26,
-                            Address = "Moq address #21362",
-                            ArrivalDateTime = new DateTime(2021, 1, 20, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(84),
-                            CountryId = 4,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 1, 21, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(84),
-                            GuestCount = 8,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #80071",
-                            Note = "056 790 1441",
-                            Price = 900m,
-                            RoomsCount = 1,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -27,
-                            Address = "Moq address #47737",
-                            ArrivalDateTime = new DateTime(2023, 1, 19, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(90),
-                            CountryId = 2,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2023, 1, 25, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(90),
-                            GuestCount = 5,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #18198",
-                            Note = "056 790 1441",
-                            Price = 3450m,
-                            RoomsCount = 3,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -28,
-                            Address = "Moq address #74302",
-                            ArrivalDateTime = new DateTime(2020, 10, 8, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(96),
-                            CountryId = 6,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2020, 10, 9, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(96),
-                            GuestCount = 6,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #28500",
-                            Note = "056 790 1441",
-                            Price = 2350m,
-                            RoomsCount = 1,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -29,
-                            Address = "Moq address #17418",
-                            ArrivalDateTime = new DateTime(2021, 12, 24, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(102),
-                            CountryId = 1,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 12, 25, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(102),
-                            GuestCount = 7,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #45380",
-                            Note = "056 790 1441",
-                            Price = 850m,
-                            RoomsCount = 3,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -30,
-                            Address = "Moq address #30360",
-                            ArrivalDateTime = new DateTime(2022, 6, 14, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(108),
-                            CountryId = 3,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2022, 6, 16, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(108),
-                            GuestCount = 6,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #99937",
-                            Note = "056 790 1441",
-                            Price = 1750m,
-                            RoomsCount = 2,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -31,
-                            Address = "Moq address #87823",
-                            ArrivalDateTime = new DateTime(2021, 6, 1, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(114),
-                            CountryId = 4,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 6, 5, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(114),
-                            GuestCount = 4,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #64417",
-                            Note = "056 790 1441",
-                            Price = 650m,
-                            RoomsCount = 4,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -32,
-                            Address = "Moq address #15143",
-                            ArrivalDateTime = new DateTime(2023, 3, 16, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(120),
-                            CountryId = 1,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2023, 3, 20, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(120),
-                            GuestCount = 5,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #93500",
-                            Note = "056 790 1441",
-                            Price = 4900m,
-                            RoomsCount = 1,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -33,
-                            Address = "Moq address #46615",
-                            ArrivalDateTime = new DateTime(2021, 5, 20, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(125),
-                            CountryId = 3,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 5, 24, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(125),
-                            GuestCount = 10,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #44081",
-                            Note = "056 790 1441",
-                            Price = 3950m,
-                            RoomsCount = 1,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -34,
-                            Address = "Moq address #51732",
-                            ArrivalDateTime = new DateTime(2023, 1, 21, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(132),
-                            CountryId = 7,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2023, 1, 26, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(132),
-                            GuestCount = 5,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #83946",
-                            Note = "056 790 1441",
-                            Price = 3350m,
-                            RoomsCount = 2,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -35,
-                            Address = "Moq address #91836",
-                            ArrivalDateTime = new DateTime(2022, 11, 13, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(166),
-                            CountryId = 6,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2022, 11, 16, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(166),
-                            GuestCount = 6,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #80062",
-                            Note = "056 790 1441",
-                            Price = 1600m,
-                            RoomsCount = 3,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -36,
-                            Address = "Moq address #76397",
-                            ArrivalDateTime = new DateTime(2021, 4, 5, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(173),
-                            CountryId = 5,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 4, 6, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(173),
-                            GuestCount = 1,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #61942",
+                            Name = "Moq Hotel #28922",
                             Note = "056 790 1441",
                             Price = 3150m,
                             RoomsCount = 1,
@@ -656,95 +400,351 @@ namespace Entities.Migrations
                         },
                         new
                         {
-                            Id = -37,
-                            Address = "Moq address #25839",
-                            ArrivalDateTime = new DateTime(2020, 8, 9, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(179),
-                            CountryId = 2,
+                            Id = -21,
+                            Address = "Moq address #68541",
+                            ArrivalDateTime = new DateTime(2022, 7, 21, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6344),
+                            CountryId = 6,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2020, 8, 15, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(179),
-                            GuestCount = 8,
+                            DepartureDateTime = new DateTime(2022, 7, 23, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6344),
+                            GuestCount = 9,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #15780",
+                            Name = "Moq Hotel #78784",
                             Note = "056 790 1441",
-                            Price = 1800m,
+                            Price = 1450m,
                             RoomsCount = 4,
                             UserId = -1
                         },
                         new
                         {
-                            Id = -38,
-                            Address = "Moq address #61383",
-                            ArrivalDateTime = new DateTime(2022, 9, 30, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(185),
-                            CountryId = 5,
+                            Id = -22,
+                            Address = "Moq address #67006",
+                            ArrivalDateTime = new DateTime(2022, 6, 18, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6350),
+                            CountryId = 4,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2022, 10, 6, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(185),
-                            GuestCount = 2,
+                            DepartureDateTime = new DateTime(2022, 6, 22, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6350),
+                            GuestCount = 4,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #23720",
+                            Name = "Moq Hotel #20975",
                             Note = "056 790 1441",
-                            Price = 350m,
+                            Price = 1500m,
                             RoomsCount = 3,
                             UserId = -1
                         },
                         new
                         {
-                            Id = -39,
-                            Address = "Moq address #70870",
-                            ArrivalDateTime = new DateTime(2021, 3, 28, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(191),
-                            CountryId = 6,
+                            Id = -23,
+                            Address = "Moq address #88255",
+                            ArrivalDateTime = new DateTime(2020, 8, 1, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6388),
+                            CountryId = 2,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 3, 30, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(191),
-                            GuestCount = 9,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #76047",
-                            Note = "056 790 1441",
-                            Price = 2650m,
-                            RoomsCount = 1,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -40,
-                            Address = "Moq address #42819",
-                            ArrivalDateTime = new DateTime(2020, 9, 8, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(196),
-                            CountryId = 7,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2020, 9, 9, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(196),
+                            DepartureDateTime = new DateTime(2020, 8, 4, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6388),
                             GuestCount = 10,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #92899",
+                            Name = "Moq Hotel #22540",
                             Note = "056 790 1441",
-                            Price = 1500m,
+                            Price = 1450m,
                             RoomsCount = 1,
                             UserId = -1
                         },
                         new
                         {
-                            Id = -41,
-                            Address = "Moq address #42294",
-                            ArrivalDateTime = new DateTime(2021, 1, 26, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(202),
-                            CountryId = 8,
+                            Id = -24,
+                            Address = "Moq address #62912",
+                            ArrivalDateTime = new DateTime(2021, 6, 11, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6395),
+                            CountryId = 3,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 1, 29, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(202),
-                            GuestCount = 6,
+                            DepartureDateTime = new DateTime(2021, 6, 14, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6395),
+                            GuestCount = 8,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #27645",
+                            Name = "Moq Hotel #11939",
                             Note = "056 790 1441",
-                            Price = 250m,
+                            Price = 4700m,
                             RoomsCount = 2,
                             UserId = -1
                         },
                         new
                         {
-                            Id = -42,
-                            Address = "Moq address #48279",
-                            ArrivalDateTime = new DateTime(2021, 9, 4, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(209),
-                            CountryId = 5,
+                            Id = -25,
+                            Address = "Moq address #26257",
+                            ArrivalDateTime = new DateTime(2020, 8, 6, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6401),
+                            CountryId = 6,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 9, 5, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(209),
+                            DepartureDateTime = new DateTime(2020, 8, 10, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6401),
                             GuestCount = 7,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #23906",
+                            Name = "Moq Hotel #64436",
+                            Note = "056 790 1441",
+                            Price = 2100m,
+                            RoomsCount = 2,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -26,
+                            Address = "Moq address #83701",
+                            ArrivalDateTime = new DateTime(2022, 10, 28, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6407),
+                            CountryId = 5,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2022, 10, 29, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6407),
+                            GuestCount = 9,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #42841",
+                            Note = "056 790 1441",
+                            Price = 2300m,
+                            RoomsCount = 4,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -27,
+                            Address = "Moq address #97567",
+                            ArrivalDateTime = new DateTime(2023, 1, 13, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6413),
+                            CountryId = 4,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2023, 1, 17, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6413),
+                            GuestCount = 7,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #58431",
+                            Note = "056 790 1441",
+                            Price = 3750m,
+                            RoomsCount = 4,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -28,
+                            Address = "Moq address #88415",
+                            ArrivalDateTime = new DateTime(2021, 11, 3, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6419),
+                            CountryId = 3,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2021, 11, 5, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6419),
+                            GuestCount = 4,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #25550",
+                            Note = "056 790 1441",
+                            Price = 4600m,
+                            RoomsCount = 3,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -29,
+                            Address = "Moq address #72659",
+                            ArrivalDateTime = new DateTime(2021, 1, 16, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6425),
+                            CountryId = 5,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2021, 1, 20, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6425),
+                            GuestCount = 1,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #27886",
+                            Note = "056 790 1441",
+                            Price = 4000m,
+                            RoomsCount = 1,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -30,
+                            Address = "Moq address #58578",
+                            ArrivalDateTime = new DateTime(2022, 6, 27, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6432),
+                            CountryId = 4,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2022, 6, 28, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6432),
+                            GuestCount = 2,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #69692",
+                            Note = "056 790 1441",
+                            Price = 1300m,
+                            RoomsCount = 2,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -31,
+                            Address = "Moq address #29396",
+                            ArrivalDateTime = new DateTime(2022, 1, 30, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6438),
+                            CountryId = 3,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2022, 2, 4, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6438),
+                            GuestCount = 9,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #81704",
+                            Note = "056 790 1441",
+                            Price = 3650m,
+                            RoomsCount = 4,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -32,
+                            Address = "Moq address #51672",
+                            ArrivalDateTime = new DateTime(2022, 11, 15, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6444),
+                            CountryId = 2,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2022, 11, 20, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6444),
+                            GuestCount = 2,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #19741",
+                            Note = "056 790 1441",
+                            Price = 1600m,
+                            RoomsCount = 3,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -33,
+                            Address = "Moq address #71663",
+                            ArrivalDateTime = new DateTime(2021, 9, 29, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6450),
+                            CountryId = 7,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2021, 10, 3, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6450),
+                            GuestCount = 3,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #74065",
+                            Note = "056 790 1441",
+                            Price = 2600m,
+                            RoomsCount = 4,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -34,
+                            Address = "Moq address #97721",
+                            ArrivalDateTime = new DateTime(2022, 7, 16, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6457),
+                            CountryId = 1,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2022, 7, 18, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6457),
+                            GuestCount = 8,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #97988",
+                            Note = "056 790 1441",
+                            Price = 1600m,
+                            RoomsCount = 1,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -35,
+                            Address = "Moq address #64005",
+                            ArrivalDateTime = new DateTime(2023, 1, 9, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6464),
+                            CountryId = 2,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2023, 1, 11, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6464),
+                            GuestCount = 1,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #85946",
+                            Note = "056 790 1441",
+                            Price = 2550m,
+                            RoomsCount = 3,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -36,
+                            Address = "Moq address #96936",
+                            ArrivalDateTime = new DateTime(2021, 10, 24, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6470),
+                            CountryId = 2,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2021, 10, 30, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6470),
+                            GuestCount = 5,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #40723",
+                            Note = "056 790 1441",
+                            Price = 1750m,
+                            RoomsCount = 2,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -37,
+                            Address = "Moq address #52287",
+                            ArrivalDateTime = new DateTime(2021, 6, 28, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6476),
+                            CountryId = 7,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2021, 6, 29, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6476),
+                            GuestCount = 9,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #89439",
+                            Note = "056 790 1441",
+                            Price = 1100m,
+                            RoomsCount = 3,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -38,
+                            Address = "Moq address #88712",
+                            ArrivalDateTime = new DateTime(2021, 4, 22, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6482),
+                            CountryId = 6,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2021, 4, 25, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6482),
+                            GuestCount = 8,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #87233",
+                            Note = "056 790 1441",
+                            Price = 2700m,
+                            RoomsCount = 4,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -39,
+                            Address = "Moq address #40414",
+                            ArrivalDateTime = new DateTime(2022, 9, 10, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6488),
+                            CountryId = 6,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2022, 9, 14, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6488),
+                            GuestCount = 3,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #71245",
+                            Note = "056 790 1441",
+                            Price = 600m,
+                            RoomsCount = 3,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -40,
+                            Address = "Moq address #92541",
+                            ArrivalDateTime = new DateTime(2021, 2, 5, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6494),
+                            CountryId = 4,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2021, 2, 7, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6494),
+                            GuestCount = 10,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #46018",
+                            Note = "056 790 1441",
+                            Price = 2000m,
+                            RoomsCount = 3,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -41,
+                            Address = "Moq address #86482",
+                            ArrivalDateTime = new DateTime(2022, 4, 3, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6500),
+                            CountryId = 3,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2022, 4, 7, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6500),
+                            GuestCount = 2,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #17437",
+                            Note = "056 790 1441",
+                            Price = 950m,
+                            RoomsCount = 4,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -42,
+                            Address = "Moq address #25545",
+                            ArrivalDateTime = new DateTime(2022, 4, 2, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6506),
+                            CountryId = 6,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2022, 4, 4, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6506),
+                            GuestCount = 3,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #53709",
                             Note = "056 790 1441",
                             Price = 2650m,
                             RoomsCount = 3,
@@ -753,334 +753,238 @@ namespace Entities.Migrations
                         new
                         {
                             Id = -43,
-                            Address = "Moq address #39607",
-                            ArrivalDateTime = new DateTime(2021, 12, 2, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(214),
-                            CountryId = 8,
+                            Address = "Moq address #75746",
+                            ArrivalDateTime = new DateTime(2022, 9, 23, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6512),
+                            CountryId = 6,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 12, 5, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(214),
-                            GuestCount = 10,
+                            DepartureDateTime = new DateTime(2022, 9, 25, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6512),
+                            GuestCount = 8,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #62099",
+                            Name = "Moq Hotel #26122",
                             Note = "056 790 1441",
-                            Price = 3600m,
-                            RoomsCount = 4,
+                            Price = 4650m,
+                            RoomsCount = 1,
                             UserId = -1
                         },
                         new
                         {
                             Id = -44,
-                            Address = "Moq address #82574",
-                            ArrivalDateTime = new DateTime(2021, 12, 28, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(220),
-                            CountryId = 7,
+                            Address = "Moq address #49027",
+                            ArrivalDateTime = new DateTime(2022, 8, 16, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6519),
+                            CountryId = 6,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 12, 29, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(220),
-                            GuestCount = 9,
+                            DepartureDateTime = new DateTime(2022, 8, 18, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6519),
+                            GuestCount = 4,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #27547",
+                            Name = "Moq Hotel #41339",
                             Note = "056 790 1441",
-                            Price = 1200m,
-                            RoomsCount = 4,
+                            Price = 4500m,
+                            RoomsCount = 2,
                             UserId = -1
                         },
                         new
                         {
                             Id = -45,
-                            Address = "Moq address #95854",
-                            ArrivalDateTime = new DateTime(2022, 11, 8, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(226),
-                            CountryId = 7,
+                            Address = "Moq address #66124",
+                            ArrivalDateTime = new DateTime(2021, 10, 11, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6525),
+                            CountryId = 8,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2022, 11, 11, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(226),
-                            GuestCount = 3,
+                            DepartureDateTime = new DateTime(2021, 10, 13, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6525),
+                            GuestCount = 2,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #20031",
+                            Name = "Moq Hotel #16765",
                             Note = "056 790 1441",
-                            Price = 4850m,
+                            Price = 2750m,
                             RoomsCount = 3,
                             UserId = -1
                         },
                         new
                         {
                             Id = -46,
-                            Address = "Moq address #68408",
-                            ArrivalDateTime = new DateTime(2022, 5, 29, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(232),
-                            CountryId = 3,
+                            Address = "Moq address #78577",
+                            ArrivalDateTime = new DateTime(2021, 11, 17, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6572),
+                            CountryId = 5,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2022, 5, 31, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(232),
-                            GuestCount = 10,
+                            DepartureDateTime = new DateTime(2021, 11, 22, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6572),
+                            GuestCount = 4,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #34819",
+                            Name = "Moq Hotel #28176",
                             Note = "056 790 1441",
-                            Price = 300m,
-                            RoomsCount = 1,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -47,
-                            Address = "Moq address #47542",
-                            ArrivalDateTime = new DateTime(2021, 8, 12, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(238),
-                            CountryId = 3,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 8, 18, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(238),
-                            GuestCount = 6,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #57407",
-                            Note = "056 790 1441",
-                            Price = 4600m,
+                            Price = 2600m,
                             RoomsCount = 4,
                             UserId = -1
                         },
                         new
                         {
-                            Id = -48,
-                            Address = "Moq address #42132",
-                            ArrivalDateTime = new DateTime(2021, 11, 3, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(244),
-                            CountryId = 4,
+                            Id = -47,
+                            Address = "Moq address #76634",
+                            ArrivalDateTime = new DateTime(2022, 12, 1, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6579),
+                            CountryId = 6,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 11, 8, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(244),
+                            DepartureDateTime = new DateTime(2022, 12, 2, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6579),
                             GuestCount = 4,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #51939",
+                            Name = "Moq Hotel #54427",
                             Note = "056 790 1441",
-                            Price = 600m,
-                            RoomsCount = 1,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -49,
-                            Address = "Moq address #59654",
-                            ArrivalDateTime = new DateTime(2023, 1, 10, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(250),
-                            CountryId = 7,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2023, 1, 14, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(250),
-                            GuestCount = 4,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #39772",
-                            Note = "056 790 1441",
-                            Price = 1950m,
+                            Price = 3100m,
                             RoomsCount = 3,
                             UserId = -1
                         },
                         new
                         {
-                            Id = -50,
-                            Address = "Moq address #66880",
-                            ArrivalDateTime = new DateTime(2022, 3, 10, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(256),
-                            CountryId = 4,
+                            Id = -48,
+                            Address = "Moq address #78702",
+                            ArrivalDateTime = new DateTime(2020, 12, 17, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6585),
+                            CountryId = 3,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2022, 3, 14, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(256),
-                            GuestCount = 7,
+                            DepartureDateTime = new DateTime(2020, 12, 18, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6585),
+                            GuestCount = 6,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #73260",
+                            Name = "Moq Hotel #98060",
                             Note = "056 790 1441",
-                            Price = 50m,
+                            Price = 4950m,
+                            RoomsCount = 4,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -49,
+                            Address = "Moq address #23518",
+                            ArrivalDateTime = new DateTime(2022, 2, 18, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6591),
+                            CountryId = 1,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2022, 2, 23, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6591),
+                            GuestCount = 4,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #61465",
+                            Note = "056 790 1441",
+                            Price = 2950m,
+                            RoomsCount = 4,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -50,
+                            Address = "Moq address #62907",
+                            ArrivalDateTime = new DateTime(2022, 4, 4, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6597),
+                            CountryId = 7,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2022, 4, 6, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6597),
+                            GuestCount = 3,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #29808",
+                            Note = "056 790 1441",
+                            Price = 1250m,
                             RoomsCount = 1,
                             UserId = -1
                         },
                         new
                         {
                             Id = -51,
-                            Address = "Moq address #34744",
-                            ArrivalDateTime = new DateTime(2020, 11, 29, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(261),
-                            CountryId = 8,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2020, 12, 2, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(261),
-                            GuestCount = 2,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #82398",
-                            Note = "056 790 1441",
-                            Price = 950m,
-                            RoomsCount = 4,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -52,
-                            Address = "Moq address #78321",
-                            ArrivalDateTime = new DateTime(2021, 1, 21, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(267),
-                            CountryId = 4,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 1, 24, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(267),
-                            GuestCount = 9,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #20339",
-                            Note = "056 790 1441",
-                            Price = 2000m,
-                            RoomsCount = 3,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -53,
-                            Address = "Moq address #67222",
-                            ArrivalDateTime = new DateTime(2020, 12, 13, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(273),
+                            Address = "Moq address #87802",
+                            ArrivalDateTime = new DateTime(2022, 10, 14, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6603),
                             CountryId = 7,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2020, 12, 18, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(273),
-                            GuestCount = 6,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #84119",
-                            Note = "056 790 1441",
-                            Price = 4700m,
-                            RoomsCount = 3,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -54,
-                            Address = "Moq address #88599",
-                            ArrivalDateTime = new DateTime(2020, 11, 28, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(279),
-                            CountryId = 4,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2020, 12, 3, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(279),
-                            GuestCount = 4,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #14286",
-                            Note = "056 790 1441",
-                            Price = 2850m,
-                            RoomsCount = 2,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -55,
-                            Address = "Moq address #61203",
-                            ArrivalDateTime = new DateTime(2021, 10, 15, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(285),
-                            CountryId = 1,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 10, 17, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(285),
-                            GuestCount = 9,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #44500",
-                            Note = "056 790 1441",
-                            Price = 1500m,
-                            RoomsCount = 4,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -56,
-                            Address = "Moq address #33636",
-                            ArrivalDateTime = new DateTime(2020, 11, 30, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(291),
-                            CountryId = 8,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2020, 12, 3, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(291),
-                            GuestCount = 1,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #71544",
-                            Note = "056 790 1441",
-                            Price = 4600m,
-                            RoomsCount = 3,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -57,
-                            Address = "Moq address #88044",
-                            ArrivalDateTime = new DateTime(2021, 5, 9, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(297),
-                            CountryId = 6,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 5, 12, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(297),
-                            GuestCount = 4,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #26429",
-                            Note = "056 790 1441",
-                            Price = 4550m,
-                            RoomsCount = 2,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -58,
-                            Address = "Moq address #18200",
-                            ArrivalDateTime = new DateTime(2022, 11, 23, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(302),
-                            CountryId = 8,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2022, 11, 24, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(302),
-                            GuestCount = 1,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #61685",
-                            Note = "056 790 1441",
-                            Price = 2800m,
-                            RoomsCount = 2,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -59,
-                            Address = "Moq address #55223",
-                            ArrivalDateTime = new DateTime(2022, 1, 9, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(346),
-                            CountryId = 3,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2022, 1, 11, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(346),
-                            GuestCount = 4,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #14638",
-                            Note = "056 790 1441",
-                            Price = 3150m,
-                            RoomsCount = 4,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -60,
-                            Address = "Moq address #86195",
-                            ArrivalDateTime = new DateTime(2021, 12, 22, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(374),
-                            CountryId = 5,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 12, 25, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(374),
+                            DepartureDateTime = new DateTime(2022, 10, 18, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6603),
                             GuestCount = 2,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #66882",
+                            Name = "Moq Hotel #71147",
                             Note = "056 790 1441",
-                            Price = 3700m,
-                            RoomsCount = 3,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -61,
-                            Address = "Moq address #23342",
-                            ArrivalDateTime = new DateTime(2020, 11, 15, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(380),
-                            CountryId = 1,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2020, 11, 19, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(380),
-                            GuestCount = 9,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #82620",
-                            Note = "056 790 1441",
-                            Price = 450m,
-                            RoomsCount = 3,
-                            UserId = -1
-                        },
-                        new
-                        {
-                            Id = -62,
-                            Address = "Moq address #32972",
-                            ArrivalDateTime = new DateTime(2021, 10, 28, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(385),
-                            CountryId = 7,
-                            Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 11, 2, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(385),
-                            GuestCount = 8,
-                            Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #61703",
-                            Note = "056 790 1441",
-                            Price = 450m,
+                            Price = 1850m,
                             RoomsCount = 1,
                             UserId = -1
                         },
                         new
                         {
-                            Id = -63,
-                            Address = "Moq address #14059",
-                            ArrivalDateTime = new DateTime(2020, 11, 15, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(391),
+                            Id = -52,
+                            Address = "Moq address #23698",
+                            ArrivalDateTime = new DateTime(2021, 10, 15, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6609),
+                            CountryId = 6,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2021, 10, 18, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6609),
+                            GuestCount = 7,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #65077",
+                            Note = "056 790 1441",
+                            Price = 1850m,
+                            RoomsCount = 4,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -53,
+                            Address = "Moq address #84202",
+                            ArrivalDateTime = new DateTime(2021, 2, 11, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6615),
+                            CountryId = 8,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2021, 2, 13, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6615),
+                            GuestCount = 3,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #43115",
+                            Note = "056 790 1441",
+                            Price = 1000m,
+                            RoomsCount = 2,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -54,
+                            Address = "Moq address #23780",
+                            ArrivalDateTime = new DateTime(2022, 12, 29, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6621),
+                            CountryId = 8,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2022, 12, 30, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6621),
+                            GuestCount = 5,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #98797",
+                            Note = "056 790 1441",
+                            Price = 1650m,
+                            RoomsCount = 1,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -55,
+                            Address = "Moq address #91322",
+                            ArrivalDateTime = new DateTime(2022, 7, 10, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6627),
                             CountryId = 4,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2020, 11, 20, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(391),
-                            GuestCount = 4,
+                            DepartureDateTime = new DateTime(2022, 7, 16, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6627),
+                            GuestCount = 2,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #50137",
+                            Name = "Moq Hotel #32583",
+                            Note = "056 790 1441",
+                            Price = 800m,
+                            RoomsCount = 1,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -56,
+                            Address = "Moq address #79800",
+                            ArrivalDateTime = new DateTime(2021, 1, 30, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6634),
+                            CountryId = 7,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2021, 2, 4, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6634),
+                            GuestCount = 5,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #93046",
+                            Note = "056 790 1441",
+                            Price = 2600m,
+                            RoomsCount = 2,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -57,
+                            Address = "Moq address #93875",
+                            ArrivalDateTime = new DateTime(2022, 11, 6, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6640),
+                            CountryId = 4,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2022, 11, 9, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6640),
+                            GuestCount = 10,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #54028",
                             Note = "056 790 1441",
                             Price = 3050m,
                             RoomsCount = 2,
@@ -1088,116 +992,233 @@ namespace Entities.Migrations
                         },
                         new
                         {
-                            Id = -64,
-                            Address = "Moq address #73091",
-                            ArrivalDateTime = new DateTime(2022, 1, 16, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(397),
-                            CountryId = 2,
+                            Id = -58,
+                            Address = "Moq address #27825",
+                            ArrivalDateTime = new DateTime(2021, 11, 7, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6646),
+                            CountryId = 4,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2022, 1, 19, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(397),
-                            GuestCount = 9,
+                            DepartureDateTime = new DateTime(2021, 11, 13, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6646),
+                            GuestCount = 1,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #24806",
+                            Name = "Moq Hotel #62136",
                             Note = "056 790 1441",
-                            Price = 2500m,
+                            Price = 1800m,
                             RoomsCount = 1,
                             UserId = -1
                         },
                         new
                         {
-                            Id = -65,
-                            Address = "Moq address #28534",
-                            ArrivalDateTime = new DateTime(2022, 10, 23, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(403),
-                            CountryId = 7,
+                            Id = -59,
+                            Address = "Moq address #41778",
+                            ArrivalDateTime = new DateTime(2021, 4, 19, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6652),
+                            CountryId = 1,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2022, 10, 29, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(403),
-                            GuestCount = 8,
+                            DepartureDateTime = new DateTime(2021, 4, 22, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6652),
+                            GuestCount = 9,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #65594",
+                            Name = "Moq Hotel #51946",
                             Note = "056 790 1441",
-                            Price = 550m,
+                            Price = 2800m,
+                            RoomsCount = 2,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -60,
+                            Address = "Moq address #37366",
+                            ArrivalDateTime = new DateTime(2021, 2, 10, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6658),
+                            CountryId = 4,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2021, 2, 14, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6658),
+                            GuestCount = 7,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #76388",
+                            Note = "056 790 1441",
+                            Price = 2750m,
+                            RoomsCount = 2,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -61,
+                            Address = "Moq address #95029",
+                            ArrivalDateTime = new DateTime(2021, 10, 20, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6664),
+                            CountryId = 3,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2021, 10, 22, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6664),
+                            GuestCount = 7,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #32775",
+                            Note = "056 790 1441",
+                            Price = 50m,
+                            RoomsCount = 2,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -62,
+                            Address = "Moq address #65336",
+                            ArrivalDateTime = new DateTime(2022, 4, 18, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6670),
+                            CountryId = 8,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2022, 4, 21, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6670),
+                            GuestCount = 2,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #52684",
+                            Note = "056 790 1441",
+                            Price = 1950m,
+                            RoomsCount = 4,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -63,
+                            Address = "Moq address #97241",
+                            ArrivalDateTime = new DateTime(2022, 1, 26, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6676),
+                            CountryId = 4,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2022, 1, 29, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6676),
+                            GuestCount = 1,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #32328",
+                            Note = "056 790 1441",
+                            Price = 50m,
+                            RoomsCount = 1,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -64,
+                            Address = "Moq address #32636",
+                            ArrivalDateTime = new DateTime(2023, 1, 31, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6682),
+                            CountryId = 1,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2023, 2, 5, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6682),
+                            GuestCount = 9,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #35167",
+                            Note = "056 790 1441",
+                            Price = 3900m,
+                            RoomsCount = 2,
+                            UserId = -1
+                        },
+                        new
+                        {
+                            Id = -65,
+                            Address = "Moq address #81670",
+                            ArrivalDateTime = new DateTime(2020, 8, 18, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6689),
+                            CountryId = 8,
+                            Currency = "USD",
+                            DepartureDateTime = new DateTime(2020, 8, 23, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6689),
+                            GuestCount = 10,
+                            Link = "http://www.grand-hotel-ukraine.dp.ua",
+                            Name = "Moq Hotel #54280",
+                            Note = "056 790 1441",
+                            Price = 3950m,
                             RoomsCount = 2,
                             UserId = -1
                         },
                         new
                         {
                             Id = -66,
-                            Address = "Moq address #83942",
-                            ArrivalDateTime = new DateTime(2023, 2, 26, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(411),
+                            Address = "Moq address #43552",
+                            ArrivalDateTime = new DateTime(2021, 10, 9, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6696),
                             CountryId = 3,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2023, 2, 27, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(411),
-                            GuestCount = 2,
+                            DepartureDateTime = new DateTime(2021, 10, 14, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6696),
+                            GuestCount = 1,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #27719",
+                            Name = "Moq Hotel #20005",
                             Note = "056 790 1441",
-                            Price = 3000m,
-                            RoomsCount = 2,
+                            Price = 4700m,
+                            RoomsCount = 4,
                             UserId = -1
                         },
                         new
                         {
                             Id = -67,
-                            Address = "Moq address #72882",
-                            ArrivalDateTime = new DateTime(2022, 1, 5, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(417),
-                            CountryId = 6,
+                            Address = "Moq address #49044",
+                            ArrivalDateTime = new DateTime(2021, 6, 27, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6728),
+                            CountryId = 3,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2022, 1, 10, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(417),
+                            DepartureDateTime = new DateTime(2021, 7, 2, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6728),
                             GuestCount = 10,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #69607",
+                            Name = "Moq Hotel #67032",
                             Note = "056 790 1441",
-                            Price = 950m,
+                            Price = 2300m,
                             RoomsCount = 3,
                             UserId = -1
                         },
                         new
                         {
                             Id = -68,
-                            Address = "Moq address #67957",
-                            ArrivalDateTime = new DateTime(2021, 1, 29, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(501),
-                            CountryId = 4,
+                            Address = "Moq address #43471",
+                            ArrivalDateTime = new DateTime(2021, 3, 14, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6734),
+                            CountryId = 3,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 2, 2, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(501),
-                            GuestCount = 4,
+                            DepartureDateTime = new DateTime(2021, 3, 15, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6734),
+                            GuestCount = 7,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #18681",
+                            Name = "Moq Hotel #92232",
                             Note = "056 790 1441",
-                            Price = 1150m,
-                            RoomsCount = 2,
+                            Price = 2550m,
+                            RoomsCount = 4,
                             UserId = -1
                         },
                         new
                         {
                             Id = -69,
-                            Address = "Moq address #18431",
-                            ArrivalDateTime = new DateTime(2020, 9, 27, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(508),
-                            CountryId = 6,
+                            Address = "Moq address #70336",
+                            ArrivalDateTime = new DateTime(2022, 6, 4, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6740),
+                            CountryId = 2,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2020, 9, 30, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(508),
+                            DepartureDateTime = new DateTime(2022, 6, 8, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6740),
                             GuestCount = 3,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #55025",
+                            Name = "Moq Hotel #41520",
                             Note = "056 790 1441",
-                            Price = 450m,
-                            RoomsCount = 4,
+                            Price = 400m,
+                            RoomsCount = 3,
                             UserId = -1
                         },
                         new
                         {
                             Id = -70,
-                            Address = "Moq address #22073",
-                            ArrivalDateTime = new DateTime(2021, 6, 18, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(514),
-                            CountryId = 2,
+                            Address = "Moq address #91458",
+                            ArrivalDateTime = new DateTime(2021, 10, 13, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6747),
+                            CountryId = 1,
                             Currency = "USD",
-                            DepartureDateTime = new DateTime(2021, 6, 19, 22, 51, 39, 745, DateTimeKind.Local).AddTicks(514),
-                            GuestCount = 4,
+                            DepartureDateTime = new DateTime(2021, 10, 17, 1, 59, 16, 987, DateTimeKind.Local).AddTicks(6747),
+                            GuestCount = 5,
                             Link = "http://www.grand-hotel-ukraine.dp.ua",
-                            Name = "Moq Hotel #87433",
+                            Name = "Moq Hotel #64491",
                             Note = "056 790 1441",
                             Price = 1750m,
-                            RoomsCount = 4,
+                            RoomsCount = 3,
                             UserId = -1
                         });
+                });
+
+            modelBuilder.Entity("Entities.Models.AttachmentFileEating", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Path")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ScheduledPlaceToEatId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ScheduledPlaceToEatId");
+
+                    b.ToTable("attachmentFileEating");
                 });
 
             modelBuilder.Entity("Entities.Models.Country", b =>
@@ -1347,6 +1368,62 @@ namespace Entities.Migrations
                         {
                             Id = 3,
                             Name = "Ukrainian"
+                        });
+                });
+
+            modelBuilder.Entity("Entities.Models.ScheduledPlaceToEat", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("GooglePlaceId")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<double>("Lat")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Link")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Lng")
+                        .HasColumnType("float");
+
+                    b.Property<string>("NamePlace")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(2000)")
+                        .HasMaxLength(2000);
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("scheduledPlaceToEat");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = -1,
+                            DateTime = new DateTime(2022, 1, 1, 14, 0, 0, 0, DateTimeKind.Local),
+                            GooglePlaceId = "ChIJYcHoGyRawokR9rSZ9FTdFMk",
+                            Lat = 40.712114799999988,
+                            Link = "http://www.nyc.gov/nypd",
+                            Lng = -74.001891700000016,
+                            NamePlace = "New York City Police Department",
+                            Notes = "Get as close to the station as possible and pray that the cops don't take you in",
+                            UserId = -1
                         });
                 });
 
@@ -1606,10 +1683,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "1 час",
-                            EndDate = new DateTime(2020, 7, 13, 22, 51, 39, 733, DateTimeKind.Local).AddTicks(5016),
+                            EndDate = new DateTime(2020, 7, 14, 1, 59, 16, 976, DateTimeKind.Local).AddTicks(1487),
                             FlightTime = "0 часов",
                             ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
-                            StartDate = new DateTime(2020, 7, 6, 22, 51, 39, 733, DateTimeKind.Local).AddTicks(5016),
+                            StartDate = new DateTime(2020, 7, 7, 1, 59, 16, 976, DateTimeKind.Local).AddTicks(1487),
                             TotalPrice = 100m,
                             TransplantTime = "+ время пересадки",
                             UserId = -1
@@ -1622,10 +1699,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "2 час",
-                            EndDate = new DateTime(2020, 6, 12, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(7201),
+                            EndDate = new DateTime(2020, 6, 13, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(3594),
                             FlightTime = "2 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2020, 6, 5, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(7201),
+                            StartDate = new DateTime(2020, 6, 6, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(3594),
                             TotalPrice = 102m,
                             TransplantTime = "- прямой",
                             UserId = -1
@@ -1638,10 +1715,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "3 час",
-                            EndDate = new DateTime(2018, 5, 11, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(7304),
+                            EndDate = new DateTime(2018, 5, 12, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(3656),
                             FlightTime = "4 часов",
                             ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
-                            StartDate = new DateTime(2018, 5, 4, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(7304),
+                            StartDate = new DateTime(2018, 5, 5, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(3656),
                             TotalPrice = 106m,
                             TransplantTime = "+ время пересадки",
                             UserId = -1
@@ -1654,10 +1731,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "4 час",
-                            EndDate = new DateTime(2018, 4, 10, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(7316),
+                            EndDate = new DateTime(2018, 4, 11, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(3700),
                             FlightTime = "6 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2018, 4, 3, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(7316),
+                            StartDate = new DateTime(2018, 4, 4, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(3700),
                             TotalPrice = 112m,
                             TransplantTime = "- прямой",
                             UserId = -1
@@ -1670,10 +1747,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "5 час",
-                            EndDate = new DateTime(2016, 3, 9, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(7323),
+                            EndDate = new DateTime(2016, 3, 10, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(3707),
                             FlightTime = "8 часов",
                             ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
-                            StartDate = new DateTime(2016, 3, 2, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(7323),
+                            StartDate = new DateTime(2016, 3, 3, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(3707),
                             TotalPrice = 120m,
                             TransplantTime = "+ время пересадки",
                             UserId = -1
@@ -1686,10 +1763,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "6 час",
-                            EndDate = new DateTime(2016, 2, 8, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(7332),
+                            EndDate = new DateTime(2016, 2, 9, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(3715),
                             FlightTime = "10 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2016, 2, 1, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(7332),
+                            StartDate = new DateTime(2016, 2, 2, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(3715),
                             TotalPrice = 130m,
                             TransplantTime = "- прямой",
                             UserId = -1
@@ -1702,10 +1779,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "7 час",
-                            EndDate = new DateTime(2014, 1, 7, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(7338),
+                            EndDate = new DateTime(2014, 1, 8, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(3722),
                             FlightTime = "12 часов",
                             ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
-                            StartDate = new DateTime(2013, 12, 31, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(7338),
+                            StartDate = new DateTime(2014, 1, 1, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(3722),
                             TotalPrice = 142m,
                             TransplantTime = "+ время пересадки",
                             UserId = -1
@@ -1718,10 +1795,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "8 час",
-                            EndDate = new DateTime(2013, 12, 6, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(7344),
+                            EndDate = new DateTime(2013, 12, 7, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(3728),
                             FlightTime = "14 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2013, 11, 29, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(7344),
+                            StartDate = new DateTime(2013, 11, 30, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(3728),
                             TotalPrice = 156m,
                             TransplantTime = "- прямой",
                             UserId = -1
@@ -1734,10 +1811,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "1 час",
-                            EndDate = new DateTime(2020, 10, 21, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(8672),
+                            EndDate = new DateTime(2020, 10, 22, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(5014),
                             FlightTime = "0 часов",
                             ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
-                            StartDate = new DateTime(2020, 10, 6, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(8672),
+                            StartDate = new DateTime(2020, 10, 7, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(5014),
                             TotalPrice = 100m,
                             TransplantTime = "+ время пересадки",
                             UserId = -1
@@ -1750,10 +1827,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "2 час",
-                            EndDate = new DateTime(2020, 11, 23, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(9065),
+                            EndDate = new DateTime(2020, 11, 24, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(5391),
                             FlightTime = "2 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2020, 11, 8, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(9065),
+                            StartDate = new DateTime(2020, 11, 9, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(5391),
                             TotalPrice = 102m,
                             TransplantTime = "- прямой",
                             UserId = -1
@@ -1766,10 +1843,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "3 час",
-                            EndDate = new DateTime(2020, 12, 25, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(9076),
+                            EndDate = new DateTime(2020, 12, 26, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(5403),
                             FlightTime = "4 часов",
                             ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
-                            StartDate = new DateTime(2020, 12, 10, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(9076),
+                            StartDate = new DateTime(2020, 12, 11, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(5403),
                             TotalPrice = 106m,
                             TransplantTime = "+ время пересадки",
                             UserId = -1
@@ -1782,10 +1859,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "4 час",
-                            EndDate = new DateTime(2022, 1, 27, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(9086),
+                            EndDate = new DateTime(2022, 1, 28, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(5413),
                             FlightTime = "6 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2022, 1, 12, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(9086),
+                            StartDate = new DateTime(2022, 1, 13, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(5413),
                             TotalPrice = 112m,
                             TransplantTime = "- прямой",
                             UserId = -1
@@ -1798,10 +1875,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "5 час",
-                            EndDate = new DateTime(2022, 3, 1, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(9095),
+                            EndDate = new DateTime(2022, 3, 2, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(5422),
                             FlightTime = "8 часов",
                             ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
-                            StartDate = new DateTime(2022, 2, 14, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(9095),
+                            StartDate = new DateTime(2022, 2, 15, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(5422),
                             TotalPrice = 120m,
                             TransplantTime = "+ время пересадки",
                             UserId = -1
@@ -1814,10 +1891,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "6 час",
-                            EndDate = new DateTime(2022, 3, 31, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(9104),
+                            EndDate = new DateTime(2022, 4, 1, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(5432),
                             FlightTime = "10 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2022, 3, 16, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(9104),
+                            StartDate = new DateTime(2022, 3, 17, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(5432),
                             TotalPrice = 130m,
                             TransplantTime = "- прямой",
                             UserId = -1
@@ -1830,10 +1907,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "7 час",
-                            EndDate = new DateTime(2023, 5, 3, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(9113),
+                            EndDate = new DateTime(2023, 5, 4, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(5441),
                             FlightTime = "12 часов",
                             ImageUrl = "https://www.eurotourism.az/site/assets/files/1817/5-7_1.jpg",
-                            StartDate = new DateTime(2023, 4, 18, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(9113),
+                            StartDate = new DateTime(2023, 4, 19, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(5441),
                             TotalPrice = 142m,
                             TransplantTime = "+ время пересадки",
                             UserId = -1
@@ -1846,10 +1923,10 @@ namespace Entities.Migrations
                             DepartureCity = "Киев, Одесса с пересадкой в Дубае или Катаре",
                             DepartureCountryId = 8,
                             DifferenceInTime = "8 час",
-                            EndDate = new DateTime(2023, 6, 4, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(9193),
+                            EndDate = new DateTime(2023, 6, 5, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(5450),
                             FlightTime = "14 часов",
                             ImageUrl = "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-                            StartDate = new DateTime(2023, 5, 20, 22, 51, 39, 735, DateTimeKind.Local).AddTicks(9193),
+                            StartDate = new DateTime(2023, 5, 21, 1, 59, 16, 978, DateTimeKind.Local).AddTicks(5450),
                             TotalPrice = 156m,
                             TransplantTime = "- прямой",
                             UserId = -1
@@ -1909,7 +1986,7 @@ namespace Entities.Migrations
                             FirstName = "Fn1",
                             Gender = 0,
                             LastName = "Ln1",
-                            Password = "XddvPbzjUY3pSp1VTati4/zSPH08E1VetQUmRePzH0sATlyCU/+RzLiHRYf666g2"
+                            Password = "79Gi/PVdtMZqcRsqP07grFY2/Q1zCF5ZshJ8YPWNLOec6/4++hD0eRGjOhSY6rLi"
                         },
                         new
                         {
@@ -1918,7 +1995,7 @@ namespace Entities.Migrations
                             FirstName = "FirstName2",
                             Gender = 2,
                             LastName = "LastName2",
-                            Password = "txTcUvIX2gDyThTmArKX0hZhQc6SMOomvNmFB37T9kvLOP+x8vXjaloEtx913KYa"
+                            Password = "1fj7paZ5EI1alMJ32mViveu+6H8IG1uYuMEmpVnq9s6luAPsAOVPkRDff2u+184x"
                         },
                         new
                         {
@@ -1927,7 +2004,7 @@ namespace Entities.Migrations
                             FirstName = "FFFF3",
                             Gender = 3,
                             LastName = "LLLL3",
-                            Password = "LKfeLtzYrbJXT0dnvvbIKLdE02FMvc6S+hnrgPpkrOw+JhsHXKENou6ndocYvoma"
+                            Password = "WFiOYl0jczpGVz9US7/TiCX2g3xWup/c37MgPtQbwHGKtwhGpyM1kZ+dfDovFyQm"
                         },
                         new
                         {
@@ -1936,7 +2013,7 @@ namespace Entities.Migrations
                             FirstName = "LongFirstName4",
                             Gender = 2,
                             LastName = "LongLastName4",
-                            Password = "4nbtF6EmR2lHQPo3lX9hHp9YfJHuX8JYU5y1HIZQ3wzD9P/LPJAXtvbHCbWd6hAx"
+                            Password = "I06i1qCtp4Ihek9yIQMWaYP8fmqvufNkqjj/xsZBZBdr4d/nU+5owtKqBn4tJ9DH"
                         },
                         new
                         {
@@ -1944,7 +2021,7 @@ namespace Entities.Migrations
                             Email = "test5@users.com",
                             Gender = 0,
                             LastName = "Last5",
-                            Password = "y26x4ymuuzOWL1LDo7sGo5ohyoB0p5eQgCSoPwyoGNnw9JYr5OdE6Adj/lOsPB4b"
+                            Password = "598WcKS5wwohoCWu//MlI7A+UNvdboPNnJzwakKerWSXvn9S2oIDU35tOGoCX625"
                         });
                 });
 
@@ -2181,6 +2258,24 @@ namespace Entities.Migrations
                     b.HasIndex("WaypointId");
 
                     b.ToTable("WaypointFiles");
+                });
+
+            modelBuilder.Entity("Entities.Models.AttachmentFileEating", b =>
+                {
+                    b.HasOne("Entities.Models.ScheduledPlaceToEat", "ScheduledPlaceToEat")
+                        .WithMany()
+                        .HasForeignKey("ScheduledPlaceToEatId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Entities.Models.ScheduledPlaceToEat", b =>
+                {
+                    b.HasOne("Entities.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.Models.Ticket", b =>
