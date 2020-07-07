@@ -41,6 +41,12 @@
       <Compile Remove="Migrations\20200613180601_Accommodations.Designer.cs" />
       <Compile Remove="Migrations\20200615160942_Accommodations.cs" />
       <Compile Remove="Migrations\20200615160942_Accommodations.Designer.cs" />
+      <Compile Remove="Migrations\20200701175904_Accommodation70MoqPcs.cs" />
+      <Compile Remove="Migrations\20200701175904_Accommodation70MoqPcs.Designer.cs" />
+      <Compile Remove="Migrations\20200705234038_Accommodation70MoqPcs.cs" />
+      <Compile Remove="Migrations\20200705234038_Accommodation70MoqPcs.Designer.cs" />
+      <Compile Remove="Migrations\20200706195140_Accommodation70MoqPcs.cs" />
+      <Compile Remove="Migrations\20200706195140_Accommodation70MoqPcs.Designer.cs" />
     </ItemGroup>
 
     <ItemGroup>

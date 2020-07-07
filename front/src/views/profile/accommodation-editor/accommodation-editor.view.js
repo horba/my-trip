@@ -1,4 +1,5 @@
 import { MmtTextInput, MmtDatetimePicker } from '@components';
+import { mapGetters } from 'vuex';
 import {
   VFileInput,
   VIcon,
@@ -94,6 +95,9 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapGetters('dictionaries', [ 'countries' ])
+  },
   methods: {
     async initAccommodation () {
       if (this.$route.params.id) {
@@ -109,6 +113,7 @@ export default {
         this.accommodation = {
           guestCount: 2,
           roomsCount: 1,
+          countryId: null,
           photos: [],
           arrivalDateTime: new Date(),
           departureDateTime: new Date()

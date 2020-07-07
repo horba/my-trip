@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.DTO;
+using WebAPI.DTO.Accommodation;
 using WebAPI.Extension;
 using WebAPI.Services;
 
@@ -22,9 +23,12 @@ namespace WebAPI.Controllers
 
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<AccommodationDTO>), StatusCodes.Status200OK)]
-    public IActionResult GetAccommodations()
+    public IActionResult GetAccommodations(
+      [FromQuery] PaginationRequestQueryDTO paginationRequestQuery, 
+      [FromQuery] AccommodationSortingQueryDTO accommodationSortingQuery, 
+      [FromQuery] AccommodationFilterQueryDTO accommodationFilterQuery )
     {
-      return Ok(_accommodationService.GetAccommodations(HttpContext.GetUserIdFromClaim()));
+      return Ok(_accommodationService.GetAccommodations(HttpContext.GetUserIdFromClaim(), paginationRequestQuery, accommodationSortingQuery, accommodationFilterQuery));
     }
 
     [HttpGet]
@@ -38,6 +42,13 @@ namespace WebAPI.Controllers
         return Forbid();
 
       return Ok(accommodation);
+    }
+
+    [HttpGet]
+    [Route("max-price")]
+    public IActionResult GetMaxPrice()
+    {
+      return Ok(new {price = _accommodationService.GetMaxPrice(HttpContext.GetUserIdFromClaim())});
     }
 
     [HttpPost]
