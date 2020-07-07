@@ -303,7 +303,7 @@ namespace Entities
 
       var random = new Random();
 
-      var moqAccommodations = Enumerable.Range(1, 70)
+      var moqAccommodations = Enumerable.Range(3, 70)
         .Select(i =>
         {
           var randomDateTime = DateTime.Now.AddDays(random.Next(5, 1_000));
