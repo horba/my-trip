@@ -99,6 +99,7 @@ p {
 
 .text-title-wrapper {
   height: 30px;
+  width: 100%;
 }
 
 .text-title-wrapper::after {
@@ -118,6 +119,7 @@ p {
 .text-title-wrapper, .decription {
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 .fade:after {
@@ -126,5 +128,5 @@ p {
   position: absolute;
   bottom: 0;
   right: 0;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 70%);
 }
