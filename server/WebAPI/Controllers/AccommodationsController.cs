@@ -45,7 +45,7 @@ namespace WebAPI.Controllers
     }
 
     [HttpGet]
-    [Route(("max-price"))]
+    [Route("max-price")]
     public IActionResult GetMaxPrice()
     {
       return Ok(new {price = _accommodationService.GetMaxPrice(HttpContext.GetUserIdFromClaim())});

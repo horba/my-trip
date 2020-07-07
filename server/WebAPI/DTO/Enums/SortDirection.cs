@@ -6,6 +6,7 @@ namespace Entities.Models.Enums
 {
   public enum SortDirection
   {
-    Descending, Ascending
+    Descending,
+    Ascending
   }
 }

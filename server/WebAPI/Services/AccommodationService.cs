@@ -50,17 +50,12 @@ namespace WebAPI.Services
         orderFunc = accommodations.OrderByDescending;
       }
 
-      if (accommodationSortingQuery.SortBy == AccommodationSortBy.ByReservationDate)
+      return accommodationSortingQuery.SortBy switch
       {
-        return orderFunc(accommodation => accommodation.ArrivalDateTime);
-      }
-
-      if (accommodationSortingQuery.SortBy == AccommodationSortBy.ByCostPerNight)
-      {
-        return orderFunc(accommodation => accommodation.Price);
-      }
-
-      return orderFunc(accommodation => accommodation.Name);
+        AccommodationSortBy.ByReservationDate => orderFunc(accommodation => accommodation.ArrivalDateTime),
+        AccommodationSortBy.ByCostPerNight => orderFunc(accommodation => accommodation.Price),
+        _ => orderFunc(accommodation => accommodation.Name)
+      };
     }
 
     private IQueryable<Accommodation> FilterAccommodations(IQueryable<Accommodation> accommodations, AccommodationFilterQueryDTO accommodationFilterQuery)
@@ -88,9 +83,9 @@ namespace WebAPI.Services
         var countries = Array.ConvertAll(accommodationFilterQuery.Countries.Split(';', StringSplitOptions.RemoveEmptyEntries), int.Parse);
         accommodations = accommodations.Where(accommodation => countries.Any(id => id == accommodation.CountryId));
       }
-      catch (Exception e)
+      catch
       {
-        //Console.WriteLine(e);
+        // ignored
       }
 
       return accommodations;
@@ -113,7 +108,8 @@ namespace WebAPI.Services
         Data = _mapper.Map<IEnumerable<AccommodationDTO>>(accommodations.ToList()),
         PageSize = paginationRequestQuery.PageSize,
         PageNumber = paginationRequestQuery.PageNumber,
-        TotalCount = totalCount
+        TotalCount = totalCount,
+        PageCount = (int)Math.Ceiling(totalCount / ((double?)paginationRequestQuery.PageSize ?? 10))
       };
     }
 

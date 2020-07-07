@@ -11,6 +11,20 @@ namespace Entities.Migrations
 
       migrationBuilder.AddColumn<int>("CountryId", "accommodations", nullable: true);
 
+      migrationBuilder.UpdateData(
+        table: "accommodations",
+        keyColumn: "Id",
+        keyValue: -1,
+        columns: new[] { "CountryId" },
+        values: new object[] { 1 });
+
+      migrationBuilder.UpdateData(
+         table: "accommodations",
+         keyColumn: "Id",
+         keyValue: -2,
+         columns: new[] { "CountryId" },
+         values: new object[] { 3 });
+
       migrationBuilder.InsertData(
           table: "accommodations",
           columns: new[] { "Id", "Address", "ArrivalDateTime", "CountryId", "Currency", "DepartureDateTime", "GuestCount", "Link", "Name", "Note", "Photos", "Price", "Rating", "RatingTotal", "RoomsCount", "UserId" },

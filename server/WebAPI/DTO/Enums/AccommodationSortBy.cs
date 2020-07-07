@@ -6,6 +6,8 @@ namespace Entities.Models.Enums
 {
   public enum AccommodationSortBy
   {
-    ByReservationDate, ByCostPerNight, ByName
+    ByReservationDate,
+    ByCostPerNight,
+    ByName
   }
 }
