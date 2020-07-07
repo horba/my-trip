@@ -76,7 +76,7 @@ namespace WebAPI.Services
           Data = result,
           PageNumber = page,
           PageSize = pageSize,
-          PageCount = TotalCount / pageSize,
+          PageCount = (int?)Math.Ceiling((double)TotalCount / pageSize),
           TotalCount = TotalCount
         };
       }
@@ -86,7 +86,7 @@ namespace WebAPI.Services
       }
     }
 
-    public async System.Threading.Tasks.Task<OutputScheduledPlaceToEatDTO> GetEatingByIdAsync(int id)
+    public OutputScheduledPlaceToEatDTO GetEatingById(int id)
     {
       return AddFileNames(_scheduledPlaceToEatRepository.GetScheduledPlaceToEatById(id));
     }

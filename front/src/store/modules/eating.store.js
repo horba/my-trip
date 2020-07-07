@@ -4,7 +4,7 @@ export default {
   namespaced: true,
   actions: {
     getEatingUser (_context, payload) {
-      return api.get(`/scheduledPlaceToEat?Page=${payload.page}&PageSize=${payload.pageSize}`);
+      return api.get('/scheduledPlaceToEat', payload);
     },
     getEatingUserByEatingId (_context, payload) {
       return api.get('/scheduledPlaceToEat/' + payload.id);

@@ -51,9 +51,11 @@ export default {
       text: '',
       snackbar: false,
       color: '',
-      totalPageCount: 0,
-      pageNumber: 0,
-      totalCount: 0
+      pagination: {
+        totalPageCount: 0,
+        pageNumber: 0,
+        totalCount: 0
+      }
     };
   },
   computed: {
@@ -75,9 +77,9 @@ export default {
         pageSize: PAGINTAION_SHEDULED_PLACE_TO_EAT_PAGE_SIZE
       })
         .then(response => {
-          this.totalCount = response.data.totalCount;
-          this.totalPageCount = response.data.pageCount;
-          this.pageNumber = response.data.pageNumber + 1;
+          this.pagination.totalCount = response.data.totalCount;
+          this.pagination.totalPageCount = response.data.pageCount;
+          this.pagination.pageNumber = response.data.pageNumber + 1;
           this.scheduledPlacesList = response.data.data
             .map(serverPlaceInfo => {
               return {

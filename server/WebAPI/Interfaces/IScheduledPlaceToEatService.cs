@@ -11,7 +11,7 @@ namespace WebAPI.Interfaces
 
     public IPagedResponse<OutputScheduledPlaceToEatDTO> GetEatingByUserId(int UserId, int page, int pageSize);
 
-    public System.Threading.Tasks.Task<OutputScheduledPlaceToEatDTO> GetEatingByIdAsync(int id);
+    public OutputScheduledPlaceToEatDTO GetEatingById(int id);
 
     public bool UpdateScheduledPlaceToEat(InputScheduledPlaceToEatForUpdateDTO scheduledPlaceToEatDTO);
 

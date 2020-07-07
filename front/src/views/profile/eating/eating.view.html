@@ -2,7 +2,7 @@
   <mmt-stepper></mmt-stepper>
   <v-row>
     <v-col md="2" sm="12" class="d-flex justify-center align-center">
-      {{$t('eating.results')}} ({{totalCount}})
+      {{$t('eating.results')}} ({{pagination.totalCount}})
     </v-col>
     <v-col md="6" sm="12" />
     <v-col md="2" sm="12" class="d-flex justify-center align-center">
@@ -110,9 +110,9 @@
     circle
     color="primary"
     totalVisible="5"
-    :length="totalPageCount+1"
-    v-model="pageNumber"
-    @input="responseDataFromServer(pageNumber-1)"
+    :length="pagination.totalPageCount"
+    v-model="pagination.pageNumber"
+    @input="responseDataFromServer(pagination.pageNumber-1)"
   >
 
   </v-pagination>

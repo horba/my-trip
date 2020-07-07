@@ -35,7 +35,7 @@ namespace WebAPI.Controllers
     [ProducesResponseType(typeof(InputScheduledPlaceToEatForCreateDTO), StatusCodes.Status200OK)]
     public IActionResult GetById([FromRoute] int id)
     {
-      return Ok(_scheduledPlaceToEatService.GetEatingByIdAsync(id));
+      return Ok(_scheduledPlaceToEatService.GetEatingById(id));
     }
 
     // GET: api/ScheduledPlaceToEat
