@@ -1,6 +1,16 @@
 import { MmtStepper } from '@components';
 import { gmapApi } from 'vue2-google-maps';
-import { VCol, VRow, VCard, VRating, VBtn, VIcon, VSnackbar } from 'vuetify/lib';
+import {
+  VCol,
+  VRow,
+  VCard,
+  VRating,
+  VBtn,
+  VIcon,
+  VSnackbar,
+  VPagination
+} from 'vuetify/lib';
+import { PAGINTAION_SHEDULED_PLACE_TO_EAT_PAGE_SIZE } from '@constants';
 
 const fields = [
   'geometry',
@@ -21,7 +31,8 @@ export default {
     VRating,
     VBtn,
     VIcon,
-    VSnackbar
+    VSnackbar,
+    VPagination
   },
   data () {
     return {
@@ -39,20 +50,37 @@ export default {
       selectedId: 0,
       text: '',
       snackbar: false,
-      color: ''
+      color: '',
+      pagination: {
+        totalPageCount: 0,
+        pageNumber: 0,
+        totalCount: 0
+      }
     };
   },
   computed: {
     google: gmapApi
   },
   created () {
-    this.responseDataFromServer();
+    this.responseDataFromServer(0);
+  },
+  mounted () {
+    navigator.geolocation.getCurrentPosition(r => {
+      this.options.center.lat = r.coords.latitude;
+      this.options.center.lng = r.coords.longitude;
+    });
   },
   methods: {
-    responseDataFromServer () {
-      this.$store.dispatch('eating/getEatingUser')
+    responseDataFromServer (page) {
+      this.$store.dispatch('eating/getEatingUser', {
+        page: page,
+        pageSize: PAGINTAION_SHEDULED_PLACE_TO_EAT_PAGE_SIZE
+      })
         .then(response => {
-          this.scheduledPlacesList = response.data
+          this.pagination.totalCount = response.data.totalCount;
+          this.pagination.totalPageCount = response.data.pageCount;
+          this.pagination.pageNumber = response.data.pageNumber + 1;
+          this.scheduledPlacesList = response.data.data
             .map(serverPlaceInfo => {
               return {
                 serverInfo: serverPlaceInfo, googleDetails: null
@@ -101,7 +129,7 @@ export default {
           this.text = this.$t('eating.successfullyDelete');
           this.snackbar = true;
           this.color = 'success';
-          this.responseDataFromServer();
+          this.responseDataFromServer(this.pageNumber - 1);
         })
         .catch(error => {
           this.text = error;
@@ -109,11 +137,5 @@ export default {
           this.color = 'error';
         });
     }
-  },
-  mounted () {
-    navigator.geolocation.getCurrentPosition(r => {
-      this.options.center.lat = r.coords.latitude;
-      this.options.center.lng = r.coords.longitude;
-    });
   }
 };

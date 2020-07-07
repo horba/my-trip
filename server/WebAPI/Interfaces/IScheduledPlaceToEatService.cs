@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Entities.Models;
+using WebAPI.DTO;
 using WebAPI.DTO.ScheduledPlaceToEat;
 
 namespace WebAPI.Interfaces
@@ -8,7 +9,7 @@ namespace WebAPI.Interfaces
   {
     public int CreateNewEating(InputScheduledPlaceToEatForCreateDTO scheduledPlaceToEatDTO);
 
-    public IEnumerable<OutputScheduledPlaceToEatDTO> GetEatingByUserId(int UserId);
+    public IPagedResponse<OutputScheduledPlaceToEatDTO> GetEatingByUserId(int UserId, int page, int pageSize);
 
     public OutputScheduledPlaceToEatDTO GetEatingById(int id);
 

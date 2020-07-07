@@ -34,7 +34,7 @@ namespace WebAPI.Services
 
     public async void Create([ValidFileSize(Consts.MaxEatingFileSize)] IFormFile file, int eatingId, int userId)
     {
-      if(_userService.GetUser(userId) != null && _scheduledPlaceToEatService.GetEatingByUserId(userId).Where(el => el.Id.Equals(eatingId)).First() != null)
+      if(_userService.GetUser(userId) != null && _scheduledPlaceToEatService.GetEatingById(eatingId) != null)
       {
         var fileName = await _assetsService.SaveFileAsync(file, AssetType.FileEating);
         _attachmentFileEatingRepository.CreateAttachmentFileEating(new Entities.Models.AttachmentFileEating { Path = fileName, ScheduledPlaceToEatId = eatingId });
@@ -43,7 +43,7 @@ namespace WebAPI.Services
 
     public void DeleteFilesEating(int eatingId, int userId)
     {
-      if(_userService.GetUser(userId) != null && _scheduledPlaceToEatService.GetEatingByUserId(userId).Where(el => el.Id.Equals(eatingId)).First() != null)
+      if(_userService.GetUser(userId) != null && _scheduledPlaceToEatService.GetEatingById(eatingId) != null)
       {
         foreach(var file in _attachmentFileEatingRepository.GetAttachmentFileEatingByScheduledPlaceId(eatingId))
         {
