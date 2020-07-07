@@ -10,6 +10,7 @@ import {
   VSnackbar,
   VPagination
 } from 'vuetify/lib';
+import { PAGINTAION_SHEDULED_PLACE_TO_EAT_PAGE_SIZE } from '@constants';
 
 const fields = [
   'geometry',
@@ -69,7 +70,10 @@ export default {
   },
   methods: {
     responseDataFromServer (page) {
-      this.$store.dispatch('eating/getEatingUser', { page: page, pageSize: 5 })
+      this.$store.dispatch('eating/getEatingUser', {
+        page: page,
+        pageSize: PAGINTAION_SHEDULED_PLACE_TO_EAT_PAGE_SIZE
+      })
         .then(response => {
           this.totalCount = response.data.totalCount;
           this.totalPageCount = response.data.pageCount;
