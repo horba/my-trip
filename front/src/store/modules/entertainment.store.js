@@ -19,7 +19,6 @@ export default {
       })
         .then(r => {
           commit('INIT_ENTERTAINMENTS', r.data.data);
-          console.log(r.data.data);
           return r.data;
         });
     },

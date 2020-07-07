@@ -24,11 +24,12 @@ nav > .results {
   max-width: 545px;
   justify-content: flex-start;
   align-items: flex-start;
+  min-height: 71vh;
 }
 
 .my-entertainments-map-wrap {
   width: 515px;
-  height: 75vh;
+  height: 68vh;
 }
 
 .entertainments-autocomplete {
@@ -36,4 +37,9 @@ nav > .results {
   height: 50px;
   background-color: var(--filled-input-fill-color);
   padding:0 20px;
+}
+
+.entertainments-pagination {
+  margin-top: 30px;
+  align-self: flex-end;
 }

@@ -108,7 +108,6 @@ export default {
       }
     },
     async getEntertainments (pageNumber) {
-      console.log(pageNumber);
       await this.$store.dispatch('entertainment/getEntertainments', pageNumber)
         .then(r => {
           this.totalEntertainmentsPagesCount = r.totalCount;
