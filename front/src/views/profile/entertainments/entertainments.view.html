@@ -43,6 +43,15 @@
           :isActive="selectedPlaceIndex && selectedPlaceIndex === index + 1 ? true : false"
         />
       </div>
+      <v-pagination
+        circle
+        color="primary"
+        totalVisible="5"
+        :length="totalEntertainmentsPagesCount"
+        v-model="pageNumber"
+        @input="getEntertainments(pageNumber - 1)"
+      >
+      </v-pagination>
     </div>
     <div class="my-entertainments-map-wrap">
       <gmap-autocomplete

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -26,9 +23,9 @@ namespace WebAPI.Controllers
 
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<EntertainmentDTO>), StatusCodes.Status200OK)]
-    public IActionResult GetEntertainments()
+    public IActionResult GetEntertainments([FromQuery] PaginationRequestDTO paginationRequest)
     {
-      return Ok(_entertainmentService.GetEntertainments(HttpContext.GetUserIdFromClaim()));
+      return Ok(_entertainmentService.GetEntertainments(HttpContext.GetUserIdFromClaim(), paginationRequest));
     }
 
     [HttpGet]

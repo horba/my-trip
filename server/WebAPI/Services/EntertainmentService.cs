@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Entities;
 using Entities.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using WebAPI.DTO;
@@ -9,7 +10,7 @@ namespace WebAPI.Services
 {
   public interface IEntertainmentService
   {
-    IEnumerable<EntertainmentDTO> GetEntertainments(int userId);
+    PagedResponse<EntertainmentDTO> GetEntertainments(int userId, PaginationRequestDTO paginationRequest);
     void CreateOrUpdateEntertainment(EntertainmentDTO model);
     EntertainmentDTO GetEntertainment(int id);
     void RemoveFilePath(int id);
@@ -27,10 +28,25 @@ namespace WebAPI.Services
       _entertainmentRepository = entertainmentRepository;
     }
 
-    public IEnumerable<EntertainmentDTO> GetEntertainments(int userId)
+    private IQueryable<Entertainment> PaginateEntertainments(IQueryable<Entertainment> entertainments, PaginationRequestDTO paginationRequest)
+    {
+      return entertainments
+        .Skip((int)(paginationRequest.PageNumber * paginationRequest.PageSize))
+        .Take((int)paginationRequest.PageSize);
+    }
+
+    public PagedResponse<EntertainmentDTO> GetEntertainments(int userId, PaginationRequestDTO paginationRequest)
     {
       var entertainments = _entertainmentRepository.GetUserEntertainments(userId);
-      return _mapper.Map<IEnumerable<EntertainmentDTO>>(entertainments.OrderBy(e => e.VisitDate).ToList());
+      int totalCount = (int)Math.Ceiling(entertainments.Count() / (double)paginationRequest.PageSize);
+      entertainments = PaginateEntertainments(entertainments, paginationRequest);
+      return new PagedResponse<EntertainmentDTO>
+      {
+        Data = _mapper.Map<IEnumerable<EntertainmentDTO>>(entertainments.ToList()),
+        PageSize = paginationRequest.PageSize,
+        PageNumber = paginationRequest.PageNumber,
+        TotalCount = totalCount
+      };
     }
 
     public void CreateOrUpdateEntertainment(EntertainmentDTO model)

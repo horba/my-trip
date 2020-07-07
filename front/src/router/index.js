@@ -43,7 +43,7 @@ const routes = [
   },
   {
     path: '/entertainments',
-    name: 'Entertainments',
+    name: 'EntertainmentsSearch',
     component: EntertainmentsSearch
   },
   {
