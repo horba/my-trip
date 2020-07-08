@@ -13,6 +13,7 @@ export default {
     },
     CLEAR_USER_DATA (state) {
       localStorage.removeItem('user');
+      state.user = null;
       router.push('/');
     }
   },
