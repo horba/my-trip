@@ -309,7 +309,12 @@
     "note": "Нотатки",
     "pricePerNight": "Ціна за добу",
     "departureArrivalDateValidation": "Дата виїзду повинна бути більше дати заїзду",
-    "plan": "Запланувати"
+    "plan": "Запланувати",
+    "byReservationDate": "За датою бронювання",
+    "byCostPerNight": "За вартістю за ніч",
+    "byName": "За назвою",
+    "country": "Країна",
+    "year": "Рік"
   },
   "datetimePicker": {
     "ok": "Вибрати",

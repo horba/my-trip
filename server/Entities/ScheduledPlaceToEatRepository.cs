@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Entities.Interfaces;
 using Entities.Models;
 
 namespace Entities
 {
-  public class ScheduledPlaceToEatRepository: IScheduledPlaceToEatRepository
+  public class ScheduledPlaceToEatRepository : IScheduledPlaceToEatRepository
   {
     private readonly IRepositoryContext _repositoryContext;
 
@@ -14,9 +13,9 @@ namespace Entities
       _repositoryContext = repositoryContext;
     }
 
-    public List<ScheduledPlaceToEat> GetScheduledPlaceToEatByUserId(int UserId)
+    public IQueryable<ScheduledPlaceToEat> GetScheduledPlaceToEatByUserId(int UserId)
     {
-      return _repositoryContext.ScheduledPlacesToEat.Where(u => u.UserId.Equals(UserId)).ToList();
+      return _repositoryContext.ScheduledPlacesToEat.Where(u => u.UserId.Equals(UserId));
     }
 
     public ScheduledPlaceToEat GetScheduledPlaceToEatById(int Id)

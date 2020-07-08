@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace WebAPI.DTO
 {
-  public class PagedResponse<T>
+  public class PaginationRequestQueryDTO
   {
-    public IEnumerable<T> Data { get; set; }
-
+    [Required]
+    [Range(0, Int32.MaxValue)]
     public int? PageNumber { get; set; }
 
+    [Required]
+    [Range(0, Int32.MaxValue)]
     public int? PageSize { get; set; }
-
-    public int? TotalCount { get; set; }
-
-    public int? PageCount { get; set; }
   }
 }

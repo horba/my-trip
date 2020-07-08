@@ -41,9 +41,9 @@ namespace WebAPI.Controllers
     // GET: api/ScheduledPlaceToEat
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<OutputScheduledPlaceToEatDTO>), StatusCodes.Status200OK)]
-    public IActionResult Get()
+    public IActionResult Get([FromQuery] DTO.IPagedReques pagedReques)
     {
-      return Ok(_scheduledPlaceToEatService.GetEatingByUserId(HttpContext.GetUserIdFromClaim()));
+      return Ok(_scheduledPlaceToEatService.GetEatingByUserId(HttpContext.GetUserIdFromClaim(), (int)pagedReques.Page, (int)pagedReques.PageSize));
     }
 
     [HttpPost("UploadEatingMultiFile/{id}")]

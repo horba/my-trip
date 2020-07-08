@@ -310,7 +310,12 @@
     "note": "Notes",
     "pricePerNight": "Price per night",
     "departureArrivalDateValidation": "Departure date must be greater than arrival date",
-    "plan": "To Plan"
+    "plan": "To Plan",
+    "byReservationDate": "By reservation date",
+    "byCostPerNight": "By cost per night",
+    "byName": "By name",
+    "country": "Country",
+    "year": "Year"
   },
   "datetimePicker": {
     "ok": "OK",

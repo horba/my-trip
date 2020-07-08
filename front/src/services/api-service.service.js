@@ -1,7 +1,7 @@
 import instance from './api-http-interceptor.service';
 
 const api = {
-  get (path, params = undefined) {
+  get (path, params) {
     return instance({
       url: path,
       method: 'GET',

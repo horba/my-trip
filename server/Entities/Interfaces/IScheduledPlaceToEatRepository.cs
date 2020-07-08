@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Entities.Models;
 
 namespace Entities.Interfaces
 {
   public interface IScheduledPlaceToEatRepository
   {
-    public List<ScheduledPlaceToEat> GetScheduledPlaceToEatByUserId(int UserId);
+    public IQueryable<ScheduledPlaceToEat> GetScheduledPlaceToEatByUserId(int UserId);
 
     public ScheduledPlaceToEat GetScheduledPlaceToEatById(int Id);
 

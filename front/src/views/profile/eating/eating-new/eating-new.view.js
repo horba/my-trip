@@ -92,8 +92,8 @@ export default {
     },
     onSaveSuccess () {
       const textForSnackbar = this.isEditMode
-        ? this.$t('scheduledPlaceToEatCreateOrEdit.successfullySaved')
-        : this.$t('scheduledPlaceToEatCreateOrEdit.successfullyEdited'),
+        ? this.$t('scheduledPlaceToEatCreateOrEdit.successfullyEdited')
+        : this.$t('scheduledPlaceToEatCreateOrEdit.successfullySaved'),
             colorForSnackbar = 'success';
       this.showSnackbar(colorForSnackbar, textForSnackbar)
         .then(() => this.$router.push({ name: 'ScheduleEatingPlace' }));

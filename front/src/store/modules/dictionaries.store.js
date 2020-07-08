@@ -106,6 +106,22 @@ export default {
           value: 4
         }
       ];
+    },
+    accommodationSorting () {
+      return [
+        {
+          text: i18n.t('accommodations.byReservationDate'),
+          value: 0
+        },
+        {
+          text: i18n.t('accommodations.byCostPerNight'),
+          value: 1
+        },
+        {
+          text: i18n.t('accommodations.byName'),
+          value: 2
+        }
+      ];
     }
   }
 };
