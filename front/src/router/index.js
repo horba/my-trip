@@ -147,21 +147,9 @@ const routes = [
         meta: { layout: 'authorize' }
       },
       {
-        path: 'travel-route',
-        name: 'MyTravelRoute',
-        component: MyTickets,
-        meta: { layout: 'authorize' }
-      },
-      {
-        path: 'scheduler',
-        name: 'MyScheduler',
-        component: MyTickets,
-        meta: { layout: 'authorize' }
-      },
-      {
         path: 'history',
         name: 'MyHistory',
-        component: MyTickets,
+        redirect: 'history/prev',
         meta: { layout: 'authorize' }
       },
       {

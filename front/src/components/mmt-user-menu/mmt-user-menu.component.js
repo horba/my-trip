@@ -40,16 +40,6 @@ export default {
         link: '/my/entertainments'
       },
       {
-        title: 'menu.travelRoute',
-        icon: 'mdi-bag-personal',
-        link: '/my/travel-route'
-      },
-      {
-        title: 'menu.scheduler',
-        icon: 'mdi-calendar-multiple-check',
-        link: '/my/scheduler'
-      },
-      {
         title: 'menu.history',
         icon: 'mdi-history',
         link: '/my/history'
