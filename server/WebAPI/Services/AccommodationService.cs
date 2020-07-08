@@ -115,7 +115,11 @@ namespace WebAPI.Services
 
     public int GetMaxPrice(int userId)
     {
-      return (int)Math.Ceiling(_accommodationRepository.GetUserAccommodations(userId).Max(field => field.Price));
+      return (int)Math.Ceiling(_accommodationRepository
+        .GetUserAccommodations(userId)
+        .OrderBy(field => field.Price)
+        .Select(accommodation => accommodation.Price)
+        .FirstOr(100));
     }
 
     public void CreateOrUpdateAccommodation(AccommodationDTO model)
