@@ -20,7 +20,8 @@ export default {
   },
   computed: {
     isRequired () {
-      return this.requiredAsterisk && this.$attrs.rules.some(rule => rule.name === 'required');
+      return this.requiredAsterisk && (this.$attrs.rules || [])
+        .some(rule => rule && rule.name === 'required');
     }
   },
   methods: {
