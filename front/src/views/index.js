@@ -1,5 +1,5 @@
-export { default as AccommodationSearch } from '@views/Accommodation.vue';
-export { default as PlaceToEatSearch } from '@views/Food.vue';
+export { default as AccommodationSearch } from '@views/accommodation/accommodation.view.vue';
+export { default as PlaceToEatSearch } from '@views/food/food.view.vue';
 export { default as AboutUs } from '@views/AboutUs.vue';
 export { default as PrivacyPolicy } from '@views/PrivacyPolicy.vue';
 export { default as CookiePolicy } from '@views/CookiePolicy.vue';

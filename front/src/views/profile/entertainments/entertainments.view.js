@@ -63,6 +63,7 @@ export default {
       }
     },
     getDetailsCallback (place, entertainment) {
+      console.log(place.photos[0].getUrl());
       this.places.push({
         id: entertainment.id,
         title: place.name,
