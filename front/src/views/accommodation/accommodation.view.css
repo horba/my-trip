@@ -1,0 +1,31 @@
+.food {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.map-wrapper {
+  max-width: 1200px;
+  height: 400px;
+}
+
+.food-autocomplete {
+  width: 100%;
+  height: 50px;
+  background-color: var(--filled-input-fill-color);
+  padding:0 20px;
+}
+
+.places {
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 80px -25px 0 0;
+}
+
+.place-wrap {
+  margin: 5px 14px;
+}
+
+.places >>> .icon-wrapper {
+  display: none;
+}
