@@ -1,4 +1,5 @@
 import api from '@api';
+import { PAGINTAION_ENTERTAINMENT_PAGE_SIZE } from '@constants';
 
 export default {
   namespaced: true,
@@ -11,10 +12,14 @@ export default {
     }
   },
   actions: {
-    async initEntertainments ({ commit }) {
-      await api.get('/entertainment')
+    async getEntertainments ({ commit }, pageNumber) {
+      return await api.get('/entertainment', {
+        pageNumber: pageNumber,
+        pageSize: PAGINTAION_ENTERTAINMENT_PAGE_SIZE
+      })
         .then(r => {
-          commit('INIT_ENTERTAINMENTS', r.data);
+          commit('INIT_ENTERTAINMENTS', r.data.data);
+          return r.data;
         });
     },
     getEntertainment ({ commit }, id) {

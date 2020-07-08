@@ -15,4 +15,5 @@ export {
 export { mapSettings, LINE_PATH_CONFIG, POINT_MARKER_ICON_CONFIG } from './mapSettings.js';
 export { PAGINTAION_ACCOMMODATION_PAGE_SIZE } from './paginationSettings.js';
 export { EMAIL_REGEX, LINK_REGEX } from './validation.js';
+export { PAGINTAION_ENTERTAINMENT_PAGE_SIZE } from './paginationSettings.js';
 export { PAGINTAION_SHEDULED_PLACE_TO_EAT_PAGE_SIZE } from './paginationSettings.js';

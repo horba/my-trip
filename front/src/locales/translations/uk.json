@@ -81,7 +81,8 @@
     "lodging": "жилье",
     "real_estate_agency": "агентство нерухомості",
     "airport": "аеропорт",
-    "travel_agency": "туристичне агентство"
+    "travel_agency": "туристичне агентство",
+    "park": "парк"
   },
   "footer": {
     "join": "Приєднатися",

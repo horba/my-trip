@@ -1,5 +1,5 @@
 import { MmtLeisureCard, MmtStepper } from '@components';
-import { VBtn, VIcon } from 'vuetify/lib';
+import { VBtn, VIcon, VPagination } from 'vuetify/lib';
 
 import { gmapApi } from 'vue2-google-maps';
 
@@ -7,6 +7,7 @@ export default {
   components: {
     MmtStepper,
     MmtLeisureCard,
+    VPagination,
     VBtn,
     VIcon
   },
@@ -27,14 +28,15 @@ export default {
       map: null,
       placeService: null,
       selectedPlaceIndex: null,
-      markerPos: null
+      markerPos: null,
+      pageNumber: 1,
+      totalEntertainmentsPagesCount: 1
     };
   },
   async mounted () {
     await this.initMap();
-    await this.$store.dispatch('entertainment/initEntertainments');
+    await this.getEntertainments(0);
     this.geolocate();
-    this.getPlaces();
   },
   methods: {
     async initMap () {
@@ -104,6 +106,15 @@ export default {
           });
         }
       }
+    },
+    async getEntertainments (pageNumber) {
+      await this.$store.dispatch('entertainment/getEntertainments', pageNumber)
+        .then(r => {
+          this.totalEntertainmentsPagesCount = r.totalCount;
+          this.pageNumber = r.pageNumber + 1;
+        });
+      this.places = [];
+      this.getPlaces();
     }
   }
 };
