@@ -2,14 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using WebAPI.Extension;
-using WebAPI.Services;
 using WebAPI.Services.Assets;
-using WebAPI.Validators;
 
 namespace WebAPI.Controllers
 {
@@ -18,66 +13,40 @@ namespace WebAPI.Controllers
   [Authorize]
   public class AssetsController : ControllerBase
   {
-    private readonly AssetsService _assetsService;
-    private readonly UserService _userService;
+    private readonly AssetsService _filesService;
 
-    public AssetsController(AssetsService filesService, UserService userService)
+    public AssetsController(AssetsService filesService)
     {
-      _assetsService = filesService;
-      _userService = userService;
+      _filesService = filesService;
     }
 
     [HttpPost]
     [Route("{assetType}")]
     [Consumes("multipart/form-data")]
-    public async Task<IActionResult> UploadFile([FromForm, Required] IFormFile file, [FromRoute] AssetType assetType)
+    public async Task<IActionResult> UploadFile([FromForm] IFormFile file, [FromRoute] AssetType assetType)
     {
-      var results = new List<ValidationResult>();
-      var validationAttributes = new List<ValidationAttribute>
-      {
-        new ValidFileType(new string[] { "png", ".jpeg", ".jpg", ".bmp"}),
-        new ValidFileSize(Consts.MaxImageFileSize)
-      };
-      var context = new ValidationContext(file);
+      if (file == null || file.Length < 0)
+        return BadRequest("fileIsEmpty");
 
-      if(Validator.TryValidateValue(file, context, results, validationAttributes))
-      {
+      if (!Consts.AllowedImageContentTypes.Contains(file.ContentType, StringComparer.OrdinalIgnoreCase))
+        return BadRequest("notAllowedContentType");
 
-        switch(assetType)
-        {
-          case AssetType.UserAvatar:
-          {
-            var fileName = await _assetsService.SaveFileAsync(file, assetType);
-            _userService.UpdateUserAvatar(HttpContext.GetUserIdFromClaim(), fileName);
-            break;
-          }
-          default:
-            break;
-        }
-      }
-      return Ok();
+      if (file.Length > Consts.MaxImageFileSize)
+        return BadRequest("fileIsToBig");
+
+      var fileName = await _filesService.SaveFileAsync(file, assetType);
+
+      return Ok(fileName);
     }
 
     [HttpDelete]
     [Route("{assetType}/{fileName}")]
     public IActionResult DeleteFile([FromRoute] AssetType assetType, [FromRoute] string fileName)
     {
-      if(string.IsNullOrEmpty(fileName))
+      if (string.IsNullOrEmpty(fileName))
         return BadRequest("File name is required");
 
-      _assetsService.DeleteFile(fileName, assetType);
-
-      switch(assetType)
-      {
-        case AssetType.UserAvatar:
-        {
-          _userService.UpdateUserAvatar(HttpContext.GetUserIdFromClaim(), fileName);
-          break;
-        }
-        default:
-          break;
-      }
-
+      _filesService.DeleteFile(fileName, assetType);
       return Ok();
     }
   }

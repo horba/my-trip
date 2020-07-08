@@ -148,6 +148,7 @@ export default {
 
           this.$store.dispatch('entertainment/uploadFile', formData)
             .then(r => {
+              console.log(r);
               this.photo = r.data;
             });
         });

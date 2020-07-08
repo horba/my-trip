@@ -19,16 +19,6 @@
           {{ $t('entertainments.add') }}
         </span>
       </v-btn>
-      <v-btn
-        rounded
-        depressed
-        class="details accent lighten-1"
-      >
-        <span class="text-capitalize">
-          {{ $t('entertainments.filter') }}
-          <v-icon right class="white--text">mdi-filter-variant</v-icon>
-        </span>
-      </v-btn>
     </div>
   </nav>
   <div class="body-wrap">
@@ -40,7 +30,7 @@
       >
         <mmt-leisure-card
           :place="place"
-          :isActive="selectedPlaceIndex && selectedPlaceIndex === index + 1 ? true : false"
+          :isActive="selectedPlaceIndex && selectedPlaceIndex === index + 1"
         />
       </div>
       <v-pagination
