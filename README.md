@@ -1,5 +1,6 @@
 # About this project
 MakeMeTrip - this is a travel planning app. In it, you can plan a trip to a cafe or Museum, you can see the nearest attractions on the map, plan them and visit them. The app also has a trip history and you can plan your route, manage your housing, tickets, and transport bookings
+
 # demo
 ## Unauthorized users
 ![Unauthorized users](demo/unauthorized_users.gif)
