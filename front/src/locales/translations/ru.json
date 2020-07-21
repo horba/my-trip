@@ -6,6 +6,16 @@
   "meal_delivery": "Доставка еды",
   "meal_takeaway": "Еда на вынос",
   "food": "Еда",
+  "museum": "Музей",
+  "tourist_attraction": "Туристическая достопримечательность",
+  "amusement_park": "Парк культуры и отдыха",
+  "point_of_interest": "Достопримечательность",
+  "laundry": "Прачечная",
+  "lodging": "Жилье",
+  "real_estate_agency": "Агентство недвижимости",
+  "airport": "Аэропорт",
+  "travel_agency": "Туристическое агенство",
+  "park": "Парк",
   "appTitle": "MakeMeTrip",
   "menu": {
     "aboutUs": "О нас",
@@ -71,19 +81,6 @@
   "mmtLeisureCard": {
     "schedule": "График работы"
   },
-  "entertainmentType": {
-    "museum": "музей",
-    "tourist_attraction": "туристическая достопримечательность",
-    "amusement_park": "парк культуры и отдыха",
-    "point_of_interest": "достопримечательность",
-    "establishment": "заведение",
-    "laundry": "прачечная",
-    "lodging": "жилье",
-    "real_estate_agency": "агентство недвижимости",
-    "airport": "аэропорт",
-    "travel_agency": "туристическое агенство",
-    "park": "парк"
-  },
   "footer": {
     "join": "Присоедениться",
     "subscribeToNews": "Подписаться на новости",
@@ -108,7 +105,8 @@
     "repeatPassword": "Повторите пароль",
     "passwordMustIdentity": "Пароли должны совпадать",
     "thisNoEmail": "Не действительный e-mail",
-    "successfulСhange": "Пароль успешно изменен! Вы получите подтверждение об изменении пароля на Ваш электронный адрес."
+    "successfulСhange": "Пароль успешно изменен! Вы получите подтверждение об изменении пароля на Ваш электронный адрес.",
+    "successfulSend": "Сообщение успешно отправлено на электронную почту"
   },
   "locale": {
     "language": "Язык",

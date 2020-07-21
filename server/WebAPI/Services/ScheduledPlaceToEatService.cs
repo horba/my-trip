@@ -140,7 +140,7 @@ namespace WebAPI.Services
     {
       if(scheduledPlaceToEat == null)
       {
-        throw new ArgumentNullException(nameof(scheduledPlaceToEat));
+        throw new ArgumentNullException("sheduledPlaceToEat");
       }
       var fileNames = new List<string>();
       var attachmentFileEatings = _attachmentFileEatingRepository.GetAttachmentFileEatingByScheduledPlaceId(scheduledPlaceToEat.Id).AsNoTracking();

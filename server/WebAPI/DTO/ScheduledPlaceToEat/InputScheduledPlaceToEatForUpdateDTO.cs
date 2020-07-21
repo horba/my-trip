@@ -26,7 +26,7 @@ namespace WebAPI.DTO.ScheduledPlaceToEat
     [DataType(DataType.Url, ErrorMessage = "It doesn't look like a link")]
     public string Link { get; set; }
 
-    [StringLength(50, ErrorMessage = "{0} length must be up to {1}.")]
+    [StringLength(300, ErrorMessage = "{0} length must be up to {1}.")]
     public string GooglePlaceId { get; set; }
 
     public double Lat { get; set; }

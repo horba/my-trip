@@ -6,11 +6,21 @@
   "meal_delivery": "Meal delivery",
   "meal_takeaway": "Meal takeawey",
   "food": "Food",
+  "museum": "Museum",
+  "tourist_attraction": "Tourist attraction",
+  "amusement_park": "Amusement park",
+  "point_of_interest": "Point of interest",
+  "laundry": "Laundry",
+  "lodging": "Lodging",
+  "real_estate_agency": "Real estate agency",
+  "airport": "Airport",
+  "travel_agency": "Travel agency",
+  "park": "Park",
   "appTitle": "MakeMeTrip",
   "menu": {
     "aboutUs": "About Us",
     "accommodation": "Accommodation",
-    "leisure": "Lleisure",
+    "leisure": "Leisure",
     "food": "Food",
     "privacyPolicy": "Privacy policy",
     "cookiePolicy": "Cookie Policy",
@@ -71,19 +81,6 @@
   "mmtLeisureCard": {
     "schedule": "schedule"
   },
-  "entertainmentType": {
-    "museum": "museum",
-    "tourist_attraction": "tourist attraction",
-    "amusement_park": "amusement park",
-    "point_of_interest": "point of interest",
-    "establishment": "establishment",
-    "laundry": "laundry",
-    "lodging": "lodging",
-    "real_estate_agency": "real estate agency",
-    "airport": "airport",
-    "travel_agency": "travel agency",
-    "park": "park"
-  },
   "footer": {
     "join": "Join",
     "subscribeToNews": "Subscribe to news",
@@ -108,7 +105,8 @@
     "repeatPassword": "Repeat password",
     "passwordMustIdentity": "Passwords must match",
     "thisNoEmail": "Invalid email address",
-    "successfulСhange": "The password was successfully changed! You will receive a confirmation of your password change to Your email address."
+    "successfulСhange": "The password was successfully changed! You will receive a confirmation of your password change to Your email address.",
+    "successfulSend": "The message was successfully sent to your email address"
   },
   "locale": {
     "language": "Language",

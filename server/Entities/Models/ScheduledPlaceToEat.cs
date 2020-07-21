@@ -30,7 +30,7 @@ namespace Entities.Models
     [DataType(DataType.Url, ErrorMessage = "It doesn't look like a url")]
     public string Link { get; set; }
 
-    [StringLength(50, ErrorMessage = "The length {0} must be from 0 to {1}.")]
+    [StringLength(300, ErrorMessage = "The length {0} must be from 0 to {1}.")]
     public string GooglePlaceId { get; set; }
 
     public double Lat { get; set; }

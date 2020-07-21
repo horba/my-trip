@@ -19,7 +19,8 @@ import {
   VDatePicker,
   VTimePicker,
   VForm,
-  VFileInput
+  VFileInput,
+  VSnackbar
 } from 'vuetify/lib';
 
 import { gmapApi } from 'vue2-google-maps';
@@ -42,7 +43,8 @@ export default {
     MmtTextInput,
     VTimePicker,
     VForm,
-    VFileInput
+    VFileInput,
+    VSnackbar
   },
   data () {
     return {
@@ -99,7 +101,7 @@ export default {
         .then(() => this.$router.push({ name: 'ScheduleEatingPlace' }));
     },
     onSaveError (error) {
-      this.showSnackbar('error', error);
+      this.showSnackbar('error', error.data.title);
     },
     save () {
       if (this.isValid) {
@@ -116,10 +118,12 @@ export default {
           payload.id = Number(this.$route.params.id);
           this.$store.dispatch('eating/updateEating', payload)
             .then(() => {
-              return this.$store.dispatch('eating/uploadNewFilesEating', {
-                files: this.files,
-                eatingId: payload.id
-              });
+              if (this.files.length > 0) {
+                return this.$store.dispatch('eating/uploadNewFilesEating', {
+                  files: this.files,
+                  eatingId: payload.id
+                });
+              }
             }).then(() => this.onSaveSuccess())
             .catch(error => this.onSaveError(error));
         } else {
