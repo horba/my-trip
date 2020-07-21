@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.DTO;
 using WebAPI.Services;
@@ -28,11 +29,15 @@ namespace WebAPI.Controllers
     [HttpPost]
     public async Task<IActionResult> ResetPasswordAsync(RecoveryPasswordModel recoveryPasswordModel)
     {
-      if (!ModelState.IsValid)
-        return BadRequest(ModelState);
-
-      await recoveryPasswordService.SendEmailAsync(recoveryPasswordModel);
-      return Ok();
+      try
+      {
+        await recoveryPasswordService.SendEmailAsync(recoveryPasswordModel);
+        return Ok();
+      }
+      catch(Exception e)
+      {
+        return BadRequest(e.Message);
+      }
     }
   }
 }

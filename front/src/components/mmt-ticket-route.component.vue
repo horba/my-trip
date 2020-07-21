@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <div class="route">
     <label class="routeDate text-body-regular">{{ routeItem.date }}</label>
     <br/>

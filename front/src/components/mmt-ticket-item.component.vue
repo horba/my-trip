@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <v-card class="ticket">
     <mmt-ticket-route v-for="route in ticketItem.routes" :key="route.id" :route-item="route"/>
     <div class="line"/>

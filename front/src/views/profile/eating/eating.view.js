@@ -129,10 +129,10 @@ export default {
           this.text = this.$t('eating.successfullyDelete');
           this.snackbar = true;
           this.color = 'success';
-          this.responseDataFromServer(this.pageNumber - 1);
+          this.responseDataFromServer(this.pagination.pageNumber - 1);
         })
         .catch(error => {
-          this.text = error;
+          this.text = error.data.title;
           this.snackbar = true;
           this.color = 'error';
         });

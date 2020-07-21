@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <div class="cards-list">
     <mmt-ticket-item v-for="ticket in ticketItems" :key="ticket.id" :ticket-item="ticket"/>
   </div>

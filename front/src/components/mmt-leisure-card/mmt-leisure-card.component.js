@@ -13,7 +13,7 @@ export default {
     splitTypes (value) {
       const result = [];
       value.forEach(e => {
-        result.push(i18n.t(`entertainmentType.${e}`));
+        result.push(i18n.t(e));
       });
       return result.join(', ');
     }

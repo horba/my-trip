@@ -46,4 +46,7 @@
   <div class="text-center text-normal">
     {{$t('recoveryPassword.note')}}
   </div>
+  <v-snackbar v-model="snackBarShow" :color="snackBarColor" :timeout="3000" top>
+    {{ snackBarMessage }}
+  </v-snackbar>
 </v-card>
